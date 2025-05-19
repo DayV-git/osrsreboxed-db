@@ -1,5 +1,4 @@
 [tools]
-java = "openjdk"
 python = "3"
 uv = "latest"
 
@@ -65,4 +64,12 @@ depends = ['builders']
 run = """
 #!/usr/bin/env bash
 python scripts/update/update_json_files.py
+"""
+
+[tasks.package]
+description = "Packages up the files needed for OSS"
+run = """
+#!/usr/bin/env bash
+rm -f package.tar.gz
+tar -czvf package.tar.gz -C docs/ monsters-complete.json items-complete.json items-icons/
 """
