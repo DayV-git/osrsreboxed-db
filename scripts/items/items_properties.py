@@ -50,9 +50,9 @@ def fetch():
     # Try to determine the last update
     if TITLES_FP.exists():
         stream = os.popen(f"git log -1 --format='%ad' {TITLES_FP}")
-        last_extraction_date = stream.read()
-        last_extraction_date = last_extraction_date.strip()
-        last_extraction_date = re.sub(RG, '', last_extraction_date)
+        last_extraction_date = stream.read().strip()
+        last_extraction_date = last_extraction_date.strip("'\"")
+        last_extraction_date = re.sub(RG, '', last_extraction_date).strip()
         last_extraction_date = datetime.strptime(last_extraction_date, "%a %b %d %H:%M:%S %Y")
         last_extraction_date = last_extraction_date - timedelta(days=3)
     else:
