@@ -73,6 +73,7 @@ class BuildItem:
         self.infobox_version_number = None
         self.item_wikitext = None
         self.wikitext_found_using = None
+        self.icons["blank"] = ""
 
     def preprocessing(self) -> Dict:
         """Preprocess an item, and set important object variables.
@@ -530,7 +531,7 @@ class BuildItem:
                 self.item_dict["weapon"]["stances"] = self.weapon_stances[weapon_type]
             except KeyError:
                 print("populate_from_wiki_data_equipment: Weapon type error 1 | " + weapon_type)
-                exit(1)
+                raise
 
         else:
             # No combatstyles infobox, try get data from bonuses
@@ -542,7 +543,7 @@ class BuildItem:
                 self.item_dict["weapon"]["stances"] = self.weapon_stances[weapon_type]
             except KeyError:
                 print("populate_from_wiki_data_equipment: Weapon type error 2")
-                exit(1)
+                raise
 
 
         # Finally, set the equipable_weapon property to true

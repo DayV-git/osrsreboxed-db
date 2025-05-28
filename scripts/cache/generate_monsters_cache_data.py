@@ -39,7 +39,7 @@ def process():
 
         # Before checking if attackable, add a couple of
         # known monsters that are "death" versions...
-        if json_data["id"] in [8622, 9432, 9433]:
+        if json_data["id"] in [8622, 9432, 9433, 14012, 377, 7889, 8341, 10769, 8613]:
             attackable_npcs[id_number] = json_data
 
         if "Attack" in json_data["actions"]:
