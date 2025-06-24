@@ -316,12 +316,13 @@ class BuildMonster:
         :return value: The extracted template value based on supplied key.
         """
         value = None
-        try:
-            value = template.get(key).value
-            value = value.strip()
-            return value
-        except ValueError:
-            return value
+        for k in (key, f'{key}1'):
+            try:
+                value = template.get(k).value.strip()
+                return value
+            except (AttributeError, ValueError):
+                continue
+        return value
 
     def check_duplicate_monster(self) -> MonsterProperties:
         """Determine if this is a duplicate monster.
