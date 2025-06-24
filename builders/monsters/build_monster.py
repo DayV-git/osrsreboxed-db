@@ -265,23 +265,27 @@ class BuildMonster:
         # Initialize a dictionary that maps database_name -> property_name
         # The database_name is used in this project
         # The property_name is used by the OSRS Wiki
-        combat_bonuses = {"attack_level": "att",
-                          "strength_level": "str",
-                          "defence_level": "def",
-                          "magic_level": "mage",
-                          "ranged_level": "range",
-                          "attack_bonus": "attbns",
-                          "strength_bonus": "strbns",
-                          "attack_magic": "amagic",
-                          "magic_bonus": "mbns",
-                          "attack_ranged": "arange",
-                          "ranged_bonus": "rngbns",
-                          "defence_stab": "dstab",
-                          "defence_slash": "dslash",
-                          "defence_crush": "dcrush",
-                          "defence_magic": "dmagic",
-                          "defence_ranged": "drange",
-                          }
+        combat_bonuses = {
+            "attack_level": "att",
+            "strength_level": "str",
+            "defence_level": "def",
+            "magic_level": "mage",
+            "ranged_level": "range",
+            "attack_bonus": "attbns",
+            "strength_bonus": "strbns",
+            "attack_magic": "amagic",
+            "magic_bonus": "mbns",
+            "attack_ranged": "arange",
+            "ranged_bonus": "rngbns",
+            "defence_stab": "dstab",
+            "defence_slash": "dslash",
+            "defence_crush": "dcrush",
+            "defence_magic": "dmagic",
+            "defence_ranged": "drange",
+            "elemental_weakness_type": "elementalweaknesstype",
+            "elemental_weakness_percent": "elementalweaknesspercent"
+        }
+
 
         # Loop each of the combat bonuses and populate
         for database_name, property_name in combat_bonuses.items():

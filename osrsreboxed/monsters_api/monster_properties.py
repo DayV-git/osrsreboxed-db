@@ -80,6 +80,8 @@ class MonsterProperties:
     defence_slash: int = None
     defence_crush: int = None
     defence_magic: int = None
+    elemental_weakness_type: int = None
+    elemental_weakness_percent: int = None
     defence_ranged: int = None
     drops: List = None
 

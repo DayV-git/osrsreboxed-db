@@ -424,12 +424,24 @@ def examine(value: str) -> bool:
 
 
 def stats(value: str) -> int:
-    """Convert a monster stat value to an integer.
+    """Convert a monster stat or elemental value to an integer.
 
     :param value: Template value extracted from raw wikitext.
-    :return value: A cleaned stat value as an int.
+    :return: A cleaned stat value as an int, or mapped elemental value.
     """
+    elemental_map = {
+        "Air": 1,
+        "Water": 2,
+        "Earth": 3,
+        "Fire": 4
+    }
+
+    value = value.strip().capitalize()
+    if value in elemental_map:
+        return elemental_map[value]
+
     try:
         return int(value)
     except ValueError:
         return 0
+
