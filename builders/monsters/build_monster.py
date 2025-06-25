@@ -281,7 +281,9 @@ class BuildMonster:
             "defence_slash": "dslash",
             "defence_crush": "dcrush",
             "defence_magic": "dmagic",
-            "defence_ranged": "drange",
+            "defence_ranged_light": "dlight",
+            "defence_ranged_standard": "dstandard",
+            "defence_ranged_heavy": "dheavy",
             "elemental_weakness_type": "elementalweaknesstype",
             "elemental_weakness_percent": "elementalweaknesspercent"
         }
@@ -322,6 +324,18 @@ class BuildMonster:
                 return value
             except (AttributeError, ValueError):
                 continue
+
+        # If dlight, dstandard, dheavy do not exist, chances are all are the same and given by drange
+        for prefix in ("light", "standard", "heavy"):
+            if f'd{prefix}' in key:
+                alt_key = key.replace(f'd{prefix}', 'drange')
+                try:
+                    value = template.get(alt_key).value.strip()
+                    return value
+                except (AttributeError, ValueError):
+                    pass
+                break
+
         return value
 
     def check_duplicate_monster(self) -> MonsterProperties:

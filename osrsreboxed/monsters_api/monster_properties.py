@@ -82,7 +82,9 @@ class MonsterProperties:
     defence_magic: int = None
     elemental_weakness_type: int = None
     elemental_weakness_percent: int = None
-    defence_ranged: int = None
+    defence_ranged_light: int = None
+    defence_ranged_standard: int = None
+    defence_ranged_heavy: int = None
     drops: List = None
 
     @classmethod
