@@ -109,7 +109,13 @@ class BuildMonster:
         infobox_parser = WikitextTemplateParser(self.monster_wikitext)
 
         # Try extract infobox for monster
-        self.has_infobox = infobox_parser.extract_infobox("infobox monster")
+
+        infobox_version_overrides = {12192: 2} #overide dt2 boss version due to overlapping wiki infobox
+
+        if self.monster_id_int in infobox_version_overrides.keys():
+            self.has_infobox = infobox_parser.extract_infobox("infobox monster", infobox_version_overrides[self.monster_id_int]) 
+        else:
+            self.has_infobox = infobox_parser.extract_infobox("infobox monster") 
         if not self.has_infobox:
             return False
 
@@ -117,8 +123,13 @@ class BuildMonster:
         self.versioned_ids = infobox_parser.extract_infobox_ids()
 
         # Set the infobox version number, default to empty string (no version number)
+
+        version_overrides = {12204: 1, 12192: 1, 12214: 1, 12215: 2, 12223: 1, 12224: 2} #overide dt2 boss version due to overlapping wiki infobox
+
         try:
-            if self.versioned_ids:
+            if self.monster_id_int in version_overrides.keys():
+                self.infobox_version_number = version_overrides[self.monster_id_int]
+            elif self.versioned_ids:
                 self.infobox_version_number = self.versioned_ids[self.monster_id_int]
         except KeyError:
             if self.is_versioned:
@@ -149,7 +160,6 @@ class BuildMonster:
         # Log, then populate cache properties
         self.monster_dict["id"] = self.monster_cache_data["id"]
         self.monster_dict["name"] = self.monster_cache_data["name"]
-        self.monster_dict["combat_level"] = self.monster_cache_data["combatLevel"]
         self.monster_dict["size"] = self.monster_cache_data["size"]
 
     def populate_monster_properties_from_wiki_data(self):
@@ -266,6 +276,7 @@ class BuildMonster:
         # The database_name is used in this project
         # The property_name is used by the OSRS Wiki
         combat_bonuses = {
+            "combat_level": "combat",
             "attack_level": "att",
             "strength_level": "str",
             "defence_level": "def",

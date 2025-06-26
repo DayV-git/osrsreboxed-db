@@ -156,7 +156,7 @@ class WikitextTemplateParser:
                                     "name": 0,
                                     "itemid": 0}
 
-    def extract_infobox(self, template_type: str) -> bool:
+    def extract_infobox(self, template_type: str, version: int = 1) -> bool:
         """Parse raw wikitext and extract a specified infobox.
 
         The OSRS Wiki stores structured information in a variety of different
@@ -170,11 +170,8 @@ class WikitextTemplateParser:
         A full list of all OSRS Wiki templates is available from:
         https://oldschool.runescape.wiki/w/RuneScape:Templates
 
-        NOTE: This function will only extract the first occurance on the requested
-        template. If there are multiple templates, only the first is used. This is
-        usually fine, as there is only one infobox with a unique name per page.
-
         :param template_type: The type of infobox to extract.
+        :param version: The occurrence (1-indexed) of the template to extract.
         :return: A boolean representing sucessful processing.
         """
         try:
@@ -188,13 +185,15 @@ class WikitextTemplateParser:
         # Loop through templates in wikicode from wiki page
         # Then call Infobox Item processing method
         filtered_templates = wikicode.filter_templates()
+        match_count = 0
+
         for template in filtered_templates:
-            template_name = template.name.strip()
-            template_name = template_name.lower()
+            template_name = template.name.strip().lower()
             if template_type in template_name:
-                self.template = template
-                # Only find the first instance, so break
-                break
+                match_count += 1
+                if match_count == version:
+                    self.template = template
+                    return True
 
         # If no template_primary was found, return false
         if not self.template:
