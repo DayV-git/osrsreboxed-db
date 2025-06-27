@@ -102,6 +102,10 @@ class Builder:
                 if "(beta" in self.all_items_cache_data[item_id]["name"]:
                     continue
 
+                #Skip the beta items from DT2
+                if int(item_id) in [25484, 25485, 25486, 25487, 25488, 25489, 25490, 25491, 25492]:
+                    continue
+                    
                 # Initialize the BuildItem class, used for all items
                 builder = build_item.BuildItem(item_id=item_id,
                                                all_items_cache_data=self.all_items_cache_data,
@@ -154,6 +158,10 @@ class Builder:
                 continue
 
             if "(null)" in self.all_items_cache_data[item_id]["name"]:
+                continue
+
+            #Skip the beta items from DT2
+            if int(item_id) in [25484, 25485, 25486, 25487, 25488, 25489, 25490, 25491, 25492]:
                 continue
 
             # Initialize the BuildItem class, used for all items
