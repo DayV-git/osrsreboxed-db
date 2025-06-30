@@ -131,11 +131,15 @@ def process():
 
     # Loop the loaded data
     for id_number in definitions:
-        # Initialize the dictionary to store each item properties
-        item_data = dict()
 
         # Fetch the specific item definition being processed
         item_definition = definitions[id_number]
+
+        # Skip null items
+        if item_definition["name"] == "null": continue
+
+        # Initialize the dictionary to store each item properties
+        item_data = dict()
 
         # Get the item ID
         item_data["id"] = item_definition["id"]
