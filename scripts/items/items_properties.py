@@ -30,7 +30,6 @@ import collections
 from pathlib import Path
 from datetime import datetime
 from datetime import timedelta
-from dateutil import parser
 
 
 import config

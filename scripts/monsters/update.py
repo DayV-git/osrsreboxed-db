@@ -29,8 +29,8 @@ def main():
     monsters_properties.fetch()
     monsters_properties.process()
 
-    """monsters_drops.fetch()
-    monsters_drops.process()"""
+    monsters_drops.fetch()
+    monsters_drops.process()
 
 
 if __name__ == '__main__':

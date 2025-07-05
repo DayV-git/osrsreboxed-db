@@ -1,5 +1,4 @@
  
-import base64
 from pathlib import Path
 
 import multiprocessing as mp
@@ -22,7 +21,7 @@ def get_md5(file_path):
 
 def main():
     item_files = Path(config.DATA_CACHE_PATH / "items").glob("*.json")
-    icons_path = config.DOCS_PATH / "items-icons";
+    icons_path = config.DOCS_PATH / "items-icons"
 
     # Sort icon files numerically
     item_ids = [x.stem for x in item_files]

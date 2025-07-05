@@ -24,7 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import re
 from datetime import datetime
 
-import dateparser
 
 from dateutil.parser import parse as date_parse
 

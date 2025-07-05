@@ -67,7 +67,7 @@ def fetch():
             wikitext_template.extract_infobox("infobox monster")
             value = wikitext_template.extract_infobox_value(f"dropversion{version}")
             if not value:
-                value = wikitext_template.extract_infobox_value(f"dropversion1")
+                value = wikitext_template.extract_infobox_value("dropversion1")
             multi_drop_tables[monster_id] = f"[[Dropped from::{name}#{value}]]"
 
     api_url = "https://oldschool.runescape.wiki/api.php"
