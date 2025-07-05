@@ -25,12 +25,10 @@ import json
 from pathlib import Path
 
 import config
-from scripts.cache import cache_constants
 
 
-def process():
+def process(definitions):
     """Main function to extract attackble NPC definition files."""
-    definitions = cache_constants.NPC_DEFINITIONS
     attackable_npcs = dict()
 
     # Loop all entries in the loaded definition files

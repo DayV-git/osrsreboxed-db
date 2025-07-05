@@ -31,7 +31,6 @@ from typing import List
 from typing import Dict
 
 import config
-from scripts.cache import cache_constants
 
 SKIP_EMPTY_NAMES = ("null", "Null", "")
 
@@ -115,15 +114,15 @@ def extract_model_ids_list(json_data: Dict) -> List[Dict]:
     return models
 
 
-def process():
+def process(item_defs, npc_defs, object_defs):
     """Extract OSRS model ID numbers that map to names."""
     all_models = dict()
 
     # Loop three cache types (items, npcs and objects)
     all_definitions = {
-        "items": cache_constants.ITEM_DEFINITIONS,
-        "npcs": cache_constants.NPC_DEFINITIONS,
-        "objects": cache_constants.OBJECT_DEFINITIONS
+        "items":  item_defs,
+        "npcs": npc_defs,
+        "objects": object_defs
     }
 
     for cache_name, definitions in all_definitions.items():
