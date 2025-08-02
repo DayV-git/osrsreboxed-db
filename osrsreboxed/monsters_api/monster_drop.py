@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from dataclasses import dataclass, asdict
 from typing import Dict
 
@@ -30,13 +31,13 @@ class MonsterDrop:
     to items dropped by a specific monster. This includes item properties (id,
     name) and drop properties (quantity, rarity, and drop requirements).
     """
+
     id: int = None
     name: str = None
     members: str = None
     quantity: str = None
     noted: bool = None
     rarity: str = None
-    rolls: int = None
 
     def construct_json(self) -> Dict:
         """Construct dictionary/JSON of drop entry in a list for exporting or printing.

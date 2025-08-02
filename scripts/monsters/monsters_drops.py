@@ -55,25 +55,10 @@ def fetch():
     with open(Path(config.DATA_MONSTERS_PATH / "monsters-cache-data.json")) as f:
         all_monster_cache_data = json.load(f)
 
-    for monster_id, monster_list in all_wikitext_processed.items():
-        exists = all_monster_cache_data.get(monster_id, None)
-        if not exists:
-            continue
-        if "dropversion" in monster_list[2].lower():
-            name = all_monster_cache_data[monster_id]["name"]
-            wikitext = monster_list[2]
-            version = monster_list[1]
-            wikitext_template = WikitextTemplateParser(wikitext)
-            wikitext_template.extract_infobox("infobox monster")
-            value = wikitext_template.extract_infobox_value(f"dropversion{version}")
-            if not value:
-                value = wikitext_template.extract_infobox_value("dropversion1")
-            multi_drop_tables[monster_id] = f"[[Dropped from::{name}#{value}]]"
-
     api_url = "https://oldschool.runescape.wiki/api.php"
 
     # Specify what the SMW query should return
-    selection = "|?Dropped item|?Drop Quantity|?Rarity|?Rolls|limit=500"
+    selection = "|limit=500"
 
     # Set parameters to run a SMW query
     params = {
@@ -89,10 +74,7 @@ def fetch():
 
     # Loop raw monster cache data (ground truth)
     for monster_id, monster in all_monster_cache_data.items():
-        if monster_id in multi_drop_tables:
-            condition = multi_drop_tables[monster_id]
-        else:
-            condition = f"[[Dropped from::{monster['name']}]]"
+        condition = f"[[Dropped from::{monster['name']}]]"
 
         # Add to set of conditions to later query
         conditions_set.add(condition)
@@ -115,7 +97,7 @@ def fetch():
                             headers=config.custom_agent,
                             params=params)
 
-            data = r.json()
+            data = r.json()['query']['results']
         except (ValueError):
             print('Found error in json. Skipping monster')
 
@@ -149,8 +131,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/4 * base_rarity,
-            "rolls": 1
+            "rarity": 1/4 * base_rarity
         },
         {
             "id": 1621,
@@ -158,8 +139,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/8 * base_rarity,
-            "rolls": 1
+            "rarity": 1/8 * base_rarity
         },
         {
             "id": 1619,
@@ -167,8 +147,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/16 * base_rarity,
-            "rolls": 1
+            "rarity": 1/16 * base_rarity
         },
         {
             "id": 1452,
@@ -176,8 +155,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/42.67 * base_rarity,
-            "rolls": 1
+            "rarity": 1/42.67 * base_rarity
         },
         {
             "id": 1462,
@@ -185,8 +163,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/42.67 * base_rarity,
-            "rolls": 1
+            "rarity": 1/42.67 * base_rarity
         },
         {
             "id": 1617,
@@ -194,8 +171,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/64 * base_rarity,
-            "rolls": 1
+            "rarity": 1/64 * base_rarity
         },
         {
             "id": 830,
@@ -203,8 +179,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "5",
             "noted": False,
-            "rarity": 1/128 * base_rarity,
-            "rolls": 1
+            "rarity": 1/128 * base_rarity
         },
         {
             "id": 987,
@@ -212,8 +187,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/128 * base_rarity,
-            "rolls": 1
+            "rarity": 1/128 * base_rarity
         },
         {
             "id": 985,
@@ -221,8 +195,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/128 * base_rarity,
-            "rolls": 1
+            "rarity": 1/128 * base_rarity
         },
         {
             "id": 1247,
@@ -230,8 +203,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/128 * 1/16 * base_rarity,
-            "rolls": 1
+            "rarity": 1/128 * 1/16 * base_rarity
         },
         {
             "id": 2366,
@@ -239,8 +211,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/128 * 1/32 * base_rarity,
-            "rolls": 1
+            "rarity": 1/128 * 1/32 * base_rarity
         },
         {
             "id": 1249,
@@ -248,8 +219,7 @@ def gem_drop_table(base_rarity: float) -> list:
             "members": True,
             "quantity": "1",
             "noted": False,
-            "rarity": 1/128 * 1/42.67 * base_rarity,
-            "rolls": 1
+            "rarity": 1/128 * 1/42.67 * base_rarity
         }
     ]
 
@@ -286,7 +256,7 @@ def quantity_cleaner(quantity: str) -> str:
 
 
 def rarity_cleaner(rarity: str):
-    if rarity.lower() == "always":
+    if rarity.lower() in ["always", "once", "varies", "random"]:
         return "1/1"
     elif rarity.lower() == "common":
         return "1/8"
@@ -296,9 +266,11 @@ def rarity_cleaner(rarity: str):
         return "1/128"
     elif rarity.replace(" ", "").lower() == "veryrare":
         return "1/512"
+    else:
+        return rarity
 
 
-def item_id_lookup(name: str) -> int:
+def item_id_lookup(name: str, fullname: str) -> int:
     if name == "Black mask":
         name = "Black mask (10)"
 
@@ -310,24 +282,44 @@ def item_id_lookup(name: str) -> int:
         if item.name == name:
             return item.id, item.members
 
-    print(f"  > COULD NOT FIND: {name}")
+    print(f"  > COULD NOT FIND: {name} ({fullname})")
     return None, None
 
+def parse_drop_key(drop_key):
+    match = re.search(r"^(.*)\s([\d\.,]+/[\d\.,]+|Always|Common|Uncommon|Rare|Very rare|Unknown|Once|Varies|Random)$", drop_key)
+    if match:
+        item_qty = match.group(1).strip()
+        rarity = match.group(2).strip()
+    else:
+        item_qty = drop_key
+        rarity = None 
+    
+    try:
+        parts = item_qty.split("#DROP ", 1)[-1].split()
 
-def process_one(data: dict) -> dict:
-    results = data["query"]["results"]
+        i = -2 if parts[-1] == "(noted)" else -1
+        while parts[i-1][-1] == ',':
+            i -= 1
+
+        item_name = " ".join(parts[1:i]).strip()
+        quantity = " ".join(parts[i:]).strip()
+            
+        return item_name, quantity, rarity
+    except Exception:
+        pass
+
+    return None, None, None
+
+def process_one(results: dict) -> dict:
     drops = []
 
     if not results:
         return drops
 
-    for query_str, printouts in results.items():
+    for _, printouts in results.items():
 
         try:
-            name = printouts["printouts"]["Dropped item"][0]["fulltext"]
-
-            if "#" in name:
-                name = name.replace("#", "")
+            name = printouts["fulltext"]
         except (KeyError, IndexError):
             name = None
 
@@ -335,15 +327,20 @@ def process_one(data: dict) -> dict:
         if not name:
             continue
 
+        item_name, quantity, rarity = parse_drop_key(name)
+
+        if not item_name or not quantity or not rarity:
+            print(f">>> Error parsing drop key: {name}")
+            continue
+
+        if quantity == "Unknown" or rarity == "Unknown":
+            continue
+
         # RARITY
         try:
-            rarity = printouts["printouts"]["Rarity"][0]
+            rarity = rarity_cleaner(rarity)
 
-            # Convert string rarity to a string fraction
-            if rarity.lower() in ["always", "common", "uncommon", "rare", "veryrare"]:
-                rarity = rarity_cleaner(rarity)
-
-            # Remove thousand seperators from fractions
+            # Remove thousand separators from fractions
             rarity = rarity.replace(",", "")
 
             # Split fraction for calculation
@@ -362,40 +359,31 @@ def process_one(data: dict) -> dict:
         if "rare drop table" in name.lower():
             continue
 
-        itemid, members = item_id_lookup(name)
+        itemid, members = item_id_lookup(item_name, name)
 
         # Skip if not item ID
         if not itemid:
             continue
 
+        # NOTED
+        try:
+            noted = "noted" in quantity.lower()
+        except (IndexError, KeyError, ValueError):
+            noted = False
+
         # QUANTITY
         try:
-            quantity = printouts["printouts"]["Drop Quantity"][0]
             quantity = quantity_cleaner(quantity)
         except (IndexError, KeyError, ValueError):
             quantity = None
 
-        # NOTED
-        try:
-            noted = "noted" in printouts["printouts"]["Drop Quantity"][0].lower()
-        except (IndexError, KeyError, ValueError):
-            noted = False
-
-        # ROLLS
-        try:
-            rolls = printouts["printouts"]["Rolls"][0]
-            rolls = int(rolls)
-        except (IndexError, KeyError, ValueError):
-            rolls = 1
-
         drop = {
             "id": itemid,
-            "name": name,
+            "name": item_name,
             "members": members,
             "quantity": quantity,
             "noted": noted,
-            "rarity": rarity,
-            "rolls": rolls
+            "rarity": rarity
         }
         drops.append(drop)
 
@@ -425,5 +413,5 @@ def process():
 
 
 if __name__ == "__main__":
-    # fetch()
+    fetch()
     process()
