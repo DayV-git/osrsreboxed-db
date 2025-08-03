@@ -142,6 +142,9 @@ class Builder:
             except Exception:
                 print("Ran into issue parsing item.")
                 print(traceback.format_exc())
+                with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                    print("Ran into issue parsing item.", file=errfile)
+                    print(traceback.format_exc(), file=errfile)
         # Done processing, rejoice!
         print("Built.")
         exit(0)

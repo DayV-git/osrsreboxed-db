@@ -84,7 +84,7 @@ class Builder:
                                                      known_monsters=self.known_monsters,
                                                      verbose=self.verbose)
 
-                status = builder.preprocessing()
+                status, message = builder.preprocessing()
                 if status:
                     builder.populate_monster()
                     known_monster = builder.check_duplicate_monster()
@@ -96,10 +96,16 @@ class Builder:
                         builder.export_monster_to_json()
                     if self.validate:
                         builder.validate_monster()
+                else:
+                    with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                        print(message, file=errfile)
 
         except Exception:
             print("Ran into issue parsing item.")
             print(traceback.format_exc())
+            with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                print("Ran into issue parsing item.", file=errfile)
+                print(traceback.format_exc(), file=errfile)
         # Done processing, rejoice!
         print("Built.")
         exit(0)

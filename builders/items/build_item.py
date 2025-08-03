@@ -686,6 +686,8 @@ class BuildItem:
         # Print any validation errors
         if v.errors:
             print(v.errors)
+            with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                print(v.errors, file=errfile)
             ##exit(1)
 
         #assert v.validate(current_json)

@@ -282,7 +282,10 @@ def item_id_lookup(name: str, fullname: str) -> int:
         if item.name == name:
             return item.id, item.members
 
-    print(f"  > COULD NOT FIND: {name} ({fullname})")
+    msg = f"  > COULD NOT FIND: {name} ({fullname})"
+    print(msg)
+    with open('.error.txt', 'a', encoding='utf-8') as errfile:
+        print(msg, file=errfile)
     return None, None
 
 def parse_drop_key(drop_key):

@@ -103,7 +103,7 @@ class BuildMonster:
 
         # If there is no wikitext, and the monster is valid, raise a critical error
         if not self.monster_wikitext:
-            return False
+            return False, f" > Monster {self.monster_id_str} ({self.monster_name}) has no wikitext data!"
 
         # Parse the infobox monster
         infobox_parser = WikitextTemplateParser(self.monster_wikitext)
@@ -117,7 +117,9 @@ class BuildMonster:
         else:
             self.has_infobox = infobox_parser.extract_infobox("infobox monster") 
         if not self.has_infobox:
-            return False
+            if self.verbose:
+                print(f">>> No infobox found for {self.monster_name} ({self.monster_id_str})")
+            return False, f" > Monster {self.monster_id_str} ({self.monster_name}) has no infobox data!"
 
         self.is_versioned = infobox_parser.determine_infobox_versions()
         self.versioned_ids = infobox_parser.extract_infobox_ids()
@@ -140,7 +142,7 @@ class BuildMonster:
         # Set the template
         self.template = infobox_parser.template
 
-        return True
+        return True, ""
 
     def populate_monster(self):
         """Populate a monster after preprocessing it.
@@ -427,6 +429,13 @@ class BuildMonster:
         if ddiff_props:
             print(ddiff_props)
 
+        if len(current_json["drops"]) == 0 and len(existing_json["drops"]) > 0:
+            msg = (
+                f"  > WARNING: Monster {self.monster_properties.id} ({self.monster_properties.name}) lost all drops!"
+            )
+            print(msg)
+            with open(".error.txt", "a", encoding="utf-8") as errfile:
+                print(msg, file=errfile)
         self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     def export_monster_to_json(self):
@@ -448,6 +457,9 @@ class BuildMonster:
         # Print any validation errors
         if v.errors:
             print(v.errors)
+            with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                print(f"Validation errors for monster {self.monster_properties.id} ({self.monster_properties.name}):", file=errfile)
+                print(v.errors, file=errfile)
             ##exit(1)
 
         #assert v.validate(current_json)
