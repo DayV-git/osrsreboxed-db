@@ -137,13 +137,14 @@ def process():
     wiki_data_ids = WikitextIDParser(TEXT_FP, template_names)
     wiki_data_ids.process_osrswiki_data_dump()
 
-    WikiEntry = collections.namedtuple('WikiEntry', 'wiki_page_name version_number wikitext')
+    WikiEntry = collections.namedtuple('WikiEntry', 'wiki_page_name version_number template_number wikitext')
 
     export = dict()
 
     for item_id, wikitext in wiki_data_ids.item_id_to_wikitext.items():
         entry = WikiEntry(wiki_page_name=wiki_data_ids.item_id_to_wiki_name[item_id],
                           version_number=wiki_data_ids.item_id_to_version_number[item_id],
+                          template_number=wiki_data_ids.item_id_to_template_number[item_id],
                           wikitext=wikitext)
         export[item_id] = entry
 

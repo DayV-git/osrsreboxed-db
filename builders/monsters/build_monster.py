@@ -109,13 +109,9 @@ class BuildMonster:
         infobox_parser = WikitextTemplateParser(self.monster_wikitext)
 
         # Try extract infobox for monster
+        infobox_version = self.monster_wikitext[2] if type(self.monster_wikitext[2]) is int else 1
+        self.has_infobox = infobox_parser.extract_infobox("infobox monster", infobox_version) 
 
-        infobox_version_overrides = {12192: 2} #overide dt2 boss version due to overlapping wiki infobox
-
-        if self.monster_id_int in infobox_version_overrides.keys():
-            self.has_infobox = infobox_parser.extract_infobox("infobox monster", infobox_version_overrides[self.monster_id_int]) 
-        else:
-            self.has_infobox = infobox_parser.extract_infobox("infobox monster") 
         if not self.has_infobox:
             if self.verbose:
                 print(f">>> No infobox found for {self.monster_name} ({self.monster_id_str})")

@@ -113,6 +113,7 @@ class WikitextIDParser:
         self.template_names = template_names  # The infobox name (e.g., infobox item, infobox monster)
         self.item_id_to_wikitext = dict()  # Maps ID to wikitext (instead of name)
         self.item_id_to_version_number = dict()  # Maps ID to template version
+        self.item_id_to_template_number = dict()  # Maps ID to template occurance number
         self.item_id_to_wiki_name = dict()  # Maps ID to original wiki page name
 
     def process_osrswiki_data_dump(self):
@@ -131,16 +132,18 @@ class WikitextIDParser:
         for name, wikitext in wikitext_dump.items():
             # Loop the list of proivided infobox template names
             for template_name in self.template_names:
-                # Initialize the wikitext template parser
-                infobox_parser = WikitextTemplateParser(wikitext)
-                has_infobox = infobox_parser.extract_infobox(template_name)
-                if has_infobox:
+                # Extract all matching infoboxes (multiple=True)
+                templates = extract_wikitext_template(wikitext, template_name, multiple=True)
+                for template_number, template in enumerate(templates):
+                    infobox_parser = WikitextTemplateParser(wikitext)
+                    infobox_parser.template = template
                     infobox_parser.determine_infobox_versions()
                     versioned_ids = infobox_parser.extract_infobox_ids()
                     if not versioned_ids:
                         continue
                     for id, version_number in versioned_ids.items():
                         self.item_id_to_version_number[id] = version_number
+                        self.item_id_to_template_number[id] = template_number + 1
                         self.item_id_to_wikitext[id] = wikitext
                         self.item_id_to_wiki_name[id] = name
 
