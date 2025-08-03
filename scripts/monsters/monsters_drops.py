@@ -40,6 +40,17 @@ multi_drop_tables = dict()
 
 ITEMS = [item for item in items_api.load() if not item.duplicate and not item.stacked]
 
+# Skip multiple drop tables for monster IDs that have wiki-side issues
+NO_MULTI = [270, 271, 272, 273, 274, 275, 
+            522, 523, 524, 970, 971, 972, 
+            973, 974, 975, 976, 977, 978, 979, 1447,2075, 
+            2076, 2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084,
+            2210, 2211, 2212, 2242, 2243, 2244, 2527, 2528, 2529,
+             2530, 2531, 2532, 2533, 2534, 2535, 2536, 2865, 
+             3159, 3160, 3161, 3166, 3167, 3607, 3608, 3609, 4043,
+             4044, 4045, 4046, 4047, 4048, 4049, 4050, 4051, 4052,
+             6604, 6740, 6994, 6995, 7251, 7252
+             ]
 
 def fetch():
     """Fetch monster drops using SMW queries.
@@ -56,6 +67,28 @@ def fetch():
         all_monster_cache_data = json.load(f)
 
     api_url = "https://oldschool.runescape.wiki/api.php"
+
+    for monster_id, monster_list in all_wikitext_processed.items():
+        exists = all_monster_cache_data.get(monster_id, None)
+        if not exists or int(monster_id) in NO_MULTI:
+            continue
+        wikitext = monster_list[3]
+        name = monster_list[0]
+        version = monster_list[1]
+        infobox_version = monster_list[2]
+        wikitext_template = WikitextTemplateParser(wikitext)
+        wikitext_template.extract_infobox("infobox monster", infobox_version)
+        if wikitext_template.template and "dropversion" in wikitext_template.template.lower():
+            value = wikitext_template.extract_infobox_value(f"dropversion{version}")
+            if not value:
+                value = wikitext_template.extract_infobox_value("dropversion")
+            if not value:
+                value = wikitext_template.extract_infobox_value("dropversion1")
+            if not value:
+                value = wikitext_template.extract_infobox_value("dropversion2")
+
+            value = value.split(",")[0].strip()
+            multi_drop_tables[monster_id] = f"[[Dropped from::{name}#{value}]]"
 
     # Specify what the SMW query should return
     selection = "|limit=500"
@@ -74,8 +107,12 @@ def fetch():
 
     # Loop raw monster cache data (ground truth)
     for monster_id, monster in all_monster_cache_data.items():
-        condition = f"[[Dropped from::{monster['name']}]]"
-
+        name = all_wikitext_processed.get(monster_id, [None])[0]
+        if monster_id in multi_drop_tables:
+            condition = multi_drop_tables[monster_id]
+        else:
+            condition = f"[[Dropped from::{name}]]"
+            
         # Add to set of conditions to later query
         conditions_set.add(condition)
 
@@ -87,9 +124,7 @@ def fetch():
     # Start fetching the data
     count = 0
     for condition in conditions_set:
-        print(f"  > Processing {count}/{len(conditions_set)}: {condition}")
-
-
+        print(f"  > Processing {count + 1}/{len(conditions_set)}: {condition}")
         params["query"] = f"{condition}{selection}"
 
         try:
@@ -274,6 +309,17 @@ def item_id_lookup(name: str, fullname: str) -> int:
     if name == "Black mask":
         name = "Black mask (10)"
 
+    if name == "Key (Olaf's Quest)":
+        return 11039, True
+    
+    if name == "Coin pouchHero":
+        return 22537, True
+
+    if name == "H.A.M. member":
+        return 22523, True
+    
+    name = name.replace("(Tutorial Island)", "").strip()
+
     for item in ITEMS:
         if item.wiki_name == name:
             return item.id, item.members
@@ -412,7 +458,7 @@ def process():
             all_monster_drops[monster_id] = processed_data
 
     with open(file_path, "w") as f:
-        json.dump(all_monster_drops, f)
+        json.dump(all_monster_drops, f, indent=4)
 
 
 if __name__ == "__main__":
