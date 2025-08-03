@@ -687,6 +687,7 @@ class BuildItem:
         if v.errors:
             print(v.errors)
             with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                print(f"Validation errors for item {self.item_properties.id} ({self.item_properties.name}):", file=errfile)
                 print(v.errors, file=errfile)
             ##exit(1)
 
