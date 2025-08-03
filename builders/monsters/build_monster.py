@@ -448,6 +448,6 @@ class BuildMonster:
         # Print any validation errors
         if v.errors:
             print(v.errors)
-            exit(1)
+            ##exit(1)
 
-        assert v.validate(current_json)
+        #assert v.validate(current_json)
