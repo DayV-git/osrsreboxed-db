@@ -128,13 +128,16 @@ class Builder:
                                                  known_monsters=self.known_monsters,
                                                  verbose=self.verbose)
 
-            status = builder.preprocessing()
+            status, message = builder.preprocessing()
             if status:
                 builder.populate_monster()
                 known_monster = builder.check_duplicate_monster()
                 self.known_monsters.append(known_monster)
                 builder.populate_monster_drops()
                 builder.validate_monster()
+            else:
+                with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                    print(message, file=errfile)
 
         # Done testing, rejoice!
         print("Tested.")
