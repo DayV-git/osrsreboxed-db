@@ -20,22 +20,36 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import re
 import json
 from pathlib import Path
 from collections import defaultdict
-import collections
+import logging
 
 import config
 from osrsreboxed import items_api
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 
 
+# Constants
+CURRENCY_NAMES = [
+    'coins', 'trading sticks', 'tokkul', 'pizazz points', 'reward points'
+]
+
+# Setup logging
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
 # Load items for ID lookup
 ITEMS = [item for item in items_api.load() if not item.duplicate and not item.stacked]
+# Build lookup dicts for performance
+ITEMS_BY_WIKI_NAME = {item.wiki_name: item.id for item in ITEMS if item.wiki_name}
+ITEMS_BY_NAME = {item.name: item.id for item in ITEMS}
+ITEMS_BY_NAME_LOWER = {item.name.lower(): item.id for item in ITEMS}
+ITEMS_BY_WIKI_NAME_LOWER = {item.wiki_name.lower(): item.id for item in ITEMS if item.wiki_name}
 
 
-def fetch():
+def fetch() -> None:
     """Fetch shop items by parsing StoreLine templates from shop pages.
 
     This method parses the wikitext of shop pages to extract StoreLine templates
@@ -45,14 +59,15 @@ def fetch():
     """
     # Load the shop wikitext file of processed data
     shop_text_file = Path(config.DATA_SHOPS_PATH / "shops-wiki-page-text-processed.json")
+
     if not shop_text_file.exists():
-        print(">>> ERROR: shops-wiki-page-text-processed.json not found. Run shops_properties.py first.")
+        logging.error("shops-wiki-page-text-processed.json not found. Run shops_properties.py first.")
         return
 
     with open(shop_text_file) as f:
         all_wikitext_processed = json.load(f)
 
-    print(f">>> Processing {len(all_wikitext_processed)} shop pages...")
+    logging.info(f"Processing {len(all_wikitext_processed)} shop pages...")
 
     # Data structure for storing complete shop data
     all_shops_data = {}
@@ -61,47 +76,41 @@ def fetch():
         shop_name = shop_data[0]
         wikitext = shop_data[3]
 
-        print(f"  > Processing shop: {shop_name}")
+        logging.info(f"  > Processing shop: {shop_name}")
 
         # Check if this shop has tabber structure
         tabber_sections = parse_tabber_structure(wikitext)
 
         if tabber_sections:
-            # Process each tab as a separate substore
-            print(f"    Found tabber with {len(tabber_sections)} sections")
+            logging.info(f"    Found tabber with {len(tabber_sections)} sections")
             for section_name, section_content in tabber_sections.items():
                 substore_name = f"{shop_name} ({section_name})"
-
-                # Parse shop information and items for this section
                 shop_info = parse_shop_info(section_content)
                 shop_items = parse_shop_items(substore_name, section_content)
-
                 if shop_items or any(shop_info.values()):
                     all_shops_data[substore_name] = {
                         'shop_info': shop_info,
                         'items': shop_items
                     }
-                    print(f"      Substore '{section_name}': {len(shop_items)} items, info: {shop_info}")
+                    logging.info(f"      Substore '{section_name}': {len(shop_items)} items, info: {shop_info}")
         else:
-            # Process as normal single shop
             shop_info = parse_shop_info(wikitext)
             shop_items = parse_shop_items(shop_name, wikitext)
-
-            if shop_items or any(shop_info.values()):  # Include if has items OR shop info
+            if shop_items or any(shop_info.values()):
                 all_shops_data[shop_name] = {
                     'shop_info': shop_info,
                     'items': shop_items
                 }
-                print(f"    Found {len(shop_items)} items and shop info: {shop_info}")
+                logging.info(f"    Found {len(shop_items)} items and shop info: {shop_info}")
             else:
-                print(f"    No items or shop info found")
+                logging.info(f"    No items or shop info found")
 
     # Export the results
-    out_fi = Path(config.DATA_SHOPS_PATH / "shops-items-raw.json")
+    out_fi = Path(config.DATA_SHOPS_PATH / "shops-raw.json")
     with open(out_fi, 'w') as f:
         json.dump(all_shops_data, f, indent=4)
 
-    print(f">>> Exported shop data to {out_fi}")
+    logging.info(f"Exported shop data to {out_fi}")
 
 
 def parse_tabber_structure(wikitext: str) -> dict:
@@ -139,11 +148,6 @@ def parse_tabber_structure(wikitext: str) -> dict:
             if current_tab and current_content:
                 # Add tabber identifier based on position
                 tab_name = current_tab
-                if tabber_count == 1:
-                    tab_name = f"{current_tab} (Food)"
-                elif tabber_count == 2:
-                    tab_name = f"{current_tab} (Items)"
-
                 tabber_sections[tab_name] = '\n'.join(current_content)
             current_tab = None
             current_content = []
@@ -161,10 +165,6 @@ def parse_tabber_structure(wikitext: str) -> dict:
                 if current_tab and current_content:
                     # Add tabber identifier based on position
                     tab_name = current_tab
-                    if tabber_count == 1:
-                        tab_name = f"{current_tab} (Food)"
-                    elif tabber_count == 2:
-                        tab_name = f"{current_tab} (Items)"
 
                     tabber_sections[tab_name] = '\n'.join(current_content)
 
@@ -187,10 +187,6 @@ def parse_tabber_structure(wikitext: str) -> dict:
     if current_tab and current_content:
         # Add tabber identifier based on position
         tab_name = current_tab
-        if tabber_count == 1:
-            tab_name = f"{current_tab} (Food)"
-        elif tabber_count == 2:
-            tab_name = f"{current_tab} (Items)"
 
         tabber_sections[tab_name] = '\n'.join(current_content)
 
@@ -201,12 +197,13 @@ def parse_shop_info(wikitext: str) -> dict:
     """Parse shop information from StoreTableHead template.
 
     :param wikitext: The wikitext content of the shop page
-    :return: Dictionary containing shop information
+    :return: Dictionary containing shop information including currency
     """
     shop_info = {
         'sells_at': None,
         'buys_at': None,
-        'change_per': None
+        'change_per': None,
+        'currency': 'coins'  # Default to coins
     }
 
     # Look for StoreTableHead template
@@ -230,12 +227,14 @@ def parse_shop_info(wikitext: str) -> dict:
                     shop_info['buys_at'] = int(value)
                 elif key == 'delta' and value.isdigit():
                     shop_info['change_per'] = int(value)
+                elif key == 'currency':
+                    shop_info['currency'] = value
 
     return shop_info
 
 
 def parse_shop_items(shop_name: str, wikitext: str) -> list:
-    """Parse StoreLine templates from shop wikitext to extract items.
+    """Parse StoreLine and Tzhaar shop row templates from shop wikitext to extract items.
 
     :param shop_name: Name of the shop
     :param wikitext: The wikitext content of the shop page
@@ -243,32 +242,144 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
     """
     items = []
 
-    # Find all StoreLine templates
-    storeline_pattern = r'\{\{StoreLine\|([^}]+)\}\}'
-    matches = re.findall(storeline_pattern, wikitext, re.IGNORECASE)
+    # Extract the section between StoreTableHead and StoreTableBottom
+    head_match = re.search(r'\{\{StoreTableHead\|[^}]+\}\}', wikitext, re.IGNORECASE)
+    bottom_match = re.search(r'\{\{StoreTableBottom\}\}', wikitext, re.IGNORECASE)
 
-    for match in matches:
-        # Parse the parameters of the StoreLine template
-        item_data = parse_storeline_params(match)
+    if not head_match or not bottom_match:
+        logging.warning(f"No StoreTableHead or StoreTableBottom found in {shop_name}")
+        return items
+
+    section = wikitext[head_match.end():bottom_match.start()]
+
+    # Find all templates in this section robustly (including nested/multiline)
+    # This regex matches {{TemplateName|...}} blocks, including nested braces
+    def extract_templates(text):
+        templates = []
+        i = 0
+        while i < len(text):
+            if text[i:i+2] == '{{':
+                start = i
+                i += 2
+                depth = 2
+                while i < len(text) and depth > 0:
+                    if text[i:i+2] == '{{':
+                        depth += 2
+                        i += 2
+                    elif text[i:i+2] == '}}':
+                        depth -= 2
+                        i += 2
+                    else:
+                        i += 1
+                end = i
+                block = text[start:end]
+                # Only process if it looks like a template
+                if block.startswith('{{') and '|' in block:
+                    # Remove outer braces
+                    block_inner = block[2:-2]
+                    if '|' in block_inner:
+                        name, params = block_inner.split('|', 1)
+                        templates.append((name.strip(), params.strip()))
+            else:
+                i += 1
+        return templates
+
+    templates = extract_templates(section)
+
+    # First extract currency from StoreTableHead if available
+
+    shop_info = parse_shop_info(wikitext)
+    shop_currency = shop_info.get('currency')
+    if not shop_currency:
+        shop_currency = 'coins'
+
+    # Detect shop currency from shop name/wikitext (fallback method)
+    if shop_currency == 'coins':
+        wikitext_lower = wikitext.lower()
+        for currency in CURRENCY_NAMES:
+            if currency != 'coins' and currency in wikitext_lower:
+                shop_currency = currency
+                break
+
+    # Process all templates in the section
+
+    for template_name, params_str in templates:
+        item_data = parse_storeline_params(params_str)
         if item_data and 'name' in item_data and item_data['name']:
-            # Look up item ID
-            item_id, is_members = item_id_lookup(item_data['name'])
+            item_id = item_id_lookup(item_data['name'])
             if item_id is not None:
+                stock = item_data.get('stock')
+                if stock is not None:
+                    stock_str = str(stock).strip()
+                    if stock_str.lower() in ['inf', '∞', 'infinite']:
+                        stock = 'infinite'
+                    elif stock_str.isdigit():
+                        stock = int(stock_str)
+                    else:
+                        stock = stock_str
+                else:
+                    stock = None
+
+                restock_time = item_data.get('restock')
+                if restock_time is not None and str(restock_time).isdigit():
+                    restock_time = int(restock_time)
+
+                currency = item_data.get('currency')
+                if not currency:
+                    currency = shop_currency if shop_currency else 'coins'
+
                 item_info = {
+                    'type': 'item',
                     'id': item_id,
                     'name': item_data['name'],
                     'shop_name': shop_name,
-                    'stock': item_data.get('stock'),
-                    'restock_time': item_data.get('restock'),
-                    'members': is_members,
-                    'price': item_data.get('price'),
-                    'currency': item_data.get('currency', 'coins')
+                    'stock': stock,
+                    'restock_time': restock_time,
+                    'currency': currency
                 }
                 items.append(item_info)
             else:
-                print(f"    WARNING: Could not find item ID for: {item_data['name']}")
+                logging.warning(f"Could not find item ID for: {item_data['name']}")
+                unknown_info = {
+                    'type': 'unknown',
+                    'template_name': template_name,
+                    'params': params_str,
+                    'reason': 'No item ID found',
+                }
+                # Add all parsed parameters to the unknown_info
+                unknown_info.update(item_data)
+                # Normalize stock field for unknowns
+                stock = unknown_info.get('stock')
+                if stock is not None:
+                    stock_str = str(stock).strip()
+                    if stock_str.lower() in ['inf', '∞', 'infinite']:
+                        unknown_info['stock'] = 'infinite'
+                    elif stock_str.isdigit():
+                        unknown_info['stock'] = int(stock_str)
+                    else:
+                        unknown_info['stock'] = stock_str
+                items.append(unknown_info)
         else:
-            print(f"    WARNING: No valid item name found in StoreLine: {match[:50]}...")
+            logging.warning(f"No valid item name found in {template_name}: {params_str} {item_data}")
+            unknown_info = {
+                'type': 'unknown',
+                'template_name': template_name,
+                'params': params_str,
+                'reason': 'No valid item name',
+            }
+            # Add all parsed parameters to the unknown_info
+            unknown_info.update(item_data)
+            # Normalize stock field for unknowns
+            stock = unknown_info.get('stock')
+            if stock is not None:
+                stock_str = str(stock).strip()
+                if stock_str.lower() in ['inf', '∞', 'infinite']:
+                    unknown_info['stock'] = 'infinite'
+                elif stock_str.isdigit():
+                    unknown_info['stock'] = int(stock_str)
+                else:
+                    unknown_info['stock'] = stock_str
+            items.append(unknown_info)
 
     return items
 
@@ -305,63 +416,55 @@ def parse_storeline_params(params_str: str) -> dict:
     for i, part in enumerate(parts):
         if '=' in part:
             key, value = part.split('=', 1)
-            params[key.strip()] = value.strip()
+            key_lower = key.strip().lower()
+            params[key_lower] = value.strip()
         else:
             # First parameter without = is usually the name
-            if i == 0 and 'name' not in params:
+            if i == 0 and not any(k in params for k in ['name', 'Name']):
                 params['name'] = part.strip()
+
+    # Fallback: extract name=... from raw params_str if still missing
+    if 'name' not in params:
+        match = re.search(r'name\s*=\s*([^|}]+)', params_str, re.IGNORECASE)
+        if match:
+            params['name'] = match.group(1).strip()
 
     return params
 
 
-def item_id_lookup(name: str) -> tuple:
-    """Look up item ID by name.
-
-    :param name: Item name to look up
-    :return: Tuple of (item_id, is_members) or (None, None) if not found
-    """
+def item_id_lookup(name: str) -> int | None:
+    """Look up item ID by name using fast dicts."""
     if not name:
-        return None, None
-
-    # Clean up the name
+        return None
     name = name.strip()
-
-    # Try exact wiki name match first
-    for item in ITEMS:
-        if item.wiki_name == name:
-            return item.id, item.members
-
+    # Try exact wiki name match
+    if name in ITEMS_BY_WIKI_NAME:
+        return ITEMS_BY_WIKI_NAME[name]
     # Try exact name match
-    for item in ITEMS:
-        if item.name == name:
-            return item.id, item.members
-
+    if name in ITEMS_BY_NAME:
+        return ITEMS_BY_NAME[name]
     # Try case-insensitive match
     name_lower = name.lower()
-    for item in ITEMS:
-        if item.name.lower() == name_lower:
-            return item.id, item.members
-
-    # Try wiki name case-insensitive match
-    for item in ITEMS:
-        if item.wiki_name and item.wiki_name.lower() == name_lower:
-            return item.id, item.members
-
-    return None, None
+    if name_lower in ITEMS_BY_NAME_LOWER:
+        return ITEMS_BY_NAME_LOWER[name_lower]
+    if name_lower in ITEMS_BY_WIKI_NAME_LOWER:
+        return ITEMS_BY_WIKI_NAME_LOWER[name_lower]
+    return None
 
 
-def process():
+def process() -> None:
     """Process the raw shop data into a more structured format."""
     # Load the raw shop data
-    raw_file = Path(config.DATA_SHOPS_PATH / "shops-items-raw.json")
+    raw_file = Path(config.DATA_SHOPS_PATH / "shops-raw.json")
+
     if not raw_file.exists():
-        print(">>> ERROR: shops-items-raw.json not found. Run fetch() first.")
+        logging.error("shops-items-raw.json not found. Run fetch() first.")
         return
 
     with open(raw_file) as f:
         raw_shop_data = json.load(f)
 
-    print(">>> Processing raw shop data...")
+    logging.info("Processing raw shop data...")
 
     # Structure the data - maintain new format with shop info
     shops_by_shop = {}
@@ -374,10 +477,11 @@ def process():
         shop_info = shop_data.get('shop_info', {})
         items = shop_data.get('items', [])
 
-        # Keep the new structure with shop info
+        # Only include items with type 'item' in shops_by_shop
+        filtered_items = [item for item in items if item.get('type') == 'item']
         shops_by_shop[shop_name] = {
             'shop_info': shop_info,
-            'items': items
+            'items': filtered_items
         }
 
         # Track stats
@@ -385,20 +489,20 @@ def process():
             shops_with_info += 1
 
         # Build items-by-item index
-        for item in items:
-            shops_by_item[item['id']].append({
-                'shop_name': shop_name,
-                'stock': item.get('stock'),
-                'restock_time': item.get('restock_time'),
-                'price': item.get('price'),
-                'currency': item.get('currency', 'coins')
-            })
-            total_items += 1
+        for item in filtered_items:
+            if 'id' in item:
+                shops_by_item[item['id']].append({
+                    'shop_name': shop_name,
+                    'stock': item.get('stock'),
+                    'restock_time': item.get('restock_time'),
+                    'currency': item.get('currency', 'coins')
+                })
+                total_items += 1
 
-    print(f">>> Processed {len(raw_shop_data)} shops:")
-    print(f"    - {shops_with_info} shops with buy/sell info")
-    print(f"    - {total_items} total items")
-    print(f"    - {len(shops_by_item)} unique items sold across all shops")
+    logging.info(f"Processed {len(raw_shop_data)} shops:")
+    logging.info(f"    - {shops_with_info} shops with buy/sell info")
+    logging.info(f"    - {total_items} total items")
+    logging.info(f"    - {len(shops_by_item)} unique items sold across all shops")
 
     # Export both structures
     shops_file = Path(config.DATA_SHOPS_PATH / "shops-items-by-shop.json")
@@ -409,7 +513,7 @@ def process():
     with open(items_file, 'w') as f:
         json.dump(dict(shops_by_item), f, indent=4)
 
-    print(f">>> Exported structured data to {shops_file} and {items_file}")
+    logging.info(f"Exported structured data to {shops_file} and {items_file}")
 
 
 if __name__ == "__main__":
