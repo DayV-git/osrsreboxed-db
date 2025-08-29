@@ -5,6 +5,7 @@ import multiprocessing as mp
 import hashlib
 import config
 import requests
+import json
 
 RUNELITE_ICON_URL = "https://static.runelite.net/cache/item/icon/"
 BLANK = "bb44d26003a2b044e235aae2fc8427f7"
@@ -20,15 +21,29 @@ def get_md5(file_path):
     return h.hexdigest()
 
 def main():
-    item_files = Path(config.DATA_CACHE_PATH / "items").glob("*.json")
+    items_dir = config.DATA_CACHE_PATH / "item_defs"
+    item_files = Path(items_dir).glob("*.json")
     icons_path = config.DOCS_PATH / "items-icons"
 
-    # Sort icon files numerically
-    item_ids = [x.stem for x in item_files]
-    item_ids = sorted(item_ids)
+    # Filter out placeholderId item_ids (null name, negative notedID)
+    filtered_ids = []
+    for file in item_files:
+        item_id = file.stem 
+        item_defs_path = items_dir / f"{item_id}.json"
+        if item_defs_path.is_file():
+            try:
+                with open(item_defs_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if data.get("name", "null") == "null" and data.get("notedID", 0) < 0:
+                        continue
+                filtered_ids.append(item_id)
+            except Exception:
+                pass
+            
+    filtered_ids = sorted(filtered_ids)
 
     with mp.Pool(processes=16) as pool:
-        pool.starmap(fetch_icon, [(item_id, icons_path) for item_id in item_ids])
+        pool.starmap(fetch_icon, [(item_id, icons_path) for item_id in filtered_ids])
 
     print("Done")
     exit(0)
