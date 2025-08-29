@@ -162,14 +162,12 @@ def process():
 
         # Check if the page has an infobox shop template
         if '{{Infobox Shop' in wikitext or '{{infobox shop' in wikitext:
-            # Use a simple counter as ID since most shops don't have explicit IDs
-            shop_id = str(hash(page_title) % 1000000)  # Generate a consistent ID from page title
-
             entry = WikiEntry(wiki_page_name=page_title,
                               version_number="",  # Most shops don't have versions
                               template_number=1,  # Default to 1
                               wikitext=wikitext)
-            export[shop_id] = entry
+            # Use the page title as the export key instead of a generated numeric id
+            export[page_title] = entry
         else:
             print(f"    No infobox shop found in: {page_title}")
 

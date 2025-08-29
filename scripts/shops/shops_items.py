@@ -72,9 +72,11 @@ def fetch() -> None:
     # Data structure for storing complete shop data
     all_shops_data = {}
 
-    for shop_id, shop_data in all_wikitext_processed.items():
-        shop_name = shop_data[0]
-        wikitext = shop_data[3]
+    for shop_key, shop_data in all_wikitext_processed.items():
+        # shop_data is a WikiEntry namedtuple stored by `shops_properties.process`
+        # where the export key is the page title. Use the page title as shop name.
+        shop_name = shop_key
+        wikitext = shop_data.wikitext if hasattr(shop_data, 'wikitext') else shop_data[3]
 
         logging.info(f"  > Processing shop: {shop_name}")
 
@@ -92,7 +94,7 @@ def fetch() -> None:
                         'shop_info': shop_info,
                         'items': shop_items
                     }
-                    logging.info(f"      Substore '{section_name}': {len(shop_items)} items, info: {shop_info}")
+                    logging.debug(f"      Substore '{section_name}': {len(shop_items)} items, info: {shop_info}")
         else:
             shop_info = parse_shop_info(wikitext)
             shop_items = parse_shop_items(shop_name, wikitext)
@@ -101,7 +103,7 @@ def fetch() -> None:
                     'shop_info': shop_info,
                     'items': shop_items
                 }
-                logging.info(f"    Found {len(shop_items)} items and shop info: {shop_info}")
+                logging.debug(f"    Found {len(shop_items)} items and shop info: {shop_info}")
             else:
                 logging.info(f"    No items or shop info found")
 
@@ -432,7 +434,7 @@ def parse_storeline_params(params_str: str) -> dict:
     return params
 
 
-def item_id_lookup(name: str) -> int | None:
+def item_id_lookup(name: str):
     """Look up item ID by name using fast dicts."""
     if not name:
         return None
