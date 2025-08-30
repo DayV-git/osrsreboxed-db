@@ -451,6 +451,12 @@ def item_id_lookup(name: str):
         return ITEMS_BY_NAME_LOWER[name_lower]
     if name_lower in ITEMS_BY_WIKI_NAME_LOWER:
         return ITEMS_BY_WIKI_NAME_LOWER[name_lower]
+    for name in ITEMS_BY_NAME:
+        if name_lower.startswith(name.lower()):
+            return ITEMS_BY_NAME[name]
+    for name in ITEMS_BY_WIKI_NAME:
+        if name_lower.startswith(name.lower()):
+            return ITEMS_BY_WIKI_NAME[name]
     return None
 
 
