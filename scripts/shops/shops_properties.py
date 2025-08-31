@@ -39,7 +39,7 @@ from scripts.wiki.wikitext_parser import WikitextIDParser
 OSRS_WIKI_API_URL = "https://oldschool.runescape.wiki/api.php"
 TITLES_FP = Path(config.DATA_SHOPS_PATH / "shops-wiki-page-titles.json")
 TEXT_FP = Path(config.DATA_SHOPS_PATH / "shops-wiki-page-text.json")
-RG = r" \+[0-9]{4}"
+RG = r" [+-][0-9]{4}"
 
 
 def fetch():
