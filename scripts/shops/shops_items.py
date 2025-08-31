@@ -451,12 +451,12 @@ def item_id_lookup(name: str):
         return ITEMS_BY_NAME_LOWER[name_lower]
     if name_lower in ITEMS_BY_WIKI_NAME_LOWER:
         return ITEMS_BY_WIKI_NAME_LOWER[name_lower]
-    for name in ITEMS_BY_NAME:
-        if name_lower.startswith(name.lower()):
-            return ITEMS_BY_NAME[name]
-    for name in ITEMS_BY_WIKI_NAME:
-        if name_lower.startswith(name.lower()):
-            return ITEMS_BY_WIKI_NAME[name]
+    for item_name_lower in ITEMS_BY_NAME_LOWER:
+        if item_name_lower.startswith(name_lower):
+            return ITEMS_BY_NAME_LOWER[item_name_lower]
+    for wiki_name_lower in ITEMS_BY_WIKI_NAME_LOWER:
+        if wiki_name_lower.startswith(name_lower):
+            return ITEMS_BY_WIKI_NAME_LOWER[wiki_name_lower]
     return None
 
 
