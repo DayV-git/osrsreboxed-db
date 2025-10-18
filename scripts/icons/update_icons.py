@@ -1,14 +1,16 @@
  
-import base64
 from pathlib import Path
+from osrsreboxed import items_api
 
 import multiprocessing as mp
 import hashlib
 import config
 import requests
+import json
 
 RUNELITE_ICON_URL = "https://static.runelite.net/cache/item/icon/"
 BLANK = "bb44d26003a2b044e235aae2fc8427f7"
+ICONS_PATH = config.DOCS_PATH / "items-icons"
 
 def get_md5(file_path):
     h = hashlib.new("md5")
@@ -20,17 +22,13 @@ def get_md5(file_path):
 
     return h.hexdigest()
 
-def main():
-    item_files = Path(config.DATA_CACHE_PATH / "items").glob("*.json")
-    icons_path = config.DOCS_PATH / "items-icons";
-
-    # Sort icon files numerically
-    item_ids = [x.stem for x in item_files]
-    item_ids = sorted(item_ids)
-
+def main():            
+    all_db_items = [item for item in items_api.load()]
+    item_ids = [item.id for item in all_db_items]
+    noted_ids = [item.linked_id_noted for item in all_db_items if item.linked_id_noted ]
+    icon_ids = sorted(item_ids + noted_ids)
     with mp.Pool(processes=16) as pool:
-        pool.starmap(fetch_icon, [(item_id, icons_path) for item_id in item_ids])
-
+        pool.starmap(fetch_icon, [(item_id, ICONS_PATH) for item_id in icon_ids])
     print("Done")
     exit(0)
 

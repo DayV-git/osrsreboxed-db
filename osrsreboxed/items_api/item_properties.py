@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
 import json
+import time
 from pathlib import Path
 from dataclasses import asdict
 from dataclasses import dataclass
@@ -93,7 +94,7 @@ class ItemProperties:
         """
         return asdict(self)
 
-    def export_json(self, pretty: bool, export_path: str):
+    def export_json(self, pretty: bool, export_path: str, max_attempts = 5, delay = 0.5):
         """Output ItemProperties to JSON file.
 
         :param pretty: Toggles pretty (indented) JSON output.
@@ -102,8 +103,18 @@ class ItemProperties:
         json_out = self.construct_json()
         out_file_name = str(self.id) + ".json"
         out_file_path = Path(export_path / out_file_name)
-        with open(out_file_path, "w") as out_file:
-            if pretty:
-                json.dump(json_out, out_file, indent=4)
-            else:
-                json.dump(json_out, out_file)
+        for attempt in range(1, max_attempts + 1):
+            try:
+                with open(out_file_path, "w") as out_file:
+                    if pretty:
+                        json.dump(json_out, out_file, indent=4)
+                    else:
+                        json.dump(json_out, out_file)
+                return  # Success
+            except Exception as e:
+                if attempt == max_attempts:
+                    raise e  # Re-raise on final failure
+                time.sleep(delay)
+
+    
+

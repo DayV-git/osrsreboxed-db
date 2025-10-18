@@ -27,23 +27,29 @@ from scripts.cache import generate_monsters_cache_data
 from scripts.cache import generate_summary_files
 from scripts.cache import generate_summary_models
 from scripts.cache import determine_changes
+from scripts.cache import cache_constants
 
 
 def main():
+    print("Loading all cache definitions...")
+    item_defs = cache_constants.load_item_definitions()
+    npc_defs = cache_constants.load_npc_definitions()
+    object_defs = cache_constants.load_object_definitions()
+
     print(">>> generate_items_stacked_variants...")
-    generate_items_stacked_variants.process()
+    generate_items_stacked_variants.process(item_defs)
 
     print(">>> generate_items_cache_data...")
-    generate_items_cache_data.process()
+    generate_items_cache_data.process(item_defs)
 
     print(">>> generate_monsters_cache_data...")
-    generate_monsters_cache_data.process()
+    generate_monsters_cache_data.process(npc_defs)
 
     print(">>> generate_summary_files...")
-    generate_summary_files.process()
+    generate_summary_files.process(item_defs, npc_defs, object_defs)
 
     print(">>> generate_summary_models...")
-    generate_summary_models.process()
+    generate_summary_models.process(item_defs, npc_defs, object_defs)
 
     print(">>> determine_changes...")
     determine_changes.items()

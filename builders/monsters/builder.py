@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 import json
 import argparse
+import traceback
 from pathlib import Path
 
 import config
@@ -53,10 +54,6 @@ class Builder:
         with open(Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json")) as f:
             self.all_wikitext_processed = json.load(f)
 
-        # Load the monster processed monster drops
-        with open(Path(config.DATA_MONSTERS_PATH / "monsters-drops.json")) as f:
-            self.monsters_drops = json.load(f)
-
         # Load schema data
         with open(Path(config.DATA_SCHEMAS_PATH / "schema-monsters.json")) as f:
             self.schema_data = json.load(f)
@@ -65,36 +62,44 @@ class Builder:
         self.known_monsters = list()
 
     def run(self):
-        # Start processing every monster!
-        for monster_id in self.all_monster_cache_data:
+        try:
+            # Start processing every monster!
+            for monster_id in self.all_monster_cache_data:
 
-            # if int(monster_id) < 11000:
-            #     continue
+                # if int(monster_id) < 11000:
+                #     continue
 
-            # Initialize the BuildMonster class, used for all monsters
-            builder = build_monster.BuildMonster(monster_id=monster_id,
-                                                 all_monster_cache_data=self.all_monster_cache_data,
-                                                 all_db_monsters=self.all_db_monsters,
-                                                 all_wikitext_raw=self.all_wikitext_raw,
-                                                 all_wikitext_processed=self.all_wikitext_processed,
-                                                 monsters_drops=self.monsters_drops,
-                                                 schema_data=self.schema_data,
-                                                 known_monsters=self.known_monsters,
-                                                 verbose=self.verbose)
+                # Initialize the BuildMonster class, used for all monsters
+                builder = build_monster.BuildMonster(monster_id=monster_id,
+                                                     all_monster_cache_data=self.all_monster_cache_data,
+                                                     all_db_monsters=self.all_db_monsters,
+                                                     all_wikitext_raw=self.all_wikitext_raw,
+                                                     all_wikitext_processed=self.all_wikitext_processed,
+                                                     schema_data=self.schema_data,
+                                                     known_monsters=self.known_monsters,
+                                                     verbose=self.verbose)
 
-            status = builder.preprocessing()
-            if status:
-                builder.populate_monster()
-                known_monster = builder.check_duplicate_monster()
-                self.known_monsters.append(known_monster)
-                builder.populate_monster_drops()
-                if self.compare:
-                    builder.compare_new_vs_old_monster()
-                if self.export:
-                    builder.export_monster_to_json()
-                if self.validate:
-                    builder.validate_monster()
+                status, message = builder.preprocessing()
+                if status:
+                    builder.populate_monster()
+                    known_monster = builder.check_duplicate_monster()
+                    self.known_monsters.append(known_monster)
+                    if self.compare:
+                        builder.compare_new_vs_old_monster()
+                    if self.export:
+                        builder.export_monster_to_json()
+                    if self.validate:
+                        builder.validate_monster()
+                else:
+                    with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                        print(message, file=errfile)
 
+        except Exception:
+            print("Ran into issue parsing item.")
+            print(traceback.format_exc())
+            with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                print("Ran into issue parsing item.", file=errfile)
+                print(traceback.format_exc(), file=errfile)
         # Done processing, rejoice!
         print("Built.")
         exit(0)
@@ -112,18 +117,19 @@ class Builder:
                                                  all_db_monsters=self.all_db_monsters,
                                                  all_wikitext_raw=self.all_wikitext_raw,
                                                  all_wikitext_processed=self.all_wikitext_processed,
-                                                 monsters_drops=self.monsters_drops,
                                                  schema_data=self.schema_data,
                                                  known_monsters=self.known_monsters,
                                                  verbose=self.verbose)
 
-            status = builder.preprocessing()
+            status, message = builder.preprocessing()
             if status:
                 builder.populate_monster()
                 known_monster = builder.check_duplicate_monster()
                 self.known_monsters.append(known_monster)
-                builder.populate_monster_drops()
                 builder.validate_monster()
+            else:
+                with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                    print(message, file=errfile)
 
         # Done testing, rejoice!
         print("Tested.")

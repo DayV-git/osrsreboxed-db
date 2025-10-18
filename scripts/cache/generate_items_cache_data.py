@@ -26,7 +26,6 @@ from pathlib import Path
 from typing import Dict
 
 import config
-from scripts.cache import cache_constants
 
 
 def parse_item_definition(item_data: Dict, definitions: Dict, id_number: str) -> Dict:
@@ -121,21 +120,25 @@ def parse_item_definition_fix_linked_item(item_data: Dict, definitions: Dict, id
     return item_data
 
 
-def process():
+def process(definitions):
     """Extract item definition data, and process for builder ingestion."""
     all_items = dict()
-    definitions = cache_constants.ITEM_DEFINITIONS
 
     with open(Path(config.DATA_ITEMS_PATH / "items-stacked.json")) as f:
         stacked_variants = json.load(f)
 
     # Loop the loaded data
     for id_number in definitions:
-        # Initialize the dictionary to store each item properties
-        item_data = dict()
 
         # Fetch the specific item definition being processed
         item_definition = definitions[id_number]
+
+        # Skip null items
+        if item_definition["name"] == "null":
+            continue
+
+        # Initialize the dictionary to store each item properties
+        item_data = dict()
 
         # Get the item ID
         item_data["id"] = item_definition["id"]

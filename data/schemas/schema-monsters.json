@@ -132,9 +132,8 @@
     "allowed": [
       "aberrant spectres",
       "abyssal demons",
-      "adamant dragons",
       "ankou",
-      "aviansies",
+      "aviansie",
       "araxytes",
       "bandits",
       "banshees",
@@ -149,7 +148,6 @@
       "blue dragons",
       "bosses",
       "brine rats",
-      "bronze dragons",
       "catablepon",
       "cave bugs",
       "cave crawlers",
@@ -159,8 +157,10 @@
       "chaos druids",
       "cockatrice",
       "cows",
+      "crabs",
       "crawling hands",
       "crocodiles",
+      "custodian stalker",
       "dagannoth",
       "dark beasts",
       "dark warriors",
@@ -171,6 +171,7 @@
       "earth warriors",
       "elementals",
       "elves",
+      "ents",
       "fever spiders",
       "fire giants",
       "flesh crawlers",
@@ -190,7 +191,6 @@
       "ice warriors",
       "icefiends",
       "infernal mages",
-      "iron dragons",
       "jellies",
       "jungle horrors",
       "kalphite",
@@ -204,8 +204,8 @@
       "lizard",
       "magic axes",
       "mammoths",
+      "metal dragons",
       "minotaurs",
-      "mithril dragons",
       "mogres",
       "molanisks",
       "monkeys",
@@ -222,7 +222,6 @@
       "revenants",
       "rockslugs",
       "rogues",
-      "rune dragons",
       "sand crabs",
       "scabarites",
       "scorpions",
@@ -235,7 +234,6 @@
       "sourhogs",
       "spiders",
       "spiritual creatures",
-      "steel dragons",
       "suqahs",
       "terror dogs",
       "trolls",
@@ -402,65 +400,34 @@
     "required": true,
     "nullable": false
   },
-  "defence_ranged": {
-    "description": "The defence ranged bonus of the monster.",
+  "elemental_weakness_type": {
+    "description": "Elemental weakness type of the monster (mapped to int).",
+    "type": "integer",
+    "required": false,
+    "nullable": true
+  },
+  "elemental_weakness_percent": {
+    "description": "Elemental weakness percent of the monster.",
+    "type": "integer",
+    "required": false,
+    "nullable": true
+  },
+  "defence_ranged_light": {
+    "description": "The defence ranged bonus of the monster against light ammo.",
     "type": "integer",
     "required": true,
     "nullable": false
   },
-  "drops": {
-    "description": "An array of monster drop objects.",
-    "type": "list",
+  "defence_ranged_standard": {
+    "description": "The defence ranged bonus of the monster against medium ammo.",
+    "type": "integer",
     "required": true,
-    "nullable": false,
-    "schema": {
-      "type": "dict",
-      "required": false,
-      "schema": {
-        "id": {
-          "description": "The ID number of the item drop.",
-          "type": "integer",
-          "required": true,
-          "nullable": false
-        },
-        "name": {
-          "description": "The name of the item drop.",
-          "type": "string",
-          "required": true,
-          "nullable": false
-        },
-        "members": {
-          "description": "If the drop is a members-only item.",
-          "type": "boolean",
-          "required": true,
-          "nullable": false
-        },
-        "quantity": {
-          "description": "The quantity of the item drop (integer, comma-separated or range).",
-          "type": "string",
-          "required": true,
-          "nullable": true,
-          "regex": "^((([0-9]+)|([0-9]+-[0-9]+))(,(([0-9]+)|([0-9]+-[0-9]+)))*)$"
-        },
-        "noted": {
-          "description": "If the item drop is noted, or not.",
-          "type": "boolean",
-          "required": true,
-          "nullable": false
-        },
-        "rarity": {
-          "description": "The rarity of the item drop (as a float out of 1.0).",
-          "type": "float",
-          "required": true,
-          "nullable": false
-        },
-        "rolls": {
-          "description": "Number of rolls from the drop.",
-          "type": "integer",
-          "required": true,
-          "nullable": false
-        }
-      }
-    }
+    "nullable": false
+  },
+  "defence_ranged_heavy": {
+    "description": "The defence ranged bonus of the monster against heavy ammo.",
+    "type": "integer",
+    "required": true,
+    "nullable": false
   }
 }

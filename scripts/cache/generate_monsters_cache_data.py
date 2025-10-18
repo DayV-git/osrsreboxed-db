@@ -25,12 +25,10 @@ import json
 from pathlib import Path
 
 import config
-from scripts.cache import cache_constants
 
 
-def process():
+def process(definitions):
     """Main function to extract attackble NPC definition files."""
-    definitions = cache_constants.NPC_DEFINITIONS
     attackable_npcs = dict()
 
     # Loop all entries in the loaded definition files
@@ -39,7 +37,7 @@ def process():
 
         # Before checking if attackable, add a couple of
         # known monsters that are "death" versions...
-        if json_data["id"] in [8622, 9432, 9433]:
+        if json_data["id"] in [8622, 9432, 9433, 14012, 377, 7889, 8341, 10769, 8613, 12192]:
             attackable_npcs[id_number] = json_data
 
         if "Attack" in json_data["actions"]:

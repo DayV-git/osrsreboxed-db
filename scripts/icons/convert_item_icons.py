@@ -50,7 +50,7 @@ def main():
     # Sort icon files numerically
     item_ids = [x.stem for x in fis]
     item_ids = sorted(item_ids)
-    item_count = len(item_ids);
+    item_count = len(item_ids)
 
     print(f"Total items: {item_count}")
 
@@ -74,7 +74,7 @@ def main():
             all_icons[item_id] = b64_image
             converted += 1
 
-    print(f"Converted icons: {converted}");
+    print(f"Converted icons: {converted}")
     # Export all converted PNG images to a JSON file to docs folder
     out = Path(config.DATA_PATH / "icons" / "icons-items-complete.json")
     with open(out, "w") as f:

@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import json
 import logging
 from pathlib import Path
+import time
 
 import requests
 
@@ -64,7 +65,7 @@ class WikiPageText:
                 break
             except requests.exceptions.RequestException as e:
                 raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
-            except:
+            except Exception:
                 print(">>> ERROR: Probably cloudflare 520")
 
         try:
@@ -92,12 +93,20 @@ class WikiPageText:
         out_file_name = Path(out_file_name)
 
         # Write dictionary to JSON file
-        if not out_file_name.exists():
-            with open(out_file_name, mode='w') as out_file:
-                out_file.write(json.dumps(json_data, indent=4))
-        else:
-            with open(out_file_name) as feeds_json:
-                feeds = json.load(feeds_json)
-            feeds[self.page_title] = str(self.wiki_text)
-            with open(out_file_name, mode='w') as out_file:
-                out_file.write(json.dumps(feeds, indent=4))
+        for attempt in range(5):
+            try:
+                if not out_file_name.exists():
+                    with open(str(out_file_name), mode='w') as out_file:
+                        out_file.write(json.dumps(json_data, indent=4))
+                else:
+                    with open(out_file_name) as feeds_json:
+                        feeds = json.load(feeds_json)
+                    feeds[self.page_title] = str(self.wiki_text)
+                    with open(str(out_file_name), mode='w') as out_file:
+                        out_file.write(json.dumps(feeds, indent=4))
+                break
+            except OSError as e:
+                if attempt == 4:
+                    raise
+                print(f"File open failed ({e}), retrying...")
+                time.sleep(0.5)

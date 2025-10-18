@@ -24,7 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import re
 from datetime import datetime
 
-import dateparser
 
 from dateutil.parser import parse as date_parse
 
@@ -266,6 +265,34 @@ unequipable = [
     26215,
     27695,
     27190,
+    # Old Shayzien armour set IDs
+    18555, 
+    18556, 
+    18557, 
+    18558, 
+    18559, 
+    18560, 
+    18561, 
+    18562,
+    18563, 
+    18564, 
+    18565, 
+    18566, 
+    18567, 
+    18568, 
+    18569,
+    18570, 
+    18571, 
+    18572, 
+    18573, 
+    18574, 
+    18575, 
+    18576, 
+    18577,
+    18578,    
+    18579,
+    30320, # Arrav's Axe
+    30990  # Acatzin's axe
 ]
 
 

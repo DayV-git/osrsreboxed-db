@@ -28,17 +28,17 @@ import config
 from scripts.cache import cache_constants
 
 
-def process():
+def process(item_defs, npc_defs, object_defs):
     """Main function to extract item/npc/object summary (ID and name)."""
     for cache_name in cache_constants.CACHE_DUMP_TYPES:
         summary_data = dict()
 
         if cache_name == "items":
-            definitions = cache_constants.ITEM_DEFINITIONS
+            definitions = item_defs
         elif cache_name == "npcs":
-            definitions = cache_constants.NPC_DEFINITIONS
+           definitions = npc_defs
         elif cache_name == "objects":
-            definitions = cache_constants.OBJECT_DEFINITIONS
+            definitions = object_defs
 
         # Loop all entries in the decompressed and loaded definition file
         for id_number in definitions:

@@ -40,16 +40,16 @@ from scripts.wiki.wikitext_parser import WikitextIDParser
 OSRS_WIKI_API_URL = "https://oldschool.runescape.wiki/api.php"
 TITLES_FP = Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-titles.json")
 TEXT_FP = Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text.json")
-RG = r" \+[0-9]{4}"
+RG = r" [+-][0-9]{4}"
 
 def fetch():
     """Get all the wiki category page titles and page text."""
     # Try to determine the last update
     if TITLES_FP.exists():
         stream = os.popen(f"git log -1 --format='%ad' {TITLES_FP}")
-        last_extraction_date = stream.read()
-        last_extraction_date = last_extraction_date.strip()
-        last_extraction_date = re.sub(RG, '', last_extraction_date)
+        last_extraction_date = stream.read().strip()
+        last_extraction_date = last_extraction_date.strip("'\"")
+        last_extraction_date = re.sub(RG, '', last_extraction_date).strip()
         last_extraction_date = datetime.strptime(last_extraction_date, "%a %b %d %H:%M:%S %Y")
         last_extraction_date = last_extraction_date - timedelta(days=3)
     else:
@@ -137,13 +137,14 @@ def process():
     wiki_data_ids = WikitextIDParser(TEXT_FP, template_names)
     wiki_data_ids.process_osrswiki_data_dump()
 
-    WikiEntry = collections.namedtuple('WikiEntry', 'wiki_page_name version_number wikitext')
+    WikiEntry = collections.namedtuple('WikiEntry', 'wiki_page_name version_number template_number wikitext')
 
     export = dict()
 
     for item_id, wikitext in wiki_data_ids.item_id_to_wikitext.items():
         entry = WikiEntry(wiki_page_name=wiki_data_ids.item_id_to_wiki_name[item_id],
                           version_number=wiki_data_ids.item_id_to_version_number[item_id],
+                          template_number=wiki_data_ids.item_id_to_template_number[item_id],
                           wikitext=wikitext)
         export[item_id] = entry
 

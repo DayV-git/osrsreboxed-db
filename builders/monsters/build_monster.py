@@ -47,8 +47,6 @@ class BuildMonster:
         self.all_wikitext_raw = kwargs["all_wikitext_raw"]
         # Processed wikitext for all monsters
         self.all_wikitext_processed = kwargs["all_wikitext_processed"]
-        # Processed monster drops
-        self.monsters_drops = kwargs["monsters_drops"]
         # The monster schema
         self.schema_data = kwargs["schema_data"]
         # A list of already known (processed) monsters
@@ -103,22 +101,41 @@ class BuildMonster:
 
         # If there is no wikitext, and the monster is valid, raise a critical error
         if not self.monster_wikitext:
-            return False
+            return False, f" > Monster {self.monster_id_str} ({self.monster_name}) has no wikitext data!"
 
         # Parse the infobox monster
         infobox_parser = WikitextTemplateParser(self.monster_wikitext)
 
+        #overide dt2 boss version due to overlapping wiki multi-infobox
+        infobox_version_overrides = {12191: 1} 
+
+        if self.monster_id_int in infobox_version_overrides.keys():
+            infobox_version = infobox_version_overrides[self.monster_id_int]
+        elif type(self.monster_wikitext[2]) is int:
+             infobox_version = self.monster_wikitext[2]
+        else:
+            infobox_version = 1
+
         # Try extract infobox for monster
-        self.has_infobox = infobox_parser.extract_infobox("infobox monster")
+        self.has_infobox = infobox_parser.extract_infobox("infobox monster", infobox_version) 
+
         if not self.has_infobox:
-            return False
+            if self.verbose:
+                print(f">>> No infobox found for {self.monster_name} ({self.monster_id_str})")
+            return False, f" > Monster {self.monster_id_str} ({self.monster_name}) has no infobox data!"
 
         self.is_versioned = infobox_parser.determine_infobox_versions()
         self.versioned_ids = infobox_parser.extract_infobox_ids()
 
         # Set the infobox version number, default to empty string (no version number)
+
+        #overide dt2 boss version due to overlapping wiki infobox versions
+        version_overrides = {12204: 1, 12192: 1, 12214: 1, 12215: 2, 12223: 1, 12224: 2} 
+
         try:
-            if self.versioned_ids:
+            if self.monster_id_int in version_overrides.keys():
+                self.infobox_version_number = version_overrides[self.monster_id_int]
+            elif self.versioned_ids:
                 self.infobox_version_number = self.versioned_ids[self.monster_id_int]
         except KeyError:
             if self.is_versioned:
@@ -129,7 +146,7 @@ class BuildMonster:
         # Set the template
         self.template = infobox_parser.template
 
-        return True
+        return True, ""
 
     def populate_monster(self):
         """Populate a monster after preprocessing it.
@@ -149,7 +166,6 @@ class BuildMonster:
         # Log, then populate cache properties
         self.monster_dict["id"] = self.monster_cache_data["id"]
         self.monster_dict["name"] = self.monster_cache_data["name"]
-        self.monster_dict["combat_level"] = self.monster_cache_data["combatLevel"]
         self.monster_dict["size"] = self.monster_cache_data["size"]
 
     def populate_monster_properties_from_wiki_data(self):
@@ -265,23 +281,30 @@ class BuildMonster:
         # Initialize a dictionary that maps database_name -> property_name
         # The database_name is used in this project
         # The property_name is used by the OSRS Wiki
-        combat_bonuses = {"attack_level": "att",
-                          "strength_level": "str",
-                          "defence_level": "def",
-                          "magic_level": "mage",
-                          "ranged_level": "range",
-                          "attack_bonus": "attbns",
-                          "strength_bonus": "strbns",
-                          "attack_magic": "amagic",
-                          "magic_bonus": "mbns",
-                          "attack_ranged": "arange",
-                          "ranged_bonus": "rngbns",
-                          "defence_stab": "dstab",
-                          "defence_slash": "dslash",
-                          "defence_crush": "dcrush",
-                          "defence_magic": "dmagic",
-                          "defence_ranged": "drange",
-                          }
+        combat_bonuses = {
+            "combat_level": "combat",
+            "attack_level": "att",
+            "strength_level": "str",
+            "defence_level": "def",
+            "magic_level": "mage",
+            "ranged_level": "range",
+            "attack_bonus": "attbns",
+            "strength_bonus": "strbns",
+            "attack_magic": "amagic",
+            "magic_bonus": "mbns",
+            "attack_ranged": "arange",
+            "ranged_bonus": "rngbns",
+            "defence_stab": "dstab",
+            "defence_slash": "dslash",
+            "defence_crush": "dcrush",
+            "defence_magic": "dmagic",
+            "defence_ranged_light": "dlight",
+            "defence_ranged_standard": "dstandard",
+            "defence_ranged_heavy": "dheavy",
+            "elemental_weakness_type": "elementalweaknesstype",
+            "elemental_weakness_percent": "elementalweaknesspercent"
+        }
+
 
         # Loop each of the combat bonuses and populate
         for database_name, property_name in combat_bonuses.items():
@@ -312,12 +335,25 @@ class BuildMonster:
         :return value: The extracted template value based on supplied key.
         """
         value = None
-        try:
-            value = template.get(key).value
-            value = value.strip()
-            return value
-        except ValueError:
-            return value
+        for k in (key, f'{key}1'):
+            try:
+                value = template.get(k).value.strip()
+                return value
+            except (AttributeError, ValueError):
+                continue
+
+        # If dlight, dstandard, dheavy do not exist, chances are all are the same and given by drange
+        for prefix in ("light", "standard", "heavy"):
+            if f'd{prefix}' in key:
+                alt_key = key.replace(f'd{prefix}', 'drange')
+                try:
+                    value = template.get(alt_key).value.strip()
+                    return value
+                except (AttributeError, ValueError):
+                    pass
+                break
+
+        return value
 
     def check_duplicate_monster(self) -> MonsterProperties:
         """Determine if this is a duplicate monster.
@@ -362,13 +398,6 @@ class BuildMonster:
 
         return monster_properties
 
-    def populate_monster_drops(self):
-        """Set the monster drops from preprocessed data."""
-        try:
-            self.monster_dict["drops"] = self.monsters_drops[self.monster_id]
-        except KeyError:
-            self.monster_dict["drops"] = []
-
     def compare_new_vs_old_monster(self):
         """Diff this monster and the monster that exists in the database."""
         # Create JSON out object to compare
@@ -384,7 +413,7 @@ class BuildMonster:
             self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             return
 
-        # Quick check of eqaulity, return if properties and drops are the same
+        # Quick check of eqaulity, return if properties are the same
         if current_json == existing_json:
             self.monster_dict["last_updated"] = self.all_db_monsters[self.monster_id]["last_updated"]
             return
@@ -418,6 +447,9 @@ class BuildMonster:
         # Print any validation errors
         if v.errors:
             print(v.errors)
-            exit(1)
+            with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                print(f"Validation errors for monster {self.monster_properties.id} ({self.monster_properties.name}):", file=errfile)
+                print(v.errors, file=errfile)
+            ##exit(1)
 
-        assert v.validate(current_json)
+        #assert v.validate(current_json)

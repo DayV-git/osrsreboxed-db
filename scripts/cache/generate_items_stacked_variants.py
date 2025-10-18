@@ -25,12 +25,10 @@ import json
 from pathlib import Path
 
 import config
-from scripts.cache import cache_constants
 
 
-def process():
+def process(definitions):
     """Extract find all stacked item variants in ItemDefinition data."""
-    definitions = cache_constants.ITEM_DEFINITIONS
     stacked_variants = dict()
 
     # Loop the loaded data
