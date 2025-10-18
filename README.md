@@ -1,3 +1,18 @@
+
+# Fork-of-Fork Changes
+
+This fork of osrsreboxed-db only updates the JSON files, and is not linked to the other APIs which are now outdated. A new `elemental_weakness_type` monster property (1 = Air, 2 = Water, 3 = Earth, 4 = Fire) has been added, with corresponding `elemental_weakness_percent`, as well as updated range defense types - `defence_ranged_light`, `defence_ranged_standard` and `defence_ranged_heavy`. Monster drops are depracated and have been removed. The JSON files are available here, see [Static JSON API Files](https://github.com/DayV-git/osrsreboxed-db/tree/master#static-json-api-files) for more informstion:
+
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/items-complete.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/items-complete.json)
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/monsters-complete.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/monsters-complete.json)
+
+A new feature for this fork is information on shop stock and prices, available here:
+
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/data/shops/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/data/shops/shops-items-by-shop.json)
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/data/shops/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/data/shops/shops-items-by-shop.json)
+
+The remainder of the README is unchanged. 
+
 # osrsreboxed-db - A (mostly) updated fork of [osrsbox](https://github.com/osrsbox/osrsbox-db)
 
 ![build](https://img.shields.io/github/actions/workflow/status/0xNeffarion/osrsreboxed-db/deploy-pypi.yml?branch=master)
