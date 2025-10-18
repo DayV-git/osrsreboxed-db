@@ -47,8 +47,6 @@ class BuildMonster:
         self.all_wikitext_raw = kwargs["all_wikitext_raw"]
         # Processed wikitext for all monsters
         self.all_wikitext_processed = kwargs["all_wikitext_processed"]
-        # Processed monster drops
-        self.monsters_drops = kwargs["monsters_drops"]
         # The monster schema
         self.schema_data = kwargs["schema_data"]
         # A list of already known (processed) monsters
@@ -400,13 +398,6 @@ class BuildMonster:
 
         return monster_properties
 
-    def populate_monster_drops(self):
-        """Set the monster drops from preprocessed data."""
-        try:
-            self.monster_dict["drops"] = self.monsters_drops[self.monster_id]
-        except KeyError:
-            self.monster_dict["drops"] = []
-
     def compare_new_vs_old_monster(self):
         """Diff this monster and the monster that exists in the database."""
         # Create JSON out object to compare
@@ -422,7 +413,7 @@ class BuildMonster:
             self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             return
 
-        # Quick check of eqaulity, return if properties and drops are the same
+        # Quick check of eqaulity, return if properties are the same
         if current_json == existing_json:
             self.monster_dict["last_updated"] = self.all_db_monsters[self.monster_id]["last_updated"]
             return
@@ -435,13 +426,6 @@ class BuildMonster:
         if ddiff_props:
             print(ddiff_props)
 
-        if len(current_json["drops"]) == 0 and len(existing_json["drops"]) > 0:
-            msg = (
-                f"  > WARNING: Monster {self.monster_properties.id} ({self.monster_properties.name}) lost all drops!"
-            )
-            print(msg)
-            with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print(msg, file=errfile)
         self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     def export_monster_to_json(self):

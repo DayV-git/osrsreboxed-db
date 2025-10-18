@@ -58,8 +58,6 @@ with open("schema-monsters.json", 'r') as f:
 
 # Process the base monster properties
 parse_json_schema(schema)
-# Process the drops properties
-parse_json_schema(schema["drops"]["schema"]["schema"])
 
 # Read in the schema-prayers.json file
 with open("schema-prayers.json", 'r') as f:

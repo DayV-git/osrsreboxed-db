@@ -54,10 +54,6 @@ class Builder:
         with open(Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json")) as f:
             self.all_wikitext_processed = json.load(f)
 
-        # Load the monster processed monster drops
-        with open(Path(config.DATA_MONSTERS_PATH / "monsters-drops.json")) as f:
-            self.monsters_drops = json.load(f)
-
         # Load schema data
         with open(Path(config.DATA_SCHEMAS_PATH / "schema-monsters.json")) as f:
             self.schema_data = json.load(f)
@@ -79,7 +75,6 @@ class Builder:
                                                      all_db_monsters=self.all_db_monsters,
                                                      all_wikitext_raw=self.all_wikitext_raw,
                                                      all_wikitext_processed=self.all_wikitext_processed,
-                                                     monsters_drops=self.monsters_drops,
                                                      schema_data=self.schema_data,
                                                      known_monsters=self.known_monsters,
                                                      verbose=self.verbose)
@@ -89,7 +84,6 @@ class Builder:
                     builder.populate_monster()
                     known_monster = builder.check_duplicate_monster()
                     self.known_monsters.append(known_monster)
-                    builder.populate_monster_drops()
                     if self.compare:
                         builder.compare_new_vs_old_monster()
                     if self.export:
@@ -123,7 +117,6 @@ class Builder:
                                                  all_db_monsters=self.all_db_monsters,
                                                  all_wikitext_raw=self.all_wikitext_raw,
                                                  all_wikitext_processed=self.all_wikitext_processed,
-                                                 monsters_drops=self.monsters_drops,
                                                  schema_data=self.schema_data,
                                                  known_monsters=self.known_monsters,
                                                  verbose=self.verbose)
@@ -133,7 +126,6 @@ class Builder:
                 builder.populate_monster()
                 known_monster = builder.check_duplicate_monster()
                 self.known_monsters.append(known_monster)
-                builder.populate_monster_drops()
                 builder.validate_monster()
             else:
                 with open('.error.txt', 'a', encoding='utf-8') as errfile:

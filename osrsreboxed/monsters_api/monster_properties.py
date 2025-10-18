@@ -27,9 +27,6 @@ from pathlib import Path
 from dataclasses import asdict
 from dataclasses import dataclass
 
-from osrsreboxed.monsters_api.monster_drop import MonsterDrop
-
-
 @dataclass
 class MonsterProperties:
     """This class defines the object structure and properties for an OSRS monster.
@@ -85,17 +82,10 @@ class MonsterProperties:
     defence_ranged_light: int = None
     defence_ranged_standard: int = None
     defence_ranged_heavy: int = None
-    drops: List = None
 
     @classmethod
-    def from_json(cls, json_dict: Dict) -> List[MonsterDrop]:
-        """Convert the list under the 'drops' key into actual :class:`MonsterDrop`"""
-        monster_drops = list()
-        if json_dict.get("drops"):
-            for drop in json_dict["drops"]:
-                monster_drops.append(MonsterDrop(**drop))
+    def from_json(cls, json_dict: Dict) -> 'MonsterProperties':
 
-        json_dict["drops"] = monster_drops
 
         return cls(**json_dict)
 
