@@ -468,7 +468,14 @@ class BuildItem:
             if value is None:
                 value = self.extract_infobox_value(bonuses_template, property_name)
             if value is not None:
-                self.item_dict["equipment"][database_name] = infobox_cleaner.stats(value)
+                if database_name == "magic_damage":
+                    self.item_dict["equipment"][database_name] = (
+                        infobox_cleaner.stats_float(value)
+                    )
+                else:
+                    self.item_dict["equipment"][database_name] = (
+                        infobox_cleaner.stats_int(value)
+                    )
             else:
                 self.item_dict["equipment"][database_name] = 0
                 self.item_dict["incomplete"] = True

@@ -499,7 +499,7 @@ def examine(value: str, name: str) -> str:
     return examine
 
 
-def stats(value: str) -> int:
+def stats_int(value: str) -> int:
     """Convert a item stat value to an integer.
 
     :param value: Template value extracted from raw wikitext.
@@ -507,6 +507,18 @@ def stats(value: str) -> int:
     """
     try:
         return int(value)
+    except ValueError:
+        return 0
+
+
+def stats_float(value: str) -> float:
+    """Convert a item stat value to a float.
+
+    :param value: Template value extracted from raw wikitext.
+    :return value: A cleaned stat value as a float.
+    """
+    try:
+        return float(value)
     except ValueError:
         return 0
 
