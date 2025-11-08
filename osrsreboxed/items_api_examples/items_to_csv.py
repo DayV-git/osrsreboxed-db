@@ -34,8 +34,10 @@ if __name__ == "__main__":
     all_db_items = items_api.load()
 
     # Loop through all items and export to CSV file
-    with open('items.csv', mode="w", newline="") as items_out_fi:
-        items_writer = csv.writer(items_out_fi, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    with open("items.csv", mode="w", newline="") as items_out_fi:
+        items_writer = csv.writer(
+            items_out_fi, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+        )
         items_writer.writerow(["ID", "NAME", "HIGHALCH"])
         for item in all_db_items:
             items_writer.writerow([item.id, item.name, item.highalch])

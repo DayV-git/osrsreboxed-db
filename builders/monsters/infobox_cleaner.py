@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import re
 
 
@@ -40,10 +41,10 @@ def clean_wikitext(value: str) -> str:
     """
     value = str(value)
     value = value.strip()
-    value = re.sub(r'[\[\]]+', '', value)  # Removes all "[" and "]"
-    value = re.sub(r' \([^()]*\)', '', value)  # Removes " (anything)"
-    value = re.sub(r'<!--(.*?)-->', '', value)  # Removes "<!--anything-->"
-    value = re.sub(r'<br(.*)', '', value)  # Removes "<br"
+    value = re.sub(r"[\[\]]+", "", value)  # Removes all "[" and "]"
+    value = re.sub(r" \([^()]*\)", "", value)  # Removes " (anything)"
+    value = re.sub(r"<!--(.*?)-->", "", value)  # Removes "<!--anything-->"
+    value = re.sub(r"<br(.*)", "", value)  # Removes "<br"
     return value
 
 
@@ -74,7 +75,7 @@ def members(value: str) -> bool:
             return True
         else:
             return False
-    except (AttributeError):
+    except AttributeError:
         return False
 
 
@@ -408,13 +409,13 @@ def examine(value: str) -> bool:
     value = value.split("\n")[0]
 
     # Remove: brackets, curly braces, spaces, tidle, plus
-    value = re.sub(r'[{}\*"]', '', value)
+    value = re.sub(r'[{}\*"]', "", value)
 
     # Change: three periods style
     value = value.replace("…", "...")
 
     # Remove: versioned examine text markers
-    value = re.sub(r"'{2,}[^']+[']*", '', value)
+    value = re.sub(r"'{2,}[^']+[']*", "", value)
 
     # Finally, strip any remaining whitespace
     value = value.strip()
@@ -428,12 +429,7 @@ def stats(value: str) -> int:
     :param value: Template value extracted from raw wikitext.
     :return: A cleaned stat value as an int, or mapped elemental value.
     """
-    elemental_map = {
-        "Air": 1,
-        "Water": 2,
-        "Earth": 3,
-        "Fire": 4
-    }
+    elemental_map = {"Air": 1, "Water": 2, "Earth": 3, "Fire": 4}
 
     value = value.strip().capitalize()
     if value in elemental_map:
@@ -443,4 +439,3 @@ def stats(value: str) -> int:
         return int(value)
     except ValueError:
         return 0
-

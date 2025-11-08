@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 
@@ -36,7 +37,7 @@ def process(item_defs, npc_defs, object_defs):
         if cache_name == "items":
             definitions = item_defs
         elif cache_name == "npcs":
-           definitions = npc_defs
+            definitions = npc_defs
         elif cache_name == "objects":
             definitions = object_defs
 
@@ -50,10 +51,7 @@ def process(item_defs, npc_defs, object_defs):
                 continue
             if "null" in json_data["name"].lower():
                 continue
-            summary_data[id] = {
-                "id": id,
-                "name": name
-            }
+            summary_data[id] = {"id": id, "name": name}
 
         # Save all extracted entries to a JSON file
         if cache_name == "items":

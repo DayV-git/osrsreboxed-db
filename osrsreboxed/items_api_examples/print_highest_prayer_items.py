@@ -45,7 +45,10 @@ if __name__ == "__main__":
             prayer_bonus = item.equipment.prayer
 
             if prayer_bonus > prayer_items[item_slot]["prayer_bonus"]:
-                prayer_items[item_slot] = {"prayer_bonus": prayer_bonus, "name": item.name}
+                prayer_items[item_slot] = {
+                    "prayer_bonus": prayer_bonus,
+                    "name": item.name,
+                }
 
     for item_slot, info_dict in prayer_items.items():
         print(f"{item_slot:<10} {info_dict['prayer_bonus']:<10} {info_dict['name']}")

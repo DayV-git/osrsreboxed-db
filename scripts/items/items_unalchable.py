@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from pathlib import Path
 
 import config
@@ -39,8 +40,7 @@ def fetch():
 
     print(">>> Starting wiki page titles extraction...")
     # Create object to handle page titles extraction
-    wiki_page_titles = WikiPageTitles(OSRS_WIKI_API_URL,
-                                      categories)
+    wiki_page_titles = WikiPageTitles(OSRS_WIKI_API_URL, categories)
 
     wiki_page_titles.extract_page_titles()
     wiki_page_titles.export_page_titles_in_json(titles_file_path)

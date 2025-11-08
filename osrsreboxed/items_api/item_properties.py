@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 import time
 from pathlib import Path
@@ -39,6 +40,7 @@ class ItemProperties:
     Equipable items have additional properties defined in the linked ItemEquipment
     class.
     """
+
     id: int
     name: str
     last_updated: str
@@ -73,7 +75,7 @@ class ItemProperties:
     weapon: Optional[ItemWeapon] = None
 
     @classmethod
-    def from_json(cls, json_dict: Dict) -> 'ItemProperties':
+    def from_json(cls, json_dict: Dict) -> "ItemProperties":
         """Construct ItemProperties object from dictionary/JSON."""
         # Convert the dictionary under the 'equipment' key into ItemEquipment.
         if json_dict.get("equipable_by_player"):
@@ -94,7 +96,7 @@ class ItemProperties:
         """
         return asdict(self)
 
-    def export_json(self, pretty: bool, export_path: str, max_attempts = 5, delay = 0.5):
+    def export_json(self, pretty: bool, export_path: str, max_attempts=5, delay=0.5):
         """Output ItemProperties to JSON file.
 
         :param pretty: Toggles pretty (indented) JSON output.
@@ -115,6 +117,3 @@ class ItemProperties:
                 if attempt == max_attempts:
                     raise e  # Re-raise on final failure
                 time.sleep(delay)
-
-    
-

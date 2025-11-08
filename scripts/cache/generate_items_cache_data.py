@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 from typing import Dict
@@ -48,7 +49,10 @@ def parse_item_definition(item_data: Dict, definitions: Dict, id_number: str) ->
     else:
         item_data["linked_id_noted"] = None
 
-    if item_definition["placeholderId"] != -1 and item_definition["placeholderTemplateId"] != 14401:
+    if (
+        item_definition["placeholderId"] != -1
+        and item_definition["placeholderTemplateId"] != 14401
+    ):
         item_data["linked_id_placeholder"] = item_definition["placeholderId"]
     else:
         item_data["linked_id_placeholder"] = None
@@ -100,7 +104,9 @@ def parse_item_definition(item_data: Dict, definitions: Dict, id_number: str) ->
     return item_data
 
 
-def parse_item_definition_fix_linked_item(item_data: Dict, definitions: Dict, id_number: str) -> Dict:
+def parse_item_definition_fix_linked_item(
+    item_data: Dict, definitions: Dict, id_number: str
+) -> Dict:
     """Parse the raw cache ItemDefinition data to a Python dictionary.
 
     This function tries to fix any item that is linked, by looking up properties
@@ -151,35 +157,41 @@ def process(definitions):
             # This item is a stacked variant (found in countObj)
             linked_id_number = str(stacked_variants[itemid]["id"])
             # Parse linked item id to get missing properties
-            item_data = parse_item_definition_fix_linked_item(item_data,
-                                                              definitions,
-                                                              linked_id_number)
+            item_data = parse_item_definition_fix_linked_item(
+                item_data, definitions, linked_id_number
+            )
             item_data["linked_id_item"] = int(linked_id_number)
             # Set tradeable_og_ge to False, as stacked variants not tradeable on GE
             item_data["tradeable_on_ge"] = False
             # Manually set "stacked" property to True
             item_data["stacked"] = stacked_variants[itemid]["count"]
 
-        elif (item_definition["name"] == "null" and
-                item_definition["notedTemplate"] == 799):
+        elif (
+            item_definition["name"] == "null"
+            and item_definition["notedTemplate"] == 799
+        ):
             # This item is noted (notedTemplate is 799)
             # The linked ID must be queried for name, members, cost, lowalch, highalch
             linked_id_number = str(item_definition["notedID"])
-            item_data = parse_item_definition_fix_linked_item(item_data,
-                                                              definitions,
-                                                              linked_id_number)
+            item_data = parse_item_definition_fix_linked_item(
+                item_data, definitions, linked_id_number
+            )
             item_data["linked_id_item"] = int(linked_id_number)
 
-        elif (item_definition["name"] == "null" and
-                item_definition["placeholderTemplateId"] == 14401):
+        elif (
+            item_definition["name"] == "null"
+            and item_definition["placeholderTemplateId"] == 14401
+        ):
             # This item is a placeholder (placeholderTemplateId is 14401)
             linked_id_number = str(item_definition["placeholderId"])
             # This item needs a name set
             item_data["name"] = definitions[linked_id_number]["name"]
             item_data["linked_id_item"] = int(linked_id_number)
 
-        elif (item_definition["name"] == "null" and
-                item_definition["boughtTemplateId"] == 13189):
+        elif (
+            item_definition["name"] == "null"
+            and item_definition["boughtTemplateId"] == 13189
+        ):
             # This item is bought (boughtTemplateId is 13189)
             linked_id_number = str(item_definition["boughtId"])
             # This item needs a name set

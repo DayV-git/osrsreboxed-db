@@ -22,6 +22,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from pathlib import Path
 
 PROJECT_ROOT_PATH = Path(__file__).parent
@@ -55,7 +56,4 @@ SCRIPTS_SCHEMAS = Path(SCRIPTS_PATH / "schemas")
 SCRIPTS_UPDATE = Path(SCRIPTS_PATH / "update")
 
 # User agent for wiki scraping requests
-custom_agent = {
-    'User-Agent': "DayV-git/osrsreboxed-db",
-    'From': "dayv6842@gmail.com"
-}
+custom_agent = {"User-Agent": "DayV-git/osrsreboxed-db", "From": "dayv6842@gmail.com"}

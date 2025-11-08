@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from scripts.cache import generate_items_stacked_variants
 from scripts.cache import generate_items_cache_data
 from scripts.cache import generate_monsters_cache_data
@@ -57,5 +58,5 @@ def main():
     determine_changes.move()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 
@@ -44,7 +45,9 @@ def process(definitions):
 
         # Process stacked items
         if is_stacked:
-            for stacked_id, stacked_count in zip(item_definition["countObj"], item_definition["countCo"]):
+            for stacked_id, stacked_count in zip(
+                item_definition["countObj"], item_definition["countCo"]
+            ):
                 # Skip any entry that is a zero (empty)
                 if stacked_id == 0:
                     pass

@@ -25,6 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 from typing import List
@@ -51,7 +52,7 @@ def extract_model_ids_int(json_data: Dict) -> List[Dict]:
         "item_model_male2": "maleModel2",
         "item_model_female0": "femaleModel0",
         "item_model_female1": "femaleModel1",
-        "item_model_female2": "femaleModel2"
+        "item_model_female2": "femaleModel2",
     }
 
     for model_type, model_key in model_keys.items():
@@ -90,7 +91,7 @@ def extract_model_ids_list(json_data: Dict) -> List[Dict]:
     model_keys = {
         "npc_model": "models",
         "npc_chathead": "chatheadModels",
-        "object_model": "objectModels"
+        "object_model": "objectModels",
     }
 
     for model_type, model_key in model_keys.items():
@@ -119,11 +120,7 @@ def process(item_defs, npc_defs, object_defs):
     all_models = dict()
 
     # Loop three cache types (items, npcs and objects)
-    all_definitions = {
-        "items":  item_defs,
-        "npcs": npc_defs,
-        "objects": object_defs
-    }
+    all_definitions = {"items": item_defs, "npcs": npc_defs, "objects": object_defs}
 
     for cache_name, definitions in all_definitions.items():
         # Loop all entries in the loaded definition file

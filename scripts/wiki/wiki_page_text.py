@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 import logging
 from pathlib import Path
@@ -36,6 +37,7 @@ class WikiPageText:
     :param base_url: The OSRS Wiki URL used for API queries.
     :param page_title: OSRS Wiki page titles used for API query.
     """
+
     def __init__(self, base_url: str, page_title: str):
         self.base_url = base_url
         self.page_title = page_title
@@ -52,16 +54,16 @@ class WikiPageText:
             "action": "parse",
             "prop": "wikitext",
             "format": "json",
-            "page": self.page_title
+            "page": self.page_title,
         }
         wiki_text = None
 
         # Perform HTTP GET request
         for attempt in range(10):
             try:
-                page_data = requests.get(self.base_url,
-                                         headers=config.custom_agent,
-                                         params=request).json()
+                page_data = requests.get(
+                    self.base_url, headers=config.custom_agent, params=request
+                ).json()
                 break
             except requests.exceptions.RequestException as e:
                 raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
@@ -96,13 +98,13 @@ class WikiPageText:
         for attempt in range(5):
             try:
                 if not out_file_name.exists():
-                    with open(str(out_file_name), mode='w') as out_file:
+                    with open(str(out_file_name), mode="w") as out_file:
                         out_file.write(json.dumps(json_data, indent=4))
                 else:
                     with open(out_file_name) as feeds_json:
                         feeds = json.load(feeds_json)
                     feeds[self.page_title] = str(self.wiki_text)
-                    with open(str(out_file_name), mode='w') as out_file:
+                    with open(str(out_file_name), mode="w") as out_file:
                         out_file.write(json.dumps(feeds, indent=4))
                 break
             except OSError as e:

@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from pathlib import Path
 from datetime import datetime
 from datetime import timezone
@@ -91,7 +92,9 @@ class BuildMonster:
 
         # Try to find the wiki data using direct ID number search
         if self.all_wikitext_processed.get(self.monster_id_str, None):
-            self.monster_wikitext = self.all_wikitext_processed.get(self.monster_id_str, None)
+            self.monster_wikitext = self.all_wikitext_processed.get(
+                self.monster_id_str, None
+            )
             self.wikitext_found_using = "id"
 
         # Try to find the wiki data using direct name search
@@ -101,36 +104,46 @@ class BuildMonster:
 
         # If there is no wikitext, and the monster is valid, raise a critical error
         if not self.monster_wikitext:
-            return False, f" > Monster {self.monster_id_str} ({self.monster_name}) has no wikitext data!"
+            return (
+                False,
+                f" > Monster {self.monster_id_str} ({self.monster_name}) has no wikitext data!",
+            )
 
         # Parse the infobox monster
         infobox_parser = WikitextTemplateParser(self.monster_wikitext)
 
-        #overide dt2 boss version due to overlapping wiki multi-infobox
-        infobox_version_overrides = {12191: 1} 
+        # overide dt2 boss version due to overlapping wiki multi-infobox
+        infobox_version_overrides = {12191: 1}
 
         if self.monster_id_int in infobox_version_overrides.keys():
             infobox_version = infobox_version_overrides[self.monster_id_int]
         elif type(self.monster_wikitext[2]) is int:
-             infobox_version = self.monster_wikitext[2]
+            infobox_version = self.monster_wikitext[2]
         else:
             infobox_version = 1
 
         # Try extract infobox for monster
-        self.has_infobox = infobox_parser.extract_infobox("infobox monster", infobox_version) 
+        self.has_infobox = infobox_parser.extract_infobox(
+            "infobox monster", infobox_version
+        )
 
         if not self.has_infobox:
             if self.verbose:
-                print(f">>> No infobox found for {self.monster_name} ({self.monster_id_str})")
-            return False, f" > Monster {self.monster_id_str} ({self.monster_name}) has no infobox data!"
+                print(
+                    f">>> No infobox found for {self.monster_name} ({self.monster_id_str})"
+                )
+            return (
+                False,
+                f" > Monster {self.monster_id_str} ({self.monster_name}) has no infobox data!",
+            )
 
         self.is_versioned = infobox_parser.determine_infobox_versions()
         self.versioned_ids = infobox_parser.extract_infobox_ids()
 
         # Set the infobox version number, default to empty string (no version number)
 
-        #overide dt2 boss version due to overlapping wiki infobox versions
-        version_overrides = {12204: 1, 12192: 1, 12214: 1, 12215: 2, 12223: 1, 12224: 2} 
+        # overide dt2 boss version due to overlapping wiki infobox versions
+        version_overrides = {12204: 1, 12192: 1, 12214: 1, 12215: 2, 12223: 1, 12224: 2}
 
         try:
             if self.monster_id_int in version_overrides.keys():
@@ -216,22 +229,24 @@ class BuildMonster:
         # Initialize a dictionary that maps proj_name -> prop_name
         # proj_name is used in this project
         # prop_name is used by the OSRS Wiki
-        monster_properties = {"members": "members",
-                              "release_date": "release",
-                              "hitpoints": "hitpoints",
-                              "max_hit": "max hit",
-                              "attack_type": "attack style",
-                              "attack_speed": "attack speed",
-                              "aggressive": "aggressive",
-                              "poisonous": "poisonous",
-                              "venomous": "poisonous",
-                              "immune_poison": "immunepoison",
-                              "immune_venom": "immunevenom",
-                              "attributes": "attributes",
-                              "category": "cat",
-                              "slayer_level": "slaylvl",
-                              "slayer_xp": "slayxp",
-                              "examine": "examine"}
+        monster_properties = {
+            "members": "members",
+            "release_date": "release",
+            "hitpoints": "hitpoints",
+            "max_hit": "max hit",
+            "attack_type": "attack style",
+            "attack_speed": "attack speed",
+            "aggressive": "aggressive",
+            "poisonous": "poisonous",
+            "venomous": "poisonous",
+            "immune_poison": "immunepoison",
+            "immune_venom": "immunevenom",
+            "attributes": "attributes",
+            "category": "cat",
+            "slayer_level": "slaylvl",
+            "slayer_xp": "slayxp",
+            "examine": "examine",
+        }
 
         # Loop each of the combat bonuses and populate
         for proj_name, prop_name in monster_properties.items():
@@ -269,7 +284,9 @@ class BuildMonster:
             if slayer_masters is None:
                 slayer_masters = self.extract_infobox_value(self.template, "assignedby")
             if slayer_masters is not None:
-                self.monster_dict["slayer_masters"] = infobox_cleaner.slayer_masters(slayer_masters)
+                self.monster_dict["slayer_masters"] = infobox_cleaner.slayer_masters(
+                    slayer_masters
+                )
             else:
                 self.monster_dict["slayer_masters"] = list()
                 self.monster_dict["incomplete"] = True
@@ -302,9 +319,8 @@ class BuildMonster:
             "defence_ranged_standard": "dstandard",
             "defence_ranged_heavy": "dheavy",
             "elemental_weakness_type": "elementalweaknesstype",
-            "elemental_weakness_percent": "elementalweaknesspercent"
+            "elemental_weakness_percent": "elementalweaknesspercent",
         }
-
 
         # Loop each of the combat bonuses and populate
         for database_name, property_name in combat_bonuses.items():
@@ -324,7 +340,9 @@ class BuildMonster:
         if not self.monster_dict.get("incomplete"):
             self.monster_dict["incomplete"] = False
 
-    def extract_infobox_value(self, template: mwparserfromhell.nodes.template.Template, key: str) -> str:
+    def extract_infobox_value(
+        self, template: mwparserfromhell.nodes.template.Template, key: str
+    ) -> str:
         """Helper method to extract a value from a template using a specified key.
 
         This helper method is a simple solution to repeatedly try to fetch a specific
@@ -335,7 +353,7 @@ class BuildMonster:
         :return value: The extracted template value based on supplied key.
         """
         value = None
-        for k in (key, f'{key}1'):
+        for k in (key, f"{key}1"):
             try:
                 value = template.get(k).value.strip()
                 return value
@@ -344,8 +362,8 @@ class BuildMonster:
 
         # If dlight, dstandard, dheavy do not exist, chances are all are the same and given by drange
         for prefix in ("light", "standard", "heavy"):
-            if f'd{prefix}' in key:
-                alt_key = key.replace(f'd{prefix}', 'drange')
+            if f"d{prefix}" in key:
+                alt_key = key.replace(f"d{prefix}", "drange")
                 try:
                     value = template.get(alt_key).value.strip()
                     return value
@@ -366,9 +384,13 @@ class BuildMonster:
         # Check/set last update
         last_update = self.all_db_monsters.get(self.monster_id, None)
         if last_update:
-            self.monster_dict["last_updated"] = self.all_db_monsters[self.monster_id]["last_updated"]
+            self.monster_dict["last_updated"] = self.all_db_monsters[self.monster_id][
+                "last_updated"
+            ]
         else:
-            self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime(
+                "%Y-%m-%d"
+            )
 
         # Create an MonsterProperties object
         monster_properties = MonsterProperties(**self.monster_dict)
@@ -377,7 +399,7 @@ class BuildMonster:
         correlation_properties = {
             "wiki_name": False,
             "combat_level": False,
-            "members": False
+            "members": False,
         }
 
         # Loop the list of currently (already processed) monsters
@@ -392,7 +414,9 @@ class BuildMonster:
                     correlation_properties[cprop] = True
 
             # Check is all values in correlation properties are True
-            correlation_result = all(value is True for value in correlation_properties.values())
+            correlation_result = all(
+                value is True for value in correlation_properties.values()
+            )
             if correlation_result:
                 self.monster_dict["duplicate"] = True
 
@@ -410,23 +434,31 @@ class BuildMonster:
         except KeyError:
             print(f">>> compare_json_files: NEW MONSTER: {self.monster_properties.id}")
             print(current_json)
-            self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime(
+                "%Y-%m-%d"
+            )
             return
 
         # Quick check of eqaulity, return if properties are the same
         if current_json == existing_json:
-            self.monster_dict["last_updated"] = self.all_db_monsters[self.monster_id]["last_updated"]
+            self.monster_dict["last_updated"] = self.all_db_monsters[self.monster_id][
+                "last_updated"
+            ]
             return
 
         # Print a header for the changed monster
-        print(f">>> compare_json_files: CHANGED MONSTER: {self.monster_properties.id}: {self.monster_properties.name}")
+        print(
+            f">>> compare_json_files: CHANGED MONSTER: {self.monster_properties.id}: {self.monster_properties.name}"
+        )
 
         # First check the base properties
         ddiff_props = DeepDiff(existing_json, current_json, ignore_order=True)
         if ddiff_props:
             print(ddiff_props)
 
-        self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime(
+            "%Y-%m-%d"
+        )
 
     def export_monster_to_json(self):
         """Export monster to JSON, if requested."""
@@ -447,9 +479,12 @@ class BuildMonster:
         # Print any validation errors
         if v.errors:
             print(v.errors)
-            with open('.error.txt', 'a', encoding='utf-8') as errfile:
-                print(f"Validation errors for monster {self.monster_properties.id} ({self.monster_properties.name}):", file=errfile)
+            with open(".error.txt", "a", encoding="utf-8") as errfile:
+                print(
+                    f"Validation errors for monster {self.monster_properties.id} ({self.monster_properties.name}):",
+                    file=errfile,
+                )
                 print(v.errors, file=errfile)
             ##exit(1)
 
-        #assert v.validate(current_json)
+        # assert v.validate(current_json)

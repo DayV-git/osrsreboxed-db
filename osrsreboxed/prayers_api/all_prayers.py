@@ -18,15 +18,20 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 from typing import Dict, List, Union, Generator
 
 from osrsreboxed.prayers_api.prayer_properties import PrayerProperties
 
-PATH_TO_PRAYERS_COMPLETE_JSON = Path(__file__).absolute().parent / ".." / ".." / "docs" / "prayers-complete.json"
+PATH_TO_PRAYERS_COMPLETE_JSON = (
+    Path(__file__).absolute().parent / ".." / ".." / "docs" / "prayers-complete.json"
+)
 if not PATH_TO_PRAYERS_COMPLETE_JSON.is_file():
-    PATH_TO_PRAYERS_COMPLETE_JSON = Path(__file__).absolute().parent / ".." / "docs" / "prayers-complete.json"
+    PATH_TO_PRAYERS_COMPLETE_JSON = (
+        Path(__file__).absolute().parent / ".." / "docs" / "prayers-complete.json"
+    )
     if not PATH_TO_PRAYERS_COMPLETE_JSON.is_file():
         raise ValueError("Error: Default prayer database file not found. Exiting")
 
@@ -36,7 +41,10 @@ class AllPrayers:
 
     :param input_data_file_or_directory: The osrsbox-db prayers folder of JSON files, or single JSON file.
     """
-    def __init__(self, input_data_file_or_directory: Path = PATH_TO_PRAYERS_COMPLETE_JSON):
+
+    def __init__(
+        self, input_data_file_or_directory: Path = PATH_TO_PRAYERS_COMPLETE_JSON
+    ):
         self.all_prayers: List[PrayerProperties] = list()
         self.all_prayers_dict: Dict[int, PrayerProperties] = dict()
         self.load_all_prayers(input_data_file_or_directory)
@@ -86,7 +94,9 @@ class AllPrayers:
 
         # Process the directory of JSON, or a single JSON file
         if input_data_file_or_directory.is_dir():
-            self._load_prayers_from_directory(path_to_directory=input_data_file_or_directory)
+            self._load_prayers_from_directory(
+                path_to_directory=input_data_file_or_directory
+            )
         elif input_data_file_or_directory.is_file():
             self._load_prayers_from_file(path_to_json_file=input_data_file_or_directory)
         else:
@@ -107,7 +117,9 @@ class AllPrayers:
         try:
             json_files[0]
         except IndexError as e:
-            raise ValueError("Error: No files found in directory, check the supplied path. Exiting.") from e
+            raise ValueError(
+                "Error: No files found in directory, check the supplied path. Exiting."
+            ) from e
 
         # Loop through every prayer in JSON file
         for json_file in json_files:
@@ -137,7 +149,9 @@ class AllPrayers:
         try:
             prayer_def = PrayerProperties.from_json(prayer_json)
         except TypeError as e:
-            raise ValueError("Error: Invalid JSON structure found, check supplied input. Exiting") from e
+            raise ValueError(
+                "Error: Invalid JSON structure found, check supplied input. Exiting"
+            ) from e
 
         # Add prayer to list
         self.all_prayers.append(prayer_def)

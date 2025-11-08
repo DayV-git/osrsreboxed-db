@@ -25,9 +25,13 @@ from typing import Dict, List, Union, Generator
 
 from osrsreboxed.items_api.item_properties import ItemProperties
 
-PATH_TO_ITEMS_COMPLETE_JSON = Path(__file__).absolute().parent / ".." / ".." / "docs" / "items-complete.json"
+PATH_TO_ITEMS_COMPLETE_JSON = (
+    Path(__file__).absolute().parent / ".." / ".." / "docs" / "items-complete.json"
+)
 if not PATH_TO_ITEMS_COMPLETE_JSON.is_file():
-    PATH_TO_ITEMS_COMPLETE_JSON = Path(__file__).absolute().parent / ".." / "docs" / "items-complete.json"
+    PATH_TO_ITEMS_COMPLETE_JSON = (
+        Path(__file__).absolute().parent / ".." / "docs" / "items-complete.json"
+    )
     if not PATH_TO_ITEMS_COMPLETE_JSON.is_file():
         raise ValueError("Error: Default item database file not found. Exiting")
 
@@ -37,7 +41,10 @@ class AllItems:
 
     :param input_data_file_or_directory: The osrsbox-db items folder of JSON files, or single JSON file.
     """
-    def __init__(self, input_data_file_or_directory: Path = PATH_TO_ITEMS_COMPLETE_JSON):
+
+    def __init__(
+        self, input_data_file_or_directory: Path = PATH_TO_ITEMS_COMPLETE_JSON
+    ):
         self.all_items: List[ItemProperties] = list()
         self.all_items_dict: Dict[int, ItemProperties] = dict()
         self.load_all_items(input_data_file_or_directory)
@@ -75,7 +82,9 @@ class AllItems:
             raise KeyError("Cannot find the provided item ID number...")
         return item_properties
 
-    def lookup_by_item_name(self, item_name: str, use_wiki_name: bool = False) -> ItemProperties:
+    def lookup_by_item_name(
+        self, item_name: str, use_wiki_name: bool = False
+    ) -> ItemProperties:
         """Lookup a specific item name and get the associated ItemProperties object.
 
         This function performs a lookup on all items in the database. The property
@@ -142,7 +151,9 @@ class AllItems:
 
         # Process the directory of JSON, or a single JSON file
         if input_data_file_or_directory.is_dir():
-            self._load_items_from_directory(path_to_directory=input_data_file_or_directory)
+            self._load_items_from_directory(
+                path_to_directory=input_data_file_or_directory
+            )
         elif input_data_file_or_directory.is_file():
             self._load_items_from_file(path_to_json_file=input_data_file_or_directory)
         else:
@@ -163,7 +174,9 @@ class AllItems:
         try:
             json_files[0]
         except IndexError as e:
-            raise ValueError("Error: No files found in directory, check the supplied path. Exiting.") from e
+            raise ValueError(
+                "Error: No files found in directory, check the supplied path. Exiting."
+            ) from e
 
         # Loop through every item in JSON file
         for json_file in json_files:
@@ -193,7 +206,9 @@ class AllItems:
         try:
             item_def = ItemProperties.from_json(item_json)
         except TypeError as e:
-            raise ValueError("Error: Invalid JSON structure found, check supplied input. Exiting") from e
+            raise ValueError(
+                "Error: Invalid JSON structure found, check supplied input. Exiting"
+            ) from e
 
         # Add item to list
         self.all_items.append(item_def)

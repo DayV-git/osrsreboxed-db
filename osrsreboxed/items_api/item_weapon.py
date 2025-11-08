@@ -31,6 +31,7 @@ class ItemWeapon:
     to equipable items that are weapons. This includes weapon attack speed,
     weapon type, stance, experience, and bonuses.
     """
+
     attack_speed: int
     weapon_type: str
     stances: List

@@ -57,21 +57,27 @@ if __name__ == "__main__":
     for item in all_db_items:
         # Convert stats if item is equipable
         if item.equipable_by_player:
-            offensive = [item.equipment.attack_stab,
-                         item.equipment.attack_slash,
-                         item.equipment.attack_crush,
-                         item.equipment.attack_magic,
-                         item.equipment.attack_ranged]
-            defensive = [item.equipment.defence_stab,
-                         item.equipment.defence_slash,
-                         item.equipment.defence_crush,
-                         item.equipment.defence_magic,
-                         item.equipment.defence_ranged]
-            other = [item.equipment.melee_strength,
-                     item.equipment.ranged_strength,
-                     item.equipment.magic_damage,
-                     item.equipment.prayer,
-                     item.equipment.attack_speed]
+            offensive = [
+                item.equipment.attack_stab,
+                item.equipment.attack_slash,
+                item.equipment.attack_crush,
+                item.equipment.attack_magic,
+                item.equipment.attack_ranged,
+            ]
+            defensive = [
+                item.equipment.defence_stab,
+                item.equipment.defence_slash,
+                item.equipment.defence_crush,
+                item.equipment.defence_magic,
+                item.equipment.defence_ranged,
+            ]
+            other = [
+                item.equipment.melee_strength,
+                item.equipment.ranged_strength,
+                item.equipment.magic_damage,
+                item.equipment.prayer,
+                item.equipment.attack_speed,
+            ]
 
             # Append extracted data to a dictionary
             stats_dict = dict()

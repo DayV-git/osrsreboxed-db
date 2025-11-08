@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 
@@ -32,7 +33,7 @@ def test_item_database():
     """Unit test to check item database contents against JSON schema."""
     # Read in the item schema file
     path_to_schema = Path(config.DATA_SCHEMAS_PATH / "schema-items.json")
-    with open(path_to_schema, 'r') as f:
+    with open(path_to_schema, "r") as f:
         schema = json.loads(f.read())
 
     # Validator object with schema attached

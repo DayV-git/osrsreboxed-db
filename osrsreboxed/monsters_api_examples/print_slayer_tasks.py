@@ -34,7 +34,7 @@ slayer_masters_assignments = {
     "vannaka": set(),
     "krystilia": set(),
     "duradel": set(),
-    "nieve": set()
+    "nieve": set(),
 }
 
 if __name__ == "__main__":

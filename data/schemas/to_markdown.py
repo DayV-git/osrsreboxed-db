@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from typing import Dict
 
@@ -42,7 +43,7 @@ def parse_json_schema(properties_dict: Dict):
 
 
 # Read in the schema-items.json file
-with open("schema-items.json", 'r') as f:
+with open("schema-items.json", "r") as f:
     schema = json.loads(f.read())
 
 # Process the base item properties
@@ -53,14 +54,14 @@ parse_json_schema(schema["equipment"]["schema"])
 parse_json_schema(schema["weapon"]["schema"])
 
 # Read in the schema-monsters.json file
-with open("schema-monsters.json", 'r') as f:
+with open("schema-monsters.json", "r") as f:
     schema = json.loads(f.read())
 
 # Process the base monster properties
 parse_json_schema(schema)
 
 # Read in the schema-prayers.json file
-with open("schema-prayers.json", 'r') as f:
+with open("schema-prayers.json", "r") as f:
     schema = json.loads(f.read())
 
 # Process the base monster properties

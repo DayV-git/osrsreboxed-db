@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 from dataclasses import asdict
@@ -32,6 +33,7 @@ class PrayerProperties:
     The PrayerProperties class is the object that retains all properties and stats
     for one specific prayer.
     """
+
     id: int = None
     name: str = None
     members: bool = None
@@ -43,7 +45,7 @@ class PrayerProperties:
     icon: str = None
 
     @classmethod
-    def from_json(cls, json_dict: Dict) -> 'PrayerProperties':
+    def from_json(cls, json_dict: Dict) -> "PrayerProperties":
         """Construct PrayerProperties object from dictionary/JSON."""
         return cls(**json_dict)
 

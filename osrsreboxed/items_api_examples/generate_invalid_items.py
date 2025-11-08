@@ -32,10 +32,12 @@ if __name__ == "__main__":
     # Loop through all items in the database and print the item name for each item
     for item in all_db_items:
         if "Scythe of vitur" in item.name:
-            print(f'''
+            print(
+                f"""
     "{item.id}": {{
         "id": {item.id},
         "name": "{item.name}",
         "status": "unequipable",
         "normalized_name": null
-    }},''')
+    }},"""
+            )

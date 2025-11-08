@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 import argparse
 import traceback
@@ -51,7 +52,9 @@ class Builder:
             self.all_wikitext_raw = json.load(f)
 
         # Load the item wikitext file of processed data
-        with open(Path(config.DATA_ITEMS_PATH / "items-wiki-page-text-processed.json")) as f:
+        with open(
+            Path(config.DATA_ITEMS_PATH / "items-wiki-page-text-processed.json")
+        ) as f:
             self.all_wikitext_processed = json.load(f)
 
         # Load dict of unalchable items
@@ -65,7 +68,9 @@ class Builder:
             self.buy_limits = json.load(f)
 
         # Load skill requirement data
-        skill_requirements_file_path = Path(config.DATA_ITEMS_PATH / "items-skill-requirements.json")
+        skill_requirements_file_path = Path(
+            config.DATA_ITEMS_PATH / "items-skill-requirements.json"
+        )
         with open(skill_requirements_file_path) as f:
             self.skill_requirements = json.load(f)
 
@@ -102,25 +107,37 @@ class Builder:
                 if "(beta" in self.all_items_cache_data[item_id]["name"]:
                     continue
 
-                #Skip the beta items from DT2
-                if int(item_id) in [25484, 25485, 25486, 25487, 25488, 25489, 25490, 25491, 25492]:
+                # Skip the beta items from DT2
+                if int(item_id) in [
+                    25484,
+                    25485,
+                    25486,
+                    25487,
+                    25488,
+                    25489,
+                    25490,
+                    25491,
+                    25492,
+                ]:
                     continue
-                    
+
                 # Initialize the BuildItem class, used for all items
-                builder = build_item.BuildItem(item_id=item_id,
-                                               all_items_cache_data=self.all_items_cache_data,
-                                               all_db_items=self.all_db_items,
-                                               all_wikitext_raw=self.all_wikitext_raw,
-                                               all_wikitext_processed=self.all_wikitext_processed,
-                                               unalchable=self.unalchable,
-                                               buy_limits=self.buy_limits,
-                                               skill_requirements=self.skill_requirements,
-                                               weapon_stances=self.weapon_stances,
-                                               icons=self.icons,
-                                               duplicates=self.duplicates,
-                                               schema_data=self.schema_data,
-                                               known_items=self.known_items,
-                                               verbose=self.verbose)
+                builder = build_item.BuildItem(
+                    item_id=item_id,
+                    all_items_cache_data=self.all_items_cache_data,
+                    all_db_items=self.all_db_items,
+                    all_wikitext_raw=self.all_wikitext_raw,
+                    all_wikitext_processed=self.all_wikitext_processed,
+                    unalchable=self.unalchable,
+                    buy_limits=self.buy_limits,
+                    skill_requirements=self.skill_requirements,
+                    weapon_stances=self.weapon_stances,
+                    icons=self.icons,
+                    duplicates=self.duplicates,
+                    schema_data=self.schema_data,
+                    known_items=self.known_items,
+                    verbose=self.verbose,
+                )
 
                 status = builder.preprocessing()
 
@@ -142,7 +159,7 @@ class Builder:
             except Exception:
                 print("Ran into issue parsing item.")
                 print(traceback.format_exc())
-                with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                with open(".error.txt", "a", encoding="utf-8") as errfile:
                     print("Ran into issue parsing item.", file=errfile)
                     print(traceback.format_exc(), file=errfile)
         # Done processing, rejoice!
@@ -153,8 +170,8 @@ class Builder:
         # Start processing every item!
         for item_id in self.all_items_cache_data:
 
-            #if int(item_id) < 25800:
-             #   continue
+            # if int(item_id) < 25800:
+            #   continue
 
             # Skip any beta items
             if "(beta" in self.all_items_cache_data[item_id]["name"]:
@@ -163,25 +180,37 @@ class Builder:
             if "(null)" in self.all_items_cache_data[item_id]["name"]:
                 continue
 
-            #Skip the beta items from DT2
-            if int(item_id) in [25484, 25485, 25486, 25487, 25488, 25489, 25490, 25491, 25492]:
+            # Skip the beta items from DT2
+            if int(item_id) in [
+                25484,
+                25485,
+                25486,
+                25487,
+                25488,
+                25489,
+                25490,
+                25491,
+                25492,
+            ]:
                 continue
 
             # Initialize the BuildItem class, used for all items
-            builder = build_item.BuildItem(item_id=item_id,
-                                           all_items_cache_data=self.all_items_cache_data,
-                                           all_db_items=self.all_db_items,
-                                           all_wikitext_raw=self.all_wikitext_raw,
-                                           all_wikitext_processed=self.all_wikitext_processed,
-                                           unalchable=self.unalchable,
-                                           buy_limits=self.buy_limits,
-                                           skill_requirements=self.skill_requirements,
-                                           weapon_stances=self.weapon_stances,
-                                           icons=self.icons,
-                                           duplicates=self.duplicates,
-                                           schema_data=self.schema_data,
-                                           known_items=self.known_items,
-                                           verbose=self.verbose)
+            builder = build_item.BuildItem(
+                item_id=item_id,
+                all_items_cache_data=self.all_items_cache_data,
+                all_db_items=self.all_db_items,
+                all_wikitext_raw=self.all_wikitext_raw,
+                all_wikitext_processed=self.all_wikitext_processed,
+                unalchable=self.unalchable,
+                buy_limits=self.buy_limits,
+                skill_requirements=self.skill_requirements,
+                weapon_stances=self.weapon_stances,
+                icons=self.icons,
+                duplicates=self.duplicates,
+                schema_data=self.schema_data,
+                known_items=self.known_items,
+                verbose=self.verbose,
+            )
 
             status = builder.preprocessing()
 
@@ -202,32 +231,41 @@ class Builder:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build item database.")
-    parser.add_argument('--verbose',
-                        default=False,
-                        required=False,
-                        help='A boolean of whether to be verbose.')
-    parser.add_argument('--compare',
-                        default=True,
-                        required=False,
-                        help='A boolean of whether to compare data.')
-    parser.add_argument('--export',
-                        default=False,
-                        required=False,
-                        help='A boolean of whether to export data.')
-    parser.add_argument('--validate',
-                        default=True,
-                        required=False,
-                        help='A boolean of whether to validate using schema.')
-    parser.add_argument('--test',
-                        default=False,
-                        required=False,
-                        help='A boolean of whether to test the builder process.')
+    parser.add_argument(
+        "--verbose",
+        default=False,
+        required=False,
+        help="A boolean of whether to be verbose.",
+    )
+    parser.add_argument(
+        "--compare",
+        default=True,
+        required=False,
+        help="A boolean of whether to compare data.",
+    )
+    parser.add_argument(
+        "--export",
+        default=False,
+        required=False,
+        help="A boolean of whether to export data.",
+    )
+    parser.add_argument(
+        "--validate",
+        default=True,
+        required=False,
+        help="A boolean of whether to validate using schema.",
+    )
+    parser.add_argument(
+        "--test",
+        default=False,
+        required=False,
+        help="A boolean of whether to test the builder process.",
+    )
     args = parser.parse_args()
 
-    builder = Builder(verbose=True,
-                      compare=args.compare,
-                      export=args.export,
-                      validate=args.validate)
+    builder = Builder(
+        verbose=True, compare=args.compare, export=args.export, validate=args.validate
+    )
     if args.test:
         builder.test()
     else:

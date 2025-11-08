@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 import argparse
 import traceback
@@ -47,11 +48,15 @@ class Builder:
             self.all_db_monsters = json.load(f)
 
         # Load the monster wikitext file of page text
-        with open(Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text.json")) as f:
+        with open(
+            Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text.json")
+        ) as f:
             self.all_wikitext_raw = json.load(f)
 
         # Load the monster wikitext file of processed data
-        with open(Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json")) as f:
+        with open(
+            Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json")
+        ) as f:
             self.all_wikitext_processed = json.load(f)
 
         # Load schema data
@@ -70,14 +75,16 @@ class Builder:
                 #     continue
 
                 # Initialize the BuildMonster class, used for all monsters
-                builder = build_monster.BuildMonster(monster_id=monster_id,
-                                                     all_monster_cache_data=self.all_monster_cache_data,
-                                                     all_db_monsters=self.all_db_monsters,
-                                                     all_wikitext_raw=self.all_wikitext_raw,
-                                                     all_wikitext_processed=self.all_wikitext_processed,
-                                                     schema_data=self.schema_data,
-                                                     known_monsters=self.known_monsters,
-                                                     verbose=self.verbose)
+                builder = build_monster.BuildMonster(
+                    monster_id=monster_id,
+                    all_monster_cache_data=self.all_monster_cache_data,
+                    all_db_monsters=self.all_db_monsters,
+                    all_wikitext_raw=self.all_wikitext_raw,
+                    all_wikitext_processed=self.all_wikitext_processed,
+                    schema_data=self.schema_data,
+                    known_monsters=self.known_monsters,
+                    verbose=self.verbose,
+                )
 
                 status, message = builder.preprocessing()
                 if status:
@@ -91,13 +98,13 @@ class Builder:
                     if self.validate:
                         builder.validate_monster()
                 else:
-                    with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                    with open(".error.txt", "a", encoding="utf-8") as errfile:
                         print(message, file=errfile)
 
         except Exception:
             print("Ran into issue parsing item.")
             print(traceback.format_exc())
-            with open('.error.txt', 'a', encoding='utf-8') as errfile:
+            with open(".error.txt", "a", encoding="utf-8") as errfile:
                 print("Ran into issue parsing item.", file=errfile)
                 print(traceback.format_exc(), file=errfile)
         # Done processing, rejoice!
@@ -112,14 +119,16 @@ class Builder:
             #     continue
 
             # Initialize the BuildMonster class, used for all monsters
-            builder = build_monster.BuildMonster(monster_id=monster_id,
-                                                 all_monster_cache_data=self.all_monster_cache_data,
-                                                 all_db_monsters=self.all_db_monsters,
-                                                 all_wikitext_raw=self.all_wikitext_raw,
-                                                 all_wikitext_processed=self.all_wikitext_processed,
-                                                 schema_data=self.schema_data,
-                                                 known_monsters=self.known_monsters,
-                                                 verbose=self.verbose)
+            builder = build_monster.BuildMonster(
+                monster_id=monster_id,
+                all_monster_cache_data=self.all_monster_cache_data,
+                all_db_monsters=self.all_db_monsters,
+                all_wikitext_raw=self.all_wikitext_raw,
+                all_wikitext_processed=self.all_wikitext_processed,
+                schema_data=self.schema_data,
+                known_monsters=self.known_monsters,
+                verbose=self.verbose,
+            )
 
             status, message = builder.preprocessing()
             if status:
@@ -128,7 +137,7 @@ class Builder:
                 self.known_monsters.append(known_monster)
                 builder.validate_monster()
             else:
-                with open('.error.txt', 'a', encoding='utf-8') as errfile:
+                with open(".error.txt", "a", encoding="utf-8") as errfile:
                     print(message, file=errfile)
 
         # Done testing, rejoice!
@@ -138,32 +147,41 @@ class Builder:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build monster database.")
-    parser.add_argument('--verbose',
-                        default=False,
-                        required=False,
-                        help='A boolean of whether to be verbose.')
-    parser.add_argument('--compare',
-                        default=True,
-                        required=False,
-                        help='A boolean of whether to compare data.')
-    parser.add_argument('--export',
-                        default=False,
-                        required=False,
-                        help='A boolean of whether to export data.')
-    parser.add_argument('--validate',
-                        default=True,
-                        required=False,
-                        help='A boolean of whether to validate using schema.')
-    parser.add_argument('--test',
-                        default=False,
-                        required=False,
-                        help='A boolean of whether to test the builder process.')
+    parser.add_argument(
+        "--verbose",
+        default=False,
+        required=False,
+        help="A boolean of whether to be verbose.",
+    )
+    parser.add_argument(
+        "--compare",
+        default=True,
+        required=False,
+        help="A boolean of whether to compare data.",
+    )
+    parser.add_argument(
+        "--export",
+        default=False,
+        required=False,
+        help="A boolean of whether to export data.",
+    )
+    parser.add_argument(
+        "--validate",
+        default=True,
+        required=False,
+        help="A boolean of whether to validate using schema.",
+    )
+    parser.add_argument(
+        "--test",
+        default=False,
+        required=False,
+        help="A boolean of whether to test the builder process.",
+    )
     args = parser.parse_args()
 
-    builder = Builder(verbose=True,
-                      compare=args.compare,
-                      export=args.export,
-                      validate=args.validate)
+    builder = Builder(
+        verbose=True, compare=args.compare, export=args.export, validate=args.validate
+    )
     if args.test:
         builder.test()
     else:

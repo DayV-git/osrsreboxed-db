@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from cerberus import Validator
 
 
@@ -29,6 +30,7 @@ class MyValidator(Validator):
 
     :param Validator: Subclass the Cerberus Validator class.
     """
+
     def _validate_description(self, description, field, value):
         """Remove description field from Cerberus schema.
         The rule's arguments are validated against this schema:

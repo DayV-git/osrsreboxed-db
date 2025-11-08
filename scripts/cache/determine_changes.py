@@ -27,6 +27,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 from typing import List
@@ -45,6 +46,7 @@ class DetermineCacheChanges:
     :param current_dict: A dictionary of the new items_scraper.json file
     :param past_dict: A dictionary of the old items_scraper.json file
     """
+
     def __init__(self, current_dict: Dict, past_dict: Dict):
         self.current_dict = current_dict
         self.past_dict = past_dict
@@ -66,13 +68,17 @@ class DetermineCacheChanges:
 
     def changed(self) -> List:
         """Return a set of only changed entries (including properties) that is sorted."""
-        changed = set(o for o in self.intersect if self.past_dict[o] != self.current_dict[o])
+        changed = set(
+            o for o in self.intersect if self.past_dict[o] != self.current_dict[o]
+        )
         changed = sorted(changed)
         return changed
 
     def unchanged(self) -> List:
         """Return a set of only unchanged entries (including properties) that is sorted."""
-        unchanged = set(o for o in self.intersect if self.past_dict[o] == self.current_dict[o])
+        unchanged = set(
+            o for o in self.intersect if self.past_dict[o] == self.current_dict[o]
+        )
         unchanged = sorted(unchanged)
         return unchanged
 
@@ -96,15 +102,13 @@ def items():
     added = dd.added()
     print("- Added items: %d" % len(added))
     for itemID in added:
-        print("    - %s,%s" % (itemID,
-                               new_items[itemID]["name"]))
+        print("    - %s,%s" % (itemID, new_items[itemID]["name"]))
 
     # Determine removed items
     removed = dd.removed()
     print("- Removed items: %d" % len(removed))
     for itemID in removed:
-        print("    - %s,%s" % (itemID,
-                               old_items[itemID]["name"]))
+        print("    - %s,%s" % (itemID, old_items[itemID]["name"]))
 
     # Determine changed items
     changed = dd.changed()
@@ -115,9 +119,10 @@ def items():
             if new_items[itemID][key] != old_items[itemID][key]:
                 changed_keys.append(key)
         if changed_keys:
-            print("    - %s,%s,%s" % (itemID,
-                                      old_items[itemID]["name"],
-                                      '|'.join(changed_keys)))
+            print(
+                "    - %s,%s,%s"
+                % (itemID, old_items[itemID]["name"], "|".join(changed_keys))
+            )
 
     # # Determine unchanged items
     # # This is commented out, as the results are always large
@@ -147,15 +152,13 @@ def monsters():
     added = dd.added()
     print("- Added monsters: %d" % len(added))
     for monsterID in added:
-        print("    - %s,%s" % (monsterID,
-                               new_monsters[monsterID]["name"]))
+        print("    - %s,%s" % (monsterID, new_monsters[monsterID]["name"]))
 
     # Determine removed monsters
     removed = dd.removed()
     print("- Removed monsters: %d" % len(removed))
     for monsterID in removed:
-        print("    - %s,%s" % (monsterID,
-                               old_monsters[monsterID]["name"]))
+        print("    - %s,%s" % (monsterID, old_monsters[monsterID]["name"]))
 
     # Determine changed monsters
     changed = dd.changed()
@@ -170,9 +173,10 @@ def monsters():
             if new_monsters[monsterID][key] != old_monsters[monsterID][key]:
                 changed_keys.append(key)
         if changed_keys:
-            print("    - %s,%s,%s" % (monsterID,
-                                      old_monsters[monsterID]["name"],
-                                      '|'.join(changed_keys)))
+            print(
+                "    - %s,%s,%s"
+                % (monsterID, old_monsters[monsterID]["name"], "|".join(changed_keys))
+            )
 
     # # Determine unchanged monsters
     # # This is commented out, as the results are always large

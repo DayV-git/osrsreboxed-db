@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import os
 from pathlib import Path
 
@@ -32,7 +33,9 @@ NUMBER_OF_MONSTERS = 3000
 
 def test_all_monsters_load_monsters_json(path_to_docs_dir: Path):
     path_to_monsters_json_dir_no_slash = path_to_docs_dir / "monsters-json"
-    path_to_monsters_json_dir_slash = os.path.join(path_to_docs_dir, "monsters-json", "")
+    path_to_monsters_json_dir_slash = os.path.join(
+        path_to_docs_dir, "monsters-json", ""
+    )
 
     for path in (path_to_monsters_json_dir_slash, path_to_monsters_json_dir_no_slash):
         all_db_monsters = all_monsters.AllMonsters(str(path))

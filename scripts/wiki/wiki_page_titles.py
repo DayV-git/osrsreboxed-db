@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 import logging
 from pathlib import Path
@@ -37,6 +38,7 @@ class WikiPageTitles:
     :param base_url: The OSRS Wiki URL used for API queries.
     :param categories: A list of OSRS Wiki categories.
     """
+
     def __init__(self, base_url: str, categories: list):
         self.base_url = base_url
         self.categories = categories
@@ -103,11 +105,13 @@ class WikiPageTitles:
         :param category: A string representing the OSRS Wiki category to extract.
         """
         # Start construct MediaWiki request
-        request = {'list': 'categorymembers'}
+        request = {"list": "categorymembers"}
 
-        for result in self._extract_page_titles_from_category_callback(request, category):
+        for result in self._extract_page_titles_from_category_callback(
+            request, category
+        ):
             # Process JSON result data
-            for entry in result['categorymembers']:
+            for entry in result["categorymembers"]:
                 page_title = entry["title"]
                 if page_title.startswith("File:"):
                     continue
@@ -127,10 +131,10 @@ class WikiPageTitles:
         :param request: A dictionary to be populated with the OSRS Wiki API request.
         :param category: A string representing the OSRS Wiki category to extract.
         """
-        request['cmtitle'] = f'Category:{category}'
-        request['action'] = 'query'
-        request['format'] = 'json'
-        request['cmlimit'] = '500'
+        request["cmtitle"] = f"Category:{category}"
+        request["action"] = "query"
+        request["format"] = "json"
+        request["cmlimit"] = "500"
 
         last_continue = {}
 
@@ -143,28 +147,28 @@ class WikiPageTitles:
 
             # Perform HTTP GET request
             try:
-                result = requests.get(self.base_url,
-                                      headers=config.custom_agent,
-                                      params=req).json()
+                result = requests.get(
+                    self.base_url, headers=config.custom_agent, params=req
+                ).json()
             except requests.exceptions.RequestException as e:
                 raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
 
             # Handle HTTP response
-            if 'query' in result:
+            if "query" in result:
                 # If "query" entry is in JSON result, extract the query response
-                yield result['query']
-            if 'continue' not in result:
+                yield result["query"]
+            if "continue" not in result:
                 # If "continue" entry is not JSON result, there are no more page titles in category
                 break
-            if 'errors' in result:
-                print(result['errors'])
+            if "errors" in result:
+                print(result["errors"])
                 break
-            if 'warnings' in result:
-                print(result['warnings'])
+            if "warnings" in result:
+                print(result["warnings"])
                 break
 
             # Update the last fetched page title to continue query
-            last_continue = result['continue']
+            last_continue = result["continue"]
 
     def extract_last_revision_timestamp(self, page_titles_string: str) -> Dict:
         """Extract the last revision timestamp for page titles from OSRS Wiki.
@@ -182,16 +186,16 @@ class WikiPageTitles:
         """
         # Construct query for fetching page revisions
         request = {
-            'action': 'query',
-            'prop': 'revisions',
-            'titles': page_titles_string,
-            'format': 'json',
-            'rvprop': 'timestamp'
+            "action": "query",
+            "prop": "revisions",
+            "titles": page_titles_string,
+            "format": "json",
+            "rvprop": "timestamp",
         }
 
-        page_data = requests.get(self.base_url,
-                                 headers=config.custom_agent,
-                                 params=request).json()
+        page_data = requests.get(
+            self.base_url, headers=config.custom_agent, params=request
+        ).json()
 
         # Loop returned page revision data
         pages_revision_data = page_data["query"]["pages"]
@@ -199,7 +203,9 @@ class WikiPageTitles:
             # Extract page title from the response
             page_title = pages_revision_data[page_id]["title"]
             # Extract last revision timestamp (ISO 8601 format)
-            page_revision_date = pages_revision_data[page_id]["revisions"][0]["timestamp"]
+            page_revision_date = pages_revision_data[page_id]["revisions"][0][
+                "timestamp"
+            ]
             # Add revision date to page_titles dict
             self.page_titles[page_title] = page_revision_date
 
@@ -210,7 +216,7 @@ class WikiPageTitles:
 
         :param out_file_name: The file name used for exporting the wiki page titles to JSON.
         """
-        with open(out_file_name, mode='w') as out_file:
+        with open(out_file_name, mode="w") as out_file:
             out_file.write(json.dumps(self.page_titles, indent=4))
 
     def export_page_titles_in_text(self, out_file_name: str):
@@ -218,6 +224,6 @@ class WikiPageTitles:
 
         :param out_file_name: The file name used for exporting the wiki page titles to a text file.
         """
-        with open(out_file_name, mode='w', newline='\n') as out_file:
+        with open(out_file_name, mode="w", newline="\n") as out_file:
             for page_title in self.page_titles:
-                out_file.write(page_title + '\n')
+                out_file.write(page_title + "\n")

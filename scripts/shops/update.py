@@ -20,6 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from scripts.shops import shops_properties
 from scripts.shops import shops_items
 
@@ -38,5 +39,5 @@ def main():
     print(">>> Shop data extraction completed!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

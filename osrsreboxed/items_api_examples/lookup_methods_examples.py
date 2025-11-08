@@ -60,7 +60,9 @@ if __name__ == "__main__":
     # Lookup item with name value of "Overload (Nightmare Zone) (4 doses)" - this will pass
     print(">>> all_db_items.lookup_by_item_name(Overload (Nightmare Zone) (4 doses))")
     try:
-        item = all_db_items.lookup_by_item_name("Overload (Nightmare Zone) (4 doses)", use_wiki_name=True)
+        item = all_db_items.lookup_by_item_name(
+            "Overload (Nightmare Zone) (4 doses)", use_wiki_name=True
+        )
         print(item)
     except ValueError:
         pass

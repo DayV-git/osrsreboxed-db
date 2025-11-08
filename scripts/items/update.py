@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from scripts.items import items_buylimits
 from scripts.items import items_properties
 from scripts.items import items_unalchable
@@ -38,5 +39,5 @@ def main():
     convert_item_icons.main()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

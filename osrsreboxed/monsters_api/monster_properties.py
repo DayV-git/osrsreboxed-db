@@ -27,6 +27,7 @@ from pathlib import Path
 from dataclasses import asdict
 from dataclasses import dataclass
 
+
 @dataclass
 class MonsterProperties:
     """This class defines the object structure and properties for an OSRS monster.
@@ -35,6 +36,7 @@ class MonsterProperties:
     for one specific monster. Every monster has the properties defined in this class,
     as well as the stats.
     """
+
     id: int = None
     name: str = None
     last_updated: str = None
@@ -84,8 +86,7 @@ class MonsterProperties:
     defence_ranged_heavy: int = None
 
     @classmethod
-    def from_json(cls, json_dict: Dict) -> 'MonsterProperties':
-
+    def from_json(cls, json_dict: Dict) -> "MonsterProperties":
 
         return cls(**json_dict)
 
@@ -96,7 +97,7 @@ class MonsterProperties:
         """
         return asdict(self)
 
-    def export_json(self, pretty: bool, export_path: str, max_attempts = 5, delay = 0.5):
+    def export_json(self, pretty: bool, export_path: str, max_attempts=5, delay=0.5):
         """Output Monster to JSON file.
 
         :param pretty: Toggles pretty (indented) JSON output.

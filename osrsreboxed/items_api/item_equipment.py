@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from dataclasses import asdict
 from dataclasses import dataclass
 from typing import Dict
@@ -33,6 +34,7 @@ class ItemEquipment:
     additional properties about equipment slot, attack speed and skill requirements
     for the item.
     """
+
     attack_stab: int
     attack_slash: int
     attack_crush: int

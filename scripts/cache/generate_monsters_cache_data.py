@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 
@@ -37,7 +38,18 @@ def process(definitions):
 
         # Before checking if attackable, add a couple of
         # known monsters that are "death" versions...
-        if json_data["id"] in [8622, 9432, 9433, 14012, 377, 7889, 8341, 10769, 8613, 12192]:
+        if json_data["id"] in [
+            8622,
+            9432,
+            9433,
+            14012,
+            377,
+            7889,
+            8341,
+            10769,
+            8613,
+            12192,
+        ]:
             attackable_npcs[id_number] = json_data
 
         if "Attack" in json_data["actions"]:

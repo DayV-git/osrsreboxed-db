@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from pathlib import Path
 
 import requests
@@ -39,20 +40,20 @@ def fetch():
 
     file_name = "items-buylimits.json"
     file_path = Path(config.DATA_ITEMS_PATH / file_name)
-    
-    #buy_limits = dict()
+
+    # buy_limits = dict()
     #
     # Parse each line, looking for following structure
     # ["3rd age amulet"] = 8,
     # Source: runelite/runelite-wiki-scraper
-    #for line in data.split("\n"):
+    # for line in data.split("\n"):
     #    match = re.search(r"\[\"(.*)\"\] = (\d+),?", str(line))
     #    if match:
     #        name = match.group(1).replace('\\', '')
     #        limit = match.group(2)
     #        buy_limits[name] = int(limit)
 
-    #with open(file_path, "w") as f:
+    # with open(file_path, "w") as f:
     #    json.dump(buy_limits, f, indent=4)
 
     with open(file_path, "w") as f:

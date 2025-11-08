@@ -21,21 +21,21 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 import config
 
-CACHE_DUMP_TYPES = [
-    "items",
-    "npcs",
-    "objects"
-]
+CACHE_DUMP_TYPES = ["items", "npcs", "objects"]
+
 
 def load_item_definitions():
     print("Loading item cache...", flush=True)
     item_definitions = dict()
-    all_cache_items = sorted(Path(config.DATA_CACHE_PATH / "item_defs").glob("*.json"),
-                             key=lambda path: int(path.stem))
+    all_cache_items = sorted(
+        Path(config.DATA_CACHE_PATH / "item_defs").glob("*.json"),
+        key=lambda path: int(path.stem),
+    )
     if len(all_cache_items) == 0:
         print(">>> ERROR: scripts.cache.cache_constants")
         exit(">>> Could not load item cache files. Exiting.")
@@ -45,11 +45,14 @@ def load_item_definitions():
             item_definitions[str(data["id"])] = data
     return item_definitions
 
+
 def load_npc_definitions():
     print("Loading NPC cache...", flush=True)
     npc_definitions = dict()
-    all_cache_npcs = sorted(Path(config.DATA_CACHE_PATH / "npc_defs").glob("*.json"),
-                            key=lambda path: int(path.stem))
+    all_cache_npcs = sorted(
+        Path(config.DATA_CACHE_PATH / "npc_defs").glob("*.json"),
+        key=lambda path: int(path.stem),
+    )
     if len(all_cache_npcs) == 0:
         print(">>> ERROR: scripts.cache.cache_constants")
         exit(">>> Could not load npc cache files. Exiting.")
@@ -59,11 +62,14 @@ def load_npc_definitions():
             npc_definitions[str(data["id"])] = data
     return npc_definitions
 
+
 def load_object_definitions():
     print("Loading object cache...", flush=True)
     object_definitions = dict()
-    all_cache_objects = sorted(Path(config.DATA_CACHE_PATH / "object_defs").glob("*.json"),
-                               key=lambda path: int(path.stem))
+    all_cache_objects = sorted(
+        Path(config.DATA_CACHE_PATH / "object_defs").glob("*.json"),
+        key=lambda path: int(path.stem),
+    )
     if len(all_cache_objects) == 0:
         print(">>> ERROR: scripts.cache.cache_constants")
         exit(">>> Could not load object cache files. Exiting.")

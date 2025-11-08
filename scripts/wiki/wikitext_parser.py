@@ -57,6 +57,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import json
 from pathlib import Path
 from typing import Union, List, Dict
@@ -64,7 +65,9 @@ from typing import Union, List, Dict
 import mwparserfromhell
 
 
-def extract_wikitext_template(wikitext: str, template_type: str, multiple: bool = True) -> List:
+def extract_wikitext_template(
+    wikitext: str, template_type: str, multiple: bool = True
+) -> List:
     """Parse raw wikitext and extract a specified template.
 
     The OSRS Wiki stores structured information in a variety of different
@@ -110,7 +113,9 @@ def extract_wikitext_template(wikitext: str, template_type: str, multiple: bool 
 class WikitextIDParser:
     def __init__(self, wikitext_file_path: Path, template_names: List):
         self.wikitext_file_path = wikitext_file_path  # the raw wikitext dump
-        self.template_names = template_names  # The infobox name (e.g., infobox item, infobox monster)
+        self.template_names = (
+            template_names  # The infobox name (e.g., infobox item, infobox monster)
+        )
         self.item_id_to_wikitext = dict()  # Maps ID to wikitext (instead of name)
         self.item_id_to_version_number = dict()  # Maps ID to template version
         self.item_id_to_template_number = dict()  # Maps ID to template occurance number
@@ -133,7 +138,9 @@ class WikitextIDParser:
             # Loop the list of proivided infobox template names
             for template_name in self.template_names:
                 # Extract all matching infoboxes (multiple=True)
-                templates = extract_wikitext_template(wikitext, template_name, multiple=True)
+                templates = extract_wikitext_template(
+                    wikitext, template_name, multiple=True
+                )
                 for template_number, template in enumerate(templates):
                     infobox_parser = WikitextTemplateParser(wikitext)
                     infobox_parser.template = template
@@ -155,9 +162,7 @@ class WikitextTemplateParser:
         self.is_versioned = False  # is the template representing multiple entities
 
         # Set specific wikitext infobox properties that can be versioned
-        self.version_identifiers = {"id": 0,
-                                    "name": 0,
-                                    "itemid": 0}
+        self.version_identifiers = {"id": 0, "name": 0, "itemid": 0}
 
     def extract_infobox(self, template_type: str, version: int = 1) -> bool:
         """Parse raw wikitext and extract a specified infobox.
@@ -355,7 +360,9 @@ class WikitextTemplateParser:
                 continue
 
             for i in range(1, count + 2):
-                id = self.extract_infobox_id(identifier + str(i))  # Pass versioned string
+                id = self.extract_infobox_id(
+                    identifier + str(i)
+                )  # Pass versioned string
                 if id:
                     ids = self.split_infobox_id_string(id)
                     for id in ids:

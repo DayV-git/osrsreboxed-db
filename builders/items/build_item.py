@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from typing import Dict
 from pathlib import Path
 from datetime import datetime
@@ -90,10 +91,7 @@ class BuildItem:
         :return: A dictionary including success and code.
         """
         # Initialize dictionary to return preprocessing status
-        status = {
-            "status": False,
-            "code": None
-        }
+        status = {"status": False, "code": None}
 
         # Set item ID variables
         self.item_id_str = str(self.item_id)
@@ -120,7 +118,10 @@ class BuildItem:
         # Noted and placeholder items should use the linked_id_item property
         # to fill in additional wiki data...
         item_id_to_process_int = None
-        if self.item_cache_data["noted"] is True or self.item_cache_data["placeholder"] is True:
+        if (
+            self.item_cache_data["noted"] is True
+            or self.item_cache_data["placeholder"] is True
+        ):
             item_id_to_process_int = int(self.linked_id_item_int)
         else:
             item_id_to_process_int = int(self.item_id)
@@ -137,7 +138,9 @@ class BuildItem:
 
         # Try to find the wiki data using linked_id_item ID number search
         elif self.all_wikitext_processed.get(self.linked_id_item_str, None):
-            self.item_wikitext = self.all_wikitext_processed.get(self.linked_id_item_str, None)
+            self.item_wikitext = self.all_wikitext_processed.get(
+                self.linked_id_item_str, None
+            )
             self.wikitext_found_using = "linked_id"
             status["code"] = "lookup_passed_linked_id"
             status["status"] = True
@@ -238,7 +241,9 @@ class BuildItem:
         self.item_dict["noteable"] = self.item_cache_data["noteable"]
         self.item_dict["linked_id_item"] = self.item_cache_data["linked_id_item"]
         self.item_dict["linked_id_noted"] = self.item_cache_data["linked_id_noted"]
-        self.item_dict["linked_id_placeholder"] = self.item_cache_data["linked_id_placeholder"]
+        self.item_dict["linked_id_placeholder"] = self.item_cache_data[
+            "linked_id_placeholder"
+        ]
         self.item_dict["placeholder"] = self.item_cache_data["placeholder"]
         self.item_dict["equipable"] = self.item_cache_data["equipable"]
         self.item_dict["cost"] = self.item_cache_data["cost"]
@@ -378,7 +383,9 @@ class BuildItem:
         if examine is None:
             examine = self.extract_infobox_value(self.template, "examine")
         if examine is not None:
-            self.item_dict["examine"] = infobox_cleaner.examine(examine, self.item_dict["name"])
+            self.item_dict["examine"] = infobox_cleaner.examine(
+                examine, self.item_dict["name"]
+            )
         else:
             # Being here means the extraction for "examine" failed
             key = "itemexamine" + str(self.infobox_version_number)
@@ -386,7 +393,9 @@ class BuildItem:
             if examine is None:
                 examine = self.extract_infobox_value(self.template, "itemexamine")
             if examine is not None:
-                self.item_dict["examine"] = infobox_cleaner.examine(examine, self.item_dict["name"])
+                self.item_dict["examine"] = infobox_cleaner.examine(
+                    examine, self.item_dict["name"]
+                )
             else:
                 self.item_dict["examine"] = None
                 self.item_dict["incomplete"] = True
@@ -443,21 +452,22 @@ class BuildItem:
         # Initialize a dictionary that maps database_name -> property_name
         # The database_name is used in this project
         # The property_name is used by the OSRS Wiki
-        combat_bonuses = {"attack_stab": "astab",
-                          "attack_slash": "aslash",
-                          "attack_crush": "acrush",
-                          "attack_magic": "amagic",
-                          "attack_ranged": "arange",
-                          "defence_stab": "dstab",
-                          "defence_slash": "dslash",
-                          "defence_crush": "dcrush",
-                          "defence_magic": "dmagic",
-                          "defence_ranged": "drange",
-                          "melee_strength": "str",
-                          "ranged_strength": "rstr",
-                          "magic_damage": "mdmg",
-                          "prayer": "prayer"
-                          }
+        combat_bonuses = {
+            "attack_stab": "astab",
+            "attack_slash": "aslash",
+            "attack_crush": "acrush",
+            "attack_magic": "amagic",
+            "attack_ranged": "arange",
+            "defence_stab": "dstab",
+            "defence_slash": "dslash",
+            "defence_crush": "dcrush",
+            "defence_magic": "dmagic",
+            "defence_ranged": "drange",
+            "melee_strength": "str",
+            "ranged_strength": "rstr",
+            "magic_damage": "mdmg",
+            "prayer": "prayer",
+        }
 
         # Loop each of the combat bonuses and populate
         for database_name, property_name in combat_bonuses.items():
@@ -501,7 +511,7 @@ class BuildItem:
             self.item_dict["equipment"]["requirements"] = None
 
         # If item is not weapon or 2h, start set defaults and return
-        if (self.item_dict["equipment"]["slot"] not in ["weapon", "2h"]):
+        if self.item_dict["equipment"]["slot"] not in ["weapon", "2h"]:
             self.item_dict["equipable_weapon"] = False
             return
 
@@ -517,7 +527,9 @@ class BuildItem:
         if attack_speed is None:
             attack_speed = self.extract_infobox_value(bonuses_template, "speed")
         if attack_speed is not None:
-            self.item_dict["weapon"]["attack_speed"] = infobox_cleaner.caller(attack_speed, "speed")
+            self.item_dict["weapon"]["attack_speed"] = infobox_cleaner.caller(
+                attack_speed, "speed"
+            )
         else:
             # If not present, set to 0
             self.item_dict["weapon"]["attack_speed"] = 0
@@ -526,7 +538,6 @@ class BuildItem:
         # Extract the CombatStyles template
         infobox_combat_parser = WikitextTemplateParser(self.item_wikitext)
         has_infobox = infobox_combat_parser.extract_infobox("combatstyles")
-
 
         if has_infobox:
             # There is a combatstyles infobox, parse it
@@ -538,7 +549,10 @@ class BuildItem:
             try:
                 self.item_dict["weapon"]["stances"] = self.weapon_stances[weapon_type]
             except KeyError:
-                print("populate_from_wiki_data_equipment: Weapon type error 1 | " + weapon_type)
+                print(
+                    "populate_from_wiki_data_equipment: Weapon type error 1 | "
+                    + weapon_type
+                )
                 raise
 
         else:
@@ -553,11 +567,12 @@ class BuildItem:
                 print("populate_from_wiki_data_equipment: Weapon type error 2")
                 raise
 
-
         # Finally, set the equipable_weapon property to true
         self.item_dict["equipable_weapon"] = True
 
-    def extract_infobox_value(self, template: mwparserfromhell.nodes.template.Template, key: str) -> str:
+    def extract_infobox_value(
+        self, template: mwparserfromhell.nodes.template.Template, key: str
+    ) -> str:
         """Helper method to extract a value from a template using a specified key.
 
         This helper method is a simple solution to repeatedly try to fetch a specific
@@ -586,9 +601,13 @@ class BuildItem:
         # Check/set last update
         last_update = self.all_db_items.get(self.item_id, None)
         if last_update:
-            self.item_dict["last_updated"] = self.all_db_items[self.item_id]["last_updated"]
+            self.item_dict["last_updated"] = self.all_db_items[self.item_id][
+                "last_updated"
+            ]
         else:
-            self.item_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            self.item_dict["last_updated"] = datetime.now(timezone.utc).strftime(
+                "%Y-%m-%d"
+            )
 
         if "equipable_by_player" not in self.item_dict:
             self.item_dict["equipable_by_player"] = False
@@ -607,15 +626,16 @@ class BuildItem:
 
         # Check noted, placeholder and noted properties
         # If any of these properties, it must be a duplicate
-        if item_properties.stacked or item_properties.noted or item_properties.placeholder:
+        if (
+            item_properties.stacked
+            or item_properties.noted
+            or item_properties.placeholder
+        ):
             self.item_dict["duplicate"] = True
             return None
 
         # Set the item properties that we want to compare
-        correlation_properties = {
-            "name": False,
-            "wiki_name": False
-        }
+        correlation_properties = {"name": False, "wiki_name": False}
 
         # Loop the list of currently (already processed) items
         for known_item in self.known_items:
@@ -629,7 +649,9 @@ class BuildItem:
                     correlation_properties[cprop] = True
 
             # Check all values in correlation properties are True
-            correlation_result = all(value is True for value in correlation_properties.values())
+            correlation_result = all(
+                value is True for value in correlation_properties.values()
+            )
 
             # If name and wiki_name match, set duplicate property to True
             if correlation_result:
@@ -661,17 +683,25 @@ class BuildItem:
         except KeyError:
             print(f">>> compare_json_files: NEW ITEM: {item_properties.id}")
             print(current_json)
-            self.item_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            self.item_dict["last_updated"] = datetime.now(timezone.utc).strftime(
+                "%Y-%m-%d"
+            )
             return
 
         if current_json == existing_json:
-            self.item_dict["last_updated"] = self.all_db_items[self.item_id]["last_updated"]
+            self.item_dict["last_updated"] = self.all_db_items[self.item_id][
+                "last_updated"
+            ]
             return
 
-        ddiff = DeepDiff(existing_json, current_json, ignore_order=True, exclude_paths="root['icon']")
+        ddiff = DeepDiff(
+            existing_json, current_json, ignore_order=True, exclude_paths="root['icon']"
+        )
 
         if ddiff:
-            print(f">>> compare_json_files: CHANGED ITEM: {item_properties.id}: {item_properties.name}")
+            print(
+                f">>> compare_json_files: CHANGED ITEM: {item_properties.id}: {item_properties.name}"
+            )
             print(ddiff)
         self.item_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -686,28 +716,50 @@ class BuildItem:
         if not wikitext:
             return {}
         if isinstance(wikitext, list):
-            wikitext = wikitext[-1] 
+            wikitext = wikitext[-1]
 
-        allowed_skills = {"attack", "defence", "strength", "magic", "hitpoints", "ranged", "prayer"}
+        allowed_skills = {
+            "attack",
+            "defence",
+            "strength",
+            "magic",
+            "hitpoints",
+            "ranged",
+            "prayer",
+        }
         reqs = {}
-        sentences = [s.strip() for s in wikitext.split('.') if s.strip()]
+        sentences = [s.strip() for s in wikitext.split(".") if s.strip()]
         for sentence in sentences:
             lower_sentence = sentence.lower()
-            if 'to wield' in lower_sentence or 'to equip' in lower_sentence or 'to wear' in lower_sentence:
-                skill_pattern = r'(\d+)\s+(\[\[)?([A-Za-z ]+?)(\]\])?(?=\s|$)'
+            if (
+                "to wield" in lower_sentence
+                or "to equip" in lower_sentence
+                or "to wear" in lower_sentence
+            ):
+                skill_pattern = r"(\d+)\s+(\[\[)?([A-Za-z ]+?)(\]\])?(?=\s|$)"
                 for match in re.finditer(skill_pattern, sentence):
                     level = match.group(1)
                     skill = match.group(3)
                     skill_key = skill.strip().lower()
                     num_start = match.start(1)
                     num_end = match.end(1)
-                    before_num = sentence[num_start-1] if num_start > 0 else ''
-                    after_num = sentence[num_end] if num_end < len(sentence) else ''
-                    if (before_num and not before_num.isspace() and before_num.isprintable() and before_num not in [',','.']) or (after_num and not after_num.isspace() and after_num.isprintable() and after_num not in [',','.']):
+                    before_num = sentence[num_start - 1] if num_start > 0 else ""
+                    after_num = sentence[num_end] if num_end < len(sentence) else ""
+                    if (
+                        before_num
+                        and not before_num.isspace()
+                        and before_num.isprintable()
+                        and before_num not in [",", "."]
+                    ) or (
+                        after_num
+                        and not after_num.isspace()
+                        and after_num.isprintable()
+                        and after_num not in [",", "."]
+                    ):
                         continue
-                    if skill_key == 'hitpoints':
-                        before = sentence[:match.start()].lower()
-                        if 'heal' in before or 'restor' in before:
+                    if skill_key == "hitpoints":
+                        before = sentence[: match.start()].lower()
+                        if "heal" in before or "restor" in before:
                             continue
                     if skill_key in allowed_skills:
                         level_int = int(level)
@@ -722,7 +774,11 @@ class BuildItem:
         current_json = item_properties.construct_json()
         if item_properties.equipable:
             wiki_reqs = self.extract_requirements()
-            item_reqs = item_properties.equipment.get("requirements", {}) if item_properties.equipment else {}
+            item_reqs = (
+                item_properties.equipment.get("requirements", {})
+                if item_properties.equipment
+                else {}
+            )
             if item_reqs is None:
                 item_reqs = {}
 
@@ -738,12 +794,12 @@ class BuildItem:
                 if meaningful:
                     merged_reqs = dict(item_reqs)
                     merged_reqs.update(wiki_reqs)
-                    with open('.reqs.txt', 'a', encoding='utf-8') as errfile:
+                    with open(".reqs.txt", "a", encoding="utf-8") as errfile:
                         print(f"    {item_properties.wiki_name}", file=errfile)
                         print(f'    "{item_properties.id}": {{', file=errfile)
                         for k, v in merged_reqs.items():
                             print(f'        "{k}": {v}', file=errfile)
-                        print('    },', file=errfile)
+                        print("    },", file=errfile)
         # Validate object with schema attached
         v = validator.MyValidator(self.schema_data)
         v.validate(current_json)
@@ -751,9 +807,12 @@ class BuildItem:
         # Print any validation errors
         if v.errors:
             print(v.errors)
-            with open('.error.txt', 'a', encoding='utf-8') as errfile:
-                print(f"Validation errors for item {item_properties.id} ({item_properties.name}):", file=errfile)
+            with open(".error.txt", "a", encoding="utf-8") as errfile:
+                print(
+                    f"Validation errors for item {item_properties.id} ({item_properties.name}):",
+                    file=errfile,
+                )
                 print(v.errors, file=errfile)
             ##exit(1)
 
-        #assert v.validate(current_json)
+        # assert v.validate(current_json)

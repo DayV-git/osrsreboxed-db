@@ -20,6 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import os
 import sys
 import json
@@ -49,16 +50,17 @@ def fetch():
         stream = os.popen(f"git log -1 --format='%ad' {TITLES_FP}")
         last_extraction_date = stream.read().strip()
         last_extraction_date = last_extraction_date.strip("'\"")
-        last_extraction_date = re.sub(RG, '', last_extraction_date).strip()
-        last_extraction_date = datetime.strptime(last_extraction_date, "%a %b %d %H:%M:%S %Y")
+        last_extraction_date = re.sub(RG, "", last_extraction_date).strip()
+        last_extraction_date = datetime.strptime(
+            last_extraction_date, "%a %b %d %H:%M:%S %Y"
+        )
         last_extraction_date = last_extraction_date - timedelta(days=3)
     else:
         last_extraction_date = datetime.strptime("2013-02-22", "%Y-%m-%d")
 
     print(">>> Starting wiki page titles extraction...")
     # Create object to handle page titles extraction
-    wiki_page_titles = WikiPageTitles(OSRS_WIKI_API_URL,
-                                      ["Shops"])
+    wiki_page_titles = WikiPageTitles(OSRS_WIKI_API_URL, ["Shops"])
 
     # Boolean to trigger load page titles from file, or run fresh page title extraction
     load_files = False
@@ -67,13 +69,17 @@ def fetch():
     if load_files:
         loaded_page_titles = wiki_page_titles.load_page_titles(TITLES_FP)
         if not loaded_page_titles:
-            sys.exit(">>> ERROR: Specified page titles to load, but not file found. Exiting.")
+            sys.exit(
+                ">>> ERROR: Specified page titles to load, but not file found. Exiting."
+            )
     else:
         # Extract page titles using supplied categories
         wiki_page_titles.extract_page_titles()
         # Extract page revision date
         # Loop 50 page titles at a time, the max number for a revisions request using page titles
-        for page_title_list in itertools.zip_longest(*[iter(wiki_page_titles.page_titles)] * 50):
+        for page_title_list in itertools.zip_longest(
+            *[iter(wiki_page_titles.page_titles)] * 50
+        ):
             # Remove None entries from the list of page titles
             page_title_list = filter(None, page_title_list)
             # Join the page titles list using the pipe (|) separator
@@ -97,7 +103,9 @@ def fetch():
     page_titles_count = 1
     print(">>> Starting wiki text extraction for extracted page titles...")
     for page_title, page_revision_date in wiki_page_titles.page_titles.items():
-        print(f"  > Progress: {page_titles_count:4d} of {page_titles_total:4d} - Processing: {page_title}")
+        print(
+            f"  > Progress: {page_titles_count:4d} of {page_titles_total:4d} - Processing: {page_title}"
+        )
 
         # If script fails:
         # 1) Set load_files (above) to True
@@ -108,8 +116,9 @@ def fetch():
         #     continue
 
         # Convert revision date to datetime object
-        last_revision_date = datetime.strptime(wiki_page_titles[page_title],
-                                               "%Y-%m-%dT%H:%M:%SZ")
+        last_revision_date = datetime.strptime(
+            wiki_page_titles[page_title], "%Y-%m-%dT%H:%M:%SZ"
+        )
 
         # Check if page title is already present in JSON output file, also check revision date
         if page_title in json_data and last_revision_date < last_extraction_date:
@@ -118,8 +127,7 @@ def fetch():
             continue
 
         # Create object to extract page wiki text
-        wiki_page_text = WikiPageText(OSRS_WIKI_API_URL,
-                                      page_title)
+        wiki_page_text = WikiPageText(OSRS_WIKI_API_URL, page_title)
 
         # If the page title has not been extracted, extract wiki text and save to JSON file
         wiki_page_text.extract_page_wiki_text()
@@ -139,33 +147,44 @@ def process():
     with open(TEXT_FP) as f:
         raw_wiki_data = json.load(f)
 
-    WikiEntry = collections.namedtuple('WikiEntry', 'wiki_page_name version_number template_number wikitext')
+    WikiEntry = collections.namedtuple(
+        "WikiEntry", "wiki_page_name version_number template_number wikitext"
+    )
 
     export = dict()
 
     # Process each shop page, using the page title as the identifier
     for page_title, wikitext in raw_wiki_data.items():
         # Skip pages that are not actual shops (category pages, etc.)
-        if any(skip in page_title.lower() for skip in ['category:', 'template:', 'user:', 'file:']):
+        if any(
+            skip in page_title.lower()
+            for skip in ["category:", "template:", "user:", "file:"]
+        ):
             continue
 
         # Skip general shop type pages (like "Axe shops", "Magic shops", etc.)
-        if page_title.lower().endswith('shops') or page_title.lower().endswith('shop') and len(page_title.split()) <= 2:
+        if (
+            page_title.lower().endswith("shops")
+            or page_title.lower().endswith("shop")
+            and len(page_title.split()) <= 2
+        ):
             continue
 
         # Skip other non-shop pages
-        skip_pages = ['Shop', 'Unused shops', 'General store']
+        skip_pages = ["Shop", "Unused shops", "General store"]
         if page_title in skip_pages:
             continue
 
         print(f"  > Processing: {page_title}")
 
         # Check if the page has an infobox shop template
-        if '{{Infobox Shop' in wikitext or '{{infobox shop' in wikitext:
-            entry = WikiEntry(wiki_page_name=page_title,
-                              version_number="",  # Most shops don't have versions
-                              template_number=1,  # Default to 1
-                              wikitext=wikitext)
+        if "{{Infobox Shop" in wikitext or "{{infobox shop" in wikitext:
+            entry = WikiEntry(
+                wiki_page_name=page_title,
+                version_number="",  # Most shops don't have versions
+                template_number=1,  # Default to 1
+                wikitext=wikitext,
+            )
             # Use the page title as the export key instead of a generated numeric id
             export[page_title] = entry
         else:
@@ -174,7 +193,7 @@ def process():
     print(f">>> Processed {len(export)} shops with infobox shop templates")
 
     out_fi = Path(config.DATA_SHOPS_PATH / "shops-wiki-page-text-processed.json")
-    with open(out_fi, 'w') as f:
+    with open(out_fi, "w") as f:
         json.dump(export, f, indent=4)
 
 

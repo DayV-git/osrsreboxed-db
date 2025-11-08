@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 import re
 from datetime import datetime
 
@@ -30,7 +31,8 @@ from dateutil.parser import parse as date_parse
 
 # Source: runelite/runelite-wiki-scraper
 WEIGHT_REDUCTION_EXTRACTOR = re.compile(
-    r"(?i)'''(?:In )?inventory:?''':? ([0-9.-]+) kg<br ?\/?> *'''Equipped:?''':? ([0-9.-]+)")
+    r"(?i)'''(?:In )?inventory:?''':? ([0-9.-]+) kg<br ?\/?> *'''Equipped:?''':? ([0-9.-]+)"
+)
 
 unequipable = [
     286,  # Orange goblin mail
@@ -40,7 +42,7 @@ unequipable = [
     713,  # Clue scroll
     818,  # Poisoned dart(p)
     1235,  # Poisoned dagger(p)
-    2422,  # Blue partyhat (Draynor Bank Robbery) 
+    2422,  # Blue partyhat (Draynor Bank Robbery)
     2513,  # Dragon chainbody (My Arm's Big Adventure)
     4178,  # Abyssal whip (My Arm's Big Adventure)
     4180,  # Dragon platelegs (My Arm's Big Adventure)
@@ -266,33 +268,33 @@ unequipable = [
     27695,
     27190,
     # Old Shayzien armour set IDs
-    18555, 
-    18556, 
-    18557, 
-    18558, 
-    18559, 
-    18560, 
-    18561, 
+    18555,
+    18556,
+    18557,
+    18558,
+    18559,
+    18560,
+    18561,
     18562,
-    18563, 
-    18564, 
-    18565, 
-    18566, 
-    18567, 
-    18568, 
+    18563,
+    18564,
+    18565,
+    18566,
+    18567,
+    18568,
     18569,
-    18570, 
-    18571, 
-    18572, 
-    18573, 
-    18574, 
-    18575, 
-    18576, 
+    18570,
+    18571,
+    18572,
+    18573,
+    18574,
+    18575,
+    18576,
     18577,
-    18578,    
+    18578,
     18579,
-    30320, # Arrav's Axe
-    30990  # Acatzin's axe
+    30320,  # Arrav's Axe
+    30990,  # Acatzin's axe
 ]
 
 
@@ -309,10 +311,10 @@ def clean_wikitext(value: str) -> str:
     """
     value = str(value)
     value = value.strip()
-    value = re.sub(r'[\[\]]+', '', value)  # Removes all "[" and "]"
-    value = re.sub(r' \([^()]*\)', '', value)  # Removes " (anything)"
-    value = re.sub(r'<!--(.*?)-->', '', value)  # Removes "<!--anything-->"
-    value = re.sub(r'<br(.*)', '', value)  # Removes "<br"
+    value = re.sub(r"[\[\]]+", "", value)  # Removes all "[" and "]"
+    value = re.sub(r" \([^()]*\)", "", value)  # Removes " (anything)"
+    value = re.sub(r"<!--(.*?)-->", "", value)  # Removes "<!--anything-->"
+    value = re.sub(r"<br(.*)", "", value)  # Removes "<br"
     return value
 
 
@@ -467,10 +469,12 @@ def examine(value: str, name: str) -> str:
 
     # Apart from "Clue scroll (master)" and "Clue scroll (beginner)"
     # clues have variable examine text
-    clue_scrolls = ["Clue scroll (easy)",
-                    "Clue scroll (medium)",
-                    "Clue scroll (hard)",
-                    "Clue scroll (elite)"]
+    clue_scrolls = [
+        "Clue scroll (easy)",
+        "Clue scroll (medium)",
+        "Clue scroll (hard)",
+        "Clue scroll (elite)",
+    ]
     if name in clue_scrolls:
         return "A clue!"
 
@@ -491,7 +495,7 @@ def examine(value: str, name: str) -> str:
         return "*cough*"
 
     # Fix for quest related examine texts (mostly for keys)
-    examine = re.sub(r' \([^()]*\)', '', examine)
+    examine = re.sub(r" \([^()]*\)", "", examine)
 
     # Remove sic
     examine = examine.replace("{{sic}}", "")

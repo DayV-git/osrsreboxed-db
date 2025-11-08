@@ -21,6 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
+
 from scripts.monsters import monsters_properties
 
 
@@ -28,5 +29,6 @@ def main():
     monsters_properties.fetch()
     monsters_properties.process()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
