@@ -26,6 +26,10 @@ from typing import Dict
 from typing import Generator
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+import time
+import random
 
 import config
 
@@ -43,6 +47,19 @@ class WikiPageTitles:
         self.base_url = base_url
         self.categories = categories
         self.page_titles: Dict[str, str] = dict()
+        # Persistent HTTP session with retry/backoff that respects Retry-After
+        self.session = requests.Session()
+        retry_strategy = Retry(
+            total=5,
+            status_forcelist=[429, 500, 502, 503, 504],
+            backoff_factor=0.5,
+            allowed_methods=frozenset(["GET", "POST"]),
+            raise_on_status=False,
+            respect_retry_after_header=True,
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        self.session.mount("https://", adapter)
+        self.session.mount("http://", adapter)
 
     def __iter__(self) -> Generator[str, None, None]:
         """Iterate (loop) over the extracted or loaded OSRS Wiki page titles.
@@ -138,6 +155,11 @@ class WikiPageTitles:
 
         last_continue = {}
 
+        # Protect against infinite looping if the API continuously returns
+        # non-JSON (HTML error pages) or transient errors. Limit attempts
+        # per continuation to avoid hanging forever.
+        max_attempts = 5
+
         while True:
             # Clone original request
             req = request.copy()
@@ -145,18 +167,54 @@ class WikiPageTitles:
             # Insert the 'continue' section to the request
             req.update(last_continue)
 
-            # Perform HTTP GET request
-            try:
-                result = requests.get(
-                    self.base_url, headers=config.custom_agent, params=req
-                ).json()
-            except requests.exceptions.RequestException as e:
-                raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
+            # Perform HTTP GET request with retry/backoff for transient errors
+            attempt = 1
+            while attempt <= max_attempts:
+                try:
+                    resp = self.session.get(
+                        self.base_url,
+                        headers=config.custom_agent,
+                        params=req,
+                        timeout=15,
+                    )
+                except requests.exceptions.RequestException as e:
+                    if attempt == max_attempts:
+                        raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
+                    wait = 2 ** attempt
+                    LOG.warning("RequestException (attempt %d/%d): %s - retrying in %ds", attempt, max_attempts, e, wait)
+                    time.sleep(wait)
+                    attempt += 1
+                    continue
+
+                # Try to decode JSON, but handle non-JSON responses (HTML/error pages)
+                try:
+                    result = resp.json()
+                    break
+                except ValueError:
+                    snippet = resp.text[:300].replace("\n", " ")
+                    LOG.warning(
+                        "Non-JSON response when querying %s (status=%s). Response snippet: %s",
+                        self.base_url,
+                        resp.status_code,
+                        snippet,
+                    )
+                    if attempt == max_attempts:
+                        raise SystemExit(">>> ERROR: Non-JSON response from wiki API after retries. Exiting.")
+                    # Backoff more aggressively on 429 (rate limit)
+                    if resp.status_code == 429:
+                        wait = 2 ** attempt
+                    else:
+                        wait = 1
+                    time.sleep(wait)
+                    attempt += 1
+                    continue
 
             # Handle HTTP response
             if "query" in result:
                 # If "query" entry is in JSON result, extract the query response
                 yield result["query"]
+                # Small jitter between requests to reduce chance of rate-limiting
+                time.sleep(random.uniform(0.08, 0.2))
             if "continue" not in result:
                 # If "continue" entry is not JSON result, there are no more page titles in category
                 break
@@ -193,9 +251,47 @@ class WikiPageTitles:
             "rvprop": "timestamp",
         }
 
-        page_data = requests.get(
-            self.base_url, headers=config.custom_agent, params=request
-        ).json()
+        # Robust HTTP + JSON handling (retries + backoff + 429 handling)
+        max_attempts = 5
+        page_data = None
+        for attempt in range(1, max_attempts + 1):
+            try:
+                resp = self.session.get(
+                    self.base_url, headers=config.custom_agent, params=request, timeout=15
+                )
+            except requests.exceptions.RequestException as e:
+                if attempt == max_attempts:
+                    raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
+                wait = 2 ** attempt
+                LOG.warning("RequestException (attempt %d/%d): %s - retrying in %ds", attempt, max_attempts, e, wait)
+                time.sleep(wait)
+                continue
+
+            # Try to decode JSON, handle HTML/error responses
+            try:
+                page_data = resp.json()
+                break
+            except ValueError:
+                snippet = resp.text[:300].replace("\n", " ")
+                LOG.warning(
+                    "Non-JSON response when querying %s (status=%s). Response snippet: %s",
+                    self.base_url,
+                    resp.status_code,
+                    snippet,
+                )
+                if attempt == max_attempts:
+                    raise SystemExit(">>> ERROR: Non-JSON response from wiki API after retries. Exiting.")
+                if resp.status_code == 429:
+                    wait = 2 ** attempt
+                else:
+                    wait = 1
+                time.sleep(wait)
+                continue
+
+        if page_data is None:
+            raise SystemExit(
+                ">>> ERROR: Failed to fetch page revision data from wiki API. Exiting."
+            )
 
         # Loop returned page revision data
         pages_revision_data = page_data["query"]["pages"]

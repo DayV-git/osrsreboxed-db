@@ -23,8 +23,11 @@ import json
 import logging
 from pathlib import Path
 import time
+from typing import Optional
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 import config
 
@@ -42,6 +45,19 @@ class WikiPageText:
         self.base_url = base_url
         self.page_title = page_title
         self.wiki_text = None
+        # Session with retry/backoff that respects Retry-After
+        self.session = requests.Session()
+        retry_strategy = Retry(
+            total=5,
+            status_forcelist=[429, 500, 502, 503, 504],
+            backoff_factor=0.5,
+            allowed_methods=frozenset(["GET"]),
+            raise_on_status=False,
+            respect_retry_after_header=True,
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        self.session.mount("https://", adapter)
+        self.session.mount("http://", adapter)
 
     def extract_page_wiki_text(self):
         """Extract wiki text from OSRS Wiki for a provided page name.
@@ -56,26 +72,52 @@ class WikiPageText:
             "format": "json",
             "page": self.page_title,
         }
-        wiki_text = None
 
-        # Perform HTTP GET request
-        for attempt in range(10):
+        wiki_text: Optional[str] = None
+
+        max_attempts = 6
+        for attempt in range(1, max_attempts + 1):
             try:
-                page_data = requests.get(
-                    self.base_url, headers=config.custom_agent, params=request
-                ).json()
-                break
+                resp = self.session.get(
+                    self.base_url,
+                    headers=config.custom_agent,
+                    params=request,
+                    timeout=15,
+                )
             except requests.exceptions.RequestException as e:
-                raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
-            except Exception:
-                print(">>> ERROR: Probably cloudflare 520")
+                if attempt == max_attempts:
+                    raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
+                wait = 2 ** attempt
+                LOG.warning("RequestException fetching %s (attempt %d/%d): %s — retrying in %ds",
+                            self.page_title, attempt, max_attempts, e, wait)
+                time.sleep(wait)
+                continue
 
-        try:
-            # Try to extract the wiki text from the HTTP response
-            wiki_text = page_data["parse"]["wikitext"]["*"]
-        except KeyError:
-            # Set to None if wiki text extraction failed
-            wiki_text = None
+            # Try decode JSON and handle non-JSON (HTML error pages / rate limits)
+            try:
+                page_data = resp.json()
+            except ValueError:
+                snippet = resp.text[:300].replace("\n", " ")
+                LOG.warning("Non-JSON response for page %s (status=%s). Snippet: %s",
+                            self.page_title, resp.status_code, snippet)
+                if attempt == max_attempts:
+                    LOG.error(">>> ERROR: Non-JSON response from wiki API after retries. Skipping page: %s", self.page_title)
+                    page_data = None
+                    break
+                # Backoff more aggressively on 429
+                wait = 2 ** attempt if resp.status_code == 429 else 1
+                time.sleep(wait)
+                continue
+
+            # Successful JSON -> try to extract wiki text
+            if page_data is None:
+                wiki_text = None
+                break
+            try:
+                wiki_text = page_data["parse"]["wikitext"]["*"]
+            except KeyError:
+                wiki_text = None
+            break
 
         self.wiki_text = wiki_text
 
