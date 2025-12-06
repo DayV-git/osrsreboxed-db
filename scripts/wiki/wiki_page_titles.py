@@ -179,9 +179,17 @@ class WikiPageTitles:
                     )
                 except requests.exceptions.RequestException as e:
                     if attempt == max_attempts:
-                        raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
-                    wait = 2 ** attempt
-                    LOG.warning("RequestException (attempt %d/%d): %s - retrying in %ds", attempt, max_attempts, e, wait)
+                        raise SystemExit(
+                            ">>> ERROR: Get request error. Exiting."
+                        ) from e
+                    wait = 2**attempt
+                    LOG.warning(
+                        "RequestException (attempt %d/%d): %s - retrying in %ds",
+                        attempt,
+                        max_attempts,
+                        e,
+                        wait,
+                    )
                     time.sleep(wait)
                     attempt += 1
                     continue
@@ -199,10 +207,12 @@ class WikiPageTitles:
                         snippet,
                     )
                     if attempt == max_attempts:
-                        raise SystemExit(">>> ERROR: Non-JSON response from wiki API after retries. Exiting.")
+                        raise SystemExit(
+                            ">>> ERROR: Non-JSON response from wiki API after retries. Exiting."
+                        )
                     # Backoff more aggressively on 429 (rate limit)
                     if resp.status_code == 429:
-                        wait = 2 ** attempt
+                        wait = 2**attempt
                     else:
                         wait = 1
                     time.sleep(wait)
@@ -257,13 +267,22 @@ class WikiPageTitles:
         for attempt in range(1, max_attempts + 1):
             try:
                 resp = self.session.get(
-                    self.base_url, headers=config.custom_agent, params=request, timeout=15
+                    self.base_url,
+                    headers=config.custom_agent,
+                    params=request,
+                    timeout=15,
                 )
             except requests.exceptions.RequestException as e:
                 if attempt == max_attempts:
                     raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
-                wait = 2 ** attempt
-                LOG.warning("RequestException (attempt %d/%d): %s - retrying in %ds", attempt, max_attempts, e, wait)
+                wait = 2**attempt
+                LOG.warning(
+                    "RequestException (attempt %d/%d): %s - retrying in %ds",
+                    attempt,
+                    max_attempts,
+                    e,
+                    wait,
+                )
                 time.sleep(wait)
                 continue
 
@@ -280,9 +299,11 @@ class WikiPageTitles:
                     snippet,
                 )
                 if attempt == max_attempts:
-                    raise SystemExit(">>> ERROR: Non-JSON response from wiki API after retries. Exiting.")
+                    raise SystemExit(
+                        ">>> ERROR: Non-JSON response from wiki API after retries. Exiting."
+                    )
                 if resp.status_code == 429:
-                    wait = 2 ** attempt
+                    wait = 2**attempt
                 else:
                     wait = 1
                 time.sleep(wait)

@@ -87,9 +87,15 @@ class WikiPageText:
             except requests.exceptions.RequestException as e:
                 if attempt == max_attempts:
                     raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
-                wait = 2 ** attempt
-                LOG.warning("RequestException fetching %s (attempt %d/%d): %s — retrying in %ds",
-                            self.page_title, attempt, max_attempts, e, wait)
+                wait = 2**attempt
+                LOG.warning(
+                    "RequestException fetching %s (attempt %d/%d): %s — retrying in %ds",
+                    self.page_title,
+                    attempt,
+                    max_attempts,
+                    e,
+                    wait,
+                )
                 time.sleep(wait)
                 continue
 
@@ -98,14 +104,21 @@ class WikiPageText:
                 page_data = resp.json()
             except ValueError:
                 snippet = resp.text[:300].replace("\n", " ")
-                LOG.warning("Non-JSON response for page %s (status=%s). Snippet: %s",
-                            self.page_title, resp.status_code, snippet)
+                LOG.warning(
+                    "Non-JSON response for page %s (status=%s). Snippet: %s",
+                    self.page_title,
+                    resp.status_code,
+                    snippet,
+                )
                 if attempt == max_attempts:
-                    LOG.error(">>> ERROR: Non-JSON response from wiki API after retries. Skipping page: %s", self.page_title)
+                    LOG.error(
+                        ">>> ERROR: Non-JSON response from wiki API after retries. Skipping page: %s",
+                        self.page_title,
+                    )
                     page_data = None
                     break
                 # Backoff more aggressively on 429
-                wait = 2 ** attempt if resp.status_code == 429 else 1
+                wait = 2**attempt if resp.status_code == 429 else 1
                 time.sleep(wait)
                 continue
 
