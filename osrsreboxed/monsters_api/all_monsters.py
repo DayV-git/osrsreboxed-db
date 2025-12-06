@@ -29,11 +29,11 @@ from typing import Generator
 from osrsreboxed.monsters_api.monster_properties import MonsterProperties
 
 PATH_TO_MONSTERS_COMPLETE = (
-    Path(__file__).absolute().parent / ".." / ".." / "docs" / "monsters-complete.json"
+    Path(__file__).resolve().parents[2] / "docs" / "monsters-complete.json"
 )
 if not PATH_TO_MONSTERS_COMPLETE.is_file():
     PATH_TO_MONSTERS_COMPLETE = (
-        Path(__file__).absolute().parent / ".." / "docs" / "monsters-complete.json"
+        Path(__file__).resolve().parents[1] / "docs" / "monsters-complete.json"
     )
     if not PATH_TO_MONSTERS_COMPLETE.is_file():
         raise ValueError("Error: Default monsters database file not found. Exiting")
@@ -42,18 +42,17 @@ if not PATH_TO_MONSTERS_COMPLETE.is_file():
 class AllMonsters:
     """This class handles loading of the osrsbox-db monsters database.
 
-    :param input_data_file_or_directory: The osrsbox-db monsters folder of JSON files, or single JSON file.
+    :param input_data_file_or_directory: The folder of JSON files, or single JSON file.
     """
 
     def __init__(self, input_data_file_or_directory: Path = PATH_TO_MONSTERS_COMPLETE):
-        self.all_monsters: List[MonsterProperties] = list()
-        self.all_monsters_dict: Dict[int, MonsterProperties] = dict()
+        self.all_monsters: List[MonsterProperties] = []
+        self.all_monsters_dict: Dict[int, MonsterProperties] = {}
         self.load_all_monsters(input_data_file_or_directory)
 
     def __iter__(self) -> Generator[MonsterProperties, None, None]:
         """Iterate (loop) over each MonsterProperties object."""
-        for monster in self.all_monsters:
-            yield monster
+        yield from self.all_monsters
 
     def __getitem__(self, id_number: int) -> MonsterProperties:
         """Return the monster definition object for a loaded monster.
@@ -113,7 +112,7 @@ class AllMonsters:
 
         # Loop through every monster in JSON file
         for json_file in json_files:
-            with open(json_file) as input_json_file:
+            with open(json_file, encoding="utf-8") as input_json_file:
                 temp = json.load(input_json_file)
 
             self._load_monster(temp)
@@ -123,7 +122,7 @@ class AllMonsters:
 
         :param path_to_json_file: The path to the `monster-complete.json` file.
         """
-        with open(path_to_json_file) as input_json_file:
+        with open(path_to_json_file, encoding="utf-8") as input_json_file:
             temp = json.load(input_json_file)
 
         for entry in temp:

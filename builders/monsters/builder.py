@@ -64,7 +64,7 @@ class Builder:
             self.schema_data = json.load(f)
 
         # Initialize a list of known monsters
-        self.known_monsters = list()
+        self.known_monsters = []
 
     def run(self):
         try:

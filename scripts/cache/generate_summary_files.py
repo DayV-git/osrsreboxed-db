@@ -32,7 +32,7 @@ from scripts.cache import cache_constants
 def process(item_defs, npc_defs, object_defs):
     """Main function to extract item/npc/object summary (ID and name)."""
     for cache_name in cache_constants.CACHE_DUMP_TYPES:
-        summary_data = dict()
+        summary_data = {}
 
         if cache_name == "items":
             definitions = item_defs

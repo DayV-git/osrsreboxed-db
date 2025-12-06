@@ -46,7 +46,7 @@ class WikiPageTitles:
     def __init__(self, base_url: str, categories: list):
         self.base_url = base_url
         self.categories = categories
-        self.page_titles: Dict[str, str] = dict()
+        self.page_titles: Dict[str, str] = {}
         # Persistent HTTP session with retry/backoff that respects Retry-After
         self.session = requests.Session()
         retry_strategy = Retry(

@@ -24,6 +24,9 @@ from dataclasses import dataclass
 from typing import Dict
 from typing import Optional
 
+# The dataclass has many explicit attributes matching the data model.
+# pylint: disable=too-many-instance-attributes
+
 
 @dataclass
 class ItemEquipment:

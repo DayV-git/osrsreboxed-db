@@ -128,7 +128,7 @@ def parse_item_definition_fix_linked_item(
 
 def process(definitions):
     """Extract item definition data, and process for builder ingestion."""
-    all_items = dict()
+    all_items = {}
 
     with open(Path(config.DATA_ITEMS_PATH / "items-stacked.json")) as f:
         stacked_variants = json.load(f)
@@ -144,7 +144,7 @@ def process(definitions):
             continue
 
         # Initialize the dictionary to store each item properties
-        item_data = dict()
+        item_data = {}
 
         # Get the item ID
         item_data["id"] = item_definition["id"]

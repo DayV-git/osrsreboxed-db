@@ -46,7 +46,7 @@ def main():
     fis = Path(config.DOCS_PATH / "items-icons").glob("*.png")
 
     # Set output dictionary for JSON export
-    all_icons = dict()
+    all_icons = {}
 
     # Sort icon files numerically
     item_ids = [x.stem for x in fis]

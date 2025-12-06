@@ -25,6 +25,10 @@ from dataclasses import asdict
 from dataclasses import dataclass
 from typing import Dict
 
+# PrayerProperties contains a small schema but exceeds pylint's default
+# attribute limit; disable the check explicitly for clarity.
+# pylint: disable=too-many-instance-attributes
+
 
 @dataclass
 class PrayerProperties:
@@ -65,7 +69,7 @@ class PrayerProperties:
         json_out = self.construct_json()
         out_file_name = str(self.id) + ".json"
         out_file_path = Path(export_path / out_file_name)
-        with open(out_file_path, "w") as out_file:
+        with open(out_file_path, "w", encoding="utf-8") as out_file:
             if pretty:
                 json.dump(json_out, out_file, indent=4)
             else:

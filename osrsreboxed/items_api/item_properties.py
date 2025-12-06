@@ -30,6 +30,9 @@ from typing import Optional
 from osrsreboxed.items_api.item_equipment import ItemEquipment
 from osrsreboxed.items_api.item_weapon import ItemWeapon
 
+# The ItemProperties dataclass models a large, explicit schema.
+# pylint: disable=too-many-instance-attributes
+
 
 @dataclass
 class ItemProperties:
@@ -107,13 +110,13 @@ class ItemProperties:
         out_file_path = Path(export_path / out_file_name)
         for attempt in range(1, max_attempts + 1):
             try:
-                with open(out_file_path, "w") as out_file:
+                with open(out_file_path, "w", encoding="utf-8") as out_file:
                     if pretty:
                         json.dump(json_out, out_file, indent=4)
                     else:
                         json.dump(json_out, out_file)
                 return  # Success
-            except Exception as e:
+            except (OSError, TypeError, ValueError) as e:
                 if attempt == max_attempts:
                     raise e  # Re-raise on final failure
                 time.sleep(delay)

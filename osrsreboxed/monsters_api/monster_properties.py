@@ -27,6 +27,10 @@ from pathlib import Path
 from dataclasses import asdict
 from dataclasses import dataclass
 
+# The MonsterProperties dataclass intentionally contains many attributes
+# describing the full monster schema.
+# pylint: disable=too-many-instance-attributes
+
 
 @dataclass
 class MonsterProperties:
@@ -87,7 +91,11 @@ class MonsterProperties:
 
     @classmethod
     def from_json(cls, json_dict: Dict) -> "MonsterProperties":
+        """Construct a MonsterProperties instance from a dictionary.
 
+        :param json_dict: Raw dict loaded from JSON representing a monster.
+        :return: A populated :class:`MonsterProperties` instance.
+        """
         return cls(**json_dict)
 
     def construct_json(self) -> Dict:
@@ -108,13 +116,13 @@ class MonsterProperties:
         out_file_path = Path(export_path / out_file_name)
         for attempt in range(1, max_attempts + 1):
             try:
-                with open(out_file_path, "w") as out_file:
+                with open(out_file_path, "w", encoding="utf-8") as out_file:
                     if pretty:
                         json.dump(json_out, out_file, indent=4)
                     else:
                         json.dump(json_out, out_file)
                 return  # Success
-            except Exception as e:
+            except (OSError, TypeError, ValueError) as e:
                 if attempt == max_attempts:
                     raise e  # Re-raise on final failure
                 time.sleep(delay)

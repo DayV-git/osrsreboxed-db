@@ -96,7 +96,7 @@ def fetch():
     print(f">>> Number of extracted wiki pages: {page_titles_total}")
 
     # Open page title JSON file, to check if page needs to have wiki text extracted
-    json_data = dict()
+    json_data = {}
 
     if TEXT_FP.exists():
         with open(TEXT_FP, mode="r") as existing_out_file:
@@ -152,7 +152,7 @@ def process():
         "WikiEntry", "wiki_page_name version_number wikitext"
     )
 
-    export = dict()
+    export = {}
 
     for item_id, wikitext in wiki_data_ids.item_id_to_wikitext.items():
         entry = WikiEntry(

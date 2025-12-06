@@ -51,7 +51,7 @@ if __name__ == "__main__":
     all_db_items = items_api.load()
 
     # Setup output dictionary
-    chunk_tracker_data = list()
+    chunk_tracker_data = []
 
     # Loop through all items in the database
     for item in all_db_items:
@@ -80,13 +80,13 @@ if __name__ == "__main__":
             ]
 
             # Append extracted data to a dictionary
-            stats_dict = dict()
+            stats_dict = {}
             stats_dict["offensive"] = offensive
             stats_dict["defensive"] = defensive
             stats_dict["other"] = other
 
             # Set properties for the item dictionary
-            item_dict = dict()
+            item_dict = {}
             item_dict["id"] = item.id
             item_dict["name"] = item.name
             item_dict["equipable"] = item.equipable

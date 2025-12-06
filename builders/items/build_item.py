@@ -70,7 +70,7 @@ class BuildItem:
         self.verbose = kwargs["verbose"]
 
         # For this item instance, create dictionary for property storage
-        self.item_dict = dict()
+        self.item_dict = {}
 
         self.infobox_version_number = None
         self.item_wikitext = None
@@ -429,7 +429,7 @@ class BuildItem:
             return
 
         # Initialize empty equipment dictionary
-        self.item_dict["equipment"] = dict()
+        self.item_dict["equipment"] = {}
 
         # STAGE ONE: EQUIPMENT
 
@@ -517,7 +517,7 @@ class BuildItem:
 
         # STAGE TWO: WEAPONS
 
-        self.item_dict["weapon"] = dict()
+        self.item_dict["weapon"] = {}
 
         # Attack speed
         attack_speed = None

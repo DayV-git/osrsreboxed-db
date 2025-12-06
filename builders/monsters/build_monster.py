@@ -56,7 +56,7 @@ class BuildMonster:
         self.verbose = kwargs["verbose"]
 
         # For this monster instance, create dictionary for property storage
-        self.monster_dict = dict()
+        self.monster_dict = {}
         # The page name the wikitext is from
         self.wiki_page_name = None
         # The version used on the wikitext page
@@ -288,10 +288,10 @@ class BuildMonster:
                     slayer_masters
                 )
             else:
-                self.monster_dict["slayer_masters"] = list()
+                self.monster_dict["slayer_masters"] = []
                 self.monster_dict["incomplete"] = True
         else:
-            self.monster_dict["slayer_masters"] = list()
+            self.monster_dict["slayer_masters"] = []
 
         # MONSTER COMBAT BONUSES: Determine stats of the monster
 

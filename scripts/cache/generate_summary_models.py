@@ -56,7 +56,7 @@ def extract_model_ids_int(json_data: Dict) -> List[Dict]:
     }
 
     for model_type, model_key in model_keys.items():
-        model_dict = dict()
+        model_dict = {}
         # Set base properties
         model_dict["model_type"] = model_type
         model_dict["model_type_id"] = json_data["id"]
@@ -95,7 +95,7 @@ def extract_model_ids_list(json_data: Dict) -> List[Dict]:
     }
 
     for model_type, model_key in model_keys.items():
-        model_dict = dict()
+        model_dict = {}
         # Set base properties
         model_dict["model_type"] = model_type
         model_dict["model_type_id"] = json_data["id"]
@@ -117,7 +117,7 @@ def extract_model_ids_list(json_data: Dict) -> List[Dict]:
 
 def process(item_defs, npc_defs, object_defs):
     """Extract OSRS model ID numbers that map to names."""
-    all_models = dict()
+    all_models = {}
 
     # Loop three cache types (items, npcs and objects)
     all_definitions = {"items": item_defs, "npcs": npc_defs, "objects": object_defs}

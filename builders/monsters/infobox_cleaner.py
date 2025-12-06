@@ -268,7 +268,7 @@ def attributes(value: str) -> str:
     :param value: Template value extracted from raw wikitext.
     :return value: A cleaned attributes value as a list.
     """
-    attributes_list = list()
+    attributes_list = []
 
     if value is None or value == "":
         return attributes_list
@@ -310,7 +310,7 @@ def category(value: str) -> str:
     :param value: The extracted raw wiki text.
     :return: A cleaned categories property value.
     """
-    category_list = list()
+    category_list = []
 
     if value is None or value == "" or value.lower() == "no" or "<!--" in value:
         return category_list
@@ -326,7 +326,7 @@ def category(value: str) -> str:
 
     value_list = None
     if "," in value:
-        value_list = list()
+        value_list = []
         for v in value.split(","):
             v = v.strip()
             value_list.append(v)
@@ -381,7 +381,7 @@ def slayer_masters(value: str) -> float:
     slayer_masters = value.strip()
 
     if slayer_masters.lower().startswith("no") or slayer_masters == "":
-        return list()
+        return []
 
     # Split string into list of strings
     slayer_masters = slayer_masters.split(",")

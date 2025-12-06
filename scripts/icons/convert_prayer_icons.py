@@ -34,7 +34,7 @@ def main():
     fis = Path(config.DOCS_PATH / "prayers-icons").glob("*")
 
     # Set output dictionary for JSON export
-    all_icons = dict()
+    all_icons = {}
 
     # Sort icon files numerically
     item_ids = [int(x.stem) for x in fis]

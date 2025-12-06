@@ -134,7 +134,7 @@ def generate_items_search_file():
 
     for item in all_db_items:
         # Make a temporary dictionary for each item
-        temp_dict = dict()
+        temp_dict = {}
 
         # Add id, name, type and duplicate status
         temp_dict["id"] = item.id

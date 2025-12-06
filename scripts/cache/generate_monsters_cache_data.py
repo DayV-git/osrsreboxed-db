@@ -30,7 +30,7 @@ import config
 
 def process(definitions):
     """Main function to extract attackble NPC definition files."""
-    attackable_npcs = dict()
+    attackable_npcs = {}
 
     # Loop all entries in the loaded definition files
     for id_number in definitions:

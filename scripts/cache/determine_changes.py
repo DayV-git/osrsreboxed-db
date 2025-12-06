@@ -114,7 +114,7 @@ def items():
     changed = dd.changed()
     print("- Changed items: %d" % len(changed))
     for itemID in changed:
-        changed_keys = list()
+        changed_keys = []
         for key in new_items[itemID]:
             if new_items[itemID][key] != old_items[itemID][key]:
                 changed_keys.append(key)
@@ -164,7 +164,7 @@ def monsters():
     changed = dd.changed()
     print("- Changed monsters: %d" % len(changed))
     for monsterID in changed:
-        changed_keys = list()
+        changed_keys = []
         for key in new_monsters[monsterID]:
             new_monsters_key = new_monsters[monsterID].get(key)
             old_monsters_key = old_monsters[monsterID].get(key)

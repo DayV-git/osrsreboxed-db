@@ -31,7 +31,7 @@ CACHE_DUMP_TYPES = ["items", "npcs", "objects"]
 
 def load_item_definitions():
     print("Loading item cache...", flush=True)
-    item_definitions = dict()
+    item_definitions = {}
     all_cache_items = sorted(
         Path(config.DATA_CACHE_PATH / "item_defs").glob("*.json"),
         key=lambda path: int(path.stem),
@@ -48,7 +48,7 @@ def load_item_definitions():
 
 def load_npc_definitions():
     print("Loading NPC cache...", flush=True)
-    npc_definitions = dict()
+    npc_definitions = {}
     all_cache_npcs = sorted(
         Path(config.DATA_CACHE_PATH / "npc_defs").glob("*.json"),
         key=lambda path: int(path.stem),
@@ -65,7 +65,7 @@ def load_npc_definitions():
 
 def load_object_definitions():
     print("Loading object cache...", flush=True)
-    object_definitions = dict()
+    object_definitions = {}
     all_cache_objects = sorted(
         Path(config.DATA_CACHE_PATH / "object_defs").glob("*.json"),
         key=lambda path: int(path.stem),

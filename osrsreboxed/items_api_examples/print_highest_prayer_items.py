@@ -31,7 +31,7 @@ if __name__ == "__main__":
     # Load all items
     all_db_items = items_api.load()
 
-    prayer_items = dict()
+    prayer_items = {}
 
     # Populate dict
     for item in all_db_items:

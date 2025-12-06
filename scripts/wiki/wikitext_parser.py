@@ -86,7 +86,7 @@ def extract_wikitext_template(
     :param multiple: whether or not to extract multiple templates, default is True.
     :return: A list of mwpaserfromhell templates.
     """
-    templates = list()
+    templates = []
 
     try:
         wikicode = mwparserfromhell.parse(wikitext)
@@ -116,10 +116,10 @@ class WikitextIDParser:
         self.template_names = (
             template_names  # The infobox name (e.g., infobox item, infobox monster)
         )
-        self.item_id_to_wikitext = dict()  # Maps ID to wikitext (instead of name)
-        self.item_id_to_version_number = dict()  # Maps ID to template version
-        self.item_id_to_template_number = dict()  # Maps ID to template occurance number
-        self.item_id_to_wiki_name = dict()  # Maps ID to original wiki page name
+        self.item_id_to_wikitext = {}  # Maps ID to wikitext (instead of name)
+        self.item_id_to_version_number = {}  # Maps ID to template version
+        self.item_id_to_template_number = {}  # Maps ID to template occurance number
+        self.item_id_to_wiki_name = {}  # Maps ID to original wiki page name
 
     def process_osrswiki_data_dump(self):
         """Process a raw OSRS Wiki and map IDs.
@@ -304,7 +304,7 @@ class WikitextTemplateParser:
         :param id_string: A string of potentially comma-sererated item IDs
         :return: List of item IDs
         """
-        id_list = list()
+        id_list = []
         if "," in id_string:
             id_list = id_string.split(",")
         else:
@@ -334,7 +334,7 @@ class WikitextTemplateParser:
 
         :return: A dictionary mapping item ID to version number.
         """
-        item_id_to_version_number = dict()
+        item_id_to_version_number = {}
 
         # First, try extract the non versioned identifier
         # Example: |id = 10591, followed by |id2 = 10592

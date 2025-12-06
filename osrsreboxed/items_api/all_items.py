@@ -26,11 +26,11 @@ from typing import Dict, List, Union, Generator
 from osrsreboxed.items_api.item_properties import ItemProperties
 
 PATH_TO_ITEMS_COMPLETE_JSON = (
-    Path(__file__).absolute().parent / ".." / ".." / "docs" / "items-complete.json"
+    Path(__file__).resolve().parents[2] / "docs" / "items-complete.json"
 )
 if not PATH_TO_ITEMS_COMPLETE_JSON.is_file():
     PATH_TO_ITEMS_COMPLETE_JSON = (
-        Path(__file__).absolute().parent / ".." / "docs" / "items-complete.json"
+        Path(__file__).resolve().parents[1] / "docs" / "items-complete.json"
     )
     if not PATH_TO_ITEMS_COMPLETE_JSON.is_file():
         raise ValueError("Error: Default item database file not found. Exiting")
@@ -39,20 +39,19 @@ if not PATH_TO_ITEMS_COMPLETE_JSON.is_file():
 class AllItems:
     """This class handles loading of the osrsbox-db items database.
 
-    :param input_data_file_or_directory: The osrsbox-db items folder of JSON files, or single JSON file.
+    :param input_data_file_or_directory: The folder of JSON files, or single JSON file.
     """
 
     def __init__(
         self, input_data_file_or_directory: Path = PATH_TO_ITEMS_COMPLETE_JSON
     ):
-        self.all_items: List[ItemProperties] = list()
-        self.all_items_dict: Dict[int, ItemProperties] = dict()
+        self.all_items: List[ItemProperties] = []
+        self.all_items_dict: Dict[int, ItemProperties] = {}
         self.load_all_items(input_data_file_or_directory)
 
     def __iter__(self) -> Generator[ItemProperties, None, None]:
         """Iterate (loop) over each ItemProperties object."""
-        for item in self.all_items:
-            yield item
+        yield from self.all_items
 
     def __getitem__(self, id_number: int) -> ItemProperties:
         """Return the item definition object for a loaded item.
@@ -78,8 +77,8 @@ class AllItems:
         """
         try:
             item_properties = self.all_items_dict[item_id_number]
-        except KeyError:
-            raise KeyError("Cannot find the provided item ID number...")
+        except KeyError as exc:
+            raise KeyError("Cannot find the provided item ID number...") from exc
         return item_properties
 
     def lookup_by_item_name(
@@ -129,7 +128,7 @@ class AllItems:
         :return: A list of ItemProperties objects found from the keyword search.
         :raises: ValueError when no keyword matches can be found.
         """
-        item_results = list()
+        item_results = []
         for item in self.all_items:
             if keyword.lower() in item.name.lower():
                 item_results.append(item)
@@ -180,7 +179,7 @@ class AllItems:
 
         # Loop through every item in JSON file
         for json_file in json_files:
-            with open(json_file) as input_json_file:
+            with open(json_file, encoding="utf-8") as input_json_file:
                 temp = json.load(input_json_file)
 
             self._load_item(temp)
@@ -190,7 +189,7 @@ class AllItems:
 
         :param path_to_json_file: The path to the `items-complete.json` file.
         """
-        with open(path_to_json_file) as input_json_file:
+        with open(path_to_json_file, encoding="utf-8") as input_json_file:
             temp = json.load(input_json_file)
 
         for entry in temp:

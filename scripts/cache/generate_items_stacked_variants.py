@@ -30,7 +30,7 @@ import config
 
 def process(definitions):
     """Extract find all stacked item variants in ItemDefinition data."""
-    stacked_variants = dict()
+    stacked_variants = {}
 
     # Loop the loaded data
     for id_number in definitions:
@@ -56,7 +56,7 @@ def process(definitions):
                     if stacked_id in stacked_variants:
                         pass
                     else:
-                        stacked_dict = dict()
+                        stacked_dict = {}
                         stacked_dict["id"] = item_definition["id"]
                         stacked_dict["count"] = stacked_count
                         stacked_variants[stacked_id] = stacked_dict

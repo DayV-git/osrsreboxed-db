@@ -94,7 +94,7 @@ class Builder:
             self.schema_data = json.load(f)
 
         # Initialize a list of known items
-        self.known_items = list()
+        self.known_items = []
 
     def run(self):
         # Start processing every item!

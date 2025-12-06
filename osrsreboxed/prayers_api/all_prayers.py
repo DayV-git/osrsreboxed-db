@@ -26,11 +26,11 @@ from typing import Dict, List, Union, Generator
 from osrsreboxed.prayers_api.prayer_properties import PrayerProperties
 
 PATH_TO_PRAYERS_COMPLETE_JSON = (
-    Path(__file__).absolute().parent / ".." / ".." / "docs" / "prayers-complete.json"
+    Path(__file__).resolve().parents[2] / "docs" / "prayers-complete.json"
 )
 if not PATH_TO_PRAYERS_COMPLETE_JSON.is_file():
     PATH_TO_PRAYERS_COMPLETE_JSON = (
-        Path(__file__).absolute().parent / ".." / "docs" / "prayers-complete.json"
+        Path(__file__).resolve().parents[1] / "docs" / "prayers-complete.json"
     )
     if not PATH_TO_PRAYERS_COMPLETE_JSON.is_file():
         raise ValueError("Error: Default prayer database file not found. Exiting")
@@ -39,20 +39,19 @@ if not PATH_TO_PRAYERS_COMPLETE_JSON.is_file():
 class AllPrayers:
     """This class handles loading of the osrsbox-db prayers database.
 
-    :param input_data_file_or_directory: The osrsbox-db prayers folder of JSON files, or single JSON file.
+    :param input_data_file_or_directory: The folder of JSON files, or single JSON file.
     """
 
     def __init__(
         self, input_data_file_or_directory: Path = PATH_TO_PRAYERS_COMPLETE_JSON
     ):
-        self.all_prayers: List[PrayerProperties] = list()
-        self.all_prayers_dict: Dict[int, PrayerProperties] = dict()
+        self.all_prayers: List[PrayerProperties] = []
+        self.all_prayers_dict: Dict[int, PrayerProperties] = {}
         self.load_all_prayers(input_data_file_or_directory)
 
     def __iter__(self) -> Generator[PrayerProperties, None, None]:
         """Iterate (loop) over each PrayerProperties object."""
-        for prayer in self.all_prayers:
-            yield prayer
+        yield from self.all_prayers
 
     def __getitem__(self, id_number: int) -> PrayerProperties:
         """Return the prayer definition object for a loaded prayer.
@@ -78,8 +77,8 @@ class AllPrayers:
         """
         try:
             prayer_properties = self.all_prayers_dict[prayer_id_number]
-        except KeyError:
-            raise KeyError("Cannot find the provided prayer ID number...")
+        except KeyError as exc:
+            raise KeyError("Cannot find the provided prayer ID number...") from exc
         return prayer_properties
 
     def load_all_prayers(self, input_data_file_or_directory: Union[Path, str]) -> None:
@@ -123,7 +122,7 @@ class AllPrayers:
 
         # Loop through every prayer in JSON file
         for json_file in json_files:
-            with open(json_file) as input_json_file:
+            with open(json_file, encoding="utf-8") as input_json_file:
                 temp = json.load(input_json_file)
 
             self._load_prayer(temp)
@@ -133,7 +132,7 @@ class AllPrayers:
 
         :param path_to_json_file: The path to the `prayers-complete.json` file.
         """
-        with open(path_to_json_file) as input_json_file:
+        with open(path_to_json_file, encoding="utf-8") as input_json_file:
             temp = json.load(input_json_file)
 
         for entry in temp:
