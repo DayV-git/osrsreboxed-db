@@ -102,18 +102,17 @@ def fetch():
 
     page_titles_count = 1
     print(">>> Starting wiki text extraction for extracted page titles...")
+    printed_milestones = set()
     for page_title, page_revision_date in wiki_page_titles.page_titles.items():
-        print(
-            f"  > Progress: {page_titles_count:4d} of {page_titles_total:4d} - Processing: {page_title}"
-        )
-
-        # If script fails:
-        # 1) Set load_files (above) to True
-        # 2) Uncomment code below, and set item ID to last failed item
-        # 3) Use this script: python shop_properties_fetch -c Shops
-        # if int(page_titles_count) < 5400:
-        #     page_titles_count += 1
-        #     continue
+        # Calculate current progress percentage
+        progress_pct = (page_titles_count / page_titles_total) * 100
+        
+        # Print only at 25%, 50%, 75%, 100% milestones (once each)
+        for milestone in [25, 50, 75, 100]:
+            if progress_pct >= milestone and milestone not in printed_milestones:
+                printed_milestones.add(milestone)
+                print(f"  > Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)")
+                break
 
         # Convert revision date to datetime object
         last_revision_date = datetime.strptime(
@@ -147,11 +146,17 @@ def process():
     with open(TEXT_FP) as f:
         raw_wiki_data = json.load(f)
 
+    # Calculate total shops to process
+    total_shops = len(raw_wiki_data)
+    print(f"  > Processing {total_shops} shops...")
+
     WikiEntry = collections.namedtuple(
         "WikiEntry", "wiki_page_name version_number template_number wikitext"
     )
 
     export = {}
+    shop_count = 0
+    printed_milestones = set()
 
     # Process each shop page, using the page title as the identifier
     for page_title, wikitext in raw_wiki_data.items():
@@ -175,7 +180,15 @@ def process():
         if page_title in skip_pages:
             continue
 
-        print(f"  > Processing: {page_title}")
+        shop_count += 1
+        
+        # Calculate and print progress at 25% intervals (once each)
+        progress_pct = (shop_count / total_shops) * 100
+        for milestone in [25, 50, 75, 100]:
+            if progress_pct >= milestone and milestone not in printed_milestones:
+                printed_milestones.add(milestone)
+                print(f"  > Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)")
+                break
 
         # Check if the page has an infobox shop template
         if "{{Infobox Shop" in wikitext or "{{infobox shop" in wikitext:
@@ -187,8 +200,6 @@ def process():
             )
             # Use the page title as the export key instead of a generated numeric id
             export[page_title] = entry
-        else:
-            print(f"    No infobox shop found in: {page_title}")
 
     print(f">>> Processed {len(export)} shops with infobox shop templates")
 

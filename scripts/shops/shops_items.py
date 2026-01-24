@@ -75,8 +75,21 @@ def fetch() -> None:
 
     # Data structure for storing complete shop data
     all_shops_data = {}
+    shop_count = 0
+    total_shops = len(all_wikitext_processed)
+    printed_milestones = set()
 
     for shop_key, shop_data in all_wikitext_processed.items():
+        shop_count += 1
+        
+        # Calculate and print progress at 25% intervals (once each)
+        progress_pct = (shop_count / total_shops) * 100
+        for milestone in [25, 50, 75, 100]:
+            if progress_pct >= milestone and milestone not in printed_milestones:
+                printed_milestones.add(milestone)
+                logging.info(f"  > Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)")
+                break
+        
         # shop_data is a WikiEntry namedtuple stored by `shops_properties.process`
         # where the export key is the page title. Use the page title as shop name.
         shop_name = shop_key
@@ -84,13 +97,10 @@ def fetch() -> None:
             shop_data.wikitext if hasattr(shop_data, "wikitext") else shop_data[3]
         )
 
-        logging.info(f"  > Processing shop: {shop_name}")
-
         # Check if this shop has tabber structure
         tabber_sections = parse_tabber_structure(wikitext)
 
         if tabber_sections:
-            logging.info(f"    Found tabber with {len(tabber_sections)} sections")
             for section_name, section_content in tabber_sections.items():
                 substore_name = f"{shop_name} ({section_name})"
                 shop_info = parse_shop_info(section_content)
