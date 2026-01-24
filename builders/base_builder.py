@@ -101,11 +101,27 @@ class BaseBuilder(ABC):
     def run(self):
         """Run the build process for all entities."""
         try:
-            entity_ids = self._get_entity_id_list()
+            entity_ids = list(self._get_entity_id_list())
+            total_entities = len(entity_ids)
+            entities_processed = 0
+            
+            print(f">>> Starting build process for {total_entities} entities...")
+            printed_milestones = set()
+            
             for entity_id in entity_ids:
                 try:
                     if self._should_skip_entity(entity_id):
                         continue
+                    
+                    entities_processed += 1
+                    
+                    # Calculate and print progress at 25% intervals (once each)
+                    progress_pct = (entities_processed / total_entities) * 100
+                    for milestone in [25, 50, 75, 100]:
+                        if progress_pct >= milestone and milestone not in printed_milestones:
+                            printed_milestones.add(milestone)
+                            print(f"  > Progress: {entities_processed:4d} of {total_entities:4d} ({progress_pct:.1f}%)")
+                            break
                     
                     builder = self._build_entity(entity_id)
                     self._process_built_entity(builder, entity_id)
@@ -132,11 +148,27 @@ class BaseBuilder(ABC):
     def test(self):
         """Run the test process for all entities (validation only)."""
         try:
-            entity_ids = self._get_entity_id_list()
+            entity_ids = list(self._get_entity_id_list())
+            total_entities = len(entity_ids)
+            entities_processed = 0
+            
+            print(f">>> Starting test process for {total_entities} entities...")
+            printed_milestones = set()
+            
             for entity_id in entity_ids:
                 try:
                     if self._should_skip_entity(entity_id):
                         continue
+                    
+                    entities_processed += 1
+                    
+                    # Calculate and print progress at 25% intervals (once each)
+                    progress_pct = (entities_processed / total_entities) * 100
+                    for milestone in [25, 50, 75, 100]:
+                        if progress_pct >= milestone and milestone not in printed_milestones:
+                            printed_milestones.add(milestone)
+                            print(f"  > Progress: {entities_processed:4d} of {total_entities:4d} ({progress_pct:.1f}%)")
+                            break
                     
                     builder = self._build_entity(entity_id)
                     self._process_built_entity_test(builder, entity_id)

@@ -118,10 +118,17 @@ class WikiProperties:
 
         page_titles_count = 1
         print(">>> Starting wiki text extraction for extracted page titles...")
+        printed_milestones = set()
         for page_title, page_revision_date in wiki_page_titles.page_titles.items():
-            print(
-                f"  > Progress: {page_titles_count:4d} of {page_titles_total:4d} - Processing: {page_title}"
-            )
+            # Calculate current progress percentage
+            progress_pct = (page_titles_count / page_titles_total) * 100
+            
+            # Print only at 25%, 50%, 75%, 100% milestones (once each)
+            for milestone in [25, 50, 75, 100]:
+                if progress_pct >= milestone and milestone not in printed_milestones:
+                    printed_milestones.add(milestone)
+                    print(f"  > Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)")
+                    break
 
             # Convert revision date to datetime object
             last_revision_date = datetime.strptime(
@@ -167,9 +174,27 @@ class WikiProperties:
                 "WikiEntry", "wiki_page_name version_number wikitext"
             )
 
+        # Calculate total items to process
+        total_items = len(wiki_data_ids.item_id_to_wikitext)
+        print(f"  > Processing {total_items} items...")
+        
         export = {}
+        item_count = 0
+        printed_milestones = set()
 
         for item_id, wikitext in wiki_data_ids.item_id_to_wikitext.items():
+            item_count += 1
+            
+            # Calculate progress percentage
+            progress_pct = (item_count / total_items) * 100
+            
+            # Print only at 25%, 50%, 75%, 100% milestones (once each)
+            for milestone in [25, 50, 75, 100]:
+                if progress_pct >= milestone and milestone not in printed_milestones:
+                    printed_milestones.add(milestone)
+                    print(f"  > Progress: {item_count:4d} of {total_items:4d} ({progress_pct:.1f}%)")
+                    break
+            
             if has_template_number:
                 entry = WikiEntry(
                     wiki_page_name=wiki_data_ids.item_id_to_wiki_name[item_id],
