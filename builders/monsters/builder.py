@@ -21,7 +21,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
-
 import json
 import argparse
 import traceback
@@ -34,10 +33,10 @@ from builders.monsters import build_monster
 class Builder:
     def __init__(self, **kwargs):
         # Set properties to control phases of build
-        self.verbose = kwargs["verbose"]
-        self.compare = kwargs["compare"]
-        self.export = kwargs["export"]
-        self.validate = kwargs["validate"]
+        self.verbose = kwargs.get("verbose", False)
+        self.compare = kwargs.get("compare", False)
+        self.export = kwargs.get("export", False)
+        self.validate = kwargs.get("validate", False)
 
         # Load the raw cache data that has been processed (this is ground truth)
         with open(Path(config.DATA_MONSTERS_PATH / "monsters-cache-data.json")) as f:
@@ -150,37 +149,40 @@ if __name__ == "__main__":
     parser.add_argument(
         "--verbose",
         default=False,
-        required=False,
-        help="A boolean of whether to be verbose.",
+        action="store_true",
+        help="Enable verbose output.",
     )
     parser.add_argument(
         "--compare",
-        default=True,
-        required=False,
-        help="A boolean of whether to compare data.",
+        default=False,
+        action="store_true",
+        help="Compare new vs old monster data.",
     )
     parser.add_argument(
         "--export",
         default=False,
-        required=False,
-        help="A boolean of whether to export data.",
+        action="store_true",
+        help="Export monster data to JSON files.",
     )
     parser.add_argument(
         "--validate",
-        default=True,
-        required=False,
-        help="A boolean of whether to validate using schema.",
+        default=False,
+        action="store_true",
+        help="Validate monsters against schema.",
     )
     parser.add_argument(
         "--test",
         default=False,
-        required=False,
-        help="A boolean of whether to test the builder process.",
+        action="store_true",
+        help="Run in test mode (validation only).",
     )
     args = parser.parse_args()
 
     builder = Builder(
-        verbose=True, compare=args.compare, export=args.export, validate=args.validate
+        verbose=args.verbose, 
+        compare=args.compare, 
+        export=args.export, 
+        validate=args.validate
     )
     if args.test:
         builder.test()

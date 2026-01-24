@@ -112,7 +112,7 @@ def fetch():
         # If script fails:
         # 1) Set load_files (above) to True
         # 2) Uncomment code below, and set item ID to last failed item
-        # 3) Use this script: python monster_properties_fetch -c Items, Pets
+        # 3) Use this script: python item_properties_fetch -c Items, Pets
         # if int(page_titles_count) < 5400:
         #     page_titles_count += 1
         #     continue
