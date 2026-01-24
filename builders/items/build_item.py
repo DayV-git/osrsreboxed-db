@@ -104,9 +104,6 @@ class BuildItem:
         # Set item name variable (directly from the cache dump)
         self.item_name = self.item_cache_data["name"]
 
-        if self.verbose:
-            print(f">>> {self.item_id_str} {self.item_name}")
-
         # Get the linked ID item value, if available
         self.linked_id_item_int = None
         self.linked_id_item_str = None

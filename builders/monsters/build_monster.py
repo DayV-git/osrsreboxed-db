@@ -81,10 +81,6 @@ class BuildMonster:
         # Set monster name variable (directly from the cache dump)
         self.monster_name = self.monster_cache_data["name"]
 
-        # Log and print monster
-        if self.verbose:
-            print(f"======================= {self.monster_id_str} {self.monster_name}")
-
         # Set all variables to None (for invalid monsters)
         self.monster_wikitext = None
         self.wikitext_found_using = None
