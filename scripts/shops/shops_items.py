@@ -36,7 +36,11 @@ from scripts.wiki.wikitext_parser import WikitextTemplateParser
 CURRENCY_NAMES = ["coins", "trading sticks", "tokkul", "pizazz points", "reward points"]
 
 # Setup logging
-logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 # Load items for ID lookup
 ITEMS = [item for item in items_api.load() if not item.duplicate and not item.stacked]
@@ -63,7 +67,7 @@ def fetch() -> None:
     )
 
     if not shop_text_file.exists():
-        logging.error(
+        logger.error(
             "shops-wiki-page-text-processed.json not found. Run shops_properties.py first."
         )
         return
@@ -71,7 +75,7 @@ def fetch() -> None:
     with open(shop_text_file) as f:
         all_wikitext_processed = json.load(f)
 
-    logging.info(f"Processing {len(all_wikitext_processed)} shop pages...")
+    logger.info(f"Processing {len(all_wikitext_processed)} shop pages...")
 
     # Data structure for storing complete shop data
     all_shops_data = {}
@@ -87,7 +91,7 @@ def fetch() -> None:
         for milestone in [25, 50, 75, 100]:
             if progress_pct >= milestone and milestone not in printed_milestones:
                 printed_milestones.add(milestone)
-                logging.info(f"  > Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)")
+                logger.info(f"Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)")
                 break
         
         # shop_data is a WikiEntry namedtuple stored by `shops_properties.process`
@@ -110,8 +114,8 @@ def fetch() -> None:
                         "shop_info": shop_info,
                         "items": shop_items,
                     }
-                    logging.debug(
-                        f"      Substore '{section_name}': {len(shop_items)} items, info: {shop_info}"
+                    logger.debug(
+                        f"Substore '{section_name}': {len(shop_items)} items, info: {shop_info}"
                     )
         else:
             shop_info = parse_shop_info(wikitext)
@@ -121,18 +125,18 @@ def fetch() -> None:
                     "shop_info": shop_info,
                     "items": shop_items,
                 }
-                logging.debug(
-                    f"    Found {len(shop_items)} items and shop info: {shop_info}"
+                logger.debug(
+                    f"Found {len(shop_items)} items and shop info: {shop_info}"
                 )
             else:
-                logging.info(f"    No items or shop info found")
+                logger.info(f"No items or shop info found")
 
     # Export the results
     out_fi = Path(config.DATA_SHOPS_PATH / "shops-raw.json")
     with open(out_fi, "w") as f:
         json.dump(all_shops_data, f, indent=4)
 
-    logging.info(f"Exported shop data to {out_fi}")
+    logger.info(f"Exported raw shop data.")
 
 
 def parse_tabber_structure(wikitext: str) -> dict:
@@ -270,7 +274,9 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
     bottom_match = re.search(r"\{\{StoreTableBottom\}\}", wikitext, re.IGNORECASE)
 
     if not head_match or not bottom_match:
-        logging.warning(f"No StoreTableHead or StoreTableBottom found in {shop_name}")
+        logger.warning(f"No StoreTableHead or StoreTableBottom found in {shop_name}")
+        with open(".error.txt", "a", encoding="utf-8") as errfile:
+            print(f"WARNING: No StoreTableHead or StoreTableBottom found in {shop_name}", file=errfile)
         return items
 
     section = wikitext[head_match.end() : bottom_match.start()]
@@ -362,7 +368,9 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                 }
                 items.append(item_info)
             else:
-                logging.warning(f"Could not find item ID for: {item_data['name']}")
+                logger.warning(f"Could not find item ID for: {item_data['name']}")
+                with open(".error.txt", "a", encoding="utf-8") as errfile:
+                    print(f"WARNING: Could not find item ID for: {item_data['name']} in shop {shop_name}", file=errfile)
                 unknown_info = {
                     "type": "unknown",
                     "template_name": template_name,
@@ -383,9 +391,12 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                         unknown_info["stock"] = stock_str
                 items.append(unknown_info)
         else:
-            logging.warning(
+            logger.warning(
                 f"No valid item name found in {template_name}: {params_str} {item_data}"
             )
+            with open(".error.txt", "a", encoding="utf-8") as errfile:
+                print(f"WARNING: No valid item name found in {template_name} from {shop_name}", file=errfile)
+                print(f"  Params: {params_str}", file=errfile)
             unknown_info = {
                 "type": "unknown",
                 "template_name": template_name,
@@ -489,13 +500,15 @@ def process() -> None:
     raw_file = Path(config.DATA_SHOPS_PATH / "shops-raw.json")
 
     if not raw_file.exists():
-        logging.error("shops-items-raw.json not found. Run fetch() first.")
+        logger.error("shops-items-raw.json not found. Run fetch() first.")
+        with open(".error.txt", "a", encoding="utf-8") as errfile:
+            print("ERROR: shops-items-raw.json not found. Run fetch() first.", file=errfile)
         return
 
     with open(raw_file) as f:
         raw_shop_data = json.load(f)
 
-    logging.info("Processing raw shop data...")
+    logger.info("Processing raw shop data...")
 
     # Structure the data - maintain new format with shop info
     shops_by_shop = {}
@@ -529,10 +542,7 @@ def process() -> None:
                 )
                 total_items += 1
 
-    logging.info(f"Processed {len(raw_shop_data)} shops:")
-    logging.info(f"    - {shops_with_info} shops with buy/sell info")
-    logging.info(f"    - {total_items} total items")
-    logging.info(f"    - {len(shops_by_item)} unique items sold across all shops")
+    logger.info(f"Processed {len(raw_shop_data)} shops: {total_items} total items, {len(shops_by_item)} unique items")
 
     # Export both structures
     shops_file = Path(config.DATA_SHOPS_PATH / "shops-items-by-shop.json")
@@ -543,7 +553,7 @@ def process() -> None:
     with open(items_file, "w") as f:
         json.dump(dict(shops_by_item), f, indent=4)
 
-    logging.info(f"Exported structured data to {shops_file} and {items_file}")
+    logger.info(f"Exported processed shop data.")
 
 
 if __name__ == "__main__":

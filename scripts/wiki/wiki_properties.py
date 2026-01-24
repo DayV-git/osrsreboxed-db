@@ -28,6 +28,7 @@ import json
 import itertools
 import re
 import collections
+import logging
 from pathlib import Path
 from datetime import datetime
 from datetime import timedelta
@@ -35,6 +36,14 @@ from datetime import timedelta
 from scripts.wiki.wiki_page_titles import WikiPageTitles
 from scripts.wiki.wiki_page_text import WikiPageText
 from scripts.wiki.wikitext_parser import WikitextIDParser
+
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 class WikiProperties:
@@ -74,7 +83,7 @@ class WikiProperties:
         else:
             last_extraction_date = datetime.strptime("2013-02-22", "%Y-%m-%d")
 
-        print(f">>> Starting wiki page titles extraction for categories: {self.categories}...")
+        logger.info(f"Starting wiki page titles extraction for categories: {self.categories}...")
         # Create object to handle page titles extraction
         wiki_page_titles = WikiPageTitles(self.OSRS_WIKI_API_URL, self.categories)
 
@@ -85,9 +94,10 @@ class WikiProperties:
         if load_files:
             loaded_page_titles = wiki_page_titles.load_page_titles(self.titles_filepath)
             if not loaded_page_titles:
-                sys.exit(
-                    ">>> ERROR: Specified page titles to load, but not file found. Exiting."
+                logger.error(
+                    "Specified page titles to load, but no file found. Exiting."
                 )
+                sys.exit(1)
         else:
             # Extract page titles using supplied categories
             wiki_page_titles.extract_page_titles()
@@ -107,7 +117,7 @@ class WikiProperties:
 
         # Determine page titles count
         page_titles_total = len(wiki_page_titles)
-        print(f">>> Number of extracted wiki pages: {page_titles_total}")
+        logger.info(f"Number of extracted wiki pages: {page_titles_total}")
 
         # Open page title JSON file, to check if page needs to have wiki text extracted
         json_data = {}
@@ -117,17 +127,17 @@ class WikiProperties:
                 json_data = json.load(existing_out_file)
 
         page_titles_count = 1
-        print(">>> Starting wiki text extraction for extracted page titles...")
+        logger.info("Starting wiki text extraction for extracted page titles...")
         printed_milestones = set()
         for page_title, page_revision_date in wiki_page_titles.page_titles.items():
             # Calculate current progress percentage
             progress_pct = (page_titles_count / page_titles_total) * 100
             
-            # Print only at 25%, 50%, 75%, 100% milestones (once each)
+            # Log only at 25%, 50%, 75%, 100% milestones (once each)
             for milestone in [25, 50, 75, 100]:
                 if progress_pct >= milestone and milestone not in printed_milestones:
                     printed_milestones.add(milestone)
-                    print(f"  > Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)")
+                    logger.info(f"Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)")
                     break
 
             # Convert revision date to datetime object
@@ -152,7 +162,7 @@ class WikiProperties:
 
     def process(self):
         """Process wiki page text and extract infobox data."""
-        print(f">>> Starting wiki page text processing for templates: {self.template_names}...")
+        logger.info(f"Starting wiki page text processing for templates: {self.template_names}...")
 
         # Call WikitextIDParser to map:
         # 1. ID to infobox template version
@@ -176,7 +186,7 @@ class WikiProperties:
 
         # Calculate total items to process
         total_items = len(wiki_data_ids.item_id_to_wikitext)
-        print(f"  > Processing {total_items} items...")
+        logger.info(f"Processing {total_items} items...")
         
         export = {}
         item_count = 0
@@ -188,11 +198,11 @@ class WikiProperties:
             # Calculate progress percentage
             progress_pct = (item_count / total_items) * 100
             
-            # Print only at 25%, 50%, 75%, 100% milestones (once each)
+            # Log only at 25%, 50%, 75%, 100% milestones (once each)
             for milestone in [25, 50, 75, 100]:
                 if progress_pct >= milestone and milestone not in printed_milestones:
                     printed_milestones.add(milestone)
-                    print(f"  > Progress: {item_count:4d} of {total_items:4d} ({progress_pct:.1f}%)")
+                    logger.info(f"Progress: {item_count:4d} of {total_items:4d} ({progress_pct:.1f}%)")
                     break
             
             if has_template_number:

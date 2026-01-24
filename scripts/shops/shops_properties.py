@@ -27,6 +27,7 @@ import json
 import itertools
 import collections
 import re
+import logging
 from pathlib import Path
 from datetime import datetime
 from datetime import timedelta
@@ -35,6 +36,14 @@ import config
 from scripts.wiki.wiki_page_titles import WikiPageTitles
 from scripts.wiki.wiki_page_text import WikiPageText
 from scripts.wiki.wikitext_parser import WikitextIDParser
+
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 OSRS_WIKI_API_URL = "https://oldschool.runescape.wiki/api.php"
@@ -58,7 +67,7 @@ def fetch():
     else:
         last_extraction_date = datetime.strptime("2013-02-22", "%Y-%m-%d")
 
-    print(">>> Starting wiki page titles extraction...")
+    logger.info("Starting wiki page titles extraction...")
     # Create object to handle page titles extraction
     wiki_page_titles = WikiPageTitles(OSRS_WIKI_API_URL, ["Shops"])
 
@@ -69,9 +78,8 @@ def fetch():
     if load_files:
         loaded_page_titles = wiki_page_titles.load_page_titles(TITLES_FP)
         if not loaded_page_titles:
-            sys.exit(
-                ">>> ERROR: Specified page titles to load, but not file found. Exiting."
-            )
+            logger.error("Specified page titles to load, but not file found. Exiting.")
+            sys.exit(1)
     else:
         # Extract page titles using supplied categories
         wiki_page_titles.extract_page_titles()
@@ -91,7 +99,7 @@ def fetch():
 
     # Determine page titles count
     page_titles_total = len(wiki_page_titles)
-    print(f">>> Number of extracted wiki pages: {page_titles_total}")
+    logger.info(f"Number of extracted wiki pages: {page_titles_total}")
 
     # Open page title JSON file, to check if page needs to have wiki text extracted
     json_data = {}
@@ -101,17 +109,17 @@ def fetch():
             json_data = json.load(existing_out_file)
 
     page_titles_count = 1
-    print(">>> Starting wiki text extraction for extracted page titles...")
+    logger.info("Starting wiki text extraction for extracted page titles...")
     printed_milestones = set()
     for page_title, page_revision_date in wiki_page_titles.page_titles.items():
         # Calculate current progress percentage
         progress_pct = (page_titles_count / page_titles_total) * 100
         
-        # Print only at 25%, 50%, 75%, 100% milestones (once each)
+        # Log only at 25%, 50%, 75%, 100% milestones (once each)
         for milestone in [25, 50, 75, 100]:
             if progress_pct >= milestone and milestone not in printed_milestones:
                 printed_milestones.add(milestone)
-                print(f"  > Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)")
+                logger.info(f"Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)")
                 break
 
         # Convert revision date to datetime object
@@ -136,11 +144,11 @@ def fetch():
 
 
 def process():
-    print(">>> Starting wiki page text processing...")
+    logger.info("Starting wiki page text processing...")
 
     # Load the raw wiki text data
     if not TEXT_FP.exists():
-        print(">>> ERROR: Wiki text file not found. Run fetch() first.")
+        logger.error("Wiki text file not found. Run fetch() first.")
         return
 
     with open(TEXT_FP) as f:
@@ -148,7 +156,7 @@ def process():
 
     # Calculate total shops to process
     total_shops = len(raw_wiki_data)
-    print(f"  > Processing {total_shops} shops...")
+    logger.info(f"Processing {total_shops} shops...")
 
     WikiEntry = collections.namedtuple(
         "WikiEntry", "wiki_page_name version_number template_number wikitext"
@@ -182,12 +190,12 @@ def process():
 
         shop_count += 1
         
-        # Calculate and print progress at 25% intervals (once each)
+        # Calculate and log progress at 25% intervals (once each)
         progress_pct = (shop_count / total_shops) * 100
         for milestone in [25, 50, 75, 100]:
             if progress_pct >= milestone and milestone not in printed_milestones:
                 printed_milestones.add(milestone)
-                print(f"  > Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)")
+                logger.info(f"Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)")
                 break
 
         # Check if the page has an infobox shop template
@@ -201,7 +209,7 @@ def process():
             # Use the page title as the export key instead of a generated numeric id
             export[page_title] = entry
 
-    print(f">>> Processed {len(export)} shops with infobox shop templates")
+    logger.info(f"Processed {len(export)} shops with infobox shop templates")
 
     out_fi = Path(config.DATA_SHOPS_PATH / "shops-wiki-page-text-processed.json")
     with open(out_fi, "w") as f:

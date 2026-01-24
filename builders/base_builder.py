@@ -23,7 +23,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import traceback
+import logging
 from abc import ABC, abstractmethod
+
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 class BaseBuilder(ABC):
@@ -105,7 +114,7 @@ class BaseBuilder(ABC):
             total_entities = len(entity_ids)
             entities_processed = 0
             
-            print(f">>> Starting build process for {total_entities} entities...")
+            logger.info(f"Starting build process for {total_entities} entities...")
             printed_milestones = set()
             
             for entity_id in entity_ids:
@@ -115,31 +124,31 @@ class BaseBuilder(ABC):
                     
                     entities_processed += 1
                     
-                    # Calculate and print progress at 25% intervals (once each)
+                    # Calculate and log progress at 25% intervals (once each)
                     progress_pct = (entities_processed / total_entities) * 100
                     for milestone in [25, 50, 75, 100]:
                         if progress_pct >= milestone and milestone not in printed_milestones:
                             printed_milestones.add(milestone)
-                            print(f"  > Progress: {entities_processed:4d} of {total_entities:4d} ({progress_pct:.1f}%)")
+                            logger.info(f"Progress: {entities_processed:4d} of {total_entities:4d} ({progress_pct:.1f}%)")
                             break
                     
                     builder = self._build_entity(entity_id)
                     self._process_built_entity(builder, entity_id)
                     
                 except Exception:
-                    print(f"Ran into issue parsing entity {entity_id}.")
-                    print(traceback.format_exc())
+                    logger.error(f"Ran into issue parsing entity {entity_id}.")
+                    logger.error(traceback.format_exc())
                     with open(".error.txt", "a", encoding="utf-8") as errfile:
                         print(f"Ran into issue parsing entity {entity_id}.", file=errfile)
                         print(traceback.format_exc(), file=errfile)
             
             # Done processing, rejoice!
-            print("Built.")
+            logger.info("Built.")
             exit(0)
             
         except Exception:
-            print("Fatal error during build process.")
-            print(traceback.format_exc())
+            logger.error("Fatal error during build process.")
+            logger.error(traceback.format_exc())
             with open(".error.txt", "a", encoding="utf-8") as errfile:
                 print("Fatal error during build process.", file=errfile)
                 print(traceback.format_exc(), file=errfile)
@@ -152,7 +161,7 @@ class BaseBuilder(ABC):
             total_entities = len(entity_ids)
             entities_processed = 0
             
-            print(f">>> Starting test process for {total_entities} entities...")
+            logger.info(f"Starting test process for {total_entities} entities...")
             printed_milestones = set()
             
             for entity_id in entity_ids:
@@ -162,31 +171,31 @@ class BaseBuilder(ABC):
                     
                     entities_processed += 1
                     
-                    # Calculate and print progress at 25% intervals (once each)
+                    # Calculate and log progress at 25% intervals (once each)
                     progress_pct = (entities_processed / total_entities) * 100
                     for milestone in [25, 50, 75, 100]:
                         if progress_pct >= milestone and milestone not in printed_milestones:
                             printed_milestones.add(milestone)
-                            print(f"  > Progress: {entities_processed:4d} of {total_entities:4d} ({progress_pct:.1f}%)")
+                            logger.info(f"Progress: {entities_processed:4d} of {total_entities:4d} ({progress_pct:.1f}%)")
                             break
                     
                     builder = self._build_entity(entity_id)
                     self._process_built_entity_test(builder, entity_id)
                     
                 except Exception:
-                    print(f"Ran into issue parsing entity {entity_id}.")
-                    print(traceback.format_exc())
+                    logger.error(f"Ran into issue parsing entity {entity_id}.")
+                    logger.error(traceback.format_exc())
                     with open(".error.txt", "a", encoding="utf-8") as errfile:
                         print(f"Ran into issue parsing entity {entity_id}.", file=errfile)
                         print(traceback.format_exc(), file=errfile)
             
             # Done testing, rejoice!
-            print("Tested.")
+            logger.info("Tested.")
             exit(0)
             
         except Exception:
-            print("Fatal error during test process.")
-            print(traceback.format_exc())
+            logger.error("Fatal error during test process.")
+            logger.error(traceback.format_exc())
             with open(".error.txt", "a", encoding="utf-8") as errfile:
                 print("Fatal error during test process.", file=errfile)
                 print(traceback.format_exc(), file=errfile)
