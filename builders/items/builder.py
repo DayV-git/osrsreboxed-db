@@ -24,21 +24,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
 import argparse
-import traceback
 from pathlib import Path
 
 import config
+from builders.base_builder import BaseBuilder
 from builders.items import build_item
 
 
-class Builder:
-    def __init__(self, **kwargs):
-        # Set properties to control phases of build
-        self.verbose = kwargs.get("verbose", False)
-        self.compare = kwargs.get("compare", False)
-        self.export = kwargs.get("export", False)
-        self.validate = kwargs.get("validate", False)
-
+class Builder(BaseBuilder):
+    """Item-specific builder that extends BaseBuilder."""
+    
+    def _load_data_files(self):
+        """Load all item-specific data files."""
         # Load the raw cache data that has been processed (this is ground truth)
         with open(Path(config.DATA_ITEMS_PATH / "items-cache-data.json")) as f:
             self.all_items_cache_data = json.load(f)
@@ -95,138 +92,79 @@ class Builder:
 
         # Initialize a list of known items
         self.known_items = []
+    
+    def _get_entity_id_list(self):
+        """Get list of item IDs from cache data."""
+        return self.all_items_cache_data
+    
+    def _should_skip_entity(self, item_id):
+        """Check if item should be skipped."""
+        # Skip any beta items
+        if "(beta" in self.all_items_cache_data[item_id]["name"]:
+            return True
 
-    def run(self):
-        # Start processing every item!
-        for item_id in self.all_items_cache_data:
-            try:
-                # if int(item_id) < 25800:
-                #     continue
+        # Skip the beta items from DT2
+        if int(item_id) in [
+            25484, 25485, 25486, 25487, 25488,
+            25489, 25490, 25491, 25492,
+        ]:
+            return True
+        
+        return False
+    
+    def _build_entity(self, item_id):
+        """Build a single item."""
+        return build_item.BuildItem(
+            item_id=item_id,
+            all_items_cache_data=self.all_items_cache_data,
+            all_db_items=self.all_db_items,
+            all_wikitext_raw=self.all_wikitext_raw,
+            all_wikitext_processed=self.all_wikitext_processed,
+            unalchable=self.unalchable,
+            buy_limits=self.buy_limits,
+            skill_requirements=self.skill_requirements,
+            weapon_stances=self.weapon_stances,
+            icons=self.icons,
+            duplicates=self.duplicates,
+            schema_data=self.schema_data,
+            known_items=self.known_items,
+            verbose=self.verbose,
+        )
+    
+    def _process_built_entity(self, builder, item_id):
+        """Process a built item."""
+        status = builder.preprocessing()
 
-                # Skip any beta items
-                if "(beta" in self.all_items_cache_data[item_id]["name"]:
-                    continue
+        if status["status"]:
+            builder.populate_wiki_item()
+        else:
+            builder.populate_non_wiki_item()
 
-                # Skip the beta items from DT2
-                if int(item_id) in [
-                    25484,
-                    25485,
-                    25486,
-                    25487,
-                    25488,
-                    25489,
-                    25490,
-                    25491,
-                    25492,
-                ]:
-                    continue
-
-                # Initialize the BuildItem class, used for all items
-                builder = build_item.BuildItem(
-                    item_id=item_id,
-                    all_items_cache_data=self.all_items_cache_data,
-                    all_db_items=self.all_db_items,
-                    all_wikitext_raw=self.all_wikitext_raw,
-                    all_wikitext_processed=self.all_wikitext_processed,
-                    unalchable=self.unalchable,
-                    buy_limits=self.buy_limits,
-                    skill_requirements=self.skill_requirements,
-                    weapon_stances=self.weapon_stances,
-                    icons=self.icons,
-                    duplicates=self.duplicates,
-                    schema_data=self.schema_data,
-                    known_items=self.known_items,
-                    verbose=self.verbose,
-                )
-
-                status = builder.preprocessing()
-
-                if status["status"]:
-                    builder.populate_wiki_item()
-                else:
-                    builder.populate_non_wiki_item()
-
-                known_item = builder.check_duplicate_item()
-                if known_item:
-                    self.known_items.append(known_item)
-                if self.compare:
-                    builder.compare_new_vs_old_item()
-                if self.export:
-                    builder.export_item_to_json()
-                if self.validate:
-                    builder.validate_item()
-
-            except Exception:
-                print("Ran into issue parsing item.")
-                print(traceback.format_exc())
-                with open(".error.txt", "a", encoding="utf-8") as errfile:
-                    print("Ran into issue parsing item.", file=errfile)
-                    print(traceback.format_exc(), file=errfile)
-        # Done processing, rejoice!
-        print("Built.")
-        exit(0)
-
-    def test(self):
-        # Start processing every item!
-        for item_id in self.all_items_cache_data:
-
-            # if int(item_id) < 25800:
-            #   continue
-
-            # Skip any beta items
-            if "(beta" in self.all_items_cache_data[item_id]["name"]:
-                continue
-
-            if "(null)" in self.all_items_cache_data[item_id]["name"]:
-                continue
-
-            # Skip the beta items from DT2
-            if int(item_id) in [
-                25484,
-                25485,
-                25486,
-                25487,
-                25488,
-                25489,
-                25490,
-                25491,
-                25492,
-            ]:
-                continue
-
-            # Initialize the BuildItem class, used for all items
-            builder = build_item.BuildItem(
-                item_id=item_id,
-                all_items_cache_data=self.all_items_cache_data,
-                all_db_items=self.all_db_items,
-                all_wikitext_raw=self.all_wikitext_raw,
-                all_wikitext_processed=self.all_wikitext_processed,
-                unalchable=self.unalchable,
-                buy_limits=self.buy_limits,
-                skill_requirements=self.skill_requirements,
-                weapon_stances=self.weapon_stances,
-                icons=self.icons,
-                duplicates=self.duplicates,
-                schema_data=self.schema_data,
-                known_items=self.known_items,
-                verbose=self.verbose,
-            )
-
-            status = builder.preprocessing()
-
-            if status["status"]:
-                builder.populate_wiki_item()
-            else:
-                builder.populate_non_wiki_item()
-
-            known_item = builder.check_duplicate_item()
-            if known_item:
-                self.known_items.append(known_item)
+        known_item = builder.check_duplicate_item()
+        if known_item:
+            self.known_items.append(known_item)
+        
+        if self.compare:
+            builder.compare_new_vs_old_item()
+        if self.export:
+            builder.export_item_to_json()
+        if self.validate:
             builder.validate_item()
+    
+    def _process_built_entity_test(self, builder, item_id):
+        """Process a built item in test mode."""
+        status = builder.preprocessing()
 
-        # Done testing, rejoice!
-        print("Tested.")
-        exit(0)
+        if status["status"]:
+            builder.populate_wiki_item()
+        else:
+            builder.populate_non_wiki_item()
+
+        known_item = builder.check_duplicate_item()
+        if known_item:
+            self.known_items.append(known_item)
+        
+        builder.validate_item()
 
 
 if __name__ == "__main__":
