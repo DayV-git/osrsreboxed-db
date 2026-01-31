@@ -31,7 +31,11 @@ from urllib3.util.retry import Retry
 
 import config
 
-LOG = logging.getLogger(__name__)
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 class WikiPageText:
@@ -88,7 +92,7 @@ class WikiPageText:
                 if attempt == max_attempts:
                     raise SystemExit(">>> ERROR: Get request error. Exiting.") from e
                 wait = 2**attempt
-                LOG.warning(
+                logger.warning(
                     "RequestException fetching %s (attempt %d/%d): %s — retrying in %ds",
                     self.page_title,
                     attempt,
@@ -104,15 +108,15 @@ class WikiPageText:
                 page_data = resp.json()
             except ValueError:
                 snippet = resp.text[:300].replace("\n", " ")
-                LOG.warning(
+                logger.warning(
                     "Non-JSON response for page %s (status=%s). Snippet: %s",
                     self.page_title,
                     resp.status_code,
                     snippet,
                 )
                 if attempt == max_attempts:
-                    LOG.error(
-                        ">>> ERROR: Non-JSON response from wiki API after retries. Skipping page: %s",
+                    logger.error(
+                        "Non-JSON response from wiki API after retries. Skipping page: %s",
                         self.page_title,
                     )
                     page_data = None
@@ -165,5 +169,5 @@ class WikiPageText:
             except OSError as e:
                 if attempt == 4:
                     raise
-                print(f"File open failed ({e}), retrying...")
+                logger.warning(f"File open failed ({e}), retrying...")
                 time.sleep(0.5)

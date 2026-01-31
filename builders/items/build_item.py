@@ -26,6 +26,7 @@ from typing import Dict
 from pathlib import Path
 from datetime import datetime
 from datetime import timezone
+import logging
 
 import mwparserfromhell
 from deepdiff import DeepDiff
@@ -36,6 +37,12 @@ import validator
 from builders.items import infobox_cleaner
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 from osrsreboxed.items_api.item_properties import ItemProperties
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 class BuildItem:
@@ -437,7 +444,7 @@ class BuildItem:
             has_infobox = infobox_bonuses_parser.extract_infobox("infobox_bonuses")
             if not has_infobox:
                 # No infobox bonuses found for the item!
-                print("populate_from_wiki_data_equipment: No infobox bonuses.")
+                logger.debug("No infobox bonuses found for item")
                 return False
 
         # Set the infobox bonuses template
@@ -497,7 +504,7 @@ class BuildItem:
         if slot is not None:
             self.item_dict["equipment"]["slot"] = infobox_cleaner.caller(slot, "slot")
         else:
-            print(">>> populate_from_wiki_data_equipment: No slot")
+            logger.error("No equipment slot found for item")
             exit(1)
 
         # Skill requirements
@@ -546,10 +553,7 @@ class BuildItem:
             try:
                 self.item_dict["weapon"]["stances"] = self.weapon_stances[weapon_type]
             except KeyError:
-                print(
-                    "populate_from_wiki_data_equipment: Weapon type error 1 | "
-                    + weapon_type
-                )
+                logger.error(f"Weapon type error: {weapon_type}")
                 raise
 
         else:
@@ -561,7 +565,7 @@ class BuildItem:
             try:
                 self.item_dict["weapon"]["stances"] = self.weapon_stances[weapon_type]
             except KeyError:
-                print("populate_from_wiki_data_equipment: Weapon type error 2")
+                logger.error("Weapon type not found in stances data")
                 raise
 
         # Finally, set the equipable_weapon property to true
@@ -678,8 +682,8 @@ class BuildItem:
         try:
             existing_json = self.all_db_items[self.item_id]
         except KeyError:
-            print(f">>> compare_json_files: NEW ITEM: {item_properties.id}")
-            print(current_json)
+            logger.info(f"New item: {item_properties.id}")
+            logger.debug(f"Item data: {current_json}")
             self.item_dict["last_updated"] = datetime.now(timezone.utc).strftime(
                 "%Y-%m-%d"
             )
@@ -696,10 +700,8 @@ class BuildItem:
         )
 
         if ddiff:
-            print(
-                f">>> compare_json_files: CHANGED ITEM: {item_properties.id}: {item_properties.name}"
-            )
-            print(ddiff)
+            logger.info(f"Changed item: {item_properties.id}: {item_properties.name}")
+            logger.debug(f"Changes: {ddiff}")
         self.item_dict["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     def export_item_to_json(self):
@@ -803,7 +805,9 @@ class BuildItem:
 
         # Print any validation errors
         if v.errors:
-            print(v.errors)
+            logger.error(
+                f"Validation errors for item {item_properties.id} ({item_properties.name}): {v.errors}"
+            )
             with open(".error.txt", "a", encoding="utf-8") as errfile:
                 print(
                     f"Validation errors for item {item_properties.id} ({item_properties.name}):",

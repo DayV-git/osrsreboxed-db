@@ -40,8 +40,7 @@ from scripts.wiki.wikitext_parser import WikitextIDParser
 
 # Setup logging
 logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
@@ -114,12 +113,14 @@ def fetch():
     for page_title, page_revision_date in wiki_page_titles.page_titles.items():
         # Calculate current progress percentage
         progress_pct = (page_titles_count / page_titles_total) * 100
-        
+
         # Log only at 25%, 50%, 75%, 100% milestones (once each)
         for milestone in [25, 50, 75, 100]:
             if progress_pct >= milestone and milestone not in printed_milestones:
                 printed_milestones.add(milestone)
-                logger.info(f"Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)")
+                logger.info(
+                    f"Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)"
+                )
                 break
 
         # Convert revision date to datetime object
@@ -189,13 +190,15 @@ def process():
             continue
 
         shop_count += 1
-        
+
         # Calculate and log progress at 25% intervals (once each)
         progress_pct = (shop_count / total_shops) * 100
         for milestone in [25, 50, 75, 100]:
             if progress_pct >= milestone and milestone not in printed_milestones:
                 printed_milestones.add(milestone)
-                logger.info(f"Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)")
+                logger.info(
+                    f"Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)"
+                )
                 break
 
         # Check if the page has an infobox shop template

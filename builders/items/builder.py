@@ -33,7 +33,7 @@ from builders.items import build_item
 
 class Builder(BaseBuilder):
     """Item-specific builder that extends BaseBuilder."""
-    
+
     def _load_data_files(self):
         """Load all item-specific data files."""
         # Load the raw cache data that has been processed (this is ground truth)
@@ -92,11 +92,11 @@ class Builder(BaseBuilder):
 
         # Initialize a list of known items
         self.known_items = []
-    
+
     def _get_entity_id_list(self):
         """Get list of item IDs from cache data."""
         return self.all_items_cache_data
-    
+
     def _should_skip_entity(self, item_id):
         """Check if item should be skipped."""
         # Skip any beta items
@@ -105,13 +105,20 @@ class Builder(BaseBuilder):
 
         # Skip the beta items from DT2
         if int(item_id) in [
-            25484, 25485, 25486, 25487, 25488,
-            25489, 25490, 25491, 25492,
+            25484,
+            25485,
+            25486,
+            25487,
+            25488,
+            25489,
+            25490,
+            25491,
+            25492,
         ]:
             return True
-        
+
         return False
-    
+
     def _build_entity(self, item_id):
         """Build a single item."""
         return build_item.BuildItem(
@@ -130,7 +137,7 @@ class Builder(BaseBuilder):
             known_items=self.known_items,
             verbose=self.verbose,
         )
-    
+
     def _process_built_entity(self, builder, item_id):
         """Process a built item."""
         status = builder.preprocessing()
@@ -143,14 +150,14 @@ class Builder(BaseBuilder):
         known_item = builder.check_duplicate_item()
         if known_item:
             self.known_items.append(known_item)
-        
+
         if self.compare:
             builder.compare_new_vs_old_item()
         if self.export:
             builder.export_item_to_json()
         if self.validate:
             builder.validate_item()
-    
+
     def _process_built_entity_test(self, builder, item_id):
         """Process a built item in test mode."""
         status = builder.preprocessing()
@@ -163,7 +170,7 @@ class Builder(BaseBuilder):
         known_item = builder.check_duplicate_item()
         if known_item:
             self.known_items.append(known_item)
-        
+
         builder.validate_item()
 
 
@@ -202,10 +209,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     builder = Builder(
-        verbose=args.verbose, 
-        compare=args.compare, 
-        export=args.export, 
-        validate=args.validate
+        verbose=args.verbose,
+        compare=args.compare,
+        export=args.export,
+        validate=args.validate,
     )
     if args.test:
         builder.test()

@@ -40,21 +40,27 @@ from scripts.wiki.wikitext_parser import WikitextIDParser
 
 # Setup logging
 logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
 
 class WikiProperties:
     """Shared utility for wiki property fetching and processing across entity types."""
-    
+
     OSRS_WIKI_API_URL = "https://oldschool.runescape.wiki/api.php"
     REVISION_DATE_REGEX = r" [+-][0-9]{4}"
-    
-    def __init__(self, categories, template_names, titles_filepath, text_filepath, processed_filepath):
+
+    def __init__(
+        self,
+        categories,
+        template_names,
+        titles_filepath,
+        text_filepath,
+        processed_filepath,
+    ):
         """Initialize WikiProperties with entity-specific configuration.
-        
+
         Args:
             categories (list): Wiki categories to extract (e.g., ["Items", "Pets"] or ["Monsters"])
             template_names (list): Infobox template names to look for (e.g., ["infobox item", "infobox pet"])
@@ -67,7 +73,7 @@ class WikiProperties:
         self.titles_filepath = titles_filepath
         self.text_filepath = text_filepath
         self.processed_filepath = processed_filepath
-    
+
     def fetch(self):
         """Get all the wiki category page titles and page text."""
         # Try to determine the last update
@@ -75,7 +81,9 @@ class WikiProperties:
             stream = os.popen(f"git log -1 --format='%ad' {self.titles_filepath}")
             last_extraction_date = stream.read().strip()
             last_extraction_date = last_extraction_date.strip("'\"")
-            last_extraction_date = re.sub(self.REVISION_DATE_REGEX, "", last_extraction_date).strip()
+            last_extraction_date = re.sub(
+                self.REVISION_DATE_REGEX, "", last_extraction_date
+            ).strip()
             last_extraction_date = datetime.strptime(
                 last_extraction_date, "%a %b %d %H:%M:%S %Y"
             )
@@ -83,7 +91,9 @@ class WikiProperties:
         else:
             last_extraction_date = datetime.strptime("2013-02-22", "%Y-%m-%d")
 
-        logger.info(f"Starting wiki page titles extraction for categories: {self.categories}...")
+        logger.info(
+            f"Starting wiki page titles extraction for categories: {self.categories}..."
+        )
         # Create object to handle page titles extraction
         wiki_page_titles = WikiPageTitles(self.OSRS_WIKI_API_URL, self.categories)
 
@@ -132,12 +142,14 @@ class WikiProperties:
         for page_title, page_revision_date in wiki_page_titles.page_titles.items():
             # Calculate current progress percentage
             progress_pct = (page_titles_count / page_titles_total) * 100
-            
+
             # Log only at 25%, 50%, 75%, 100% milestones (once each)
             for milestone in [25, 50, 75, 100]:
                 if progress_pct >= milestone and milestone not in printed_milestones:
                     printed_milestones.add(milestone)
-                    logger.info(f"Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)")
+                    logger.info(
+                        f"Progress: {page_titles_count:4d} of {page_titles_total:4d} ({progress_pct:.1f}%)"
+                    )
                     break
 
             # Convert revision date to datetime object
@@ -162,7 +174,9 @@ class WikiProperties:
 
     def process(self):
         """Process wiki page text and extract infobox data."""
-        logger.info(f"Starting wiki page text processing for templates: {self.template_names}...")
+        logger.info(
+            f"Starting wiki page text processing for templates: {self.template_names}..."
+        )
 
         # Call WikitextIDParser to map:
         # 1. ID to infobox template version
@@ -173,8 +187,8 @@ class WikiProperties:
         # Build the WikiEntry namedtuple based on template type
         # Items have: wiki_page_name, version_number, wikitext
         # Monsters have: wiki_page_name, version_number, template_number, wikitext
-        has_template_number = hasattr(wiki_data_ids, 'item_id_to_template_number')
-        
+        has_template_number = hasattr(wiki_data_ids, "item_id_to_template_number")
+
         if has_template_number:
             WikiEntry = collections.namedtuple(
                 "WikiEntry", "wiki_page_name version_number template_number wikitext"
@@ -187,24 +201,26 @@ class WikiProperties:
         # Calculate total items to process
         total_items = len(wiki_data_ids.item_id_to_wikitext)
         logger.info(f"Processing {total_items} items...")
-        
+
         export = {}
         item_count = 0
         printed_milestones = set()
 
         for item_id, wikitext in wiki_data_ids.item_id_to_wikitext.items():
             item_count += 1
-            
+
             # Calculate progress percentage
             progress_pct = (item_count / total_items) * 100
-            
+
             # Log only at 25%, 50%, 75%, 100% milestones (once each)
             for milestone in [25, 50, 75, 100]:
                 if progress_pct >= milestone and milestone not in printed_milestones:
                     printed_milestones.add(milestone)
-                    logger.info(f"Progress: {item_count:4d} of {total_items:4d} ({progress_pct:.1f}%)")
+                    logger.info(
+                        f"Progress: {item_count:4d} of {total_items:4d} ({progress_pct:.1f}%)"
+                    )
                     break
-            
+
             if has_template_number:
                 entry = WikiEntry(
                     wiki_page_name=wiki_data_ids.item_id_to_wiki_name[item_id],

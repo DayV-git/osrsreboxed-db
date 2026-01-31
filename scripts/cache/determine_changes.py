@@ -29,11 +29,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import json
+import logging
 from pathlib import Path
 from typing import List
 from typing import Dict
 
 import config
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 class DetermineCacheChanges:
@@ -100,26 +107,26 @@ def items():
 
     # Determine added items
     added = dd.added()
-    print("- Added items: %d" % len(added))
+    logger.info("- Added items: %d" % len(added))
     for itemID in added:
-        print("    - %s,%s" % (itemID, new_items[itemID]["name"]))
+        logger.info("    - %s,%s" % (itemID, new_items[itemID]["name"]))
 
     # Determine removed items
     removed = dd.removed()
-    print("- Removed items: %d" % len(removed))
+    logger.info("- Removed items: %d" % len(removed))
     for itemID in removed:
-        print("    - %s,%s" % (itemID, old_items[itemID]["name"]))
+        logger.info("    - %s,%s" % (itemID, old_items[itemID]["name"]))
 
     # Determine changed items
     changed = dd.changed()
-    print("- Changed items: %d" % len(changed))
+    logger.info("- Changed items: %d" % len(changed))
     for itemID in changed:
         changed_keys = []
         for key in new_items[itemID]:
             if new_items[itemID][key] != old_items[itemID][key]:
                 changed_keys.append(key)
         if changed_keys:
-            print(
+            logger.info(
                 "    - %s,%s,%s"
                 % (itemID, old_items[itemID]["name"], "|".join(changed_keys))
             )
@@ -150,19 +157,19 @@ def monsters():
 
     # Determine added monsters
     added = dd.added()
-    print("- Added monsters: %d" % len(added))
+    logger.info("- Added monsters: %d" % len(added))
     for monsterID in added:
-        print("    - %s,%s" % (monsterID, new_monsters[monsterID]["name"]))
+        logger.info("    - %s,%s" % (monsterID, new_monsters[monsterID]["name"]))
 
     # Determine removed monsters
     removed = dd.removed()
-    print("- Removed monsters: %d" % len(removed))
+    logger.info("- Removed monsters: %d" % len(removed))
     for monsterID in removed:
-        print("    - %s,%s" % (monsterID, old_monsters[monsterID]["name"]))
+        logger.info("    - %s,%s" % (monsterID, old_monsters[monsterID]["name"]))
 
     # Determine changed monsters
     changed = dd.changed()
-    print("- Changed monsters: %d" % len(changed))
+    logger.info("- Changed monsters: %d" % len(changed))
     for monsterID in changed:
         changed_keys = []
         for key in new_monsters[monsterID]:
@@ -173,7 +180,7 @@ def monsters():
             if new_monsters[monsterID][key] != old_monsters[monsterID][key]:
                 changed_keys.append(key)
         if changed_keys:
-            print(
+            logger.info(
                 "    - %s,%s,%s"
                 % (monsterID, old_monsters[monsterID]["name"], "|".join(changed_keys))
             )
@@ -201,11 +208,11 @@ def move():
 
 
 if __name__ == "__main__":
-    print("Determining item changes using items-cache-data.json files...")
+    logger.info("Determining item changes using items-cache-data.json files...")
     items()
 
-    print("Determining monster changes using monsters-cache-data.json files...")
+    logger.info("Determining monster changes using monsters-cache-data.json files...")
     monsters()
 
-    print("Overwrite old files")
+    logger.info("Overwrite old files")
     move()

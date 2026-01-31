@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from pathlib import Path
 from datetime import datetime
 from datetime import timezone
+import logging
 
 import mwparserfromhell
 from deepdiff import DeepDiff
@@ -34,6 +35,12 @@ import validator
 from builders.monsters import infobox_cleaner
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 from osrsreboxed.monsters_api.monster_properties import MonsterProperties
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 class BuildMonster:
@@ -125,8 +132,8 @@ class BuildMonster:
 
         if not self.has_infobox:
             if self.verbose:
-                print(
-                    f">>> No infobox found for {self.monster_name} ({self.monster_id_str})"
+                logger.debug(
+                    f"No infobox found for {self.monster_name} ({self.monster_id_str})"
                 )
             return (
                 False,
@@ -428,8 +435,8 @@ class BuildMonster:
         try:
             existing_json = self.all_db_monsters[self.monster_id]
         except KeyError:
-            print(f">>> compare_json_files: NEW MONSTER: {self.monster_properties.id}")
-            print(current_json)
+            logger.info(f"New monster: {self.monster_properties.id}")
+            logger.debug(f"Monster data: {current_json}")
             self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime(
                 "%Y-%m-%d"
             )
@@ -443,14 +450,14 @@ class BuildMonster:
             return
 
         # Print a header for the changed monster
-        print(
-            f">>> compare_json_files: CHANGED MONSTER: {self.monster_properties.id}: {self.monster_properties.name}"
+        logger.info(
+            f"Changed monster: {self.monster_properties.id}: {self.monster_properties.name}"
         )
 
         # First check the base properties
         ddiff_props = DeepDiff(existing_json, current_json, ignore_order=True)
         if ddiff_props:
-            print(ddiff_props)
+            logger.debug(f"Differences: {ddiff_props}")
 
         self.monster_dict["last_updated"] = datetime.now(timezone.utc).strftime(
             "%Y-%m-%d"
@@ -474,7 +481,9 @@ class BuildMonster:
 
         # Print any validation errors
         if v.errors:
-            print(v.errors)
+            logger.error(
+                f"Validation errors for monster {self.monster_properties.id} ({self.monster_properties.name}): {v.errors}"
+            )
             with open(".error.txt", "a", encoding="utf-8") as errfile:
                 print(
                     f"Validation errors for monster {self.monster_properties.id} ({self.monster_properties.name}):",

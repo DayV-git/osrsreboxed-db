@@ -3,10 +3,17 @@ from osrsreboxed import items_api
 
 import multiprocessing as mp
 import hashlib
+import logging
 import config
 import requests
 import os
 import json
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 RUNELITE_ICON_URL = "https://static.runelite.net/cache/item/icon/"
 BLANK = "bb44d26003a2b044e235aae2fc8427f7"
@@ -31,7 +38,7 @@ def main():
     icon_ids = sorted(item_ids + noted_ids)
     with mp.Pool(processes=16) as pool:
         pool.starmap(fetch_icon, [(item_id, ICONS_PATH) for item_id in icon_ids])
-    print("Done")
+    logger.info("Done")
     exit(0)
 
 
@@ -40,25 +47,25 @@ def fetch_icon(item_id, dir_path):
     file_path = dir_path / file_name
     if file_path.is_file():
         return
-    print(f"> Fetching icon {item_id}")
+    logger.debug(f"Fetching icon {item_id}")
     target_url = RUNELITE_ICON_URL + file_name
 
     try:
         resp = requests.get(target_url, stream=True, timeout=15)
     except requests.exceptions.RequestException as e:
-        print(f"Failed icon request for {item_id}: {e}")
+        logger.error(f"Failed icon request for {item_id}: {e}")
         return
 
     # Only accept successful responses
     if resp.status_code != 200:
-        print(f"Skipping {item_id}: HTTP {resp.status_code}")
+        logger.warning(f"Skipping {item_id}: HTTP {resp.status_code}")
         return
 
     # Content-Type header should indicate an image (png)
     ctype = resp.headers.get("Content-Type", "")
     if not ctype.startswith("image/"):
         # Sometimes a HTML error page is returned instead of an image
-        print(f"Skipping {item_id}: unexpected Content-Type: {ctype}")
+        logger.warning(f"Skipping {item_id}: unexpected Content-Type: {ctype}")
         return
 
     # Stream to a temp file first to avoid writing invalid content
@@ -69,7 +76,7 @@ def fetch_icon(item_id, dir_path):
                 if chunk:
                     out_file.write(chunk)
     except OSError as e:
-        print(f"Failed to write icon {item_id}: {e}")
+        logger.error(f"Failed to write icon {item_id}: {e}")
         try:
             if tmp_path.exists():
                 tmp_path.unlink()
@@ -82,7 +89,7 @@ def fetch_icon(item_id, dir_path):
         with open(tmp_path, "rb") as f:
             sig = f.read(8)
     except OSError:
-        print(f"Failed to read tmp file for {item_id}")
+        logger.error(f"Failed to read tmp file for {item_id}")
         try:
             tmp_path.unlink()
         except Exception:
@@ -91,7 +98,9 @@ def fetch_icon(item_id, dir_path):
 
     if not sig.startswith(b"\x89PNG\r\n\x1a\n"):
         # Not a PNG (could be HTML or other); skip and remove tmp
-        print(f"Skipping {item_id}: downloaded file is not a PNG (signature mismatch)")
+        logger.warning(
+            f"Skipping {item_id}: downloaded file is not a PNG (signature mismatch)"
+        )
         try:
             tmp_path.unlink()
         except Exception:
@@ -105,7 +114,7 @@ def fetch_icon(item_id, dir_path):
         try:
             os.rename(tmp_path, file_path)
         except Exception as e:
-            print(f"Failed to move tmp file into place for {item_id}: {e}")
+            logger.error(f"Failed to move tmp file into place for {item_id}: {e}")
             try:
                 tmp_path.unlink()
             except Exception:

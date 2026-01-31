@@ -23,21 +23,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import json
+import logging
 from pathlib import Path
 import config
 
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 CACHE_DUMP_TYPES = ["items", "npcs", "objects"]
 
 
 def load_item_definitions():
-    print("Loading item cache...", flush=True)
+    logger.info("Loading item cache...")
     item_definitions = {}
     all_cache_items = sorted(
         Path(config.DATA_CACHE_PATH / "item_defs").glob("*.json"),
         key=lambda path: int(path.stem),
     )
     if len(all_cache_items) == 0:
-        print(">>> ERROR: scripts.cache.cache_constants")
+        logger.error("Could not load item cache files. Exiting.")
         exit(">>> Could not load item cache files. Exiting.")
     for cache_file in all_cache_items:
         with open(cache_file) as f:
@@ -47,14 +53,14 @@ def load_item_definitions():
 
 
 def load_npc_definitions():
-    print("Loading NPC cache...", flush=True)
+    logger.info("Loading NPC cache...")
     npc_definitions = {}
     all_cache_npcs = sorted(
         Path(config.DATA_CACHE_PATH / "npc_defs").glob("*.json"),
         key=lambda path: int(path.stem),
     )
     if len(all_cache_npcs) == 0:
-        print(">>> ERROR: scripts.cache.cache_constants")
+        logger.error("Could not load npc cache files. Exiting.")
         exit(">>> Could not load npc cache files. Exiting.")
     for cache_file in all_cache_npcs:
         with open(cache_file) as f:
@@ -64,14 +70,14 @@ def load_npc_definitions():
 
 
 def load_object_definitions():
-    print("Loading object cache...", flush=True)
+    logger.info("Loading object cache...")
     object_definitions = {}
     all_cache_objects = sorted(
         Path(config.DATA_CACHE_PATH / "object_defs").glob("*.json"),
         key=lambda path: int(path.stem),
     )
     if len(all_cache_objects) == 0:
-        print(">>> ERROR: scripts.cache.cache_constants")
+        logger.error("Could not load object cache files. Exiting.")
         exit(">>> Could not load object cache files. Exiting.")
     for cache_file in all_cache_objects:
         with open(cache_file) as f:

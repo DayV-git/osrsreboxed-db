@@ -34,7 +34,9 @@ def fetch():
         template_names=["infobox item", "infobox pet"],
         titles_filepath=Path(config.DATA_ITEMS_PATH / "items-wiki-page-titles.json"),
         text_filepath=Path(config.DATA_ITEMS_PATH / "items-wiki-page-text.json"),
-        processed_filepath=Path(config.DATA_ITEMS_PATH / "items-wiki-page-text-processed.json"),
+        processed_filepath=Path(
+            config.DATA_ITEMS_PATH / "items-wiki-page-text-processed.json"
+        ),
     )
     wiki_props.fetch()
 
@@ -46,7 +48,9 @@ def process():
         template_names=["infobox item", "infobox pet"],
         titles_filepath=Path(config.DATA_ITEMS_PATH / "items-wiki-page-titles.json"),
         text_filepath=Path(config.DATA_ITEMS_PATH / "items-wiki-page-text.json"),
-        processed_filepath=Path(config.DATA_ITEMS_PATH / "items-wiki-page-text-processed.json"),
+        processed_filepath=Path(
+            config.DATA_ITEMS_PATH / "items-wiki-page-text-processed.json"
+        ),
     )
     wiki_props.process()
 

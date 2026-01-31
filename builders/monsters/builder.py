@@ -33,7 +33,7 @@ from builders.monsters import build_monster
 
 class Builder(BaseBuilder):
     """Monster-specific builder that extends BaseBuilder."""
-    
+
     def _load_data_files(self):
         """Load all monster-specific data files."""
         # Load the raw cache data that has been processed (this is ground truth)
@@ -62,16 +62,16 @@ class Builder(BaseBuilder):
 
         # Initialize a list of known monsters
         self.known_monsters = []
-    
+
     def _get_entity_id_list(self):
         """Get list of monster IDs from cache data."""
         return self.all_monster_cache_data
-    
+
     def _should_skip_entity(self, monster_id):
         """Check if monster should be skipped."""
         # No skipping logic for monsters
         return False
-    
+
     def _build_entity(self, monster_id):
         """Build a single monster."""
         return build_monster.BuildMonster(
@@ -84,7 +84,7 @@ class Builder(BaseBuilder):
             known_monsters=self.known_monsters,
             verbose=self.verbose,
         )
-    
+
     def _process_built_entity(self, builder, monster_id):
         """Process a built monster."""
         status, message = builder.preprocessing()
@@ -92,7 +92,7 @@ class Builder(BaseBuilder):
             builder.populate_monster()
             known_monster = builder.check_duplicate_monster()
             self.known_monsters.append(known_monster)
-            
+
             if self.compare:
                 builder.compare_new_vs_old_monster()
             if self.export:
@@ -102,7 +102,7 @@ class Builder(BaseBuilder):
         else:
             with open(".error.txt", "a", encoding="utf-8") as errfile:
                 print(message, file=errfile)
-    
+
     def _process_built_entity_test(self, builder, monster_id):
         """Process a built monster in test mode."""
         status, message = builder.preprocessing()
@@ -114,7 +114,6 @@ class Builder(BaseBuilder):
         else:
             with open(".error.txt", "a", encoding="utf-8") as errfile:
                 print(message, file=errfile)
-
 
 
 if __name__ == "__main__":
@@ -152,10 +151,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     builder = Builder(
-        verbose=args.verbose, 
-        compare=args.compare, 
-        export=args.export, 
-        validate=args.validate
+        verbose=args.verbose,
+        compare=args.compare,
+        export=args.export,
+        validate=args.validate,
     )
     if args.test:
         builder.test()

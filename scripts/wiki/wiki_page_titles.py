@@ -33,7 +33,11 @@ import random
 
 import config
 
-LOG = logging.getLogger(__name__)
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 class WikiPageTitles:
@@ -229,10 +233,10 @@ class WikiPageTitles:
                 # If "continue" entry is not JSON result, there are no more page titles in category
                 break
             if "errors" in result:
-                print(result["errors"])
+                logger.error(f"Errors: {result['errors']}")
                 break
             if "warnings" in result:
-                print(result["warnings"])
+                logger.warning(f"Warnings: {result['warnings']}")
                 break
 
             # Update the last fetched page title to continue query

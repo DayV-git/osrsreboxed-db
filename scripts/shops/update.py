@@ -21,22 +21,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
 
+import logging
 from scripts.shops import shops_properties
 from scripts.shops import shops_items
 
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
+
 
 def main():
-    print(">>> Starting shop data extraction...")
+    logger.info("Starting shop data extraction...")
 
-    print(">>> Step 1: Fetching shop properties from wiki...")
+    logger.info("Step 1: Fetching shop properties from wiki...")
     shops_properties.fetch()
     shops_properties.process()
 
-    print(">>> Step 2: Extracting shop items...")
+    logger.info("Step 2: Extracting shop items...")
     shops_items.fetch()
     shops_items.process()
 
-    print(">>> Shop data extraction completed!")
+    logger.info("Shop data extraction completed!")
 
 
 if __name__ == "__main__":

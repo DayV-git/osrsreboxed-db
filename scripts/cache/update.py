@@ -22,6 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
 
+import logging
+
 from scripts.cache import generate_items_stacked_variants
 from scripts.cache import generate_items_cache_data
 from scripts.cache import generate_monsters_cache_data
@@ -30,29 +32,35 @@ from scripts.cache import generate_summary_models
 from scripts.cache import determine_changes
 from scripts.cache import cache_constants
 
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
+
 
 def main():
-    print("Loading all cache definitions...")
+    logger.info("Loading all cache definitions...")
     item_defs = cache_constants.load_item_definitions()
     npc_defs = cache_constants.load_npc_definitions()
     object_defs = cache_constants.load_object_definitions()
 
-    print(">>> generate_items_stacked_variants...")
+    logger.info("Processing: generate_items_stacked_variants...")
     generate_items_stacked_variants.process(item_defs)
 
-    print(">>> generate_items_cache_data...")
+    logger.info("Processing: generate_items_cache_data...")
     generate_items_cache_data.process(item_defs)
 
-    print(">>> generate_monsters_cache_data...")
+    logger.info("Processing: generate_monsters_cache_data...")
     generate_monsters_cache_data.process(npc_defs)
 
-    print(">>> generate_summary_files...")
+    logger.info("Processing: generate_summary_files...")
     generate_summary_files.process(item_defs, npc_defs, object_defs)
 
-    print(">>> generate_summary_models...")
+    logger.info("Processing: generate_summary_models...")
     generate_summary_models.process(item_defs, npc_defs, object_defs)
 
-    print(">>> determine_changes...")
+    logger.info("Processing: determine_changes...")
     determine_changes.items()
     determine_changes.monsters()
     determine_changes.move()

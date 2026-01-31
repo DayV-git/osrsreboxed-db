@@ -24,9 +24,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import json
+import logging
 from pathlib import Path
 
 import config
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -45,7 +52,7 @@ def main():
         try:
             icon_items[item_id]
         except KeyError:
-            print(f"  > No icon for item ID: {item_id}, {item_data['name']}")
+            logger.warning(f"No icon for item ID: {item_id}, {item_data['name']}")
 
 
 if __name__ == "__main__":

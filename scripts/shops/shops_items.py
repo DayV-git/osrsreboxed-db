@@ -37,8 +37,7 @@ CURRENCY_NAMES = ["coins", "trading sticks", "tokkul", "pizazz points", "reward 
 
 # Setup logging
 logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
@@ -85,15 +84,17 @@ def fetch() -> None:
 
     for shop_key, shop_data in all_wikitext_processed.items():
         shop_count += 1
-        
+
         # Calculate and print progress at 25% intervals (once each)
         progress_pct = (shop_count / total_shops) * 100
         for milestone in [25, 50, 75, 100]:
             if progress_pct >= milestone and milestone not in printed_milestones:
                 printed_milestones.add(milestone)
-                logger.info(f"Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)")
+                logger.info(
+                    f"Progress: {shop_count:4d} of {total_shops:4d} ({progress_pct:.1f}%)"
+                )
                 break
-        
+
         # shop_data is a WikiEntry namedtuple stored by `shops_properties.process`
         # where the export key is the page title. Use the page title as shop name.
         shop_name = shop_key
@@ -276,7 +277,10 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
     if not head_match or not bottom_match:
         logger.warning(f"No StoreTableHead or StoreTableBottom found in {shop_name}")
         with open(".error.txt", "a", encoding="utf-8") as errfile:
-            print(f"WARNING: No StoreTableHead or StoreTableBottom found in {shop_name}", file=errfile)
+            print(
+                f"WARNING: No StoreTableHead or StoreTableBottom found in {shop_name}",
+                file=errfile,
+            )
         return items
 
     section = wikitext[head_match.end() : bottom_match.start()]
@@ -370,7 +374,10 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
             else:
                 logger.warning(f"Could not find item ID for: {item_data['name']}")
                 with open(".error.txt", "a", encoding="utf-8") as errfile:
-                    print(f"WARNING: Could not find item ID for: {item_data['name']} in shop {shop_name}", file=errfile)
+                    print(
+                        f"WARNING: Could not find item ID for: {item_data['name']} in shop {shop_name}",
+                        file=errfile,
+                    )
                 unknown_info = {
                     "type": "unknown",
                     "template_name": template_name,
@@ -395,7 +402,10 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                 f"No valid item name found in {template_name}: {params_str} {item_data}"
             )
             with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print(f"WARNING: No valid item name found in {template_name} from {shop_name}", file=errfile)
+                print(
+                    f"WARNING: No valid item name found in {template_name} from {shop_name}",
+                    file=errfile,
+                )
                 print(f"  Params: {params_str}", file=errfile)
             unknown_info = {
                 "type": "unknown",
@@ -502,7 +512,10 @@ def process() -> None:
     if not raw_file.exists():
         logger.error("shops-items-raw.json not found. Run fetch() first.")
         with open(".error.txt", "a", encoding="utf-8") as errfile:
-            print("ERROR: shops-items-raw.json not found. Run fetch() first.", file=errfile)
+            print(
+                "ERROR: shops-items-raw.json not found. Run fetch() first.",
+                file=errfile,
+            )
         return
 
     with open(raw_file) as f:
@@ -542,7 +555,9 @@ def process() -> None:
                 )
                 total_items += 1
 
-    logger.info(f"Processed {len(raw_shop_data)} shops: {total_items} total items, {len(shops_by_item)} unique items")
+    logger.info(
+        f"Processed {len(raw_shop_data)} shops: {total_items} total items, {len(shops_by_item)} unique items"
+    )
 
     # Export both structures
     shops_file = Path(config.DATA_SHOPS_PATH / "shops-items-by-shop.json")

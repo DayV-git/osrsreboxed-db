@@ -32,9 +32,13 @@ def fetch():
     wiki_props = WikiProperties(
         categories=["Monsters"],
         template_names=["infobox monster"],
-        titles_filepath=Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-titles.json"),
+        titles_filepath=Path(
+            config.DATA_MONSTERS_PATH / "monsters-wiki-page-titles.json"
+        ),
         text_filepath=Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text.json"),
-        processed_filepath=Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json"),
+        processed_filepath=Path(
+            config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json"
+        ),
     )
     wiki_props.fetch()
 
@@ -44,9 +48,13 @@ def process():
     wiki_props = WikiProperties(
         categories=["Monsters"],
         template_names=["infobox monster"],
-        titles_filepath=Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-titles.json"),
+        titles_filepath=Path(
+            config.DATA_MONSTERS_PATH / "monsters-wiki-page-titles.json"
+        ),
         text_filepath=Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text.json"),
-        processed_filepath=Path(config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json"),
+        processed_filepath=Path(
+            config.DATA_MONSTERS_PATH / "monsters-wiki-page-text-processed.json"
+        ),
     )
     wiki_props.process()
 

@@ -23,11 +23,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import json
+import logging
 import base64
 import hashlib
 from pathlib import Path
 
 import config
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 def get_md5(file_path):
@@ -53,7 +60,7 @@ def main():
     item_ids = sorted(item_ids)
     item_count = len(item_ids)
 
-    print(f"Total items: {item_count}")
+    logger.info(f"Total items: {item_count}")
 
     converted = 0
     # Loop all item IDs, and process each PNG
@@ -75,7 +82,7 @@ def main():
             all_icons[item_id] = b64_image
             converted += 1
 
-    print(f"Converted icons: {converted}")
+    logger.info(f"Converted icons: {converted}")
     # Export all converted PNG images to a JSON file to docs folder
     out = Path(config.DATA_PATH / "icons" / "icons-items-complete.json")
     with open(out, "w") as f:

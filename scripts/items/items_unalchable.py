@@ -24,8 +24,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from pathlib import Path
 
+import logging
 import config
 from scripts.wiki.wiki_page_titles import WikiPageTitles
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 OSRS_WIKI_API_URL = "https://oldschool.runescape.wiki/api.php"
 
@@ -38,7 +45,7 @@ def fetch():
     titles_file_path = "items-unalchable.json"
     titles_file_path = Path(config.DATA_ITEMS_PATH / titles_file_path)
 
-    print(">>> Starting wiki page titles extraction...")
+    logger.info("Starting wiki page titles extraction...")
     # Create object to handle page titles extraction
     wiki_page_titles = WikiPageTitles(OSRS_WIKI_API_URL, categories)
 
@@ -47,7 +54,7 @@ def fetch():
 
     # Determine page titles count
     page_titles_total = len(wiki_page_titles)
-    print(f">>> Number of extracted wiki pages: {page_titles_total}")
+    logger.info(f"Number of extracted wiki pages: {page_titles_total}")
 
 
 if __name__ == "__main__":

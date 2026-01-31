@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import json
+import logging
 import collections
 from pathlib import Path
 
@@ -30,6 +31,12 @@ import config
 from osrsreboxed import items_api
 from osrsreboxed import monsters_api
 from osrsreboxed import prayers_api
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 def generate_items_complete():
@@ -159,15 +166,15 @@ def generate_items_search_file():
 
 def main():
     """The main function for generating the static JSON files."""
-    print("Generating items-complete.json file...")
+    logger.info("Generating items-complete.json file...")
     generate_items_complete()
-    print("Generating items-json-slot JSON files...")
+    logger.info("Generating items-json-slot JSON files...")
     generate_item_slot_files()
-    print("Generating monsters-complete.json file...")
+    logger.info("Generating monsters-complete.json file...")
     generate_monsters_complete()
-    print("Generating prayers-complete.json file...")
+    logger.info("Generating prayers-complete.json file...")
     generate_prayers_complete()
-    print("Generating items-search.json file...")
+    logger.info("Generating items-search.json file...")
     generate_items_search_file()
 
 
