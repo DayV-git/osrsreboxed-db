@@ -1,13 +1,12 @@
 from pathlib import Path
-from osrsreboxed import items_api
 
 import multiprocessing as mp
 import hashlib
 import logging
+import json
 import config
 import requests
 import os
-import json
 
 # Setup logging
 logging.basicConfig(
@@ -32,10 +31,23 @@ def get_md5(file_path):
 
 
 def main():
-    all_db_items = [item for item in items_api.load()]
-    item_ids = [item.id for item in all_db_items]
-    noted_ids = [item.linked_id_noted for item in all_db_items if item.linked_id_noted]
-    icon_ids = sorted(item_ids + noted_ids)
+    # Load items from cache data to get all items including new ones
+    cache_data_path = Path(config.DATA_ITEMS_PATH / "items-cache-data.json")
+    with open(cache_data_path) as f:
+        cache_data = json.load(f)
+
+    # Collect all item IDs and their noted variants
+    icon_ids = set()
+    for item_id, item_data in cache_data.items():
+        icon_ids.add(int(item_id))
+
+        # Add linked_id_noted if it exists
+        linked_id_noted = item_data.get("linked_id_noted")
+        if linked_id_noted:
+            icon_ids.add(linked_id_noted)
+
+    icon_ids = sorted(list(icon_ids))
+    logger.info(f"Fetching icons for {len(icon_ids)} items")
     with mp.Pool(processes=16) as pool:
         pool.starmap(fetch_icon, [(item_id, ICONS_PATH) for item_id in icon_ids])
     logger.info("Done")
