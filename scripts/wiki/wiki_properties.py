@@ -133,8 +133,16 @@ class WikiProperties:
         json_data = {}
 
         if self.text_filepath.exists():
-            with open(self.text_filepath, mode="r") as existing_out_file:
-                json_data = json.load(existing_out_file)
+            try:
+                with open(self.text_filepath, mode="r") as existing_out_file:
+                    file_content = existing_out_file.read().strip()
+                    if file_content:
+                        json_data = json.loads(file_content)
+            except (json.JSONDecodeError, IOError) as e:
+                logger.warning(
+                    f"Failed to load existing wiki text file: {e}. Starting fresh."
+                )
+                json_data = {}
 
         page_titles_count = 1
         logger.info("Starting wiki text extraction for extracted page titles...")
