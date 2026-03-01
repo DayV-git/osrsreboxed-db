@@ -717,6 +717,11 @@ class BuildItem:
         if isinstance(wikitext, list):
             wikitext = wikitext[-1]
 
+        # Only look in initial description part of the wikitext
+        changes_index = wikitext.find("==Combat stats==")
+        if changes_index != -1:
+            wikitext = wikitext[:changes_index]
+
         allowed_skills = {
             "attack",
             "defence",
@@ -725,6 +730,7 @@ class BuildItem:
             "hitpoints",
             "ranged",
             "prayer",
+            "agility",
         }
         reqs = {}
         sentences = [s.strip() for s in wikitext.split(".") if s.strip()]
