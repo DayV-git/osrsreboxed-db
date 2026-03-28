@@ -28,6 +28,22 @@ from pathlib import Path
 import config
 
 
+def npc_has_attack_option(json_data):
+    """True if the NPC has an Attack option (legacy string list or RuneLite ops format)."""
+    actions = json_data.get("actions")
+    if isinstance(actions, list) and "Attack" in actions:
+        return True
+    ops_block = json_data.get("ops")
+    if not isinstance(ops_block, dict):
+        return False
+    for op in ops_block.get("ops") or []:
+        if not isinstance(op, dict):
+            continue
+        if op.get("text") == "Attack":
+            return True
+    return False
+
+
 def process(definitions):
     """Main function to extract attackble NPC definition files."""
     attackable_npcs = {}
@@ -52,7 +68,7 @@ def process(definitions):
         ]:
             attackable_npcs[id_number] = json_data
 
-        if "Attack" in json_data["actions"]:
+        if npc_has_attack_option(json_data):
             # Skip entries with variable menu list color in name
             if "<col" in json_data["name"]:
                 continue
