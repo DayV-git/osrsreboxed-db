@@ -46,7 +46,7 @@ def load_item_definitions():
         logger.error("Could not load item cache files. Exiting.")
         exit(">>> Could not load item cache files. Exiting.")
     for cache_file in all_cache_items:
-        with open(cache_file) as f:
+        with open(cache_file, encoding="utf-8") as f:
             data = json.load(f)
             item_definitions[str(data["id"])] = data
     return item_definitions
@@ -63,7 +63,7 @@ def load_npc_definitions():
         logger.error("Could not load npc cache files. Exiting.")
         exit(">>> Could not load npc cache files. Exiting.")
     for cache_file in all_cache_npcs:
-        with open(cache_file) as f:
+        with open(cache_file, encoding="utf-8") as f:
             data = json.load(f)
             npc_definitions[str(data["id"])] = data
     return npc_definitions
@@ -80,7 +80,7 @@ def load_object_definitions():
         logger.error("Could not load object cache files. Exiting.")
         exit(">>> Could not load object cache files. Exiting.")
     for cache_file in all_cache_objects:
-        with open(cache_file) as f:
+        with open(cache_file, encoding="utf-8") as f:
             data = json.load(f)
             object_definitions[str(data["id"])] = data
     return object_definitions
