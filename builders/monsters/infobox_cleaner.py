@@ -34,7 +34,7 @@ def clean_wikitext(value: str) -> str:
     This helper method is a generic cleaner for all infobox template properties.
     The value is string cast, stipped of new line characters, then any square
     brackets (wikitext links) are stripped, then anything in trailing brackets,
-    then any HTML line breaks are removed.
+    then any HTML line breaks are removed, and wiki templates are removed.
 
     :param value: Template value extracted in raw wikitext format.
     :return value: Cleaned template value.
@@ -45,6 +45,7 @@ def clean_wikitext(value: str) -> str:
     value = re.sub(r" \([^()]*\)", "", value)  # Removes " (anything)"
     value = re.sub(r"<!--(.*?)-->", "", value)  # Removes "<!--anything-->"
     value = re.sub(r"<br(.*)", "", value)  # Removes "<br"
+    value = re.sub(r"\{\{.*?\}\}", "", value)  # Removes wiki templates {{ }}
     return value
 
 
