@@ -8,8 +8,8 @@ This fork of osrsreboxed-db only updates the JSON files, and is not linked to th
 
 A new feature for this fork is information on shop stock and prices, available here:
 
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/data/shops/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/data/shops/shops-items-by-shop.json)
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/data/shops/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/data/shops/shops-items-by-shop.json)
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json)
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json)
 
 The remainder of the README is unchanged. 
 
