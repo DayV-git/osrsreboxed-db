@@ -559,16 +559,7 @@ def process() -> None:
         f"Processed {len(raw_shop_data)} shops: {total_items} total items, {len(shops_by_item)} unique items"
     )
 
-    # Export both structures to data/shops
-    shops_file = Path(config.DATA_SHOPS_PATH / "shops-items-by-shop.json")
-    with open(shops_file, "w") as f:
-        json.dump(shops_by_shop, f, indent=4)
-
-    items_file = Path(config.DATA_SHOPS_PATH / "shops-items-by-item.json")
-    with open(items_file, "w") as f:
-        json.dump(dict(shops_by_item), f, indent=4)
-
-    # Also export shop JSON into docs/ for static API access
+    # Export shop JSON into docs for static API access
     docs_shop_file = Path(config.DOCS_PATH / "shops-items-by-shop.json")
     with open(docs_shop_file, "w") as f:
         json.dump(shops_by_shop, f, indent=4)
