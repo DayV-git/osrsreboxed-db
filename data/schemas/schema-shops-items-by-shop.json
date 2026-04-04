@@ -1,0 +1,100 @@
+{
+  "shop_info": {
+    "description": "Information about the shop's pricing and currency.",
+    "type": "dict",
+    "required": true,
+    "nullable": false,
+    "schema": {
+      "sells_at": {
+        "description": "The percentage at which the shop sells items (e.g., 1000 = 100%).",
+        "type": "integer",
+        "required": true,
+        "nullable": true,
+        "min": 0
+      },
+      "buys_at": {
+        "description": "The percentage at which the shop buys items (e.g., 500 = 50%).",
+        "type": "integer",
+        "required": true,
+        "nullable": true,
+        "min": 0
+      },
+      "change_per": {
+        "description": "The percentage change per item stocked/sold.",
+        "type": "integer",
+        "required": true,
+        "nullable": true,
+        "min": 0
+      },
+      "currency": {
+        "description": "The currency type used in the shop.",
+        "type": "string",
+        "required": true,
+        "nullable": false
+      }
+    }
+  },
+  "items": {
+    "description": "Array of items sold in the shop.",
+    "type": "list",
+    "required": true,
+    "nullable": false,
+    "schema": {
+      "type": "dict",
+      "schema": {
+        "type": {
+          "description": "The type of item (e.g., 'item').",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "allowed": [
+            "item"
+          ]
+        },
+        "id": {
+          "description": "Unique OSRS item ID.",
+          "type": "integer",
+          "required": true,
+          "nullable": false,
+          "min": 0
+        },
+        "name": {
+          "description": "The name of the item.",
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "shop_name": {
+          "description": "The name of the shop.",
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "stock": {
+          "description": "The amount of items in stock (integer or 'infinite' string).",
+          "type": [
+            "integer",
+            "string"
+          ],
+          "required": true,
+          "nullable": true
+        },
+        "restock_time": {
+          "description": "The time (in ticks) for the item to restock (integer or 'N/A' string).",
+          "type": [
+            "integer",
+            "string"
+          ],
+          "required": true,
+          "nullable": true
+        },
+        "currency": {
+          "description": "The currency type for this item.",
+          "type": "string",
+          "required": true,
+          "nullable": false
+        }
+      }
+    }
+  }
+}

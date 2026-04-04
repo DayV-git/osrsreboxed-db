@@ -1,0 +1,52 @@
+{
+  "item_id": {
+    "description": "Unique OSRS item ID (as string key in JSON).",
+    "type": "string",
+    "required": true,
+    "nullable": false,
+    "regex": "^[0-9]+$"
+  },
+  "shops": {
+    "description": "Array of shops that sell this item.",
+    "type": "list",
+    "required": true,
+    "nullable": false,
+    "schema": {
+      "type": "dict",
+      "schema": {
+        "shop_name": {
+          "description": "The name of the shop.",
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "stock": {
+          "description": "The amount of items in stock (either integer or 'infinite' string).",
+          "type": [
+            "integer",
+            "string"
+          ],
+          "required": true,
+          "nullable": false,
+          "min": 0
+        },
+        "restock_time": {
+          "description": "The time (in ticks) for the item to restock (either integer or 'N/A' string).",
+          "type": [
+            "integer",
+            "string"
+          ],
+          "required": true,
+          "nullable": false,
+          "min": 0
+        },
+        "currency": {
+          "description": "The currency type for this shop.",
+          "type": "string",
+          "required": true,
+          "nullable": false
+        }
+      }
+    }
+  }
+}

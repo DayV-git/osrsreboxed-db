@@ -25,6 +25,7 @@ import json
 from pathlib import Path
 
 import config
+import validator
 
 
 def test_shops_docs_json_exists_and_valid():
@@ -47,3 +48,51 @@ def test_shops_docs_json_exists_and_valid():
     if data_item:
         first_item_id = next(iter(data_item))
         assert isinstance(data_item[first_item_id], list)
+
+
+def test_shops_items_by_shop_schema_validation():
+    """Validate shops-items-by-shop.json against schema."""
+    # Read in the shops-items-by-shop schema file
+    path_to_schema = Path(config.DATA_SCHEMAS_PATH / "schema-shops-items-by-shop.json")
+    with open(path_to_schema, "r", encoding="utf-8") as f:
+        schema = json.loads(f.read())
+
+    # Validator object with schema attached
+    v = validator.MyValidator(schema)
+
+    # Read the shops-items-by-shop.json file
+    path_to_shops_file = Path(config.DOCS_PATH / "shops-items-by-shop.json")
+    with open(path_to_shops_file, "r", encoding="utf-8") as f:
+        shops_data = json.load(f)
+
+    # Validate each shop in the data
+    for shop_name, shop_info in shops_data.items():
+        assert v.validate(
+            shop_info
+        ), f"Schema validation failed for shop: {shop_name}. Errors: {v.errors}"
+
+
+def test_shops_items_by_item_schema_validation():
+    """Validate shops-items-by-item.json against schema."""
+    # Read in the shops-items-by-item schema file
+    path_to_schema = Path(config.DATA_SCHEMAS_PATH / "schema-shops-items-by-item.json")
+    with open(path_to_schema, "r", encoding="utf-8") as f:
+        schema = json.loads(f.read())
+
+    # Validator object with schema attached
+    v = validator.MyValidator(schema)
+
+    # Read the shops-items-by-item.json file
+    path_to_shops_file = Path(config.DOCS_PATH / "shops-items-by-item.json")
+    with open(path_to_shops_file, "r", encoding="utf-8") as f:
+        shops_data = json.load(f)
+
+    # Validate each item's shops in the data
+    for item_id, shops_list in shops_data.items():
+        assert isinstance(
+            shops_list, list
+        ), f"Item {item_id} should have a list of shops"
+        for shop in shops_list:
+            assert isinstance(
+                shop, dict
+            ), f"Each shop entry for item {item_id} should be a dict"
