@@ -21,7 +21,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 '
-odb=$(cd ../..; pwd)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+odb="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 cd $odb
 
