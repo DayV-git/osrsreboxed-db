@@ -1,0 +1,42 @@
+---
+description: OSRSReboxed DB repo layout, fork constraints, and how to add or change code safely
+alwaysApply: true
+---
+
+# OSRSReboxed / osrsbox-db (this fork)
+
+Python project that builds **items**, **monsters**, and **prayers** JSON (and related assets) for Old School RuneScape. Published consumer API lives under `osrsreboxed/`; generated static JSON under `docs/`.
+
+## Fork-specific behaviour (do not undo casually)
+
+- **Outputs are JSON-first**; legacy external APIs described upstream may not apply here.
+- **Monster `drops` are intentionally removed** from this fork; do not reintroduce drop tables unless explicitly requested.
+- Monsters include **`elemental_weakness_type`**, **`elemental_weakness_percent`**, and ranged defence split: **`defence_ranged_light`**, **`defence_ranged_standard`**, **`defence_ranged_heavy`** (see existing JSON / builders).
+- **Shops**: stock/price pipelines live under `scripts/shops/` and `data/shops/` (no `builders/shops/` tree).
+
+## Repository map (use `config.py` paths)
+
+| Area | Role |
+|------|------|
+| `builders/items/`, `builders/monsters/` | Regenerate per-entity JSON via `builder.py` entry points; shared patterns in `builders/base_builder.py` and `builders/run_log.py` (run logs under `logs/`). |
+| `scripts/` | ETL: `cache/`, `wiki/`, `items/`, `monsters/`, `shops/`, `icons/`, `update/` — fetch or transform inputs in `data/` before builders run. |
+| `data/` | Inputs: `items/`, `monsters/`, `shops/`, `icons/`, `schemas/`, `wiki/`; `cache/` is local-only / large. |
+| `docs/` | **Generated** public JSON (and related outputs); avoid one-off hand edits across thousands of files — fix builders/scripts and regenerate. |
+| `osrsreboxed/` | PyPI-facing package: dataclass models and `*_api.load()` helpers; keep JSON field names aligned with exported `docs/` schemas. |
+| `test/` | `pytest` tests (`test_*_database.py`, etc.); extend when schema or export shape changes. |
+| `validator.py` | Cerberus customisations for schema validation used in the build pipeline. |
+
+## Adding or changing behaviour
+
+1. **Prefer the smallest layer**: fix data at source (`scripts/` + `data/`) or aggregation (`builders/`), not post-hoc mass edits in `docs/`.
+2. **Match existing style**: module GPL headers where present, `pathlib.Path`, `logging`, and patterns from neighbouring modules (e.g. `BaseBuilder` subclasses, `begin_run` usage).
+3. **Python formatting**: project batch scripts use **Black**; format new/changed Python with Black-compatible style.
+4. **Schemas**: if JSON shape changes, update **`data/schemas/`** and any validation/tests that assert on keys or types.
+5. **Package surface**: if `docs/` JSON gains or loses keys, update **`osrsreboxed/*_api`** dataclasses and examples so the package stays consistent.
+6. **Wiki / HTTP**: respect `config.custom_agent` when adding scrapers.
+
+## Anti-patterns
+
+- Editing single files under `docs/items-json/` or `docs/monsters-json/` for global rule changes (will be overwritten).
+- Reintroducing upstream “drops” documentation or fields without an explicit project decision.
+- New dependencies without updating `pyproject.toml` / install docs and justifying why they belong in this data pipeline.
