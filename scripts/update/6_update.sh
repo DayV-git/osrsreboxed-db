@@ -21,19 +21,23 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 '
-odb=$(cd ../..; pwd)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+odb="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-export PYTHONPATH="$(dirname "$(dirname "$(pwd)")")"
+# shellcheck disable=SC1090
+. "$SCRIPT_DIR/_common.sh"
 
-cd $odb
-python3 -m venv venv
-source venv/bin/activate
+export PYTHONPATH="$odb"
+
+cd "$odb" || exit 1
+bootstrap="$(osrsbox_bootstrap_python)" || exit 1
+"$bootstrap" -m venv venv
+osrsbox_activate_venv "$odb" || exit 1
 
 echo -e ">>> Running JSON population scripts..."
-cd $odb/scripts/update/
-python3 update_json_files.py
+cd "$odb" || exit 1
+python -m scripts.update.update_json_files
 
-echo -e ">>> Running repo tests..."
-cd $odb
-python3 -m flake8
-python3 -m pytest test
+echo -e ">>> Running database tests..."
+cd "$odb" || exit 1
+python -m pytest test/

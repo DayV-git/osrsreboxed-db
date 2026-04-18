@@ -22,6 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import logging
+
+from builders.run_log import begin_run
 from scripts.shops import shops_properties
 from scripts.shops import shops_items
 
@@ -33,6 +35,7 @@ logger = logging.getLogger(__name__)
 
 
 def main():
+    begin_run("scripts_shops_update")
     logger.info("Starting shop data extraction...")
 
     logger.info("Step 1: Fetching shop properties from wiki...")

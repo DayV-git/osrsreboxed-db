@@ -22,9 +22,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 """
 
-import traceback
+import sys
 import logging
 from abc import ABC, abstractmethod
+from pathlib import Path
+
+from builders.run_log import begin_run
 
 
 # Setup logging
@@ -53,6 +56,13 @@ class BaseBuilder(ABC):
 
         # Load entity-specific data files via abstract method
         self._load_data_files()
+
+    def _run_log_label(self) -> str:
+        """Subfolder suffix for ``logs/<timestamp>_<label>/`` (override if needed)."""
+        mod = self.__class__.__module__
+        if mod == "__main__":
+            return Path(sys.argv[0]).resolve().stem.replace(".", "_")
+        return mod.replace(".", "_")
 
     @abstractmethod
     def _load_data_files(self):
@@ -109,12 +119,16 @@ class BaseBuilder(ABC):
     def run(self):
         """Run the build process for all entities."""
         try:
+            begin_run(self._run_log_label())
+
             entity_ids = list(self._get_entity_id_list())
             total_entities = len(entity_ids)
             entities_processed = 0
 
             logger.info(f"Starting build process for {total_entities} entities...")
             printed_milestones = set()
+
+            self._build_loop_begin(validation_enabled=self.validate)
 
             for entity_id in entity_ids:
                 try:
@@ -140,35 +154,31 @@ class BaseBuilder(ABC):
                     self._process_built_entity(builder, entity_id)
 
                 except Exception:
-                    logger.error(f"Ran into issue parsing entity {entity_id}.")
-                    logger.error(traceback.format_exc())
-                    with open(".error.txt", "a", encoding="utf-8") as errfile:
-                        print(
-                            f"Ran into issue parsing entity {entity_id}.", file=errfile
-                        )
-                        print(traceback.format_exc(), file=errfile)
+                    logger.exception("Ran into issue parsing entity %s", entity_id)
+
+            self._build_loop_end(validation_enabled=self.validate, mode="run")
 
             # Done processing, rejoice!
             logger.info("Built.")
             exit(0)
 
         except Exception:
-            logger.error("Fatal error during build process.")
-            logger.error(traceback.format_exc())
-            with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print("Fatal error during build process.", file=errfile)
-                print(traceback.format_exc(), file=errfile)
+            logger.exception("Fatal error during build process.")
             exit(1)
 
     def test(self):
         """Run the test process for all entities (validation only)."""
         try:
+            begin_run(f"{self._run_log_label()}_validation")
+
             entity_ids = list(self._get_entity_id_list())
             total_entities = len(entity_ids)
             entities_processed = 0
 
             logger.info(f"Starting test process for {total_entities} entities...")
             printed_milestones = set()
+
+            self._build_loop_begin(validation_enabled=True)
 
             for entity_id in entity_ids:
                 try:
@@ -194,24 +204,16 @@ class BaseBuilder(ABC):
                     self._process_built_entity_test(builder, entity_id)
 
                 except Exception:
-                    logger.error(f"Ran into issue parsing entity {entity_id}.")
-                    logger.error(traceback.format_exc())
-                    with open(".error.txt", "a", encoding="utf-8") as errfile:
-                        print(
-                            f"Ran into issue parsing entity {entity_id}.", file=errfile
-                        )
-                        print(traceback.format_exc(), file=errfile)
+                    logger.exception("Ran into issue parsing entity %s", entity_id)
+
+            self._build_loop_end(validation_enabled=True, mode="test")
 
             # Done testing, rejoice!
             logger.info("Tested.")
             exit(0)
 
         except Exception:
-            logger.error("Fatal error during test process.")
-            logger.error(traceback.format_exc())
-            with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print("Fatal error during test process.", file=errfile)
-                print(traceback.format_exc(), file=errfile)
+            logger.exception("Fatal error during test process.")
             exit(1)
 
     def _process_built_entity_test(self, builder, entity_id):
@@ -228,3 +230,17 @@ class BaseBuilder(ABC):
             builder.validate_item()
         elif hasattr(builder, "validate_monster"):
             builder.validate_monster()
+
+    def _build_loop_begin(self, validation_enabled: bool):
+        """Hook: invoked once before the entity loop in run() / test()."""
+        _ = validation_enabled
+
+    def _build_loop_end(self, validation_enabled: bool, mode: str):
+        """Hook: invoked once after the entity loop in run() / test().
+
+        Args:
+            validation_enabled: Whether schema/requirement validation ran for entities.
+            mode: 'run' or 'test'.
+        """
+        _ = validation_enabled
+        _ = mode

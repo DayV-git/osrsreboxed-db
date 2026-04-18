@@ -24,15 +24,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
 import argparse
+import logging
 from pathlib import Path
 
 import config
 from builders.base_builder import BaseBuilder
 from builders.monsters import build_monster
 
+logger = logging.getLogger(__name__)
+
 
 class Builder(BaseBuilder):
     """Monster-specific builder that extends BaseBuilder."""
+
+    def _run_log_label(self) -> str:
+        """Stable folder name (avoids ``__main__`` / ``main`` when run as ``-m``)."""
+        return "monsters_database"
 
     def _load_data_files(self):
         """Load all monster-specific data files."""
@@ -100,8 +107,7 @@ class Builder(BaseBuilder):
             if self.validate:
                 builder.validate_monster()
         else:
-            with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print(message, file=errfile)
+            logger.warning("%s", message)
 
     def _process_built_entity_test(self, builder, monster_id):
         """Process a built monster in test mode."""
@@ -112,8 +118,7 @@ class Builder(BaseBuilder):
             self.known_monsters.append(known_monster)
             builder.validate_monster()
         else:
-            with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print(message, file=errfile)
+            logger.warning("%s", message)
 
 
 if __name__ == "__main__":

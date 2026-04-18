@@ -4,7 +4,7 @@ Author:  PH01L
 Email:   phoil@osrsbox.com
 Website: https://www.osrsbox.com
 
-Update flatcache and extract cache data.
+Update flatcache and extract cache data (Maven osrs-flatcache packer).
 
 Copyright (c) 2021, PH01L
 
@@ -21,8 +21,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 '
-odb=$(cd ../..; pwd)
-rl=$(cd ../../..; cd runelite; pwd)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+odb="$(cd "$SCRIPT_DIR/../.." && pwd)"
+rl="$(cd "$odb/.." && pwd)/runelite"
 
 echo -e ">>> flatcache..."
 echo -e "  > Building osrs-flatcache..."

@@ -4,7 +4,7 @@ Author:  PH01L
 Email:   phoil@osrsbox.com
 Website: https://www.osrsbox.com
 
-Run the builders.
+Export builders to docs/: items with --export --validate, monsters with --export only.
 
 Copyright (c) 2021, PH01L
 
@@ -21,24 +21,29 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 '
-odb=$(cd ../..; pwd)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+odb="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-export PYTHONPATH="$(dirname "$(dirname "$(pwd)")")"
+# shellcheck disable=SC1090
+. "$SCRIPT_DIR/_common.sh"
 
-cd $odb
-python3 -m venv venv
-source venv/bin/activate
+export PYTHONPATH="$odb"
+
+cd "$odb" || exit 1
+bootstrap="$(osrsbox_bootstrap_python)" || exit 1
+"$bootstrap" -m venv venv
+osrsbox_activate_venv "$odb" || exit 1
 
 echo -e ">>> Updating item database"
-rm -R $odb/docs/items-json/
-mkdir $odb/docs/items-json/
+mkdir -p "$odb/docs/items-json"
+rm -f "$odb/docs/items-json/"*
 
-cd $odb/builders/items/
-python3 builder.py --export=True
+cd "$odb/builders/items/" || exit 1
+python -m builders.items.builder --export --validate
 
 echo -e ">>> Updating monster database"
-rm -R $odb/docs/monsters-json/
-mkdir $odb/docs/monsters-json/
+mkdir -p "$odb/docs/monsters-json"
+rm -f "$odb/docs/monsters-json/"*
 
-cd $odb/builders/monsters/
-python3 builder.py --export=True
+cd "$odb/builders/monsters/" || exit 1
+python -m builders.monsters.builder --export

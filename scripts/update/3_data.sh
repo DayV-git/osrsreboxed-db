@@ -4,7 +4,7 @@ Author:  PH01L
 Email:   phoil@osrsbox.com
 Website: https://www.osrsbox.com
 
-Process cache data, then fetch wiki data.
+Process cache data, then fetch wiki data (items, monsters, shops) and icons.
 
 Copyright (c) 2020, PH01L
 
@@ -21,27 +21,32 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 '
-odb=$(cd ../..; pwd)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+odb="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-export PYTHONPATH="$(dirname "$(dirname "$(pwd)")")"
+# shellcheck disable=SC1090
+. "$SCRIPT_DIR/_common.sh"
+
+export PYTHONPATH="$odb"
 
 echo -e ">>> Updating project data..."
-cd $odb
-python3 -m venv venv
-source venv/bin/activate
+cd "$odb" || exit 1
+bootstrap="$(osrsbox_bootstrap_python)" || exit 1
+"$bootstrap" -m venv venv
+osrsbox_activate_venv "$odb" || exit 1
+
 pip install -r requirements.txt
 
 echo -e "  > cache..."
-cd $odb/scripts/cache
-python3 update.py
+python -m scripts.cache.update
 
 echo -e "  > items..."
-cd $odb/scripts/items
-python3 update.py
-cd $odb/scripts/icons
-python3 update_icons.py
-python3 convert_item_icons.py
+python -m scripts.items.update
+python -m scripts.icons.update_icons
+python -m scripts.icons.convert_item_icons
 
 echo -e "  > monsters..."
-cd $odb/scripts/monsters
-python3 update.py
+python -m scripts.monsters.update
+
+echo -e "  > shops..."
+python -m scripts.shops.update
