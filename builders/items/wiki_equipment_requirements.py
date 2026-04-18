@@ -11,9 +11,7 @@ from __future__ import annotations
 import re
 from typing import Any, Dict, List, Optional, Union
 
-_WIKITEXT_SKILL_PATTERN = re.compile(
-    r"(\d+)\s+(\[\[)?([A-Za-z ]+?)(\]\])?(?=\s|$)"
-)
+_WIKITEXT_SKILL_PATTERN = re.compile(r"(\d+)\s+(\[\[)?([A-Za-z ]+?)(\]\])?(?=\s|$)")
 
 
 def parse_equip_requirements_from_wikitext(

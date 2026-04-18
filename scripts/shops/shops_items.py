@@ -28,6 +28,7 @@ from collections import defaultdict
 import logging
 
 import config
+from builders.run_log import begin_run
 from osrsreboxed import items_api
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 
@@ -276,11 +277,7 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
 
     if not head_match or not bottom_match:
         logger.warning(f"No StoreTableHead or StoreTableBottom found in {shop_name}")
-        with open(".error.txt", "a", encoding="utf-8") as errfile:
-            print(
-                f"WARNING: No StoreTableHead or StoreTableBottom found in {shop_name}",
-                file=errfile,
-            )
+        logger.warning("No StoreTableHead or StoreTableBottom found in %s", shop_name)
         return items
 
     section = wikitext[head_match.end() : bottom_match.start()]
@@ -373,11 +370,11 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                 items.append(item_info)
             else:
                 logger.warning(f"Could not find item ID for: {item_data['name']}")
-                with open(".error.txt", "a", encoding="utf-8") as errfile:
-                    print(
-                        f"WARNING: Could not find item ID for: {item_data['name']} in shop {shop_name}",
-                        file=errfile,
-                    )
+                logger.warning(
+                    "Could not find item ID for: %s in shop %s",
+                    item_data["name"],
+                    shop_name,
+                )
                 unknown_info = {
                     "type": "unknown",
                     "template_name": template_name,
@@ -401,12 +398,12 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
             logger.warning(
                 f"No valid item name found in {template_name}: {params_str} {item_data}"
             )
-            with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print(
-                    f"WARNING: No valid item name found in {template_name} from {shop_name}",
-                    file=errfile,
-                )
-                print(f"  Params: {params_str}", file=errfile)
+            logger.warning(
+                "No valid item name found in %s from %s. Params: %s",
+                template_name,
+                shop_name,
+                params_str,
+            )
             unknown_info = {
                 "type": "unknown",
                 "template_name": template_name,
@@ -511,11 +508,7 @@ def process() -> None:
 
     if not raw_file.exists():
         logger.error("shops-items-raw.json not found. Run fetch() first.")
-        with open(".error.txt", "a", encoding="utf-8") as errfile:
-            print(
-                "ERROR: shops-items-raw.json not found. Run fetch() first.",
-                file=errfile,
-            )
+        logger.error("shops-raw.json not found. Run fetch() first.")
         return
 
     with open(raw_file) as f:
@@ -584,5 +577,6 @@ def process() -> None:
 
 
 if __name__ == "__main__":
+    begin_run("scripts_shops_shops_items")
     fetch()
     process()

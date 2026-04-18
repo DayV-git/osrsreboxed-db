@@ -483,14 +483,11 @@ class BuildMonster:
         # Print any validation errors
         if v.errors:
             logger.error(
-                f"Validation errors for monster {self.monster_properties.id} ({self.monster_properties.name}): {v.errors}"
+                "Validation errors for monster %s (%s): %s",
+                self.monster_properties.id,
+                self.monster_properties.name,
+                v.errors,
             )
-            with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print(
-                    f"Validation errors for monster {self.monster_properties.id} ({self.monster_properties.name}):",
-                    file=errfile,
-                )
-                print(v.errors, file=errfile)
             ##exit(1)
 
         # assert v.validate(current_json)

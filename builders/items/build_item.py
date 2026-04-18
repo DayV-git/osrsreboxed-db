@@ -723,8 +723,10 @@ class BuildItem:
             and item_properties.wikitext_lookup in ("id", "linked_id")
             and self.requirement_discrepancies is not None
         ):
-            wiki_reqs = wiki_equipment_requirements.parse_equip_requirements_from_wikitext(
-                self.item_wikitext
+            wiki_reqs = (
+                wiki_equipment_requirements.parse_equip_requirements_from_wikitext(
+                    self.item_wikitext
+                )
             )
             item_reqs = (
                 item_properties.equipment.get("requirements", {})
@@ -757,14 +759,11 @@ class BuildItem:
         # Print any validation errors
         if v.errors:
             logger.error(
-                f"Validation errors for item {item_properties.id} ({item_properties.name}): {v.errors}"
+                "Validation errors for item %s (%s): %s",
+                item_properties.id,
+                item_properties.name,
+                v.errors,
             )
-            with open(".error.txt", "a", encoding="utf-8") as errfile:
-                print(
-                    f"Validation errors for item {item_properties.id} ({item_properties.name}):",
-                    file=errfile,
-                )
-                print(v.errors, file=errfile)
             ##exit(1)
 
         # assert v.validate(current_json)

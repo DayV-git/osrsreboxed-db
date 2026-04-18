@@ -43,6 +43,10 @@ _WIKI_REQUIREMENTS_AUDIT_PATH = Path(
 class Builder(BaseBuilder):
     """Item-specific builder that extends BaseBuilder."""
 
+    def _run_log_label(self) -> str:
+        """Stable folder name (avoids ``__main__`` / ``main`` when run as ``-m``)."""
+        return "items_database"
+
     def _load_data_files(self):
         """Load all item-specific data files."""
         # Load the raw cache data that has been processed (this is ground truth)
