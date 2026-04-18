@@ -116,6 +116,8 @@ class BaseBuilder(ABC):
             logger.info(f"Starting build process for {total_entities} entities...")
             printed_milestones = set()
 
+            self._build_loop_begin(validation_enabled=self.validate)
+
             for entity_id in entity_ids:
                 try:
                     if self._should_skip_entity(entity_id):
@@ -148,6 +150,8 @@ class BaseBuilder(ABC):
                         )
                         print(traceback.format_exc(), file=errfile)
 
+            self._build_loop_end(validation_enabled=self.validate, mode="run")
+
             # Done processing, rejoice!
             logger.info("Built.")
             exit(0)
@@ -169,6 +173,8 @@ class BaseBuilder(ABC):
 
             logger.info(f"Starting test process for {total_entities} entities...")
             printed_milestones = set()
+
+            self._build_loop_begin(validation_enabled=True)
 
             for entity_id in entity_ids:
                 try:
@@ -202,6 +208,8 @@ class BaseBuilder(ABC):
                         )
                         print(traceback.format_exc(), file=errfile)
 
+            self._build_loop_end(validation_enabled=True, mode="test")
+
             # Done testing, rejoice!
             logger.info("Tested.")
             exit(0)
@@ -228,3 +236,17 @@ class BaseBuilder(ABC):
             builder.validate_item()
         elif hasattr(builder, "validate_monster"):
             builder.validate_monster()
+
+    def _build_loop_begin(self, validation_enabled: bool):
+        """Hook: invoked once before the entity loop in run() / test()."""
+        _ = validation_enabled
+
+    def _build_loop_end(self, validation_enabled: bool, mode: str):
+        """Hook: invoked once after the entity loop in run() / test().
+
+        Args:
+            validation_enabled: Whether schema/requirement validation ran for entities.
+            mode: 'run' or 'test'.
+        """
+        _ = validation_enabled
+        _ = mode

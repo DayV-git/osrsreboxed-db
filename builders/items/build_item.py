@@ -30,11 +30,10 @@ import logging
 
 import mwparserfromhell
 from deepdiff import DeepDiff
-import re
-
 import config
 import validator
 from builders.items import infobox_cleaner
+from builders.items import wiki_equipment_requirements
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 from osrsreboxed.items_api.item_properties import ItemProperties
 
@@ -73,6 +72,8 @@ class BuildItem:
         self.schema_data = kwargs["schema_data"]
         # A list of already known (processed) items
         self.known_items = kwargs["known_items"]
+        # Optional shared list populated during validate_item (wiki vs DB requirements)
+        self.requirement_discrepancies = kwargs.get("requirement_discrepancies")
         # Specify verbosity
         self.verbose = kwargs["verbose"]
 
@@ -712,75 +713,19 @@ class BuildItem:
         output_dir = Path(config.DOCS_PATH, "items-json")
         item_properties.export_json(True, output_dir)
 
-    def extract_requirements(self):
-        wikitext = self.item_wikitext
-        if not wikitext:
-            return {}
-        if isinstance(wikitext, list):
-            wikitext = wikitext[-1]
-
-        # Only look in initial description part of the wikitext
-        changes_index = wikitext.find("==Combat stats==")
-        if changes_index != -1:
-            wikitext = wikitext[:changes_index]
-
-        allowed_skills = {
-            "attack",
-            "defence",
-            "strength",
-            "magic",
-            "hitpoints",
-            "ranged",
-            "prayer",
-            "agility",
-        }
-        reqs = {}
-        sentences = [s.strip() for s in wikitext.split(".") if s.strip()]
-        for sentence in sentences:
-            lower_sentence = sentence.lower()
-            if (
-                "to wield" in lower_sentence
-                or "to equip" in lower_sentence
-                or "to wear" in lower_sentence
-            ):
-                skill_pattern = r"(\d+)\s+(\[\[)?([A-Za-z ]+?)(\]\])?(?=\s|$)"
-                for match in re.finditer(skill_pattern, sentence):
-                    level = match.group(1)
-                    skill = match.group(3)
-                    skill_key = skill.strip().lower()
-                    num_start = match.start(1)
-                    num_end = match.end(1)
-                    before_num = sentence[num_start - 1] if num_start > 0 else ""
-                    after_num = sentence[num_end] if num_end < len(sentence) else ""
-                    if (
-                        before_num
-                        and not before_num.isspace()
-                        and before_num.isprintable()
-                        and before_num not in [",", "."]
-                    ) or (
-                        after_num
-                        and not after_num.isspace()
-                        and after_num.isprintable()
-                        and after_num not in [",", "."]
-                    ):
-                        continue
-                    if skill_key == "hitpoints":
-                        before = sentence[: match.start()].lower()
-                        if "heal" in before or "restor" in before:
-                            continue
-                    if skill_key in allowed_skills:
-                        level_int = int(level)
-                        if 2 <= level_int <= 99:
-                            reqs[skill_key] = level_int
-        return reqs
-
     def validate_item(self):
         """Use the schema-items.json file to validate the populated item."""
         # Create JSON out object to validate
         item_properties = ItemProperties(**self.item_dict)
         current_json = item_properties.construct_json()
-        if item_properties.equipable:
-            wiki_reqs = self.extract_requirements()
+        if (
+            item_properties.equipable
+            and item_properties.wikitext_lookup in ("id", "linked_id")
+            and self.requirement_discrepancies is not None
+        ):
+            wiki_reqs = wiki_equipment_requirements.parse_equip_requirements_from_wikitext(
+                self.item_wikitext
+            )
             item_reqs = (
                 item_properties.equipment.get("requirements", {})
                 if item_properties.equipment
@@ -789,24 +734,22 @@ class BuildItem:
             if item_reqs is None:
                 item_reqs = {}
 
-            wiki_reqs = {k: v for k, v in wiki_reqs.items() if v != 1}
-            item_reqs = {k: v for k, v in item_reqs.items() if v != 1}
+            wiki_reqs = wiki_equipment_requirements.drop_trivial_level_one(wiki_reqs)
+            item_reqs = wiki_equipment_requirements.drop_trivial_level_one(item_reqs)
 
-            if wiki_reqs != item_reqs:
-                meaningful = False
-                for k, v in wiki_reqs.items():
-                    if k not in item_reqs or item_reqs[k] != v:
-                        meaningful = True
-                        break
-                if meaningful:
-                    merged_reqs = dict(item_reqs)
-                    merged_reqs.update(wiki_reqs)
-                    with open(".reqs.txt", "a", encoding="utf-8") as errfile:
-                        print(f"    {item_properties.wiki_name}", file=errfile)
-                        print(f'    "{item_properties.id}": {{', file=errfile)
-                        for k, v in merged_reqs.items():
-                            print(f'        "{k}": {v}', file=errfile)
-                        print("    },", file=errfile)
+            if wiki_equipment_requirements.wiki_vs_database_requirements_meaningful_mismatch(
+                wiki_reqs, item_reqs
+            ):
+                self.requirement_discrepancies.append(
+                    wiki_equipment_requirements.build_discrepancy_record(
+                        item_id=item_properties.id,
+                        name=item_properties.name,
+                        wiki_name=item_properties.wiki_name,
+                        wikitext_lookup=item_properties.wikitext_lookup,
+                        wiki_requirements=wiki_reqs,
+                        database_requirements=item_reqs,
+                    )
+                )
         # Validate object with schema attached
         v = validator.MyValidator(self.schema_data)
         v.validate(current_json)

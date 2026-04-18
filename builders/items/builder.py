@@ -24,11 +24,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
 import argparse
+import logging
+from datetime import datetime
+from datetime import timezone
 from pathlib import Path
 
 import config
 from builders.base_builder import BaseBuilder
 from builders.items import build_item
+
+logger = logging.getLogger(__name__)
+
+_WIKI_REQUIREMENTS_AUDIT_PATH = Path(
+    config.DATA_ITEMS_PATH / "items-wiki-requirements-proposals.json"
+)
 
 
 class Builder(BaseBuilder):
@@ -93,6 +102,55 @@ class Builder(BaseBuilder):
         # Initialize a list of known items
         self.known_items = []
 
+        # Filled during validation when wiki vs DB equipment requirements disagree
+        self.requirement_discrepancies = None
+
+    def _build_loop_begin(self, validation_enabled: bool):
+        super()._build_loop_begin(validation_enabled)
+        self.requirement_discrepancies = [] if validation_enabled else None
+
+    def _build_loop_end(self, validation_enabled: bool, mode: str):
+        super()._build_loop_end(validation_enabled, mode)
+        if not validation_enabled or self.requirement_discrepancies is None:
+            return
+
+        by_lookup = {}
+        for row in self.requirement_discrepancies:
+            key = row.get("wikitext_lookup") or "unknown"
+            by_lookup[key] = by_lookup.get(key, 0) + 1
+
+        items_sorted = sorted(self.requirement_discrepancies, key=lambda r: r["id"])
+        payload = {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "build_mode": mode,
+            "description": (
+                "(EXPERIMENTAL) Equipable items whose wikitext was resolved by cache item ID or "
+                "linked_id (not name lookup), and whose skill requirements parsed from "
+                "wiki prose differ from equipment.requirements from the infobox. "
+                "Use proposed_requirements (per item) or proposed_overrides_by_item_id "
+                "to merge into data/items/items-skill-requirements.json (string item id "
+                "-> requirements map)."
+            ),
+            "summary": {
+                "discrepancy_count": len(self.requirement_discrepancies),
+                "by_wikitext_lookup": by_lookup,
+            },
+            "proposed_overrides_by_item_id": {
+                str(r["id"]): r["proposed_requirements"] for r in items_sorted
+            },
+            "items": items_sorted,
+        }
+
+        _WIKI_REQUIREMENTS_AUDIT_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with open(_WIKI_REQUIREMENTS_AUDIT_PATH, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
+
+        logger.info(
+            "Wiki equipment requirements audit: %d discrepancies -> %s",
+            len(self.requirement_discrepancies),
+            _WIKI_REQUIREMENTS_AUDIT_PATH,
+        )
+
     def _get_entity_id_list(self):
         """Get list of item IDs from cache data."""
         return self.all_items_cache_data
@@ -135,6 +193,7 @@ class Builder(BaseBuilder):
             duplicates=self.duplicates,
             schema_data=self.schema_data,
             known_items=self.known_items,
+            requirement_discrepancies=self.requirement_discrepancies,
             verbose=self.verbose,
         )
 
