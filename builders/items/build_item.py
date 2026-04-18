@@ -194,6 +194,7 @@ class BuildItem:
     def populate_non_wiki_item(self):
         """Populate an iem that has no wiki page."""
         self.populate_from_cache_data()
+        self.item_dict["wikitext_lookup"] = None
 
         self.item_dict["tradeable"] = False
         self.item_dict["quest_item"] = False
@@ -216,6 +217,7 @@ class BuildItem:
 
     def populate_wiki_item(self):
         self.populate_from_cache_data()
+        self.item_dict["wikitext_lookup"] = self.wikitext_found_using
         self.populate_from_wiki_data_properties()
 
         if self.item_dict["equipable"]:

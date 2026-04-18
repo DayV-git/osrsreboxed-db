@@ -23,6 +23,7 @@ import json
 import time
 from typing import Dict
 from typing import List
+from typing import Optional
 from pathlib import Path
 from dataclasses import asdict
 from dataclasses import dataclass
@@ -68,6 +69,7 @@ class MonsterProperties:
     examine: str = None
     wiki_name: str = None
     wiki_url: str = None
+    wikitext_lookup: Optional[str] = None
     attack_level: int = None
     strength_level: int = None
     defence_level: int = None

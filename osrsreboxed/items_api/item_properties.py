@@ -74,6 +74,7 @@ class ItemProperties:
     icon: str
     wiki_name: Optional[str]
     wiki_url: Optional[str]
+    wikitext_lookup: Optional[str] = None
     equipment: Optional[ItemEquipment] = None
     weapon: Optional[ItemWeapon] = None
 
