@@ -38,7 +38,10 @@ def parse_item_definition(item_data: Dict, definitions: Dict, id_number: str) ->
     """
     item_definition = definitions[id_number]
     item_data["name"] = item_definition["name"]
-    item_data["tradeable_on_ge"] = item_definition["isTradeable"]
+    # Cache dumps use geTradeable; older dumps used isTradeable
+    item_data["tradeable_on_ge"] = item_definition.get(
+        "geTradeable", item_definition.get("isTradeable", False)
+    )
     item_data["members"] = item_definition["members"]
 
     # Determine any linked IDs (item, placeholder, noted)

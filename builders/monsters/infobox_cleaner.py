@@ -320,8 +320,6 @@ def category(value: str) -> str:
 
     value = value.lower()
 
-    value = value.replace("dagannoths", "dagannoth")
-
     if "|" in value:
         value = value.split("|")[1]
 
