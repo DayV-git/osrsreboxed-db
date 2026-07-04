@@ -48,5 +48,7 @@ def test_item_database():
     for json_file in fis:
         with open(json_file) as fi:
             item = json.load(fi)
-            # print(item["id"])
-            assert v.validate(item)
+            assert v.validate(item), (
+                f"Validation failed for {json_file} (id={item.get('id')}). "
+                f"Errors: {v.errors}"
+            )

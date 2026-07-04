@@ -48,5 +48,7 @@ def test_monsters_data():
     for json_file in fis:
         with open(json_file) as fi:
             monster = json.load(fi)
-            # print(monster["id"])
-            assert v.validate(monster)
+            assert v.validate(monster), (
+                f"Validation failed for {json_file} (id={monster.get('id')}). "
+                f"Errors: {v.errors}"
+            )

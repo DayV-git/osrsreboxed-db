@@ -69,7 +69,10 @@ def test_shops_items_by_shop_schema_validation():
     for shop_name, shop_info in shops_data.items():
         assert v.validate(
             shop_info
-        ), f"Schema validation failed for shop: {shop_name}. Errors: {v.errors}"
+        ), (
+            f"Schema validation failed for shop: {shop_name}. "
+            f"Errors: {v.errors}"
+        )
 
 
 def test_shops_items_by_item_schema_validation():
