@@ -109,6 +109,13 @@ class BuildItem:
         # and can be considered 100% correct and available for every item
         self.item_cache_data = self.all_items_cache_data[self.item_id_str]
 
+        # Band-aid: fix known-bad cache entries here
+        try:
+            if int(self.item_id) == 33685:
+                self.item_cache_data["equipable"] = False
+        except Exception:
+            pass
+
         # Set item name variable (directly from the cache dump)
         self.item_name = self.item_cache_data["name"]
 
