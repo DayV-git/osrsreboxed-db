@@ -48,5 +48,7 @@ def test_prayer_database():
     for json_file in fis:
         with open(json_file) as fi:
             prayer = json.load(fi)
-            # print(prayer["id"])
-            assert v.validate(prayer)
+            assert v.validate(prayer), (
+                f"Validation failed for {json_file} (id={prayer.get('id')}). "
+                f"Errors: {v.errors}"
+            )
