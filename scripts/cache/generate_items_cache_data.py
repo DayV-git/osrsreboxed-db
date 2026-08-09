@@ -67,15 +67,14 @@ def parse_item_definition(item_data: Dict, definitions: Dict, id_number: str) ->
         item_data["noted"] = False
 
     # Determine if the item is noteable
+    item_data["noteable"] = False
     if item_definition["notedTemplate"] == 799:
-        # Item is noted, so it must be notable
+        # Item is noted, so it must be noteable
         item_data["noteable"] = True
     elif item_data["linked_id_noted"] is not None:
         if definitions[str(item_data["linked_id_noted"])]["notedTemplate"] == 799:
             # If linked item ID is noted, this item must also be noteable
             item_data["noteable"] = True
-    else:
-        item_data["noteable"] = False
 
     # Determine if the item is a placeholder
     if item_definition["placeholderTemplateId"] == 14401:

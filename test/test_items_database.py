@@ -52,3 +52,16 @@ def test_item_database():
                 f"Validation failed for {json_file} (id={item.get('id')}). "
                 f"Errors: {v.errors}"
             )
+
+
+def test_items_cache_data_noteable_key():
+    """Ensure item cache data includes noteable for every item."""
+    path_to_cache = Path(config.DATA_ITEMS_PATH / "items-cache-data.json")
+    with open(path_to_cache, "r") as f:
+        cache_data = json.load(f)
+
+    for item_id, item_data in cache_data.items():
+        assert "noteable" in item_data, f"Missing noteable for cache item {item_id}"
+        assert isinstance(
+            item_data["noteable"], bool
+        ), f"Cache item {item_id} noteable must be a boolean"

@@ -123,7 +123,20 @@ def items():
     for itemID in changed:
         changed_keys = []
         for key in new_items[itemID]:
-            if new_items[itemID][key] != old_items[itemID][key]:
+            # Compare presence and value safely when keys may be newly added
+            old_has = key in old_items[itemID]
+            new_has = key in new_items[itemID]
+            new_val = new_items[itemID].get(key)
+            old_val = old_items[itemID].get(key)
+
+            if not old_has and new_has:
+                # Key was added in the new cache
+                changed_keys.append(key)
+            elif old_has and not new_has:
+                # Key was removed in the new cache
+                changed_keys.append(key)
+            elif new_val != old_val:
+                # Value changed
                 changed_keys.append(key)
         if changed_keys:
             logger.info(
