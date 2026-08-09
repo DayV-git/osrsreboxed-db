@@ -111,7 +111,7 @@ class BuildItem:
 
         # Band-aid: fix known-bad cache entries here
         try:
-            if int(self.item_id) == 33685:
+            if int(self.item_id) in [33685, 34035]:
                 self.item_cache_data["equipable"] = False
         except Exception:
             pass
