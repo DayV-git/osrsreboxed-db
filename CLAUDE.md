@@ -16,9 +16,11 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
 
 ## Fork constraints (read before editing monsters or docs)
 
-- **Monster `drops` are removed** in this fork; do not add drop parsing or drop arrays unless the user explicitly wants that scope.
+- **Monster `drops` arrays are removed** in this fork; do not add drop data back to monster JSON. Drops live in their own dump instead —
+  `scripts/drops/` builds `docs/drops-json/` from the monster wiki page text, keyed by NPC ID.
 - Monsters use **`elemental_weakness_*`** and split ranged defence: **`defence_ranged_light`**, **`defence_ranged_standard`**, **`defence_ranged_heavy`**.
 - **Shops** data is maintained via **`scripts/shops/`** and **`data/shops/`** (not a `builders/shops` package).
+- **Drops** are likewise a `scripts/` domain (**`scripts/drops/`**, output in **`docs/drops-json/`**), not a builder.
 
 ## How to implement new work
 

@@ -6,6 +6,13 @@ This fork of osrsreboxed-db only updates the JSON files, and is not linked to th
 -   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/items-complete.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/items-complete.json)
 -   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/monsters-complete.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/monsters-complete.json)
 
+A new feature for this fork is NPC drop tables, rebuilt from the OSRS Wiki and keyed by NPC ID, available here:
+
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/npc-drops.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/npc-drops.json)
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/subtables.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/subtables.json)
+
+These replace the deprecated per-monster `drops` array. Regenerate them with `python -m scripts.drops.update`.
+
 A new feature for this fork is information on shop stock and prices, available here:
 
 -   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json)
@@ -176,6 +183,9 @@ official `osrsbox-api` project is available from:
 The JSON API is available in the [`docs` folder](https://github.com/0xNeffarion/osrsreboxed-db/tree/master/docs/) in the osrsbox-db project
 repository. This folder contains the publicly available database. Every file inside this specific folder can be fetched using HTTP GET requests.
 
+-   `drops-json`: The NPC drop tables, rebuilt from the OSRS Wiki. `npc-drops.json` holds every drop table and the NPC IDs that roll it,
+    `subtables.json` holds the shared tables (rare drop table, gem table, herb and seed tables) those tables reference by name, and
+    `unresolved-items.json` lists drop names that matched no item in the database.
 -   `items-complete.json`: A single JSON file that combines all single JSON files from `items-json` folder. This file contains the entire osrsbox-db
     items database in one file. This is useful if you want to get the data for every single item.
 -   `items-icons`: Collection of PNG files (20K+) for every item inventory icon in OSRS. Each inventory icon is named using the unique item ID number.
@@ -353,6 +363,7 @@ deactivate
         drop tables.
 -   `data`: Collection of useful data files used in the osrsbox-db project.
     -   `cache`: OSRS client cache dump (not present in repository due to size, but populated using the `scripts/cache` scripts).
+    -   `drops`: Cached OSRS Wiki page text for the shared drop tables.
     -   `icons`: Item and prayer icons in base64.
     -   `items`: Data used for item database generation.
     -   `monsters`: Data used for monster database generation.
@@ -372,6 +383,8 @@ deactivate
 -   `scripts`: A collection of scripts (using Python and BASH) to help automate common tasks including dumping the OSRS cache, scraping the OSRS wiki,
     generating schemas, updating the databases, and inserting data into a MongoDB database.
     -   `cache`: A collection of scripts to extract useful data from the OSRS cache item, npc and object definition files.
+    -   `drops`: The NPC drop table dump. `update.py` is the entry point, `drops_wikitext.py` parses the wiki drop tables, and `drops_tables.py`
+        resolves them into the exported JSON.
     -   `icons`: Various scripts to help process, check or update item icons.
     -   `items`: A collection of scripts to help process data for the item builder.
     -   `monsters`: A collection of scripts to help process data for the monster builder.

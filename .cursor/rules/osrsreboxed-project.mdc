@@ -10,17 +10,19 @@ Python project that builds **items**, **monsters**, and **prayers** JSON (and re
 ## Fork-specific behaviour (do not undo casually)
 
 - **Outputs are JSON-first**; legacy external APIs described upstream may not apply here.
-- **Monster `drops` are intentionally removed** from this fork; do not reintroduce drop tables unless explicitly requested.
+- **Monster `drops` arrays are intentionally removed** from this fork; do not reintroduce them into monster JSON. Drop data instead lives in its own
+  dump: `scripts/drops/` builds `docs/drops-json/` from the monster wiki page text, keyed by NPC ID (schema in `data/schemas/schema-drops.json`).
 - Monsters include **`elemental_weakness_type`**, **`elemental_weakness_percent`**, and ranged defence split: **`defence_ranged_light`**, **`defence_ranged_standard`**, **`defence_ranged_heavy`** (see existing JSON / builders).
 - **Shops**: stock/price pipelines live under `scripts/shops/` and `data/shops/` (no `builders/shops/` tree).
+- **Drops**: same shape — `scripts/drops/` and `data/drops/`, no `builders/drops/` tree.
 
 ## Repository map (use `config.py` paths)
 
 | Area | Role |
 |------|------|
 | `builders/items/`, `builders/monsters/` | Regenerate per-entity JSON via `builder.py` entry points; shared patterns in `builders/base_builder.py` and `builders/run_log.py` (run logs under `logs/`). |
-| `scripts/` | ETL: `cache/`, `wiki/`, `items/`, `monsters/`, `shops/`, `icons/`, `update/` — fetch or transform inputs in `data/` before builders run. |
-| `data/` | Inputs: `items/`, `monsters/`, `shops/`, `icons/`, `schemas/`, `wiki/`; `cache/` is local-only / large. |
+| `scripts/` | ETL: `cache/`, `wiki/`, `items/`, `monsters/`, `shops/`, `drops/`, `icons/`, `update/` — fetch or transform inputs in `data/` before builders run. |
+| `data/` | Inputs: `items/`, `monsters/`, `shops/`, `drops/`, `icons/`, `schemas/`, `wiki/`; `cache/` is local-only / large. |
 | `docs/` | **Generated** public JSON (and related outputs); avoid one-off hand edits across thousands of files — fix builders/scripts and regenerate. |
 | `osrsreboxed/` | PyPI-facing package: dataclass models and `*_api.load()` helpers; keep JSON field names aligned with exported `docs/` schemas. |
 | `test/` | `pytest` tests (`test_*_database.py`, etc.); extend when schema or export shape changes. |
@@ -38,5 +40,6 @@ Python project that builds **items**, **monsters**, and **prayers** JSON (and re
 ## Anti-patterns
 
 - Editing single files under `docs/items-json/` or `docs/monsters-json/` for global rule changes (will be overwritten).
-- Reintroducing upstream “drops” documentation or fields without an explicit project decision.
+- Reintroducing upstream “drops” fields onto monster JSON. (The standalone `docs/drops-json/` dump is a deliberate project decision — extend that
+  instead.)
 - New dependencies without updating `pyproject.toml` / install docs and justifying why they belong in this data pipeline.

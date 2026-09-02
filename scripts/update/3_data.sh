@@ -50,3 +50,6 @@ python -m scripts.monsters.update
 
 echo -e "  > shops..."
 python -m scripts.shops.update
+
+echo -e "  > drops..."
+python -m scripts.drops.update

@@ -1,0 +1,191 @@
+{
+  "table_id": {
+    "description": "Unique ID of the drop table, derived from the OSRS Wiki page name.",
+    "type": "string",
+    "required": true,
+    "nullable": false
+  },
+  "label": {
+    "description": "The wiki drop-version or heading this table came from (e.g. 'Drops', 'Wilderness Slayer Cave').",
+    "type": "string",
+    "required": true,
+    "nullable": false
+  },
+  "table_name": {
+    "description": "Display name of the drop table, combining the wiki page and the label.",
+    "type": "string",
+    "required": true,
+    "nullable": false
+  },
+  "wiki_page": {
+    "description": "The OSRS Wiki page the drop table was parsed from.",
+    "type": "string",
+    "required": true,
+    "nullable": false
+  },
+  "main_max_roll": {
+    "description": "Size of the main table pool, out of which each weighted entry is rolled.",
+    "type": "integer",
+    "required": false,
+    "nullable": false,
+    "min": 1
+  },
+  "entries": {
+    "description": "Array of guaranteed, main table, pre-roll, separate roll and shared table drops.",
+    "type": "list",
+    "required": true,
+    "nullable": false,
+    "schema": {
+      "type": "dict",
+      "schema": {
+        "item_id": {
+          "description": "Unique OSRS item ID of the drop.",
+          "type": "integer",
+          "required": false,
+          "nullable": true,
+          "min": 0
+        },
+        "name": {
+          "description": "The name of the drop, as written on the wiki.",
+          "type": "string",
+          "required": false,
+          "nullable": false
+        },
+        "quantity": {
+          "description": "The quantity dropped, as a [minimum, maximum] pair.",
+          "type": "list",
+          "required": false,
+          "nullable": false,
+          "minlength": 2,
+          "maxlength": 2,
+          "schema": {
+            "type": "integer"
+          }
+        },
+        "quantity_raw": {
+          "description": "The raw wiki quantity, when it is not a plain number or range.",
+          "type": "string",
+          "required": false,
+          "nullable": false
+        },
+        "always": {
+          "description": "If the drop is guaranteed on every kill.",
+          "type": "boolean",
+          "required": false,
+          "nullable": false
+        },
+        "pre_roll": {
+          "description": "If the drop is rolled before the main table.",
+          "type": "boolean",
+          "required": false,
+          "nullable": false
+        },
+        "separate_roll": {
+          "description": "If the drop is rolled independently of the main table pool.",
+          "type": "boolean",
+          "required": false,
+          "nullable": false
+        },
+        "nothing": {
+          "description": "If the entry is an empty slot in the main table pool.",
+          "type": "boolean",
+          "required": false,
+          "nullable": false
+        },
+        "shared_table": {
+          "description": "Name of the shared table rolled by this entry, as keyed in subtables.json.",
+          "type": "string",
+          "required": false,
+          "nullable": false
+        },
+        "weight": {
+          "description": "How many of the out_of slots this entry occupies.",
+          "type": "integer",
+          "required": false,
+          "nullable": false,
+          "min": 0
+        },
+        "out_of": {
+          "description": "The denominator this entry is rolled against.",
+          "type": "integer",
+          "required": false,
+          "nullable": false,
+          "min": 1
+        },
+        "rarity": {
+          "description": "Chance of a single roll landing on this entry (as a float out of 1.0).",
+          "type": [
+            "float",
+            "integer"
+          ],
+          "required": false,
+          "nullable": true,
+          "min": 0
+        },
+        "rarity_raw": {
+          "description": "The raw wiki rarity, when it could not be resolved to a numeric rate.",
+          "type": "string",
+          "required": false,
+          "nullable": false
+        },
+        "assumed_rarity": {
+          "description": "If the rate is a convention for a word rarity ('Common', 'Rare') rather than wiki data.",
+          "type": "boolean",
+          "required": false,
+          "nullable": false
+        },
+        "clue_scroll_box": {
+          "description": "If the drop arrives as a clue scroll box.",
+          "type": "boolean",
+          "required": false,
+          "nullable": false
+        },
+        "section": {
+          "description": "The wiki subsection the drop was listed under.",
+          "type": "string",
+          "required": false,
+          "nullable": false
+        },
+        "notes": {
+          "description": "Wiki footnotes attached to the drop, such as quest or area requirements.",
+          "type": "list",
+          "required": false,
+          "nullable": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tertiary": {
+    "description": "Array of tertiary drops, rolled independently of the main table.",
+    "type": "list",
+    "required": true,
+    "nullable": false,
+    "schema": {
+      "type": "dict"
+    }
+  },
+  "brimstone_key_roll": {
+    "description": "If the table rolls a brimstone key at the combat level scaled rate.",
+    "type": "boolean",
+    "required": false,
+    "nullable": false
+  },
+  "brimstone_konar_bonus": {
+    "description": "If the brimstone key rate is improved on a Konar slayer task.",
+    "type": "boolean",
+    "required": false,
+    "nullable": false
+  },
+  "unresolved_items": {
+    "description": "Drop names on this table that matched no item in the item database.",
+    "type": "list",
+    "required": false,
+    "nullable": false,
+    "schema": {
+      "type": "string"
+    }
+  }
+}
