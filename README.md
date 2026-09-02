@@ -13,10 +13,18 @@ A new feature for this fork is NPC drop tables, rebuilt from the OSRS Wiki and k
 
 These replace the deprecated per-monster `drops` array. Regenerate them with `python -m scripts.drops.update`.
 
-A new feature for this fork is information on shop stock and prices, available here:
+NPC click options (the right-click menu, which says what an NPC does and in which menu slot) are available here:
+
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npcs-interactions.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npcs-interactions.json)
+
+Regenerate with `python -m scripts.npcs.update`, which reads a plain-text cache NPC dump from `data/cache/dump.npc`.
+
+A new feature for this fork is information on shop stock and prices — including the `owners` array naming the NPC that runs each shop, with its
+NPC IDs resolved from the shopkeeper's own wiki page — available here:
 
 -   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json)
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json)
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-item.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-item.json)
+-   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-by-npc.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-by-npc.json)
 
 The remainder of the README is unchanged. 
 
@@ -203,6 +211,15 @@ repository. This folder contains the publicly available database. Every file ins
 -   `monsters-json`: Collection of JSON files (2.5K+) of extensive monster metadata for every monster in OSRS. This folder contains the entire
     osrsbox-db monster database where each monster has an individual JSON file, named using the unique monster ID number. This is useful when you want
     to fetch data for a single monster where you already know the item ID number.
+-   `shops-by-npc.json`: The shops each shopkeeper opens, keyed by NPC ID, with the click option and 1-based menu slot that opens them. This is the
+    index to use when handling an NPC click: a server already holds the NPC ID and the option slot, so it can resolve the shop with one lookup.
+    `option_source` says how the shop is opened: `click` (use `option_slot`), `dialogue` (the NPC's menu has no shop option, so the shop is reached by
+    talking to them — their left-click is `Talk-to`, which opens a conversation, not the shop), or `unknown` (no click options are known for this NPC
+    ID, usually because the wiki infobox names a cutscene or quest variant while the shopkeeper players meet is another ID). A null `option` never
+    means "use option 1".
+-   `npcs-interactions.json`: A single JSON file of NPC click options, keyed by NPC ID. Option keys are the cache's 1-based menu slot (`op1`..`op5`),
+    and slots can be empty — the lowest numbered option present is the default left-click action. Note that the `ops` array in
+    `data/monsters/monsters-cache-data.json` is 0-based, so its index `i` is this file's slot `i + 1`.
 -   `npcs-summary.json`: A single JSON file that contains only the NPC names and NPC ID numbers. This file is useful when you want to download a small
     file (0.35MB) to quickly scan/process NPC data when you only need the NPC name and/or ID number. Note that this file contains both attackable, and
     non-attackable (monster) NPCs.
@@ -362,7 +379,8 @@ deactivate
         contains a selection of hard-coded drop tables for the various OSRS Wiki drop table templates such as the rare, herb, seed, gem and catacombs
         drop tables.
 -   `data`: Collection of useful data files used in the osrsbox-db project.
-    -   `cache`: OSRS client cache dump (not present in repository due to size, but populated using the `scripts/cache` scripts).
+    -   `cache`: OSRS client cache dump (not present in repository due to size, but populated using the `scripts/cache` scripts). Also holds
+        `dump.npc`, a plain-text cache NPC dump supplied separately, which `scripts/npcs` reads to build the NPC click options database.
     -   `drops`: Cached OSRS Wiki page text for the shared drop tables.
     -   `icons`: Item and prayer icons in base64.
     -   `items`: Data used for item database generation.
@@ -388,6 +406,7 @@ deactivate
     -   `icons`: Various scripts to help process, check or update item icons.
     -   `items`: A collection of scripts to help process data for the item builder.
     -   `monsters`: A collection of scripts to help process data for the monster builder.
+    -   `npcs`: The NPC click options (interactions) database, built from a cache NPC dump.
     -   `update`: A collection of scripts for automating the data collection and database regeneration.
     -   `wiki`: A collection of scripts for automating data extraction from the OSRS Wiki using the MediaWiki API.
 -   `test`: A collection of PyTest tests.

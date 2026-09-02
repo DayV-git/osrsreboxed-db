@@ -1,0 +1,58 @@
+{
+  "npc_id": {
+    "description": "Unique OSRS NPC ID of the shopkeeper.",
+    "type": "integer",
+    "required": true,
+    "nullable": false,
+    "min": 0
+  },
+  "name": {
+    "description": "The name of the shopkeeper, as displayed on the wiki.",
+    "type": "string",
+    "required": true,
+    "nullable": false
+  },
+  "shops": {
+    "description": "The shops this NPC opens. An NPC can run several, one per location.",
+    "type": "list",
+    "required": true,
+    "nullable": false,
+    "minlength": 1,
+    "schema": {
+      "type": "dict",
+      "schema": {
+        "shop_name": {
+          "description": "The name of the shop, as keyed in shops-items-by-shop.json.",
+          "type": "string",
+          "required": true,
+          "nullable": false
+        },
+        "option": {
+          "description": "The click option that opens the shop, null when it opens through dialogue.",
+          "type": "string",
+          "required": true,
+          "nullable": true
+        },
+        "option_slot": {
+          "description": "The 1-based menu slot of that option, matching npcs-interactions.json.",
+          "type": "integer",
+          "required": true,
+          "nullable": true,
+          "min": 1,
+          "max": 5
+        },
+        "option_source": {
+          "description": "How the shop is opened: 'click' (use option_slot), 'dialogue' (talk to the NPC), or 'unknown' (no click options known for this NPC ID).",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "allowed": [
+            "click",
+            "dialogue",
+            "unknown"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -19,8 +19,15 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
 - **Monster `drops` arrays are removed** in this fork; do not add drop data back to monster JSON. Drops live in their own dump instead —
   `scripts/drops/` builds `docs/drops-json/` from the monster wiki page text, keyed by NPC ID.
 - Monsters use **`elemental_weakness_*`** and split ranged defence: **`defence_ranged_light`**, **`defence_ranged_standard`**, **`defence_ranged_heavy`**.
-- **Shops** data is maintained via **`scripts/shops/`** and **`data/shops/`** (not a `builders/shops` package).
+- **Shops** data is maintained via **`scripts/shops/`** and **`data/shops/`** (not a `builders/shops` package). `shop_owners.py` resolves each
+  shop's NPC owner and must run before `shops_items.process`, which merges the `owners` array into the export and writes the NPC-keyed
+  `docs/shops-by-npc.json`. A null option carries `option_source` (`dialogue` vs `unknown`) so consumers cannot read it as "option 1". The
+  shop-opening option is resolved **per NPC ID**, not per owner — an owner's IDs are per-location variants that do not always share a menu
+  layout, so copying one variant's option across the rest silently mislabels them.
 - **Drops** are likewise a `scripts/` domain (**`scripts/drops/`**, output in **`docs/drops-json/`**), not a builder.
+- **NPC click options** live in **`scripts/npcs/`** → **`docs/npcs-interactions.json`**, parsed from a cache NPC dump at the git-ignored
+  `data/cache/dump.npc`. Option keys are the cache's **1-based** `op1`..`op5`; the RuneLite-format `ops` array in `monsters-cache-data.json` is
+  0-based, so joining the two needs a `+1`.
 
 ## How to implement new work
 

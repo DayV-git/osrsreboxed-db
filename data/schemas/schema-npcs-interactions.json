@@ -1,0 +1,36 @@
+{
+  "npc_id": {
+    "description": "Unique OSRS NPC ID.",
+    "type": "integer",
+    "required": true,
+    "nullable": false,
+    "min": 0
+  },
+  "name": {
+    "description": "The in-game name of the NPC.",
+    "type": "string",
+    "required": true,
+    "nullable": true
+  },
+  "cache_name": {
+    "description": "The NPC's cache (gameval) name, which distinguishes same-named variants.",
+    "type": "string",
+    "required": true,
+    "nullable": true
+  },
+  "options": {
+    "description": "Click options keyed by 1-based menu slot (op1..op5); the lowest slot present is the left-click action.",
+    "type": "dict",
+    "required": true,
+    "nullable": false,
+    "minlength": 1,
+    "keysrules": {
+      "type": "string",
+      "allowed": ["1", "2", "3", "4", "5"]
+    },
+    "valuesrules": {
+      "type": "string",
+      "empty": false
+    }
+  }
+}
