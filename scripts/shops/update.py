@@ -25,6 +25,7 @@ import logging
 
 from builders.run_log import begin_run
 from scripts.shops import shops_properties
+from scripts.shops import shop_owners
 from scripts.shops import shops_items
 
 # Setup logging
@@ -42,7 +43,11 @@ def main():
     shops_properties.fetch()
     shops_properties.process()
 
-    logger.info("Step 2: Extracting shop items...")
+    logger.info("Step 2: Resolving shop owners to NPC IDs...")
+    shop_owners.fetch()
+    shop_owners.process()
+
+    logger.info("Step 3: Extracting shop items...")
     shops_items.fetch()
     shops_items.process()
 

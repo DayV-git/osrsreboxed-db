@@ -30,6 +30,7 @@ import logging
 import config
 from builders.run_log import begin_run
 from osrsreboxed import items_api
+from scripts.shops import shop_owners
 from scripts.wiki.wikitext_parser import WikitextTemplateParser
 
 
@@ -501,6 +502,30 @@ def item_id_lookup(name: str):
     return None
 
 
+def _owner_shop_option(owner: dict, npc_options: dict) -> dict:
+    """Name the click option that opens this owner's shop.
+
+    An owner can have several NPC IDs (one per location), so the first ID with
+    a shop-opening option wins. Owners whose shop opens through dialogue have
+    no such option, and get nulls.
+
+    :param owner: A shop owner entry, with its resolved npc_ids.
+    :param npc_options: NPC click options, from shop_owners.load_npc_options.
+    :return: Dictionary with the option text and its 1-based menu slot.
+    """
+    resolved = [
+        shop_owners.shop_option_for(npc_id, npc_options) for npc_id in owner["npc_ids"]
+    ]
+    for option in resolved:
+        if option["option"]:
+            return option
+    # No variant opens a shop by clicking; prefer the more specific reason.
+    for option in resolved:
+        if option["option_source"] == "dialogue":
+            return option
+    return {"option": None, "option_slot": None, "option_source": "unknown"}
+
+
 def process() -> None:
     """Process the raw shop data into a more structured format."""
     # Load the raw shop data
@@ -514,11 +539,17 @@ def process() -> None:
     with open(raw_file) as f:
         raw_shop_data = json.load(f)
 
+    # The NPC that runs each shop, resolved by scripts.shops.shop_owners,
+    # and the click options of every NPC, so the shop-opening one can be named
+    owners_by_shop = shop_owners.load()
+    npc_options = shop_owners.load_npc_options()
+
     logger.info("Processing raw shop data...")
 
     # Structure the data - maintain new format with shop info
     shops_by_shop = {}
     shops_by_item = defaultdict(list)
+    shops_by_npc = {}
 
     total_items = 0
     shops_with_info = 0
@@ -529,7 +560,37 @@ def process() -> None:
 
         # Only include items with type 'item' in shops_by_shop
         filtered_items = [item for item in items if item.get("type") == "item"]
-        shops_by_shop[shop_name] = {"shop_info": shop_info, "items": filtered_items}
+        # Substores share their parent shop's page, and so its owner
+        parent_shop_name = shop_name.split(" (")[0]
+        owners = [
+            {**owner, **_owner_shop_option(owner, npc_options)}
+            for owner in owners_by_shop.get(shop_name)
+            or owners_by_shop.get(parent_shop_name)
+            or []
+        ]
+
+        shops_by_shop[shop_name] = {
+            "shop_info": shop_info,
+            "owners": owners,
+            "items": filtered_items,
+        }
+
+        # Index by NPC ID, so a server handling an NPC click can look up the
+        # shop by the ID and option slot it already has in hand. The option is
+        # resolved per NPC, not per owner: an owner's IDs are its per-location
+        # variants, and they do not always share a menu layout.
+        for owner in owners:
+            for npc_id in owner["npc_ids"]:
+                entry = shops_by_npc.setdefault(
+                    npc_id,
+                    {"npc_id": npc_id, "name": owner["name"], "shops": []},
+                )
+                entry["shops"].append(
+                    {
+                        "shop_name": shop_name,
+                        **shop_owners.shop_option_for(npc_id, npc_options),
+                    }
+                )
 
         # Track stats
         if any(shop_info.values()):
@@ -560,6 +621,14 @@ def process() -> None:
     docs_item_file = Path(config.DOCS_PATH / "shops-items-by-item.json")
     with open(docs_item_file, "w") as f:
         json.dump(dict(shops_by_item), f, indent=4)
+
+    docs_npc_file = Path(config.DOCS_PATH / "shops-by-npc.json")
+    with open(docs_npc_file, "w") as f:
+        json.dump(
+            {str(npc_id): shops_by_npc[npc_id] for npc_id in sorted(shops_by_npc)},
+            f,
+            indent=4,
+        )
 
     # And copy into package docs as existing build pattern for items/monsters/prayers
     package_docs_path = Path(config.PACKAGE_PATH / "docs")

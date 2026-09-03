@@ -40,6 +40,9 @@ pip install -r requirements.txt
 echo -e "  > cache..."
 python -m scripts.cache.update
 
+echo -e "  > npcs..."
+python -m scripts.npcs.update
+
 echo -e "  > items..."
 python -m scripts.items.update
 python -m scripts.icons.update_icons
@@ -50,3 +53,6 @@ python -m scripts.monsters.update
 
 echo -e "  > shops..."
 python -m scripts.shops.update
+
+echo -e "  > drops..."
+python -m scripts.drops.update

@@ -41,8 +41,12 @@ DATA_WIKI_PATH = Path(DATA_PATH / "wiki")
 DATA_ICONS_PATH = Path(DATA_PATH / "icons")
 DATA_ITEMS_PATH = Path(DATA_PATH / "items")
 DATA_MONSTERS_PATH = Path(DATA_PATH / "monsters")
+DATA_DROPS_PATH = Path(DATA_PATH / "drops")
 DATA_SHOPS_PATH = Path(DATA_PATH / "shops")
 DATA_SCHEMAS_PATH = Path(DATA_PATH / "schemas")
+
+# Generated npc drops dump
+DOCS_DROPS_PATH = Path(DOCS_PATH / "drops-json")
 
 # Useful builder paths
 BUILDERS_ITEMS = Path(BUILDERS_PATH / "items")
@@ -51,6 +55,7 @@ BUILDERS_MONSTERS = Path(BUILDERS_PATH / "monsters")
 # Useful scripts paths
 SCRIPTS_ITEMS = Path(SCRIPTS_PATH / "items")
 SCRIPTS_MONSTERS = Path(SCRIPTS_PATH / "monsters")
+SCRIPTS_DROPS = Path(SCRIPTS_PATH / "drops")
 SCRIPTS_SHOPS = Path(SCRIPTS_PATH / "shops")
 SCRIPTS_SCHEMAS = Path(SCRIPTS_PATH / "schemas")
 SCRIPTS_UPDATE = Path(SCRIPTS_PATH / "update")
