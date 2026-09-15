@@ -22,6 +22,40 @@ Select `data[name].variants[data[name].default]`. Variants are arrays of steps.
 content remain explicit, so the runner can stop safely where gameplay logic has
 not been implemented. Empty `steps` and standard choice prompts are omitted.
 
+`{{tact}}` control-flow keywords are transcript navigation, not gameplay, and
+become `type: "jump"` with the keyword as `reference` (`above`, `below`,
+`previous`, `initial`, `other`, `continue`, `continues`). Targets are not
+resolved. `members` ends a free-to-play branch as `{"type":"end","reason":
+"members"}`. Steps that do carry gameplay are slugged with an `action` key:
+`open_interface` with a `target` (from `opens` or its unlinked `opens2`
+spelling), `receive` and `give` with the item `text`. Everything else stays an
+`action` with the wiki's prose in `text` and no `action` key — a runner must
+treat those as unimplemented rather than guess.
+
+An `open_interface` whose target names a shop in `docs/shops-items-by-shop.json`
+becomes `open_shop` with the dump's exact key as `target`, so a consumer can index
+straight into the shops export. Targets are tried strictest first: the exact shop
+title, then wiki-link decoration folded away (`[[...]]`, the `{{!}}` pipe-trick
+display half, a trailing `(shop)` or full stop, a leading `The`, case), then all
+punctuation dropped, which settles hyphen and spacing disagreements such as
+`Black Market Goods` against `Black-market Goods.`. It never guesses: a spelling
+two shops share resolves to neither, and an unmatched target stays
+`open_interface`. Trying the exact title first means a target spelled like a shop
+still resolves when a near-identical sibling would make the looser keys ambiguous. This reads the shops export, so build shops first;
+when that file is absent the step is skipped and every interface stays
+`open_interface`.
+
+Some slugs are inferred by matching regexes against that prose instead of reading
+a template parameter (`open_interface`, `receive`, `teleport`, `heal`, `emote`,
+and prose conditionals retyped to `condition`). Those steps carry
+`action_source: "text"`; steps without the key were derived from template markup
+and are exact. A consumer that cannot tolerate a wrong guess should ignore the
+marked ones. Inferred `target` values come from wiki display strings, so they name
+an interface no more precisely than `opens` does — neither is an interface id.
+Every inferred step and every unslugged prose step is listed for review in
+`data/dialogues/inferred-actions.txt`, rewritten on each run; a wrong slug there
+means a pattern in `PROSE_ACTIONS` needs tightening.
+
 Defaults are selected by headings, with no NPC-name overrides: standard/normal
 conversation first, then subsequent, initial, unsectioned, pre-quest ("Before..."),
 and no-item ("Without..." / "If the player isn't carrying/wearing...") dialogue.
