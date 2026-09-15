@@ -27,6 +27,7 @@ from pathlib import Path
 import config
 import validator
 from scripts.shops import shop_owners
+from scripts.shops import shops_items
 
 
 def test_shops_docs_json_exists_and_valid():
@@ -229,3 +230,46 @@ def test_every_shop_traces_to_a_current_category_page():
         if shop not in titles and shop.rsplit(" (", 1)[0] not in titles
     ]
     assert not stale, f"shops no longer in the wiki category: {stale}"
+
+
+# A shop whose StoreTableHead declares no currency sells in coins. The article
+# body mentions another currency, as many do, but prose is not markup.
+PROSE_CURRENCY_SHOP = """{{StoreTableHead|sellmultiplier=550|buymultiplier=450|delta=10}}
+{{StoreLine|name=Raw karambwan|stock=10|restock=10}}
+{{StoreTableBottom}}
+The typical practice is to acquire large amounts of [[trading sticks]], then pay
+[[Rionasta]] 10 trading sticks per item to bank the karambwans.
+"""
+
+DECLARED_CURRENCY_SHOP = """{{StoreTableHead|sellmultiplier=1000|currency=Tokkul}}
+{{StoreLine|name=Raw karambwan|stock=10|restock=10}}
+{{StoreTableBottom}}
+"""
+
+
+def test_prose_currency_is_not_read_as_the_shop_currency():
+    assert shops_items.parse_shop_info(PROSE_CURRENCY_SHOP)["currency"] == "coins"
+    items = shops_items.parse_shop_items("Karambwan Stall", PROSE_CURRENCY_SHOP)
+    assert [item["currency"] for item in items] == ["coins"]
+
+
+def test_declared_currency_reaches_the_item_rows():
+    assert shops_items.parse_shop_info(DECLARED_CURRENCY_SHOP)["currency"] == "Tokkul"
+    items = shops_items.parse_shop_items("Tokkul Shop", DECLARED_CURRENCY_SHOP)
+    assert [item["currency"] for item in items] == ["Tokkul"]
+
+
+def test_no_item_row_disagrees_with_its_shop_currency():
+    """Nothing in the wiki gives a StoreLine its own currency, so a row that
+    differs means the shop currency was inferred rather than read."""
+    with open(
+        Path(config.DOCS_PATH / "shops-items-by-shop.json"), encoding="utf-8"
+    ) as f:
+        by_shop = json.load(f)
+    divergent = [
+        (shop_name, item)
+        for shop_name, shop in by_shop.items()
+        for item in shop["items"]
+        if item.get("currency") != shop["shop_info"].get("currency")
+    ]
+    assert not divergent, f"item currency differs from its shop: {divergent}"

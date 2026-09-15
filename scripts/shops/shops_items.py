@@ -35,7 +35,6 @@ from scripts.wiki.wikitext_parser import WikitextTemplateParser
 
 
 # Constants
-CURRENCY_NAMES = ["coins", "trading sticks", "tokkul", "pizazz points", "reward points"]
 
 # Setup logging
 logging.basicConfig(
@@ -319,18 +318,12 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
 
     # First extract currency from StoreTableHead if available
 
+    # parse_shop_info is the only reader of the shop's currency. Guessing one by
+    # scanning the page for a currency name reads prose as markup: a page whose
+    # StoreTableHead declares no currency sells in coins, even where the article
+    # discusses another currency elsewhere.
     shop_info = parse_shop_info(wikitext)
-    shop_currency = shop_info.get("currency")
-    if not shop_currency:
-        shop_currency = "coins"
-
-    # Detect shop currency from shop name/wikitext (fallback method)
-    if shop_currency == "coins":
-        wikitext_lower = wikitext.lower()
-        for currency in CURRENCY_NAMES:
-            if currency != "coins" and currency in wikitext_lower:
-                shop_currency = currency
-                break
+    shop_currency = shop_info.get("currency") or "coins"
 
     # Process all templates in the section
 
@@ -355,9 +348,8 @@ def parse_shop_items(shop_name: str, wikitext: str) -> list:
                 if restock_time is not None and str(restock_time).isdigit():
                     restock_time = int(restock_time)
 
-                currency = item_data.get("currency")
-                if not currency:
-                    currency = shop_currency if shop_currency else "coins"
+                # A row only carries a currency when it declares its own.
+                currency = item_data.get("currency") or shop_currency
 
                 item_info = {
                     "type": "item",
