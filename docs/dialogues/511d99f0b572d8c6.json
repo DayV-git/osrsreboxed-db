@@ -1,0 +1,133 @@
+{
+  "steps": [
+    {
+      "npc": "Are you here to make juniper charcoal?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Tell me about juniper charcoal.",
+          "steps": [
+            {
+              "player": "Tell me about juniper charcoal."
+            },
+            {
+              "npc": "They use it in the blast mine, out near Lovakengj. It's powerful stuff, more volatile than the regular charcoal you get elsewhere."
+            },
+            {
+              "npc": "To make juniper charcoal, put some juniper logs in my furnaces, then set them alight. I'll keep an eye on it for a fee of 600 coins."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "wV9tI_"
+            }
+          ]
+        },
+        {
+          "text": "Tell me about yourself.",
+          "steps": [
+            {
+              "player": "Tell me about yourself."
+            },
+            {
+              "npc": "Juniper charcoal is my trade, always has been, ever since my mum taught me. She's retired now, and returned to Lovakengj - that's where we're from."
+            },
+            {
+              "npc": "I just live out here in the Hosidius farmlands because it's handy for the juniper trees."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "JlRZI8"
+            }
+          ]
+        },
+        {
+          "text": "What can you do for me?",
+          "steps": [
+            {
+              "player": "What can you do for me?"
+            },
+            {
+              "npc": "For a small fee, I watch the charcoal furnace so that you can make charcoal here. Also, I do a great back- rub, if you're ever in the mood."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "3hG1oA"
+            }
+          ]
+        },
+        {
+          "text": "Have you got a spare tinderbox?",
+          "steps": [
+            {
+              "player": "Have you got a spare tinderbox?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a tinderbox in their inventory:",
+              "steps": [
+                {
+                  "npc": "Yup, but I'll keep it for someone who needs it."
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "xoZHhb"
+                }
+              ],
+              "id": "oPQRWJ"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have inventory space:",
+              "steps": [
+                {
+                  "npc": "Yup, but you can't hold it."
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "HcHJew"
+                }
+              ],
+              "id": "pARrXm"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a tinderbox in their inventory:",
+              "steps": [
+                {
+                  "npc": "Sure, you can have it."
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "a tinderbox",
+                  "id": "0H6WY_"
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "EHw3qC"
+                }
+              ],
+              "id": "AlGHpw"
+            }
+          ]
+        },
+        {
+          "text": "I'll be off.",
+          "steps": [
+            {
+              "player": "I'll be off."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

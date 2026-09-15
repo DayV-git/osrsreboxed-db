@@ -1,0 +1,200 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's in this cave?",
+            "steps": [
+              {
+                "player": "What's in this cave?"
+              },
+              {
+                "npc": "A unique farming patch. This cave is the only place we've succesfully been able to grow a Hespori."
+              },
+              {
+                "player": "What's a Hespori?"
+              },
+              {
+                "npc": "A rare carnivorous plant originally from Morytania. When grown, the plant becomes conscious and highly aggressive. They are truly fascinating."
+              },
+              {
+                "player": "Can I grow one?"
+              },
+              {
+                "npc": "Of course. Just plant some Hespori seeds in the cave below and it will grow like any other plant. A Hespori is pretty tough so you don't need to worry about it getting diseased."
+              },
+              {
+                "npc": "Do be careful though. A fully grown Hespori can be quite troublesome to deal with."
+              },
+              {
+                "npc": "Do you need anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "3LkS-c"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any of my items?",
+            "steps": [
+              {
+                "player": "Do you have any of my items?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no items in Arno's collection:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid not. If I did have any of your items, but you died before collecting them, they'll now be lost."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "jfVr3j"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has items in Arno's collection:",
+                "steps": [
+                  {
+                    "npc": "I do indeed. You really should be more careful."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Arno's Item Retrieval Service",
+                    "id": "XUfI4a"
+                  }
+                ],
+                "id": "ma__qu"
+              }
+            ]
+          },
+          {
+            "text": "I don't want to find Hespori seeds when farming.",
+            "condition": "If the player can currently find Hespori seeds when farming:",
+            "steps": [
+              {
+                "player": "I don't want to find Hespori seeds when farming."
+              },
+              {
+                "npc": "Very well. You'll no longer find Hespori seeds when farming."
+              },
+              {
+                "npc": "Do you need anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "jHwESK"
+              }
+            ],
+            "id": "X7gXu5"
+          },
+          {
+            "text": "I want to find Hespori seeds when farming.",
+            "condition": "If the player cannot currently find Hespori seeds when farming:",
+            "steps": [
+              {
+                "player": "I want to find Hespori seeds when farming."
+              },
+              {
+                "npc": "Very well. You'll now have a chance of finding Hespori seeds when farming."
+              },
+              {
+                "npc": "Do you need anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "TeI9-B"
+              }
+            ],
+            "id": "BBSS6h"
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-collect-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have items in Arno's collection:",
+        "steps": [
+          {
+            "npc": "I'm afraid I don't have anything for you. If I did have any of your items, but you died before collecting them, they'll now be lost."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ENrGQ_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items in Arno's Item Retrieval Service",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Arno's Item Retrieval Service",
+            "id": "H-z2Cu"
+          }
+        ],
+        "id": "8ezTLW"
+      }
+    ],
+    "attempting-to-fight-the-hespori-with-items-in-arno-s-item-retrieval-service": [
+      {
+        "npc": "Can you hear me down there? I have some of your items, from a previous visit. Shouldn't you collect them from me before fighting the Hespori again?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'll come and collect them from you.",
+            "steps": [
+              {
+                "player": "I'll come and collect them from you."
+              },
+              {
+                "type": "action",
+                "text": "The player exits the cave.",
+                "id": "F74wXQ"
+              }
+            ]
+          },
+          {
+            "text": "No, I don't care if I lose that stuff.",
+            "steps": [
+              {
+                "player": "No, I don't care if I lose that stuff. I'll fight the Hespori again now."
+              },
+              {
+                "type": "action",
+                "text": "The player fights the Hespori.",
+                "id": "Fh9eKI"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,529 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-the-first-time-talking-to-watson": [
+      {
+        "type": "action",
+        "text": "Dialogue begins below from \"Who are you?\"",
+        "id": "JFgFgu"
+      }
+    ],
+    "standard-dialogue-subsequent-conversations": [
+      {
+        "npc": "Hello there [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I am Watson, the master of clue scrolls. I have lived a long life here in Kourend. The lands are beautiful here."
+              },
+              {
+                "player": "You're the master are you?"
+              },
+              {
+                "npc": "Ha! It is not so much due to my ego, but the fact that I give out master tier clue scrolls."
+              },
+              {
+                "player": "Interesting. Do you get many treasure hunters here in Kourend?"
+              },
+              {
+                "npc": "I have seen many, but few are good enough. I only give out my clue scrolls to the very best."
+              },
+              {
+                "player": "Ah! I am just the adventurer you are looking for. If you hand me a clue, I'll be on my way."
+              },
+              {
+                "npc": "Not so fast [player name]. I require payment. You must bring me a clue scroll of all lower tiers."
+              },
+              {
+                "npc": "I will remember which ones you have given me though. I expect you'll find that useful."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "q-_AZJ"
+              }
+            ]
+          },
+          {
+            "text": "Have you heard of Sherlock?",
+            "steps": [
+              {
+                "player": "Have you heard of Sherlock?"
+              },
+              {
+                "npc": "Never heard of the bloke. I haven't a clue who he is."
+              },
+              {
+                "player": "He also claims to be the master of all clue scrolls."
+              },
+              {
+                "npc": "As I said, I've never heard of him. If he was such a big deal, I would have heard of him..."
+              },
+              {
+                "player": "Something tells me you're lying! I bet you're just his underling aren't you."
+              },
+              {
+                "type": "choice",
+                "options": []
+              }
+            ]
+          },
+          {
+            "text": "So what are master clue scrolls anyway?",
+            "steps": [
+              {
+                "player": "So what are master clue scrolls anyway?"
+              },
+              {
+                "npc": "Master clue scrolls are the most challenging of all clue scrolls. They will test you in ways you have not been tested before."
+              },
+              {
+                "npc": "You will be led all over Gielinor with your strengths, your weaknesses, your mental strength and your reactions all scrutinised."
+              },
+              {
+                "player": "I assume there is treasure to be found?"
+              },
+              {
+                "npc": "That is for you to find out, [player name]."
+              },
+              {
+                "type": "choice",
+                "options": []
+              }
+            ]
+          },
+          {
+            "text": "I have something for you.",
+            "condition": "If the player has a clue scroll with them:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player only has clue tiers they have already handed over or a beginner clue:",
+                "steps": [
+                  {
+                    "npc": "You need to bring me clue scroll you haven't already given me [player name]."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JgVjIW"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Hand over easy clue.",
+                    "condition": "If the player has an easy clue:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand over the clue scroll to Watson.",
+                        "id": "JQ7nXL"
+                      },
+                      {
+                        "npc": "Thank you very much."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "RsNBYf"
+                  },
+                  {
+                    "text": "Hand over medium clue.",
+                    "condition": "If the player has a medium clue:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand over the clue scroll to Watson.",
+                        "id": "927jFd"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "nRQorG"
+                      }
+                    ],
+                    "id": "beFYCM"
+                  },
+                  {
+                    "text": "Hand over hard clue.",
+                    "condition": "If the player has a hard clue:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand over the clue scroll to Watson.",
+                        "id": "A3AYcy"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "xLtB2A"
+                      }
+                    ],
+                    "id": "fQQqpN"
+                  },
+                  {
+                    "text": "Hand over elite clue.",
+                    "condition": "If the player has an elite clue:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand over the clue scroll to Watson.",
+                        "id": "3FXCQ1"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "f8Nz2o"
+                      }
+                    ],
+                    "id": "iuKAHW"
+                  },
+                  {
+                    "text": "Hand over all clues.",
+                    "condition": "If the player has two or more clues:",
+                    "steps": [
+                      {
+                        "type": "unavailable",
+                        "id": "UbIlL3"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has a master clue:",
+                        "steps": [
+                          {
+                            "npc": "I have a master scroll box for you, but you already have too many of them! Finish them or discard them, I don't care which."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Who are you?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "qr9a8A"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Have you heard of Sherlock?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "8uJbfg"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "So what are master clue scrolls anyway?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "CcsL80"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "What is that noticeboard for?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "ESe5K2"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Goodbye.",
+                                "steps": [
+                                  {
+                                    "player": "Goodbye."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "7LlN2X"
+                      },
+                      {
+                        "npc": "Nice work [player name], I've had one of each lower tier clue scroll from you."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has not completed X Marks the Spot:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Watson hands you a master clue scroll.",
+                            "id": "iCE8Ae"
+                          }
+                        ],
+                        "id": "5-CEcf"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed X Marks the Spot:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Watson hands you a master scroll box.",
+                            "id": "B3-le5"
+                          }
+                        ],
+                        "id": "Waa2WC"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "lExIYU"
+                  },
+                  {
+                    "text": "Cancel.",
+                    "condition": "If the player has exactly one clue:",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "kg8EH6"
+                  }
+                ]
+              }
+            ],
+            "id": "9WKaTl"
+          },
+          {
+            "text": "What is that noticeboard for?",
+            "steps": [
+              {
+                "player": "What is that noticeboard for?"
+              },
+              {
+                "type": "unavailable",
+                "id": "klOh6k"
+              },
+              {
+                "player": "Oh that seems really useful! It's a bit of a shame I need to come here everytime to check though."
+              },
+              {
+                "type": "unavailable",
+                "id": "4mBWch"
+              },
+              {
+                "player": "I suppose you're right, I don't suppose you have a spare one I could buy off you to save me the hassle?"
+              },
+              {
+                "type": "unavailable",
+                "id": "laQtIG"
+              },
+              {
+                "type": "choice",
+                "prompt": "Pay Watson 500 coins for a S.T.A.S.H blueprint?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have enough coins:",
+                        "steps": [
+                          {
+                            "type": "unavailable",
+                            "id": "NZwU7r"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "ZYxYvz"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player's inventory is full",
+                        "steps": [
+                          {
+                            "type": "unavailable",
+                            "id": "hsQScs"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "9f2NqD"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has enough coins and an empty inventory slot:",
+                        "steps": [
+                          {
+                            "type": "unavailable",
+                            "id": "zwGig9"
+                          },
+                          {
+                            "type": "action",
+                            "text": "(Watson takes 500 coins.)",
+                            "id": "AoHenW"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "S.t.a.s.h blueprint",
+                            "id": "pek_VJ"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "09HPXE"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No",
+                    "steps": [
+                      {
+                        "type": "unavailable",
+                        "id": "ZM61lG"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you tell me about scroll boxes?",
+            "steps": [
+              {
+                "player": "Can you tell me about scroll boxes?"
+              },
+              {
+                "npc": "Well, the long and short of it is that scroll boxes contain clue scrolls, but in a much easier to carry form factor."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a normal world:",
+        "steps": [
+          {
+            "npc": "Now, just because they're easier to carry, it doesn't mean you can take as many as you want. You'll need scroll cases to be able to store them."
+          },
+          {
+            "npc": "You can get scroll cases by completing clues. You can get up to two extra scroll cases for each clue tier by doing that kind of clue."
+          },
+          {
+            "npc": "I can give you the exact numbers, but I wouldn't worry too much about them. You'll get them eventually."
+          },
+          {
+            "npc": "If you want to help deal with the strange casket I have upstairs, I think it also has some scroll cases as well."
+          },
+          {
+            "player": "So how many scrolls can I carry right now?"
+          },
+          {
+            "npc": "You'll find that information written on the statistics board by the door."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WxUCJz"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a Demonic Pacts League world:",
+        "steps": [
+          {
+            "npc": "I get the feeling that you'd be able to carry as many as you wanted for some reason."
+          },
+          {
+            "player": "Why do you think that?"
+          },
+          {
+            "npc": "Just a hunch. I don't think I'm the best person to talk to about this right now."
+          }
+        ],
+        "id": "5HReVJ"
+      }
+    ],
+    "using-a-clue-scroll-on-watson-any-tier-from-beginner-to-elite": [
+      {
+        "type": "action",
+        "text": "The conversation starts as if the player selected the \"I have something for you\" option from the standard dialogue.",
+        "id": "GN5soN"
+      }
+    ],
+    "using-a-clue-scroll-on-watson-master-clue-with-an-active-sherlock-step": [
+      {
+        "player": "You said you didn't know Sherlock!"
+      },
+      {
+        "npc": "Sure is windy today, did you hear that?"
+      }
+    ],
+    "using-a-clue-scroll-on-watson-master-clue-with-any-other-active-step": [
+      {
+        "npc": "Sorry [player name]. That scroll is for you, not me."
+      }
+    ],
+    "using-a-master-scroll-book-on-watson": [
+      {
+        "npc": "Do you want to trade that in? You'd need another copy to take your scrolls out again. But I'll swap it for some teleport scrolls if you like, so you can travel here more easily."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Exchange the book for teleport scrolls",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Watson exchanges your book for [amount] scrolls.",
+                "id": "5QoAOG"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "Watson teleports",
+                "id": "IRwMKW"
+              }
+            ]
+          },
+          {
+            "text": "Don't exchange the book",
+            "steps": [
+              {
+                "npc": "Come again if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

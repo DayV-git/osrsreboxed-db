@@ -1,0 +1,162 @@
+{
+  "default": "standard-dialogue-before-cabin-fever",
+  "variants": {
+    "standard-dialogue-before-cabin-fever": [
+      {
+        "npc": "Mumblelandlubbermumblemumble..."
+      },
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "What right have ye to be so happy, landlubber?"
+      },
+      {
+        "player": "Well it is quite a nice day."
+      },
+      {
+        "npc": "Aye, that it is."
+      },
+      {
+        "npc": "Will ye forgive an old sailor his temper [lad/lass/kid]? I'm in dire straits indeed."
+      },
+      {
+        "player": "What's the problem? I may be able to help."
+      },
+      {
+        "npc": "I dunno, [lad/lass/kid], I need a pirate to help me with my problem, but none will sail with me."
+      },
+      {
+        "npc": "Well, ye look like ye might have the right stuff, tell me would ye like te be a pirate?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I've always wanted to be a pirate!",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:Cabin Fever",
+                "section": "",
+                "text": "Continues in Transcript:Cabin Fever",
+                "id": "UAxUEd",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          },
+          {
+            "text": "No thanks, it sounds quite dangerous.",
+            "steps": [
+              {
+                "player": "No thanks, it sounds quite dangerous."
+              },
+              {
+                "npc": "Aye, that it be. Come back when yer liver ain't so lily-like, [lad/lass/kid]."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-cabin-fever-inside-the-green-ghost": [
+      {
+        "npc": "If yer after a lift go to the ship and I'll take ye where ye want to go."
+      }
+    ],
+    "standard-dialogue-after-completing-cabin-fever-on-board-the-adventurous": [
+      {
+        "npc": "I suppose ye'll be wantin' a lift while yer here, right [lad/lass/kid]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Cap'n, I lost that book you gave me.",
+            "condition": "If the player has lost their Book o' Piracy:",
+            "steps": [
+              {
+                "player": "Cap'n, I lost that book you gave me."
+              },
+              {
+                "npc": "Ye'll notice I'm not fallin' to the floor in shock right now. Look, if I gives ye another copy will ye keep a better eye on it?"
+              },
+              {
+                "player": "Aye Cap'n!"
+              },
+              {
+                "npc": "Then here, have this other copy I dug up."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "Book o' Piracy",
+                "id": "5mdRTN"
+              }
+            ],
+            "id": "hO36Ny"
+          },
+          {
+            "text": "Yes Cap'n, I'd like a lift.",
+            "steps": [
+              {
+                "player": "Yes Cap'n, I'd like a lift. If you aren't busy.",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player is at Port Phasmatys:",
+                    "steps": [
+                      {
+                        "npc": "No, I should be gettin' back anyway. Come on [lad/lass/kid], let's be off."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player is transported to Mos Le'Harmless",
+                        "action": "teleport",
+                        "action_source": "text",
+                        "id": "ovllfq"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "3Wo2Mp"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is at Mos Le'Harmless:",
+                    "steps": [
+                      {
+                        "npc": "Nothin' I won't put on hold. Come on [lad/lass/kid], let's be off."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player is transported to Port Phasmatys",
+                        "action": "teleport",
+                        "action_source": "text",
+                        "id": "fvjsNS"
+                      }
+                    ],
+                    "id": "_N7OXw"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks, Cap'n.",
+            "steps": [
+              {
+                "player": "No thanks, Cap'n."
+              },
+              {
+                "npc": "Well, come see me if ye ever do."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

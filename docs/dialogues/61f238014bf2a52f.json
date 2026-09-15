@@ -1,0 +1,229 @@
+{
+  "default": "standard-dialogue-before-giving-him-100-hallowed-marks",
+  "variants": {
+    "standard-dialogue-before-giving-him-100-hallowed-marks": [
+      {
+        "npc": "C'mon, why won't this thing open?"
+      },
+      {
+        "player": "Would you like me to give you a hand with that?"
+      },
+      {
+        "npc": "It's okay, I think I've got it... Agh, I thought I had it that time!"
+      },
+      {
+        "player": "Why are you searching this coffin?"
+      },
+      {
+        "npc": "I need to bring that mysterious stranger 100 Hallowed marks so that he can help me escape Darkmeyer."
+      },
+      {
+        "player": "100 seems like a lot. How many do you have so far?"
+      },
+      {
+        "npc": "None."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 100 Hallowed marks in their inventory:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "iNlNGA"
+          }
+        ],
+        "id": "bZHpM0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 100 Hallowed marks in their inventory:",
+        "steps": [
+          {
+            "player": "I happen to have 100 Hallowed marks on me. I can give you some if you'd like?"
+          },
+          {
+            "npc": "Wow! You'd do that for me?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Don't give him 100 Hallowed marks.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "yZau6o"
+                  }
+                ]
+              },
+              {
+                "text": "Give him 100 Hallowed marks.",
+                "steps": [
+                  {
+                    "player": "Sure. I'll probably find more while I'm down here anyway."
+                  },
+                  {
+                    "npc": "I can't thank you enough! I can finally buy my freedom!"
+                  },
+                  {
+                    "player": "You're welcome!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The slave departs as you hand him 100 Hallowed marks.",
+                    "id": "HwdSNd"
+                  },
+                  {
+                    "player": "It feels nice to do the right thing."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "l2V-Iy"
+      }
+    ],
+    "standard-dialogue-after-giving-him-100-hallowed-marks": [
+      {
+        "type": "call",
+        "branch": "FB_trU"
+      }
+    ],
+    "standard-dialogue-before-giving-him-100-hallowed-marks-after-the-blood-moon-rises": [
+      {
+        "npc": "C'mon, why won't this thing open?"
+      },
+      {
+        "player": "Would you like me to give you a hand with that?"
+      },
+      {
+        "npc": "It's okay, I think I've got it... Agh, I thought I had it that time!"
+      },
+      {
+        "player": "Why are you searching this coffin?"
+      },
+      {
+        "npc": "I need to bring that mysterious stranger 100 Hallowed marks so that he can help me escape Darkmeyer."
+      },
+      {
+        "player": "Escape? But why? The Drakans aren't a threat now."
+      },
+      {
+        "npc": "So I should just take my chances with their replacement? No. I'm not sticking around anywhere where there are vampyres to be found. That's why I need the 100 hallowed marks."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 100 Hallowed marks in their inventory:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "iNlNGA"
+          }
+        ],
+        "id": "KECwIb"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 100 Hallowed marks in their inventory:",
+        "steps": [
+          {
+            "player": "I happen to have 100 Hallowed marks on me. I can give you some if you'd like?"
+          },
+          {
+            "npc": "Wow! You'd do that for me?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Don't give him 100 Hallowed marks.",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "yZau6o"
+                  }
+                ]
+              },
+              {
+                "text": "Give him 100 Hallowed marks.",
+                "steps": [
+                  {
+                    "player": "Sure. I'll probably find more while I'm down here anyway."
+                  },
+                  {
+                    "npc": "I can't thank you enough! I can finally escape this place!"
+                  },
+                  {
+                    "player": "You're welcome!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You hand over the 100 hallowed marks and the man departs.",
+                    "id": "HeXV--"
+                  },
+                  {
+                    "player": "It feels nice to do the right thing."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "G5KXHc"
+      }
+    ],
+    "standard-dialogue-after-giving-him-100-hallowed-marks-after-the-blood-moon-rises": [
+      {
+        "type": "call",
+        "branch": "FB_trU"
+      }
+    ],
+    "overhead-dialogue-before-interacting-with-him": [
+      {
+        "npc": "C'mon, almost got it..."
+      },
+      {
+        "npc": "Agh, thought I had it that time!"
+      }
+    ]
+  },
+  "branches": {
+    "iNlNGA": [
+      {
+        "player": "I don't have 100 either."
+      },
+      {
+        "npc": "That's okay. I'm sure I'll get this open eventually."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "yZau6o": [
+      {
+        "player": "On second thoughts, I think I'll keep them for myself."
+      },
+      {
+        "npc": "Oh... You didn't have to tease me like that."
+      }
+    ],
+    "FB_trU": [
+      {
+        "npc": "C'mon, why won't this thing open?"
+      },
+      {
+        "player": "Wait, why are you still here? I gave you the 100 Hallowed marks you need to escape."
+      },
+      {
+        "npc": "I think you have me mistaken for someone else."
+      },
+      {
+        "player": "..."
+      },
+      {
+        "npc": "Now go away. I can't hear the locking mechanism with you breathing in my ear!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "steps": [
+    {
+      "npc": "Hello and welcome to my pie shop, how can I help you?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I'd like to buy some pies.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Pie Shop",
+              "id": "7UX6DD"
+            }
+          ]
+        },
+        {
+          "text": "Do you need any help?",
+          "condition": "When not on a pie-baking errand:",
+          "steps": [
+            {
+              "player": "Do you need any help?"
+            },
+            {
+              "npc": "Actually I could, you see I'm running out of stock and I don't have time to bake any more pies. Would you be willing to bake me some pies? I'll pay you well for them."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Sure, what do you need?",
+                  "steps": [
+                    {
+                      "player": "Sure, what do you need?"
+                    },
+                    {
+                      "npc": "Great, can you bake me [amount] [pie type] Pies please."
+                    }
+                  ]
+                },
+                {
+                  "text": "Sorry, I can't help you.",
+                  "steps": [
+                    {
+                      "player": "Sorry, I can't help you."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "0AvVOH"
+        },
+        {
+          "text": "I've got those pies you wanted.",
+          "condition": "When on a pie-baking errand:",
+          "steps": [
+            {
+              "player": "I've got those pies you wanted."
+            },
+            {
+              "type": "condition",
+              "text": "Without the correct pies:",
+              "steps": [
+                {
+                  "npc": "Doesn't look like you have any of the [amount] [pie type] Pies I requested."
+                }
+              ],
+              "id": "NsjujW"
+            },
+            {
+              "type": "condition",
+              "text": "With some but not all correct pies:",
+              "steps": [
+                {
+                  "npc": "Thank you, if you could bring me the other [amount] that'd be great!"
+                }
+              ],
+              "id": "-oWnqL"
+            },
+            {
+              "type": "condition",
+              "text": "With all remaining pies:",
+              "steps": [
+                {
+                  "npc": "Thank you very much!"
+                }
+              ],
+              "id": "dAQMq9"
+            }
+          ],
+          "id": "PFwjBX"
+        },
+        {
+          "text": "I'm good thanks.",
+          "steps": [
+            {
+              "player": "I'm good thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

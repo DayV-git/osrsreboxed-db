@@ -1,0 +1,302 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player did not speak to Elias at the Uzer Oasis prior to 21 February 2024:",
+        "steps": [
+          {
+            "player": "Hello there."
+          },
+          {
+            "npc": "Good day to you."
+          },
+          {
+            "player": "What brings you here?"
+          },
+          {
+            "npc": "The eternal quest for knowledge, of course! The name's Elias White. I'm something of an explorer."
+          },
+          {
+            "player": "Pleased to meet you. I'm [player name]. So you're searching for knowledge in an inn?"
+          },
+          {
+            "npc": "Not exactly. In fact, I was previously hunting down information on an ancient race deep within the desert."
+          },
+          {
+            "npc": "However, I received an interesting yet concerning tip- off from a contact of mine regarding some of my research. I came here to investigate for myself."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "vSWAQ8"
+          }
+        ],
+        "id": "uwufR4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player spoke to Elias at the Uzer Oasis before 21 February 2024:",
+        "steps": [
+          {
+            "npc": "Oh, hello there. You look familiar. Have we met before?"
+          },
+          {
+            "player": "I think so. The name's [player name]. You're Elias, right? You had a camp out near Uzer."
+          },
+          {
+            "npc": "Ah, of course. You offered to help with my work, didn't you? I'm still very keen to take you up on that offer at some point, but a more pressing matter has delayed that somewhat."
+          },
+          {
+            "player": "Is that what's brought you here?"
+          },
+          {
+            "npc": "Indeed. I recived an interesting yet concerning tip-off from a contact of mine regarding some of my research. I came here to investigate for myself."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "pPyySM"
+          }
+        ],
+        "id": "ouBbWA"
+      },
+      {
+        "player": "Anything I can help with?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not meet the quest's requirements:",
+        "steps": [
+          {
+            "npc": "How kind of you to offer. I'm not in need of any extra help right now though."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "9-nrhg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player meets the quest's requirements:",
+        "steps": [
+          {
+            "npc": "How kind of you to offer. I definitely wouldn't complain about some extra support, if you're sure you're interested?"
+          }
+        ],
+        "id": "Gh6o-S"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Defender of Varrock quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Absolutely! So what was this tip-off you received?"
+              },
+              {
+                "type": "reference",
+                "target": "Transcript:Defender of Varrock",
+                "section": "",
+                "text": "The player starts the quest.",
+                "id": "qCYQIu",
+                "resolved": false,
+                "page_available": true
+              }
+            ],
+            "hook": "quest:defender-of-varrock:start",
+            "quest": "Defender of Varrock"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Actually, I think I'll pass."
+              },
+              {
+                "npc": "Very well. If you change your mind, I'll be here."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-defender-of-varrock": [
+      {
+        "npc": "Ah, hello there, [player name]. Good to see you."
+      },
+      {
+        "player": "And you, Elias. So you're back out here again?"
+      },
+      {
+        "npc": "Indeed. Turns out the desert was the best place to begin my research into Arrav and his heart. Not too surprising of course, given the burial practices here."
+      },
+      {
+        "npc": "In fact, as you might recall, I was here before to look into that old mastaba up on the plateau."
+      },
+      {
+        "player": "Yes, I remember. You said it might contain important information on the Mahjarrat."
+      },
+      {
+        "npc": "Indeed I did. And I reckon it might also contain the knowledge we need to help old Arrav out."
+      },
+      {
+        "player": "Excellent!"
+      },
+      {
+        "npc": "Now, I still have quite a bit of preparatory work to do before we consider heading inside, but once that's done, I'll be in touch."
+      },
+      {
+        "player": "Sounds good. I'd best leave you to your work."
+      },
+      {
+        "npc": "Until next time."
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Good day to you."
+      },
+      {
+        "player": "What brings you all the way out here?"
+      },
+      {
+        "npc": "The eternal quest for knowledge, of course! The name's Elias White. I'm something of an explorer."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you searching for something here?",
+            "steps": [
+              {
+                "player": "Are you searching for something here?"
+              },
+              {
+                "npc": "Of course. As I said, my search is for knowledge."
+              },
+              {
+                "player": "What kind of knowledge?"
+              },
+              {
+                "npc": "Information lost to the ages. Specifically, information on an ancient race."
+              },
+              {
+                "player": "And you expect to find something here?"
+              },
+              {
+                "npc": "Not quite here, but up on the plateau. There's an old mastaba up there that I believe dates from a time when the race resided in these lands."
+              },
+              {
+                "player": "Well if you ever need help raiding an ancient tomb, I reckon I can be of service."
+              },
+              {
+                "npc": "A generous offer! I still have quite a bit of preparatory work to do before I dare head inside, but once that's done, maybe we can work something out."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "9ET9RD"
+              }
+            ]
+          },
+          {
+            "text": "Where do you call home?",
+            "steps": [
+              {
+                "player": "Where do you call home?"
+              },
+              {
+                "npc": "Ah, I've lived in many places over the years, but I wouldn't really say I have a home. I guess Varrock would be the closest answer."
+              },
+              {
+                "player": "Sounds like you have quite the history."
+              },
+              {
+                "npc": "Oh yes! If nothing else, I've definitely lived a varied life."
+              },
+              {
+                "player": "So you weren't always an explorer?"
+              },
+              {
+                "npc": "Not at all. I've done all sorts of things in my time. In fact, at one point I was an adventurer like you!"
+              },
+              {
+                "player": "What happened? Some sort of life-changing injury?"
+              },
+              {
+                "npc": "Thankfully not. I just found that when it came to my work, it was the history I discovered that interested me more than the treasure."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "nyYps0"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              },
+              {
+                "npc": "Until next time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-subsequent-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Hello again."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you searching for something here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1i3WrD"
+              }
+            ]
+          },
+          {
+            "text": "Where do you call home?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "vfy839"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "e5umi7"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,308 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-by-the-entrance-of-the-chasm-of-fire": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "Welcome. Have you come to give your soul to the Chasm?"
+      },
+      {
+        "player": "Uh, I believe I'm still using it."
+      },
+      {
+        "npc": "For now. Have you came to prove yourself in combat against the many demons within the Chasm?"
+      },
+      {
+        "player": "...Perhaps."
+      },
+      {
+        "npc": "My master prefers that his minions be killed with purpose."
+      },
+      {
+        "player": "Purpose?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed A Kingdom Divided:",
+        "steps": [
+          {
+            "npc": "I ask no questions of my master, I just inform."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "FnBGN1"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed A Kingdom Divided, but has not signed Yama's contract:",
+        "steps": [
+          {
+            "npc": "I am not worthy to explain on his behalf. Descend the Chasm and speak with him yourself if you wish for further details."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "uAuCz6"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed A Kingdom Divided and has signed Yama's contract:",
+        "steps": [
+          {
+            "npc": "As outlined in your contract, he wishes them slain in particular ways."
+          },
+          {
+            "player": "Could you remind me what ways those were?"
+          },
+          {
+            "npc": "Death by two-handed melee weapons, heavy ranged weapons, magic spells, special attacks, and defeating them whilst bound."
+          },
+          {
+            "npc": "Additionaly, he will request a specific method to be used. If you comply, your chances of obtaining a reward will be increased."
+          },
+          {
+            "type": "condition",
+            "text": "If the player is currently required to kill a demon with a two-handed melee weapon:",
+            "steps": [
+              {
+                "npc": "Currently, my master wishes for you to use two handed melee weapons to kill his minions."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "rMx1ij"
+              }
+            ],
+            "id": "rUVDo3"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is currently required to kill a demon with a heavy ranged weapon:",
+            "steps": [
+              {
+                "npc": "Currently, my master wishes for you to use heavy ranged weapons to kill his minions."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "zKhutQ"
+              }
+            ],
+            "id": "kGiFfF"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is currently required to kill a demon with a magic spell:",
+            "steps": [
+              {
+                "npc": "Currently, my master wishes for you to use spells to kill his minions."
+              },
+              {
+                "player": "Does that include powered staves?"
+              },
+              {
+                "npc": "No."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "eURrEy"
+              }
+            ],
+            "id": "_Bnvqj"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is currently required to kill a demon with a special attack:",
+            "steps": [
+              {
+                "npc": "Currently, my master wishes for you to use special attacks to kill his minions."
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "Js2ldv"
+              }
+            ],
+            "id": "KE0oxI"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is currently required to kill a demon while it is bound:",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "-Efcbk"
+              }
+            ],
+            "id": "YF-YSq"
+          },
+          {
+            "player": "What kinds of rewards would I receive?"
+          },
+          {
+            "npc": "Special contracts, to be presented to my master for further discussion."
+          },
+          {
+            "player": "Interesting. Thank you."
+          },
+          {
+            "npc": "You are most welcome."
+          }
+        ],
+        "id": "jibema"
+      }
+    ],
+    "standard-dialogue-inside-the-chasm-of-fire": [
+      {
+        "player": "Are you okay?"
+      },
+      {
+        "npc": "Oh yes! Just praying to my new master. It's hot down here, isn't it?"
+      },
+      {
+        "player": "I guess so."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Your new master, that would be...?",
+            "steps": [
+              {
+                "player": "Your new master, that would be...?"
+              },
+              {
+                "npc": "Yama! I sold my soul you see, well, I guess that Ox-headed guy down there forcibly removed it."
+              },
+              {
+                "player": "That doesn't sound like a fair trade..."
+              },
+              {
+                "npc": "Oh, don't worry, I'm perfectly fine with the outcome. Sure, the loss of vision is a shame but it could be worse."
+              },
+              {
+                "player": "Could it?"
+              },
+              {
+                "npc": "Underground there are no tall buildings, I'm awfully afraid of heights, you see."
+              },
+              {
+                "player": "Perhaps it's a good thing you can't see..."
+              },
+              {
+                "npc": "What was that?"
+              },
+              {
+                "player": "Oh, nothing..."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "prdFlE"
+              }
+            ]
+          },
+          {
+            "text": "What happened to your eyes?",
+            "steps": [
+              {
+                "player": "What happened to your eyes?"
+              },
+              {
+                "npc": "The ritual, there were some... adverse effects..."
+              },
+              {
+                "player": "The ritual?"
+              },
+              {
+                "npc": "Oh yes! Pretty basic really, head of an Ox, bruma roots, lots of fire and of course the human sacrifice."
+              },
+              {
+                "player": "And at what point did that blind you?"
+              },
+              {
+                "npc": "The voice demanded that we stare into the fire until we saw enlightenment."
+              },
+              {
+                "player": "I guess the fire was pretty bright."
+              },
+              {
+                "npc": "Blindingly so."
+              },
+              {
+                "player": "Wait! Did you say human sacrifice?"
+              },
+              {
+                "npc": "Why, of course! We're Zamorakians, we're evil..."
+              },
+              {
+                "player": "Yeah, I guess that's true."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "pYjwBb"
+              }
+            ]
+          },
+          {
+            "text": "Well, I'll leave you to it.",
+            "steps": [
+              {
+                "player": "Well, I'll leave you to it."
+              },
+              {
+                "npc": "So soon?"
+              },
+              {
+                "player": "Yep, the demons won't slay themselves."
+              },
+              {
+                "npc": "What demons?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-by-the-entrance-of-the-chasm-of-fire": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "Welcome. Have you come to give your soul to the Chasm?"
+      },
+      {
+        "player": "Uh, I believe I'm still using it."
+      },
+      {
+        "npc": "For now. Have you come to prove yourself in combat against the many demons within the Chasm?"
+      },
+      {
+        "player": "...Perhaps."
+      },
+      {
+        "npc": "My master wishes you not to kill his minions without an agenda. You may only slay within the Chasm that which you have been assigned by a Slayer Master."
+      },
+      {
+        "player": "That's an oddly specific reason."
+      },
+      {
+        "npc": "I ask no questions of my master, I just inform."
+      }
+    ],
+    "historical-dialogue-when-attempting-to-kill-monsters-that-aren-t-part-of-a-player-s-slayer-task": [
+      {
+        "type": "line",
+        "speaker": "The Disciple",
+        "text": "My master wishes you not to kill his minions without an agenda. You may only slay within the Chasm that which you have been assigned by a Slayer Master."
+      }
+    ]
+  }
+}

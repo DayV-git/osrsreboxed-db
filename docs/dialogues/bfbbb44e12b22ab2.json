@@ -1,0 +1,216 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Well-met!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I am Daer Krand, an old student of Zandar Horfyre."
+              },
+              {
+                "player": "You certainly look the part."
+              },
+              {
+                "npc": "Yes. And you are?"
+              },
+              {
+                "player": "I'm [player name], an adventurer."
+              },
+              {
+                "npc": "It's a pleasure to make your acquaintance."
+              },
+              {
+                "player": "And yours."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "snVKYy"
+              }
+            ]
+          },
+          {
+            "text": "Why are you here?",
+            "steps": [
+              {
+                "player": "Why are you here?"
+              },
+              {
+                "npc": "Great question! I have a better one..."
+              },
+              {
+                "npc": "What is the Elixir of Everlasting?"
+              },
+              {
+                "player": "Some kind of life extending potion?"
+              },
+              {
+                "npc": "Exactly! This table here is full of notes on the topic. Plenty of warnings that seem to be scribbled over the top in a rather rushed manner..."
+              },
+              {
+                "npc": "Sorry... I tend to ramble when excited."
+              },
+              {
+                "player": "Do you think you can recreate this elixir?"
+              },
+              {
+                "npc": "Me? Pah! I'm a dab hand at magic but my herblore has always been somewhat lacking. I'd go to the druids in Taverley but they don't trust us anymore... Know of any talented herbalists in the vicinity?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 99 Herblore:",
+                "steps": [
+                  {
+                    "player": "Can't say I've met anyone that springs to mind."
+                  },
+                  {
+                    "npc": "That's a shame."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "IfFjkq"
+                  }
+                ],
+                "id": "2_YnAm"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 99 Herblore:",
+                "steps": [
+                  {
+                    "player": "I'm world renowned at herblore. Perhaps I can help?"
+                  },
+                  {
+                    "npc": "Next time, lead with that..."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "6xF75E"
+                  }
+                ],
+                "id": "RH_V1t"
+              },
+              {
+                "npc": "Anywho, I've yet to completely make sense of all these notes. Some must have been placed elsewhere."
+              },
+              {
+                "npc": "Maybe that loathsome vampyre wandering about knows something?"
+              },
+              {
+                "player": "The one roaming around lighting candles? He doesn't seem totally with it."
+              },
+              {
+                "npc": "Hmm, you might be right. He'll be of no use..."
+              },
+              {
+                "player": "Well then, if you do find the missing notes, I'm always happy to help."
+              },
+              {
+                "npc": "Yes? Oh, of course! Keep your eyes peeled when you're down here. If you see anything of interest, you know where to find me."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Kzsytn"
+              }
+            ]
+          },
+          {
+            "text": "See you later.",
+            "steps": [
+              {
+                "player": "See you later."
+              },
+              {
+                "npc": "Yes... Good day!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Here, solve this for me. I need to keep working on these notes."
+      },
+      {
+        "type": "message",
+        "text": "Daer Krand has given you a puzzle box!",
+        "id": "52S_1j"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "0ZWpKp"
+      }
+    ],
+    "treasure-trails-hard-talking-again-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "Sorry but you haven't solved the puzzle yet."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "HhwP-P"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Good work!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Daer Krand has given you another clue scroll!",
+                "id": "Hl1e-M"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "G1kp1w"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "9lR19u"
+              }
+            ],
+            "id": "y5iu3-"
+          }
+        ],
+        "id": "ijVpnD"
+      }
+    ]
+  }
+}

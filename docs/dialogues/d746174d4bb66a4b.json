@@ -1,0 +1,286 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Ello there. I'm Gamfred, the engineer in this here guild. Have you seen my catapult?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That's not a catapult, it's a large crossbow.",
+            "steps": [
+              {
+                "player": "That's not a catapult, it's a large crossbow."
+              },
+              {
+                "npc": "WHAT!? I'll have you know that is the finest piece of dwarven engineering for miles around! How DARE you insult my work!"
+              }
+            ]
+          },
+          {
+            "text": "Yes, beautiful piece of engineering.",
+            "steps": [
+              {
+                "player": "Yes, beautiful piece of engineering."
+              },
+              {
+                "npc": "Nice to meet someone who appreciates fine work, have you tried it out yet?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Yes."
+                      },
+                      {
+                        "npc": "What did you think?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "It was ok I guess.",
+                            "steps": [
+                              {
+                                "player": "It was ok I guess."
+                              },
+                              {
+                                "npc": "Well I guess not everyone will like it."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "It was fun!",
+                            "steps": [
+                              {
+                                "player": "It was fun!"
+                              },
+                              {
+                                "npc": "Glad ta hear it. Try it again sometime. We have more tests to run."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I didn't like it.",
+                            "steps": [
+                              {
+                                "player": "I didn't like it."
+                              },
+                              {
+                                "npc": "Well I guess not everyone will like it. But give it another chance before you go."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "May I have a shield please?",
+                            "steps": [
+                              {
+                                "player": "May I have a shield please?"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has a defensive shield:",
+                                "steps": [
+                                  {
+                                    "npc": "Silly muffin, you have one already!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "V2l1SX"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has no inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'd be happy ta give you a shield but you've no space for it."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "K_yep_"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have a defensive shield:",
+                                "steps": [
+                                  {
+                                    "npc": "Of course!"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "The dwarf hands you a large shield.",
+                                    "id": "2WjWsw"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "action": "receive",
+                                    "text": "Defensive shield",
+                                    "id": "3DKsRo"
+                                  }
+                                ],
+                                "id": "bYP19R"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, how do I do that?",
+                    "steps": [
+                      {
+                        "player": "No, how do I do that?"
+                      },
+                      {
+                        "npc": "Well ye take the big defence shield in both hands and watch the catapult. My assistant will fire different things at you and you need to defend against them."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "May I have a shield please?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "rveDLL"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Sounds boring.",
+                            "steps": [
+                              {
+                                "player": "Sounds boring."
+                              },
+                              {
+                                "npc": "Your loss..."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No, where is it?",
+            "steps": [
+              {
+                "player": "No, where is it?"
+              },
+              {
+                "npc": "Are ye blind [lad/lass]? Tis over there in the next room with me assistant working it!"
+              }
+            ]
+          },
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "player": "May I claim my tokens please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has earned Warrior guild tokens, but has no inventory space:",
+                "steps": [
+                  {
+                    "npc": "You don't have space to carry them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "z6cvWS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has earned Warrior guild tokens:",
+                "steps": [
+                  {
+                    "npc": "Of course! Here you go, you've earned [number] token[s]!"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Warrior guild tokens",
+                    "id": "6np_JT"
+                  },
+                  {
+                    "player": "Thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "UnDvBg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not earned Warrior guild tokens:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you have not earned any tokens yet. Try some of the activities around the guild to earn some."
+                  },
+                  {
+                    "player": "Ok, I'll go see what I can find."
+                  }
+                ],
+                "id": "VoKzFp"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "Come back soon! My catapult needs more test subjects."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "claim-tokens-dialogue": [
+      {
+        "player": "May I claim my tokens please?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "K1P4me"
+      }
+    ],
+    "claim-shield-dialogue": [
+      {
+        "player": "May I have a shield please?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "q5q0HD"
+      }
+    ],
+    "standing-on-the-marker-without-a-shield": [
+      {
+        "npc": "Watch out! You'll need to equip the shield as soon as you're on the target spot else you could get hit! Speak to me to get one, and make sure both your hands are free to equip it."
+      }
+    ]
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "default": "before-the-fremennik-trials",
+  "variants": {
+    "before-the-fremennik-trials": [
+      {
+        "player": "Hello there. So you're a bard?"
+      },
+      {
+        "npc": "I am afraid I cannot speak to outerlanders. Besides, I am busy composing an epic."
+      }
+    ],
+    "after-the-fremennik-trials": [
+      {
+        "npc": "Hello again to you [Fremennik name]. Us bards should stick together, what?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About the Music Cape...",
+            "steps": [
+              {
+                "player": "About the Music Cape..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has unlocked all the songs:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Cape",
+                        "steps": [
+                          {
+                            "player": "I believe you are the person to talk to if I want to get a Music Cape?"
+                          },
+                          {
+                            "npc": "That's right! If you know that then you'll also know that they cost 99000 coins."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "No, I hadn't heard that!",
+                                "steps": [
+                                  {
+                                    "player": "No, I hadn't heard that."
+                                  },
+                                  {
+                                    "npc": "Well, they do."
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has at least 99,000 coins in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Ok, I'll pay.",
+                                            "steps": [
+                                              {
+                                                "npc": "Have fun with it."
+                                              },
+                                              {
+                                                "type": "action",
+                                                "text": "Player receives a Music cape and Music hood in exchange for 99,000 coins.",
+                                                "action": "receive",
+                                                "action_source": "text",
+                                                "id": "5oO1bZ"
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'm not paying that!",
+                                            "steps": [
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "id": "izv6wk"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player does not have at least 99,000 coins in their inventory:",
+                                    "steps": [
+                                      {
+                                        "player": "I don't have that much at the moment."
+                                      },
+                                      {
+                                        "npc": "Save up some more then!"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "335Isq"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Yes, I do.",
+                                "steps": [
+                                  {
+                                    "player": "Yes, I know."
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has at least 99,000 coins in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Ok, I'll pay.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "6XsNId"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'm not paying that!",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "YzsBBp"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "id": "rTs123"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player does not have at least 99,000 coins in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "2qDsHz"
+                                      }
+                                    ],
+                                    "id": "4kM2jm"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Hood",
+                        "steps": [
+                          {
+                            "player": "May I have another hood for my cape, please?"
+                          },
+                          {
+                            "npc": "Most certainly, and free of charge!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The bard hands you another hood for your cape.",
+                            "id": "NC7XvX"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "YyE9tm"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not unlocked all songs:",
+                "steps": [
+                  {
+                    "player": "I believe you are the person to talk to if I want to get a Music Cape?"
+                  },
+                  {
+                    "npc": "Yes, but you don't know all of the music in the land."
+                  }
+                ],
+                "id": "YHakgX"
+              }
+            ]
+          },
+          {
+            "text": "Do you know any great stories about Basilisk Jaws?",
+            "condition": "If the player has a basilisk jaw in their inventory and has not learned about the story yet:",
+            "steps": [
+              {
+                "player": "Do you know any great stories about Basilisk Jaws?"
+              },
+              {
+                "npc": "Why do you ask?"
+              },
+              {
+                "type": "message",
+                "text": "You show the Basilisk Jaw to Olaf.",
+                "id": "NBV9it"
+              },
+              {
+                "npc": "Oh my! This must be the jaw of a legendary Basilisk Knight. There's a great song about how the Fremennik warriors of old would use these jaws to enhance their helmets."
+              },
+              {
+                "player": "I see. I have a nice helmet that Neitiznot's Burgher gave to me. I bet it would work well with that."
+              },
+              {
+                "type": "action",
+                "text": "(The player can now create Neitiznot faceguards.)",
+                "id": "2-vVl4"
+              },
+              {
+                "npc": "I'm sure it would, [Fremennik name]. Now, do you want to hear the song?"
+              },
+              {
+                "player": "Err... I think I'll pass. Thanks for the help though."
+              }
+            ],
+            "id": "_9uvya"
+          },
+          {
+            "text": "Can I learn to play my lyre again?",
+            "steps": [
+              {
+                "player": "I was wondering... Can I learn to play my lyre again?"
+              },
+              {
+                "npc": "Well, that is an interesting question. Let me let you into a little secret. If you make another offering to Fossegrimen you will learn a secret melody."
+              },
+              {
+                "player": "What kind of melody?"
+              },
+              {
+                "npc": "It is the song of Rellekka. When you play it, it will bring you back to this town wherever you are in this world."
+              },
+              {
+                "npc": "We often go adventuring with bards for precisely this reason; No matter where we have ended up we can return safe and sound to home."
+              },
+              {
+                "player": "Thanks Olaf!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

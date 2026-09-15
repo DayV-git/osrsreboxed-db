@@ -1,0 +1,158 @@
+{
+  "default": null,
+  "variants": {
+    "talking-to-the-port-master-after-completing-pandemonium": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Hi, sailor. How can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to claim my port task rewards.",
+            "steps": [
+              {
+                "player": "I'd like to claim my port task rewards."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a completed port task:",
+                "steps": [
+                  {
+                    "npc": "Thanks, sailor. Here's your payment."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CVCSpx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no completed port tasks:",
+                "steps": [
+                  {
+                    "npc": "According to my records, you don't have any port task rewards to claim."
+                  }
+                ],
+                "id": "SGytUS"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to cancel a port task.",
+            "steps": [
+              {
+                "player": "I'd like to cancel a port task."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no active tasks:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you don't have any assigned tasks for me to cancel."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ut5MuJ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has one or more active tasks:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Select a port task to cancel.",
+                    "options": []
+                  },
+                  {
+                    "npc": "There you go. That's all sorted for you."
+                  }
+                ],
+                "id": "VLvH9A"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-the-port-master-after-completing-pandemonium-when-completing-a-courier-task": [
+      {
+        "npc": "Thanks, sailor. Here's your payment."
+      }
+    ],
+    "talking-to-the-port-master-before-completing-pandemonium": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Hi there. How can I help you?"
+      },
+      {
+        "player": "What do you do around here?"
+      },
+      {
+        "npc": "I'm the port master. It's my job to keep everything around here running nice and smoothly for all the vessels coming and going."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So could you tell me how I could get my own vessel?",
+            "condition": "If the player has not yet sailed with Will and Anne during the quest:",
+            "steps": [
+              {
+                "player": "So could you tell me how I could get my own vessel?"
+              },
+              {
+                "npc": "I'm afraid not, but maybe someone else around here could help. I saw a couple of people further north on the docks. I think I heard them saying they were looking for help on their boat."
+              }
+            ],
+            "id": "C5gkxL"
+          },
+          {
+            "text": "Sounds like quite a challenging job. I'd best not distract you.",
+            "steps": [
+              {
+                "player": "Sounds like quite a challenging job. I'd best not distract you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "claim-rewards-or-cancel-task-before-completing-pandemonium": [
+      {
+        "npc": "I'm afraid I can't help you with that at the moment. You'll have to come back later."
+      },
+      {
+        "type": "message",
+        "text": "You need to complete the Pandemonium quest to fully access the Sailing skill.",
+        "id": "RIgVGs"
+      }
+    ],
+    "claim-rewards-or-cancel-task-before-sailing-release": [
+      {
+        "npc": "I'm afraid I can't help you with that at the moment. You'll have to come back later."
+      },
+      {
+        "type": "message",
+        "text": "The Sailing skill will release on the 19th November.",
+        "id": "WZx4-1"
+      }
+    ]
+  }
+}

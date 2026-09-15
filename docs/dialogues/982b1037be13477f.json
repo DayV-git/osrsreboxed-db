@@ -1,0 +1,582 @@
+{
+  "default": "standard-dialogue-subsequent-dialogue",
+  "variants": {
+    "standard-dialogue-before-completing-gnome-restaurant-training": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Well hello there. Are you hungry? If so you've come to the right place. Eat green, eat gnome cuisine. My waiter will be glad to take your order."
+      },
+      {
+        "player": "Thanks."
+      },
+      {
+        "npc": "On the other hand, if you're looking for some gnome cooking training, this is also the place to be. My son Lufty is looking for staff at the moment."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thanks, I'm no cook.",
+            "steps": [
+              {
+                "player": "No thank, I'm no cook."
+              },
+              {
+                "npc": "In that case, please eat and enjoy."
+              }
+            ]
+          },
+          {
+            "text": "Ok, I'll give it a go.",
+            "steps": [
+              {
+                "player": "Ok, I'll give it a go."
+              },
+              {
+                "npc": "Well that's great. I'm Aluft Gianne, owner of this restaurant, and you are...?"
+              },
+              {
+                "player": "Most people call me [player name]."
+              },
+              {
+                "npc": "Really? Sorry, how rude of me. It just takes a little while to get used to the funny names you humans have."
+              },
+              {
+                "npc": "Of course if you're going to work for me I'll have to see what you're like first. Here, take a look at our menu."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "Gianne's cook book",
+                "id": "H4Ocf4"
+              },
+              {
+                "type": "message",
+                "text": "Aluft hands you a cook book.",
+                "id": "HxgDBU"
+              },
+              {
+                "npc": "When you've had a look at the book, come back here and I'll let you prepare a few dishes."
+              },
+              {
+                "player": "Ok then."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-speaking-a-2nd-time": [
+      {
+        "player": "Hi Mr. Gianne."
+      },
+      {
+        "npc": "Hello [player name]. So what did you think of the book?"
+      },
+      {
+        "player": "I'm not too sure about toad's legs."
+      },
+      {
+        "npc": "They're a gnome delicacy, very tasty. Chicken tastes like toad's legs you know. You'll love them. If I give you what you need, can you make me some Toad Crunchies?"
+      },
+      {
+        "player": "I'll give it a go."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "the below items",
+        "id": "Cnwtxg"
+      },
+      {
+        "type": "message",
+        "text": "Aluft gives you two pairs of toad's legs, some gnome spice, some equa leaves, some dough and a crunchy tray.",
+        "id": "eEZmnp"
+      },
+      {
+        "player": "Thanks."
+      },
+      {
+        "npc": "The dough is made according to a secret family recipe. If you need any more, I suggest you speak to Hudo the grocer. He's very reliable."
+      },
+      {
+        "npc": "Let me know how you get on."
+      }
+    ],
+    "standard-dialogue-toad-crunchy-task-dialogue": [
+      {
+        "player": "Hi Mr Gianne."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not made the toad crunchies yet:",
+        "steps": [
+          {
+            "npc": "So how did you get on with the toad crunchies?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Premade t'd crunch and no toad crunchie in their inventory:",
+            "steps": [
+              {
+                "player": "I think I've got one."
+              },
+              {
+                "npc": "That looks identical to the crunchies I cooked not five minutes ago. You'll have to prove to me that you can make one yourself if you want my recommendation."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "DnIaI0"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has an empty crunchy tray:",
+            "steps": [
+              {
+                "player": "Erm, I've not quite finished it yet."
+              },
+              {
+                "npc": "Ok, let me know when you have."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "EYA5Zs"
+          },
+          {
+            "type": "condition",
+            "text": "If the player no longer has an empty crunchy tray:",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'm afraid I've lost the crunchy tray you gave to me.",
+                    "steps": [
+                      {
+                        "player": "I'm afraid I've lost the crunchie tray you gave to me."
+                      },
+                      {
+                        "type": "message",
+                        "text": "",
+                        "id": "u5fks8"
+                      },
+                      {
+                        "npc": "Ok, I'll give you another one. Obviously I can't expect you to cook without the proper utensils."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "Crunchy Tray",
+                        "id": "rhbPSr"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I've not finished yet.",
+                    "steps": [
+                      {
+                        "player": "I've not finished yet."
+                      },
+                      {
+                        "npc": "Ok, well let me know when you're done."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "R2DmNx"
+          }
+        ],
+        "id": "ydCQPC"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has toad crunchie in their inventory:",
+        "steps": [
+          {
+            "npc": "Call me Aluft. So how did you get on with the toad crunchies?"
+          },
+          {
+            "player": "No problem, it was easy."
+          },
+          {
+            "type": "message",
+            "text": "You give Aluft the toad crunchies. He takes a bite...",
+            "id": "qQh71z"
+          },
+          {
+            "npc": "Not bad, not bad at all."
+          },
+          {
+            "npc": "Ok, now for something you might prefer. Try making some chocolate chip crunchies for me. They're my favourite. Here's everything you need. You can re-use the spice from the last recipe - one tin goes a long way."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "the below items",
+            "id": "31MVvm"
+          },
+          {
+            "type": "message",
+            "text": "Aluft gives you two bars of chocolate, some chocolate dust, and some dough.",
+            "id": "rKjlcr"
+          },
+          {
+            "player": "Ok Aluft, I'll be back soon."
+          }
+        ],
+        "id": "X7fp2V"
+      }
+    ],
+    "standard-dialogue-chocolate-chip-crunchy-task-dialogue": [
+      {
+        "player": "Hello Aluft."
+      },
+      {
+        "npc": "Hello there, how did you get on."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade ch' crunch and no chocolate chip crunchies in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "iHFgmE"
+          }
+        ],
+        "id": "s0zi_s"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty crunchy tray:",
+        "steps": [
+          {
+            "player": "I haven't made it yet."
+          },
+          {
+            "npc": "It's one trayful of chocolate chip crunchies that I need. Just follow the instructions carefully."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "rDPAcf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player no longer has an empty crunchy tray:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "lbbTxF"
+          }
+        ],
+        "id": "OhJipk"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has chocolate chip crunchies in their inventory:",
+        "steps": [
+          {
+            "player": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You give Aluft the chocolate crunchies. He takes a bite...",
+            "id": "weBBbR"
+          },
+          {
+            "npc": "Yes, yes, yes, that's superb. I'm really impressed."
+          },
+          {
+            "npc": "Ok then, can you make me a toad batta?  Here's what you need."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "the below items",
+            "id": "AMbVk6"
+          },
+          {
+            "type": "message",
+            "text": "Aluft gives you some cheese, some dough, some equa leaves, a pair of toad's legs and some more gnome spice.",
+            "id": "DXDKov"
+          },
+          {
+            "npc": "Let me know when the batta is ready."
+          }
+        ],
+        "id": "P8VCri"
+      }
+    ],
+    "standard-dialogue-toad-batta-task-dialogue": [
+      {
+        "player": "Hi Mr Gianne."
+      },
+      {
+        "npc": "Aluft."
+      },
+      {
+        "player": "Sorry, Aluft."
+      },
+      {
+        "npc": "So where's my toad batta?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a Premade t'd batta and no toad batta in their inventory:",
+        "steps": [
+          {
+            "player": "I think I've got one."
+          },
+          {
+            "npc": "That looks identical to the toad batta I cooked not five minutes ago. You'll have to prove to me that you can make one yourself if you want my recommendation."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "FTFGnQ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player no longer has an empty batta tin in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": []
+          }
+        ],
+        "id": "stkTxI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty batta tin in their inventory:",
+        "steps": [
+          {
+            "player": "I've not finished yet."
+          },
+          {
+            "npc": "Ok, be as quick as you can."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ZSFM08"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a toad batta in their inventory:",
+        "steps": [
+          {
+            "player": "Here you go, that was no problem."
+          },
+          {
+            "type": "message",
+            "text": "You give Aluft the toad batta. He takes a bite...",
+            "id": "6fok3u"
+          },
+          {
+            "npc": "Ooh, that's some good toad. Very nice."
+          },
+          {
+            "npc": "Let's see if you can make a cheese and tomato batta next."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Gianne dough, gnome spice, cheese, tomato and equa leaves",
+            "id": "hwbvze"
+          }
+        ],
+        "id": "JFy62X"
+      }
+    ],
+    "standard-dialogue-cheese-and-tomato-batta-task-dialogue": [
+      {
+        "player": "Hello again Aluft."
+      },
+      {
+        "npc": "Hello [player name] have you made my Cheese and tomato Batta?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade c+t batta and no cheese+tom batta in their inventory:",
+        "steps": [
+          {
+            "player": "I think I've got one."
+          },
+          {
+            "npc": "That looks identical to the cheese and tomato batta I cooked not five minutes ago. You'll have to prove to me that you can make one yourself if you want my recommendation."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "fLjyAV"
+      },
+      {
+        "type": "condition",
+        "text": "If the player no longer has an empty batta tin in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "fn5iil"
+          }
+        ],
+        "id": "D-Zpnd"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty batta tin in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "SaAhVe"
+          }
+        ],
+        "id": "Cty31a"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a cheese+tom batta in their inventory:",
+        "steps": [
+          {
+            "player": "Here, see what you think."
+          },
+          {
+            "type": "message",
+            "text": "You give Aluft the batta. He sniffs it then takes a bite...",
+            "id": "MJcf0-"
+          },
+          {
+            "npc": "Hmm, that's actually really good."
+          },
+          {
+            "npc": "How about this? Hmmm. I think you may well be ready for real cooking. Well I'm happy to give you my recommendation to Jnr, if that's what you want."
+          },
+          {
+            "player": "Great thanks."
+          },
+          {
+            "npc": "Well your training with me is over [player name]. Are you interested in some work?"
+          },
+          {
+            "player": "I may be..."
+          },
+          {
+            "npc": "I think you're almost ready to do some work for my son Aluft Gianne Jnr. He is in charge of our new family venture: Gnome Food Delivery.  There's good tips to be made if you make and deliver gnome foods -"
+          },
+          {
+            "npc": "though you may have to travel all over Gielinor to fulfil some of the other orders..."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not completed Blurberry's training yet:",
+            "steps": [
+              {
+                "npc": "However, some of the orders Aluft aloft gets are for gnome cocktails, so if you want to work for Lufty, you'll need to undergo some basic cocktail making training. Go and have a chat with him. He's not that"
+              },
+              {
+                "npc": "scary..."
+              },
+              {
+                "player": "Thanks for your help!"
+              },
+              {
+                "npc": "Oh, one last thing. My special dough, can be occasionally tricky to get hold of. I wouldn't want to stop you from cooking gnome delicacies for want of dough!"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "100 noted gianne dough",
+                "id": "HhGEdw"
+              },
+              {
+                "type": "message",
+                "text": "Aluft Gianne gives you a voucher for 100 balls of Gianne Dough.",
+                "id": "9E_mvb"
+              },
+              {
+                "npc": "That should last you for a small while eh? That's all the free dough I'm going to give you so don't waste it!"
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "GyJXLr"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has completed Blurberry's training:",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "8BRYh2"
+              }
+            ],
+            "id": "BOqil4"
+          }
+        ],
+        "id": "d8pw_l"
+      }
+    ],
+    "standard-dialogue-subsequent-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed Blurberry's training yet:",
+        "steps": [
+          {
+            "npc": "Well your training with me is over [player name]. Are you interested in some work?"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "lRtlnp"
+          }
+        ],
+        "id": "YLpCLl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Blurberry's training:",
+        "steps": [
+          {
+            "npc": "Blurberry tells me that you have finished training with him, so I think you're ready to do some work for my son Aluft Gianne Jnr. He is in charge of our new family venture: Gnome Food Delivery.  There's good"
+          },
+          {
+            "npc": "tips to be made if you make and deliver gnome foods - though you may have to travel all over Gielinor to fulfil some of the other orders..."
+          },
+          {
+            "player": "Sounds interesting...."
+          },
+          {
+            "npc": "Go and have a chat with my son Lufty Jnr. and he'll fill you in with details."
+          }
+        ],
+        "id": "cjly2s"
+      }
+    ]
+  }
+}

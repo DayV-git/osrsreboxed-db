@@ -1,0 +1,427 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hey there [player name], Do you want that shopping list now?"
+      },
+      {
+        "player": "It depends, what do I get out of it again?"
+      },
+      {
+        "npc": "I've got this Death Talisman I could give you in return. You'll need it if you want to get into the altar."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay sure thing, what do you need?",
+            "steps": [
+              {
+                "player": "Ok sure thing, what do you need?"
+              },
+              {
+                "npc": "You'd better take this list, we need everything on it! Just bring them to me and I'll take them off your hands."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "the item list",
+                "id": "1TDHVz"
+              }
+            ]
+          },
+          {
+            "text": "Hmm no thanks, I'm not interested.",
+            "steps": [
+              {
+                "player": "Hmm no thanks, I'm not interested."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-being-given-item-list": [
+      {
+        "npc": "Hi again, how're you doing with those items we need?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've got some of them with me.",
+            "steps": [
+              {
+                "player": "I've got some of them with me."
+              },
+              {
+                "npc": "Great, can I take everything I need?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yeah sure.",
+                    "steps": [
+                      {
+                        "player": "Yeah sure."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have any items with them:",
+                        "steps": [
+                          {
+                            "npc": "Doesn't look like you do to me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "awhYXN"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player still has items on the list:",
+                        "steps": [
+                          {
+                            "npc": "Thanks, I've updated your list for you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "wAnMJv"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player gives him the last item:",
+                        "steps": [
+                          {
+                            "npc": "Great, thank you so much for getting all that for us! Please take this Death Talisman as a reward."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a death talisman",
+                            "id": "4wgcCc"
+                          },
+                          {
+                            "npc": "Anytime you want another one of those Talismans come see me and I'll sort you out with another list."
+                          }
+                        ],
+                        "id": "SigCaX"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd rather you didn't.",
+                    "steps": [
+                      {
+                        "player": "I'd rather you didn't."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have any items with them:",
+                        "steps": [
+                          {
+                            "npc": "Doesn't look like you do to me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "Biw1WQ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has items with them:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "(Thorgel will ask about every item in the player's inventory one at a time allowing the player to decide for each item in order.)",
+                            "id": "24Dvrd"
+                          },
+                          {
+                            "npc": "I see you've got the [item], can I have it please?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Sure, here you go!",
+                                "steps": [
+                                  {
+                                    "player": "Sure, here you go!"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player still has items on the list:",
+                                    "steps": [
+                                      {
+                                        "npc": "Thanks, I've updated your list for you."
+                                      },
+                                      {
+                                        "type": "action",
+                                        "text": "(Thorgel asks for the next item.)",
+                                        "id": "cijTfD"
+                                      }
+                                    ],
+                                    "id": "gDxIjm"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player gives him the last item:",
+                                    "steps": [
+                                      {
+                                        "npc": "Great, thank you so much for getting all that for us! Please take this Death Talisman as a reward."
+                                      },
+                                      {
+                                        "type": "action",
+                                        "action": "receive",
+                                        "text": "a death talisman",
+                                        "id": "n187v9"
+                                      },
+                                      {
+                                        "npc": "Anytime you want another one of those Talismans come see me and I'll sort you out with another list."
+                                      }
+                                    ],
+                                    "id": "8NKsaj"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "I think I'll keep hold of it for now.",
+                                "steps": [
+                                  {
+                                    "player": "I think I'll keep hold of it for now."
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "(Thorgel asks for the next item.)",
+                                    "id": "NZ_4u0"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "fw_VnF"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you have another copy of the list?",
+            "steps": [
+              {
+                "player": "Do you have another copy of the list?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an empty inventory space:",
+                "steps": [
+                  {
+                    "npc": "Try not to lose it this time, we need everything on it! Just bring them to me and I'll take them off your hands."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "GNUZjE"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "npc": "Looks like you're carrying enough stuff at the moment."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "SLgsOP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has the list in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "You already have the list! Just bring them to me and I'll take them off your hands."
+                  }
+                ],
+                "id": "G4xLPp"
+              }
+            ]
+          },
+          {
+            "text": "What do you need all this stuff for?",
+            "steps": [
+              {
+                "player": "What do you need all this stuff for?"
+              },
+              {
+                "npc": "Oh well, we don't get many deliveries down here, so it's supplies mostly..."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What about the [ticket]?",
+                    "condition": "If the player has not yet given the ticket:",
+                    "steps": [
+                      {
+                        "player": "What about the [ticket]?"
+                      },
+                      {
+                        "npc": "Well you see.. Umm... We don't really get much chance to.. Er.. Go out or anything... And we'd like some of the prizes some day..."
+                      },
+                      {
+                        "player": "So why didn't you ask for the prizes then?"
+                      },
+                      {
+                        "npc": "Oh no, that'd just be sad."
+                      }
+                    ],
+                    "id": "xi2UMX"
+                  },
+                  {
+                    "text": "So why do you want the [book]?",
+                    "condition": "If the player has not yet given the book:",
+                    "steps": [
+                      {
+                        "player": "So why do you want the [book]?"
+                      },
+                      {
+                        "npc": "Oh just some light reading, it's nice to catch up on current events occasionally."
+                      },
+                      {
+                        "player": "Current events? But it's... Oh nevermind."
+                      }
+                    ],
+                    "id": "Brx2io"
+                  },
+                  {
+                    "text": "How do you explain the [key]?",
+                    "condition": "If the player has not yet given the key:",
+                    "steps": [
+                      {
+                        "player": "How do you explain the [key]?"
+                      },
+                      {
+                        "npc": "Ah... Um... I'm not sure how that got on the list... Can we have it anyway?"
+                      },
+                      {
+                        "player": "Right, why do I get the feeling I shouldn't?"
+                      },
+                      {
+                        "npc": "Pretty please with a Blood Talisman on top?!"
+                      },
+                      {
+                        "player": "A Blood Talisman?!"
+                      },
+                      {
+                        "npc": "Oops! I meant 'Death Talisman'!"
+                      }
+                    ],
+                    "id": "30vaE4"
+                  },
+                  {
+                    "text": "Yeah, right, all those are just 'supplies'.",
+                    "steps": [
+                      {
+                        "player": "Yeah, right, all those are just 'supplies'."
+                      },
+                      {
+                        "type": "end"
+                      },
+                      {
+                        "player": "What do you need all this stuff for?"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No, I'd better get looking for them.",
+            "steps": [
+              {
+                "player": "No, I'd better get looking for them."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-finishing-the-item-list": [
+      {
+        "npc": "Hello again, feel like getting us some more supplies?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay sure thing, what do you need?",
+            "steps": [
+              {
+                "player": "Okay sure thing, what do you need?"
+              },
+              {
+                "npc": "You'd better take this list, we need everything on it! Just bring them to me and I'll take them off your hands."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "the item list",
+                "id": "ZLrE3x"
+              }
+            ]
+          },
+          {
+            "text": "Hmm no thanks, I'm not interested.",
+            "steps": [
+              {
+                "player": "Hmm no thanks, I'm not interested."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "condition",
+        "text": "With a full inventory:",
+        "steps": [
+          {
+            "npc": "Hey, I have something for you but you don't have any space for it!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "-C9uku"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a torn part of a clue scroll",
+        "id": "dlPXp-"
+      },
+      {
+        "npc": "Here you go."
+      },
+      {
+        "type": "message",
+        "text": "You are handed a torn part of a clue scroll.",
+        "id": "Ahe4LI"
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello. Are you here for my black dragons?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have a Slayer assignment to kill those, yes.",
+            "condition": "If the player has black dragons as a slayer task:",
+            "steps": [
+              {
+                "player": "I have a Slayer assignment to kill those, yes."
+              },
+              {
+                "npc": "Fair enough. Do what you have to do."
+              }
+            ],
+            "id": "CNWRAD"
+          },
+          {
+            "text": "They're not my Slayer target.",
+            "condition": "If the player does not have black dragons as a slayer task:",
+            "steps": [
+              {
+                "player": "They're not my Slayer target."
+              },
+              {
+                "npc": "Oh, good. In that case you're welcome to go and admire them, but don't get any ideas about killing them."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "8t1ym_"
+              }
+            ],
+            "id": "vYZaqK"
+          },
+          {
+            "text": "Why are you here asking about that?",
+            "steps": [
+              {
+                "player": "Why are you here asking about that?"
+              },
+              {
+                "npc": "Because I like my black dragons, and I had to work hard to get access to their lair, and I don't want people using them for training without a reason."
+              },
+              {
+                "npc": "So if one of the Slayer Masters sent you to slay black dragons, that's fine, but otherwise you should go and train elsewhere."
+              },
+              {
+                "npc": "I'd rather people didn't train on my dragons at all, but I've got a distant cousin who's a Slayer Master, so I've got to support the family business."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "qPkkzw"
+              }
+            ]
+          },
+          {
+            "text": "Excuse me, I've got to go.",
+            "steps": [
+              {
+                "player": "Excuse me, I've got to go."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-attempting-to-kill-monsters-that-aren-t-part-of-a-player-s-slayer-task": [
+      {
+        "npc": "Hey, go and train somewhere else! I'm not having people mess with my dragons unless a Slayer Master's told them to do it."
+      }
+    ]
+  }
+}

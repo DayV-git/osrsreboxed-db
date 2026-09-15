@@ -1,0 +1,531 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-if-the-player-did-not-complete-the-2020-halloween-event": [
+      {
+        "player": "Hey there."
+      },
+      {
+        "npc": "Hello."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "My name is Rick. I'm a wizard student. I used to study magical farming, but I don't like it anymore."
+              },
+              {
+                "player": "Why don't you like it anymore?"
+              },
+              {
+                "npc": "It's a bit embarrassing, but... I got my head swapped with a pumpkin. Luckily an adventurer came along and helped me get it back in place."
+              },
+              {
+                "player": "That is indeed lucky."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What are you doing here?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "4GuSg-"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you have anything to sell?"
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "SX0__E"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can I buy an Escape crystal?",
+            "condition": "If the player is on a members' world:",
+            "steps": [
+              {
+                "player": "Can I buy an Escape crystal?"
+              },
+              {
+                "npc": "Yes! Of course."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 75,000 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Buy an escape crystal for 75000 coins?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "Player is prompted to select how many to purchase.",
+                            "id": "2-6fPe"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "z2Tf9e"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 75,000 coins:",
+                "steps": [
+                  {
+                    "npc": "It looks like you can't afford any crystals. They cost 75000 coins each."
+                  }
+                ],
+                "id": "bI1gNt"
+              }
+            ],
+            "id": "m9d-tt"
+          },
+          {
+            "text": "Can I buy an Members object?",
+            "condition": "If the player is on a free-to-play world:",
+            "steps": [
+              {
+                "player": "Can I buy an Members object?"
+              },
+              {
+                "npc": "Yes! Of course."
+              },
+              {
+                "npc": "The crystals I'm selling are quite delicate. I'd feel more comfortable selling them on a members' world."
+              },
+              {
+                "type": "end",
+                "reason": "members"
+              }
+            ],
+            "id": "ubQnWH"
+          },
+          {
+            "text": "Which places can the Escape crystal teleport me out of?",
+            "condition": "The player is on a members' world:",
+            "steps": [
+              {
+                "player": "Which places can the Escape crystal teleport me out of?"
+              },
+              {
+                "npc": "The crystals currently work in the Theatre of Blood, the Chambers of Xeric, TzHaar-Ket-Rak's Challenges, the Inferno, Pest Control, Barbarian Assault and the Tombs of Amascut."
+              },
+              {
+                "npc": "Although you cannot technically take them into the Gauntlet, if you enable the feature that teleports you if you zone out and have a crystal on you when entering, it will continue to work within."
+              },
+              {
+                "npc": "So, would you like to buy one? They cost 75000 gold each!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sure - I'd like to buy a crystal.",
+                    "steps": [
+                      {
+                        "player": "Sure - I'd like to buy a crystal."
+                      },
+                      {
+                        "npc": "Wonderful!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 75,000 coins:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "Player is prompted to select how many to purchase.",
+                            "id": "hBGD3t"
+                          }
+                        ],
+                        "id": "DCbFZw"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 75,000 coins:",
+                        "steps": [
+                          {
+                            "npc": "It looks like you can't afford any crystals. They cost 75000 coins each."
+                          }
+                        ],
+                        "id": "j21U5J"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No way, that's too expensive!",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "QRAISw"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "cPxIoz"
+          },
+          {
+            "text": "Which places can the Members object teleport me out of?",
+            "condition": "If the player is on a free-to-play world:",
+            "steps": [
+              {
+                "player": "Which places can the Members object teleport me out of?"
+              },
+              {
+                "npc": "The crystals currently work in the Theatre of Blood, the Chambers of Xeric, TzHaar-Ket-Rak's Challenges, the Inferno, Pest Control, Barbarian Assault and the Tombs of Amascut."
+              },
+              {
+                "npc": "Although you cannot technically take them into the Gauntlet, if you enable the feature that teleports you if you zone out and have a crystal on you when entering, it will continue to work within."
+              },
+              {
+                "npc": "So, would you like to buy one? They cost 75000 gold each!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sure - I'd like to buy a crystal.",
+                    "steps": [
+                      {
+                        "player": "Sure - I'd like to buy a crystal."
+                      },
+                      {
+                        "npc": "Wonderful!"
+                      },
+                      {
+                        "npc": "The crystals I'm selling are quite delicate. I'd feel more comfortable selling them on a members' world."
+                      },
+                      {
+                        "type": "end",
+                        "reason": "members"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No way, that's too expensive!",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "QRAISw"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "NZH46a"
+          },
+          {
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "npc": "I'm a student here at the tower. I don't know what I'll do now. Maybe I'll go home to Ardougne. Or maybe I'll pick up a new magical field to study."
+              },
+              {
+                "player": "What kind of magical fields are we talking about?"
+              },
+              {
+                "npc": "Anything but pumpkin fields."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Who are you?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "AK9JsL"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you have anything to sell?",
+                    "steps": [
+                      {
+                        "player": "Do you have anything to sell?"
+                      },
+                      {
+                        "npc": "As a matter of fact, I do! I was recently doing some research on cabbages. I was able to extract their essence and combine it with a t-"
+                      },
+                      {
+                        "player": "You're not a very good salesman, are you? Just tell me what you're selling!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is on a members world:",
+                        "steps": [
+                          {
+                            "npc": "Oh. Right! I have these crystal shards that will let you escape from particularly dangerous situations. They only work in certain places. I call them Escape crystals."
+                          }
+                        ],
+                        "id": "TRetI2"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is not on a members world:",
+                        "steps": [
+                          {
+                            "npc": "Oh. Right! I have these crystal shards that will let you escape from particularly dangerous situations. They only work in certain places. I call them Members objects."
+                          }
+                        ],
+                        "id": "p1jhZa"
+                      },
+                      {
+                        "player": "Why would I want that?"
+                      },
+                      {
+                        "npc": "Sometimes you get caught in places that won't let you teleport out by normal means. These crystals are specially crafted to let you escape those scenarios. I've recently enhanced them as well!"
+                      },
+                      {
+                        "npc": "Have you ever found yourself zoning out, and come back to reality to find yourself under attack and on the brink of death? Well you can configure them to teleport you to safety if !"
+                      },
+                      {
+                        "npc": "It does mean they are likely to trigger in combat, although I'm working on that. But they should let you run through a dangerous area as long as you don't stop in the middle."
+                      },
+                      {
+                        "npc": "They also now work in any place a ring of life would. Talking about rings of life, they can also act just like one if you configure them to be so."
+                      },
+                      {
+                        "npc": "So, would you like to buy one? They cost 75000 gold each!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Sure - I'd like to buy a crystal.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "ipyrz2"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Which places can the Escape crystal teleport me out of?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "-PIJyd"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No way, that's too expensive!",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "QFMslp"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "oBlbRI"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "Bye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-completed-the-2020-halloween-event": [
+      {
+        "player": "Hey there, Rick."
+      },
+      {
+        "npc": "Hello, [player name]. It's nice to see you again!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you feeling?",
+            "steps": [
+              {
+                "player": "How are you feeling?"
+              },
+              {
+                "npc": "Better now that my head's back in place. Thanks again for helping me with that!"
+              },
+              {
+                "player": "You're very welcome. It was a night to remember, that's for sure."
+              },
+              {
+                "npc": "Indeed. How are you finding the helm that I gave you? Does the headless illusion still work?"
+              },
+              {
+                "player": "Yes it does. I've been told it looks terrifying - especially when I eat or drink."
+              },
+              {
+                "npc": "I can imagine!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Talk about what Rick is doing.",
+                    "steps": [
+                      {
+                        "player": "What are you up to now that your head is back where it belongs?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "BwgVnC"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I buy a Escape crystal?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "pLnuCS"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "lF54_5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can I buy a Escape crystal?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "lyIXSE"
+              }
+            ]
+          },
+          {
+            "text": "Which places can the Escape crystal teleport me out of?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "_-BtK8"
+              }
+            ]
+          },
+          {
+            "text": "What are you up to?",
+            "steps": [
+              {
+                "player": "What are you up to now that your head is back where it belongs?"
+              },
+              {
+                "npc": "I still study. I'm changing my field of study though. Hopefully if I don't mess up more spells, one day I can become the head wizard."
+              },
+              {
+                "player": "I think that would suit you very well!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "-IfISm"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye, Rick."
+              },
+              {
+                "npc": "Take care, [player name]."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "QRAISw": [
+      {
+        "player": "No way, that's too expensive!"
+      },
+      {
+        "npc": "Well, there's a lot that goes into it to drive the price up that high. But I understand why you feel that way."
+      }
+    ]
+  }
+}

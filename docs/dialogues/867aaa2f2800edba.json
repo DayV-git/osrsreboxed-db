@@ -1,0 +1,98 @@
+{
+  "steps": [
+    {
+      "npc": "Hello, surface-dweller."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Who are you?",
+          "steps": [
+            {
+              "player": "Who are you?"
+            },
+            {
+              "npc": "Mistag posted me here when surface-dwellers started visiting the mine. If you have business in the Dorgeshuun mines I will guide you through the tunnels."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Can you show me the way to the mines?",
+                  "steps": [
+                    {
+                      "player": "Can you show me the way to the mines?"
+                    },
+                    {
+                      "npc": "All right. Follow me."
+                    },
+                    {
+                      "type": "message",
+                      "text": "Kazgar shows you the way through the tunnels.",
+                      "id": "m471ps"
+                    }
+                  ]
+                },
+                {
+                  "text": "Can you show me the way to the water mill cellar?",
+                  "condition": "After Death to the Dorgeshuun",
+                  "steps": [
+                    {
+                      "player": "Can you show me the way to the water mill cellar?"
+                    },
+                    {
+                      "npc": "Of course!"
+                    },
+                    {
+                      "type": "message",
+                      "text": "Kazgar shows you the way through the tunnels.",
+                      "id": "ccERZh"
+                    }
+                  ],
+                  "id": "UEIaPX"
+                },
+                {
+                  "text": "Maybe some other time.",
+                  "steps": [
+                    {
+                      "player": "Maybe some other time."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Can you show me the way to the mines?",
+          "steps": [
+            {
+              "type": "jump",
+              "reference": "above",
+              "id": "qOubuL"
+            }
+          ]
+        },
+        {
+          "text": "Can you show me the way to the water mill cellar?",
+          "steps": [
+            {
+              "type": "jump",
+              "reference": "above",
+              "id": "qpC-FJ"
+            }
+          ]
+        },
+        {
+          "text": "Good bye, cave-dweller.",
+          "steps": [
+            {
+              "player": "Good bye, cave-dweller."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

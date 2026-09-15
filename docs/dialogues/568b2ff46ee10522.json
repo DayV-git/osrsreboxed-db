@@ -1,0 +1,328 @@
+{
+  "default": "before-between-a-rock-when-quest-requirements-are-not-met",
+  "variants": {
+    "before-between-a-rock-when-quest-requirements-are-not-met": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "What?"
+      },
+      {
+        "player": "I said hello!"
+      },
+      {
+        "npc": "Hello!"
+      },
+      {
+        "type": "choice",
+        "options": []
+      }
+    ],
+    "after-completing-between-a-rock": [
+      {
+        "player": "How are you doing, Dondakan?"
+      },
+      {
+        "npc": "Oh, just fine, just fine! This gold is certainly creating a steady flow of income for me! After the company takes some of the cut, of course."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you shoot me into the rock again?",
+            "steps": [
+              {
+                "player": "Can you shoot me into the rock again?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not wearing the gold helmet:",
+                "steps": [
+                  {
+                    "npc": "You need to wear that golden helmet... unless you want to crack open your skull on the rock."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NmGJE0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing the gold helmet:",
+                "steps": [
+                  {
+                    "npc": "Of course, just a second, let me adjust my cannon again."
+                  },
+                  {
+                    "type": "action",
+                    "text": "(The player is transported to Dondakan's mine.)",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "7G-Flq"
+                  }
+                ],
+                "id": "V7DluY"
+              }
+            ]
+          },
+          {
+            "text": "Are you selling those boots of yours?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is not wearing granite boots:",
+                "steps": [
+                  {
+                    "player": "Say, are you selling those boots of yours?"
+                  },
+                  {
+                    "npc": "What, you mean these granite boots?"
+                  },
+                  {
+                    "player": "Yes, I'd be happy to pay quite some money for them!"
+                  },
+                  {
+                    "npc": "Haha, I bet you would, I bet you would!"
+                  },
+                  {
+                    "npc": "But I no longer need the money, this rock is generating plenty!"
+                  },
+                  {
+                    "npc": "Besides, I'm rather fond of them now... best boots I ever had!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Oh please...",
+                        "steps": [
+                          {
+                            "player": "Oh please..."
+                          },
+                          {
+                            "npc": "No, I won't sell them."
+                          },
+                          {
+                            "player": "Pretty please?"
+                          },
+                          {
+                            "npc": "No!"
+                          },
+                          {
+                            "player": "Oh come on!!!"
+                          },
+                          {
+                            "npc": "Well..."
+                          },
+                          {
+                            "player": "Yes?"
+                          },
+                          {
+                            "npc": "How much gold would you be willing to pay for it? Not that I'm selling my boots, mind, I'm just curious."
+                          },
+                          {
+                            "type": "input",
+                            "text": "Enter amount:",
+                            "id": "qRWNin"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the number is below 1000:",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough coins:",
+                                "steps": [
+                                  {
+                                    "npc": "What, are you trying to scam old Dondakan? You want me to sell these boots for a measly [number] coins?{{^|Note: says \"1 coins\"}}"
+                                  },
+                                  {
+                                    "npc": "I'm not selling them anyway."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "p90AML"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "npc": "You're so poor, you don't even have that much gold on you..."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "oOpCuG"
+                              }
+                            ],
+                            "id": "RWRiDJ"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the number is between 1000 and 74999:",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough coins:",
+                                "steps": [
+                                  {
+                                    "npc": "If I were selling my granite boots, which I'm clearly not, I would certainly not accept a mere [number] coins for them."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "5_Og6P"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "npc": "That's quite a sum of money, which I notice you don't even have on you."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "s_4ib0"
+                              }
+                            ],
+                            "id": "Mdcli_"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the number is 75000 or more:",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough coins:",
+                                "steps": [
+                                  {
+                                    "npc": "Haha, nice try [player name]!"
+                                  },
+                                  {
+                                    "npc": "Pity I'm not selling my boots, not for any price or any item."
+                                  },
+                                  {
+                                    "npc": "I just wanted to see how high you would go!"
+                                  },
+                                  {
+                                    "player": "Bah, thanks a lot."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "E4mlok"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "npc": "Hey, that's quite a bit of money. Which you don't have on you. Oh well, I wasn't selling my boots anyway."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "KB4O3r"
+                              }
+                            ],
+                            "id": "wEE_BE"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Never mind, I don't want them anymore.",
+                        "steps": [
+                          {
+                            "player": "Never mind, I don't want them anymore."
+                          },
+                          {
+                            "npc": "Great, because I don't want to sell them."
+                          },
+                          {
+                            "player": "Okay."
+                          },
+                          {
+                            "npc": "Right."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "xkNioT"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "eoE2vg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing granite boots:",
+                "steps": [
+                  {
+                    "player": "Check these out."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You lift up your boots for Dondakan to see.",
+                    "id": "p1xOwU"
+                  },
+                  {
+                    "npc": "Where'd you get those from? Did you make your own?"
+                  },
+                  {
+                    "player": "Not quite, they were retrieved from the corpse of a wyvern."
+                  },
+                  {
+                    "npc": "You killed a wyvern? Last I heard they were all dead."
+                  },
+                  {
+                    "player": "I never said I killed it! But perhaps I did, I am a grand adventure after all!"
+                  },
+                  {
+                    "npc": "Oh dear, oh dear. It seems firing you head first into a rock was perhaps not the best idea, you've gone absolutely loony."
+                  },
+                  {
+                    "player": "Hmm, well you do have a point..."
+                  },
+                  {
+                    "npc": "It's alright Laddie, I'm just joking."
+                  }
+                ],
+                "id": "wtxvJE"
+              }
+            ]
+          },
+          {
+            "text": "That's great, but I have to go.",
+            "steps": [
+              {
+                "player": "That's great, but I have to go now."
+              },
+              {
+                "npc": "Come back any time!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-between-a-rock-using-items-on-dondakan": [
+      {
+        "npc": "I don't want anything from you right now."
+      }
+    ]
+  }
+}

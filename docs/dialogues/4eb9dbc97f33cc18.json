@@ -1,0 +1,93 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-ghosts-ahoy": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I thought you were going to pass over to the next world.",
+            "steps": [
+              {
+                "player": "I thought you were going to pass over to the next world."
+              },
+              {
+                "npc": "All in good time, [player name]. We stand forever in your debt, and will certainly put in a good word for you when we pass over."
+              }
+            ]
+          },
+          {
+            "text": "Can I have another Ectophial?",
+            "steps": [
+              {
+                "player": "Can I have another Ectophial?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an Ectophial:",
+                "steps": [
+                  {
+                    "npc": "Really? You've already got an Ectophial."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I know, but can I have another one anyway?",
+                        "steps": [
+                          {
+                            "player": "I know, but can I have another one anyway?"
+                          },
+                          {
+                            "npc": "Of course you can, you have helped us more than we could ever have hoped."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "an ectophial",
+                            "id": "RJhKBw"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Have I? Okay, forget it.",
+                        "steps": [
+                          {
+                            "player": "Have I? Okay, forget it."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "cqe5yP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have an Ectophial:",
+                "steps": [
+                  {
+                    "npc": "Of course you can, you have helped us more than we could ever have hoped."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an ectophial",
+                    "id": "MIyIJB"
+                  }
+                ],
+                "id": "Hy1hqi"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

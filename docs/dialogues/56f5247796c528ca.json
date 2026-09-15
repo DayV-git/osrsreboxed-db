@@ -1,0 +1,222 @@
+{
+  "default": null,
+  "variants": {
+    "freaky-forester-random-event-initial-dialogue": [
+      {
+        "npc": "Hey, [player name], can you come and help me with some pheasants?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, I'll help with your pheasants.",
+            "steps": [
+              {
+                "player": "Okay, I'll help with your pheasants."
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported to the Freaky Forester random event area.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "ct-0mD"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "7m2ZsB"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I'm busy.",
+            "steps": [
+              {
+                "player": "Sorry, I'm busy."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "freaky-forester-random-event-in-the-forest": [
+      {
+        "type": "action",
+        "text": "The number of tails on the pheasant is randomized.",
+        "id": "tafLR4"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Hey there, [player name]. Could you kill a pheasant with [two/three/four] tails, please? Bring me the raw pheasant when you're done."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Hey there, [player name]. Can you kill the [2/3/4]-tailed pheasant please. Bring me the raw pheasant when you're done."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Hey there, [player name]. I need you to kill a pheasant that has [2/3/4] tails. Bring me the raw pheasant when you're done."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "freaky-forester-random-event-talking-to-the-forester-as-he-leaves": [
+      {
+        "npc": "Goodbye."
+      }
+    ],
+    "freaky-forester-random-event-after-killing-the-assigned-pheasant": [
+      {
+        "npc": "Now bring me the raw pheasant."
+      },
+      {
+        "type": "action",
+        "text": "The player brings the pheasant to the Freaky Forester.",
+        "id": "SIvKhM"
+      },
+      {
+        "npc": "Thanks, [player name], you may use the portal to leave the area now."
+      }
+    ],
+    "freaky-forester-random-event-after-killing-the-assigned-pheasant-talking-to-freaky-forester-again": [
+      {
+        "npc": "Okay, [player name], you can leave the area now."
+      }
+    ],
+    "freaky-forester-random-event-attempting-to-attack-more-pheasants": [
+      {
+        "type": "message",
+        "text": "You don't need to attack any more pheasants. You're allowed to leave.",
+        "id": "FIYH0S"
+      }
+    ],
+    "freaky-forester-random-event-attempting-to-give-the-freaky-forester-a-second-pheasant": [
+      {
+        "npc": "I don't need any more of those. You are free to exit the area now."
+      }
+    ],
+    "freaky-forester-random-event-leaving-the-event-area": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed the lederhosen outfit:",
+        "steps": [
+          {
+            "npc": "You get a lederhosen [hat/top/shorts] for your help, many thanks!"
+          },
+          {
+            "type": "action",
+            "text": "Player receives a lederhosen [hat/top/shorts].",
+            "action": "receive",
+            "action_source": "text",
+            "id": "0ugCTt"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "xusHg9"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed the lederhosen outfit:",
+        "steps": [
+          {
+            "npc": "You get a lamp for your help, many thanks!"
+          },
+          {
+            "type": "action",
+            "text": "Player receives a lamp.",
+            "action": "receive",
+            "action_source": "text",
+            "id": "4oW0oQ"
+          }
+        ],
+        "id": "MFdV5g"
+      }
+    ],
+    "other-people-s-freaky-forester": [
+      {
+        "npc": "I'm looking for [player name]."
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "Upon spawning in for the player & waiting for a response by the player:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "[player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "Hello? [player name]?"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "Talk to me, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "npc": "[player name]? Are you there?!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 5",
+                "steps": [
+                  {
+                    "npc": "I'd like to talk to you, [player name]!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "lZYxYG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not respond in time:",
+        "steps": [
+          {
+            "npc": "Maybe later."
+          }
+        ],
+        "id": "Ddybz5"
+      }
+    ]
+  }
+}

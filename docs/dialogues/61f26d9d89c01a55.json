@@ -1,0 +1,137 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome, Effendi!"
+      },
+      {
+        "player": "Hello!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I go in?",
+            "steps": [
+              {
+                "player": "Can I go in?"
+              },
+              {
+                "npc": "Come now Effendi, to pass you must tell me a story, one of grand heroics!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Dragon Slayer:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You tell the tale of how you bested a goblin, it lacks heroics and sounds more like senseless murder.",
+                    "id": "e7Dfhm"
+                  },
+                  {
+                    "player": "...And then I pulled the goblin mail from the corpse, but it didn't fit, so I dropped it."
+                  },
+                  {
+                    "npc": "You thought that was a story of heroics?! Come back when you have something worth telling."
+                  },
+                  {
+                    "type": "message",
+                    "text": "To gain entrance to the resource area, you must first complete the quest 'Dragon Slayer'.",
+                    "id": "ZqPSy6"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "EwoO0k"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Dragon Slayer but have not spoken to Haris yet:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You tell the tale of how you bested the legendary dragon Elvarg in combat.",
+                    "id": "-DlGhe"
+                  },
+                  {
+                    "player": "...And then I cut her head off, so as to make sure she was dead!"
+                  },
+                  {
+                    "npc": "Amazing! A story well worth telling! Please Effendi, enter at your leisure."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5CHMtG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already obtained permission to enter area:",
+                "steps": [
+                  {
+                    "npc": "Of course Effendi! You have proved yourself worthy!"
+                  }
+                ],
+                "id": "ke3tS3"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "Me? I am Haris! Owner of the area north of here, it is has great resources, I assure you."
+              },
+              {
+                "player": "You own the land? Who did you buy it from?"
+              },
+              {
+                "npc": "Buy? Oh no no no. Do you see this sword, Effendi?"
+              },
+              {
+                "player": "I do."
+              },
+              {
+                "npc": "Well then, that is why it is mine! Hahaha."
+              },
+              {
+                "player": "Oh, so do I pay a toll? 10 coins should do, right?"
+              },
+              {
+                "npc": "Not quite, while gold can get you to many places, I seek stories of heroics, for my land is only for the worthy."
+              },
+              {
+                "player": "Is the story behind your sword one of heroics?"
+              },
+              {
+                "npc": "I promise you, the monkey I took it from was big! Hahaha!"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "Farewell, Effendi!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-player-tries-to-enter-the-corsair-cove-resource-area-without-granted-access": [
+      {
+        "npc": "Hey! I didn't say you could go in there!"
+      }
+    ]
+  }
+}

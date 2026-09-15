@@ -1,0 +1,538 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, my friend. Have a look at my wares."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, I'm really too busy.",
+            "steps": [
+              {
+                "player": "No, I'm really too busy."
+              }
+            ]
+          },
+          {
+            "text": "Okay.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Ali's Discount Wares.",
+                "id": "cEGlz6"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-rogue-trader": [
+      {
+        "npc": "Hello [player name]. How's the adventuring going?"
+      },
+      {
+        "player": "Hi Ali. Not bad. How are you?"
+      },
+      {
+        "npc": "Still selling."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I would like to have a look at your selection of blackjacks.",
+            "steps": [
+              {
+                "npc": "Hang on a second while I get my stock of blackjacks out."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Ali's Discount Wares.#Blackjacks{{!}}Ali's Discount Wares. (Blackjacks)",
+                "id": "zFOHDy"
+              }
+            ]
+          },
+          {
+            "text": "I would like to have a look at your selection of clothes.",
+            "steps": [
+              {
+                "npc": "Hang on a second while I get the garments."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Ali's Discount Wares.#Clothing{{!}}Ali's Discount Wares. (Clothing)",
+                "id": "ckDN2A"
+              }
+            ]
+          },
+          {
+            "text": "I would like to have a look at your selection of runes.",
+            "steps": [
+              {
+                "npc": "Hang on a second."
+              },
+              {
+                "npc": "Well at the moment I don't exactly have a selection of runes."
+              },
+              {
+                "player": "You don't?"
+              },
+              {
+                "npc": "Those boxes from your friend Aubury have a very odd locking mechanism."
+              },
+              {
+                "player": "You have managed to get them off?"
+              },
+              {
+                "npc": "Not exactly."
+              },
+              {
+                "player": "What do you mean by 'not exactly'?"
+              },
+              {
+                "npc": "What I mean by 'not exactly' is 'no, I haven't managed to get the lock off'."
+              },
+              {
+                "player": "Oh."
+              },
+              {
+                "npc": "I was kind of hoping that you would have a look at them. There are two distinctive types of caskets one with a simple locking mechanism and another, which ummm... looks a little tricky to say the least."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Try opening a small casket of runes",
+                    "steps": [
+                      {
+                        "player": "I think I'll have a go at opening a small casket of runes."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Force box.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player fails at forcing open the box:",
+                                "steps": [
+                                  {
+                                    "type": "unavailable",
+                                    "id": "KfvkZ1"
+                                  },
+                                  {
+                                    "type": "unavailable",
+                                    "id": "62IE9o"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "x_maft"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player successfully forces the box to open:",
+                                "steps": [
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Buy all the runes for [amount].",
+                                        "steps": [
+                                          {
+                                            "type": "action",
+                                            "text": "Player pays [amount] and receives a random selection of runes.",
+                                            "id": "WNDlie"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Find out what the runes are.",
+                                        "steps": [
+                                          {
+                                            "type": "action",
+                                            "action": "open_interface",
+                                            "target": "Ali's Discount Wares.#Runes{{!}}Ali Morrisane's discount rune store.",
+                                            "id": "fDYJvB"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "MhMxnC"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Pick lock.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player fails to pick the lock:",
+                                "steps": [
+                                  {
+                                    "type": "unavailable",
+                                    "id": "oiHRiZ"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "iYj4RW"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player successfully picks the lock:",
+                                "steps": [
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Buy all the runes for [amount].",
+                                        "steps": [
+                                          {
+                                            "type": "action",
+                                            "text": "Player pays [amount] and receives a random selection of runes.",
+                                            "id": "wqOQ9h"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Find out what the runes are.",
+                                        "steps": [
+                                          {
+                                            "type": "action",
+                                            "action": "open_interface",
+                                            "target": "Ali's Discount Wares.#Runes{{!}}Ali Morrisane's discount rune store.",
+                                            "id": "DRwx_9"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "QEILxI"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Examine lock.",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "Rogue Trader sudoku",
+                                "id": "0M-fcN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Try opening a large casket of runes",
+                    "steps": [
+                      {
+                        "player": "I'm feeling lucky, let's have a look at opening one of those large caskets."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Force box.",
+                            "steps": [
+                              {
+                                "type": "unavailable",
+                                "id": "qTdMA_"
+                              },
+                              {
+                                "player": "Hmmm... This lock looks like it may be impossible to prise open."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Pick lock.",
+                            "steps": [
+                              {
+                                "type": "unavailable",
+                                "id": "aiLCPQ"
+                              },
+                              {
+                                "player": "Hmmm... This lock looks like it may be impossible to pick open."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Examine lock.",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "Rogue Trader sudoku",
+                                "id": "Wgrlwz"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "On second thoughts I don't really need any runes.",
+                    "steps": [
+                      {
+                        "player": "On second thoughts I don't really need any runes."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I would like to have a look at your general stock.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Ali's Discount Wares.",
+                "id": "Oa4RoD"
+              }
+            ]
+          },
+          {
+            "text": "I hear you're planning to expand your business here...",
+            "steps": [
+              {
+                "player": "I hear you're planning to expand your business here..."
+              },
+              {
+                "npc": "Of course, my friend. Any good salesman ought to take the opportunities that present themselves."
+              },
+              {
+                "player": "But your men are threatening the other shopkeepers!"
+              },
+              {
+                "npc": "That is regrettable, I'm afraid."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has asked Captain Dalbur what he thinks of Ali Morrisane:",
+                "steps": [
+                  {
+                    "player": "And the gnomes don't sound very happy about your magic carpet business."
+                  },
+                  {
+                    "npc": "A good businessman looks for all the opportunities he can."
+                  }
+                ],
+                "id": "fu5MQ9"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Aren't you going to do anything about your men?",
+                    "steps": [
+                      {
+                        "player": "Aren't you going to do anything about your men?"
+                      },
+                      {
+                        "npc": "Well, these associates of my nephew can be somewhat... overenthusiastic."
+                      },
+                      {
+                        "npc": "I'm sure they'll settle down soon."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "But they're threatening to hurt the shopkeepers if they don't cooperate!",
+                            "steps": [
+                              {
+                                "player": "But they're threatening to hurt the shopkeepers if they don't cooperate!"
+                              },
+                              {
+                                "npc": "Well, there's a simple solution there, don't you agree?"
+                              },
+                              {
+                                "player": "Are you planning to take over all of Al Kharid's shops?"
+                              },
+                              {
+                                "npc": "It's a step in the right direction."
+                              },
+                              {
+                                "npc": "Now, would you like to have a look at my wares?"
+                              },
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "a random item from Ali's Discount Wares",
+                                "id": "8Q4hag"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "No, I'm really too busy.",
+                                    "steps": [
+                                      {
+                                        "player": "No, I'm really too busy."
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Okay.",
+                                    "steps": [
+                                      {
+                                        "player": "Okay."
+                                      },
+                                      {
+                                        "type": "action",
+                                        "action": "open_shop",
+                                        "target": "Ali's Discount Wares.",
+                                        "id": "mcrOK3"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well, good luck with your business.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "jkC4w7"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What will you do about the gnomes?",
+                    "condition": "If the player has asked Captain Dalbur what he thinks of Ali Morrisane:",
+                    "steps": [
+                      {
+                        "player": "What will you do about the gnomes?"
+                      },
+                      {
+                        "npc": "They can continue running their gliders into trees, and I'll keep my business going. Sooner or later it'll all work out in my favour."
+                      },
+                      {
+                        "player": "I suppose so..."
+                      },
+                      {
+                        "npc": "Anyway, before you go, take a look at my wares."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Ali's Discount Wares.",
+                        "id": "HIS0wm"
+                      }
+                    ],
+                    "id": "UvdH7A"
+                  },
+                  {
+                    "text": "Well, good luck with your business.",
+                    "steps": [
+                      {
+                        "player": "Well, good luck with your business."
+                      },
+                      {
+                        "npc": "Before you go, have a look at my wares."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a random item from Ali's Discount Wares",
+                        "id": "DXYOYi"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "No, I'm really too busy.",
+                            "steps": [
+                              {
+                                "player": "No, I'm really too busy."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Okay.",
+                            "steps": [
+                              {
+                                "player": "Okay."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_shop",
+                                "target": "Ali's Discount Wares.",
+                                "id": "BnG9nR"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-rogue-trader-using-an-al-kharid-flyer-on-ali-morrisane": [
+      {
+        "player": "Hi! I have this money off voucher!"
+      },
+      {
+        "npc": "Oh! Unfortunately it seems to have expired yesterday!"
+      },
+      {
+        "player": "But I only just got it from Ali the Leaflet dropper!"
+      },
+      {
+        "npc": "I'm sorry, there's nothing I can do."
+      },
+      {
+        "player": "But you're the one that had them printed!"
+      },
+      {
+        "npc": "Look, I had those printed to win over the local traders. They weren't too pleased with the money off voucher, but I promised them I would repay their losses."
+      },
+      {
+        "player": "So that would be why they're all out of date then?"
+      },
+      {
+        "npc": "I don't know what you mean..."
+      },
+      {
+        "npc": "Anyway, it would be a shame for you to leave without looking at my wares."
+      },
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Ali's Discount Wares.",
+        "id": "n6dMWy"
+      }
+    ]
+  }
+}

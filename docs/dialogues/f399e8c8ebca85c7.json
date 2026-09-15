@@ -1,0 +1,525 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-talk-to": [
+      {
+        "npc": "It's beautiful, isn't it?"
+      },
+      {
+        "player": "What is?"
+      },
+      {
+        "npc": "Everything! The wonders right here in this museum, collected from all corners of the land."
+      },
+      {
+        "player": "I guess it is, you're right."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a collection log in their inventory or bank:",
+        "steps": [
+          {
+            "type": "end"
+          }
+        ],
+        "id": "uH_Fm9"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a collection log in their inventory or bank:",
+        "steps": [
+          {
+            "npc": "Matter of fact, I consider myself quite the collector. I keep a record of just about everything that I find!"
+          },
+          {
+            "npc": "Would you like one? You could keep track of your own collections."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "Yes, that sounds helpful!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "fp4RTR"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "player": "No thanks. I think I'll pass."
+                  },
+                  {
+                    "npc": "I should've guessed you wouldn't understand the true beauty of a good collection!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "A3Pk4P"
+      }
+    ],
+    "standard-dialogue-get-log": [
+      {
+        "type": "condition",
+        "text": "If the player does not have a collection log in their inventory or bank:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The collector gives you a collection log.",
+            "id": "mFLxYC"
+          },
+          {
+            "npc": "There! Now you'll be able to see the true beauty of everything you collect on your adventures."
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "j_Lkdd"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a collection log and attempts to claim one with a full inventory:",
+        "steps": [
+          {
+            "npc": "You might struggle to carry that right now."
+          },
+          {
+            "player": "Oh... I'll come back when I'm carrying a little less."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bMyMeI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a collection log in their inventory or bank:",
+        "steps": [
+          {
+            "npc": "Don't you have one lying around somewhere already?"
+          },
+          {
+            "player": "I think you're right!"
+          }
+        ],
+        "id": "TL5WPE"
+      }
+    ],
+    "standard-dialogue-claim-log-rewards": [
+      {
+        "player": "Could you count how many uniques I've obtained in my collection?"
+      },
+      {
+        "npc": "I'd love to count everything you've collected on your adventures!"
+      },
+      {
+        "npc": "You might want to take a seat this could take a while."
+      },
+      {
+        "type": "message",
+        "text": "The collector starts counting the items in your collection.",
+        "id": "lbJ-mZ"
+      },
+      {
+        "npc": "From what I can see you have collected [number] items in your collection!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 0-99 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "You've made a good start at filling your collection, keep at it!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "KLEbsX"
+          }
+        ],
+        "id": "CU33At"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 100 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "I see you are just starting out on your collecting adventure. I wish you luck!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "870u5v"
+          }
+        ],
+        "id": "QgG-BM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 300 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "You've made a good start at filling your collection, keep at it!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "R65acD"
+          }
+        ],
+        "id": "dmiDiE"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 500 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "You're starting to get a hang of this collecting business!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "9pzPnX"
+          }
+        ],
+        "id": "mgIOAv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 700 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "You have a very respectable collection indeed, one day you'll have a better collection than me!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "etvEsT"
+          }
+        ],
+        "id": "W6kQx-"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 900 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "Your collection is maturing well, you're making great strides to becoming a top collector, keep it up!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "XLqhGh"
+          }
+        ],
+        "id": "kHgPBf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 1000 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "Your collection is one of the finest I've seen, it's almost on par with mine!!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "K-qehk"
+          }
+        ],
+        "id": "MECUp8"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 1100 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "Colour me impressed, you've collected more items than me! I look forward to seeing your collection grow even more."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "UWFjBJ"
+          }
+        ],
+        "id": "bcNrFZ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has more than 1200 unique items in their collection log:",
+        "steps": [
+          {
+            "npc": "Now that's an impressive collection, I haven't seen many with a collection better than yours!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "UJNDlO"
+          }
+        ],
+        "id": "8wEExU"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has registered at least 90% of all items in the collection log:",
+        "steps": [
+          {
+            "npc": "I can officially say that you are now an elite collector and few can stand as your equal in that regard."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "v5viiI"
+          }
+        ],
+        "id": "d6zGKb"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has somehow completed the collection log:",
+        "steps": [
+          {
+            "npc": "Wait, you finished it? You actually finished the entire collection? I never thought that was even possible!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "serDUP"
+          }
+        ],
+        "id": "bEWrYu"
+      },
+      {
+        "npc": "As an accomplished collector I'd like to offer you a special reward."
+      },
+      {
+        "type": "condition",
+        "text": "Depending on what staves the player has unlocked and currently don't have in the inventory or bank:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The collector hands you the Gilded staff of collection.",
+            "id": "j0d2Ak"
+          },
+          {
+            "type": "message",
+            "text": "The collector hands you the Dragon staff of collection.",
+            "id": "QlcBk5"
+          },
+          {
+            "type": "message",
+            "text": "The collector hands you the Rune staff of collection.",
+            "id": "c8c2gT"
+          },
+          {
+            "type": "message",
+            "text": "The collector hands you the Adamant staff of collection.",
+            "id": "AaHgzw"
+          },
+          {
+            "type": "message",
+            "text": "The collector hands you the Mithril staff of collection.",
+            "id": "2RdKhu"
+          },
+          {
+            "type": "message",
+            "text": "The collector hands you the Black staff of collection.",
+            "id": "cCI-s0"
+          },
+          {
+            "type": "message",
+            "text": "The collector hands you the Steel staff of collection.",
+            "id": "oQUNtn"
+          },
+          {
+            "type": "message",
+            "text": "The collector hands you the Iron staff of collection.",
+            "id": "X6IKyA"
+          },
+          {
+            "type": "message",
+            "text": "The collector hands you the Bronze staff of collection.",
+            "id": "r35cOR"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ZoyxS6"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has all unlocked staves in their inventory or bank:",
+        "steps": [
+          {
+            "npc": "Actually, it appears you already have all the rewards I'd like to give you."
+          }
+        ],
+        "id": "w86dW5"
+      }
+    ],
+    "varlamore-token-dialogue": [
+      {
+        "npc": "It's beautiful, isn't it?"
+      },
+      {
+        "player": "What is?"
+      },
+      {
+        "npc": "This... idea! The idea of something nice! Those nice little tokens!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no red tokens in their inventory:",
+        "steps": [
+          {
+            "player": "What tokens?"
+          },
+          {
+            "npc": "Oh, er... never you mind!"
+          },
+          {
+            "type": "action",
+            "text": "The Collector waves at the player and disappears.",
+            "action": "emote",
+            "action_source": "text",
+            "id": "RT1P5D"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ua2Xgo"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one red token in their inventory:",
+        "steps": [
+          {
+            "player": "I have some tokens!"
+          },
+          {
+            "npc": "Only some? Well you need more! Until you have them, I should get going..."
+          },
+          {
+            "type": "action",
+            "text": "The Collector waves at the player and disappears.",
+            "action": "emote",
+            "action_source": "text",
+            "id": "KD2b8m"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1GeQ_S"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has all seven red tokens in their inventory:",
+        "steps": [
+          {
+            "player": "Oh yes, I've got this wonderful collection of tokens!"
+          },
+          {
+            "npc": "May I see them?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, here they are.",
+                "steps": [
+                  {
+                    "player": "Yes, here they are."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the Collector your collection of tokens.",
+                    "id": "MekO3c"
+                  },
+                  {
+                    "npc": "May I have them?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I suppose you can.",
+                        "steps": [
+                          {
+                            "player": "Yes, I suppose you can."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You hand your collection of tokens to the Collector, and in exchange he gives you some sort of a key.",
+                            "id": "s5VzWW"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a nice key",
+                            "id": "NMryjZ"
+                          },
+                          {
+                            "type": "action",
+                            "text": "The Collector waves at the player and disappears.",
+                            "action": "emote",
+                            "action_source": "text",
+                            "id": "5KYFM1"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "4lBoX3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "No."
+                  },
+                  {
+                    "npc": "Fine."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The Collector waves at the player and disappears.",
+                    "action": "emote",
+                    "action_source": "text",
+                    "id": "vPty67"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "2WC63K"
+      }
+    ]
+  }
+}

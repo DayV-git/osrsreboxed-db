@@ -1,0 +1,186 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue": [
+      {
+        "npc": "Ah, another fan! Hello!"
+      },
+      {
+        "player": "Er... Who are you?"
+      },
+      {
+        "npc": "You don't know me? I am Bosun Zarah!"
+      },
+      {
+        "player": "..."
+      },
+      {
+        "npc": "I won twelfth place in the Etceteria Boatswain Championships!"
+      },
+      {
+        "player": "..."
+      },
+      {
+        "npc": "I mopped the deck on the fastest ship to complete the Kourend Circuit!"
+      },
+      {
+        "player": "..."
+      },
+      {
+        "npc": "I was one of only three survivors on the first ship to almost damage the Sharhai!"
+      },
+      {
+        "player": "I see..."
+      },
+      {
+        "type": "condition",
+        "text": "Before completing Pandemonium:",
+        "steps": [
+          {
+            "type": "end"
+          }
+        ],
+        "id": "H9hBT-"
+      },
+      {
+        "type": "condition",
+        "text": "Before 40 Sailing:",
+        "steps": [
+          {
+            "player": "Well, at some point I hope to be hiring a crew of my own. When that happens, you seem like you have all the... qualifications... needed to join."
+          },
+          {
+            "npc": "Great! Don't take too long though, as I'm sure plenty of others will be wanting to try and recruit me first!"
+          },
+          {
+            "type": "message",
+            "text": "You need a Sailing level of 40 to manage a crew.",
+            "id": "oSTJWg"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "wPfwr-"
+      },
+      {
+        "type": "condition",
+        "text": "After 40 Sailing:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Given your... skills... would you like to join my crew?",
+                "steps": [
+                  {
+                    "player": "Given your... skills... would you like to join my crew?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's Sailing level is under 80 or the player has not completed the easy, medium, and hard Fremennik diary:",
+                    "steps": [
+                      {
+                        "npc": "Ha! You can't command the legendary Bosun Zarah!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You require the following to recruit this crew member: Level 80 Sailing. Completion of Royal Trouble. Completion of the Easy, Medium and Hard Fremennik Achievement Diaries.",
+                        "id": "fAz0BQ"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Pannpz"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's Sailing level is at least 80:",
+                    "steps": [
+                      {
+                        "npc": "Anything for another shot at the Sharhai!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You recruit Bosun Zarah as a crew member. She heads off in search of your boat.",
+                        "id": "IsBIH1"
+                      }
+                    ],
+                    "id": "fBhqIV"
+                  }
+                ]
+              },
+              {
+                "text": "Well, good luck with it all.",
+                "steps": [
+                  {
+                    "player": "Well, good luck with it all."
+                  },
+                  {
+                    "npc": "Thank you!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "3gRXHT"
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Ah, one of my fans is back! Hello!"
+      },
+      {
+        "player": "Sorry, who are you again?"
+      },
+      {
+        "npc": "Bosun Zarah of course! Boatswain Championships... Kourend Circuit... The list is endless!"
+      },
+      {
+        "player": "Ah, yes, of course..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "HqzaeP"
+      }
+    ],
+    "when-at-the-pandemonium": [
+      {
+        "npc": "Captain!"
+      },
+      {
+        "player": "Hello there. How are you enjoying being part of the crew?"
+      },
+      {
+        "npc": "I suppose the real question is how are you enjoying having me as part of your crew?"
+      },
+      {
+        "player": "It's fine I suppose, thanks for asking."
+      },
+      {
+        "npc": "You are welcome, Captain!"
+      }
+    ],
+    "while-at-sea-while-idle": [
+      {
+        "type": "random",
+        "options": []
+      },
+      {
+        "npc": "Sometimes I even impress myself."
+      },
+      {
+        "npc": "Let me know when we reach the Sharhai."
+      },
+      {
+        "npc": "You don't want me doing anything so I don't show up the rest of the crew, right?"
+      },
+      {
+        "npc": "I was born for this."
+      }
+    ]
+  }
+}

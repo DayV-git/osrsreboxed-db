@@ -1,0 +1,169 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Good day to you [sir/madam]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I am the Lady of the Lake."
+              }
+            ]
+          },
+          {
+            "text": "Good day.",
+            "steps": [
+              {
+                "player": "Good day."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-merlin-s-crystal": [
+      {
+        "npc": "Good day to you [sir/madam]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "CehAyw"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Good day.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "zqAFgv"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have Excalibur in their bank or inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I seek the sword Excalibur.",
+                "steps": [
+                  {
+                    "player": "I seek the sword Excalibur."
+                  },
+                  {
+                    "npc": "Aye, I have that artefact in my possession."
+                  },
+                  {
+                    "npc": "'Tis very valuable, and not an artefact to be given away lightly."
+                  },
+                  {
+                    "npc": "...But you have already proved thyself to be worthy of wielding it once already. I shall return it to you if you can prove yourself to still be worthy."
+                  },
+                  {
+                    "player": "...And how can I do that?"
+                  },
+                  {
+                    "npc": "Why, by proving yourself to be above material goods."
+                  },
+                  {
+                    "npc": "500 gold coins ought to do it."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 500 coins in their inventory:",
+                    "steps": [
+                      {
+                        "player": "Ok, here you go."
+                      },
+                      {
+                        "npc": "You are still worthy to wield Excalibur! And thanks for the cash! I felt like getting a new haircut!"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "Excalibur",
+                        "id": "eytHdp"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "7SJ4CH"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have at least 500 coins in their inventory:",
+                    "steps": [
+                      {
+                        "player": "I don't have that kind of money..."
+                      },
+                      {
+                        "npc": "Well, come back when you do."
+                      }
+                    ],
+                    "id": "Q9DcHQ"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "59whJB"
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've been given another clue!",
+            "id": "60zvd6"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "czVde4"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "ADDUiy"
+          }
+        ],
+        "id": "FzOmTp"
+      }
+    ]
+  }
+}

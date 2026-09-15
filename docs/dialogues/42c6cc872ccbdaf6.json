@@ -1,0 +1,645 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "Hello there. Do you have any fossils for me?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "npc": "I'm Mary. In the tent you'll find Tray, my dog. He's quite friendly and doesn't bite. I'm here for the fossils. I'll go anywhere for fossils!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "q0RNZe"
+              }
+            ]
+          },
+          {
+            "text": "Why are you here?"
+          }
+        ]
+      },
+      {
+        "npc": "Well, I have some rather nice things I've found. I collect fossils, infact you might say I'm obsessed with them. Large or small, but especially the small numulites.",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "initial",
+            "id": "V56H5H"
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to trade some fossils.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has multiple tiers of Fossil Island fossils in their inventory:",
+                "steps": [
+                  {
+                    "npc": "What fossils would you like to trade?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Small fossils.",
+                        "condition": "If the player has small fossils in their inventory:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "The player chooses how many small fossils to trade with the Fossil Collector",
+                            "id": "vn0qPx"
+                          },
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "the chosen amount of small fossils to the Fossil Collector",
+                            "id": "-lf2V1"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "[100x] amount of Numulite",
+                            "id": "nhegAV"
+                          },
+                          {
+                            "npc": "All done. Would you like to trade in any more fossils?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please.",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player still has multiple tiers of fossils in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "nbn57-"
+                                      }
+                                    ],
+                                    "id": "jA7hrW"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has only one tier of fossils in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "FrAACX"
+                                      }
+                                    ],
+                                    "id": "c1ifl0"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player doesn't have any more fossils in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "bxiChI"
+                                      }
+                                    ],
+                                    "id": "gUQJW5"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Goodbye.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "JnVU8x"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "X_ZiKf"
+                      },
+                      {
+                        "text": "Medium fossils.",
+                        "condition": "If the player has medium fossils in their inventory:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "The player chooses how many medium fossils to trade with the Fossil Collector",
+                            "id": "Teqs1c"
+                          },
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "the chosen amount of mediun fossils to the Fossil Collector",
+                            "id": "A0wCLo"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "[200x] amount of Numulite",
+                            "id": "tQljLK"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "D0xUKS"
+                          }
+                        ],
+                        "id": "a9rbA-"
+                      },
+                      {
+                        "text": "Large fossils.",
+                        "condition": "If the player has large fossils in their inventory:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "The player chooses how many large fossils to trade with the Fossil Collector",
+                            "id": "utUwg5"
+                          },
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "the chosen amount of large fossils to the Fossil Collector",
+                            "id": "2LXN4v"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "[300x] amount of Numulite",
+                            "id": "uq05OV"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "wwm5JI"
+                          }
+                        ],
+                        "id": "ggDUGO"
+                      },
+                      {
+                        "text": "Rare fossils.",
+                        "condition": "If the player has rare fossils in their inventory:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "The player chooses how many rare fossils to trade with the Fossil Collector",
+                            "id": "diyyve"
+                          },
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "the chosen amount of rare fossils to the Fossil Collector",
+                            "id": "YtL6OI"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "[500x] amount of Numulite",
+                            "id": "fJnWlA"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "4YHfhK"
+                          }
+                        ],
+                        "id": "7OtkpG"
+                      }
+                    ]
+                  }
+                ],
+                "id": "JtapQp"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has only one tier of Fossil Island fossils in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player chooses how many fossils to trade with the Fossil Collector",
+                    "id": "deVXkr"
+                  },
+                  {
+                    "type": "action",
+                    "action": "give",
+                    "text": "the chosen amount of fossils to the Fossil Collector",
+                    "id": "Jo2xR3"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "[100x] amount of Numulite, based on what tier of fossil was traded and how many fossils were traded",
+                    "id": "UEP_B3"
+                  },
+                  {
+                    "npc": "All done. Would you like to trade in any more fossils?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player still has fossils in their inventory:",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "AtHU8e"
+                              }
+                            ],
+                            "id": "aNARuU"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have any more fossils in their inventory:",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "dkI0EK"
+                              }
+                            ],
+                            "id": "MPv19f"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Goodbye.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "ppVM85"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "xRN3Su"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have any Fossil Island fossils in their inventory:",
+                "steps": [
+                  {
+                    "npc": "It looks like you don't have any fossils to trade."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "nPEuPf"
+                  }
+                ],
+                "id": "QE5iv2"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I've lost my notebook.",
+                    "condition": "If the player doesn't have a Fossil island note book in their inventory or bank, or stored in their grave, Death's Office or an item retrieval service:",
+                    "id": "scY-Jw"
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "npc": "You don't have space for that."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "sVSCWo"
+              },
+              {
+                "type": "condition",
+                "text": "If there is at least one free inventory space:",
+                "steps": [
+                  {
+                    "npc": "Of course, you left it here and I kept it for you."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Fossil island note book",
+                    "id": "WIQWv5"
+                  }
+                ],
+                "id": "rAtJcu"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-trade-option": [
+      {
+        "type": "condition",
+        "text": "If the player has multiple tiers of Fossil Island fossils in their inventory:",
+        "steps": [
+          {
+            "npc": "What fossils would you like to trade?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Small fossils.",
+                "condition": "If the player has small fossils in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player chooses how many small fossils to trade with the Fossil Collector",
+                    "id": "awG4Ec"
+                  },
+                  {
+                    "type": "action",
+                    "action": "give",
+                    "text": "the chosen amount of small fossils to the Fossil Collector",
+                    "id": "vJTJ2y"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "[100x] amount of Numulite",
+                    "id": "5P-0kR"
+                  },
+                  {
+                    "npc": "All done. Would you like to trade in any more fossils?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player still has multiple tiers of fossils in their inventory:",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "d_hh4O"
+                              }
+                            ],
+                            "id": "R4_ocm"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has only one tier of fossils in their inventory:",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "fyAXrv"
+                              }
+                            ],
+                            "id": "ZPm7eA"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have any more fossils in their inventory:",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "OhOpNX"
+                              }
+                            ],
+                            "id": "42LbxS"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Goodbye.",
+                        "steps": [
+                          {
+                            "player": "Goodbye."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "sGz8LD"
+              },
+              {
+                "text": "Medium fossils.",
+                "condition": "If the player has medium fossils in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player chooses how many medium fossils to trade with the Fossil Collector",
+                    "id": "FTaE6G"
+                  },
+                  {
+                    "type": "action",
+                    "action": "give",
+                    "text": "the chosen amount of mediun fossils to the Fossil Collector",
+                    "id": "IJqqHD"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "[200x] amount of Numulite",
+                    "id": "pco_iC"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "M11QWW"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Large fossils.",
+                        "condition": "If the player has large fossils in their inventory:",
+                        "id": "hHFC5F"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player chooses how many large fossils to trade with the Fossil Collector",
+                    "id": "LXgo4x"
+                  },
+                  {
+                    "type": "action",
+                    "action": "give",
+                    "text": "the chosen amount of large fossils to the Fossil Collector",
+                    "id": "ehzGyc"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "[300x] amount of Numulite",
+                    "id": "YugJTK"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "Ybtu2o"
+                  }
+                ],
+                "id": "aVG-Dm"
+              },
+              {
+                "text": "Rare fossils.",
+                "condition": "If the player has rare fossils in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player chooses how many rare fossils to trade with the Fossil Collector",
+                    "id": "VQT9rX"
+                  },
+                  {
+                    "type": "action",
+                    "action": "give",
+                    "text": "the chosen amount of rare fossils to the Fossil Collector",
+                    "id": "VEFDpu"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "[500x] amount of Numulite",
+                    "id": "6kwjPj"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "qVgNMk"
+                  }
+                ],
+                "id": "Vdl_VS"
+              }
+            ]
+          }
+        ],
+        "id": "JVv1B3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has only one tier of Fossil Island fossils in their inventory:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The player chooses how many fossils to trade with the Fossil Collector",
+            "id": "xb6Q8O"
+          },
+          {
+            "type": "action",
+            "action": "give",
+            "text": "the chosen amount of fossils to the Fossil Collector",
+            "id": "dahaGA"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "[100x] amount of Numulite, based on what tier of fossil was traded and how many fossils were traded",
+            "id": "zsBJ_Q"
+          },
+          {
+            "npc": "All done. Would you like to trade in any more fossils?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes please.",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player still has fossils in their inventory:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "L0KwG7"
+                      }
+                    ],
+                    "id": "amutSG"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player doesn't have any more fossils in their inventory:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "_fS4VW"
+                      }
+                    ],
+                    "id": "3zrHC7"
+                  }
+                ]
+              },
+              {
+                "text": "Goodbye.",
+                "steps": [
+                  {
+                    "player": "Goodbye."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "kHdodR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have any Fossil Island fossils in their inventory:",
+        "steps": [
+          {
+            "npc": "It looks like you don't have any fossils to trade."
+          }
+        ],
+        "id": "jmG-eh"
+      }
+    ]
+  }
+}

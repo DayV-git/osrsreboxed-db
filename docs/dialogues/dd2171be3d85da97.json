@@ -1,0 +1,297 @@
+{
+  "default": "standard-dialogue-before-a-porcine-of-interest",
+  "variants": {
+    "standard-dialogue-before-a-porcine-of-interest": [
+      {
+        "npc": "I've only recently moved in and I'm still getting unpacked. Could you come back later?"
+      }
+    ],
+    "standard-dialogue-after-a-porcine-of-interest": [
+      {
+        "npc": "'Ello, and what are you after then?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "player": "I need another assignment."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a high combat level:",
+                "steps": [
+                  {
+                    "npc": "You're actually very strong, are you sure you don't want Chaeldar in Zanaris to assign you a task?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No that's okay, I'll take a task from you.",
+                        "steps": [
+                          {
+                            "player": "No that's okay, I'll take a task from you."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "DcFTI7"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Oh okay then, I'll go talk to Chaeldar.",
+                        "steps": [
+                          {
+                            "player": "Oh okay then, I'll go talk to Chaeldar."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2LqhLT"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an assignment yet:",
+                "steps": [
+                  {
+                    "npc": "Excellent, you're doing great. Your new task is to kill [amount] [task monster]."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "DhLGnl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [task monster], you have [amount] to go."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "oIq-xQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster], with [amount] to go."
+                  },
+                  {
+                    "npc": "I don't think that's a suitable task for you. Shall I cancel it? This will not wipe your task streaks."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, please cancel it.",
+                        "steps": [
+                          {
+                            "player": "Yes, please cancel it."
+                          },
+                          {
+                            "npc": "Alright, consider the task cancelled. You can now get a new assignment when you want one."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, thanks, I want to try doing it.",
+                        "steps": [
+                          {
+                            "player": "No, thanks, I want to try doing it."
+                          },
+                          {
+                            "npc": "Good luck with that."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "CEpjWS"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me, or anything to trade?"
+              },
+              {
+                "npc": "I have quite a few rewards you can earn, and a wide variety of Slayer equipment for sale."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Look at rewards.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Rewards",
+                        "id": "zCWGMq"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look at shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Equipment (shop)",
+                        "id": "sWIxiS"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "player": "Let's talk about the difficulty of my assignments."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has disabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I can handle any task.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I can handle any task."
+                          },
+                          {
+                            "npc": "That's the spirit."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "In future, please don't give anything too tough.",
+                        "steps": [
+                          {
+                            "player": "In future, please don't give anything too tough."
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will now take the player's combat level into account.",
+                            "id": "h4jQ-H"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "9dGri8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I don't want anything too tough.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I don't want anything too tough."
+                          },
+                          {
+                            "npc": "Okay, we'll keep checking your combat level."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Stop checking my combat level - I can take anything!",
+                        "steps": [
+                          {
+                            "player": "Stop checking my combat level - I can take anything!"
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will no longer take the player's combat level into account.",
+                            "id": "03LGpT"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "6YLYvN"
+              }
+            ]
+          },
+          {
+            "text": "About Turael...",
+            "condition": "If the player has completed While Guthix Sleeps:",
+            "steps": [
+              {
+                "player": "About Turael..."
+              },
+              {
+                "npc": "It's nothing personal, but I'd prefer not to discuss what happened with my father."
+              },
+              {
+                "player": "Of course. Sorry for bringing it up."
+              }
+            ],
+            "id": "uzMcBi"
+          },
+          {
+            "text": "Er... Nothing...",
+            "steps": [
+              {
+                "player": "Er... Nothing..."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

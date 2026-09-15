@@ -1,0 +1,982 @@
+{
+  "default": null,
+  "variants": {
+    "captain-lawgof": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Guthix be praised, the cavalry has arrived! Hero, how would you like to be made an honorary member of the Black Guard?"
+      },
+      {
+        "player": "The Black Guard? What's that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Hawhaw! 'What's that' [he/she] asks, what a sense of humour! The Black Guard is the finest regiment in the dwarven army. Only the best of the best are allowed to join it and then they receive months of rigorous training."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "However, we are currently in need of a hero, so for a limited time only I'm offering you, a human, a chance to join this prestigious regiment. What do you say?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Dwarf Cannon quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Sure, I'd be honoured to join."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "That's the spirit! Now trooper, we have no time to waste - the goblins are attacking from the forests to the South. There are so many of them, they are overwhelming my men and breaking through our"
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "perimeter defences; could you please try to fix the stockade by replacing the broken rails with these new ones?"
+              },
+              {
+                "player": "Sure, sounds easy enough..."
+              },
+              {
+                "type": "message",
+                "text": "The Dwarf Captain gives you six railings.",
+                "id": "s7iFdl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a hammer:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Captain Lawgof",
+                    "text": "You'll need this hammer too."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a hammer",
+                    "id": "dTVH6M"
+                  }
+                ],
+                "id": "skC8xD"
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "Report back to me once you've fixed the railings."
+              },
+              {
+                "player": "Yes Sir, Captain!"
+              }
+            ],
+            "hook": "quest:dwarf-cannon:start",
+            "quest": "Dwarf Cannon"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I'm sorry, I'm too busy mining."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "Well best make the most of it while you can, if the goblins over-run us they'll descend on the mines like a plague of locusts!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "captain-lawgof-inspecting-the-broken-multicannon": [
+      {
+        "type": "message",
+        "text": "The Black Guard sent Lawgof this cannon to help defend the mines against the goblins.",
+        "id": "jsDXQ4"
+      }
+    ],
+    "fixing-the-railings-trying-to-fix-a-railing": [
+      {
+        "type": "message",
+        "text": "This railing is broken and needs to be replaced.",
+        "id": "v16W1z"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a railing:",
+        "steps": [
+          {
+            "player": "I'm not going to be able to fix this without a new railing. Lawgof should have some spare ones."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VqHJWN"
+      },
+      {
+        "type": "message",
+        "text": "You attempt to repalce the broken railing...",
+        "id": "qmRq9I"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a hammer:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You will need a hammer to fix the railings.",
+            "id": "NU0xIR"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "er6WtF"
+      },
+      {
+        "type": "condition",
+        "text": "If the player fails to repair the railing:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your arm is getting tired.",
+                    "id": "yLJ_ME"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You cut yourself on the rusty old railing.",
+                    "id": "O-vALl"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You accidentally crush your hand in the railing.",
+                    "id": "F0DhAA"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You wrench your back trying to handle the railings.",
+                    "id": "_Ffb2E"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "action",
+            "text": "(The player is dealt 0-2 damage.)",
+            "id": "OJaK4D"
+          },
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "player": "Oooch!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "player": "Ow!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "player": "Urrrgh!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "player": "Gah!"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "TpD4Lo"
+      },
+      {
+        "type": "condition",
+        "text": "If the player successfully repairs the railing:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This railing is now fixed.",
+            "id": "A5HlGw"
+          }
+        ],
+        "id": "LXUGQm"
+      },
+      {
+        "type": "condition",
+        "text": "If all the railing are fixed:",
+        "steps": [
+          {
+            "player": "I've fixed all these railings now."
+          }
+        ],
+        "id": "I8UnCD"
+      }
+    ],
+    "fixing-the-railings-inspecting-a-fixed-railing-or-using-a-railing-on-a-fixed-railing": [
+      {
+        "player": "I've fixed all these railings now."
+      }
+    ],
+    "fixing-the-railings-using-other-items-on-fixed-railing": [
+      {
+        "player": "That's better, the goblins won't get past this piece of fencing now."
+      }
+    ],
+    "fixing-the-railings-talking-to-captain-lawgof-before-fixing-the-railings": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Hello, trooper, how are you doing with those railings?"
+      },
+      {
+        "player": "I'm getting there."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "The goblins are still getting in, so there must still be some broken railings."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no railings:",
+        "steps": [
+          {
+            "player": "But I'm out of railings..."
+          },
+          {
+            "type": "line",
+            "speaker": "Captain Lawgof",
+            "text": "That's okay, we've got plenty, here you go."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has no inventory space:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "There's no room in your backpack, so I can't give you anymore."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "ayI7BY"
+          },
+          {
+            "type": "message",
+            "text": "The Dwarf Captain gives you another railing.",
+            "id": "09BKsq"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Kefc0v"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 1 railing:",
+        "steps": [
+          {
+            "player": "Don't worry, I'll find them soon enough."
+          }
+        ],
+        "id": "LGf9Sm"
+      }
+    ],
+    "fixing-the-railings-talking-to-captain-lawgof-after-fixing-the-railings": [
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Well done, trooper! The goblins seems to have stopped getting in. I think you've done the job!"
+      },
+      {
+        "player": "Great, I'll be getting on then."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "What? I'll have you jailed for desertion!"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Besides, I have another commission for you. Just before the goblins over-ran us we lost contact with our watch tower to the South, that's why the goblins managed to catch us unawares. I'd like you to perform"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "a covert operation into enemy territory, to check up on the guards we have stationed there."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "They should have reported in by now ..."
+      },
+      {
+        "player": "Okay, I'll see what I can find out."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Excellent! I have two men there, the dwarf-in-charge is called Gilob, find him and tell him that I'll send him a relief guard just as soon as we mop up these remaining goblins."
+      }
+    ],
+    "fixing-the-railings-talking-to-captain-lawgof-after-fixing-the-railings-talking-to-captain-lawgof-again-without-visiting-the-watchtower": [
+      {
+        "player": "Hello"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Hello, any news from the watchman?"
+      },
+      {
+        "player": "Not yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Well, as quick as you can then."
+      }
+    ],
+    "finding-the-remains-picking-up-the-remains": [
+      {
+        "type": "condition",
+        "text": "If the player already has the remains:",
+        "steps": [
+          {
+            "player": "What? Carrying one set of Dwarf remains is enough..."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "OB-INM"
+      },
+      {
+        "player": "I had better take these remains. {{^|Remains drop to ground with full inventory.}}"
+      }
+    ],
+    "finding-the-remains-talking-to-captain-lawgof-after-picking-up-and-losing-the-remains": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Have you been to the watch tower yet?"
+      },
+      {
+        "player": "Yes, I went up but there was no one there."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "That's strange, Gilob would never leave his post... His son was also with him, something doesn't smell right. Can you return and look for clues?"
+      },
+      {
+        "player": "Of course, I'll do what I can."
+      }
+    ],
+    "finding-the-remains-talking-to-captain-lawgof-after-getting-the-remains": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Have you been to the watch tower yet?"
+      },
+      {
+        "player": "I have some terrible news for you Captain, the goblins over ran the tower, your guards fought well but were overwhelmed."
+      },
+      {
+        "type": "message",
+        "text": "You give the Dwarf Captain his subordinate's remains...",
+        "id": "KcffSR"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "I can't believe it, Gilob was the finest lieutenant I had! We'll give him a fitting funeral, but what of his command? His son, Lollk, was with him. Did you find his body too?"
+      },
+      {
+        "player": "No, there was only one body there, I searched pretty well."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "The goblins must have taken him. Please traveler, seek out the goblins' hideout and return the lad to us. They always attack from the South-east, so they must be based down there."
+      },
+      {
+        "player": "Okay, I'll see if I can find their hideout."
+      }
+    ],
+    "the-dwarf-child-searching-the-crate-containing-lollk-before-returning-the-remains": [
+      {
+        "type": "message",
+        "text": "You search the crate...",
+        "id": "3qAFlW"
+      },
+      {
+        "type": "message",
+        "text": "You search the crate but find nothing.",
+        "id": "A_Mu8u"
+      }
+    ],
+    "the-dwarf-child-searching-the-crate-containing-lollk": [
+      {
+        "type": "message",
+        "text": "You search the crate..",
+        "id": "9NatRS"
+      },
+      {
+        "type": "message",
+        "text": "Inside you see a dwarf child, tied up!",
+        "id": "UQPxVP"
+      },
+      {
+        "type": "message",
+        "text": "You untie the child.",
+        "id": "yacVSg"
+      },
+      {
+        "type": "line",
+        "speaker": "Lollk",
+        "text": "Thank the heavens, you saved me! I thought I'd be goblin lunch for sure!"
+      },
+      {
+        "player": "Are you okay?"
+      },
+      {
+        "type": "line",
+        "speaker": "Lollk",
+        "text": "I think so, I'd better run off home."
+      },
+      {
+        "player": "That's right, you get going, I'll catch up."
+      },
+      {
+        "type": "line",
+        "speaker": "Lollk",
+        "text": "Thanks again, brave adventurer."
+      },
+      {
+        "type": "message",
+        "text": "The dwarf child runs off into the caverns.",
+        "id": "VYQQX5"
+      }
+    ],
+    "the-dwarf-child-talking-to-captain-lawgof-after-finding-lollk": [
+      {
+        "player": "Hello, has Lollk returned yet?"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "He has, and I thank you from the bottom of my heart - without you he'd be a goblin barbecue!"
+      },
+      {
+        "player": "Always a pleasure to help."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "In that case could I ask one more favour of you..."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "When the goblins attacked us some of them managed to slip past my guards and sabotage our cannon. I don't have anybody who understands how it works, could you have a look at it and see if you could get it working for"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "us, please?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, I'll see what I can do.",
+            "steps": [
+              {
+                "player": "Okay, I'll see what I can do."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "Thank you, take this toolkit, you'll need it..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Captain Lawgof",
+                    "text": "You don't have room to take this, report back to me when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "QC5ui4"
+              },
+              {
+                "type": "message",
+                "text": "The Dwarf Captain gives you a tool kit.",
+                "id": "dqO_5X"
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "Report back to me if you manage to fix it."
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I've done enough for today.",
+            "steps": [
+              {
+                "player": "Sorry, I've done enough for today."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "Fair enough, didn't think you'd be able to help anyway, not much chance for a human to be able to fix it when the best dwarven engineers have failed."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fixing-the-cannon-inspecting-the-broken-multicannon-after-getting-the-toolkit": [
+      {
+        "player": "I guess I'd better fix it with the toolkit I was given."
+      }
+    ],
+    "fixing-the-cannon-talking-to-captain-lawgof-before-fixing-the-cannon": [
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "How are you doing in there, trooper? We've been trying our best with that thing, but I just haven't got the patience."
+      },
+      {
+        "player": "It's not an easy job, but I'm getting there."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Good stuff, let me know if you have any luck. If we manage to get that thing working, those goblins will be no trouble at all."
+      },
+      {
+        "type": "condition",
+        "text": "If the player lost the toolkit:",
+        "steps": [
+          {
+            "player": "I'm afraid I lost the toolkit..."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has no inventory space:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "That was silly... never mind, I can give you another, but you'll have to free up some space in your backpack first."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "uhkUAT"
+          },
+          {
+            "type": "line",
+            "speaker": "Captain Lawgof",
+            "text": "That was silly... never mind, here you go."
+          },
+          {
+            "type": "message",
+            "text": "The Dwarf Captain gives you another toolkit.",
+            "id": "R6x03x"
+          }
+        ],
+        "id": "r9soZI"
+      }
+    ],
+    "fixing-the-cannon-fixing-the-cannon": [
+      {
+        "type": "message",
+        "text": "Well done! You've fixed the cannon! Better go and tell Captain Lawgof.",
+        "id": "u2tsbo"
+      }
+    ],
+    "fixing-the-cannon-fire-the-fixed-dwarf-multicannon": [
+      {
+        "player": "This should work nicely now that I've fixed it."
+      }
+    ],
+    "fixing-the-cannon-pick-up-the-fixed-dwarf-multicannon": [
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "What do you think you're doing, trooper! Did I give you orders to move that cannon? No! Well then don't!"
+      }
+    ],
+    "fixing-the-cannon-talking-to-captain-lawgof-after-fixing-the-cannon": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Hello there trooper, how's things?"
+      },
+      {
+        "player": "Well, I think I've done it, take a look..."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "That's fantastic, well done!"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Well I don't believe it, it seems to be working perfectly! I seem to have underestimated you, trooper!"
+      },
+      {
+        "player": "Not bad for an adventurer eh?"
+      },
+      {
+        "type": "message",
+        "text": "You give the toolkit back to Captain Lawgof.",
+        "id": "A9qG_N"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Not bad at all, your effort is appreciated, my friend. Now, if I could figure what the thing uses as ammo..."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "The Black Guard forgot to send instructions. I know I said that was the last favour, but..."
+      },
+      {
+        "player": "What now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "I can't leave this post, could you go to the Black Guard base and find out what this thing actually shoots?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sorry, I've really done enough.",
+            "steps": [
+              {
+                "player": "Sorry, I've really done enough."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "Fair enough, fair enough."
+              }
+            ]
+          },
+          {
+            "text": "Okay then, just for you!",
+            "steps": [
+              {
+                "player": "Okay then, just for you!"
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "That's great, we were lucky you came along when you did. The base is located just South of the Ice Mountain."
+              },
+              {
+                "type": "line",
+                "speaker": "Captain Lawgof",
+                "text": "You'll need to speak to Nulodion, the Dwarf Cannon engineer. He's the Weapons Development Chief for the Black Guard, so if anyone knows how to fire this thing, it'll be him."
+              },
+              {
+                "player": "Okay, I'll see what I can do."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fixing-the-cannon-talking-to-captain-lawgof-after-fixing-the-cannon-talking-to-captain-lawgof-again-after-agreeing-to-see-nulodion": [
+      {
+        "player": "Hi again."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Hello trooper, any word from the Cannon Engineer?"
+      },
+      {
+        "player": "Not yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "The Black Guard camp is South of the Ice Mountain, the quicker we can get some ammo for this thing the quicker those Goblins will leave us be."
+      },
+      {
+        "player": "I'll get to it."
+      }
+    ],
+    "fixing-the-cannon-talking-to-nulodion": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Nulodion",
+        "text": "Can I help you?"
+      },
+      {
+        "player": "Captain Lawgof sent me. He's having trouble with his cannon."
+      },
+      {
+        "type": "line",
+        "speaker": "Nulodion",
+        "text": "Of course, we forgot to send the ammo mould!"
+      },
+      {
+        "player": "It fires mould?"
+      },
+      {
+        "type": "line",
+        "speaker": "Nulodion",
+        "text": "Don't be silly - the ammo's made by using a mould. Here, take these to him. The instructions explain everything."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Nulodion",
+            "text": "You can't take these things unless you free up some space in your inventory. I suggest you visit a bank and then come back to talk to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "JFTMHM"
+      },
+      {
+        "type": "message",
+        "text": "The Cannon Engineer gives you some notes and a mould.",
+        "id": "udZI3D"
+      },
+      {
+        "player": "That's great, thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Nulodion",
+        "text": "Thank you, adventurer. The Dwarf Black Guard will remember this."
+      }
+    ],
+    "fixing-the-cannon-talking-to-nulodion-again": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "type": "condition",
+        "text": "If the player lost the notes:",
+        "steps": [
+          {
+            "player": "I've lost the notes."
+          },
+          {
+            "type": "line",
+            "speaker": "Nulodion",
+            "text": "Here, take these..."
+          },
+          {
+            "type": "unavailable",
+            "id": "3AS-b4"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6s6zE3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player lost the ammo mould:",
+        "steps": [
+          {
+            "player": "I've lost the cannonball mould."
+          },
+          {
+            "type": "line",
+            "speaker": "Nulodion",
+            "text": "Deary me, you are trouble. Here, take this one."
+          },
+          {
+            "type": "unavailable",
+            "id": "gMQBT7"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XZcMdD"
+      },
+      {
+        "type": "line",
+        "speaker": "Nulodion",
+        "text": "So has the Captain figured out how to work the cannon yet?"
+      },
+      {
+        "player": "Not yet, but I'm sure he will."
+      },
+      {
+        "type": "line",
+        "speaker": "Nulodion",
+        "text": "If you can get those items to him it'll be a great help."
+      }
+    ],
+    "talking-to-lawgof-after-getting-the-ammo-mould": [
+      {
+        "player": "Hi."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Hello trooper, any word from the Cannon Engineer?"
+      },
+      {
+        "player": "Yes, I have spoken to him."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the notes and ammo mould:",
+        "steps": [
+          {
+            "player": "He gave me some items to give you... but I seem to have lost something."
+          },
+          {
+            "type": "line",
+            "speaker": "Captain Lawgof",
+            "text": "If you could go back and get another, I'd appreciate it."
+          },
+          {
+            "player": "Oh, okay then."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "k7ADMG"
+      },
+      {
+        "player": "He gave me an ammo mould and some notes to give to you..."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Aah, of course, we make the ammo! This is great, now we will be able to defend ourselves. I don't know how to thank you..."
+      },
+      {
+        "player": "You could give me a cannon..."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "Hah! You'd be lucky, those things are worth a fortune."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "I'll tell you what though, I'll write to the Cannon Engineer requesting him to sell you one. He controls production of the cannons."
+      },
+      {
+        "type": "line",
+        "speaker": "Captain Lawgof",
+        "text": "He won't be able to give you one, but for the right price, I'm sure he'll sell one to you."
+      },
+      {
+        "player": "Hmmm... sounds interesting, I might take you up on that."
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "c8LrCL"
+      },
+      {
+        "type": "unavailable",
+        "id": "4KLP9H"
+      }
+    ]
+  }
+}

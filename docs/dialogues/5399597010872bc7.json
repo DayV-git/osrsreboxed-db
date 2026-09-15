@@ -1,0 +1,568 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-if-the-player-has-at-least-75-combat-level": [
+      {
+        "type": "condition",
+        "text": "If this is the first time talking to Konar:",
+        "steps": [
+          {
+            "npc": "I see we have a new arrival. A bringer of death. Tell me, have you come to serve the balance?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "1EkIZ8"
+          }
+        ],
+        "id": "FKxesz"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has talked to Konar before:",
+        "steps": [
+          {
+            "npc": "Bringer of death, have you come to serve the balance?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "SS6Hff"
+          }
+        ],
+        "id": "7zQf-Q"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "player": "I need another assignment."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an assignment yet:",
+                "steps": [
+                  {
+                    "npc": "You are to bring balance to [amount] [monster] in [area]."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Got any tips for me?",
+                        "steps": [
+                          {
+                            "player": "Got any tips for me?"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Konar provides the corresponding Slayer task tip.",
+                            "id": "6KaReO"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Konar provides the corresponding Slayer area description.",
+                            "id": "FCVYVQ"
+                          },
+                          {
+                            "player": "Great, thanks!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Can I cancel that task? (30 Points)",
+                        "steps": [
+                          {
+                            "player": "Can I cancel that task?"
+                          },
+                          {
+                            "type": "action",
+                            "text": "If player has at least 30 Slayer points:",
+                            "steps": [
+                              {
+                                "npc": "Your task has been cancelled."
+                              },
+                              {
+                                "player": "Okay, great!"
+                              },
+                              {
+                                "npc": "Once the balance has been served, return to me."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "Dj_WsV"
+                          },
+                          {
+                            "type": "action",
+                            "text": "If player does not have at least 30 Slayer points:",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "57_WgZ"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "3Kp6RO"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Where is that area?",
+                        "steps": [
+                          {
+                            "player": "Where is that area?"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Konar provides the corresponding Slayer area description.",
+                            "id": "SmhELZ"
+                          },
+                          {
+                            "player": "Okay, great!"
+                          },
+                          {
+                            "npc": "Once the balance has been served, return to me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, great!",
+                        "steps": [
+                          {
+                            "player": "Okay, great!"
+                          },
+                          {
+                            "npc": "Once the balance has been served, return to me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "CViySn"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still bringing balance to [task monster]; you have [amount] to go. Come back when you're finished."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "LCSOvv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still meant to be bringing balance to [monster] in [area], with [amount] to go."
+                  },
+                  {
+                    "npc": "Bringer of death, I do not feel you are ready for your current task. If you wish, I can cancel it. This will not wipe your task streaks."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, please cancel it.",
+                        "steps": [
+                          {
+                            "player": "Yes, please cancel it."
+                          },
+                          {
+                            "npc": "Very well. If you still wish to maintain the balance, you can get a new assignment."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, thanks, I want to try doing it.",
+                        "steps": [
+                          {
+                            "player": "No, thanks, I want to try doing it."
+                          },
+                          {
+                            "npc": "Then I wish you well, bringer of death."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1tLLHT"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me, or anything to trade?"
+              },
+              {
+                "npc": "Those who serve the balance are always rewarded. I can grant these rewards. I can also grant you the equipment needed to serve the balance, for a price of course."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Look at rewards.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Rewards",
+                        "id": "OFB3Ex"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look at shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Equipment (shop)",
+                        "id": "E3wSqR"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has disabled combat checking:",
+                "steps": [
+                  {
+                    "player": "Let's talk about the difficulty of my assignments."
+                  },
+                  {
+                    "npc": "When tasking you to serve the balance, I do not currently consider your combat level."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I can handle any task.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I can handle any task."
+                          },
+                          {
+                            "npc": "Your zeal is to be commended. Use it well when serving the balance."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "In future, please don't give anything too tough.",
+                        "steps": [
+                          {
+                            "player": "In future, please don't give anything too tough."
+                          },
+                          {
+                            "npc": "As you wish. From now on, your combat level will be taken into account when tasks are assigned."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will now take the player's combat level into account.",
+                            "id": "u0CLRJ"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zQ--DL"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enabled combat checking:",
+                "steps": [
+                  {
+                    "player": "Let's talk about the difficulty of my assignments."
+                  },
+                  {
+                    "npc": "When tasking you to serve the balance, I consider your combat level, so you shouldn't get anything too challenging."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I don't want anything too tough.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I don't want anything too tough."
+                          },
+                          {
+                            "npc": "Then we will continue on our current path."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Stop checking my combat level - I can take anything!",
+                        "steps": [
+                          {
+                            "player": "Stop checking my combat level - I can take anything!"
+                          },
+                          {
+                            "npc": "Your zeal is to be commended. From now on, your combat level will not be considered when tasks are assigned."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will no longer take the player's combat level into account.",
+                            "id": "Mhu6Gh"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "tWZfLp"
+              }
+            ]
+          },
+          {
+            "text": "I'd rather not.",
+            "steps": [
+              {
+                "player": "I'd rather not."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-does-not-have-at-least-75-combat-level": [
+      {
+        "type": "condition",
+        "text": "If this is the first time talking to Konar:",
+        "steps": [
+          {
+            "npc": "I see we have a new arrival. A bringer of death. Tell me, have you come to serve the balance?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "18Rv6Q"
+          }
+        ],
+        "id": "KJeqdO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has talked to Konar before:",
+        "steps": [
+          {
+            "npc": "Bringer of death, have you come to serve the balance?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "RTcKau"
+          }
+        ],
+        "id": "oT52s3"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "A guardian of life, and a bringer of death. There must always be a balance. My people and I serve this balance. You could serve the balance as well, but you'll need some practice first."
+              },
+              {
+                "npc": "There is a Slayer Master in Burthorpe, he goes by the name of Turael. Learn from him, and you will soon be ready to serve."
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "DhUI-m"
+              }
+            ]
+          },
+          {
+            "text": "I'd rather not.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "MS1iXb"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "via-the-astral-contact-spell": [
+      {
+        "npc": "A bringer of death calls from afar. What do you desire?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "41yTLT"
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1FU4Ga"
+              }
+            ]
+          },
+          {
+            "text": "Err... Nothing...",
+            "steps": [
+              {
+                "player": "Err... Nothing..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "via-the-astral-contact-spell-if-the-player-is-near-konar": [
+      {
+        "npc": "Bringer of death, why do you insist on using such magic when I'm right next to you? Come and talk to me."
+      }
+    ],
+    "via-an-enchanted-gem-or-a-slayer-ring-during-a-task": [
+      {
+        "npc": "A bringer of death calls from afar. What do you desire?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How am I doing so far?",
+            "steps": [
+              {
+                "player": "How am I doing so far?"
+              },
+              {
+                "npc": "You're currently assigned to bring balance to [monster] in [area]; you have [amount] more to go. Your reward point tally is [amount]."
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I am Konar quo Maten. Like you, I am a bringer of death. Together, we can serve the balance."
+              }
+            ]
+          },
+          {
+            "text": "Where are you?",
+            "steps": [
+              {
+                "player": "Where are you?"
+              },
+              {
+                "npc": "You'll find me on Mount Karuulm. I'll be here when you need a new purpose."
+              }
+            ]
+          },
+          {
+            "text": "Got any tips for me?",
+            "steps": [
+              {
+                "player": "Got any tips for me?"
+              },
+              {
+                "type": "action",
+                "text": "Konar provides the corresponding Slayer task tip",
+                "id": "o-kKvB"
+              },
+              {
+                "type": "action",
+                "text": "Konar provides the correspoding area descriptor",
+                "id": "8HhRCY"
+              },
+              {
+                "player": "Great, thanks!"
+              }
+            ]
+          },
+          {
+            "text": "Nothing really.",
+            "steps": [
+              {
+                "player": "Nothing really."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "getting-a-task-bypassing-the-combat-level-requirement-with-a-slayer-cape": [
+      {
+        "type": "line",
+        "speaker": "Konar",
+        "text": "Your cape attests that you are experienced enough to serve the balance. I will disregard your lack of experience in combat."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "7nfR6e"
+      }
+    ]
+  }
+}

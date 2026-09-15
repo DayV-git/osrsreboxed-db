@@ -1,0 +1,127 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome to Blackhole, human. Can I help you?"
+    },
+    {
+      "type": "choice",
+      "prompt": "What would you like to say?",
+      "options": [
+        {
+          "text": "Who are you?",
+          "steps": [
+            {
+              "player": "Who are you?"
+            },
+            {
+              "npc": "Why, I'm Thordur. Thordur the dwarf. A long time ago, I used to run a business letting people visit my Blackhole for fun."
+            },
+            {
+              "npc": "The business was good, but eventually the time came for me to retire. So now I live here in Blackhole where it's more peaceful."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "4ut-fW"
+            }
+          ]
+        },
+        {
+          "text": "What is this place?",
+          "steps": [
+            {
+              "player": "What is this place?"
+            },
+            {
+              "npc": "Blackhole? Well, it's sort of like a hole, and it's generally not very well lit. I'll let you work out the rest."
+            },
+            {
+              "npc": "If you're asking why it's here at all, it was a sort of prison. Bad people were locked here. But it's my home now."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "T4guJ6"
+            }
+          ]
+        },
+        {
+          "text": "How can I leave?",
+          "steps": [
+            {
+              "player": "How can I leave?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a Disk of Returning in their inventory:",
+              "steps": [
+                {
+                  "npc": "Just activate your Disk of Returning. It'll pop you back out to the mines."
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "i4s-Cz"
+                }
+              ],
+              "id": "EhUY27"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a Disk of Returning in their inventory:",
+              "steps": [
+                {
+                  "npc": "Why, surely you've got your Disk of Returning? I can't believe you could have lost it in here."
+                },
+                {
+                  "player": "Nope, I don't have a Disk of Returning."
+                },
+                {
+                  "npc": "I really don't understand humans sometimes. Hold tight and I'll sort you out..."
+                },
+                {
+                  "type": "choice",
+                  "prompt": "What would you like to say?",
+                  "options": [
+                    {
+                      "text": "Yes, get me out now.",
+                      "steps": [
+                        {
+                          "player": "Yes, get me out now."
+                        },
+                        {
+                          "type": "action",
+                          "text": "Thordur teleports the player to the Dwarven Mine",
+                          "action": "teleport",
+                          "action_source": "text",
+                          "id": "esSa7F"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No thanks, I'll stay here.",
+                      "steps": [
+                        {
+                          "player": "No thanks, I'll stay here."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "1TgzIb"
+            }
+          ]
+        },
+        {
+          "text": "I'm fine, thanks.",
+          "steps": [
+            {
+              "player": "I'm fine, thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

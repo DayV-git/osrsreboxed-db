@@ -1,0 +1,219 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Good day to you my friend, a beautiful one at that. Would you like some groceries? I have all sorts. Alcohol also, if you're partial to a drink."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              },
+              {
+                "npc": "Ahh well, all the best to you."
+              }
+            ]
+          },
+          {
+            "text": "I'll have a look.",
+            "steps": [
+              {
+                "player": "I'll have a look."
+              },
+              {
+                "npc": "There's a good human."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Funch's Fine Groceries",
+                "id": "frVFFJ"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "P5pctO"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "rvOgK_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "zOXNKs"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6KDoM8"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Heckel Funch",
+            "id": "cG4z9h"
+          },
+          {
+            "npc": "Hey! Thanks a lot mate. You're a diamond."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "ijkca1"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "ou8uk1"
+                  }
+                ],
+                "id": "JhGDuD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ySK9o6"
+              }
+            ],
+            "id": "-_LYQS"
+          }
+        ],
+        "id": "CeQ-_O"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "tp0w1F"
+          }
+        ],
+        "id": "4TJlZi"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Please do puzzle for me human!"
+      },
+      {
+        "type": "message",
+        "text": "Heckel Funch has given you a puzzle box!",
+        "id": "UZGp20"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "PNI0sK"
+      }
+    ],
+    "treasure-trails-hard-when-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "No, that's wrong I'm afraid."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gfnYxg"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Well done, human!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Heckel Funch has given you another clue scroll!",
+                "id": "ibpC9H"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "RbaXWE"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "sWT8NH"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "7bc_gO"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "NAtG8C"
+              }
+            ],
+            "id": "tE_GLe"
+          }
+        ],
+        "id": "rUnP6C"
+      }
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I would like to do the skullball course.",
+            "steps": [
+              {
+                "player": "I think I'll give the Skullball Course a go."
+              },
+              {
+                "type": "action",
+                "text": "A skullball spawns from one of the holes.",
+                "id": "9-jEF4"
+              }
+            ]
+          },
+          {
+            "text": "What are the instructions for the skullball course?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "GUYN3C"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-starting-the-skullball-course": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are the instructions for using the skullball course?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "GUYN3C"
+              }
+            ]
+          },
+          {
+            "text": "I seem to have lost my ball - can I have another one?",
+            "steps": [
+              {
+                "player": "I seem to have lost my ball - can I have another one?"
+              },
+              {
+                "npc": "No problem, here's another one. You'll have to start from the beginning again, but the timer will be restarted too."
+              },
+              {
+                "type": "action",
+                "text": "New skullball spawns.",
+                "id": "AZK3fS"
+              }
+            ]
+          },
+          {
+            "text": "I give up, I can't do it - take my ball away.",
+            "steps": [
+              {
+                "player": "I give up, I can't do it - take my ball away."
+              },
+              {
+                "npc": "Oh dear, such a defeatist."
+              },
+              {
+                "type": "action",
+                "text": "Skullball disappears.",
+                "id": "VGXgYE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-not-wearing-the-ring-of-charos": [
+      {
+        "npc": "Grrr - you don't belong in here, human!"
+      }
+    ]
+  },
+  "branches": {
+    "GUYN3C": [
+      {
+        "player": "What are the instructions for using the skullball course?"
+      },
+      {
+        "npc": "The skullball comes out of one of these four spawnholes. Just kick the ball through the middle of each goal, through the skeleton's feet."
+      },
+      {
+        "npc": "There are 10 goals, which you must complete in order, and one final goal."
+      },
+      {
+        "npc": "An arrow will point to your ball, just in case lots of people are using the course at the same time as yourself."
+      },
+      {
+        "npc": "The better your time, the more agillity XP you will be awarded. The timer starts when you score your first goal."
+      }
+    ]
+  }
+}

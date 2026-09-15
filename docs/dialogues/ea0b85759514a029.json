@@ -1,0 +1,478 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Can you hear me?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing an amulet of ghostspeak:",
+        "steps": [
+          {
+            "player": "Of course! I'm wearing an amulet of ghostspeak."
+          }
+        ],
+        "id": "L6zmuy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not wearing an amulet of ghostspeak:",
+        "steps": [
+          {
+            "player": "...I can, but I'm not wearing an amulet of ghostspeak... A-am I dead?"
+          }
+        ],
+        "id": "LSucug"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed The Restless Ghost:",
+        "steps": [
+          {
+            "player": "...I can. Are you a ghost?"
+          }
+        ],
+        "id": "4yfiW-"
+      },
+      {
+        "npc": "I'm no ghost! I'm a spirit, I'm injecting my thoughts into your head."
+      },
+      {
+        "player": "Oh, that's... interesting. Also rather disturbing..."
+      },
+      {
+        "npc": "Try not to think about it."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you imbue my sceptre?",
+            "condition": "If the player has a Skull sceptre and either the Fancy boots, Fighting boots, or Fancier boots in their inventory:",
+            "steps": [
+              {
+                "player": "Could you imbue my sceptre?"
+              },
+              {
+                "npc": "Of course I can... But first, you must show me whatever treasure lies within that cradle and make sure that your account is safe."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Is my account safe?",
+                    "steps": [
+                      {
+                        "player": "Is my account safe?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have the RuneScape Authenticator enabled on their account:",
+                        "steps": [
+                          {
+                            "npc": "To make sure your account is secured, please turn on the authenticator. Simply visit the support link on the oldschool.runescape.com website."
+                          },
+                          {
+                            "player": "Oh, that sounds like a great idea, I'll go do that."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "nM9pCf"
+                          }
+                        ],
+                        "id": "VjwWD6"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the RuneScape Authenticator enabled on their account:",
+                        "steps": [
+                          {
+                            "npc": "It seems you have the authenticator set up, that's perfect! Now just show me the treasure."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "tygoWH"
+                          }
+                        ],
+                        "id": "Z90S7u"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Is this the treasure?",
+                    "steps": [
+                      {
+                        "player": "Is this the treasure?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has Fancy boots in their inventory:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You show the fancy boots to Solztun.",
+                            "id": "6VhE6-"
+                          }
+                        ],
+                        "id": "kXhUXq"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has Fighting boots in their inventory:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You show the fighter boots to Solztun.",
+                            "id": "wLERMu"
+                          }
+                        ],
+                        "id": "DM2B8U"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has Fancier boots in their inventory:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You show the fancier boots to Solztun.",
+                            "id": "PjRLpZ"
+                          }
+                        ],
+                        "id": "P09MTz"
+                      },
+                      {
+                        "npc": "Oh marvellous! If only I had corporeal form I'd be able to wear them, but alas..."
+                      },
+                      {
+                        "player": "So could you imbue my sceptre?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have the RuneScape Authenticator enabled on their account:",
+                        "steps": [
+                          {
+                            "npc": "It seems your account isn't as secure as it could be, I'm afraid I can't imbue your sceptre."
+                          },
+                          {
+                            "player": "Oh."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "6rawn4"
+                          }
+                        ],
+                        "id": "ZJg2oD"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the RuneScape Authenticator enabled on their account:",
+                        "steps": [
+                          {
+                            "npc": "Of course, of course! In fact if you have more than one I'll imbue all of them!"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Solztun imbues any Skull sceptres the player has.",
+                            "id": "ZHlxEk"
+                          },
+                          {
+                            "npc": "There you go, now that I've imbued all of your sceptres, once they run out of charges they will no longer break and they can be charged with any piece of the sceptre you find."
+                          },
+                          {
+                            "player": "Thank you very much! How many charges does each piece give?"
+                          },
+                          {
+                            "npc": "Most of them give 3, although the left skull gives 5. Each completed tier of the Varrock achievement diary will get you one extra charge per piece and allow your sceptre to hold 4 more charges."
+                          },
+                          {
+                            "npc": "You can use a chisel to break a sceptre piece into fragments, then use those to charge the sceptre instead. More flexible if you ask me."
+                          },
+                          {
+                            "npc": "Finally, be warned that if you disable your authenticator, the imbue on the sceptre will be removed."
+                          },
+                          {
+                            "player": "Fantastic! It's best I keep my authenticator activated then. Good bye Solztun!"
+                          },
+                          {
+                            "npc": "Stay safe, adventurer."
+                          }
+                        ],
+                        "id": "n1blRS"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "KfXhQ0"
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "condition",
+                "text": "If speaking for the first time:",
+                "steps": [
+                  {
+                    "npc": "I am Solztun, the greatest barbarian explorer!"
+                  },
+                  {
+                    "player": "It's very nice to meet you, Solztun! I'm [player name]."
+                  },
+                  {
+                    "npc": "I know."
+                  },
+                  {
+                    "player": "... so, you were exploring this place?"
+                  },
+                  {
+                    "npc": "Yes, my sister told me not to go, she said it was dangerous and that I'm no fighter. Unfortunately... she was correct."
+                  },
+                  {
+                    "player": "Oh! Your sister is Litara, the woman out on the surface? How come she was correct?"
+                  },
+                  {
+                    "npc": "I died... Of course, I tried escaping, long before I'd made it to the treasure, but I was shot with arrows just as I approached the exit."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "uvVVZT"
+                  }
+                ],
+                "id": "KTSeob"
+              },
+              {
+                "type": "condition",
+                "text": "If speaking again:",
+                "steps": [
+                  {
+                    "npc": "As I said, I am Solztun, the greatest barbarian explorer! I came to explore this place, but unfortunately I died long before I made it to the treasure."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "RjrDOy"
+                  }
+                ],
+                "id": "UW5lyC"
+              },
+              {
+                "player": "Nobody came to help?!"
+              },
+              {
+                "npc": "Oh no, they had no idea I was hurt, I guess they assumed I'd found the treasure and made a new life for myself."
+              },
+              {
+                "player": "Were you not a fan of the barbarian life style?"
+              },
+              {
+                "npc": "It was all death and pillaging, I prefer the finer things in life, like exploration and discovery!"
+              },
+              {
+                "player": "Ah, I too enjoy those."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "NPg1qa"
+              }
+            ]
+          },
+          {
+            "text": "Why are you here?",
+            "steps": [
+              {
+                "player": "Why are you here?"
+              },
+              {
+                "npc": "I came for treasure!"
+              },
+              {
+                "player": "Oh right, you were looking for what's in that cradle?"
+              },
+              {
+                "npc": "Yes, but alas, I'm dead."
+              },
+              {
+                "player": "I guess I could show you... for a price."
+              },
+              {
+                "npc": "Hmm... I don't have much to offer, but if you happen upon a skull sceptre, I could make it stronger."
+              },
+              {
+                "player": "Stronger you say... In what way?"
+              },
+              {
+                "npc": "Currently the sceptre is fragile, it breaks once all charges have been used. Show me the treasure and I could imbue it so it can be recharged with any sceptre piece."
+              },
+              {
+                "player": "You, my dead friend, have a deal!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "LpG20v"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "Stay safe, adventurer."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-a-skull-sceptre-on-him": [
+      {
+        "player": "Could you imbue my sceptre?"
+      },
+      {
+        "npc": "Of course I can... But first, you must show me whatever treasure lies within that cradle and make sure that your account is safe."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Is my account safe?",
+            "steps": [
+              {
+                "player": "Is my account safe?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the RuneScape Authenticator enabled on their account:",
+                "steps": [
+                  {
+                    "npc": "To make sure your account is secured, please turn on the authenticator. Simply visit the support link on the oldschool.runescape.com website."
+                  },
+                  {
+                    "player": "Oh, that sounds like a great idea, I'll go do that."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "GJy9qm"
+                  }
+                ],
+                "id": "RT1Gi_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the RuneScape Authenticator enabled on their account:",
+                "steps": [
+                  {
+                    "npc": "It seems you have the authenticator set up, that's perfect! Now just show me the treasure."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "_vbw35"
+                  }
+                ],
+                "id": "Wrp_jR"
+              }
+            ]
+          },
+          {
+            "text": "Is this the treasure?",
+            "steps": [
+              {
+                "player": "Is this the treasure?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has either the Fancy boots or the Fighting boots in their inventory or bank:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "3FXDBp"
+                  }
+                ],
+                "id": "rctGRz"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have either the Fancy boots or the Fighting boots in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "No, that's not it."
+                  },
+                  {
+                    "player": "But I didn't show you anything."
+                  },
+                  {
+                    "npc": "I sense that you don't have the treasure."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Could you imbue my sceptre?",
+                        "condition": "If the player has either Fancy boots or Fighting boots in their inventory:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "h_mm7d"
+                          }
+                        ],
+                        "id": "VxmOO-"
+                      },
+                      {
+                        "text": "Who are you?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "c3UkUJ"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Why are you here?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "_PGkKJ"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Bye!",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "XqYnZW"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Jvhok1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

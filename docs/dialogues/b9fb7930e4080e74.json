@@ -1,0 +1,451 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Heya! What can I get you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What ales are you serving?",
+            "steps": [
+              {
+                "player": "What ales are you serving?"
+              },
+              {
+                "npc": "Well, we've got Asgarnian Ale, Wizard's Mind Bomb and Dwarven Stout, all for only 3 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "One Asgarnian Ale, please.",
+                    "steps": [
+                      {
+                        "player": "One Asgarnian Ale, please."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JgU_z4"
+                          }
+                        ],
+                        "id": "RQ9XtY"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "an Asgarnian Ale",
+                            "id": "sDOJm1"
+                          },
+                          {
+                            "player": "Thanks, Kaylee."
+                          }
+                        ],
+                        "id": "xXhGTs"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll try the Mind Bomb.",
+                    "steps": [
+                      {
+                        "player": "I'll try the Mind Bomb."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JgU_z4"
+                          }
+                        ],
+                        "id": "2Kq1DU"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a Wizard's mind bomb",
+                            "id": "HdmZhe"
+                          },
+                          {
+                            "player": "Thanks, Kaylee."
+                          }
+                        ],
+                        "id": "51GBN_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I have a Dwarven Stout?",
+                    "steps": [
+                      {
+                        "player": "Can I have a Dwarven Stout?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "JgU_z4"
+                          }
+                        ],
+                        "id": "cAkioE"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 3 or more coins:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a Dwarven Stout",
+                            "id": "6PAoLg"
+                          },
+                          {
+                            "player": "Thanks, Kaylee."
+                          }
+                        ],
+                        "id": "CRZ8lR"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't feel like any of those.",
+                    "steps": [
+                      {
+                        "player": "I don't feel like any of those."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've got this beer glass...",
+            "condition": "If the player has one empty beer glass in their inventory:",
+            "steps": [
+              {
+                "player": "I've got this beer glass..."
+              },
+              {
+                "npc": "We'll buy it for a couple of coins if you're interested."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay, sure.",
+                    "steps": [
+                      {
+                        "player": "Okay, sure."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The empty beer glass is removed from the player's inventory.",
+                        "id": "gL0t9S"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "2 coins",
+                        "id": "6Al77j"
+                      },
+                      {
+                        "npc": "There you go."
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I like empty beer glasses.",
+                    "steps": [
+                      {
+                        "player": "No thanks, I like empty beer glasses."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "CvaWXs"
+          },
+          {
+            "text": "I've got these beer glasses...",
+            "condition": "If the player has two or more empty beer glasses in their inventory:",
+            "steps": [
+              {
+                "player": "I've got these beer glasses..."
+              },
+              {
+                "npc": "Ooh, we'll buy those off you if you're interested. 2 coins per glass."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay, sure.",
+                    "steps": [
+                      {
+                        "player": "Okay, sure."
+                      },
+                      {
+                        "type": "action",
+                        "text": "All empty beer glasses are removed from the player's inventory.",
+                        "id": "wJMf6s"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "2 coins per empty beer glass",
+                        "id": "0Iu3I4"
+                      },
+                      {
+                        "npc": "There you go."
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I like empty beer glasses.",
+                    "steps": [
+                      {
+                        "player": "No thanks, I like empty beer glasses."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "UBiw7c"
+          },
+          {
+            "text": "What's this about the party room?",
+            "condition": "If there are high value items in the party room chest:",
+            "steps": [
+              {
+                "player": "What's this about the party room?"
+              },
+              {
+                "npc": "Have you heard? Someone's planning a big party!"
+              },
+              {
+                "player": "What do you mean?"
+              },
+              {
+                "npc": "Someone's put something very valuable into the party room drop chest! If you go to the party room and pull the lever you might have a chance to get it!"
+              },
+              {
+                "npc": "It could be your lucky day!"
+              }
+            ],
+            "id": "O1lPEK"
+          }
+        ]
+      }
+    ],
+    "using-items-on-kaylee-beer-glass": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "Z6lDnv"
+      }
+    ],
+    "using-items-on-kaylee-coins": [
+      {
+        "type": "action",
+        "text": "One coin is removed from the player's inventory.",
+        "id": "ctymvv"
+      },
+      {
+        "npc": "Thanks!"
+      }
+    ],
+    "using-items-on-kaylee-any-other-item": [
+      {
+        "npc": "No thanks, I don't need that."
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "CuagLY"
+      },
+      {
+        "type": "unavailable",
+        "id": "hgC2mV"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "fQw1jf"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "[another clue scroll/a casket]",
+            "id": "rg5lId"
+          },
+          {
+            "type": "message",
+            "text": "Kaylee has given you another clue scroll!",
+            "id": "GTwgAD"
+          }
+        ],
+        "id": "51-p8P"
+      }
+    ],
+    "overhead-dialogue-when-the-party-room-chest-contains-more-than-50-000-or-76-000-coins-in-grand-exchange-value-on-a-f2p-or-members-world-respectively": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Party! Party!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Something's happening in the party room!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Everyone get to the party room!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "What's happening in the party room?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Someone's having a big party!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-when-the-lever-is-pulled": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Get to the party room NOW!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Get to the party room!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Get to the party room quick!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Big value items in the party room now!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Quick! Get to the party room!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "JgU_z4": [
+      {
+        "npc": "I said 3 coins! You haven't got 3 coins!"
+      },
+      {
+        "player": "Sorry, I'll come back another day."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

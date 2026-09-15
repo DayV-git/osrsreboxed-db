@@ -1,0 +1,549 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings, adventurer. Welcome to the Myths' Guild."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the guild.",
+            "condition": "If the player is not in the process of completing Dragon Slayer II:",
+            "steps": [
+              {
+                "player": "Tell me about the guild."
+              },
+              {
+                "npc": "The Myths' Guild is home to those who wish to uncover the lost secrets of this world. We investigate the myths of these lands to see if any facts may be hidden within them."
+              },
+              {
+                "npc": "Here, we discover things that others only dream of. However, the cost of entry is not insignificant. Only the most worthy may share in our secrets."
+              },
+              {
+                "player": "Am I worthy?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not started Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "Not yet. However, that could well change."
+                  },
+                  {
+                    "npc": "For as long as history remembers, dragons have roamed these lands, but despite how long they've been here, much of their history remains hidden."
+                  },
+                  {
+                    "npc": "There are tales of course, but tales are not enough for us. We want you to discover the truth. Where did the dragons come from? Why are they here? Who do they serve?"
+                  },
+                  {
+                    "npc": "Answer these questions for us. Help us fill our Library of Knowledge. In return, we will grant you access to the guild and you will reap the rewards within."
+                  },
+                  {
+                    "npc": "So, do you feel up for the challenge?"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Start the Dragon Slayer II quest?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "player": "Yes. Where should I begin?"
+                          },
+                          {
+                            "npc": "Head to Karamja Wines, Spirits, and Beers at Musa Point. There you'll find Dallas Jones. We've heard that he is investigating the destruction of Crandor. This seems like a good place to start."
+                          },
+                          {
+                            "npc": "Good luck."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "hook": "quest:dragon-slayer-ii:start",
+                        "quest": "Dragon Slayer II"
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qeR7cm"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "f8udt0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has finished Dragon Slayer II:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "_RsqRP"
+                  }
+                ],
+                "id": "AcDyfE"
+              }
+            ],
+            "id": "bv0s4O"
+          },
+          {
+            "text": "How can I gain access to the guild?",
+            "condition": "If the player has not started Dragon Slayer II:",
+            "steps": [
+              {
+                "player": "How can I gain access to the guild?"
+              },
+              {
+                "npc": "Only the most worthy are allowed access into the Myths' Guild. If you wish to enter, you'll need to prove yourself."
+              },
+              {
+                "player": "How can I do that?"
+              },
+              {
+                "npc": "As time passes, that which was once fact, becomes myth. Some tales are just that, tales. However, some tales are something more."
+              },
+              {
+                "npc": "Here at the Myths' Guild, we live to tell the difference between the two. If you wish to join us, you must do the same."
+              },
+              {
+                "player": "So what myth would you like me to investigate?"
+              },
+              {
+                "type": "action",
+                "text": "Continues above from \"For as long as history remembers\"",
+                "id": "0TuBUR"
+              }
+            ],
+            "id": "z7yOh5"
+          },
+          {
+            "text": "Let's talk about my quest.",
+            "condition": "If the player has partially completed Dragon Slayer II:",
+            "steps": [
+              {
+                "player": "Let's talk about my quest."
+              },
+              {
+                "npc": "How are things progressing?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not yet discovered anything:",
+                "steps": [
+                  {
+                    "player": "I'm yet to discover anything."
+                  },
+                  {
+                    "npc": "Well return to us once you do. If you help us fill our Library of Knowledge, we shall grant you access to the guild."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "wLTVEf"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has been to Lithkren but not opened the doors:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "C0MkLf"
+                  }
+                ],
+                "id": "07AJDP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has opened the grandiose doors on Lithkren but not entered them:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "WSUCMV"
+                  }
+                ],
+                "id": "YK5cm0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has released Galvek:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "6XBHNG"
+                  }
+                ],
+                "id": "jYJfqA"
+              }
+            ],
+            "id": "Ozbmk7"
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "Farewell, adventurer."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "Greetings adventurer. Welcome to the Myths' Guild."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the Guild.",
+            "steps": [
+              {
+                "player": "Tell me about the Guild."
+              },
+              {
+                "npc": "The Myths' Guild is home to those who wish to uncover the lost secrets of this world. We investigate the myths of this land to see if any facts may be hidden within them."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not finished Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "We discover things here that others only dream of. The cost of entry is not insignificant though, only the most worthy may share in our secrets."
+                  }
+                ],
+                "id": "FqjBHO"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has finished Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "Here you will discover things that others only dream of. The cost of entry is not insignificant though, only the most worthy may share in our secrets."
+                  }
+                ],
+                "id": "BcrrSC"
+              },
+              {
+                "player": "Am I worthy?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the requirements for Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "Not yet. However, that could well change. Go out and hone your skills then return to us."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "y8hJD8"
+              },
+              {
+                "type": "condition",
+                "text": "{{tmissing|Unknown condition}}",
+                "steps": [
+                  {
+                    "npc": "I'm afraid not. Perhaps that will change one day."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WZ79hh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the requirements but has not started Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "Not yet. However, that could well change."
+                  },
+                  {
+                    "npc": "For as long as history remembers, dragons have roamed these lands. But despite how long they've been here, much of their history remains hidden."
+                  },
+                  {
+                    "npc": "There are tales of course but tales are not enough for us. We want you to discover the truth. Where did the dragons come from? Why are they here? Who do they serve?"
+                  },
+                  {
+                    "npc": "Answer these questions for us. Help us fill our Library of Knowledge. In return, we will grant you access to the Guild and you will reap the rewards within."
+                  },
+                  {
+                    "npc": "So do you feel up for the challenge?"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Start the Dragon Slayer II quest?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "player": "Yes. Where should I begin?"
+                          },
+                          {
+                            "npc": "Head to Karamja Wines, Spirits, and Beers at Musa Point. There you'll find Dallas Jones. We've heard that he is investigating the destruction of Crandor. This seems like a good place to begin."
+                          },
+                          {
+                            "npc": "Good luck."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "hook": "quest:dragon-slayer-ii:start",
+                        "quest": "Dragon Slayer II"
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qeR7cm"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "joz2pL"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has started Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "Not yet. However, you are on the right path. Complete the task we've assigned you and we will allow you entry into the Guild."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "kEVBP6"
+              },
+              {
+                "type": "condition",
+                "text": "Prior to the release of Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid the Guild is not currently accepting new members. However, we will soon be opening our doors again."
+                  },
+                  {
+                    "npc": "When we do, you should return here. We may well have a place for you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "_vr5hl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Dragon Slayer II:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "_RsqRP"
+                  }
+                ],
+                "id": "RQ3AoZ"
+              }
+            ]
+          },
+          {
+            "text": "How can I gain access to the Guild?",
+            "condition": "If the player has not started Dragon Slayer II:",
+            "steps": [
+              {
+                "player": "How can I gain access to the Guild?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the requirements for Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "Only the most worthy may access our Guild and I'm afraid you are not quite there yet. Go out and hone your skills then return to us."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You do not meet all the requirements to start the Dragon Slayer II quest.",
+                    "id": "9Oy0j6"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "IOkaMa"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the requirements for Dragon Slayer II:",
+                "steps": [
+                  {
+                    "npc": "Only the most worthy are allowed access into the Myths' Guild. If you want entry, you'll need to prove yourself."
+                  },
+                  {
+                    "player": "How can I do that?"
+                  },
+                  {
+                    "npc": "As time passes, that which was once fact, becomes myth. Some tales are just that, tales. However, some tales are something more."
+                  },
+                  {
+                    "npc": "Here at the Myths' Guild, we live to tell the difference between the two. If you wish to join us, you must do the same."
+                  },
+                  {
+                    "player": "So what myth would you like me to investigate?"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Continues above from \"For as long as history remembers\"",
+                    "id": "VE0GuE"
+                  }
+                ],
+                "id": "_O1VYS"
+              }
+            ],
+            "id": "P6B69k"
+          },
+          {
+            "text": "Let's talk about my quest.",
+            "condition": "If the player has partially completed Dragon Slayer II:",
+            "steps": [
+              {
+                "player": "Let's talk about my quest."
+              },
+              {
+                "npc": "How are things progressing?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not yet discovered anything:",
+                "steps": [
+                  {
+                    "player": "I'm yet to discover anything."
+                  },
+                  {
+                    "npc": "Well return to us once you do. If you help us fill our Library of Knowledge, we shall grant you access to the Guild."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Ft9JMY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has been to Lithkren but not opened the doors:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "C0MkLf"
+                  }
+                ],
+                "id": "5bBLj4"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has opened the grandiose doors on Lithkren but not entered them:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "WSUCMV"
+                  }
+                ],
+                "id": "tOpqEl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has released Galvek:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "6XBHNG"
+                  }
+                ],
+                "id": "N7AY6g"
+              }
+            ],
+            "id": "M4ywUS"
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "Farewell adventurer."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "qeR7cm": [
+      {
+        "player": "No. This is too much for me."
+      },
+      {
+        "npc": "As you wish. If you change your mind, you know where we are."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "_RsqRP": [
+      {
+        "npc": "Absolutely. You've proven your worth to the guild and may enter whenever you please."
+      }
+    ],
+    "C0MkLf": [
+      {
+        "player": "I'm investigating the origin of Elvarg. I've found some old doors on a ruined island but they're locked. I'm trying to find the key."
+      },
+      {
+        "npc": "Well keep at it. If you help us fill our Library of Knowledge, we shall grant you access to the Guild."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "WSUCMV": [
+      {
+        "player": "I'm investigating the origin of Elvarg. I've found some old doors on a ruined island but they're locked. I think something important lies behind them."
+      },
+      {
+        "npc": "Well keep at it. If you help us fill our Library of Knowledge, we shall grant you access to the Guild."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "6XBHNG": [
+      {
+        "player": "I was investigating the origin of Elvarg but I accidently released a dragonkin."
+      },
+      {
+        "npc": "Well that can't be good. You'd better sort that out."
+      },
+      {
+        "player": "I'm working on it."
+      }
+    ]
+  }
+}

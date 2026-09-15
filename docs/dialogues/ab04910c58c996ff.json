@@ -1,0 +1,250 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hey it's the Hero! Wow! You're amazing, how on earth did you manage to tackle those two juvinates and Gadderanks? And the town is lovely, you've done a great job!"
+      },
+      {
+        "player": "You're more than welcome."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "Oh, hello, Vasile is the name and I help to keep the village clear of rat infestations. Clearly I love my work, as I bring it home with me...on a stick!"
+              }
+            ]
+          },
+          {
+            "text": "How do you like your town?",
+            "steps": [
+              {
+                "player": "How do you like your town?"
+              },
+              {
+                "npc": "It's just perfect, thanks so much for your efforts."
+              }
+            ]
+          },
+          {
+            "text": "What's happening around here?",
+            "steps": [
+              {
+                "player": "What's happening around here?"
+              },
+              {
+                "npc": "Oh, not much really, we're all still hiding from the vampyres and eking out a living from this terrible place, hopefully soon we'll be strong enough to make the journey to the temple on the Salve."
+              }
+            ]
+          },
+          {
+            "text": "Is there anything I can do to help out?",
+            "steps": [
+              {
+                "player": "Is there anything I can do to help out?"
+              },
+              {
+                "npc": "Not as far as I know, we have some basic amenities now which is so very useful, we're all incredibly grateful to you. I've never really seen or known a hero before, so I have nothing to compare one to, but I suspect in"
+              },
+              {
+                "npc": "most people's judgement, you would be one! I for one am very pleased to have met you."
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-the-blood-moon-rises": [
+      {
+        "player": "Hello, I wonder if you could help me on this whole brewing thing..."
+      },
+      {
+        "npc": "I might be able to - what do you need to know?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do I brew ales?",
+            "steps": [
+              {
+                "player": "How do I brew ales?"
+              },
+              {
+                "npc": "Well first off you need to fill the vat with water - two bucketfuls should do the trick. Then you'll need to put in two handfuls of barley malt - that's roasted barley by the way."
+              },
+              {
+                "npc": "After that you'll be putting your main ingredient in - this will decide which ale it is you're brewing. There should be some good guides around with recipes in."
+              },
+              {
+                "npc": "Lastly you pour a pot full of ale yeast in, which'll start it off fermenting. Then all you have to do is wait for the good stuff."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Dm5Xkg"
+              }
+            ]
+          },
+          {
+            "text": "How do I brew cider?",
+            "steps": [
+              {
+                "player": "How do I brew cider?"
+              },
+              {
+                "npc": "First you'll need some apples. You'll need to crush them using this cider-press - four apples should make a full bucket of apple-mush. Take four buckets of mush and fill up the vat."
+              },
+              {
+                "npc": "After that you pour a pot full of ale yeast in, which'll start it off fermenting. Then all you have to do is wait for the good stuff."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "ZuMYbx"
+              }
+            ]
+          },
+          {
+            "text": "What do I do once my ale has matured?",
+            "steps": [
+              {
+                "player": "What do I do once my ale has matured?"
+              },
+              {
+                "npc": "Well, once you've got a full vat of the good stuff, just turn the valve and your barrel will fill up with eight pints of whatever your chosen tipple is. Mind it's an empty barrel, though."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "PnpwOC"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any spare ale yeast?",
+            "steps": [
+              {
+                "player": "Do you have any spare ale yeast?"
+              },
+              {
+                "npc": "Well, as a matter of fact I do, although I wouldn't describe it as spare. This ale yeast I've got is the best money can buy, but if you've got a pot I'll fill it for you for 25GP - very cheap as it happens."
+              },
+              {
+                "type": "condition",
+                "text": "With an empty pot, but less than 25 GP:",
+                "steps": [
+                  {
+                    "player": "I don't have enough money I'm afraid."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "Hjnbvg"
+                  }
+                ],
+                "id": "4LYbTN"
+              },
+              {
+                "type": "condition",
+                "text": "With 25 GP, but without an empty pot:",
+                "steps": [
+                  {
+                    "player": "I don't have an empty pot I'm afraid."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "3hkRZj"
+                  }
+                ],
+                "id": "7XfqLq"
+              },
+              {
+                "type": "condition",
+                "text": "Without an empty pot or 25 GP:",
+                "steps": [
+                  {
+                    "player": "I don't have an empty pot, or enough money I'm afraid."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "2dhWP7"
+                  }
+                ],
+                "id": "OkTJfh"
+              },
+              {
+                "type": "condition",
+                "text": "With an empty pot and 25 GP:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's a good deal - please fill my pot with ale yeast for 25GP.",
+                        "steps": [
+                          {
+                            "player": "That's a good deal - please fill my pot with ale yeast for 25GP."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Vasile fills your empty pot with ale yeast.",
+                            "id": "4lYVL0"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "zbuWOj"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, that's too much I'm afraid.",
+                        "steps": [
+                          {
+                            "player": "No, that's too much I'm afraid."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "6QR9on"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "0dlL9A"
+              }
+            ]
+          },
+          {
+            "text": "That's all I need to know, thanks.",
+            "steps": [
+              {
+                "player": "That's all I need to know, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

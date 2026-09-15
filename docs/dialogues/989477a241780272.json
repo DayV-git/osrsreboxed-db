@@ -1,0 +1,151 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-completing-the-dig-site-quest": [
+      {
+        "npc": "Hello there! My colleague tells me you helped to uncover a hidden altar to the god Zaros."
+      },
+      {
+        "npc": "A great scholar and archaeologist indeed! Good health and prosperity to you."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Thanks.",
+            "steps": [
+              {
+                "player": "Thanks."
+              }
+            ]
+          },
+          {
+            "text": "I have lost my trowel.",
+            "steps": [
+              {
+                "player": "I have lost my trowel."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a trowel in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Deary me... That was a good one as well. It's a good job I have another. Here you go..."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a trowel",
+                    "id": "gpMiUy"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Ztih8s"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does have a trowel in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Really? Look in your backpack and make sure first."
+                  }
+                ],
+                "id": "EUaikc"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Hi! Please complete this."
+      },
+      {
+        "type": "message",
+        "text": "The examiner has given you a puzzle box!",
+        "id": "PwhWyP"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "LHww8h"
+      }
+    ],
+    "treasure-trails-hard-talking-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If talked to without having solved the puzzle box:",
+        "steps": [
+          {
+            "npc": "I'm afraid you have not finished the puzzle."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "jvipto"
+      },
+      {
+        "type": "condition",
+        "text": "If talked to having solved the puzzle box:",
+        "steps": [
+          {
+            "npc": "Correct! Well done!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The examiner gives you another clue scroll!",
+                "id": "V_AF0s"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "xvARwm"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "tPLwIP"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "npc": "Correct! Well done!"
+              },
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "KBQ39v"
+              }
+            ],
+            "id": "CgNzeN"
+          }
+        ],
+        "id": "yv-ItY"
+      }
+    ],
+    "leagues": [
+      {
+        "npc": "Here you go."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Level 3 certificate",
+        "id": "Q0A-9d"
+      }
+    ]
+  }
+}

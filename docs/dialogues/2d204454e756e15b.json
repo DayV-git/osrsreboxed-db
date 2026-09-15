@@ -1,0 +1,108 @@
+{
+  "steps": [
+    {
+      "npc": "'Allo mate! Got a job going? Only 500 coins!"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What can you do?",
+          "steps": [
+            {
+              "player": "What can you do?"
+            },
+            {
+              "npc": "I'm a great cook, me! I used to work with a rat-catcher, I used to cook for him. There's a dozen different ways you can cook rat!"
+            }
+          ]
+        },
+        {
+          "text": "Tell me about your previous jobs",
+          "steps": [
+            {
+              "player": "Tell me about your previous jobs."
+            },
+            {
+              "npc": "Well, city warder Bravek once threw a chair at me and yelled at me to get him a hangover cure. So I made it and I think it worked, 'cause then he threw another chair at me and that one hit!"
+            }
+          ]
+        },
+        {
+          "text": "You're hired!",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "If the player does not have at least 20 Construction:",
+              "steps": [
+                {
+                  "npc": "Sorry mate, but I'm not allowed to work for anyone without level 20 Construction. It's a safety 'azard!"
+                }
+              ],
+              "id": "L804kQ"
+            },
+            {
+              "type": "condition",
+              "text": "If the player already has a servant:",
+              "steps": [
+                {
+                  "type": "message",
+                  "text": "You already have a servant.",
+                  "id": "MWB_Du"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "MTdxZf"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a second bedroom with a bed:",
+              "steps": [
+                {
+                  "type": "message",
+                  "text": "You need a second bedroom with a bed for your servant to sleep in.",
+                  "id": "YTop_8"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "svjNGG"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have enough money in their inventory:",
+              "steps": [
+                {
+                  "player": "You're hired... well, I don't have the money on me, but can I owe you? I'm good for it, honest."
+                },
+                {
+                  "npc": "Nice try, mate, but I don't start work without cash up front."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "HZf25-"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has the above conditions met and the player doesn't have a servant:",
+              "steps": [
+                {
+                  "player": "You're hired!"
+                },
+                {
+                  "npc": "Cheers, mate! Look forward to working with you!"
+                }
+              ],
+              "id": "Mw9p8l"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

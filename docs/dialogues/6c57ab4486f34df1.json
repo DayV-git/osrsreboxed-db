@@ -1,0 +1,391 @@
+{
+  "default": "before-the-feud",
+  "variants": {
+    "before-the-feud": [
+      {
+        "player": "Hello there little fellow."
+      },
+      {
+        "npc": "I'm not little and if you say that again I'll gut you."
+      },
+      {
+        "player": "Easy there, I didn't mean to offend."
+      },
+      {
+        "npc": "I'll let you off this once. Well what do you want? Information?"
+      },
+      {
+        "player": "Yes, tell me about..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "The Menaphites",
+            "steps": [
+              {
+                "player": "Tell me about the Menaphites."
+              },
+              {
+                "npc": "They're a bad bunch, always starting fights down in the Asp and Snake. Word on the street is that they're led by some deranged priest. Nobody's ever seen them though - they do all their deals through Ali 'the"
+              },
+              {
+                "npc": "Operator'. I reckon they're up to something, but they're such a close knit group that little ever slips out."
+              },
+              {
+                "npc": "Do you need any other information?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes tell me about...",
+                    "steps": [
+                      {
+                        "player": "Yes, tell me about..."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "The Menaphites",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "EzuUu2"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "The bandits",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "W-zEZH"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "The Mayor",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "Uv8Z7P"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "The town",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "hksNJ_"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      },
+                      {
+                        "npc": "Come back if you need any info about anything in the town."
+                      },
+                      {
+                        "player": "I will do thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The bandits",
+            "steps": [
+              {
+                "player": "Tell me about the bandits."
+              },
+              {
+                "npc": "There's not much to say, really. They're just a group of local thugs led by the biggest and strongest amongst them. If they have any other plans, I don't know about it."
+              },
+              {
+                "npc": "Do you need any other information?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "L07eFj"
+              }
+            ]
+          },
+          {
+            "text": "The Mayor",
+            "steps": [
+              {
+                "player": "Tell me about the Mayor."
+              },
+              {
+                "npc": "The mayor is a spineless coward! He never stands up to anybody. That's why the Menaphites are so strong now! He let them stay, and then they started causing trouble. When he realised his mistake, he hired a band"
+              },
+              {
+                "npc": "of local thugs to drive them out, but they saw how weak he was and turned on us too. Now we've got bandits and Menaphites, and the mayor isn't doing anything!"
+              },
+              {
+                "npc": "Do you need any other information?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "pgR14h"
+              }
+            ]
+          },
+          {
+            "text": "The town",
+            "steps": [
+              {
+                "player": "Tell me about the town."
+              },
+              {
+                "npc": "It's boring! We're not as big as Menaphos or as powerful as Al Kharid, and we've got a really nasty crime problem. It's no wonder so many grown-ups have left."
+              },
+              {
+                "npc": "Do you need any other information?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "bjsZcr"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-the-feud": [
+      {
+        "player": "Hey there!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not paid the Street urchin",
+        "steps": [
+          {
+            "npc": "Did you see the way I distracted that guy? Man, I'm one smooth operator!"
+          },
+          {
+            "player": "You did good, kid."
+          },
+          {
+            "npc": "So where's my money?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "What money?",
+                "steps": [
+                  {
+                    "player": "What money?"
+                  },
+                  {
+                    "npc": "Don't play stupid with me, I'm better at it. Where's my money?"
+                  },
+                  {
+                    "player": "Oh, that money! I don't think you deserve it!"
+                  },
+                  {
+                    "npc": "Liar, thief!"
+                  },
+                  {
+                    "player": "How observant of you!"
+                  },
+                  {
+                    "npc": "Give me my money!"
+                  },
+                  {
+                    "player": "Make me!"
+                  },
+                  {
+                    "npc": "You'll be sorry!"
+                  }
+                ]
+              },
+              {
+                "text": "Here you go, thanks."
+              }
+            ]
+          },
+          {
+            "player": "Here you go, thanks."
+          },
+          {
+            "npc": "Thanks [sir/ma'am], I didn't think you would hold up your side of the deal. There's not much honour amongst thieves, you know."
+          },
+          {
+            "npc": "Well do you need any other information then?",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes tell me about...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "fhHgHr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      },
+                      {
+                        "npc": "Come back if you need any info about anything in the town."
+                      },
+                      {
+                        "player": "I will do thanks."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "HG9zla"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has rejected paying the Street urchin",
+        "steps": [
+          {
+            "npc": "Thief! Thief!"
+          },
+          {
+            "player": "Shut up! Don't cause any more trouble or you'll regret it."
+          },
+          {
+            "npc": "Give me double and I'll be quiet!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has 20 coins",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "20 coins",
+                "id": "Rd-mPn"
+              },
+              {
+                "player": "Okay, here you go - you thief."
+              },
+              {
+                "type": "missing",
+                "id": "dR_V6s"
+              }
+            ],
+            "id": "wKd0Fe"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have 20 coins",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "jGQA_6"
+              }
+            ],
+            "id": "tjLkGy"
+          }
+        ],
+        "id": "3l4ZoT"
+      }
+    ],
+    "after-the-feud-after-paying-the-street-urchin": [
+      {
+        "player": "Hey there!"
+      },
+      {
+        "npc": "Hi! Do you want to go rob some more people? I could do with some more money."
+      },
+      {
+        "type": "condition",
+        "text": "If there are no villagers nearby:",
+        "steps": [
+          {
+            "npc": "There doesn't seem to be anyone around to rob at the moment. Perhaps we can try again later."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "kaN7bf"
+      },
+      {
+        "type": "condition",
+        "text": "If there is a villager nearby:",
+        "steps": [
+          {
+            "npc": "Hey you, camel features! Come here."
+          },
+          {
+            "type": "line",
+            "speaker": "Villager",
+            "text": "I know your game guttersnipe."
+          },
+          {
+            "npc": "???"
+          },
+          {
+            "type": "line",
+            "speaker": "Villager",
+            "text": "You won't fool anyone with that trick again."
+          },
+          {
+            "player": "I think I need to try a different tactic. Sorry, kid!"
+          },
+          {
+            "npc": "Well do you need any information then?"
+          },
+          {
+            "player": "No thanks, I think I have a fair idea of what is going on in the town now."
+          }
+        ],
+        "id": "lC90yI"
+      }
+    ],
+    "after-the-feud-after-failing-to-distract-again": [
+      {
+        "npc": "Hi! Do you want to go rob some more people? I could do with some more money."
+      },
+      {
+        "player": "I think I need to try a different tactic. Sorry, kid!"
+      },
+      {
+        "npc": "Well do you need any information then?"
+      },
+      {
+        "player": "No thanks, I think I have a fair idea of what is going on in the town now."
+      }
+    ]
+  }
+}

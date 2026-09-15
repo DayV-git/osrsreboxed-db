@@ -1,0 +1,309 @@
+{
+  "default": null,
+  "variants": {
+    "when-at-the-pandemonium": [
+      {
+        "npc": "Captain."
+      },
+      {
+        "player": "Hello there. How are you doing?"
+      },
+      {
+        "npc": "Not bad. It's better than being at that blasted camp, though I do wish I had my own ship."
+      },
+      {
+        "player": "I hope you're not considering mutiny!"
+      },
+      {
+        "npc": "Never, Captain!"
+      }
+    ],
+    "at-port-as-a-crew-member": [
+      {
+        "npc": "Need a hand, Captain?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help bank my cargo hold contents?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If cargo hold is already empty:",
+                "steps": [
+                  {
+                    "npc": "That cargo hold's already empty, Captain."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "_qC8Th"
+              },
+              {
+                "type": "condition",
+                "text": "If there are items in the cargo hold:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(\"Move Cargo to Bank\" interface opens.)",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "Move Cargo to Bank",
+                    "id": "11lIP1"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Move all available items from your cargo hold to your bank?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "Ah, time to stretch my legs!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Your crew start moving the contents of the cargo hold...",
+                            "id": "tPvIsA"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If there is sufficient room in your bank to store the contents of your cargo hold:",
+                            "steps": [
+                              {
+                                "npc": "Job's done, Captain! Everything from your cargo hold is now in your bank."
+                              }
+                            ],
+                            "id": "7c-2ka"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If there is insufficient room in your bank to store the contents of your cargo hold:",
+                            "steps": [
+                              {
+                                "npc": "The bank won't take anything from your cargo hold at the moment. Damn bureaucrats..."
+                              }
+                            ],
+                            "id": "Dc0tzB"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "fBYY0u"
+              }
+            ]
+          },
+          {
+            "text": "How are you getting on?",
+            "steps": [
+              {
+                "player": "How are you getting on?"
+              },
+              {
+                "npc": "Doing well, thanks! Anything like this beats being behind a desk anyway."
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-sea-while-idle": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "This really is my passion."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Life is easier on the sea."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "This is so much better than being cooped up in that camp."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "I'm just happy to be here."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-sea-randomly-while-at-the-helm": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "This reminds me of my last holiday."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "All looking good on the sails."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-sea-spotting-an-ocean-encounter": [
+      {
+        "npc": "I can see something to the [compass direction]!"
+      }
+    ],
+    "at-sea-trimming-the-sails": [
+      {
+        "npc": "Trimmed those sails good and proper, Captain!"
+      }
+    ],
+    "at-sea-idle-at-cannon": [
+      {
+        "type": "condition",
+        "text": "If there are no cannon balls in the cargo hold:",
+        "steps": [
+          {
+            "npc": "I can't find any ammo in the cargo hold."
+          }
+        ],
+        "id": "buyrWb"
+      },
+      {
+        "type": "condition",
+        "text": "If there are cannon balls in the cargo hold:",
+        "steps": [
+          {
+            "npc": "Sailing was supposed to be peaceful."
+          }
+        ],
+        "id": "wwjXIm"
+      }
+    ],
+    "at-sea-firing-cannon": [
+      {
+        "type": "condition",
+        "text": "Unknown condition:",
+        "steps": [
+          {
+            "npc": "I can't attack your target, Captain."
+          }
+        ],
+        "id": "Yeddxs"
+      }
+    ],
+    "at-sea-randomly-while-at-the-salvaging-hook": [
+      {
+        "npc": "One man's rubbish..."
+      }
+    ],
+    "at-sea-recovering-salvaging": [
+      {
+        "type": "condition",
+        "text": "With space in the cargo hold:",
+        "steps": [
+          {
+            "npc": "Managed to hook some salvage! I'll put it in the cargo hold."
+          }
+        ],
+        "id": "z_G_jA"
+      },
+      {
+        "type": "condition",
+        "text": "If the cargo hold is full:",
+        "steps": [
+          {
+            "npc": "The cargo hold is full. I can't salvage anything."
+          }
+        ],
+        "id": "K8ju7f"
+      }
+    ],
+    "at-sea-catching-a-wind-mote": [
+      {
+        "npc": "I've caught a wind mote!"
+      }
+    ],
+    "at-sea-operating-the-wind-catcher": [
+      {
+        "type": "condition",
+        "text": "Enabling the wind catcher:",
+        "steps": [
+          {
+            "npc": "Enabling the wind catcher!"
+          }
+        ],
+        "id": "9MAP23"
+      },
+      {
+        "type": "condition",
+        "text": "Disabling the wind catcher:",
+        "steps": [
+          {
+            "npc": "Disabling the wind catcher!"
+          }
+        ],
+        "id": "vCxugm"
+      }
+    ],
+    "at-sea-making-repairs": [
+      {
+        "type": "condition",
+        "text": "If there are repair kits in the cargo hold:",
+        "steps": [
+          {
+            "npc": "Aye, that's better."
+          }
+        ],
+        "id": "5XBhMx"
+      },
+      {
+        "type": "condition",
+        "text": "If there are no repair kits in the cargo hold:",
+        "steps": [
+          {
+            "npc": "I can't find any repair kits in the cargo hold."
+          }
+        ],
+        "id": "uVkRIh"
+      }
+    ]
+  }
+}

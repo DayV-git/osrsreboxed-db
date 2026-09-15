@@ -1,0 +1,461 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Good day to you, Bwana."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I go through that door please?",
+            "steps": [
+              {
+                "player": "Can I go through that door please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the entry cost has already been paid, or if the player has paid for permanent access:",
+                "steps": [
+                  {
+                    "npc": "Most certainly, you have already given me lots of nice coins."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "dtut4v"
+              },
+              {
+                "type": "condition",
+                "text": "If the entry cost has not been paid:",
+                "steps": [
+                  {
+                    "npc": "Most certainly, but I must charge you the sum of 875 coins first."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 875 coins with them:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I haven't got that much money with me.",
+                            "steps": [
+                              {
+                                "player": "I haven't got that much money with me."
+                              },
+                              {
+                                "npc": "I'll want 875 coins to let you enter; this is a dungeon for the more wealthy discerning adventurer. Begone with you, riff raff."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I pay you for permanent access?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "jcBvPu"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "-AWo6p"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 875 coins with them:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, here's 875 coins.",
+                            "steps": [
+                              {
+                                "player": "Okay, here's 875 coins."
+                              },
+                              {
+                                "type": "message",
+                                "text": "You give Saniboch 875 coins.",
+                                "id": "JQ_Dni"
+                              },
+                              {
+                                "npc": "Many thanks. You may now pass the door. May your death be a glorious one!"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Why is it worth the entry cost?",
+                            "steps": [
+                              {
+                                "player": "Why is it worth the entry cost?"
+                              },
+                              {
+                                "npc": "It leads to a huge fearsome dungeon, populated by giants and strange dogs. Adventurers come from all around to explore its depths."
+                              },
+                              {
+                                "npc": "I know not what lies deeper in myself, for my skills in agility and woodcutting are inadequate, but I hear tell of even greater dangers deeper in."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "sZbqX8"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I pay you for permanent access?",
+                            "steps": [
+                              {
+                                "player": "Can I pay you for permanent access?"
+                              },
+                              {
+                                "npc": "I suppose so, yes. My employer will let you in for free, forever, in exchange for 1,000,000 coins."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 1,000,000 coins:",
+                                "steps": [
+                                  {
+                                    "player": "I haven't got 1,000,000 coins with me."
+                                  },
+                                  {
+                                    "npc": "Then perhaps you would rather pay 875 coins for one visit."
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Okay, here's 875 coins.",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "reference": "above",
+                                            "id": "wUfRt7"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Never mind.",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "reference": "below",
+                                            "id": "mQ_u5u"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "TrDWrg"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 1,000,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Okay, here's 1,000,000 coins.",
+                                        "steps": [
+                                          {
+                                            "player": "Okay, here's 1,000,000 coins."
+                                          },
+                                          {
+                                            "type": "message",
+                                            "text": "You give Saniboch 1,000,000 coins for permanent access to the dungeon.",
+                                            "id": "8gYM4O"
+                                          },
+                                          {
+                                            "npc": "Many thanks. You may now pass the door as many times as you wish, and I will not charge you again. May your death be a glorious one!"
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Never mind.",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "reference": "below",
+                                            "id": "sRDugT"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "J438kY"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "dAQzKY"
+                  }
+                ],
+                "id": "2lqys2"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Never mind.",
+                    "steps": [
+                      {
+                        "player": "Never mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where does this strange entrance lead?",
+            "steps": [
+              {
+                "player": "Where does this strange entrance lead?"
+              },
+              {
+                "npc": "To a huge fearsome dungeon, populated by giants and strange dogs. Adventurers come from all around to explore its depths."
+              },
+              {
+                "npc": "I know not what lies deeper in myself, for my skills in agility and woodcutting are inadequate."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "BAcgSX"
+              }
+            ]
+          },
+          {
+            "text": "I'm impressed, that tree is growing on that shed.",
+            "steps": [
+              {
+                "player": "I'm impressed, that tree is growing on that shed."
+              },
+              {
+                "npc": "My employer tells me it is an uncommon sort of tree called the Fyburglars tree."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "bpncH2"
+              }
+            ]
+          },
+          {
+            "text": "Good day to you too.",
+            "steps": [
+              {
+                "player": "Good day to you too."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-right-click-pay-option-if-the-player-does-not-have-at-least-875-coins-and-has-not-paid-for-permanent-access": [
+      {
+        "npc": "I'll want 875 coins to let you enter; this is a dungeon for the more wealthy discerning adventurer. Begone with you, riff raff."
+      }
+    ],
+    "standard-dialogue-right-click-pay-option-if-the-player-has-at-least-875-coins-but-less-than-1-million-coins": [
+      {
+        "type": "choice",
+        "prompt": "Pay 875 coins to enter?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "m3SppK"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-right-click-pay-option-if-the-player-has-not-paid-for-permanent-access": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Pay 875 coins to enter once",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You give Saniboch 875 coins.",
+                "id": "DqVfCr"
+              },
+              {
+                "npc": "Many thanks. You may now pass the door. May your death be a glorious one!"
+              }
+            ]
+          },
+          {
+            "text": "Pay 1,000,000 coins for permanent access",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You give Saniboch 1,000,000 coins for permanent access to the dungeon.",
+                "id": "8Ra4aA"
+              },
+              {
+                "npc": "Many thanks. You may now pass the door as many times as you wish, and I will not charge you again. May your death be a glorious one!"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-right-click-pay-option-if-the-player-has-paid-to-enter-once": [
+      {
+        "npc": "You have already given me lovely coins, so you may go in, and may your death be a glorious one!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              }
+            ]
+          },
+          {
+            "text": "Can I pay you for permanent access?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1KpPwY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-right-click-pay-option-if-the-player-has-paid-for-permanent-access": [
+      {
+        "npc": "You have already given me lots of nice coins, you may go in."
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "Ru1nVP"
+      },
+      {
+        "npc": "You're not done yet! Do this for me!"
+      },
+      {
+        "type": "message",
+        "text": "Saniboch has given you a puzzle box!",
+        "id": "rP6O10"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "iTthv2"
+      }
+    ],
+    "treasure-trails-hard-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "My guard dogs can do puzzles better than that!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "xJvTdw"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Excellent work!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Saniboch has given you another clue scroll!",
+                "id": "XLijJk"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "f92DYM"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "urlh9z"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "YKnfw8"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "SxFtCY"
+              }
+            ],
+            "id": "Q4U-pe"
+          }
+        ],
+        "id": "xILFMn"
+      }
+    ]
+  }
+}

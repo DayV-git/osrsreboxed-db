@@ -1,0 +1,252 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "first-time-talking": [
+      {
+        "player": "Hello! Who are you?"
+      },
+      {
+        "npc": "Hi! My name is Raqueel. I work as a barmaid here in the clan hall. My friend, Gem, over there works here too."
+      },
+      {
+        "player": "Really? I don't recall hiring you."
+      },
+      {
+        "npc": "Wait, seriously? I could have sworn someone did. Oh no, Gem won't take this well."
+      },
+      {
+        "player": "..."
+      },
+      {
+        "npc": "Either way, I have beer! Would you like to buy some?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes - buy beer.",
+            "steps": [
+              {
+                "player": "I'd like to buy some beer."
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "cQMqKC"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              },
+              {
+                "npc": "That's alright. Just make sure your friends buy plenty of beer. If you're not paying my wages, we'll have to rely on commission!"
+              },
+              {
+                "player": "I'll keep that in mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "player": "Hi again, Raqueel."
+              },
+              {
+                "npc": "Oh hii! I just finished telling Gem about this time I was working with some geese. Ah, how time has flown since then. Anyway, what can I help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "_yTsq3"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "player": "Hi again, Raqueel."
+              },
+              {
+                "npc": "Oh hii! I was in the middle of singing this new song to Gem. She doesn't seem to like it much. Anyway, what can I do for you?"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "Ss6KHI"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "player": "Hi again, Raqueel."
+              },
+              {
+                "npc": "Oh hii! I just thinking how I wish I had a pork and blue cheese pie right now. Mm-mmm. Anyway, how can I help?"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "DgXMMQ"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to buy some beer.",
+            "steps": [
+              {
+                "player": "I'd like to buy some beer."
+              },
+              {
+                "npc": "Yay! That will be 5 coins, please."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Buy beer for 5 coins.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 5 coins:",
+                        "steps": [
+                          {
+                            "player": "Oh dear, I don't seem to have enough money."
+                          },
+                          {
+                            "npc": "That's alright. Come back when you do."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "xgCSUv"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 5 coins:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "beer",
+                            "id": "AcQDjo"
+                          }
+                        ],
+                        "id": "z3moXi"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No way, that's too expensive.",
+                    "steps": [
+                      {
+                        "player": "No way, that's too expensive."
+                      },
+                      {
+                        "npc": "Look, I don't choose the prices here. I'm just trying to make a living selling beer."
+                      },
+                      {
+                        "player": "That's fair enough."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me more about yourself.",
+            "steps": [
+              {
+                "player": "Tell me more about yourself."
+              },
+              {
+                "npc": "You want to know about me? Oh where do I begin. Let's see..."
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Gem, my friend over there, isn't actually called Gem. I came up with that name for her. It suits her, don't you think?"
+                      },
+                      {
+                        "player": "Fascinating. Thank you for sharing."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Sometimes, when the hall is empty, I like to stand up on the railing and pretend I'm singing at a stage in front of many people."
+                      },
+                      {
+                        "player": "Fascinating. Thank you for sharing."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "My favourite colour is purple!"
+                      },
+                      {
+                        "player": "Fascinating. Thank you for sharing."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "I used to work with geese. One day they attacked me and since then I have had serious trust issues with them."
+                      },
+                      {
+                        "player": "Fascinating. Thank you for sharing."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have to go. Good bye.",
+            "steps": [
+              {
+                "player": "I have to go. Good bye."
+              },
+              {
+                "npc": "See you later!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

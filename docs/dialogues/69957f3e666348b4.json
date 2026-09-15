@@ -1,0 +1,430 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Why do you interrupt me, traveller? I am experimenting with dark magic; it is a dangerous craft, and I prefer not to be disturbed."
+      },
+      {
+        "player": "I'm just looking around."
+      },
+      {
+        "npc": "There's nothing to see here, just despair and death."
+      }
+    ],
+    "standard-dialogue-post-quest-dialogue": [
+      {
+        "npc": "Can I help you with something, traveller? I am experimenting with dark magic; it is a dangerous craft, and I prefer not to be disturbed."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have any Iban's staves in inventory:",
+        "steps": [
+          {
+            "player": "I'll leave you to it."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Se9Rip"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you recharge my Staff of Iban?",
+            "condition": "If the player has an Iban's staff:",
+            "steps": [
+              {
+                "player": "Can you recharge my Staff of Iban?"
+              },
+              {
+                "type": "condition",
+                "text": "If the Iban staff has full 120 charges left:",
+                "steps": [
+                  {
+                    "npc": "Your staff is already as fully charged as it can go."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "tD91in"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 100,000 coins:",
+                "steps": [
+                  {
+                    "npc": "I'll want 100,000 coins to recharge the Staff of Iban."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "hReddn"
+              },
+              {
+                "player": "Can you recharge my Staff of Iban?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Pay 100,000 coins to recharge it.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "text": "The player pays 100,000 coins. The Dark Mage casts a spell (emote).",
+                        "id": "LfIGD_"
+                      },
+                      {
+                        "type": "message",
+                        "text": "The mage summons the power of Zamorak and recharges your Staff of Iban.",
+                        "id": "MvdwSm"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't pay.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "XQwCyF"
+          },
+          {
+            "text": "Can you upgrade my Staff of Iban?",
+            "condition": "If the player has an Iban's staff:",
+            "steps": [
+              {
+                "player": "Can you upgrade my Staff of Iban?"
+              },
+              {
+                "npc": "Hah! Yes, I can upgrade it to hold 2500 charges, enough to cast Iban's magic 2500 times at monsters or 1250 times at people like you. That'll cost you 200,000 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Here's 200,000 coins. Please upgrade the staff.",
+                    "condition": "If the player has at least 200,000 coins:",
+                    "steps": [
+                      {
+                        "type": "missing",
+                        "id": "ALBm9G"
+                      }
+                    ],
+                    "id": "sndc6v"
+                  },
+                  {
+                    "text": "Thanks, I'll bear it in mind.",
+                    "steps": [
+                      {
+                        "player": "Thanks, I'll bear it in mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "cu2yI4"
+          },
+          {
+            "text": "Can you repair my broken Staff of Iban?",
+            "condition": "If the player has a broken Iban's staff:",
+            "steps": [
+              {
+                "player": "Can you repair my broken Staff of Iban?"
+              },
+              {
+                "type": "message",
+                "text": "You show the mage your broken staff.",
+                "id": "F3hsTF"
+              },
+              {
+                "npc": "The Staff of Iban holds dangerous magic, traveller. I can fix it, but it will cost you - the process could kill me!"
+              },
+              {
+                "player": "How much?"
+              },
+              {
+                "npc": "200,000 coins. That'll give it 120 charges, enough to cast Iban's magic 120 times at monsters or 60 times at people like you."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Here's 200,000 coins. Please repair the staff.",
+                    "condition": "If the player has at least 200,000 coins in inventory:",
+                    "steps": [
+                      {
+                        "player": "Here's 200,000 coins. Please repair the staff."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You give the mage 200,000 coins and the staff...",
+                        "id": "OFrnZb"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Dark Mage performs a spell (emote).",
+                        "id": "WbqjgT"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You give the mage 200,000 coins and the staff... The mage fixes the staff and returns it to you.",
+                        "id": "ci95Tl"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Player loses 200,000 coins.",
+                        "id": "xEl_o_"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "Iban's staff",
+                        "id": "EERSbB"
+                      },
+                      {
+                        "player": "Thanks, I appreciate that."
+                      },
+                      {
+                        "npc": "You be careful with that thing!"
+                      }
+                    ],
+                    "id": "kK63og"
+                  },
+                  {
+                    "text": "Can you make it hold more than 120 charges?",
+                    "steps": [
+                      {
+                        "player": "Can you make it hold more than 120 charges?"
+                      },
+                      {
+                        "npc": "Hah! Yes, I can upgrade it to hold 2500 charges, enough to cast Iban's magic 2500 times at monsters or 1250 times at people like you. That'll cost you 400,000 coins."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Here's 400,000 coins. Please upgrade the staff.",
+                            "condition": "If the player has at least 400,000 coins in inventory:",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "XcNnsJ"
+                              }
+                            ],
+                            "id": "e094cD"
+                          },
+                          {
+                            "text": "Here's 200,000 coins. Please repair the staff.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "SbYjJH"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Thanks, I'll bear it in mind.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "G0mCYd"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks, I'll bear it in mind.",
+                    "steps": [
+                      {
+                        "player": "Thanks, I'll bear it in mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "MEuVEB"
+          },
+          {
+            "text": "I'll leave you to it.",
+            "steps": [
+              {
+                "player": "I'll leave you to it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "staves-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have any Iban's staves in inventory:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The player jumps for joy.",
+            "id": "_UvzJn"
+          },
+          {
+            "player": "Staaaaaaaaves!"
+          },
+          {
+            "npc": "Traveller, I have no idea what you are talking about. If you want my help with staves, perhaps you should show me one."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "J-bj3o"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Recharge your Staff of Iban",
+            "condition": "If the player has an Iban's staff:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the Iban staff has full 120 charges left:",
+                "steps": [
+                  {
+                    "npc": "Your staff is already as fully charged as it can go."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OEPkFi"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 100,000 coins:",
+                "steps": [
+                  {
+                    "npc": "I'll want 100,000 coins to recharge the Staff of Iban."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "n92utA"
+              },
+              {
+                "player": "Can you recharge my Staff of Iban?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yxmqFH"
+              }
+            ],
+            "id": "Dh1LPx"
+          },
+          {
+            "text": "Upgrade your Staff of Iban",
+            "condition": "If the player has an Iban's staff:",
+            "steps": [
+              {
+                "player": "Can you upgrade my Staff of Iban?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "PgVFBf"
+              }
+            ],
+            "id": "ZAs-lR"
+          },
+          {
+            "text": "Repair your broken Staff of Iban",
+            "condition": "If the player has a broken Iban's staff:",
+            "steps": [
+              {
+                "type": "unavailable",
+                "id": "atrqen"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Iy1cFD"
+              }
+            ],
+            "id": "IpRH10"
+          }
+        ]
+      }
+    ],
+    "using-an-iban-s-staff-on-dark-mage": [
+      {
+        "type": "condition",
+        "text": "If the player has not fully completed Underground Pass by speaking to King Lathas",
+        "steps": [
+          {
+            "npc": "Your items interest me not, traveller."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ol6YCU"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Recharge your Staff of Iban",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "iPbomI"
+              }
+            ]
+          },
+          {
+            "text": "Upgrade your Staff of Iban",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Xljqul"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-a-broken-iban-s-staff-on-dark-mage": [
+      {
+        "type": "message",
+        "text": "You show the mage your broken staff.",
+        "id": "ISHDds"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "ZS8khl"
+      }
+    ],
+    "using-other-items-on-the-dark-mage": [
+      {
+        "npc": "Your items interest me not, traveller."
+      }
+    ]
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "steps": [
+    {
+      "player": "Hello there."
+    },
+    {
+      "npc": "Nilsal."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Can you heal me? I'm injured.",
+          "steps": [
+            {
+              "player": "Can you heal me? I'm injured."
+            },
+            {
+              "type": "condition",
+              "text": "If the player is already full Hitpoints:",
+              "steps": [
+                {
+                  "npc": "Of course."
+                },
+                {
+                  "type": "message",
+                  "text": "The teoki whispers a prayer and you suddenly feel a bit better.",
+                  "id": "CHn2iD"
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "IM7uUn"
+                }
+              ],
+              "id": "D3jthA"
+            }
+          ]
+        },
+        {
+          "text": "[Egg name] fell off a wall!",
+          "condition": "During Scrambled!",
+          "steps": [
+            {
+              "npc": "What?"
+            },
+            {
+              "player": "The egg that was living at the top of the temple!"
+            },
+            {
+              "npc": "Yes, I noticed the tourist had an egg with him... I didn't realise it had a name..."
+            },
+            {
+              "player": "We need to do something!"
+            },
+            {
+              "npc": "Well... it's an egg, iknami. If it's broken, then there isn't much you can do about that."
+            },
+            {
+              "player": "I'm not giving up without at least trying first."
+            },
+            {
+              "npc": "I see... Well, I don't think I can help you, iknami, but good luck."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "2tVFdY"
+            }
+          ],
+          "id": "8eVxhV"
+        },
+        {
+          "text": "What are you doing out here?",
+          "steps": [
+            {
+              "player": "What are you doing out here?"
+            },
+            {
+              "npc": "I am Jatziri, one of the seven teoki in service to Ralos. Along with my counterpart from the Sect of Ranul, I am responsible for the temple of Tal Teok."
+            },
+            {
+              "player": "Where is your counterpart?"
+            },
+            {
+              "type": "condition",
+              "text": "Having completed Twilight's Promise but not The Heart of Darkness:",
+              "steps": [
+                {
+                  "npc": "That I would like to know myself. Tecuani left to attend to business elsewhere in the kingdom, but is yet to return."
+                },
+                {
+                  "player": "That sounds concerning."
+                },
+                {
+                  "npc": "It could well be. It is being looked into, but given the recent events at the Teomat, there are other matters that also require attention."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "ZOEzff"
+                }
+              ],
+              "id": "OSmmoY"
+            },
+            {
+              "type": "condition",
+              "text": "Having completed The Final Dawn:",
+              "steps": [
+                {
+                  "npc": "Tecuani was unfortunately misled by the traitor Metzli. He joined with her cult along with a few other members of the Sect of Ranul."
+                },
+                {
+                  "player": "I'm sorry to hear that."
+                },
+                {
+                  "npc": "Don't be. He is no servant of Ranul. He will die the death of a traitor. Once that happens, a more fitting replacement will be chosen."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "RAfyEe"
+                }
+              ],
+              "id": "1rsHSH"
+            },
+            {
+              "player": "So for now you're here alone? Does that make the work harder?"
+            },
+            {
+              "type": "condition",
+              "text": "If not during Scrambled!:",
+              "steps": [
+                {
+                  "npc": "Tal Teok is thankfully one of the easier holy sites to look after. That said, there was a small issue recently when some tourist decided to move in and make it their home."
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player has not completed Scrambled!:",
+                  "steps": [
+                    {
+                      "npc": "I'll need to handle that at some point, but they don't seem to be causing much trouble, so it is thankfully not a pressing concern."
+                    },
+                    {
+                      "type": "jump",
+                      "reference": "other",
+                      "id": "IRITX2"
+                    }
+                  ],
+                  "id": "wJ8aws"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player has completed Scrambled!:",
+                  "steps": [
+                    {
+                      "npc": "However, the problem resolved itself in an unexpected way when he sadly fell from atop the temple steps. It seems it was a freak accident."
+                    },
+                    {
+                      "player": "Yes, I was actually there to witness it myself. It was horrible."
+                    },
+                    {
+                      "npc": "Let us hope he can at least now find peace with Ranul."
+                    },
+                    {
+                      "type": "jump",
+                      "reference": "other",
+                      "id": "V7W88n"
+                    }
+                  ],
+                  "id": "9MWIzd"
+                }
+              ],
+              "id": "KJGL5i"
+            },
+            {
+              "type": "condition",
+              "text": "If during Scrambled!:",
+              "steps": [
+                {
+                  "npc": "Tal Teok is thankfully one of the easier holy sites to look after. However, there is a small issue at the moment in that some tourist has decided to move in and make it their home."
+                },
+                {
+                  "player": "Yes, along with his egg, [egg name], but there's a bit of a problem! [Egg name]'s broken!"
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "1g1yGU"
+                }
+              ],
+              "id": "CWFSsV"
+            }
+          ]
+        },
+        {
+          "text": "I'd better be off.",
+          "steps": [
+            {
+              "player": "I'd better be off."
+            },
+            {
+              "npc": "Timoiva, and may the sun light your way."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

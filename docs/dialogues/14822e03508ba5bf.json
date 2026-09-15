@@ -1,0 +1,133 @@
+{
+  "default": null,
+  "variants": {
+    "talking-to-osmumten-for-the-first-time": [
+      {
+        "type": "message",
+        "text": "As you approach the spirit, you hear a voice echoing in your head.",
+        "id": "WX-hg-"
+      },
+      {
+        "npc": "You. You fought against the Devourer. Her influence here has been lessened as a result. You are to be commended for your strength."
+      },
+      {
+        "player": "I take it you're Osmumten?"
+      },
+      {
+        "npc": "Once, but who I was in life means nothing. Vengeance is all that matters now. The Devourer may be gone, but my home has been corrupted. This corruption must be destroyed."
+      },
+      {
+        "player": "Can I help?"
+      },
+      {
+        "npc": "You can. Take your prize and leave, but when you are ready, return here. The Devourer's thralls will soon be back. You must fight them."
+      },
+      {
+        "player": "I'll do what I can."
+      },
+      {
+        "npc": "We shall see if it is enough."
+      },
+      {
+        "type": "choice",
+        "prompt": "Are you ready to leave the Tombs of Amascut?",
+        "options": []
+      }
+    ],
+    "talking-to-osmumten-afterwards": [
+      {
+        "type": "condition",
+        "text": "If the player did not claim their rewards yet:",
+        "steps": [
+          {
+            "npc": "The Devourer's thralls will be back, but they have been weakened because of you. Your prize awaits."
+          }
+        ],
+        "id": "4LF8_3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player claimed their rewards:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "You have done well, but it is time for you to leave. The Devourer's thralls will soon return."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "WpK_Es"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "You fought well. The Devourer's influence here has lessened, but it will soon be restored. It is time for you to leave."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "Rxu7JH"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "The Devourer's thralls will be back, but they have been weakened because of you. Now, leave this place."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "zAYMOy"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "B27S_P"
+      },
+      {
+        "type": "choice",
+        "prompt": "Are you ready to leave the Tombs of Amascut?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Player gets teleported to the Tombs of Amascut lobby.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "oqo0ly"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "talking-to-osmumten-after-defeating-a-demi-boss": [
+      {
+        "npc": "We are done here, but the Devourer's thralls are everywhere. They must be removed."
+      },
+      {
+        "type": "action",
+        "text": "The player gets relocated to the tombs' nexus.",
+        "id": "CV1yZl"
+      }
+    ]
+  }
+}

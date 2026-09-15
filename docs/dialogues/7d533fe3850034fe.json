@@ -1,0 +1,320 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-before-the-eyes-of-glouphrie": [
+      {
+        "type": "message",
+        "text": "The mage starts to speak but all you hear is:",
+        "id": "0cg_MS"
+      },
+      {
+        "npc": "Blah. Blah, blah, blah, blah...blah!"
+      }
+    ],
+    "standard-dialogue-after-the-eyes-of-glouphrie": [
+      {
+        "type": "message",
+        "text": "The mage starts to speak but all you hear is:",
+        "id": "mmSQ0k"
+      },
+      {
+        "npc": "Blah. Blah, blah, blah, blah...blah!"
+      },
+      {
+        "type": "unavailable",
+        "id": "bC3uzo"
+      },
+      {
+        "npc": "Well, I never expected to be impressed by a human, but you have done a good deed for the gnomes - even if most gnomes won't recognise it.  You humans are not as stupid as I first thought..."
+      },
+      {
+        "player": "Well, that's probably as close to a compliment I'm ever likely to get from you, so thanks!",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player has a crystal saw seed:",
+            "steps": [
+              {
+                "npc": "So you want to know what your crystal seed does?"
+              },
+              {
+                "player": "How did you.. ? Oh I forgot about this mind meld thing."
+              },
+              {
+                "npc": "The seed is a piece of elven magic, all elven magic comes from the manipulation of seeds of crystal. The elves give it divine properties. Elves sing to their crystals and they form into the desired shape."
+              },
+              {
+                "player": "So how do I turn it into something useful?"
+              },
+              {
+                "npc": "Either talk to an elf or find some other way to sing the crystal. If this came from Oaknock, he must have found a way..."
+              },
+              {
+                "player": "Thanks, I'll have a look round Oaknock's old workshop. I can have a chat with Brimstail while I'm at it! Thanks!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "1udzSC"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a crystal saw:",
+            "steps": [
+              {
+                "npc": "So you want to know what your crystal saw does?"
+              },
+              {
+                "player": "How did you.. ? Oh I forgot about this mind meld thing."
+              },
+              {
+                "npc": "Well, I do remember seeing Oaknock using the saw. He said it allowed him to build devices more complicated that even he was capable of constructing. The device he built must have been very complicated indeed."
+              },
+              {
+                "player": "I'd say! Anyway, the saw looks like it could be pretty useful. Thanks."
+              },
+              {
+                "type": "message",
+                "text": "The saw will add three levels to your effective construction level when you are building something that requires a saw.",
+                "id": "XFq6YC"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "m0FYre"
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-the-path-of-glouphrie": [
+      {
+        "type": "unavailable",
+        "id": "urNsqe"
+      },
+      {
+        "player": "Hello, Hazelmere."
+      },
+      {
+        "npc": "You're back. Come to disturb me, have you?"
+      },
+      {
+        "player": "Ah, good old Hazelmere. Glad to see you're back to your grumpy self."
+      },
+      {
+        "npc": "Do you actually want something from me, or are you simply making my life a misery again?"
+      },
+      {
+        "player": "I just wanted to have a chat. You know, just check how you're doing."
+      },
+      {
+        "npc": "Well I'm fine, thank you. Now leave me in peace."
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "Blah, blah, blah...blah!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "Blah, blah."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "bq-C0o"
+      },
+      {
+        "type": "message",
+        "text": "Hazelmere has given you a challenge scroll!",
+        "id": "f9ln6e"
+      }
+    ],
+    "treasure-trails-medium-when-holding-the-challenge-scroll": [
+      {
+        "npc": "Blah, blah?"
+      },
+      {
+        "type": "input",
+        "text": "{{tmissing|Unknown input text.}}",
+        "id": "jCi4Xf"
+      },
+      {
+        "type": "condition",
+        "text": "If the answer is wrong:",
+        "steps": [
+          {
+            "npc": "Blah!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "_YLBEM"
+      },
+      {
+        "type": "condition",
+        "text": "If the answer is correct:",
+        "steps": [
+          {
+            "npc": "Blah, blah, blah!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "[another clue scroll/a casket]",
+            "id": "4mey7x"
+          },
+          {
+            "type": "message",
+            "text": "Hazelmere has given you [another clue scroll/a casket]!",
+            "id": "96gE8d"
+          }
+        ],
+        "id": "Ws1OrB"
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "wpS1rr"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XeOy6P"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "oVMxF2"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "8_0Ak4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [item] to Hazelmere",
+            "id": "ojd8P2"
+          },
+          {
+            "npc": "Hazelmere nods his thanks*"
+          },
+          {
+            "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a birds nest:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You are given nothing as a tip.",
+                "id": "x7bwg5"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "r61wTx"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is anything else:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "You are given [a/some] [reward item(s)] as a tip.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "pqXEqs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a reward token available:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You have [number] credits towards your free delivery token. You are not eligible to get gnome food delivered to you yet.",
+                    "id": "AYspVX"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "enxV0W"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does have a reward token available:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                    "id": "WuJUOb"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has an unclaimed reward token:",
+                    "id": "2cACIp"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "tgDCYs"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has claimed their reward token:",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "QEfFZK"
+                  }
+                ],
+                "id": "jVSIFC"
+              }
+            ],
+            "id": "mTxkpC"
+          }
+        ],
+        "id": "eumwsz"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "U7gbws"
+          }
+        ],
+        "id": "BKsgsv"
+      }
+    ]
+  }
+}

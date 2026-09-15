@@ -1,0 +1,163 @@
+{
+  "default": null,
+  "variants": {
+    "attempting-to-pickpocket-before-haunted-mine": [
+      {
+        "type": "message",
+        "text": "I doubt he's got much of value on him.",
+        "id": "coqQvi"
+      }
+    ],
+    "after-haunted-mine": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've done it, I've managed to recreate the salve amulet!",
+            "steps": [
+              {
+                "player": "I've done it, I've managed to recreate the salve amulet that you spoke of."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not given the zealot his key back:",
+                "steps": [
+                  {
+                    "npc": "That hardly seems likely. There is no way you could have made it to the bottom of the mines without the key which is in my possession."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I found another way down.",
+                        "steps": [
+                          {
+                            "player": "I, er... found another way down."
+                          },
+                          {
+                            "npc": "Mock me not, this is a serious task I am undertaking. I don't have the time for your halfwitted attempt at humour."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Correction, the key that was in your possession.",
+                        "steps": [
+                          {
+                            "player": "Correction, the key that was in your possession."
+                          },
+                          {
+                            "npc": "My key, where is it? You stole it?"
+                          },
+                          {
+                            "npc": "Return that key to me now!"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Ok, I've finished with it now anyway.",
+                                "steps": [
+                                  {
+                                    "player": "Ok, I've finished with it now anyway."
+                                  },
+                                  {
+                                    "type": "action",
+                                    "action": "give",
+                                    "text": "Zealot's key",
+                                    "id": "BKMZks"
+                                  },
+                                  {
+                                    "npc": "Good, maybe all is not lost, despite your apparent lack of common sense."
+                                  },
+                                  {
+                                    "player": "Er... you're welcome?"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually maybe I'll just keep hold of it for now.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, maybe I'll just keep hold of it for now."
+                                  },
+                                  {
+                                    "npc": "Meddling fool, there are bigger things at stake here than you and your petty thieving intellect can understand."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Fine, don't believe me.",
+                        "steps": [
+                          {
+                            "player": "Fine, don't believe me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "eDRuoT"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has given the zealot his key back:",
+                "steps": [
+                  {
+                    "npc": "Then it is fortunate for us that Saradomin has guided you. Success certainly doesn't seem likely to have stemmed from rational behaviour on your part."
+                  },
+                  {
+                    "player": "You still haven't forgiven me for borrowing your key have you?"
+                  },
+                  {
+                    "npc": "Borrowed!? You stole it!"
+                  },
+                  {
+                    "player": "Er, maybe I'd better be going now."
+                  }
+                ],
+                "id": "qbV8vW"
+              }
+            ]
+          },
+          {
+            "text": "What powers does the salve amulet have?",
+            "steps": [
+              {
+                "player": "What powers does the salve amulet have?"
+              },
+              {
+                "npc": "From what I have heard they would be put to best use in the slaying of the evil undead, the zombies and skeletons that walk this land."
+              },
+              {
+                "player": "Thanks for the tip."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-haunted-mine-attempting-to-pickpocket-the-zealot-after-giving-him-the-key-back": [
+      {
+        "type": "message",
+        "text": "I don't want to annoy him any further.",
+        "id": "iF8DO8"
+      }
+    ]
+  }
+}

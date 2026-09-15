@@ -1,0 +1,178 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hi!"
+      },
+      {
+        "npc": "Hi, can I help?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this castle?",
+            "steps": [
+              {
+                "npc": "Welcome to Burthorpe Castle! Home to his Royal Highness the Prince of Burthorpe, Heir to the Throne of Asgarnia!"
+              },
+              {
+                "player": "Wow!"
+              },
+              {
+                "npc": "Anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "bV1i9n"
+              }
+            ]
+          },
+          {
+            "text": "Where is the prince?",
+            "steps": [
+              {
+                "player": "Where is the prince?"
+              },
+              {
+                "npc": "We do not disclose his majesty's business."
+              },
+              {
+                "npc": "Anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "HaINvh"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any quests for me?",
+            "steps": [
+              {
+                "player": "Do you have any quests for me?"
+              },
+              {
+                "npc": "Yes actually I do, we need another servant."
+              },
+              {
+                "player": "Does this noble quest have a name?"
+              },
+              {
+                "npc": "Yes, it's the... er... Empty the Cesspit Quest!"
+              },
+              {
+                "player": "I'll give it a miss!"
+              },
+              {
+                "npc": "Anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "VzAOnY"
+              }
+            ]
+          },
+          {
+            "text": "No, I'm just looking around.",
+            "steps": [
+              {
+                "player": "No, I'm just looking around."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "message",
+        "text": "Eohric has given you a challenge scroll!",
+        "id": "FSXzJX"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "-1HYWD"
+      },
+      {
+        "npc": "Please enter the answer to the question."
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "If the player gives the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zBSDBl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player gives the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Eohric has given you another clue scroll!",
+                "id": "NRouq4"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a medium clue scroll",
+                "id": "GYB1Jv"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "AjCtd6"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "you've obtained a casket!",
+                "id": "GZrHVK"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a medium reward casket",
+                "id": "54VLDz"
+              }
+            ],
+            "id": "-RkRF1"
+          }
+        ],
+        "id": "O36Obe"
+      }
+    ]
+  }
+}

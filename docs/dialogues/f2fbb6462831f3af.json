@@ -1,0 +1,605 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Is there something I can help you with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I was given a challenge, what now?",
+            "condition": "If the player has a Champion's scroll in their inventory:",
+            "steps": [
+              {
+                "player": "I was given a challenge, what now?"
+              },
+              {
+                "npc": "Hand it to me, and we'll get you started."
+              }
+            ],
+            "id": "w1jfnz"
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is the champions' arena. The champions of various races use it to duel those they deem worthy of the honour. If you find a challenge scroll in your travels, bring it here to face your challenger."
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before defeating any champions:",
+                "steps": [
+                  {
+                    "npc": "No, you've not earned any."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "poglKl"
+              },
+              {
+                "type": "condition",
+                "text": "Before claiming a reward:",
+                "steps": [
+                  {
+                    "npc": "Have a look in the chest by the Wall of Defeated Champions, on the north side of this gallery. I think you'll find something in there for you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "gkKeiY"
+              },
+              {
+                "type": "condition",
+                "text": "While holding a Champion's lamp:",
+                "steps": [
+                  {
+                    "npc": "You're holding it already. Go and rub your lamp."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "y-5v97"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has all rewards:",
+                "steps": [
+                  {
+                    "npc": "I don't think I've got anything more for you."
+                  }
+                ],
+                "id": "hCMMe-"
+              }
+            ]
+          },
+          {
+            "text": "Nothing thanks.",
+            "steps": [
+              {
+                "player": "Nothing thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-larxus-after-being-challenged-by-leon-d-cour": [
+      {
+        "npc": "Leon d'Cour has issued you a challenge. He has stated there will be no items allowed except those you're wearing. Do you want to accept the challenge?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "npc": "Your challenger is ready! Please go down through the trapdoor when you're ready."
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "player": "No thanks, I'll pass."
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "I-U1Tj"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-larxus-after-defeating-leon-d-cour": [
+      {
+        "npc": "Welcome back, champion! Leon d'Cour has granted you his cloak for you to wear as a sign of your accomplishment. Do you want it now? Or do you want something else?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please.",
+            "steps": [
+              {
+                "player": "Yes, please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you don't have space to take it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "dIYrL5"
+              },
+              {
+                "type": "message",
+                "text": "Larxus hands you the cape of Leon d'Cour.",
+                "id": "Audhpr"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like another one.",
+                    "steps": [
+                      {
+                        "player": "I'd like another one."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has no inventory space:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you don't have space to take it."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "V5iQN8"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Larxus hands you the cape of Leon d'Cour.",
+                        "id": "I5aj1j"
+                      },
+                      {
+                        "type": "unavailable",
+                        "id": "O_MY-J"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thank you, and goodbye.",
+                    "steps": [
+                      {
+                        "player": "Thank you, and goodbye."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "2LK6NS"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "0Psta5"
+              }
+            ]
+          },
+          {
+            "text": "Nothing thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "dZNG8B"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attempting-to-teleport-out-of-the-room": [
+      {
+        "npc": "There's a ladder for a reason."
+      }
+    ],
+    "using-items-on-larxus-imp-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're not allowed to use any Special Attacks. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "npc": "Your challenger is ready! Please go down through the trapdoor when you're ready."
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "player": "No thanks, I'll pass."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-goblin-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're only allowed to use Magic attacks, no Melee or Ranged. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "aaRs0N"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "idmooK"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-skeleton-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're only allowed to use Ranged attacks, no Melee or Magic. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "b8OL9v"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "r64RVo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-zombie-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're not allowed to use any Magic attacks. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Vamk3T"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "sz1Q-5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-giant-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're only allowed to use Melee attacks, no Ranged or Magic. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nKZnL4"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "mRfTaM"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-hobgoblin-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're not allowed to use any Melee attacks. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "wNp5Os"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "19SWcE"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-ghoul-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're only allowed to take Weapons, no other items are allowed. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ycwyYA"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "8qIsNd"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-earth-warrior-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're not allowed to use any Prayers. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Gh-EZ5"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "QG8lXD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-jogre-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're not allowed to use any Ranged attacks. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "wzp2cG"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "j2sqE0"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-lesser-demon-champion-scroll": [
+      {
+        "npc": "So you want to accept the challenge huh? Well there are some specific rules for these Champion fights. For this fight you're not allowed any Weapons or Armour. Do you still want to proceed?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let me at him!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "g2zeju"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "XcSkbK"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-larxus-attempting-to-give-him-a-scroll-after-accepting-a-challenge": [
+      {
+        "npc": "You've already got a champion waiting for you."
+      }
+    ],
+    "using-items-on-larxus-attempting-to-give-him-a-scroll-for-a-defeated-champion": [
+      {
+        "npc": "You've already defeated this Champion. The challenge is void."
+      },
+      {
+        "type": "action",
+        "text": "The player's scroll is removed.",
+        "id": "s6CHYe"
+      }
+    ],
+    "using-items-on-larxus-irrelevant-items": [
+      {
+        "npc": "That's great, now go show who's interested."
+      }
+    ],
+    "climbing-down-the-champion-statue-trying-to-climb-down-champion-statue-without-giving-larxus-a-champion-scroll": [
+      {
+        "npc": "You need to arrange a challenge with me before you enter the arena."
+      }
+    ],
+    "climbing-down-the-champion-statue-attempting-to-enter-the-fight-with-the-ghoul-champion-with-items-other-than-a-weapon": [
+      {
+        "npc": "I believe I mentioned you're only allowed to take Weapons into this duel."
+      }
+    ],
+    "climbing-down-the-champion-statue-attempting-to-enter-the-fight-with-the-lesser-demon-champion-with-weapons-or-armour": [
+      {
+        "npc": "I believe I mentioned you're not allowed to take any Weapons or Armour into this duel."
+      }
+    ],
+    "climbing-down-the-champion-statue-attempting-to-enter-the-fight-with-the-lesser-demon-champion-with-materials-to-make-weapons-or-armour": [
+      {
+        "npc": "I believe I mentioned you're not allowed to take any Weapons or Armour into this duel, and that includes the materials to make them."
+      }
+    ],
+    "climbing-down-the-champion-statue-attempting-to-enter-the-fight-with-the-human-champion-with-any-unequipped-item": [
+      {
+        "npc": "I believe I mentioned you're not allowed to take any items except those you're wearing into this duel."
+      }
+    ],
+    "while-fighting-a-champion-attempting-to-attack-the-skeleton-champion-with-melee-or-magic": [
+      {
+        "npc": "I believe I mentioned you're only allowed to use Ranged in this duel."
+      }
+    ],
+    "while-fighting-a-champion-attempting-to-activate-a-prayer-while-fighting-the-earth-warrior-champion": [
+      {
+        "npc": "I believe I mentioned you're not allowed to use Prayer in this duel."
+      }
+    ]
+  }
+}

@@ -1,0 +1,340 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings, fellow warrior. I am Ajjat, former black knight and now training officer here in the warrior guild."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me about skillcapes, please?",
+            "steps": [
+              {
+                "player": "Can you tell me about skillcapes, please?"
+              },
+              {
+                "npc": "Skillcapes, also known as Capes of Accomplishment, are reserved for the elite of the elite. Only a person who has truly mastered a skill can buy one, and even then a skillcape can only be bought from one who is"
+              },
+              {
+                "npc": "recognised as the highest skilled in the land at any particular skill."
+              },
+              {
+                "npc": "I have the privilege of being the person that controls access to the Skillcape of Attack, which Kamfreena will recognize and allow you to access her Cyclopes without the need for guild tokens."
+              },
+              {
+                "npc": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "E38RM-"
+              }
+            ]
+          },
+          {
+            "text": "Black Knight? Why are you here?",
+            "steps": [
+              {
+                "player": "Black Knight? Why are you here?"
+              },
+              {
+                "npc": "Indeed I was, however their... methods... did not match with my ideals.. so I left. Harrallak, recognising my talent as a warrior, took me in and offered me a job here."
+              },
+              {
+                "player": "Hmm... well if Harrallak trusts you, I guess I can."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "DbP3uc"
+              }
+            ]
+          },
+          {
+            "text": "What's the Dummy Room all about?",
+            "steps": [
+              {
+                "player": "What's the Dummy Room all about?"
+              },
+              {
+                "npc": "Ahh yes, the dummies. Another ingenious invention of the noble Dwarf Gamfred. They're mechanical you see and pop up out of the floor. You have to hit them with the correct attack mode before they disappear again."
+              },
+              {
+                "player": "So how do I tell which one is which?"
+              },
+              {
+                "npc": "There are two different ways. One indication is their colour, the other is the pose and weapons they are holding, for instance, the one holding daggers you will need to hit with a piercing attack."
+              },
+              {
+                "npc": "In the room you will find a poster on the wall which can help you recognise each different dummy."
+              },
+              {
+                "player": "That sounds ingenious!"
+              },
+              {
+                "npc": "Indeed, you may find that you need several weapons to be successful 100% of the time, but keep trying. The weapons shop upstairs may help you there."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "zD-liY"
+              }
+            ]
+          },
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "player": "May I claim my tokens please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has tokens to claim:",
+                "steps": [
+                  {
+                    "npc": "Of course! Here you go, you've earned [amount] tokens!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives [amount] Warrior guild tokens.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "fS1N35"
+                  },
+                  {
+                    "player": "Thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ocYuDB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no tokens to claim:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you have not earned any tokens yet. Try some of the activities around the guild to earn some."
+                  },
+                  {
+                    "player": "Ok, I'll go see what I can find."
+                  }
+                ],
+                "id": "irH5V5"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "Farewell warrior. Stay away from the dark side."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "with-99-attack": [
+      {
+        "npc": "Greetings, fellow warrior. I am Ajjat, former black knight and now training officer here in the warrior guild."
+      },
+      {
+        "npc": "Ah, but I can see you are already a master in the fine art of attacking, perhaps you have come to me to purchase a Cape of Attack, and thus join the elite few who have mastered this exacting skill?"
+      },
+      {
+        "npc": "When wearing this cape, Kamfreena will recognize your ability and allow you to access her Cyclopes without the need for guild tokens."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "May I buy a Skillcape of Attack, please?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have a Skillcape of Attack:",
+                "steps": [
+                  {
+                    "player": "May I buy a Skillcape of Attack, please?"
+                  },
+                  {
+                    "npc": "Most certainly; unfortunately being such a prestigious item, they are appropriately expensive. I'm afraid I must ask you for the princely sum of 99000 gold!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "99000 gold! Are you mad?",
+                        "steps": [
+                          {
+                            "player": "99000! Are you mad?"
+                          },
+                          {
+                            "npc": "Not at all; there are many other adventurers who would love the opportunity to purchase such a prestigious item! You can find me here if you change your mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I would gladly pay such a paltry sum for a splendid cape.",
+                        "steps": [
+                          {
+                            "player": "I would gladly pay such a paltry sum for a splendid cape."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have at least 99,000 coins in their inventory:",
+                            "steps": [
+                              {
+                                "player": "But, unfortunately, I don't have enough money with me."
+                              },
+                              {
+                                "npc": "Well come back and see me when you do."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "hierHL"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                            "steps": [
+                              {
+                                "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "sONw-s"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 99,000 coins and enough inventory space:",
+                            "steps": [
+                              {
+                                "npc": "Excellent! Wear that cape with pride my friend."
+                              },
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "an Attack cape and hood and pays 99,000 coins",
+                                "id": "Gs7r5a"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "qKXwsT"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "3GhHD8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Skillcape of Attack:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Skillcape",
+                        "steps": [
+                          {
+                            "player": "May I buy a Skillcape of Attack, please?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "uuOmXe"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Hood",
+                        "steps": [
+                          {
+                            "player": "May I have another hood for my cape, please?"
+                          },
+                          {
+                            "npc": "Most certainly, and free of charge!"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "an Attack hood",
+                            "id": "tMc7NM"
+                          },
+                          {
+                            "type": "unavailable",
+                            "id": "c4ygY7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Zf6SlI"
+              }
+            ]
+          },
+          {
+            "text": "Black Knight? Why are you here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "tJp1yt"
+              }
+            ]
+          },
+          {
+            "text": "What's the Dummy Room all about?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "cqA1WL"
+              }
+            ]
+          },
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "8DmiKo"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ud89Bw"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

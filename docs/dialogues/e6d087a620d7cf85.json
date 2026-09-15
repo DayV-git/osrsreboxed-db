@@ -1,0 +1,109 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hey there, what's this all about?"
+      },
+      {
+        "npc": "Our Lord Saradomin needs your help!"
+      },
+      {
+        "player": "Oh great, what is it this time?"
+      },
+      {
+        "npc": "You're needed at Castle Wars, our forces are weakening and we need you as reinforcements."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Sure, I'll play some Castle Wars."
+              },
+              {
+                "npc": "Praise Saradomin, I'll send you there right away!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has non-combat items in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Some items are stopping you from entering the Castle Wars waiting room. See the chat for details.",
+                    "id": "n20emg"
+                  }
+                ],
+                "id": "GuC4vR"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Hmm, I'm alright actually, I don't want to play Castle Wars right now."
+              },
+              {
+                "npc": "I urge you to reconsider, before it's too late."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "on-seasonal-or-permanent-deadman-mode-worlds": [
+      {
+        "type": "message",
+        "text": "Sorry, you can't play Castle Wars on this world. Try world 334 for the official world.",
+        "id": "TokA0D"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "action",
+        "text": "Every 40-60 ticks:",
+        "id": "0yJHEW"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Fight for the greater good today!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Fight for Saradomin today!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "The light of Saradomin is fading, he needs your help!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Zamorak is a false god who is a stain on this world, Saradomin will guide you forward."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Howdy there partner! Want to see my spinning plates? Or did ya want a holiday item back?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Spinning plates?",
+            "steps": [
+              {
+                "player": "Spinning plates?"
+              },
+              {
+                "npc": "That's right. There's a funny story behind them, their shipment was held up by thieves."
+              },
+              {
+                "npc": "The crate was marked 'Dragon Plates'. Apparently they thought it was some kind of armour, when really it's just a plate with a dragon on it!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Diango's Toy Store",
+                "id": "basazD"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to check holiday items please!",
+            "steps": [
+              {
+                "player": "I'd like to check holiday items please!"
+              },
+              {
+                "npc": "Sure thing, let me just see what you're missing."
+              },
+              {
+                "type": "action",
+                "text": "Diango's Holiday Item Retrieval opens.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Diango's Holiday Item Retrieval",
+                "id": "G-OETg"
+              }
+            ]
+          },
+          {
+            "text": "What else are you selling?",
+            "steps": [
+              {
+                "player": "What else are you selling?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Diango's Toy Store",
+                "id": "ep1b9D"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-obtaining-banana-hat": [
+      {
+        "npc": "Howdy there partner! You came at just the right time! I've got something for ya!"
+      },
+      {
+        "player": "Oh really? What is it?"
+      },
+      {
+        "npc": "Well, I did some rooting around in my house and found this really neat hat."
+      },
+      {
+        "player": "A hat? What sort of hat..."
+      },
+      {
+        "npc": "A banana hat! Would you like it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Sure, I'll take the hat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "npc": "Looks like you've got no space for it, I'll hold onto it till you do. Just come to me to claim it."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "MQ4EPG"
+                  }
+                ],
+                "id": "mw3vIV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has inventory space:",
+                "steps": [
+                  {
+                    "npc": "There you go amigo, enjoy!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "9tXmhE"
+                  }
+                ],
+                "id": "802x-D"
+              },
+              {
+                "npc": "So what else can I do for you partner? Want to see my spinning plates? Or did ya want a holiday item back?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "UgM2N_"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No thanks, I don't want it right now."
+              },
+              {
+                "npc": "No problem amigo, come back to me to claim it if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-obtaining-mystic-cards": [
+      {
+        "npc": "Oh wow, you did it! Well done!"
+      },
+      {
+        "player": "Thank you!"
+      },
+      {
+        "npc": "I was wondering when someone would complete this. I've been holding on to the reward for a while."
+      },
+      {
+        "npc": "The being who gave it to me was... rather strange."
+      },
+      {
+        "player": "What was their name?"
+      },
+      {
+        "npc": "They didn't say. But they did give me some sage advice before they left."
+      },
+      {
+        "player": "What was it?"
+      },
+      {
+        "npc": "I don't remember exactly. Something about making the most of your time..."
+      },
+      {
+        "player": "Thyme!"
+      },
+      {
+        "npc": "Where?! I don't see any!"
+      },
+      {
+        "player": "I... don't worry. Thank you for the reward, see you around!"
+      },
+      {
+        "npc": "See you!"
+      }
+    ]
+  }
+}

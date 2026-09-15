@@ -1,0 +1,130 @@
+{
+  "steps": [
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Why is there a Shantay Pass here?",
+          "steps": [
+            {
+              "player": "Why is there a Shantay Pass here?"
+            },
+            {
+              "npc": "There's been an influx of new business to these ruins. Shantay sent us out here to make some money."
+            },
+            {
+              "player": "Shantay once told me that he's not interested in profit!"
+            },
+            {
+              "npc": "Have you seen the state of this place? We're helping to provide vital repair costs to the people!"
+            },
+            {
+              "player": "I see."
+            },
+            {
+              "npc": "Not really our fault if they spend their cut on fancy outfits!"
+            },
+            {
+              "player": "..."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Can I see what you have to sell please?",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "R5PUtX"
+                    }
+                  ]
+                },
+                {
+                  "text": "I must be going.",
+                  "steps": [
+                    {
+                      "player": "I must be going."
+                    },
+                    {
+                      "npc": "Safe travels, friend."
+                    }
+                  ]
+                },
+                {
+                  "text": "I want to buy a Shantay pass for 5 gold coins.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "Wkc3Mf"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Can I see what you have to sell please",
+          "steps": [
+            {
+              "player": "Can I see what you have to sell please?"
+            },
+            {
+              "npc": "Absolutely, friend."
+            },
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Shantay Pass Shop",
+              "id": "lvt0Ie"
+            }
+          ]
+        },
+        {
+          "text": "I want to buy a Shantay pass for 5 gold coins.",
+          "steps": [
+            {
+              "player": "I want to buy a Shantay pass for 5 gold coins."
+            },
+            {
+              "npc": "Absolutely, friend."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has 5 coins:",
+              "steps": [
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "Shantay pass",
+                  "id": "cPKwj9"
+                },
+                {
+                  "type": "message",
+                  "text": "You purchase a Shantay Pass.",
+                  "id": "V087CY"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "sP_FIt"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have 5 coins:",
+              "steps": [
+                {
+                  "npc": "Sorry friend, the Shantay Pass is 5 gold coins. You don't seem to have enough money!"
+                }
+              ],
+              "id": "ET-5SP"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

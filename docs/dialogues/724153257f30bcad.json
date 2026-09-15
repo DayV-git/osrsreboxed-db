@@ -1,0 +1,176 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "I have much tidying to do, so please be brief."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm looking for a book...",
+            "condition": "If the player is helping NPCs find books in the Arceuus Library:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Zyj0sH"
+              }
+            ],
+            "id": "Eho3t7"
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "SRDjD8"
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "player": "I'll be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a torn part of a clue scroll",
+        "id": "NffnHN"
+      },
+      {
+        "npc": "Here you go."
+      },
+      {
+        "type": "message",
+        "text": "You are handed a torn part of a clue scroll.",
+        "id": "BJiUIy"
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "I have much tidying to do, so please be brief."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm looking for a book...",
+            "condition": "If the player is helping NPCs find books in the Arceuus Library:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Zyj0sH"
+              }
+            ],
+            "id": "k7gUZZ"
+          },
+          {
+            "text": "Have you seen any dark manuscripts?",
+            "condition": "If the player is looking for dark manuscripts:",
+            "steps": [
+              {
+                "player": "Have you seen any dark manuscripts?"
+              },
+              {
+                "npc": "Try the [bottom/middle/top] floor, [central area/north-eastern bay/south-eastern bay/south-western bay/north-western bay]."
+              },
+              {
+                "player": "Thank you."
+              }
+            ],
+            "id": "Exs_YQ"
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "SRDjD8"
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "player": "I'll be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-treasure-trails-master": [
+      {
+        "type": "condition",
+        "text": "If the player has no free inventory spaces",
+        "steps": [
+          {
+            "npc": "Hey, I have something for you but you don't have any space for it!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "DZz8Ns"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one free inventory space",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a torn part of a clue scroll",
+            "id": "JbWQR2"
+          },
+          {
+            "npc": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You are handed a torn part of a clue scroll.",
+            "id": "k-_7-n"
+          }
+        ],
+        "id": "kFUqS7"
+      }
+    ]
+  },
+  "branches": {
+    "Zyj0sH": [
+      {
+        "player": "I'm looking for a book: [book]"
+      },
+      {
+        "npc": "Try the [bottom/middle/top] floor, [central area/north-eastern bay/south-eastern bay/south-western bay/north-western bay]."
+      },
+      {
+        "player": "Thank you."
+      }
+    ],
+    "SRDjD8": [
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "I assist the Chief Librarian, Logosia, in the running of the Library. There is always much tidying to be done."
+      },
+      {
+        "npc": "Logosia is a truly great scholar, but her temperament may not be entirely suited to the duties of a librarian."
+      },
+      {
+        "player": "Okay, thanks."
+      }
+    ]
+  }
+}

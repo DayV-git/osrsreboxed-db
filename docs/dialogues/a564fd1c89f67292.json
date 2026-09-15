@@ -1,0 +1,80 @@
+{
+  "steps": [
+    {
+      "npc": "What do you want?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What are you doing out here?",
+          "steps": [
+            {
+              "player": "What are you doing out here?"
+            },
+            {
+              "npc": "Catching anglerfish! This is the only place you can find them!"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "How can I catch anglerfish?",
+                  "steps": [
+                    {
+                      "player": "How can I catch anglerfish?"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have level 82 Fishing:",
+                      "steps": [
+                        {
+                          "npc": "I have heard good things about you, outsider, however, you will need to train your fishing skill before catching these."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "5q7S-_"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has level 82 Fishing:",
+                      "steps": [
+                        {
+                          "npc": "You will need a fishing rod and some sandworms to use as bait. If you need supplies, try Tynan's shoreside store."
+                        },
+                        {
+                          "player": "Thanks. I'll let you get back to fishing."
+                        }
+                      ],
+                      "id": "j2XWPM"
+                    }
+                  ]
+                },
+                {
+                  "text": "I'll let you get back to it.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "-0uIbH"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "I'll let you get back to it.",
+          "steps": [
+            {
+              "player": "I'll let you get back to it."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

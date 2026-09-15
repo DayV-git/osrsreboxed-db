@@ -1,0 +1,626 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "What human need help with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I get a new commission?",
+            "condition": "If the player does not have a commission:",
+            "steps": [
+              {
+                "npc": "Make [sword style] sword."
+              }
+            ],
+            "id": "Hponlh"
+          },
+          {
+            "text": "What's my current commission?",
+            "condition": "If the player has a commission:",
+            "steps": [
+              {
+                "player": "What's my current commission?"
+              },
+              {
+                "npc": "Go make [sword style] sword."
+              }
+            ],
+            "id": "JVpUXP"
+          },
+          {
+            "text": "I'm not sure what something does.",
+            "steps": [
+              {
+                "player": "I'm not sure what something does."
+              },
+              {
+                "npc": "What do not understand, little one?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How do I use the crucible?",
+                    "steps": [
+                      {
+                        "player": "How do I use the crucible?"
+                      },
+                      {
+                        "npc": "Crucible just a big bucket... We put metal in and it melt it down to make swords."
+                      },
+                      {
+                        "npc": "Crucible let us add differing metals... and can store up to 28 metal bar worth, Kovac think."
+                      },
+                      {
+                        "npc": "We can put other metal thing in too, like sword and armour."
+                      },
+                      {
+                        "npc": "Need help with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "Eam7a3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What does the mould jig do?",
+                    "steps": [
+                      {
+                        "player": "What does the mould jig do?"
+                      },
+                      {
+                        "npc": "Mould jig very handy... It let us make differing type of sword."
+                      },
+                      {
+                        "npc": "We want use mould parts to fit condi... commission... so when setting up mould, find parts that match."
+                      },
+                      {
+                        "npc": "Some match commission better than other... so find best one for job."
+                      },
+                      {
+                        "npc": "Need help with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "mYleIc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do I control the preform's temperature?",
+                    "steps": [
+                      {
+                        "player": "How do I control the preform's temperature?"
+                      },
+                      {
+                        "npc": "That very easy... If preform too cold, dunk in lava... If preform too hot, hold to waterfall."
+                      },
+                      {
+                        "npc": "Preform need to be right temperature to work with tool."
+                      },
+                      {
+                        "npc": "Trip hammer need preform to be hot... Grindstone need preform to be warm... Polishing wheel need preform to be cold."
+                      },
+                      {
+                        "npc": "Need help with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "AIv-HY"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "When should I use a tool?",
+                    "steps": [
+                      {
+                        "player": "When should I use a tool?"
+                      },
+                      {
+                        "npc": "Hmm... Kovac think it a gut feeling thing..."
+                      },
+                      {
+                        "player": "That doesn't help me."
+                      },
+                      {
+                        "npc": "Hmm... that is true."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Progress on your sword can be tracked via the display on screen. You can track which tool you need to use via the completion bar.",
+                        "id": "b2Ziy3"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Use the preform on the trip hammer when your completion tracker is over this icon's bar.",
+                        "id": "Bs2neG"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Use the preform on the grindstone when your completion tracker is over this icon's bar.",
+                        "id": "iqP3VU"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Use the preform on the polishing wheel when your completion tracker is over this icon's bar.",
+                        "id": "sq2oLt"
+                      },
+                      {
+                        "npc": "Need help with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "xT3Lfh"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I'm okay for now.",
+                    "steps": [
+                      {
+                        "player": "Actually, I'm okay for now."
+                      },
+                      {
+                        "npc": "Okay."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'm not sure what something does, can you help me?",
+            "condition": "If the player has a commission:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "G6sYDE"
+              }
+            ],
+            "id": "n4UTPI"
+          },
+          {
+            "text": "Can I scrap my current commission?",
+            "condition": "If the player has a commission:",
+            "steps": [
+              {
+                "player": "Can I scrap my current commission?"
+              },
+              {
+                "npc": "Why want that?"
+              },
+              {
+                "player": "I don't think I'm really feeling it at the moment."
+              },
+              {
+                "npc": "That okay, Kovac will give reward even if sword bad. Maybe you put in storage for working later, but Kovac no scrap swords."
+              }
+            ],
+            "id": "AGlqvx"
+          },
+          {
+            "text": "I'd like to buy something.",
+            "steps": [
+              {
+                "player": "I'd like to buy something."
+              },
+              {
+                "npc": "Here's what Kovac have."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Giants' Foundry Reward Shop",
+                "id": "yu1myr"
+              }
+            ]
+          },
+          {
+            "text": "I'm okay for now.",
+            "steps": [
+              {
+                "player": "I'm okay for now."
+              },
+              {
+                "npc": "Okay friend, Kovac here to help."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-hand-in-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have a commission:",
+        "steps": [
+          {
+            "npc": "You no sword to hand over. I give new commission if want?"
+          },
+          {
+            "type": "choice",
+            "prompt": "Receive new commission?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "npc": "Make [sword style] sword."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "aFc3mt"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a commission, but no preform:",
+        "steps": [
+          {
+            "npc": "You no sword to hand over. Kovac give commission already. Go make me [sword style] sword."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "RfWOs0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a commission and an unfinished preform:",
+        "steps": [
+          {
+            "npc": "Hmm... sword not finished yet. Keep working."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YZWtli"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a commission and a finished preform:",
+        "steps": [
+          {
+            "npc": "Hmm... sword look good. Hand over."
+          },
+          {
+            "type": "message",
+            "text": "Sword completed in: [time] at quality: [quality]  Best completed in: [best time] at quality: [best quality]  You're awarded: [number] Smithing XP and [number] coins.  Total swords made in the Giants Foundry: [number]",
+            "id": "pDftmf"
+          },
+          {
+            "type": "choice",
+            "prompt": "Receive another commission?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "npc": "Make [sword style] sword."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "4xfABC"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a commission and a ruined preform:",
+        "steps": [
+          {
+            "npc": "Sword no good. Give it here."
+          },
+          {
+            "type": "message",
+            "text": "Sword completed in: [time] at quality: 0  Best completed in: [best time] at quality: [best quality]  You're awarded: 30 Smithing XP and 60 coins.  Total swords made in the Giants Foundry: [number]",
+            "id": "qMCAsZ"
+          },
+          {
+            "type": "choice",
+            "prompt": "Receive another commission?",
+            "options": []
+          },
+          {
+            "type": "unavailable",
+            "id": "vxRh0y"
+          }
+        ],
+        "id": "9QU98f"
+      }
+    ],
+    "right-click-commission-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have a commission:",
+        "steps": [
+          {
+            "npc": "Make [sword style] sword."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "JMwr15"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a commission:",
+        "steps": [
+          {
+            "npc": "Kovac give commission already. Go make me [sword style] sword."
+          }
+        ],
+        "id": "t-tRJd"
+      }
+    ],
+    "using-items-on-kovac-smiths-tunic": [
+      {
+        "type": "message",
+        "text": "Smiths tunic: Kovac will give you 3,200 Foundry Reputation for this.",
+        "id": "4dvooJ"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Smiths tunic: Kovac takes it back. Foundry Reputation: [total reputation]",
+                "id": "oVP6Uw"
+              }
+            ]
+          },
+          {
+            "text": "Decline",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-kovac-smiths-trousers": [
+      {
+        "type": "message",
+        "text": "Smiths trousers: Kovac will give you 3,200 Foundry Reputation for this.",
+        "id": "2fl0KG"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Smiths trousers: Kovac takes it back. Foundry Reputation: [total reputation]",
+                "id": "DlrYnX"
+              }
+            ]
+          },
+          {
+            "text": "Decline",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-kovac-smiths-boots": [
+      {
+        "type": "message",
+        "text": "Smiths boots: Kovac will give you 2,800 Foundry Reputation for this.",
+        "id": "pRMlaD"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Smiths boots: Kovac takes it back. Foundry Reputation: [total reputation]",
+                "id": "yZZdfL"
+              }
+            ]
+          },
+          {
+            "text": "Decline",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-kovac-smiths-gloves": [
+      {
+        "type": "message",
+        "text": "Smiths gloves: Kovac will give you 2,800 Foundry Reputation for this.",
+        "id": "dQF49D"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Smiths gloves: Kovac takes it back. Foundry Reputation: [total reputation]",
+                "id": "nVRebl"
+              }
+            ]
+          },
+          {
+            "text": "Decline",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-kovac-double-ammo-mould": [
+      {
+        "type": "message",
+        "text": "Double ammo mould: Kovac will give you 1,600 Foundry Reputation for this.",
+        "id": "pj9B5q"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Double ammo mould: Kovac takes it back. Foundry Reputation: [total reputation]",
+                "id": "uKwF05"
+              }
+            ]
+          },
+          {
+            "text": "Decline",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-kovac-smithing-catalyst": [
+      {
+        "type": "message",
+        "text": "Smithing catalyst: Kovac will give you 12 Foundry Reputation for this.",
+        "id": "UjpSHo"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Smithing catalyst: Kovac takes it back. Foundry Reputation: [total reputation]",
+                "id": "0xtU6L"
+              }
+            ]
+          },
+          {
+            "text": "Decline",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-kovac-ore-pack": [
+      {
+        "type": "message",
+        "text": "Ore pack: Kovac will give you 160 Foundry Reputation for this.",
+        "id": "1Uxb6L"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Ore pack: Kovac takes it back. Foundry Reputation: [total reputation]",
+                "id": "-R49BQ"
+              }
+            ]
+          },
+          {
+            "text": "Decline",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-kovac-colossal-blade": [
+      {
+        "npc": "Kovac does not want that back. Maybe the smith clothes would be good, if you got any."
+      }
+    ],
+    "using-items-on-kovac-kovac-s-grog": [
+      {
+        "npc": "No, you keep that or give it to someone else."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not an Ironman:",
+        "steps": [
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3Pwe71"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is an Ironman:",
+        "steps": [
+          {
+            "player": "Can't you make an exception for me? I'm an Ironman by the way."
+          },
+          {
+            "npc": "You get treated the same anyway."
+          },
+          {
+            "player": "..."
+          }
+        ],
+        "id": "ZTl2vL"
+      }
+    ],
+    "using-items-on-kovac-anything-else": [
+      {
+        "npc": "You keep that."
+      }
+    ]
+  }
+}

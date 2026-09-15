@@ -1,0 +1,283 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "first-time-speaking": [
+      {
+        "type": "condition",
+        "text": "If the player has additional lamps to claim",
+        "steps": [
+          {
+            "npc": "I have something for you."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "two ancient lamps",
+            "id": "v4Qwiy"
+          }
+        ],
+        "id": "UUYlO3"
+      },
+      {
+        "player": "You're looking very shady."
+      },
+      {
+        "npc": "I'm here for good reason, [player name]."
+      },
+      {
+        "player": "How do you know my name?"
+      },
+      {
+        "npc": "You and I share a common friend."
+      },
+      {
+        "player": "Azzanadra?"
+      },
+      {
+        "npc": "Indeed."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are you here?",
+            "steps": [
+              {
+                "player": "Why are you here?"
+              },
+              {
+                "npc": "Ever heard of criminals returning to the scene of the crime? Thats why."
+              },
+              {
+                "player": "I'm not sure this one is going to return any time soon."
+              },
+              {
+                "npc": "Well never say never, [player name]. Now be on your way."
+              }
+            ]
+          },
+          {
+            "text": "Azzanadra offered me a ring...",
+            "condition": "If the player did not receive a ring of shadows after completing Desert Treasure II:",
+            "steps": [
+              {
+                "player": "Azzanadra offered me a ring..."
+              },
+              {
+                "npc": "And you need me to give it to you?"
+              },
+              {
+                "player": "Pretty much."
+              },
+              {
+                "type": "message",
+                "text": "The bandit hands you a Ring of Shadows.",
+                "id": "rD9gb-"
+              },
+              {
+                "npc": "Take good care of that. It's very poweful."
+              }
+            ],
+            "id": "Aq6SKx"
+          },
+          {
+            "text": "I need another ring.",
+            "steps": [
+              {
+                "player": "I need another ring."
+              },
+              {
+                "npc": "Very well, but it will cost you..."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Ring of shadows shop",
+                "id": "zNvs5S"
+              }
+            ]
+          },
+          {
+            "text": "I'd best get going.",
+            "steps": [
+              {
+                "player": "I'd best get going."
+              },
+              {
+                "npc": "Until next time, [player name]."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has additional lamps to claim",
+        "steps": [
+          {
+            "npc": "Hello again, [player name]. Azzanadra asked me to give you this."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "two ancient lamps",
+            "id": "9A4bvb"
+          }
+        ],
+        "id": "czT0FW"
+      },
+      {
+        "npc": "Hello again, [player name]."
+      },
+      {
+        "player": "Don't you get bored down here?"
+      },
+      {
+        "npc": "Not really. I like the peace and quiet. It's also a far more reasonable temperature than outside."
+      },
+      {
+        "player": "Good points."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are you here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "iw3FTf"
+              }
+            ]
+          },
+          {
+            "text": "I need another ring.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nDZhld"
+              }
+            ]
+          },
+          {
+            "text": "I'd best get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "odJ5NN"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Azzanadra gave me a ring...",
+            "condition": "If the player does not have a ring of shadows:",
+            "steps": [
+              {
+                "player": "Azzanadra gave me a ring..."
+              },
+              {
+                "npc": "And you need me to replace it?"
+              },
+              {
+                "player": "Pretty much."
+              },
+              {
+                "npc": "It'll cost you."
+              },
+              {
+                "player": "How much we talking?"
+              },
+              {
+                "npc": "75,000 of your finest gold coins."
+              },
+              {
+                "type": "choice",
+                "prompt": "Pay 75,000 for a Ring of Shadows?",
+                "options": [
+                  {
+                    "text": "Yes."
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money:",
+                "steps": [
+                  {
+                    "player": "Seems I don't have enough coins..."
+                  },
+                  {
+                    "npc": "Well off you go then."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "C9qC6u"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough money but no free inventory space:",
+                "steps": [
+                  {
+                    "npc": "You will need some space to hold it first."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OJMxNR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough money and free inventory space:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a ring of shadows",
+                    "id": "mE74N8"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The bandit hands you a Ring of Shadows.",
+                    "id": "u_P0xD"
+                  },
+                  {
+                    "npc": "Take good care of that. It's very poweful."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5J0_SA"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "Dqcd81"
+          }
+        ]
+      }
+    ]
+  }
+}

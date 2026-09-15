@@ -1,0 +1,76 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hey! How do I get out of here?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player isn't wearing a Vyre disguise",
+        "steps": [
+          {
+            "npc": "When you've filled the mine cart, we'll think about it."
+          },
+          {
+            "type": "condition",
+            "text": "If the cart does not contain 15 daeyalt ores:",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ],
+            "id": "uwT4k-"
+          },
+          {
+            "type": "condition",
+            "text": "If the cart contains 15 daeyalt ores:",
+            "steps": [
+              {
+                "player": "But I've filled the mine cart."
+              },
+              {
+                "npc": "Okay, I guess you can go then, food sack!"
+              },
+              {
+                "type": "action",
+                "text": "The player is teleported to the mine entrance, in the northwestern part of Meiyerditch",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "J8VNXc"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "epWpcK"
+          }
+        ],
+        "id": "bYyur2"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing a Vyre disguise",
+        "steps": [
+          {
+            "npc": "I can show you the way out. Follow me."
+          },
+          {
+            "type": "action",
+            "text": "The player is lead out to the mine entrance, in the northwestern part of Meiyerditch",
+            "id": "ellX6c"
+          }
+        ],
+        "id": "qo5y3t"
+      }
+    ],
+    "after-the-blood-moon-rises": [
+      {
+        "player": "Hey. How do I get out of here?"
+      },
+      {
+        "npc": "I can show you the way out. Follow me."
+      }
+    ]
+  }
+}

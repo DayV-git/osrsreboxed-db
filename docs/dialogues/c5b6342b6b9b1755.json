@@ -1,0 +1,477 @@
+{
+  "default": null,
+  "variants": {
+    "before-selling-any-pyramid-tops-initial-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "G'day, mate. I'm Simon - Simon Templeton. Who are you?"
+      },
+      {
+        "player": "I'm [player name]. What are you doing all the way out here?"
+      },
+      {
+        "npc": "I've been contracted to retrieve artefacts from the top of this magnificent pyramid."
+      },
+      {
+        "player": "So, why are you down here and not up there then?"
+      },
+      {
+        "npc": "Well, it's me back - an old injury I picked up in Sophanem has come back to haunt me. I was working for the Museum of Varrock, and the gold I had been given wasn't enough to pay for the carpet rides, let"
+      },
+      {
+        "npc": "alone any decent equipment. But that was a long time ago... I can't even lift a chisel right now. There's no way I can climb all the way up there."
+      },
+      {
+        "player": "How on earth did you get down the cliff face, then?"
+      },
+      {
+        "npc": "That's what set off the injury. I was fine before I scrabbled down that pesky slope. I think it will be a while before I can climb back up again; I must be getting old."
+      },
+      {
+        "npc": "Hang on a second... You look like you're pretty agile and up for a challenge. How about you retrieve it for me?"
+      },
+      {
+        "npc": "I'll tell you what, I'll give you 10000 coins for every artefact you get for me."
+      },
+      {
+        "player": "I'll see what I can do."
+      },
+      {
+        "npc": "Good on ya, mate!"
+      }
+    ],
+    "before-selling-any-pyramid-tops-subsequent-dialogue": [
+      {
+        "player": "Hello, Simon."
+      },
+      {
+        "npc": "G'day, [player name]."
+      },
+      {
+        "player": "How's it going?"
+      },
+      {
+        "npc": "Not bad, mate, not bad at all. Got any artefacts for me?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have Pyramid tops in their inventory:",
+        "steps": [
+          {
+            "player": "No, I haven't."
+          },
+          {
+            "npc": "Try harder, mate! It won't be long till some other critter turns up and snatches them out from under your eyes."
+          },
+          {
+            "player": "I will, goodbye."
+          },
+          {
+            "npc": "Bye, cobber."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zXAwBg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has one Pyramid top in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Sell it.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hand over the artefact(s) and Simon hands you 10000 coins.",
+                    "id": "xCY7EK"
+                  },
+                  {
+                    "npc": "Ripper! Thanks a bundle, mate! Thanks to you I can fulfill me contract. You're a true blue! The boss will be pleased."
+                  },
+                  {
+                    "player": "Glad I was able to help... but who is your boss? I thought you worked for the museum?"
+                  },
+                  {
+                    "npc": "Mind your own bizzo, mate. But if you get any more, you know where I am!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Keep it.",
+                "steps": [
+                  {
+                    "player": "I have one, but I want to keep it for now."
+                  },
+                  {
+                    "npc": "Careful, mate, people might come looking for a thing like that!"
+                  },
+                  {
+                    "player": "Thanks for the advice, but I'll hang onto it for now."
+                  },
+                  {
+                    "npc": "Bye, cobber."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "mPKGhu"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has multiple Pyramid tops in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Sell them.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hand over the artefact(s) and Simon hands you [10000 per Pyramid top] coins.",
+                    "id": "0iaVVb"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "PAX0MO"
+                  }
+                ]
+              },
+              {
+                "text": "Keep them.",
+                "steps": [
+                  {
+                    "player": "I have some, but I want to keep them for now."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "ls7kPW"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "aJi_9W"
+      }
+    ],
+    "after-selling-at-least-one-pyramid-top": [
+      {
+        "npc": "G'day, mate. Got any new pyramid artefacts for me?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have Pyramid top in their inventory:",
+        "steps": [
+          {
+            "player": "No, I haven't."
+          },
+          {
+            "npc": "Well, keep my offer in mind if you do find one."
+          },
+          {
+            "player": "I will. Goodbye, Simon."
+          },
+          {
+            "npc": "Bye, mate."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "-mixJS"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has one Pyramid top in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Sell it.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "JYXpc3"
+                  }
+                ]
+              },
+              {
+                "text": "Keep it.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "XGpVcA"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "DW3JPR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has multiple Pyramid tops in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Sell them.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "batTlv"
+                  }
+                ]
+              },
+              {
+                "text": "Keep them.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "AUN7ow"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "D8hzoV"
+      }
+    ],
+    "with-pyramid-plunder-artefacts-in-inventory": [
+      {
+        "player": "I have some interesting artefacts I'd like you to look at."
+      },
+      {
+        "npc": "Bonzer! Let's have a Butcher's mate."
+      },
+      {
+        "npc": "Do you want to flog the lot of 'em?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, show me the money.",
+            "steps": [
+              {
+                "player": "Yes, show me the money."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a Pharaoh's sceptre in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Simon takes all the artefacts)",
+                    "id": "Kn2FnM"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "coins",
+                    "id": "7vfUYS"
+                  },
+                  {
+                    "npc": "Fair Dinkum mate, Bonzer doing business with you mate."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OsQqAg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player also has a Pharaoh's sceptre in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You sellin' me this gold coloured stick thing. Looks fake to me.  I'll give you 100 gold for it."
+                  },
+                  {
+                    "player": "What! This is a genuine pharaoh's sceptre - made out of solid gold and finely jewelled with precious gems by the finest craftsmen in the area."
+                  },
+                  {
+                    "npc": "Strewth! I can tell a pile of croc when I hear it! You've got the patter mate, but I'm no mug. That's a fake."
+                  },
+                  {
+                    "player": "It has magical powers!"
+                  },
+                  {
+                    "npc": "Oh, magical powers ... yeah, yeah, yeah.  Heard it all before mate. I'll give you a 100 gold, or some 'magic beans'. Take it or leave it."
+                  },
+                  {
+                    "player": "I don't think so! I'll find someone who'll give me what it's worth."
+                  },
+                  {
+                    "npc": "Suit yerself.. You wanna sell the other artefacts you have?"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Sell other artefacts?",
+                    "options": [
+                      {
+                        "text": "Yes, as long as I get a decent price for them.",
+                        "steps": [
+                          {
+                            "player": "Yes, as long as I get a decent price for them."
+                          },
+                          {
+                            "type": "action",
+                            "text": "(Simon takes all the artefacts)",
+                            "id": "9B09eW"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "coins",
+                            "id": "wb91_I"
+                          },
+                          {
+                            "npc": "Fair Dinkum mate, Bonzer doing business with you mate."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Nah, I've changed my mind.",
+                        "steps": [
+                          {
+                            "player": "Nah, I've changed my mind."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "SW-CW2"
+              }
+            ]
+          },
+          {
+            "text": "No, let me think about it.",
+            "steps": [
+              {
+                "player": "No, let me think about it."
+              },
+              {
+                "npc": "No probs mate. Just give me the items you want to sell and we can do them one by one."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-pyramid-top": [
+      {
+        "type": "message",
+        "text": "You hand over the artefact(s) and Simon hands you [10000 per Pyramid top] coins.",
+        "id": "MoWeP6"
+      },
+      {
+        "npc": "Ripper! Thanks a bundle, mate! Thanks to you I can fulfill me contract. You're a true blue! The boss will be pleased."
+      },
+      {
+        "player": "Glad I was able to help... but who is your boss? I thought you worked for the museum?"
+      },
+      {
+        "npc": "Mind your own bizzo, mate. But if you get any more, you know where I am!"
+      }
+    ],
+    "using-items-on-him-any-pyramid-plunder-artefact": [
+      {
+        "npc": "You wanna sell that mate?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, show me the money.",
+            "steps": [
+              {
+                "player": "Yes, show me the money."
+              },
+              {
+                "type": "action",
+                "text": "(Simon takes the artefact)",
+                "id": "0egJhg"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "coins",
+                "id": "dFDQfD"
+              },
+              {
+                "npc": "Cheers mate!"
+              }
+            ]
+          },
+          {
+            "text": "No, I think I'll keep it.",
+            "steps": [
+              {
+                "player": "No, I think I'll keep it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-any-pyramid-plunder-artefact-if-the-player-hasn-t-talked-to-him-before": [
+      {
+        "npc": "That's a nice looking artefact you got there mate. Gimme a chat and lemme explain what these are all about first!"
+      }
+    ],
+    "using-items-on-him-pharaoh-s-sceptre": [
+      {
+        "player": "I have some interesting artefacts I'd like you to look at."
+      },
+      {
+        "npc": "You sellin' me this gold coloured stick thing. Looks fake to me.  I'll give you 100 gold for it."
+      },
+      {
+        "player": "What! This is a genuine pharaoh's sceptre - made out of solid gold and finely jewelled with precious gems by the finest craftsmen in the area."
+      },
+      {
+        "npc": "Strewth! I can tell a pile of croc when I hear it! You've got the patter mate, but I'm no mug. That's a fake."
+      },
+      {
+        "player": "It has magical powers!"
+      },
+      {
+        "npc": "Oh, magical powers ... yeah, yeah, yeah. Heard it all before mate. I'll give you a 100 gold, or some 'magic beans'. Take it or leave it."
+      },
+      {
+        "player": "I don't think so! I'll find someone who'll give me what it's worth."
+      },
+      {
+        "npc": "Suit yerself.."
+      }
+    ]
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "steps": [
+    {
+      "npc": "Good day to you. What can I get you to drink?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I'm trying to do Alfred Grimhand's barcrawl.",
+          "condition": "During Alfred Grimhand's Barcrawl",
+          "steps": [
+            {
+              "player": "I'm trying to do Alfred Grimhand's barcrawl."
+            },
+            {
+              "npc": "Oh, another silly human come to have [his/her/their] mind melted? You should take that barcrawl card to Blurberry - he always likes to serve the Fire Toad Blast himself!"
+            },
+            {
+              "player": "Um... thanks?!"
+            }
+          ],
+          "id": "DSX-sQ"
+        },
+        {
+          "text": "What do you have?",
+          "steps": [
+            {
+              "player": "What do you have."
+            },
+            {
+              "npc": "Here, take a look at our menu."
+            },
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Blurberry Bar",
+              "id": "ZdQdGL"
+            }
+          ]
+        },
+        {
+          "text": "Nothing thanks.",
+          "steps": [
+            {
+              "player": "Nothing thanks."
+            },
+            {
+              "npc": "Ok, take it easy."
+            }
+          ]
+        },
+        {
+          "text": "Can I buy some ingredients?",
+          "steps": [
+            {
+              "player": "I was just wanting to buy a cocktail ingredient actually."
+            },
+            {
+              "npc": "Sure thing, what did you want?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "A lemon",
+                  "steps": [
+                    {
+                      "player": "A lemon."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has no free inventory spaces:",
+                      "steps": [
+                        {
+                          "type": "message",
+                          "text": "You don't have enough room in your inventory to buy that.",
+                          "id": "FXEkGb"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "u48UVD"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has free inventory space:",
+                      "steps": [
+                        {
+                          "npc": "20 coins please."
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player does not have enough money:",
+                          "steps": [
+                            {
+                              "type": "message",
+                              "text": "You do not have enough money to buy that.",
+                              "id": "FIGm5G"
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ],
+                          "id": "rp2AQr"
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player has enough money:",
+                          "steps": [
+                            {
+                              "type": "action",
+                              "action": "receive",
+                              "text": "lemon",
+                              "id": "1PXK4k"
+                            }
+                          ],
+                          "id": "fv--AN"
+                        }
+                      ],
+                      "id": "Uz0Sc0"
+                    }
+                  ]
+                },
+                {
+                  "text": "An orange.",
+                  "steps": [
+                    {
+                      "player": "An orange."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has no free inventory spaces:",
+                      "steps": [
+                        {
+                          "type": "message",
+                          "text": "You don't have enough room in your inventory to buy that.",
+                          "id": "PNdzyp"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "xX9GTZ"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has free inventory space:",
+                      "steps": [
+                        {
+                          "npc": "20 coins please."
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player does not have enough money:",
+                          "steps": [
+                            {
+                              "type": "message",
+                              "text": "You do not have enough money to buy that.",
+                              "id": "MTsMrV"
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ],
+                          "id": "f0xnJ3"
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player has enough money:",
+                          "steps": [
+                            {
+                              "type": "action",
+                              "action": "receive",
+                              "text": "orange",
+                              "id": "IPon6d"
+                            }
+                          ],
+                          "id": "gFtoNQ"
+                        }
+                      ],
+                      "id": "XK_ZV1"
+                    }
+                  ]
+                },
+                {
+                  "text": "A cocktail shaker.",
+                  "steps": [
+                    {
+                      "player": "A cocktail shaker."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has no free inventory spaces:",
+                      "steps": [
+                        {
+                          "type": "message",
+                          "text": "You don't have enough room in your inventory to buy that.",
+                          "id": "AWotwS"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "cvtETf"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has free inventory space:",
+                      "steps": [
+                        {
+                          "npc": "20 coins please."
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player does not have enough money:",
+                          "steps": [
+                            {
+                              "type": "message",
+                              "text": "You do not have enough money to buy that.",
+                              "id": "MfNWvM"
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ],
+                          "id": "zXYkP3"
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player has enough money:",
+                          "steps": [
+                            {
+                              "type": "action",
+                              "action": "receive",
+                              "text": "cocktail shaker",
+                              "id": "dv2sus"
+                            }
+                          ],
+                          "id": "-2xb77"
+                        }
+                      ],
+                      "id": "fdGodU"
+                    }
+                  ]
+                },
+                {
+                  "text": "Nothing thanks.",
+                  "steps": [
+                    {
+                      "player": "Actually nothing thanks."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

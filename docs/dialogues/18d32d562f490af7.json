@@ -1,0 +1,130 @@
+{
+  "default": "before-the-fremennik-trials",
+  "variants": {
+    "before-the-fremennik-trials": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "I'm sorry outerlander, I cannot sell you any clothes. Our customs forbid it."
+      }
+    ],
+    "before-the-fremennik-trials-trading-before-the-trials": [
+      {
+        "type": "message",
+        "text": "Only Fremenniks may buy clothes here.",
+        "id": "yrdhMo"
+      }
+    ],
+    "before-the-fremennik-trials-using-makeover-before-the-trials": [
+      {
+        "type": "message",
+        "text": "Only Fremenniks may change their shoes here.",
+        "id": "B_eeAv"
+      }
+    ],
+    "after-the-fremennik-trials": [
+      {
+        "npc": "Hi. You wanted to buy some clothes? Or did you want to makeover your shoes?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to buy some clothes",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Yrsa's Accoutrements",
+                "id": "KNrb4p"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to change my shoes",
+            "steps": [
+              {
+                "npc": "It's free to change your shoes here. You can choose a colour as well as a style, since I'm also stocking boots imported from the elven lands."
+              },
+              {
+                "npc": "Just select the model you would like from this catalogue."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Yrsa's Shoe Store",
+                "id": "rAqrea"
+              },
+              {
+                "type": "action",
+                "text": "After selecting shoe colour and style",
+                "id": "drwXl0"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Hey! They look great!"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Nice choice!"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "Good call!"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "I think they suit you!"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Neither thanks",
+            "steps": [
+              {
+                "player": "Neither thanks."
+              },
+              {
+                "npc": "As you wish."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

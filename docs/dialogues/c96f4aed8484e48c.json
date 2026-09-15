@@ -1,0 +1,355 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You look ready for combat.",
+            "steps": [
+              {
+                "player": "You look ready for combat."
+              },
+              {
+                "npc": "Aye, indeed I am."
+              },
+              {
+                "player": "What brings you to this place? I can't imagine anyone coming here by choice."
+              },
+              {
+                "npc": "You're right, I did not come here by choice. I came here for vengeance."
+              },
+              {
+                "player": "Vengeance? Against whom? Did someone take your gardening equipment?"
+              },
+              {
+                "npc": "My mission is not against another man and I will not have it mocked."
+              },
+              {
+                "player": "Okay, sorry, I was just trying to lighten the mood. Care to tell me what it is against then?"
+              },
+              {
+                "npc": "Callisto, the great bear of the wilderness."
+              },
+              {
+                "type": "condition",
+                "text": "With no Callisto kills:",
+                "steps": [
+                  {
+                    "player": "Can't say I've come across it before."
+                  },
+                  {
+                    "npc": "I'm not surprised, you'd do well to avoid him. Callisto is a great bear, his strength and size enhanced by the corruption of the Wilderness."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "CmRVRj"
+                  }
+                ],
+                "id": "mXxL8S"
+              },
+              {
+                "type": "condition",
+                "text": "With at least one Callisto kill:",
+                "steps": [
+                  {
+                    "player": "Ah, I've had a few run ins with him myself."
+                  },
+                  {
+                    "npc": "Then you'll know he's not something to mock. I'm surprised you survived your encounter with such a great and corrupted beast."
+                  },
+                  {
+                    "player": "I'm stronger than I look, I've seen my fair share of monsters."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "v6_mGG"
+                  }
+                ],
+                "id": "Hxb76e"
+              },
+              {
+                "player": "Why are you so intent on taking him down?"
+              },
+              {
+                "npc": "Callisto killed my father. After hearing of a great beast in the heart of the Wilderness, he took it upon himself to bring him down."
+              },
+              {
+                "npc": "He left our family home in Hosidius to hunt it down and..."
+              },
+              {
+                "npc": "... I haven't seen my father since. I swore I would avenge him and have dedicated my whole life to training for that moment."
+              },
+              {
+                "player": "What happens after? When you do take Callisto down that is."
+              },
+              {
+                "npc": "Oh... uh... I never thought about that..."
+              },
+              {
+                "npc": "My whole life has been spent preparing to avenge my father, I never thought about anything else..."
+              },
+              {
+                "player": "You seem like you've got a lot to think about then. I'll leave you to it."
+              }
+            ]
+          },
+          {
+            "text": "Ask about rare item.",
+            "condition": "If the player has Craw's bow or the Fangs of Venenatis:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "With only Craw's bow in the inventory:",
+                "steps": [
+                  {
+                    "player": "Hey. Do you know anything about this?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the bow to Derse Venator.",
+                    "id": "JvUGmb"
+                  },
+                  {
+                    "npc": "Ah, a fellow marksman. That's a unique bow you have there."
+                  },
+                  {
+                    "player": "Do you know anything about it?"
+                  },
+                  {
+                    "npc": "I've done my fair bit of fletching in my day. I'd say this bow can be improved upon."
+                  },
+                  {
+                    "npc": "See those etches on it? You could put something sharp in there to improve the bow's strength."
+                  },
+                  {
+                    "player": "Interesting! I'll be on the lookout for a powerful enhancement like that."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Omf0Qx"
+              },
+              {
+                "type": "condition",
+                "text": "With only the Fangs of Venenatis in the inventory:",
+                "steps": [
+                  {
+                    "player": "Hey. Do you know anything about this?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the Fangs of Venenatis to Derse Venator.",
+                    "id": "tVGxIt"
+                  },
+                  {
+                    "npc": "Those look like strong fangs. You could probably attach them to a bow to make it stronger."
+                  },
+                  {
+                    "player": "Interesting! I'll be on the lookout for a suitable bow."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "SVg7zn"
+              },
+              {
+                "type": "condition",
+                "text": "With both in the inventory:",
+                "steps": [
+                  {
+                    "player": "Hey. Do you know anything about this?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the bow to Derse Venator.",
+                    "id": "riV95m"
+                  },
+                  {
+                    "npc": "Ah, a fellow marksman. That's a unique bow you have there."
+                  },
+                  {
+                    "player": "Do you know anything about it?"
+                  },
+                  {
+                    "npc": "I've done my fair bit of fletching in my day. I'd say this bow can be improved upon."
+                  },
+                  {
+                    "npc": "See those etches on it? You could put something sharp in there to improve the bow's strength."
+                  },
+                  {
+                    "player": "Perhaps I could use this?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the Fangs of Venenatis to Derse Venator.",
+                    "id": "EOarVY"
+                  },
+                  {
+                    "npc": "Yes. Those look like they could be attached to the weapon."
+                  },
+                  {
+                    "player": "Could you combine them?"
+                  },
+                  {
+                    "npc": "Sure I can. For the right price."
+                  },
+                  {
+                    "player": "Sigh. How much?"
+                  },
+                  {
+                    "npc": "500,000 coins would do nicely."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay 500,000 coins to combine the fangs and bow?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have enough coins:",
+                            "steps": [
+                              {
+                                "player": "I don't have the money for that."
+                              },
+                              {
+                                "npc": "Feel free to come back when you do."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "69iG37"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has enough coins:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "Derse Venator combines the items and gives you the Webweaver bow (u).",
+                                "id": "sPMJCG"
+                              },
+                              {
+                                "npc": "There we go! All done."
+                              }
+                            ],
+                            "id": "mwBv3s"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "IDwZLE"
+              }
+            ],
+            "id": "Vt8KOM"
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-claws-of-callisto": [
+      {
+        "player": "Hey. Do you know anything about this?"
+      },
+      {
+        "type": "message",
+        "text": "You show the claws to Derse Venator.",
+        "id": "l5g821"
+      },
+      {
+        "npc": "Are those... Bear claws?"
+      },
+      {
+        "player": "Yeah. I got them from a really big bear."
+      },
+      {
+        "npc": "By the gods... This bear must be even bigger than I imagined."
+      },
+      {
+        "player": "So do you know if the claws would be useful at all?"
+      },
+      {
+        "npc": "I... have a lot to think about. Perhaps Andros Mai over there can help you while I think."
+      },
+      {
+        "player": "Thanks!"
+      }
+    ],
+    "using-items-on-him-skull-of-vet-ion": [
+      {
+        "player": "Hey. Do you know anything about this?"
+      },
+      {
+        "type": "message",
+        "text": "You show the skull to Derse Venator.",
+        "id": "5ib9Fc"
+      },
+      {
+        "npc": "That looks like any skull to me. Who's is it?"
+      },
+      {
+        "player": "It's mine. I picked it up."
+      },
+      {
+        "npc": "I meant... Sigh. Never mind. What do you want with the skull?"
+      },
+      {
+        "player": "I'm trying to find out if it's useful."
+      },
+      {
+        "npc": "Don't know much about skulls, myself. That mage over there might know."
+      },
+      {
+        "npc": "She's into some weird stuff, that one. Think she said her name was Phabelle Bile."
+      },
+      {
+        "player": "Thanks!"
+      }
+    ],
+    "using-items-on-him-voidwaker-part": [
+      {
+        "player": "Hey. Do you know anything about this?"
+      },
+      {
+        "type": "message",
+        "text": "You show the weapon piece to Derse Venator.",
+        "id": "2W_ryW"
+      },
+      {
+        "npc": "No, I'm afraid not."
+      },
+      {
+        "player": "Oh. Do you know someone who might know more?"
+      },
+      {
+        "npc": "Just earlier I saw this lady run down into the basement of this pub."
+      },
+      {
+        "npc": "I don't know who she is, but she looks like a strange one."
+      },
+      {
+        "npc": "Strange attracts strange, so I reckon she might know about your strange weapon piece."
+      },
+      {
+        "player": "Thanks!"
+      }
+    ]
+  }
+}

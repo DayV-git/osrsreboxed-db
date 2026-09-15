@@ -1,0 +1,475 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue": [
+      {
+        "player": "You're not Osman. Who are you?"
+      },
+      {
+        "npc": "My name is Selim. Osman is currently on a diplomatic visit. I expect to be filling in for him for the forseeable future."
+      },
+      {
+        "player": "Okay... But where is he really?"
+      },
+      {
+        "npc": "I have told you all that I can."
+      },
+      {
+        "player": "But who should I take my sq'irk juice to now?"
+      },
+      {
+        "npc": "I am partial to that juice myself. I will happily take any off your hands."
+      },
+      {
+        "npc": "Now, do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to talk about sq'irks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "hf76zm"
+              }
+            ]
+          },
+          {
+            "text": "Could you sell me another Keris?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "7g0dk9"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "UxHTNa"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Is there anything I can help you with?",
+            "steps": [
+              {
+                "npc": "Like my master, I am partial to juice from the sq'irk fruit. I would appreciate it if you could bring me some."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Where do I get sq'irks?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "zmUutW"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How should I squeeze the fruit?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "d7qxNI"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Is there a reward for getting these sq'irks?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "mvAkqI"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What's so good about sq'irk juice?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "HazSeK"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I should go.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "1R_Gr3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd like to talk about sq'irks.",
+            "steps": [
+              {
+                "player": "I'd like to talk about sq'irks."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has sq'irkjuice in their inventory",
+                "steps": [
+                  {
+                    "player": "I have some sq'irk juice for you."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Selim imparts some Thieving advice to you as a reward for the sq'irk juice. You gain [number] Thieving XP as a result.",
+                    "id": "iXc_1S"
+                  },
+                  {
+                    "npc": "Thank you very much. If you get some more sq'irks be sure to come back."
+                  },
+                  {
+                    "player": "I will. It's been a pleasure doing business with you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NHGOO5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no sq'irkjuice in their inventory",
+                "steps": [
+                  {
+                    "npc": "Of course. What would you like to know?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Where do I get sq'irks?",
+                        "steps": [
+                          {
+                            "player": "Where do I get sq'irks?"
+                          },
+                          {
+                            "npc": "There is a sorceress near the south eastern edge of Al Kharid who grows them. She used to be friends with Osman, but they fell out."
+                          },
+                          {
+                            "player": "What happened?"
+                          },
+                          {
+                            "npc": "I don't know. All I know is she won't give us any more fruit."
+                          },
+                          {
+                            "player": "So all I have to do is ask her for some fruit for you?"
+                          },
+                          {
+                            "npc": "I doubt it will be that easy. She is not renowned for her generosity and is very secretive about her garden's location."
+                          },
+                          {
+                            "player": "Oh come on, it should be easy enough to find."
+                          },
+                          {
+                            "npc": "Her garden has remained hidden even from Osman. I believe it must be hidden by magical means."
+                          },
+                          {
+                            "player": "I see. And why can't you do this yourself?"
+                          },
+                          {
+                            "npc": "My work requires that I remain here."
+                          },
+                          {
+                            "player": "Okay. This should be an interesting task."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "nq5Vtr"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "How should I squeeze the fruit?",
+                        "steps": [
+                          {
+                            "player": "How should I squeeze the fruit?"
+                          },
+                          {
+                            "npc": "Use a pestle and mortar. Make sure you have an empty glass with you to collect the juice."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "QTK_Mg"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Is there a reward for getting these sq'irks?",
+                        "steps": [
+                          {
+                            "player": "Is there a reward for getting these sq'irks?"
+                          },
+                          {
+                            "npc": "Of course. I'll train you in the art of Thieving for your troubles."
+                          },
+                          {
+                            "player": "How much training will you give?"
+                          },
+                          {
+                            "npc": "That depends on the quantity and ripeness of the sq'irks you put into the juice."
+                          },
+                          {
+                            "player": "That sounds fair enough."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "4g6POu"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "What's so good about sq'irk juice?",
+                        "steps": [
+                          {
+                            "player": "What's so good about sq'irk juice?"
+                          },
+                          {
+                            "npc": "It is a sweet nectar for a thief or spy. It makes light fingers lighter, fleet feet flightier and comes in four different colours for those who are easily amused."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Selim starts salivating at the thought of sq'irk juice.",
+                            "id": "uZiGd3"
+                          },
+                          {
+                            "player": "It wouldn't have addictive properties, would it?"
+                          },
+                          {
+                            "npc": "It only holds power over those with poor self-control. Something which I have an abundance of."
+                          },
+                          {
+                            "player": "I see."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "f6OfkH"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I should go.",
+                        "steps": [
+                          {
+                            "player": "I should go."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "3-Vq49"
+              }
+            ]
+          },
+          {
+            "text": "Could you sell me another Keris?",
+            "steps": [
+              {
+                "player": "Could you sell me another Keris?"
+              },
+              {
+                "npc": "Would you like a dagger or a partisan?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "A dagger.",
+                    "steps": [
+                      {
+                        "player": "A dagger."
+                      },
+                      {
+                        "npc": "That will be 20,000 coins."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I'll take one.",
+                            "steps": [
+                              {
+                                "player": "I'll take one."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "Actually, I don't seem to have enough money on me."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "ZH7QVC"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough coins:",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "Selim hands you a Keris dagger in exchange for 20,000 coins.",
+                                    "id": "-nvHfO"
+                                  }
+                                ],
+                                "id": "1f3Siz"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "That's too much.",
+                            "steps": [
+                              {
+                                "player": "That's too much."
+                              },
+                              {
+                                "npc": "Well you know where I am if you reconsider."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "A partisan.",
+                    "steps": [
+                      {
+                        "player": "A partisan."
+                      },
+                      {
+                        "npc": "That will be 60,000 coins."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I'll take one.",
+                            "steps": [
+                              {
+                                "player": "I'll take one."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "Actually, I don't seem to have enough money on me."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "D3sMpc"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough coins:",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "Selim hands you a Keris partisan in exchange for 60,000 coins.",
+                                    "id": "DIC4H2"
+                                  }
+                                ],
+                                "id": "-dvb1Z"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "That's too much.",
+                            "steps": [
+                              {
+                                "player": "That's too much."
+                              },
+                              {
+                                "npc": "Well you know where I am if you reconsider."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I'm good.",
+                    "steps": [
+                      {
+                        "player": "Actually, I'm good."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "crack-the-clue-iii": [
+      {
+        "npc": "Well done. I have new information to share with you."
+      },
+      {
+        "type": "message",
+        "text": "You've found a new special clue! However, a magical force prevents you from putting this item in your inventory!",
+        "id": "sBtart"
+      },
+      {
+        "type": "action",
+        "text": "Interface showing the next clue opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Interface showing the next clue",
+        "id": "7KVthn"
+      }
+    ]
+  }
+}

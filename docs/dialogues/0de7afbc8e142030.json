@@ -1,0 +1,261 @@
+{
+  "default": "standard-dialogue-before-completion-of-the-watchtower-quest",
+  "variants": {
+    "standard-dialogue-before-completion-of-the-watchtower-quest": [
+      {
+        "npc": "Who are you? Are you one of the new guards?"
+      },
+      {
+        "player": "No, I'm an adventurer."
+      },
+      {
+        "npc": "Well what are you doing here?"
+      },
+      {
+        "player": "Looking for adventures - what else?"
+      },
+      {
+        "npc": "Oh my, oh my! What does it all matter in the end, anyway?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's the matter?",
+            "steps": [
+              {
+                "player": "What's the matter?"
+              },
+              {
+                "npc": "Oh dear, oh dear. Darn and drat!"
+              },
+              {
+                "npc": "We try hard to keep this town protected."
+              },
+              {
+                "npc": "But how can we do that when the Watchtower isn't working?"
+              },
+              {
+                "player": "What do you mean it isn't working?"
+              },
+              {
+                "npc": "The Watchtower over here works by the power of magic. An ancient spell designed to ward off ogres that has been in place here for many moons."
+              },
+              {
+                "npc": "The exact knowledge of the spell is lost to us now, but the essence of the spell has been infused into four powering crystals that keep the tower protected from the hordes in the Feldips."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So how come the spell doesn't work?",
+                    "steps": [
+                      {
+                        "player": "So how come the spell doesn't work?"
+                      },
+                      {
+                        "npc": "The crystals! The crystals have been taken!"
+                      },
+                      {
+                        "player": "Taken?"
+                      },
+                      {
+                        "npc": "Stolen!"
+                      },
+                      {
+                        "player": "Stolen?"
+                      },
+                      {
+                        "npc": "Yes, yes! Do I have to repeat myself?"
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Start the Watchtower quest?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "player": "Can I be of help?"
+                              },
+                              {
+                                "npc": "Help? Oh wonderful, dear traveller!"
+                              },
+                              {
+                                "npc": "Yes I could do with an extra pair of eyes here."
+                              },
+                              {
+                                "player": "???"
+                              },
+                              {
+                                "npc": "There must be some evidence of what has happened here. Perhaps you could assist me in searching for clues?"
+                              },
+                              {
+                                "player": "I would be happy to."
+                              },
+                              {
+                                "npc": "Try searching the surrounding area. If you find anything unusual, bring it here. Try the bushes - I've read enough adventure stoies to know that clues get caught in bushes all the time."
+                              },
+                              {
+                                "npc": "I will tell the guards to let you past - that way, you can just use the ladder to get in and out."
+                              }
+                            ],
+                            "hook": "quest:watchtower:start",
+                            "quest": "Watchtower"
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "player": "I'm not interested."
+                              },
+                              {
+                                "npc": "That's typical, nowadays. It's left to us wizards to do all the work."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm not interested in your rantings.",
+                    "steps": [
+                      {
+                        "player": "I'm not interested in your rantings."
+                      },
+                      {
+                        "npc": "Hmph! Suit yourself."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You wizards are always complaining.",
+            "steps": [
+              {
+                "player": "You wizards are always complaining."
+              },
+              {
+                "npc": "Complaining? Complaining!"
+              },
+              {
+                "npc": "What folks these days don't realise is that if it weren't for us wizards, this entire world would be overrun with every creature you could possibly imagine. And some you couldn't even conceive of!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completion-of-the-watchtower-quest": [
+      {
+        "npc": "Greetings, friend. I trust all is well with you? Yanille is safe at last!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not yet read the spell scroll",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I lost the scroll you gave me.",
+                "steps": [
+                  {
+                    "player": "I lost the scroll you gave me."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is carrying the spell scroll",
+                    "steps": [
+                      {
+                        "npc": "Ho, ho, ho! A comedian to the finish! There it is, in your backpack!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "sYZX8F"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is not carrying the spell scroll",
+                    "steps": [
+                      {
+                        "npc": "Never mind, have another..."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "D-GU22"
+                  }
+                ]
+              },
+              {
+                "text": "That's okay.",
+                "steps": [
+                  {
+                    "player": "That's okay."
+                  },
+                  {
+                    "npc": "We are always in your debt; do come and visit us again."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "35ELb5"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any more quests for me?",
+            "steps": [
+              {
+                "player": "Do you have any more quests for me?"
+              },
+              {
+                "npc": "More quests? No, indeed, adventurer. You have done us a great service, already."
+              }
+            ]
+          },
+          {
+            "text": "That's okay.",
+            "steps": [
+              {
+                "player": "That's okay."
+              },
+              {
+                "npc": "We are always in your debt; do come and visit us again."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-vial-of-water": [
+      {
+        "npc": "Oh lovely, fresh water... Thanks!"
+      }
+    ],
+    "using-items-on-him-any-unfinished-stage-of-the-potion-watchtower": [
+      {
+        "npc": "No, no. The potion is not complete yet."
+      }
+    ],
+    "using-items-on-him-potion-watchtower": [
+      {
+        "npc": "I can't let you use this now, it's just too dangerous. I'd better take it from you before you injure yourself."
+      }
+    ]
+  }
+}

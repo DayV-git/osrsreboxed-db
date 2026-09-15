@@ -1,0 +1,218 @@
+{
+  "default": "standard-dialogue-subsequent-dialogue",
+  "variants": {
+    "standard-dialogue-initial-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Can't you see that I'm busy here?"
+      },
+      {
+        "player": "Oh. Sorry, you don't look very busy."
+      },
+      {
+        "npc": "Don't look busy? I've got a lot of important work to do here."
+      },
+      {
+        "player": "Really? What do you do?"
+      },
+      {
+        "npc": "That doesn't concern you. What are you doing here anyway?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm not actually sure.",
+            "steps": [
+              {
+                "player": "I'm not actually sure."
+              },
+              {
+                "npc": "Hmph! Well I can tell you what you ARE doing."
+              },
+              {
+                "player": "What's that?"
+              },
+              {
+                "npc": "Wasting my time! Now go away! If you must speak to someone, speak to one of the other monks around here!"
+              }
+            ]
+          },
+          {
+            "text": "I'm on an important quest!",
+            "steps": [
+              {
+                "player": "I'm on an important quest!"
+              },
+              {
+                "npc": "Really..."
+              },
+              {
+                "player": "Yes! Do you want to know what my quest is?"
+              },
+              {
+                "npc": "Let me see...you helped out a trader who in turn asked you to deliver something for him, and then you had to journey to some palace to see someone and they said thanks by sending you somewhere else."
+              },
+              {
+                "player": "Uhh..."
+              },
+              {
+                "npc": "So, now you've ended up down here, bothering me?"
+              },
+              {
+                "player": "Uh, yes, that's about right."
+              },
+              {
+                "npc": "Lucky me..."
+              },
+              {
+                "player": "Sorry about that. I'll leave you alone, then."
+              }
+            ]
+          },
+          {
+            "text": "None of your business!",
+            "steps": [
+              {
+                "player": "None of your business!"
+              },
+              {
+                "npc": "Of course it isn't, but you were the one who came here bothering me! So, unless you want something, be off with you!"
+              }
+            ]
+          },
+          {
+            "text": "I am looking for something.",
+            "steps": [
+              {
+                "player": "I am looking for something."
+              },
+              {
+                "npc": "And what are you looking for exactly?"
+              },
+              {
+                "player": "The Chaos Altar, I think."
+              },
+              {
+                "npc": "Hmph! Well, it's just a bit further down. Now, if you don't mind, I'm very busy here!"
+              }
+            ]
+          },
+          {
+            "text": "I'm the leader of the Dagon'hai. Bow before me!",
+            "steps": [
+              {
+                "player": "I'm the leader of the Dagon'hai. Bow before me!"
+              },
+              {
+                "npc": "You? Leader of the Dagon'hai? Hah! I've never heard of such rubbish! You call yourself a mage?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'm a very powerful mage!",
+                    "steps": [
+                      {
+                        "player": "I'm a very powerful mage!"
+                      },
+                      {
+                        "npc": "Really?"
+                      },
+                      {
+                        "player": "Yes! Be afraid! Be very afraid! Ha ha ha!"
+                      },
+                      {
+                        "npc": "I see. Well then, let's see how you handle this!"
+                      },
+                      {
+                        "player": "What...?!?!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Sil'as Dahcsnu casts a spell",
+                        "id": "rwdVbJ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the Player's magic level is below 80:",
+                        "steps": [
+                          {
+                            "type": "unavailable",
+                            "id": "t78fY9"
+                          },
+                          {
+                            "player": "Argh! I can't stop [dancing/headbanging/jumping]!"
+                          },
+                          {
+                            "npc": "Hah! I knew you were no mage! Let that be a lesson to you! Now, please leave."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "_O7ylb"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the Player's magic level is above 80:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "Sil'as Dahcsnu either dances, headbangs or jumps for joy",
+                            "action": "emote",
+                            "action_source": "text",
+                            "id": "6_jqVm"
+                          },
+                          {
+                            "npc": "Argh!"
+                          },
+                          {
+                            "npc": "So! You are a good mage! You deflected my spell."
+                          },
+                          {
+                            "player": "Hah! Yes. I told you so! Now, I have work to be done."
+                          },
+                          {
+                            "npc": "Of course. Goodbye!"
+                          }
+                        ],
+                        "id": "0pkc_E"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, you're right. I'm not a mage.",
+                    "steps": [
+                      {
+                        "player": "No, you're right. I'm not a mage."
+                      },
+                      {
+                        "npc": "I didn't think so! Now go away. As I said, I'm very busy!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-subsequent-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Oh, it's you again. What are you doing here?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "We3Th2"
+      }
+    ]
+  }
+}

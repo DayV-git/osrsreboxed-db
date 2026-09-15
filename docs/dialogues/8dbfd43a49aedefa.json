@@ -1,0 +1,278 @@
+{
+  "default": "without-a-greegree-equipped",
+  "variants": {
+    "without-a-greegree-equipped": [
+      {
+        "player": "Hello, how are you doing?"
+      },
+      {
+        "npc": "I'm good thank you, how can I help you today?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is our agility course, we use it to stay nimble and to keep our wits sharp. My name is Bobawu and I look after the course."
+              },
+              {
+                "npc": "As a friend and fellow monkey, you're free to use it anytime, but you'll need to be as nimble as a ninja first!"
+              },
+              {
+                "player": "Oh great, thank you."
+              },
+              {
+                "player": "Are there any rewards you can offer me?"
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "umhhdL"
+              }
+            ]
+          },
+          {
+            "text": "How many laps have I done?",
+            "steps": [
+              {
+                "player": "Could you tell me how many laps I've completed?"
+              },
+              {
+                "type": "condition",
+                "text": "If Monkey Madness II is not completed:",
+                "steps": [
+                  {
+                    "npc": "I can't offer you anything for now, so I don't see much reason to count your laps either."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need to complete Monkey Madness 2 for Bobawu to offer rewards and to count your lap total",
+                    "id": "KELEZ1"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "o64StY"
+              },
+              {
+                "type": "condition",
+                "text": "If no laps have been completed:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "uWTTBz"
+                  }
+                ],
+                "id": "yaqAXC"
+              },
+              {
+                "type": "condition",
+                "text": "If one lap has been completed:",
+                "steps": [
+                  {
+                    "npc": "Sure thing my friend, so far you've completed 1 lap, don't stop now!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5-bzmV"
+              },
+              {
+                "type": "condition",
+                "text": "If more than one lap has been completed:",
+                "steps": [
+                  {
+                    "npc": "Sure thing my friend, so far you've completed [number] laps, keep it up!"
+                  }
+                ],
+                "id": "Vddj4X"
+              }
+            ]
+          },
+          {
+            "text": "What can you offer me?",
+            "steps": [
+              {
+                "player": "What can you offer me?"
+              },
+              {
+                "type": "condition",
+                "text": "If Monkey Madness II is not completed:",
+                "steps": [
+                  {
+                    "npc": "I can't offer you anything for now, so I don't see much reason to count your laps either."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need to complete Monkey Madness 2 for Bobawu to offer rewards and to count your lap total",
+                    "id": "TgstNl"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ln4NaQ"
+              },
+              {
+                "type": "condition",
+                "text": "If Monkey Madness II is completed:",
+                "steps": [
+                  {
+                    "npc": "I see you have your own monkey friend, by completing laps here you can transform him into different monkeys!"
+                  },
+                  {
+                    "player": "That's neat, what can he turn into?"
+                  },
+                  {
+                    "npc": "I've got the list here!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Bobawu pulls out a tattered piece of paper from his ninja costume.",
+                    "id": "evfG_n"
+                  },
+                  {
+                    "npc": "Ahem, here we are, At 100 you'll unlock a Karamjan Monkey transformation."
+                  },
+                  {
+                    "npc": "After completing 250 laps, you'll unlock a scary zombie monkey."
+                  },
+                  {
+                    "npc": "With 500 laps finished, you'll get a maniacal monkey."
+                  },
+                  {
+                    "npc": "At 1000 laps, you'll be able transform him into a spooky skeleton monkey,"
+                  },
+                  {
+                    "npc": "1500 laps for a little Kruk Jr monkey,"
+                  },
+                  {
+                    "npc": "Finally at 2000 laps, he can transform to look like our King Awowogei."
+                  }
+                ],
+                "id": "E519Em"
+              }
+            ]
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "On second thought, never mind."
+              },
+              {
+                "npc": "That's okay my friend, come back anytime."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "with-a-greegree-equipped": [
+      {
+        "player": "Hey there, how do you do my fellow monkey?"
+      },
+      {
+        "npc": "I'm good thank you, how can I help you today?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "U_JAqm"
+              }
+            ]
+          },
+          {
+            "text": "How many laps have I done?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "EkOJXT"
+              }
+            ]
+          },
+          {
+            "text": "What can you offer me?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "tNuqf_"
+              }
+            ]
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "PZx2bd"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "lap-count": [
+      {
+        "type": "condition",
+        "text": "If no laps have been completed:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "uWTTBz"
+          }
+        ],
+        "id": "xbhZqu"
+      },
+      {
+        "type": "condition",
+        "text": "If one lap has been completed:",
+        "steps": [
+          {
+            "npc": "So far you've completed 1 lap, don't stop now!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "xY5Ruz"
+      },
+      {
+        "type": "condition",
+        "text": "If more than one lap has been completed:",
+        "steps": [
+          {
+            "npc": "So far you've completed [number] laps, keep it up!"
+          }
+        ],
+        "id": "Xv2ATp"
+      }
+    ]
+  },
+  "branches": {
+    "uWTTBz": [
+      {
+        "npc": "Looks like you haven't completed any laps, but I'll be sure to keep track of them, when you do."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

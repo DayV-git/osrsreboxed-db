@@ -1,0 +1,185 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings [Madam/Sir]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the Shot Put area.",
+            "steps": [
+              {
+                "player": "Tell me about the Shot Put area."
+              },
+              {
+                "npc": "Of course [Madam/Sir]. There are two different weights of shot..."
+              },
+              {
+                "player": "Shot?"
+              },
+              {
+                "npc": "Yes [Madam/Sir]. Shot. The iron spheres that are propelled by the chemical energy stored in your body."
+              },
+              {
+                "player": "The... what?"
+              },
+              {
+                "npc": "Your strength [Madam/Sir]. The stronger you are, the further you can throw the shot, but there are other factors of course, like your technique."
+              },
+              {
+                "player": "What's that then?"
+              },
+              {
+                "npc": "The style of the shot [Madam/Sir]."
+              },
+              {
+                "player": "Iron has style??"
+              },
+              {
+                "type": "message",
+                "text": "The Referee sighs, rolls his eyes and continues....",
+                "id": "yEZenD"
+              },
+              {
+                "npc": "[Madam/Sir], the style in which you throw the shot, not the style of the iron."
+              },
+              {
+                "player": "Oh! You mean the spinny round thing or the chuck it straight?"
+              },
+              {
+                "npc": "Crudely put [Madam/Sir], but yes. Some are more difficult than others. Experiment and see which you prefer."
+              },
+              {
+                "player": "Thanks for the help!"
+              },
+              {
+                "npc": "You are welcome [Madam/Sir]."
+              }
+            ]
+          },
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "player": "May I claim my tokens please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is eligible to receive tokens:",
+                "steps": [
+                  {
+                    "npc": "Of course! Here you go, you've earned [X] tokens!"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a number of warrior guild tokens",
+                    "id": "bH-mk6"
+                  },
+                  {
+                    "player": "Thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "SaAXbP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "npc": "You don't have space to carry them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KKOC8a"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not eligible to receive tokens:",
+                "steps": [
+                  {
+                    "player": "May I claim my tokens please?"
+                  },
+                  {
+                    "npc": "I'm afraid you have not earned any tokens yet. Try some of the activities around the guild to earn some."
+                  },
+                  {
+                    "player": "Ok, I'll go see what I can find."
+                  }
+                ],
+                "id": "S3YZth"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any tips for me?",
+            "steps": [
+              {
+                "player": "Do you have any tips for me?"
+              },
+              {
+                "npc": "Tips [Madam/Sir]?"
+              },
+              {
+                "player": "Yes, like how can I do better than everyone else."
+              },
+              {
+                "npc": "[Madam/Sir] may find that a fine powder applied to the hands may give one an advantage when putting the shot."
+              },
+              {
+                "player": "You mean if I grind something up and put dust on my hands I'll chuck the ball further?"
+              },
+              {
+                "npc": "Yes [Madam/Sir]."
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "npc": "You are welcome [Madam/Sir]."
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "Good luck [Madam/Sir]."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-successfully-throwing-a-shot": [
+      {
+        "type": "line",
+        "speaker": "[18lb/22lb] Shot Put Referee",
+        "text": "Well done. You threw the shot [1-14] yards!"
+      }
+    ],
+    "standard-dialogue-when-attempting-to-pick-up-a-shot-the-player-failed-to-throw": [
+      {
+        "type": "line",
+        "speaker": "[18lb/22lb] Shot Put Referee",
+        "text": "Hey! You can't take that, it's guild property. Take one from the pile."
+      }
+    ],
+    "overhead-dialogue-when-the-shot-hits-the-ref": [
+      {
+        "npc": "Oi! Watch where you're throwing that [player name]!"
+      }
+    ]
+  }
+}

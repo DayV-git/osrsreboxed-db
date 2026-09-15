@@ -1,0 +1,522 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hey there adventurer, I am the Ranged combat tutor. Is there anything you would like to know?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How can I train my Ranged?",
+            "steps": [
+              {
+                "player": "How can I train my Ranged?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's Ranged level is below X {{tmissing}} :",
+                "steps": [
+                  {
+                    "npc": "To start with you'll need a bow and arrows, you were given a Shortbow and some arrows when you arrived here from Tutorial island."
+                  },
+                  {
+                    "npc": "Alternatively, you can claim a training bow and some arrows from me."
+                  },
+                  {
+                    "npc": "Mikasi, the Magic Combat tutor and I both give out items every 30 minutes, however you must choose whether you want runes or ranged equipment."
+                  },
+                  {
+                    "npc": "To claim the Training bow and arrows, right-click on me and choose Claim, to claim runes right-click on the Magic Combat tutor and select Claim."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Skills",
+                    "id": "3SjgBH"
+                  },
+                  {
+                    "npc": "Not all bows can use every type of arrow, most bows have a limit. You can find out your bows limit by checking the Ranged skill guide."
+                  },
+                  {
+                    "npc": "If you do decide to use the Training bow, you will only be able to use the Training arrows with it. Remember to pick up your arrows, re-use them and come back when you need more."
+                  },
+                  {
+                    "npc": "Once you have your bow and arrows, equip them by selecting their Wield option in your inventory."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Combat options",
+                    "id": "LgSzxB"
+                  },
+                  {
+                    "npc": "You can change the way you attack by going to the combat options tab. There are three attack styles for bows. Those styles are Accurate, Rapid and Longrange."
+                  },
+                  {
+                    "npc": "Accurate increases your bows attack accuracy. Rapid will increase your attack speed with the bow. Longrange will let you attack your enemies from a greater distance."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is eligible for Adventure paths:",
+                    "steps": [
+                      {
+                        "npc": "If you need some more advice, you should talk to Adventurer Jon about Adventure paths. He may even have a handy starter kit you can use."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "KTFh4R"
+                      }
+                    ],
+                    "id": "I3aml_"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Yju4YW"
+                  }
+                ],
+                "id": "M9QDD3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's Ranged level is above Y {{tmissing}}:",
+                "steps": [
+                  {
+                    "type": "unavailable",
+                    "steps": [
+                      {
+                        "npc": "My word, I think you should be the one giving me advice instead, but I will do my best."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "I2pwqz"
+                      }
+                    ],
+                    "id": "YOddRp"
+                  },
+                  {
+                    "npc": "You should know the basics of ranged combat by now, but if you are looking for somewhere to test your skills and make some money, you should try hunting Moss giants in Varrock sewers."
+                  },
+                  {
+                    "npc": "If you are lucky you might find a Mossy key, with this key you will be able to enter Bryophyta's lair. Make sure to bring plenty of food and good armour and weapons when you fight her as you will need it."
+                  },
+                  {
+                    "npc": "If your lucky you might snag some goodies that you can sell for a decent profit."
+                  },
+                  {
+                    "npc": "If you are looking to do something different, visit the ranging guild over near Hemenster, there you can practice your archery and earn tickets for it at the same time."
+                  },
+                  {
+                    "npc": "You can then hand those tickets in for a variety of goods you can use to train your Ranged skill."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "TQIkvu"
+                  }
+                ],
+                "id": "cgvHpz"
+              },
+              {
+                "npc": "If you are ever in the market for a new bow or some arrows, you should head on over to Lowe's Archery Emporium in Varrock. I can show you where the shop is if you like."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "text": "The world map opens and pans to the location of Lowe's Archery Emporium.",
+                        "action": "open_interface",
+                        "action_source": "text",
+                        "target": "The world map",
+                        "id": "7wwyPd"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks"
+                      },
+                      {
+                        "npc": "Is there anything else you want to know?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "dgjB9y"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How do I create a bow and arrows?",
+            "steps": [
+              {
+                "npc": "Ahh the art of fletching. Fletching is used to create your own bow and arrows."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a free-to-play world:",
+                "steps": [
+                  {
+                    "npc": "To create your bow and arrows you would need to gather some wood, feathers, arrow heads and bow string. The wood would be to make arrow shafts which can be turned into unstrung bows and arrow shafts."
+                  },
+                  {
+                    "npc": "Unfortunately, Fletching is a member only skill so you will have to get your ranging supplies from shops or other players."
+                  },
+                  {
+                    "npc": "Is there anything else you want to know?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "WoA72y"
+                  }
+                ],
+                "id": "6DADOs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a members' world:",
+                "steps": [
+                  {
+                    "npc": "It's quite simple really. You'll need an axe to cut some logs from trees and a knife. Knives can be found in and around the Lumbridge castle and in the Varrock General store upstairs."
+                  },
+                  {
+                    "npc": "Use your knife on the logs. This will bring up a menu listing items you can fletch."
+                  },
+                  {
+                    "npc": "For arrows you will need to smith some arrow heads and kill some chickens for feathers."
+                  },
+                  {
+                    "npc": "Add the feathers to your Arrow shafts to make Headless arrows, then use your chosen arrow heads on the Headless arrows to make your arrows."
+                  },
+                  {
+                    "npc": "Now for making bows. When accessing the fletching menu, instead of choosing Arrows shafts, you can make an unstrung bow instead."
+                  },
+                  {
+                    "npc": "To complete the bow you will need to get your hands on a Bow string."
+                  },
+                  {
+                    "npc": "First you will need to get some flax from a flax field. There's one south of Seers' Village. Gather flax, then spin it on a spinning wheel, there's one in Seers' Village too."
+                  },
+                  {
+                    "npc": "This makes bow strings which you can then use on the unstrung bows to make a working bow!"
+                  },
+                  {
+                    "player": "Brilliant. If I forget anything I'll come talk to you again."
+                  },
+                  {
+                    "npc": "Is there anything else you want to know?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "1-6W1g"
+                  }
+                ],
+                "id": "u5JkQb"
+              }
+            ]
+          },
+          {
+            "text": "Can you toggle my ammo to equip when I pick it up please?",
+            "steps": [
+              {
+                "npc": "Certainly. If you pick up ammo that is the same ammo you are currently using, I can make that ammo automatically equip for you, providing you have space of course!"
+              },
+              {
+                "npc": "Or you can leave it to going into your inventory like normal."
+              },
+              {
+                "type": "choice",
+                "prompt": "How do you want to handle picking up ammo?",
+                "options": []
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "320YXr"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "claiming-arrows": [
+      {
+        "type": "condition",
+        "text": "If the player has already tried to claim in the past 30 minutes:",
+        "steps": [
+          {
+            "npc": "I work with the Magic tutor to give out consumable items that you may need for combat such as arrows and runes. However we have had some cheeky people try to take both!"
+          },
+          {
+            "npc": "So, every half an hour, you may come back and claim either arrows OR runes, but not both. Come back in a while for arrows, or simply buy some."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "mKK4XC"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a training bow in their inventory or bank but has arrows:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player's inventory is full:",
+            "steps": [
+              {
+                "npc": "If you had any room in your pack I'd give you a training bow. That's a shame. Come back when you do."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "T3Edm8"
+          },
+          {
+            "npc": "You already have some training arrows."
+          },
+          {
+            "type": "message",
+            "text": "Nemarti gives you a Training shortbow. It can only be used with Training arrows.",
+            "id": "vq2HGO"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "C4oek7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have training arrows in their inventory or bank but has a training bow:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player's inventory is full:",
+            "steps": [
+              {
+                "npc": "If you had enough space in your inventory I'd give you some training arrows, come back when you do."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "HyCSfa"
+          },
+          {
+            "npc": "You already have a training bow."
+          },
+          {
+            "type": "message",
+            "text": "Nemarti gives you 25 training arrows. They can only be used with the Training shortbow.",
+            "id": "U_gUZW"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "QK7ks-"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a training bow or arrows in their inventory or bank:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player's inventory is full:",
+            "steps": [
+              {
+                "npc": "If you had any room in your pack I'd give you a training bow. That's a shame. Come back when you do. If you had enough space in your inventory I'd give you some training arrows, come back when you do."
+              }
+            ],
+            "id": "5h9SUm"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has room in their inventory:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Nemarti gives you a Training shortbow and 25 arrows. They can only be used together.",
+                "id": "6wtHBF"
+              }
+            ],
+            "id": "YaupWF"
+          }
+        ],
+        "id": "7U3EoL"
+      }
+    ],
+    "deadman-mode": [
+      {
+        "npc": "Hey there adventurer, I am the Ranged combat tutor. Is there anything you would like to know?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask for a starter pack.",
+            "steps": [
+              {
+                "player": "Could I have a starter pack?"
+              },
+              {
+                "npc": "Here you go. One starter pack. Enjoy."
+              }
+            ]
+          },
+          {
+            "text": "Could you stop me receiving a starter pack after respawn?",
+            "steps": [
+              {
+                "player": "Could you stop me receiving a starter pack after respawn?"
+              },
+              {
+                "npc": "Yes, I can help with that."
+              },
+              {
+                "type": "choice",
+                "prompt": "Disable receiving a starter pack after respawn?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "npc": "You'll no longer receive a starter pack after respawn. Talk to me again if you change your mind."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do I have any quest items or quest lamps to collect?",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "jBs1zU"
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about melee combat.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "8r3VEm"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about different weapon types I can use.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "eQMd35"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about skillcapes.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "h7KNTQ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like a training sword and shield.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "JDpDyg"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "_tT89n"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-ranged-combat-tutor-training-arrows": [
+      {
+        "player": "I no longer need my Training arrows, would you like it back?"
+      },
+      {
+        "npc": "Sure thing, I can give this to another adventurer who is in need of training."
+      },
+      {
+        "type": "message",
+        "text": "You give back you training arrows to the Ranged combat tutor.",
+        "id": "anqIe7"
+      }
+    ],
+    "using-items-on-ranged-combat-tutor-training-bow": [
+      {
+        "player": "I no longer need my Training bow, would you like it back?"
+      },
+      {
+        "npc": "Sure thing, I can give this to another adventurer who is in need of training."
+      },
+      {
+        "type": "message",
+        "text": "You give back you training bow to the Ranged combat tutor.",
+        "id": "VJ5fxb"
+      }
+    ],
+    "using-items-on-ranged-combat-tutor-any-other-item": [
+      {
+        "npc": "I have no use for that, sorry."
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "steps": [
+    {
+      "npc": "Yohoho me hearty what would you like to drink?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Nothing, thank you.",
+          "steps": [
+            {
+              "player": "Nothing, thank you."
+            }
+          ]
+        },
+        {
+          "text": "A pint of Grog please.",
+          "steps": [
+            {
+              "player": "A pint of Grog please."
+            },
+            {
+              "npc": "One grog coming right up, that'll be three coins."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has enough coins:",
+              "steps": [
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "ruDy4d"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have enough coins:",
+              "steps": [
+                {
+                  "player": "Oh dear. I don't seem to have enough money."
+                }
+              ],
+              "id": "CYuhhY"
+            }
+          ]
+        },
+        {
+          "text": "A bottle of rum please.",
+          "steps": [
+            {
+              "player": "A bottle of rum please."
+            },
+            {
+              "npc": "That'll be 27 coins."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has enough coins:",
+              "steps": [
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "HEeY2G"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have enough coins:",
+              "steps": [
+                {
+                  "type": "jump",
+                  "reference": "above",
+                  "id": "gyfmLA"
+                }
+              ],
+              "id": "MPrKD-"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

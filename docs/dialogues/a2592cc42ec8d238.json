@@ -1,0 +1,209 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Can I help you, traveller?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why do you stand here?",
+            "steps": [
+              {
+                "player": "Why do you stand here?"
+              },
+              {
+                "npc": "This is the northernmost reach of Kourend. Beyond these cliffs you will find the Doors of Dinh and the prison of the Wintertodt."
+              },
+              {
+                "npc": "The Pyromancers do what they can to keep the Wintertodt contained but I fear it will not be enough."
+              },
+              {
+                "npc": "I come here to keep watch, whenever my time permits, so that the city may be warned if the Wintertodt escapes."
+              },
+              {
+                "player": "Interesting... Thanks."
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "reanimation-refund": [
+      {
+        "type": "condition",
+        "text": "If the player had previously paid to reanimate the fairy ring:",
+        "id": "817KYD"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "80,000 coins",
+        "id": "Y0jK0s"
+      },
+      {
+        "type": "message",
+        "text": "Trossa gives you 80,000 coins.",
+        "id": "0CEY6i"
+      },
+      {
+        "player": "What's this for?"
+      },
+      {
+        "npc": "For your troubles."
+      },
+      {
+        "player": "Right... Well, thanks."
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "Can I help you, traveller?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why do you stand here?",
+            "steps": [
+              {
+                "player": "Why do you stand here?"
+              },
+              {
+                "npc": "This is the northernmost reach of Kourend. Beyond these cliffs you will find the Doors of Dinh and the prison of the Wintertodt."
+              },
+              {
+                "npc": "The Pyromancers do what they can to keep the Wintertodt contained but I fear it will not be enough."
+              },
+              {
+                "npc": "I come here to keep watch, whenever my time permits, so that the city may be warned if the Wintertodt escapes."
+              },
+              {
+                "player": "Thanks."
+              }
+            ]
+          },
+          {
+            "text": "About this circle of dead mushrooms...",
+            "steps": [
+              {
+                "player": "About this circle of dead mushrooms..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not unlocked the ability to use fairy rings:",
+                "steps": [
+                  {
+                    "npc": "You know very little of such circles, traveller. Perhaps one day we will have more to discuss. Now, can I help you with anything else?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "4jGFpY"
+                  }
+                ],
+                "id": "QOwUH9"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has unlocked the ability to use fairy rings:",
+                "steps": [
+                  {
+                    "npc": "Yes, the circle is dead. Crops die quite often, according to the Hosidius peasants. Do you wish me to reanimate it? I can, for a mere 80,000 coins."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have 80,000 coins:",
+                    "steps": [
+                      {
+                        "player": "I don't have the money."
+                      },
+                      {
+                        "npc": "In that case the circle will remain dead. Now, can I help you with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "kwDwT8"
+                      }
+                    ],
+                    "id": "vKRUPa"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has 80,000 coins:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, here's 80,000 coins.",
+                            "steps": [
+                              {
+                                "player": "Okay, here's 80,000 coins."
+                              },
+                              {
+                                "type": "unavailable",
+                                "id": "YRzHNQ"
+                              },
+                              {
+                                "npc": "There, the deed is done. Now, can I help you with anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "TzHFiD"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks, I'm not interested.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I'm not interested."
+                              },
+                              {
+                                "npc": "In that case the circle will remain dead. Now, can I help you with anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "xLxC2_"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "WHl1rf"
+                  }
+                ],
+                "id": "QFO53H"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "91Lnz-"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

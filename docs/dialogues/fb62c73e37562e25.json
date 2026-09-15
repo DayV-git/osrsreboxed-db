@@ -1,0 +1,257 @@
+{
+  "default": "standard-dialogue-without-99-cooking",
+  "variants": {
+    "standard-dialogue-without-99-cooking": [
+      {
+        "npc": "Hello, welcome to the Cooking Guild. Only accomplished chefs and cooks are allowed in here. Feel free to use any of our facilities."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Nice cape you're wearing!",
+            "steps": [
+              {
+                "player": "Nice cape, you're wearing!"
+              },
+              {
+                "npc": "Thank you! It's my most prized possession, it's a Skillcape of Cooking; it shows that I've achieved level 99 Cooking and am one of the best chefs in the land!"
+              },
+              {
+                "npc": "If you ever achieve level 99 cooking you'll get to wear one too and doing so means you'll never burn any food!"
+              }
+            ]
+          },
+          {
+            "text": "Thanks, bye.",
+            "steps": [
+              {
+                "player": "Thanks, bye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-99-cooking": [
+      {
+        "npc": "Hello, welcome to the Cooking Guild. It's always great to have such an accomplished chef visit us. Say, would you be interested in a Skillcape of Cooking? They're only available to master chefs."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Okay, come back to me if you change your mind."
+              }
+            ]
+          },
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have a Skillcape of Cooking yet:",
+                "steps": [
+                  {
+                    "player": "Can I buy a Skillcape of Cooking from you?"
+                  },
+                  {
+                    "npc": "Most certainly, by wearing this cape you'll never burn any food, I will have to ask for 99000 gold coins for such a privilege."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's much too expensive.",
+                        "steps": [
+                          {
+                            "player": "That's much too expensive."
+                          },
+                          {
+                            "npc": "I'm sorry you feel that way."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Sure.",
+                        "steps": [
+                          {
+                            "player": "Sure."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have at least 99,000 coins:",
+                            "steps": [
+                              {
+                                "player": "But, unfortunately, I don't have enough money with me."
+                              },
+                              {
+                                "npc": "Well, come back and see me when you do."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "DVnE2R"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                            "steps": [
+                              {
+                                "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "zPq1GP"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 99,000 coins and enough inventory space:",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "a Cooking cape and hood",
+                                "id": "ZnTv6P"
+                              },
+                              {
+                                "npc": "Now you can use the title Master Chef."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "PYL4CV"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pEEf18"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Skillcape of Cooking already:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Skillcape",
+                        "steps": [
+                          {
+                            "player": "Can I buy a Skillcape of Cooking from you?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "R4cKsy"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Hood",
+                        "steps": [
+                          {
+                            "player": "May I have another hood for my cape, please?"
+                          },
+                          {
+                            "npc": "Most certainly, and free of charge!"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a Cooking hood",
+                            "id": "1UrJpE"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The head chef hands you another hood for your skillcape.",
+                            "id": "v8Loit"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "yR-54H"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-trying-to-open-the-door-without-a-chef-s-hat-a-skillcape-of-cooking-or-varrock-armour-3": [
+      {
+        "npc": "You can't come in here unless you're wearing a chef's hat, or something like that."
+      }
+    ],
+    "standard-dialogue-trying-to-open-the-door-with-below-32-cooking-and-without-a-chef-s-hat": [
+      {
+        "npc": "Sorry. Only the finest chefs are allowed in here. Get your cooking level up to 32 and come back wearing a chef's hat."
+      }
+    ],
+    "standard-dialogue-trying-to-open-the-door-with-below-32-cooking-with-a-chef-s-hat": [
+      {
+        "npc": "Sorry. Only the finest chefs are allowed in here. Get your cooking level up to 32."
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "You have done well, [player name]!"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a new clue scroll",
+            "id": "3Mc7Sv"
+          },
+          {
+            "type": "message",
+            "text": "The head chef has given you another clue scroll!",
+            "id": "X7MsOT"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "aZpW54"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a reward casket",
+            "id": "IG_lJ9"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "aordAT"
+          }
+        ],
+        "id": "ihdfjZ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "You want help [Tzhaar caste]-[player name]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have a fire cape here.",
+            "condition": "If the player has a firecape in their inventory:",
+            "steps": [
+              {
+                "player": "I have a fire cape here."
+              },
+              {
+                "npc": "Indeed, JalYt. You want to sell it back? I swap it for 8,000 TokKul if you want."
+              },
+              {
+                "type": "choice",
+                "prompt": "Sell your fire cape for 8,000 TokKul?",
+                "options": [
+                  {
+                    "text": "Yes, sell it for 8,000 TokKul.",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "No, keep the fire cape.",
+                            "steps": [
+                              {
+                                "npc": "Wise choice, JalYt."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Yes, exchange the fire cape for 8,000 TokKul.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You exchange your fire cape for 8,000 TokKul.",
+                                "id": "wS-GnT"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, keep it.",
+                    "steps": [
+                      {
+                        "npc": "Wise choice, JalYt."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Bargain for TzRek-Jad.",
+                    "condition": "If the player does not own the pet:",
+                    "steps": [
+                      {
+                        "player": "I wonder if I might take on a TzHaar apprentice instead?"
+                      },
+                      {
+                        "npc": "Maybe. Give me fire cape. If you make lucky tokkul toss, apprentice trust you, JalYt."
+                      },
+                      {
+                        "player": "Don't I get the cape back?"
+                      },
+                      {
+                        "npc": "No. Try or no try. There is no cape back."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, I know I won't get my cape back.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "Upon a successful roll:",
+                                "steps": [
+                                  {
+                                    "npc": "You lucky. Better train him good else TzTok-Jad find you, JalYt."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "x79c9l"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "Upon failing a roll:",
+                                "steps": [
+                                  {
+                                    "npc": "You not lucky. Maybe next time, JalYt."
+                                  }
+                                ],
+                                "id": "jbL-HO"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, I like my cape!",
+                            "steps": [
+                              {
+                                "player": "I think I'll keep my cape."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "RqWwTM"
+                  }
+                ]
+              }
+            ],
+            "id": "FadQ_Q"
+          },
+          {
+            "text": "What is this place?",
+            "condition": "If the player does not have a firecape in their inventory:",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is the fight cave, TzHaar-Xil made it for practice, but many JalYt come here to fight too. Just enter the cave and make sure you're prepared."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Are there any rules?",
+                    "steps": [
+                      {
+                        "player": "Are there any rules?"
+                      },
+                      {
+                        "npc": "Rules? Survival is the only rule in there."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Do I win anything?",
+                            "steps": [
+                              {
+                                "player": "Do I win anything?"
+                              },
+                              {
+                                "npc": "You ask a lot of questions. Might give you TokKul if you last long enough."
+                              },
+                              {
+                                "player": "..."
+                              },
+                              {
+                                "npc": "Before you ask, TokKul is like your Coins."
+                              },
+                              {
+                                "npc": "Gold is like you JalYt, soft and easily broken, we use hard rock forged in fire like TzHaar!"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Sounds good.",
+                            "steps": [
+                              {
+                                "player": "Sounds good."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok thanks.",
+                    "steps": [
+                      {
+                        "player": "Ok thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "Rccsgd"
+          },
+          {
+            "text": "What did you call me?",
+            "steps": [
+              {
+                "player": "What did you call me?"
+              },
+              {
+                "npc": "Are you not [TzHaar caste]-[player name]?"
+              },
+              {
+                "player": "What's a '[TzHaar caste]'?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's caste is JalYt-Ket:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "That what you are... you tough and strong no?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "FJXfWJ"
+                  }
+                ],
+                "id": "OSC848"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's caste is JalYt-Mej:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "That what you are... you user of mystic powers no?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "42jKwM"
+                  }
+                ],
+                "id": "99pmEY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's caste is JalYt-Xil:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "That what you are... you agile and quick no?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "JntvfM"
+                  }
+                ],
+                "id": "RRtUbn"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's caste is JalYt-Hur:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "That what you are... you skilled at making things no?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "a9p70l"
+                  }
+                ],
+                "id": "AYplIw"
+              },
+              {
+                "player": "Well yes I suppose I am..."
+              },
+              {
+                "npc": "Then you [TzHaar caste]!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What are you then?",
+                    "steps": [
+                      {
+                        "player": "What are you then?"
+                      },
+                      {
+                        "npc": "Foolish JalYt, I am TzHaar-Mej, one of the mystics of this city."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "What other types are there?",
+                            "steps": [
+                              {
+                                "player": "What other types are there?"
+                              },
+                              {
+                                "npc": "There are the mighty TzHaar-Ket who guard us, the swift TzHaar-Xil who hunt for our food, and the skilled TzHaar-Hur who craft our homes and tools."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ah ok then.",
+                            "steps": [
+                              {
+                                "player": "Ah ok then."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks for explaining it.",
+                    "steps": [
+                      {
+                        "player": "Thanks for explaining it."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I guess so...",
+                    "steps": [
+                      {
+                        "player": "I guess so..."
+                      },
+                      {
+                        "npc": "Well then, no problems."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No I'm not!",
+                    "steps": [
+                      {
+                        "player": "No I'm not!"
+                      },
+                      {
+                        "npc": "What ever you say, crazy JalYt!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No I'm fine thanks.",
+            "steps": [
+              {
+                "player": "No I'm fine thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fight-cave-dialogue-upon-entering-the-fight-cave": [
+      {
+        "npc": "You're on your own now JalYt, prepare to fight for your life!"
+      }
+    ],
+    "fight-cave-dialogue-upon-dying-leaving-in-the-first-round": [
+      {
+        "npc": "Well I suppose you tried... better luck next time."
+      }
+    ],
+    "fight-cave-dialogue-upon-losing-leaving-in-the-fight-cave": [
+      {
+        "npc": "Well done in the cave, here take TokKul as reward."
+      }
+    ],
+    "fight-cave-dialogue-attempting-to-enter-the-fight-cave-before-5-minute-wait-time-is-up": [
+      {
+        "npc": "Hey, JalYt, you were in cave only a moment ago. You wait [amount] minutes/a minute or so/a bit before going in again."
+      }
+    ],
+    "fight-cave-dialogue-before-tztok-jad-appears": [
+      {
+        "npc": "Look out, here comes TzTok-Jad!"
+      }
+    ],
+    "fight-cave-dialogue-upon-winning-in-the-fight-cave": [
+      {
+        "npc": "You even defeated TzTok-Jad, I am most impressed! Please accept this gift. Give cape back to me if you not want it."
+      }
+    ]
+  }
+}

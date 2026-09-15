@@ -1,0 +1,173 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "What do you want? I'm a little busy here, so make it quick!"
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "Can you sell me any food?",
+            "steps": [
+              {
+                "player": "Can you sell me any food?"
+              },
+              {
+                "npc": "I suppose I could sell you some cabbage, if you're willing to pay for it. Cabbage is good for you."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 1 GP in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh, I haven't got any money."
+                  },
+                  {
+                    "npc": "Why are you asking me to sell you food if you haven't got any money? Go away!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "YySqxF"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a full inventory:",
+                "steps": [
+                  {
+                    "player": "Oh, I haven't got enough space to carry it."
+                  },
+                  {
+                    "npc": "Why are you asking me to sell you food if you can't carry it? Go away!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "1Q53KI"
+              },
+              {
+                "type": "choice",
+                "prompt": "What would you like to say?",
+                "options": [
+                  {
+                    "text": "Alright, I'll buy a cabbage.",
+                    "steps": [
+                      {
+                        "player": "Alright, I'll buy a cabbage."
+                      },
+                      {
+                        "type": "action",
+                        "text": "1 GP is deducted from inventory and and a cabbage gets placed.",
+                        "id": "a5ku52"
+                      },
+                      {
+                        "npc": "It's a deal. Now, make sure you eat it all up. Cabbage is good for you."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks, I don't like cabbage.",
+                    "steps": [
+                      {
+                        "player": "No thanks, I don't like cabbage."
+                      },
+                      {
+                        "npc": "Bah! People these days only appreciate junk food."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you give me any free food?",
+            "steps": [
+              {
+                "player": "Can you give me any free food?"
+              },
+              {
+                "npc": "Can you give me any free money?"
+              },
+              {
+                "player": "Why should I give you free money?"
+              },
+              {
+                "npc": "Why should I give you free food?"
+              },
+              {
+                "player": "Oh, forget it."
+              }
+            ]
+          },
+          {
+            "text": "I don't want anything from this horrible kitchen.",
+            "steps": [
+              {
+                "player": "I don't want anything from this horrible kitchen."
+              },
+              {
+                "npc": "How dare you? I put a lot of effort into cleaning this kitchen. My daily sweat and elbow-grease keep this kitchen clean!"
+              },
+              {
+                "player": "Ewww!"
+              },
+              {
+                "npc": "Oh, just leave me alone."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Very well done, take this."
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy clue scroll",
+            "id": "XnxKAC"
+          },
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "vx8Mlm"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "vZsc6f"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy reward casket",
+            "id": "E9EUtR"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "jR-fDC"
+          }
+        ],
+        "id": "9e2oK9"
+      }
+    ]
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "introduction-dialogue": [
+      {
+        "npc": "Hello human."
+      },
+      {
+        "player": "Hello. What do you do here?"
+      },
+      {
+        "npc": "I'm Dusuri. I specialise in unique minerals that can't be found on Gielinor."
+      },
+      {
+        "player": "Can't be found on Gielinor? Where do they come from then?"
+      },
+      {
+        "npc": "To be honest, we don't fully know. All we know is that they can be found within shooting stars."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not interacted with a shooting star:",
+        "steps": [
+          {
+            "player": "Shooting stars?"
+          },
+          {
+            "npc": "That's right. They fall from the sky from time to time. They can be mined for the unique minerals that I specialise in."
+          },
+          {
+            "npc": "If you ever come across one, I'd be happy to trade you for any stardust you find."
+          },
+          {
+            "type": "action",
+            "text": "Dusuri gains a 'Trade' right-click option",
+            "id": "TUeyGg"
+          },
+          {
+            "player": "I'll bear that in mind."
+          },
+          {
+            "npc": "Good luck out there."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "aOSdm9"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has interacted with a shooting star already:",
+        "steps": [
+          {
+            "player": "Oh yes. I've seen those before."
+          },
+          {
+            "npc": "Wonderful. If you ever get any stardust from them, I'd be happy to trade you for it."
+          },
+          {
+            "type": "action",
+            "text": "Dusuri gains a 'Trade' right-click option",
+            "id": "OIVWkR"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have stardust in their inventory:",
+            "steps": [
+              {
+                "player": "I'll bear that in mind."
+              },
+              {
+                "npc": "Good luck out there."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "pmDHeg"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has stardust in their inventory:",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I have some here. Can we trade?",
+                    "steps": [
+                      {
+                        "player": "I have some here. Can we trade?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is on a free-to-play world:",
+                        "steps": [
+                          {
+                            "npc": "Not now, I'm afraid. Maybe another time."
+                          },
+                          {
+                            "type": "end",
+                            "reason": "members"
+                          }
+                        ],
+                        "id": "ZhzfOE"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is on a members world:",
+                        "steps": [
+                          {
+                            "npc": "Of course."
+                          },
+                          {
+                            "type": "action",
+                            "action": "open_shop",
+                            "target": "Dusuri's Star Shop",
+                            "id": "DAhvj4"
+                          }
+                        ],
+                        "id": "0SSari"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll bear that in mind.",
+                    "steps": [
+                      {
+                        "player": "I'll bear that in mind."
+                      },
+                      {
+                        "npc": "Good luck out there."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "CytwbE"
+          }
+        ],
+        "id": "E0BBKm"
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "npc": "Hello human."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can we trade?",
+            "steps": [
+              {
+                "player": "Can we trade?"
+              },
+              {
+                "type": "condition",
+                "text": "On free-to-play worlds:",
+                "steps": [
+                  {
+                    "npc": "Not now, I'm afraid. Maybe another time."
+                  },
+                  {
+                    "type": "end",
+                    "reason": "members"
+                  }
+                ],
+                "id": "OQeVS6"
+              },
+              {
+                "type": "condition",
+                "text": "On members worlds:",
+                "steps": [
+                  {
+                    "npc": "Of course."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Dusuri's Star Shop",
+                    "id": "CzeR4u"
+                  }
+                ],
+                "id": "bACt-X"
+              }
+            ]
+          },
+          {
+            "text": "What do you sell?",
+            "steps": [
+              {
+                "player": "What do you sell?"
+              },
+              {
+                "npc": "I have packs of gems and soft clay if they take your fancy. I also have some interesting star fragments that seem to be able to recolour certain metals."
+              },
+              {
+                "npc": "Most notably, I have a unique ring that we found embedded within a star once. It seems to have magical properties that we don't fully understand. What we do know is that it can improve your skill while mining."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "cKIw2w"
+              }
+            ]
+          },
+          {
+            "text": "What can you tell me about shooting stars?",
+            "steps": [
+              {
+                "player": "What can you tell me about shooting stars?"
+              },
+              {
+                "npc": "Not a lot really. All I know is that they fall from the sky from time to time and that you can mine them."
+              },
+              {
+                "npc": "If you want to know more, there's an observatory near Ardougne that you might want to visit. They've done some research into them."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Qr2cUd"
+              }
+            ]
+          },
+          {
+            "text": "I'm off.",
+            "steps": [
+              {
+                "player": "I'm off."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

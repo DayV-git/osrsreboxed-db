@@ -1,0 +1,161 @@
+{
+  "default": "standard-dialogue-before-starting-desert-treasure-i",
+  "variants": {
+    "standard-dialogue-before-starting-desert-treasure-i": [
+      {
+        "npc": "Greetings friend. I am Rasolo, the famous merchant. Would you care to see my wares?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Rasolo the Wandering Merchant",
+                "id": "VZ9kJE"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "player": "No, not really."
+              },
+              {
+                "npc": "As you wish. I will travel wherever the business takes me."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-desert-treasure-i": [
+      {
+        "npc": "Many thanks for returning my heirloom to me, adventurer. Would you like to buy something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "g-kvnf"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "AK_ll7"
+              }
+            ]
+          },
+          {
+            "text": "I lost that ring you gave me...",
+            "steps": [
+              {
+                "player": "I lost that ring you gave me..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Ring of visibility in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "Are you sure? I don't have it anymore..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "kb_lf9"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a Ring of visibility in their inventory or bank, and their inventory is full:",
+                "steps": [
+                  {
+                    "npc": "Well, should you need a replacement, I suggest you free up some inventory room first..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Tfxd46"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a Ring of visibility in their inventory or bank, and has inventory space:",
+                "steps": [
+                  {
+                    "player": "I lost that ring you gave me..."
+                  },
+                  {
+                    "npc": "Then by all means, take another. Only a foolish merchant would give away his only stock!"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Ring of visibility",
+                    "id": "RdQo2r"
+                  }
+                ],
+                "id": "Dzh3BO"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-desert-treasure-ii-the-fallen-empire": [
+      {
+        "npc": "Many thanks for returning my heirloom to me, adventurer. Would you like to buy something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "9JywHc"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ReQaLB"
+              }
+            ]
+          },
+          {
+            "text": "I lost that ring you gave me...",
+            "steps": [
+              {
+                "player": "I lost that ring you gave me..."
+              },
+              {
+                "npc": "Are you sure? I don't have it anymore..."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

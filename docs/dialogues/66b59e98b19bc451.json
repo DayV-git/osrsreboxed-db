@@ -1,0 +1,246 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "before-starting-the-heart-of-darkness": [
+      {
+        "npc": "Nilsal, [player name]."
+      },
+      {
+        "player": "Hey, Itzla. How are things going?"
+      },
+      {
+        "npc": "Father should make a full recovery, though given that his would-be killers are still out there, that's not anywhere near as much comfort as it should be."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not meet all of the requirements:",
+        "steps": [
+          {
+            "npc": "I'm also still yet to hear from mother, but in the meantime, I've been thinking about what our next move should be. I don't have anything solid yet, but I'm sure I will soon."
+          },
+          {
+            "player": "In that case, I'll make sure to keep checking in."
+          },
+          {
+            "type": "message",
+            "text": "You do not meet all of the requirements to start The Heart of Darkness quest.",
+            "id": "5g5zxq"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "DBVgyn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player meets all of the requirements:",
+        "steps": [
+          {
+            "npc": "I've sent word to mother about what happened here, but I've not heard back yet. However, in the meantime, I've devised a little plan for how we might go about dealing with our cultist problem."
+          },
+          {
+            "type": "choice",
+            "prompt": "Start The Heart of Darkness quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "What is it?"
+                  },
+                  {
+                    "npc": "We're going to go... undercover!"
+                  },
+                  {
+                    "player": "Undercover? What do you mean?"
+                  },
+                  {
+                    "npc": "The Twilight Emissaries of course! If they are the ones responsible for what is now two attempts on my father's life, their deaths will be swift and brutal."
+                  },
+                  {
+                    "npc": "However, given we're somewhat civilised people, we can't exactly start executing cultists without definitive proof. How do we get that? By joining up of course!"
+                  },
+                  {
+                    "player": "You want us to join the cult?"
+                  },
+                  {
+                    "npc": "Exactly! Quite a clever plan, if I do say so myself."
+                  },
+                  {
+                    "player": "Right..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Guard",
+                    "text": "Prepare for the arrival of Queen Zyanyi Arkan!"
+                  },
+                  {
+                    "npc": "Ah... This should be fun."
+                  }
+                ],
+                "hook": "quest:the-heart-of-darkness:start",
+                "quest": "The Heart of Darkness"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "I'd love to hear it, but I have some things I need to do first."
+                  },
+                  {
+                    "npc": "Very well. I'll be here when you're ready."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "gz7f63"
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "player": "Hey, Itzla."
+      },
+      {
+        "npc": "Nilsal, [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you doing?",
+            "steps": [
+              {
+                "player": "How are you doing?"
+              },
+              {
+                "npc": "Well, now that the local cult of murderers is no longer trying to kill me or my father, I'd say things are looking up."
+              },
+              {
+                "npc": "I'm also finding I've got a bit more time on my hands now that things are all sorted. I suggested to mother I spend that time in the Colosseum. I don't know if she was totally convinced."
+              },
+              {
+                "player": "I can't imagine why..."
+              },
+              {
+                "npc": "Anyway, I won't keep you, iknami. I'm sure you've got plenty more adventures to go on. Timoiva, my friend."
+              }
+            ]
+          },
+          {
+            "text": "You don't happen to have another sword do you?",
+            "steps": [
+              {
+                "player": "You don't happen to have another sword do you?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the Arkan blade in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid not, iknami. You'll have to go and find where you left the one I gave you. I'm sure you won't have lost it. After it, it's a one of a kind family heirloom."
+                  },
+                  {
+                    "player": "Right... yes... I'll go see if I can find it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "4GgBrs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost the Arkan blade:",
+                "steps": [
+                  {
+                    "npc": "Well, iknami, as luck would have it, someone came along trying to sell a sword that perfectly matches the one I gave you. He claimed he just found it on the ground!"
+                  },
+                  {
+                    "player": "How odd..."
+                  },
+                  {
+                    "npc": "Indeed. I'm sure it can't be the same one. After all, that was a one of a kind family heirloom, so you'd definitely have taken good care of it."
+                  },
+                  {
+                    "player": "Yeah... definitely..."
+                  },
+                  {
+                    "npc": "Anyway, I had to pay 250,000 coins to buy this one, so if you want it, that's how much I'll have to charge you."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have enough money:",
+                    "steps": [
+                      {
+                        "player": "Ah, I don't have enough. I'll be back shortly."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "WoY8ya"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has enough money:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "prompt": "Pay 250,000 coins for the Arkan Blade?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "player": "Sounds good to me."
+                              },
+                              {
+                                "type": "message",
+                                "text": "You give Itzla 250,000 coins and he gives you the Arkan Blade in return.",
+                                "id": "3NbB-L"
+                              },
+                              {
+                                "npc": "Use it well, iknami."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "player": "I think I'll pass."
+                              },
+                              {
+                                "npc": "As you wish, iknami."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "fSYf9G"
+                  }
+                ],
+                "id": "z1k9sL"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              },
+              {
+                "npc": "Timoiva, my friend."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

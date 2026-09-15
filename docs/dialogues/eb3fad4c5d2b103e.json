@@ -1,0 +1,364 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Spare some change guv?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "Charles. Charles E. Trampin' at your service. Now, about that change you were going to give me..."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Kfx_xM"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I haven't got any.",
+            "steps": [
+              {
+                "player": "Sorry, I haven't got any."
+              },
+              {
+                "npc": "Thanks anyway."
+              }
+            ]
+          },
+          {
+            "text": "Go get a job!",
+            "steps": [
+              {
+                "player": "Go get a job!"
+              },
+              {
+                "npc": "You startin? I hope your nose falls off!"
+              }
+            ]
+          },
+          {
+            "text": "Ok. Here you go.",
+            "steps": [
+              {
+                "player": "Ok. Here you go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has coins in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Player gives Charlie 1 coin.)",
+                    "id": "SPAjYU"
+                  },
+                  {
+                    "npc": "Hey, thanks a lot!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No problem.",
+                        "steps": [
+                          {
+                            "player": "No problem."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Don't I get some sort of quest hint or something now?",
+                        "steps": [
+                          {
+                            "player": "So...don't I get some sort of quest hint or something now?"
+                          },
+                          {
+                            "npc": "Huh? What do you mean? That wasn't why I asked you for money."
+                          },
+                          {
+                            "npc": "I just need to eat..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Vd68yh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have coins in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh wait. I haven't got any, sorry."
+                  },
+                  {
+                    "npc": "Thanks anyway."
+                  }
+                ],
+                "id": "jyd1Up"
+              }
+            ]
+          },
+          {
+            "text": "Is there anything down this alleyway?",
+            "steps": [
+              {
+                "player": "Is there anything down this alleyway?"
+              },
+              {
+                "npc": "Funny you should mention that...there is actually."
+              },
+              {
+                "npc": "The ruthless and notorious criminal gang known as the Black Arm Gang have their headquarters down there."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Thanks for the warning!",
+                    "steps": [
+                      {
+                        "player": "Thanks for the warning!"
+                      },
+                      {
+                        "npc": "Don't worry about it."
+                      },
+                      {
+                        "player": "Do you think they would let me join?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has not yet joined either gang:",
+                        "steps": [
+                          {
+                            "npc": "You never know. You'll find a lady down there called Katrine. Speak to her."
+                          },
+                          {
+                            "npc": "But don't upset her, she's pretty dangerous."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "DzQhzz"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has already joined the Black Arm Gang:",
+                        "steps": [
+                          {
+                            "npc": "I was under the impression you were already a member..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "5dPPzz"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has already joined the Phoenix Gang:",
+                        "steps": [
+                          {
+                            "npc": "No. You're a collaborator with the Phoenix Gang. There's no way they'll let you join now."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "How did you know I was in the Phoenix Gang?",
+                                "steps": [
+                                  {
+                                    "player": "How did YOU know I was in the Phoenix Gang?"
+                                  },
+                                  {
+                                    "npc": "In my current profession I spend a lot of time on the streets and you hear these sorta things sometimes"
+                                  },
+                                  {
+                                    "player": "Any ideas how I could get in there then?"
+                                  },
+                                  {
+                                    "npc": "Hmmm. I dunno."
+                                  },
+                                  {
+                                    "npc": "Your best bet would probably be to find someone else... Someone who ISN'T a member of the Phoenix Gang, and get them to infiltrate the ranks of the Black Arm Gang for you."
+                                  },
+                                  {
+                                    "npc": "If you find someone like that, tell 'em to come to me first."
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Ok. Good plan!",
+                                        "steps": [
+                                          {
+                                            "player": "Ok. Good plan!"
+                                          },
+                                          {
+                                            "npc": "I'm not just a pretty face!"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Like who?",
+                                        "steps": [
+                                          {
+                                            "player": "Like who?"
+                                          },
+                                          {
+                                            "npc": "There's plenty of other adventurers about besides yourself. I'm sure if you asked one of them nicely they would help you."
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Any ideas how I could get in there then?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "mRQWqU"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "FuMC4U"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you think they would let me join?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "1lHeWv"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-on-one-of-charlie-s-clues-getting-the-request": [
+      {
+        "npc": "Please [, sir/, madam], can you help me."
+      },
+      {
+        "player": "What can I do for you?"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "I really need a cooked trout."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "I really need a cooked pike."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "I really need a raw herring"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "I really need a raw trout."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "I really need some leather chaps."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "I really need a leather body."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "npc": "I really need an iron dagger."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 8",
+            "steps": [
+              {
+                "npc": "I really need a piece of iron ore."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "player": "Sure, I'll be glad to help a person in need."
+      }
+    ],
+    "when-on-one-of-charlie-s-clues-bringing-the-requested-item": [
+      {
+        "type": "message",
+        "text": "You give Charlie the [item].",
+        "id": "6uha5C"
+      },
+      {
+        "type": "message",
+        "text": "Charlie gives you a [new clue/casket]!",
+        "id": "LX6YKt"
+      },
+      {
+        "npc": "Thank you so much [sir/madam]."
+      }
+    ]
+  }
+}

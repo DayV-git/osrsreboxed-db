@@ -1,0 +1,189 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-song-of-the-elves": [
+      {
+        "npc": "Hey [player name], good to see you."
+      },
+      {
+        "player": "And you Eluned."
+      }
+    ],
+    "enchant-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have a Crystal teleport seed:",
+        "steps": [
+          {
+            "npc": "You don't seem to have any crystals I can enchant. Return when you do."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ckPBh5"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a Crystal teleport seed:",
+        "steps": [
+          {
+            "npc": ""
+          },
+          {
+            "type": "message",
+            "text": "Although you can't hear anything, your crystals have been chanted.",
+            "id": "hIN5vH"
+          }
+        ],
+        "id": "CEXCds"
+      }
+    ],
+    "when-carrying-an-uncharged-crystal-teleport-seed": [
+      {
+        "npc": "Hey [player name], do you need me to re-enchant your teleport crystal?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "npc": "I ask [charge price] coins to cover my costs."
+              },
+              {
+                "type": "choice",
+                "prompt": "Enchant your teleport crystal?",
+                "options": [
+                  {
+                    "text": "Yes - [charge price] coins.",
+                    "steps": [
+                      {
+                        "npc": ""
+                      },
+                      {
+                        "type": "message",
+                        "text": "Although you can't hear anything, your crystals have been chanted.",
+                        "id": "qsDp5B"
+                      },
+                      {
+                        "player": "Thank you."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Ah! Here you go!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to answer this for me."
+      },
+      {
+        "type": "message",
+        "text": "Eluned has given you a challenge scroll!",
+        "id": "J5vwKV"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "eNbQGJ"
+      }
+    ],
+    "treasure-trails-hard-when-spoken-to-again": [
+      {
+        "npc": "Please help me out! How much are they worth?"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "How can that be? Go check again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zUQRuL"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Spot on!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Eluned has given you another clue scroll!",
+                "id": "AZqDwW"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll (hard)",
+                "id": "PgFbnD"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "Wm779H"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "dYMB5d"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket (hard)",
+                "id": "u2K-jf"
+              }
+            ],
+            "id": "-gP9rv"
+          }
+        ],
+        "id": "w7RQeS"
+      }
+    ]
+  }
+}

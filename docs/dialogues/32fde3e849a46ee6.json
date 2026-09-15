@@ -1,0 +1,247 @@
+{
+  "default": "before-imp-catcher",
+  "variants": {
+    "before-imp-catcher": [
+      {
+        "player": "Give me a quest!"
+      },
+      {
+        "npc": "Give me a quest what?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Give me a quest please.",
+            "steps": [
+              {
+                "player": "Give me a quest please."
+              },
+              {
+                "npc": "Well seeing as you asked nicely... I could do with some help."
+              },
+              {
+                "npc": "The wizard Grayzag next door decided he didn't like me so he enlisted an army of hundreds of imps."
+              },
+              {
+                "npc": "These imps stole all sorts of my things. Most of these things I don't really care about, just eggs and balls of string and things."
+              },
+              {
+                "npc": "But they stole my four magical beads. There was a red one, a yellow one, a black one, and a white one."
+              },
+              {
+                "npc": "These imps have now spread out all over the kingdom. Could you get my beads back for me?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Imp Catcher quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "reference",
+                        "target": "Transcript:Imp Catcher",
+                        "section": "",
+                        "text": "Continues in Transcript:Imp Catcher",
+                        "id": "WYFrR5",
+                        "resolved": false,
+                        "page_available": true
+                      }
+                    ],
+                    "hook": "quest:imp-catcher:start",
+                    "quest": "Imp Catcher"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "I've better things to do than chase imps."
+                      },
+                      {
+                        "npc": "Well if you're not interested in the quests I have to give you, don't waste my time by asking me for them."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Give me a quest or else!",
+            "steps": [
+              {
+                "player": "Give me a quest or else!"
+              },
+              {
+                "npc": "Or else what? You'll attack me?"
+              },
+              {
+                "npc": "Hahaha!"
+              }
+            ]
+          },
+          {
+            "text": "Just stop messing around and give me a quest!",
+            "steps": [
+              {
+                "player": "Just stop messing around and give me a quest!"
+              },
+              {
+                "npc": "Ah now you're assuming I have one to give."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-imp-catcher": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Got any more quests?",
+            "steps": [
+              {
+                "player": "Got any more quests?"
+              },
+              {
+                "npc": "No, everything is good with the world today."
+              }
+            ]
+          },
+          {
+            "text": "Do you know any interesting spells you could teach me?",
+            "steps": [
+              {
+                "player": "Do you know any interesting spells you could teach me?"
+              },
+              {
+                "npc": "I don't think so, the type of magic I study involves years of meditation and research."
+              }
+            ]
+          },
+          {
+            "text": "Have you got another one of those fancy schmancy amulets?",
+            "steps": [
+              {
+                "player": "Have you got another one of those fancy schmancy amulets?"
+              },
+              {
+                "npc": "I have a few spare. I'd like one of each coloured bead again in return, though! Black, white, yellow and red."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has all four beads:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I have them with me!",
+                        "steps": [
+                          {
+                            "player": "I have them with me! Here you go."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Mizgog removes the beads from your backpack and gives you another Amulet of accuracy.",
+                            "id": "jxPdQz"
+                          },
+                          {
+                            "player": "Thanks, Mizgog!"
+                          },
+                          {
+                            "player": "What are you going to do with all of these extra beads, anyway?"
+                          },
+                          {
+                            "npc": "You don't want to know. Take care!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Maybe later.",
+                        "steps": [
+                          {
+                            "player": "Maybe later."
+                          },
+                          {
+                            "npc": "Perhaps some other time, then."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1d3gWH"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all four beads:",
+                "steps": [
+                  {
+                    "player": "I don't have them all on me at the moment. I'll come back when I have them!"
+                  },
+                  {
+                    "npc": "Very well. See you soon!"
+                  }
+                ],
+                "id": "Ss41sr"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-imp-catcher-purchase-amulet-option": [
+      {
+        "type": "condition",
+        "text": "Without all four beads:",
+        "steps": [
+          {
+            "npc": "You don't seem to have one of each coloured bead on you at the moment. Return when you have a black, white, yellow and red in your backpack!"
+          }
+        ],
+        "id": "TG2sXN"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "You have done well, [player name]!"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Wizard Mizgog has given you another clue scroll!",
+            "id": "w-yFby"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "hNQtZ1"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a clue casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "JkBUra"
+          }
+        ],
+        "id": "EcmKyI"
+      }
+    ]
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome to Hickton's Archery Store. Do you want to see my wares?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me about your cape?",
+            "steps": [
+              {
+                "player": "Can you tell me about your cape?"
+              },
+              {
+                "npc": "Certainly! Skillcapes are a symbol of achievement. Only people who have mastered a skill and reached level 99 can get their hands on them and gain the benefits they carry."
+              },
+              {
+                "npc": "The Cape of Fletching can be searched for a mithril grapple and crossbow three times every day. Is there anything else I can help you with?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to view your store please.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Hickton's Archery Emporium.",
+                        "id": "yRa_P4"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thank you.",
+                    "steps": [
+                      {
+                        "player": "No thank you."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yes, please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Hickton's Archery Emporium.",
+                "id": "aWpclh"
+              }
+            ]
+          },
+          {
+            "text": "No, I prefer to bash things close up.",
+            "steps": [
+              {
+                "player": "No, I prefer to bash things close up."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "message",
+        "text": "Hickton has given you a challenge scroll!",
+        "id": "4XLspI"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "input",
+        "text": "Enter amount:",
+        "id": "a9zXcY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player gives the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KjAgcu"
+      },
+      {
+        "type": "condition",
+        "text": "If the player gives the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "cQZFB5"
+              },
+              {
+                "type": "message",
+                "text": "Hickton has given you another clue scroll!",
+                "id": "nr3tdW"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "EuxnGu"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a medium reward casket",
+                "id": "5gKOfm"
+              },
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "UAkh9l"
+              }
+            ],
+            "id": "RcPsBT"
+          }
+        ],
+        "id": "BpP6n3"
+      }
+    ]
+  }
+}

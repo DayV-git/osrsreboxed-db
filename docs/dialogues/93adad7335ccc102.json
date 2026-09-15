@@ -1,0 +1,96 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "free-to-play": [
+      {
+        "type": "message",
+        "text": "The sawmill operator pays you no attention, it doesn't seem like he'll help you.",
+        "id": "vNnTXb"
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "npc": "Hello there. Do you want me to make some planks for you? I can make planks from wood, oak, teak and mahogany logs. Or would you like to buy some other housing supplies?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please make me some planks.",
+            "steps": [
+              {
+                "player": "Yes, please make me some planks."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Plank-making",
+                "id": "Tc6di4"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the chosen log in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You'll need to bring me some more logs."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "DoGd3u"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough coins:",
+                "steps": [
+                  {
+                    "npc": "Those planks cost [X] coins. You don't have enough money for all of them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "zGPz7n"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "chosen planks",
+                "id": "EEZriJ"
+              }
+            ]
+          },
+          {
+            "text": "Can I buy some housing supplies?",
+            "steps": [
+              {
+                "player": "Can I buy some housing supplies?"
+              },
+              {
+                "npc": "Of course!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Construction supplies",
+                "id": "HEPebK"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              },
+              {
+                "npc": "Well come back when you want some. You'll struggle to find quality planks anywhere but here!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

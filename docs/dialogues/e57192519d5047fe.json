@@ -1,0 +1,331 @@
+{
+  "default": "standard-dialogue-without-stew",
+  "variants": {
+    "standard-dialogue-without-stew": [
+      {
+        "player": "Hello?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Ssshhh! What do you want?"
+      },
+      {
+        "player": "Well, it's not every day you see a man up a tree."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "I'm trying to observe a suspect. Leave me alone!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not know about the Draynor Bank Robbery:",
+        "steps": [
+          {
+            "player": "What's this all about?"
+          },
+          {
+            "type": "line",
+            "speaker": "Guard",
+            "text": "Hadn't you heard? You'd better go and talk to the other guard, the one by the bank door. He'll tell you all about it."
+          },
+          {
+            "type": "line",
+            "speaker": "Guard",
+            "text": "Go on, ask him what's wrong with the bank wall. He loves when people ask him that."
+          },
+          {
+            "player": "Ok, if you say so.."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "0WBDsU"
+      },
+      {
+        "type": "condition",
+        "text": "If the player knows about the Draynor Bank Robbery:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "This is about the bank robbery, right?",
+                "steps": [
+                  {
+                    "player": "This is about the bank robbery, right?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Guard",
+                    "text": "Yes, that's right. We're keeping the suspect under tight observation for the moment."
+                  },
+                  {
+                    "player": "Can't you just... I dunno... arrest him?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Guard",
+                    "text": "I'm not meant to discuss the case. You know what confidentiality rules are like."
+                  },
+                  {
+                    "player": "Fair enough."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "q1aD8x"
+                  }
+                ]
+              },
+              {
+                "text": "You're not being very subtle up there.",
+                "steps": [
+                  {
+                    "player": "You're not being very subtle up there."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Guard",
+                    "text": "I'd be doing a lot better if nits like you didn't come crowding around me all day!"
+                  },
+                  {
+                    "player": "But your legs are hanging down!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Guard",
+                    "text": "Go away!"
+                  },
+                  {
+                    "player": "Please yourself!"
+                  }
+                ]
+              },
+              {
+                "text": "Can I do anything to help?",
+                "steps": [
+                  {
+                    "player": "Can I do anything to help?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Guard",
+                    "text": "That's very kind of you. I'd rather like a nice bowl of stew, if you could fetch me one. I don't get many meal breaks."
+                  },
+                  {
+                    "player": "You want a bowl of stew?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Guard",
+                    "text": "If you wouldn't mind..."
+                  },
+                  {
+                    "player": "I'll think about it!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "6pk5YL"
+      }
+    ],
+    "standard-dialogue-with-stew": [
+      {
+        "player": "Hello?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Yes, what do you... I say, is that stew for me?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ok, take the stew!",
+            "steps": [
+              {
+                "player": "Ok, take the stew!"
+              },
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Gosh, that's very kind of you! Here, have a few coins for your trouble..."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "30 coins",
+                "id": "PyfFY-"
+              },
+              {
+                "type": "action",
+                "text": "The guard eats the stew",
+                "id": "bXHMku"
+              },
+              {
+                "type": "message",
+                "text": "The guard drops the empty bowl out of the tree!",
+                "id": "_v6f7F"
+              }
+            ]
+          },
+          {
+            "text": "No, I want to keep this stew!",
+            "steps": [
+              {
+                "player": "No, I want to keep this stew!"
+              },
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Fair enough. But if you change your mind, I'll probably still be here."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-a-stew-on-the-tree": [
+      {
+        "player": "Here's some stew."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Gosh, that's very kind of you! Here, have a few coins for your trouble..."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "30 coins",
+        "id": "VDOoyF"
+      },
+      {
+        "type": "action",
+        "text": "The guard eats the stew",
+        "id": "cUb_TD"
+      },
+      {
+        "type": "message",
+        "text": "The guard drops the empty bowl out of the tree!",
+        "id": "vlBV5c"
+      }
+    ],
+    "standard-dialogue-interacting-with-the-guard-before-he-drops-his-bowl": [
+      {
+        "player": "I think I should leave him in peace to finish his stew!"
+      }
+    ],
+    "standard-dialogue-using-any-other-item-on-the-tree": [
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Why the demoninikin are you waving THAT at me?"
+      },
+      {
+        "player": "Sorry, I thought you'd like it."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Erm... No thanks! Now, if you don't mind, I'm trying to observe this suspect!"
+      },
+      {
+        "player": "Sorry!"
+      }
+    ],
+    "standard-dialogue-when-using-the-right-click-chop-down-option-with-an-axe-on-hand": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Ooooch!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Oi!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Watch what you're doing with that axe, you nit!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "You'll blow my cover! I'm meant to be hidden!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Will you stop that?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Don't draw attention to me!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Hey - gerroff me!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 8",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Ow! That really hurt!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

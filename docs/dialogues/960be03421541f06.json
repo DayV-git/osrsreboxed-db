@@ -1,0 +1,234 @@
+{
+  "default": "starting-out",
+  "variants": {
+    "starting-out": [
+      {
+        "player": "Hello monk."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "Hello adventurer. My name is Brother Kojo. Do you happen to know the time?"
+      },
+      {
+        "player": "No, sorry, I don't."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "Exactly! This clock tower has recently broken down, and without it nobody can tell the correct time. I must fix it before the town people become too angry!"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "I don't suppose you could assist me in the repairs? I'll pay you for your help."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Clock Tower quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "OK old monk, what can I do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Brother Kojo",
+                "text": "Oh, thank you kindly! In the cellar below, you'll find four cogs. They're too heavy for me, but you should be able to carry them one at a time."
+              },
+              {
+                "type": "line",
+                "speaker": "Brother Kojo",
+                "text": "I know one goes on each floor... but I can't exactly remember which goes where specifically. Oh well, I'm sure you can figure it out fairly easily."
+              },
+              {
+                "player": "Well, I'll do my best."
+              },
+              {
+                "type": "line",
+                "speaker": "Brother Kojo",
+                "text": "Thank you again! And remember to be careful, the cellar is full of strange beasts!"
+              }
+            ],
+            "hook": "quest:clock-tower:start",
+            "quest": "Clock Tower"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Not now old monk."
+              },
+              {
+                "type": "line",
+                "speaker": "Brother Kojo",
+                "text": "OK then. Come back and let me know if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-out-talking-to-brother-kojo-again": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "Oh hello, are you having trouble? The cogs are in four rooms below us. Place one cog on a pole on each of the four tower levels."
+      },
+      {
+        "player": "Right, gotcha. I'll do that then."
+      }
+    ],
+    "black-cog": [
+      {
+        "type": "condition",
+        "text": "If the player does not have a bucket of water or ice gloves equipped:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The cog is red hot from the flames. You cannot pick it up.",
+            "id": "rBR-bF"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "kyeI6B"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a bucket of water or ice gloves equipped:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You pour water over the cog. It quickly cools down enough to take.",
+            "id": "mqrwyA"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a black cog",
+            "id": "PVgrzA"
+          }
+        ],
+        "id": "w88vxb"
+      }
+    ],
+    "white-cog": [
+      {
+        "type": "condition",
+        "text": "Trying to open the door before the rats have been poisoned:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This door does not seem to be openable.",
+            "id": "sBPh7D"
+          }
+        ],
+        "id": "CZof4l"
+      },
+      {
+        "type": "condition",
+        "text": "Using the poison on the food trough:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The rats swarm towards the poisoned food...",
+            "id": "oUJqPQ"
+          },
+          {
+            "type": "message",
+            "text": "... and devour it hungrily.",
+            "id": "bcg6ez"
+          },
+          {
+            "type": "message",
+            "text": "You see them smashing against the gates in a panic.",
+            "id": "fO5OsM"
+          },
+          {
+            "type": "message",
+            "text": "They seem to be dying.",
+            "id": "kPMmF3"
+          }
+        ],
+        "id": "DS6nNq"
+      },
+      {
+        "type": "condition",
+        "text": "Opening the door after poisoning the rats:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The death throes of the rats seem to have shaken the door loose its hinges. You pick it up and go through.",
+            "id": "MW9aBv"
+          }
+        ],
+        "id": "D5rCfO"
+      }
+    ],
+    "placing-the-cogs": [
+      {
+        "type": "message",
+        "text": "The cog fits perfectly.",
+        "id": "U24Pfz"
+      }
+    ],
+    "placing-the-cogs-after-placing-a-cog": [
+      {
+        "player": "I've placed a cog!"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "That's great. Come see me when you've done the other three."
+      }
+    ],
+    "placing-the-cogs-after-placing-two-cogs": [
+      {
+        "player": "Two down!"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "Two to go."
+      }
+    ],
+    "placing-the-cogs-after-placing-three-cogs": [
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "One left."
+      }
+    ],
+    "finishing-up": [
+      {
+        "player": "I have replaced all the cogs!"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "Really..? Wait, listen! Well done, well done! Yes yes yes, you've done it! You ARE clever!"
+      },
+      {
+        "type": "line",
+        "speaker": "Brother Kojo",
+        "text": "The townsfolk will all be able to know the correct time now! Thank you so much for all of your help! And as promised, here is your reward!"
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "ihG17v"
+      },
+      {
+        "type": "unavailable",
+        "id": "jYEVd9"
+      }
+    ]
+  }
+}

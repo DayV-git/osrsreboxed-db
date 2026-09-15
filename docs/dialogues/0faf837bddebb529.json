@@ -1,0 +1,522 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about a quest.",
+            "steps": [
+              {
+                "npc": "Well, if it isn't our very own sledder! What can I do for you today?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I have another law talisman?",
+                    "condition": "If the player has less than five law talismans in their bank and inventory:",
+                    "steps": [
+                      {
+                        "player": "Can I have another law talisman?"
+                      },
+                      {
+                        "npc": "Well, I've got one here you can have for 1,000 coins if you'd like it?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, I'll take it.",
+                            "steps": [
+                              {
+                                "player": "Yes, I'll take it."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "npc": "Looks like you don't have enough money to afford it just now, come back when you do."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "MobNlv"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "Looks like you don't have any room to carry it just now, come back when you do."
+                                  }
+                                ],
+                                "id": "O2hAH6"
+                              },
+                              {
+                                "type": "end"
+                              },
+                              {
+                                "type": "message",
+                                "text": "You hand over the coins... and receive a law talisman.",
+                                "id": "EmTbaj"
+                              },
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "a law talisman for 1,000 coins",
+                                "id": "JpNnpQ"
+                              },
+                              {
+                                "player": "Thanks."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks...",
+                            "steps": [
+                              {
+                                "player": "No thanks..."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "iUZMmV"
+                  },
+                  {
+                    "text": "Can you put some spikes on my Climbing boots?",
+                    "steps": [
+                      {
+                        "player": "Can you put some spikes on my Climbing boots?"
+                      },
+                      {
+                        "npc": "For you, no problem."
+                      },
+                      {
+                        "npc": "Do you realise that you can only use the Climbing boots right now? The Spiked boots can only be used in the Icelands but no one's been able to get there for years!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, but I still want them.",
+                            "steps": [
+                              {
+                                "player": "Yes, but I still want them."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have an iron bar in their inventory:",
+                                "steps": [
+                                  {
+                                    "npc": "Sorry, I'll need an Iron bar to make the spikes."
+                                  },
+                                  {
+                                    "npc": "Anything else before I get on with my work?"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous2",
+                                    "id": "QQ7GCB"
+                                  }
+                                ],
+                                "id": "BRhCHm"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Oh OK, I'll leave them thanks.",
+                            "steps": [
+                              {
+                                "player": "Oh OK, I'll leave them thanks."
+                              },
+                              {
+                                "npc": "Anything else before I get on with my work?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous2",
+                                "id": "6YHhP_"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you make me another sled?",
+                    "steps": [
+                      {
+                        "player": "Can you make me another sled?"
+                      },
+                      {
+                        "npc": "Yeah sure, have you got the maple or yew logs, an iron bar and some rope?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have all of the required items in their inventory:",
+                        "steps": [
+                          {
+                            "player": "No, I haven't got everything yet."
+                          },
+                          {
+                            "npc": "Well, unfortunately I can't make the sled without all the materials."
+                          }
+                        ],
+                        "id": "PJqj8Z"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do I need for the sled wax again?",
+                    "steps": [
+                      {
+                        "player": "What do I need for the sled wax again?"
+                      },
+                      {
+                        "npc": "You will need some wax and some swamp tar."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Where can I get wax from?",
+                            "steps": [
+                              {
+                                "player": "Where can I get wax from?"
+                              },
+                              {
+                                "npc": "I don't know. I'm a smith! But maybe you should look for some bees."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "ZmW306"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I get swamp tar from?",
+                            "steps": [
+                              {
+                                "player": "Where can I get swamp tar from?"
+                              },
+                              {
+                                "npc": "The swamp of course! It's south of Lumbridge."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "_SUTQ_"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What else do I need?",
+                            "steps": [
+                              {
+                                "player": "What else do I need?"
+                              },
+                              {
+                                "npc": "You will also need a cake tin to store the wax in."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "B20rFh"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "See you!",
+                            "condition": "If the player has already chosen one of the above options:",
+                            "steps": [
+                              {
+                                "player": "See you!"
+                              },
+                              {
+                                "npc": "Thank you, come again."
+                              }
+                            ],
+                            "id": "TmJfzQ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nothing, thanks.",
+                    "steps": [
+                      {
+                        "player": "Nothing, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I have another law talisman?",
+                    "condition": "If the player has less than five law talismans in their bank and inventory:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "U7t4ok"
+                      }
+                    ],
+                    "id": "YFn6px"
+                  },
+                  {
+                    "text": "Can you put some spikes on my Climbing boots?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "oWIWr2"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How is your son getting on?",
+                    "steps": [
+                      {
+                        "player": "How is your son getting on?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "After Death Plateau:",
+                        "steps": [
+                          {
+                            "npc": "He was captured by those blasted trolls! I don't know what to do. Even the imperial guard are too afraid to go rescue him."
+                          },
+                          {
+                            "player": "What happened?"
+                          },
+                          {
+                            "npc": "Talk to Denulth, he can tell you all about it. Anything else before I get on with my work?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "l-Ga3M"
+                          }
+                        ],
+                        "id": "IE-gq4"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "After Troll Stronghold:",
+                        "steps": [
+                          {
+                            "player": "How is your son getting on?"
+                          },
+                          {
+                            "npc": "He is getting on fine! He has just been promoted to Sergeant! I'm really proud of him!"
+                          },
+                          {
+                            "player": "I'm happy for you!"
+                          },
+                          {
+                            "npc": "Anything else before I get on with my work?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "Uem9Xe"
+                          }
+                        ],
+                        "id": "Z28zqO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Is it OK if I use your anvil?",
+                    "steps": [
+                      {
+                        "player": "Is it OK if I use your anvil?"
+                      },
+                      {
+                        "npc": "So you're a smithy are you?"
+                      },
+                      {
+                        "player": "I dabble."
+                      },
+                      {
+                        "npc": "A fellow smith is welcome to use my anvil!"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "npc": "Anything else before I get on with my work?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "xbYmAG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nothing, thanks.",
+                    "steps": [
+                      {
+                        "player": "Nothing, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-him": [
+      {
+        "type": "condition",
+        "text": "If the item is repairable:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "What would you like to do?",
+            "options": [
+              {
+                "text": "Repair that item: [x] coins.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The item is repaired.",
+                    "id": "ik0VYQ"
+                  },
+                  {
+                    "npc": "There you go, happy doing business with you!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Cancel.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ciR7_v"
+      },
+      {
+        "type": "condition",
+        "text": "If the item is not repairable:",
+        "steps": [
+          {
+            "npc": "Sorry friend, but I can't do anything with that."
+          }
+        ],
+        "id": "5S97WA"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "KwINnU"
+      },
+      {
+        "type": "message",
+        "text": "Dunstan has given you a challenge scroll!",
+        "id": "mT890-"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ErB3dv"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "W9f6PD"
+              },
+              {
+                "type": "message",
+                "text": "Dunstan has given you another clue scroll!",
+                "id": "GFkGUo"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "PRV3A_"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a medium reward casket",
+                "id": "00uX9x"
+              },
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "tGAClh"
+              }
+            ],
+            "id": "SxowMn"
+          }
+        ],
+        "id": "GWSK37"
+      }
+    ]
+  }
+}

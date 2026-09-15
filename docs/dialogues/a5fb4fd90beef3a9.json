@@ -1,0 +1,310 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-on-pay-to-play-worlds": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Did you ever get to talk to those ratcatchers I told you about?"
+      },
+      {
+        "player": "Yes, they were... interesting..."
+      },
+      {
+        "npc": "Well, my dear. Is there anything I can do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any more kittens?",
+            "steps": [
+              {
+                "player": "Do you have any more kittens?"
+              },
+              {
+                "npc": "Indeed I have. They are 100 coins each, do you want one?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "player": "Yes please."
+                          },
+                          {
+                            "npc": "Okay then, here you go."
+                          },
+                          {
+                            "player": "Thanks."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Gertrude gives you another kitten.",
+                            "id": "Q44J0B"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks, I've paid that boy enough already."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "cond",
+                        "steps": [
+                          {
+                            "player": "I'm quite fussy over cats - can I pick my own?"
+                          },
+                          {
+                            "npc": "Well okay, but they're all just as cuddly as each other."
+                          },
+                          {
+                            "type": "action",
+                            "action": "open_interface",
+                            "target": "Pick a kitten interface",
+                            "id": "P2nHkx"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "trS3eD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 100 coins:",
+                "steps": [
+                  {
+                    "player": "Oops, looks like I'm a bit short. I'll have to come back later."
+                  }
+                ],
+                "id": "QTZX8R"
+              }
+            ]
+          },
+          {
+            "text": "I'll be off. See you another time.",
+            "steps": [
+              {
+                "player": "I'll be off. See you another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-right-click-kitten-option": [
+      {
+        "type": "condition",
+        "text": "While wearing the Ring of Charos(a)",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Cat colour picking interface",
+            "id": "xcCHN3"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "ot0iYK"
+          }
+        ],
+        "id": "JaciOj"
+      },
+      {
+        "type": "message",
+        "text": "Gertrude gives you another kitten.",
+        "id": "meKySR"
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "condition",
+        "text": "Without 100 coins:",
+        "steps": [
+          {
+            "npc": "I'll want 100 coins for a kitten."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YKL9dw"
+      },
+      {
+        "type": "condition",
+        "text": "While already owning a kitten:",
+        "steps": [
+          {
+            "npc": "Aren't you still raising that other kitten? Only once it's fully grown and it no longer needs your attention will I let you have another kitten."
+          }
+        ],
+        "id": "UdjqaT"
+      }
+    ],
+    "standard-dialogue-right-click-kitten-option-while-owning-a-cat-with-100-rodent-kills-but-without-a-cat-training-medal": [
+      {
+        "player": "Hello again Gertrude!"
+      },
+      {
+        "npc": "Well, hello adventurer! How are you?"
+      },
+      {
+        "player": "My cat has caught 100 rats!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no free inventory space:",
+        "steps": [
+          {
+            "npc": "Well well! You are good with cats! I'd give you a little present if you had space to take it."
+          },
+          {
+            "player": "That's very kind of you - I'll come back again when I've got more space."
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "vxRDdi"
+          }
+        ],
+        "id": "XzcgLd"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has free inventory space:",
+        "steps": [
+          {
+            "npc": "Well well! You are good with cats! Here, I have a little present for you..."
+          },
+          {
+            "type": "message",
+            "text": "Gertrude shows you a small medal.",
+            "id": "-8Ep5s"
+          },
+          {
+            "player": "Hey, thanks Gertrude."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "cat training medal",
+            "id": "2qLa4Y"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "8AIA4X"
+          }
+        ],
+        "id": "odQKTu"
+      }
+    ],
+    "standard-dialogue-while-wearing-cat-ears": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Show Gertrude your cat ears.",
+            "steps": [
+              {
+                "npc": "Hello little kitty, are you lost?"
+              },
+              {
+                "player": "Eeeerrrr..."
+              },
+              {
+                "npc": "Come here little fella, I've got a tasty sardine for you."
+              },
+              {
+                "type": "choice",
+                "prompt": "Take Sardine?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You take the sardine from Gertrude and quickly eat it.",
+                        "id": "IGVZbc"
+                      },
+                      {
+                        "npc": "Who's a good fluff ball."
+                      },
+                      {
+                        "player": "Meooow!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "I should go..."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Something else.",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:Gertrude",
+                "section": "Standard dialogue",
+                "text": "Standard dialogue shows.",
+                "id": "mU4kgJ",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-on-free-to-play-worlds": [
+      {
+        "npc": "Oh, I do love my precious little kittens! Perhaps you could care for one, some day!"
+      }
+    ],
+    "treasure-trails-beginner": [
+      {
+        "npc": "Well done."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [new clue/casket]",
+        "id": "b-hvA9"
+      },
+      {
+        "type": "message",
+        "text": "You've [found a new clue/obtained a casket]!",
+        "id": "SgxZnU"
+      }
+    ]
+  }
+}

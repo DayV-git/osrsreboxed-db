@@ -1,0 +1,227 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-at-ardougne-zoo-before-cold-war": [
+      {
+        "player": "Hello. Do you need any help? I'm looking for a quest."
+      },
+      {
+        "type": "condition",
+        "text": "If player has a construction level below 34:",
+        "steps": [
+          {
+            "npc": "I'm looking for an experienced adventurer and you're not it. Come back when you are more capable."
+          },
+          {
+            "type": "message",
+            "text": "You do not meet all of the requirements to start the Cold War quest.",
+            "id": "noXUbe"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ckTrSI"
+      },
+      {
+        "npc": "Are you working for them?"
+      },
+      {
+        "player": "Uh, I'm not sure. Who are they?"
+      },
+      {
+        "npc": "EXACTLY!"
+      },
+      {
+        "player": "Seriously, what are you talking about?"
+      },
+      {
+        "npc": "I think you can be trusted. What do you know about..."
+      },
+      {
+        "npc": "penguins?"
+      },
+      {
+        "player": "Uh...they live in the cold? That's about all."
+      },
+      {
+        "npc": "Would you like to learn more about them? I'm conducting a, uh, research project, to, uh, learn about their social habits in their natural environment."
+      },
+      {
+        "player": "What do you need my help for?"
+      },
+      {
+        "npc": "Well, I need to build a shelter to hide from view, and it's always useful to have an extra pair of eyes, you know, for, uh, observing...Penguins."
+      },
+      {
+        "npc": "So, are you up for it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, why not!",
+            "steps": [
+              {
+                "player": "Okay, why not! But first, who are you and why are you researching penguins?"
+              },
+              {
+                "npc": "I, uh, was a zoo keeper here. But, I, uh, am on leave to go research penguins in their native habitat."
+              },
+              {
+                "player": "Ok! Okay then. So, what did you need me to do?"
+              },
+              {
+                "npc": "Right. I need you to gather materials for the bird hide, while I arrange for our transport."
+              },
+              {
+                "npc": "You need to get 10 oak planks, 10 steel nails, a hammer, and a spade so that we can build a bird hide."
+              },
+              {
+                "npc": "Once you have those, meet me up by the entrance to Keldagrim, east of Rellekka. I'll be there with a boat to take us to our destination."
+              },
+              {
+                "player": "Right, oak planks, steel nails, hammer, spade, east of Rellekka. Got it."
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "message",
+                "text": "You've started a new quest: Cold War",
+                "id": "919VsK"
+              }
+            ]
+          },
+          {
+            "text": "I don't think so.",
+            "steps": [
+              {
+                "player": "I don't think so."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-at-rellekka-boat-before-cold-war": [
+      {
+        "npc": "What? Did you come to tell me I'm crazy too?"
+      },
+      {
+        "player": "No, I..."
+      },
+      {
+        "npc": "Oh, I don't have time for your lies. Go away"
+      }
+    ],
+    "standard-dialogue-at-rellekka-boat-before-cold-war-right-click-travel-option-or-interacting-with-the-boat": [
+      {
+        "npc": "Sorry, you can't use this boat."
+      }
+    ],
+    "standard-dialogue-at-rellekka-boat-after-cold-war": [
+      {
+        "npc": "I can't speak right now. I have too much to do. I will contact you when the time is right."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to travel to the iceberg.",
+            "steps": [
+              {
+                "npc": "On the way I'll tell you the 42 ways penguins can torture you using a feather..."
+              }
+            ]
+          },
+          {
+            "text": "I've lost the clockwork book, could I have another?",
+            "condition": "If the player is no longer in possession of the Clockwork book:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "dVyzcH"
+              }
+            ],
+            "id": "pi-eLc"
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-at-the-iceberg-after-cold-war": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are we going to do about the penguins?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ozgSzA"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-at-the-ardougne-zoo-after-cold-war": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are we going to do about the penguins?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "ozgSzA"
+              }
+            ]
+          },
+          {
+            "text": "I've lost the clockwork book, could I have another?",
+            "condition": "If the clockwork book is unowned:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "dVyzcH"
+              }
+            ],
+            "id": "_wwzdq"
+          },
+          {
+            "text": "Thanks for helping My Arm earlier.",
+            "condition": "If Making Friends with My Arm has been completed:",
+            "steps": [
+              {
+                "player": "Thanks for helping My Arm earlier."
+              },
+              {
+                "npc": "Never speak to me about that again."
+              }
+            ],
+            "id": "pPhqJj"
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "dVyzcH": [
+      {
+        "player": "I've lost the clockwork book, could I have another?"
+      },
+      {
+        "npc": "Well, lucky for you I did make another copy. But be more careful!"
+      }
+    ],
+    "ozgSzA": [
+      {
+        "player": "What are we going to do about the penguins?"
+      },
+      {
+        "npc": "I can't speak right now. I have too much to do. I will contact you when the time is right."
+      }
+    ]
+  }
+}

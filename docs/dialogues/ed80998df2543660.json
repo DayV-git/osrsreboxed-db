@@ -1,0 +1,404 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings traveller."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you heal me? I'm injured.",
+            "steps": [
+              {
+                "player": "Can you heal me? I'm injured."
+              },
+              {
+                "npc": "Ok."
+              },
+              {
+                "type": "message",
+                "text": "Abbot Langley places his hands on your head. You feel a little better.",
+                "id": "SEVAB_"
+              }
+            ]
+          },
+          {
+            "text": "Isn't this place built a bit out of the way?",
+            "steps": [
+              {
+                "player": "Isn't this place built a bit out of the way?"
+              },
+              {
+                "npc": "We like it that way actually! We get disturbed less. We still get rather a large amount of travellers looking for sanctuary and healing here as it is!"
+              }
+            ]
+          },
+          {
+            "text": "How do I get further into the monastery?",
+            "condition": "If the player has not joined the Edgeville Monastery order:",
+            "steps": [
+              {
+                "player": "How do I get further into the monastery?"
+              },
+              {
+                "npc": "I'm sorry but only members of our order are allowed in the second level of the monastery."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Well can I join your order?",
+                    "steps": [
+                      {
+                        "player": "Well can I join your order?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 31 prayer:",
+                        "steps": [
+                          {
+                            "npc": "No. I am sorry, but I feel you are not devout enough."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You need a prayer level of 31 to join the order.",
+                            "id": "YWkb1s"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "B8-Sr6"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 31 prayer:",
+                        "steps": [
+                          {
+                            "npc": "Ok, I see you are someone suitable for our order. You may join."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "WLZxnf"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Oh, sorry."
+                  }
+                ]
+              },
+              {
+                "player": "Oh, sorry.",
+                "steps": []
+              }
+            ],
+            "id": "cA_4Dl"
+          },
+          {
+            "text": "Can you help with spirit shields?",
+            "steps": [
+              {
+                "npc": "I might be able to... What did you have in mind?"
+              },
+              {
+                "player": "Can you remove the sigils from my spirit shields?"
+              },
+              {
+                "npc": "I think I shoud be able to manage that. However in doing so, I'm afraid I'll have to destroy the blessed shield itself. You'll only get the sigil back."
+              },
+              {
+                "npc": "I can go ahead and break down all of the shields in your inventory now if you'd like?."
+              },
+              {
+                "type": "choice",
+                "prompt": "Are you sure?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Abbot Langley carefully breaks each shield, leaving the sigils perfectly intact.",
+                        "id": "pBNZO2"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Not right now."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-interacting-with-the-south-eastern-ladder-before-joining-the-edgeville-monastery-order": [
+      {
+        "npc": "Only members of our order can go up there."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Well can I join your order?",
+            "steps": [
+              {
+                "player": "Well can I join your order?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 31 prayer:",
+                "steps": [
+                  {
+                    "npc": "No. I am sorry, but I feel you are not devout enough."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need a prayer level of 31 to join the order.",
+                    "id": "0x8Hm8"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "g52YG5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 31 prayer:",
+                "steps": [
+                  {
+                    "npc": "Ok, I see you are someone suitable for our order. You may join."
+                  }
+                ],
+                "id": "GbUoob"
+              }
+            ]
+          },
+          {
+            "text": "Oh, sorry.",
+            "steps": [
+              {
+                "player": "Oh, sorry."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "claiming-the-corrupted-helm": [
+      {
+        "npc": "Ah, I was told to expect you, please take this as thanks!"
+      },
+      {
+        "type": "message",
+        "text": "Abbot Langley quickly takes the soft clay, leather boots and bowl of hot water in exchange for a mysterious helmet.",
+        "id": "ko5YiG"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Corrupted helm",
+        "id": "zKIDLb"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Congratulations, traveller!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has finished the treasure trail:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "IJidsM"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Reward casket (hard)",
+            "id": "9fiDn3"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3X86Y3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not finished the treasure trail:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Abbot Langley has given you another clue scroll!",
+            "id": "XvKs89"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "Du3ndO"
+          }
+        ],
+        "id": "cVuQT7"
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "condition",
+        "text": "If the player has no free inventory spaces:",
+        "steps": [
+          {
+            "npc": "Hey, I have something for you but you don't have any space for it!"
+          }
+        ],
+        "id": "F71Aen"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one free inventory space:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a torn clue scroll",
+            "id": "E1SQPJ"
+          },
+          {
+            "npc": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You are handed a torn part of a clue scroll.",
+            "id": "4h3VUx"
+          }
+        ],
+        "id": "e6xddG"
+      },
+      {
+        "npc": "I must say, I despise the equipment you have chosen to wear."
+      }
+    ],
+    "delivering-a-letter-from-the-wise-old-man": [
+      {
+        "npc": "Greetings traveller."
+      },
+      {
+        "player": "I've got a message for you from your friend in Draynor Village."
+      },
+      {
+        "npc": "Gosh, you are very kind to bring a message to my remote monastery!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have enough space in their inventory for a reward:",
+        "steps": [
+          {
+            "npc": "I'd give you a reward, but you don't seem to have any space for it. Come back when you do."
+          },
+          {
+            "type": "jump",
+            "reference": "initial",
+            "id": "RXBcx1"
+          }
+        ],
+        "id": "E44fly"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one space in their inventory for a reward:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Herbs",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Abbot Langley gives you some banknotes that can be exchanged for herbs.",
+                    "id": "5du4gc"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an assortment of herbs",
+                    "id": "HD1yVi"
+                  },
+                  {
+                    "npc": "I grow a few herbs in my little cabbage patch; please take some as a sign of my gratitude."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "arPMKl"
+                  }
+                ]
+              },
+              {
+                "text": "Coins",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "2EClbw"
+                  }
+                ]
+              },
+              {
+                "text": "Runes",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "JVfqVM"
+                  }
+                ]
+              },
+              {
+                "text": "Seeds",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "QmCo7a"
+                  }
+                ]
+              },
+              {
+                "text": "Prayer experience",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Abbot Langley blesses you. You gain some prayer xp.",
+                    "id": "C_SVGf"
+                  },
+                  {
+                    "npc": "Allow me to bestow on you Saradomin's blessings..."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "nIMf8W"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "F9OiU0"
+      }
+    ]
+  }
+}

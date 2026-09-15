@@ -1,0 +1,825 @@
+{
+  "default": null,
+  "variants": {
+    "starting-out-adventurer-camp-warrior": [
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "Hello there traveller."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you camped out here for?",
+            "steps": [
+              {
+                "player": "What are you camped here for?"
+              },
+              {
+                "type": "line",
+                "speaker": "Warrior",
+                "text": "We're looking for Zanaris...GAH! I mean we're not here for any particular reason at all."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Who's Zanaris?",
+                    "steps": [
+                      {
+                        "player": "Who's Zanaris?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "Ahahahaha! Zanaris isn't a person! It's a magical hidden city filled with treasures and rich.. uh, nothing. It's nothing."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "If it's hidden how are you planning to find it?",
+                            "steps": [
+                              {
+                                "player": "If it's hidden how are you planning to find it?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Warrior",
+                                "text": "Well, we don't want to tell anyone else about that, because we don't want anyone else sharing in all that glory and treasure."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Please tell me.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "PZP38o"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Looks like you don't know either.",
+                                    "steps": [
+                                      {
+                                        "player": "Well, it looks to me like YOU don't know EITHER seeing as you're all just sat around here."
+                                      },
+                                      {
+                                        "type": "line",
+                                        "speaker": "Warrior",
+                                        "text": "Of course we know! We just haven't found which tree the stupid leprechaun's hiding in yet!"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player has lower than 45 combat and either 31 Crafting or 36 Woodcutting:",
+                                        "steps": [
+                                          {
+                                            "type": "message",
+                                            "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it. Your combat level is also lower than the recommended level of 45.",
+                                            "id": "LrBc5e"
+                                          }
+                                        ],
+                                        "id": "ROewAn"
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "prompt": "Start the Lost City quest?",
+                                        "options": [
+                                          {
+                                            "text": "Yes.",
+                                            "steps": [
+                                              {
+                                                "player": "Leprechaun?"
+                                              },
+                                              {
+                                                "type": "line",
+                                                "speaker": "Warrior",
+                                                "text": "GAH! I didn't mean to tell you that! Look, just forget I said anything okay?"
+                                              },
+                                              {
+                                                "player": "So a leprechaun knows where Zanaris is eh?"
+                                              },
+                                              {
+                                                "type": "line",
+                                                "speaker": "Warrior",
+                                                "text": "Ye.. uh, no. No, not at all. And even if he did - which he doesn't - he DEFINITELY ISN'T hiding in some tree around here. Nope, definitely not. Honestly."
+                                              },
+                                              {
+                                                "player": "Thanks for the help!"
+                                              },
+                                              {
+                                                "type": "line",
+                                                "speaker": "Warrior",
+                                                "text": "Help? What help? I didn't help! Please don't say I did, I'll get in trouble!"
+                                              }
+                                            ],
+                                            "hook": "quest:lost-city:start",
+                                            "quest": "Lost City"
+                                          },
+                                          {
+                                            "text": "No",
+                                            "steps": [
+                                              {
+                                                "player": "Right... Well good luck with it."
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "There's no such thing.",
+                            "steps": [
+                              {
+                                "player": "There's no such thing!"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Warrior",
+                                "text": "When we've found Zanaris you'll... GAH! I mean, we're not here for any particular reason at all."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Who's Zanaris?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "pkofds"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "What's Zanaris?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "ebzH9d"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "What makes you think it's out here?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "XeSEaN"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What's Zanaris?",
+                    "steps": [
+                      {
+                        "player": "What's Zanaris?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "I don't think we want other people competing with us to find it. Forget I said anything."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Please tell me.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "KF_tny"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Oh well. Never mind.",
+                            "steps": [
+                              {
+                                "player": "Oh well. Never mind."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What makes you think it's out here?",
+                    "steps": [
+                      {
+                        "player": "What makes you think it's out here?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "Don't you know of the legends that tell of the magical city, hidden in the swam... Uh, no, you're right, we're wasting our time here."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "If it's hidden how are you planning to find it?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "uhev1W"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "There's no such thing!",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "QaeHq2"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you know any good adventures I can go on?",
+            "steps": [
+              {
+                "player": "Do you know any good adventures I can go on?"
+              },
+              {
+                "type": "line",
+                "speaker": "Warrior",
+                "text": "Well we're on an adventure right now. Mind you, this is OUR adventure and we don't want to share it - find your own!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Please tell me.",
+                    "steps": [
+                      {
+                        "player": "Please tell me?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "No."
+                      },
+                      {
+                        "player": "Please?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "No!"
+                      },
+                      {
+                        "player": "PLEEEEEEEEEEEEEEEEEEEEEASE?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "NO!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't think you've found a good adventure at all!",
+                    "steps": [
+                      {
+                        "player": "I don't think you've found a good adventure at all!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "Hah! Adventurers of our calibre don't just hang around in forests for fun, whelp!"
+                      },
+                      {
+                        "player": "Oh really?"
+                      },
+                      {
+                        "player": "What are you camped here for?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Warrior",
+                        "text": "We're looking for Zanaris...GAH! I mean we're not here for any particular reason at all."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Who's Zanaris?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "-WWjgT"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What's Zanaris?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "Pbz5B2"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What makes you think it's out here?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "KiD3SK"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-out-adventurer-camp-archer": [
+      {
+        "player": "Why are you guys hanging around here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Archer",
+        "text": "(ahem)...'Guys'?"
+      },
+      {
+        "player": "Uh... yeah, sorry about that. Why are you all standing around out here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Archer",
+        "text": "Well, that's really none of your business."
+      }
+    ],
+    "starting-out-adventurer-camp-wizard": [
+      {
+        "player": "Why are all of you standing around here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard",
+        "text": "Hahaha you dare talk to a mighty wizard such as myself? I bet you can't even cast windstrike yet amateur!"
+      },
+      {
+        "player": "...You're an idiot."
+      }
+    ],
+    "starting-out-adventurer-camp-monk": [
+      {
+        "player": "Why are all of you standing around here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "None of your business. Get lost."
+      }
+    ],
+    "starting-out-adventurer-camp-talking-to-warrior-again-after-learning-about-zanaris": [
+      {
+        "player": "So let me get this straight: I need to search the trees around here for a leprechaun; and then when I find him, he will tell me where this 'Zanaris' is?"
+      },
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "What? How did you know that? Uh... I mean, no, no you're very wrong. Very wrong, and not right at all, and I definitely didn't tell you about that at all."
+      }
+    ],
+    "starting-out-adventurer-camp-talking-to-archer-again-after-learning-about-zanaris": [
+      {
+        "player": "So I hear theres a leprechaun around here who can show me the way to Zanaris?"
+      },
+      {
+        "type": "line",
+        "speaker": "Archer",
+        "text": "...W-what? How did you..?"
+      },
+      {
+        "type": "line",
+        "speaker": "Archer",
+        "text": "No. You're wrong. Now go away."
+      }
+    ],
+    "starting-out-adventurer-camp-talking-to-wizard-again-after-learning-about-zanaris": [
+      {
+        "player": "Found that leprechaun yet?"
+      },
+      {
+        "type": "line",
+        "speaker": "Wizard",
+        "text": "Hahaha go away amateur! You're not worthy of joining our great group!"
+      },
+      {
+        "player": "...right."
+      }
+    ],
+    "starting-out-adventurer-camp-talking-to-monk-again-after-learning-about-zanaris": [
+      {
+        "player": "Have you found the tree with the leprechaun yet?"
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "No, we've looked for ages but haven't... Hey! Wait a minute! How did you know about that?"
+      },
+      {
+        "player": "Thanks for the information!"
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "...You tricked me. I'm not talking to you anymore."
+      }
+    ],
+    "talking-to-a-tool-leprechaun": [
+      {
+        "type": "line",
+        "speaker": "Tool Leprechaun",
+        "text": "Ah, 'tis a foine day to be sure! Were yez wantin' me to store yer tools, or maybe ye might be wantin' yer stuff back from me?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me about the Lost City?",
+            "steps": [
+              {
+                "player": "Can you tell me about the Lost City?"
+              },
+              {
+                "type": "line",
+                "speaker": "Tool Leprechaun",
+                "text": "Nay, ye be wantin' to ask Shamus if ye wants to know about the Lost City. He be living up a tree somewhere near Draynor Village. Last I heard he were wailin' about some biggun tryin' to chop his tree down!"
+              }
+            ]
+          },
+          {
+            "text": "Yes please."
+          },
+          {
+            "text": "What can you store?"
+          },
+          {
+            "text": "What do you do with the tools you're storing?"
+          },
+          {
+            "text": "No thanks, I'll keep hold of my stuff."
+          }
+        ]
+      }
+    ],
+    "talking-to-a-tool-leprechaun-leprechaun-in-a-tree-talking-to-shamus-before-starting-the-quest": [
+      {
+        "type": "line",
+        "speaker": "Shamus",
+        "text": "Ay yer big elephant! Yer've caught me, to be sure! What would an elephant like yer be wanting wid ol' Shamus then?"
+      },
+      {
+        "player": "I'm not sure."
+      },
+      {
+        "type": "line",
+        "speaker": "Shamus",
+        "text": "Well you'll have to be catchin' me again when yer are, elephant!"
+      },
+      {
+        "type": "message",
+        "text": "The leprechaun magically disappears.",
+        "id": "jN6_1I"
+      }
+    ],
+    "talking-to-a-tool-leprechaun-leprechaun-in-a-tree-attempting-to-chop-the-tree-after-shamus-has-appeared": [
+      {
+        "type": "line",
+        "speaker": "Shamus",
+        "text": "Hey! Yer big elephant! Don't go choppin' down me house, now!"
+      }
+    ],
+    "talking-to-a-tool-leprechaun-leprechaun-in-a-tree-first-talk": [
+      {
+        "type": "line",
+        "speaker": "Shamus",
+        "text": "Ay yer big elephant! Yer've caught me, to be sure! What would an elephant like yer be wanting wid ol' Shamus then?"
+      },
+      {
+        "player": "I want to find Zanaris."
+      },
+      {
+        "type": "line",
+        "speaker": "Shamus",
+        "text": "Zanaris is it now? Well well well... Yer'll be needing to be going to that funny little shed out there in the swamp, so you will."
+      },
+      {
+        "player": "...but... I thought... Zanaris was a city...?"
+      },
+      {
+        "type": "line",
+        "speaker": "Shamus",
+        "text": "Aye that it is!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How does it fit in a shed then?",
+            "steps": [
+              {
+                "player": "...How does it fit in a shed then?"
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "Ah yer stupid elephant! The city isn't IN the shed! The doorway to the shed is being a portal to Zanaris, so it is."
+              },
+              {
+                "player": "So I just walk into the shed and end up in Zanaris then?"
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "Oh, was I fergetting to say? Yer need to be carrying a Dramenwood staff to be getting there! Otherwise Yer'll just be ending up in the shed."
+              },
+              {
+                "player": "So where would I get a staff?"
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "Dramenwood staffs are crafted from branches of the Dramen tree, so they are. I hear there's a Dramen tree over on the island of Entrana in a cave"
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "or some such. There would probably be a good place for an elephant like yer to be starting looking I reckon."
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "The monks are running a ship from Port Sarim to Entrana, I hear too. Now leave me alone yer elephant!"
+              },
+              {
+                "type": "message",
+                "text": "The leprechaun magically disappears.",
+                "id": "qdoJ9W"
+              }
+            ]
+          },
+          {
+            "text": "I've been in that shed, I didn't see a city.",
+            "steps": [
+              {
+                "player": "I've been in that shed. I didn't see a city."
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "Oh, was I fergetting to say? Yer need to be carrying a Dramenwood staff to be getting there! Otherwise Yer'll just be ending up in the shed."
+              },
+              {
+                "player": "So where would I get a staff?"
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "Dramenwood staffs are crafted from branches of the Dramen tree, so they are. I hear there's a Dramen tree over on the island of Entrana in a cave"
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "or some such. There would probably be a good place for an elephant like yer to be starting looking I reckon."
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "The monks are running a ship from Port Sarim to Entrana, I hear too. Now leave me alone yer elephant!"
+              },
+              {
+                "type": "message",
+                "text": "The leprechaun magically disappears.",
+                "id": "OyPO7t"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-a-tool-leprechaun-leprechaun-in-a-tree-subsequent-talks": [
+      {
+        "type": "line",
+        "speaker": "Shamus",
+        "text": "Ay yer big elephant! Yer've caught me, to be sure! What would an elephant like yer be wanting wid ol' Shamus then?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm not sure.",
+            "steps": [
+              {
+                "player": "I'm not sure."
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "Ha! Look at yer! Look at the stupid elephant who tries to go catching a leprechaun when he don't even be knowing what he wants!"
+              },
+              {
+                "type": "message",
+                "text": "The leprechaun magically disappears.",
+                "id": "lm9GrR"
+              }
+            ]
+          },
+          {
+            "text": "How do I get to Zanaris again?",
+            "steps": [
+              {
+                "player": "How do I get to Zanaris again?"
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "Yer stupid elephant! I'll tell yer again! Yer need to be entering the shed in the middle of the swamp while holding a dramenwood staff! Yer can make the Dramen staff"
+              },
+              {
+                "type": "line",
+                "speaker": "Shamus",
+                "text": "from a dramen tree branch, and there's a Dramen tree on Entrana! Now leave me alone yer great elephant!"
+              },
+              {
+                "type": "message",
+                "text": "The leprechaun magically disappears.",
+                "id": "P0tHGF"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-a-tool-leprechaun-leprechaun-in-a-tree-talking-to-warrior-after-talking-to-shamus": [
+      {
+        "player": "Have you found anything yet?"
+      },
+      {
+        "type": "line",
+        "speaker": "Warrior",
+        "text": "We're still searching for Zanaris...GAH! I mean we're not doing anything here at all."
+      },
+      {
+        "player": "I haven't found it yet either."
+      }
+    ],
+    "talking-to-a-tool-leprechaun-leprechaun-in-a-tree-talking-to-archer-after-talking-to-shamus": [
+      {
+        "player": "So you didn't find the entrance to Zanaris yet, huh?"
+      },
+      {
+        "type": "line",
+        "speaker": "Archer",
+        "text": "Don't tell me a novice like YOU has found it!"
+      },
+      {
+        "player": "Yep. Found it REALLY easily too."
+      },
+      {
+        "type": "line",
+        "speaker": "Archer",
+        "text": "...I cannot believe that someone like YOU could find the portal where experienced adventurers such as ourselves could not."
+      },
+      {
+        "player": "Believe what you want. Enjoy your little camp fire."
+      }
+    ],
+    "talking-to-a-tool-leprechaun-leprechaun-in-a-tree-talking-to-wizard-after-talking-to-shamus": [
+      {
+        "type": "line",
+        "speaker": "Wizard",
+        "text": "Hahaha you're such an amateur! Go away and play with some cabbage amateur!"
+      },
+      {
+        "player": "...right."
+      }
+    ],
+    "talking-to-a-tool-leprechaun-leprechaun-in-a-tree-talking-to-monk-after-talking-to-shamus": [
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "I already told you. I'm not talking to you anymore."
+      }
+    ],
+    "the-island-of-entrana-cave-monk": [
+      {
+        "type": "line",
+        "speaker": "Cave monk",
+        "text": "Be careful going in there! You are unarmed, and there is much evilness lurking down there! The evilness seems to block off our contact with our gods,"
+      },
+      {
+        "type": "line",
+        "speaker": "Cave monk",
+        "text": "so our prayers seem to have less effect down there. Oh, also, you won't be able to come back this way - This ladder only goes one way!"
+      },
+      {
+        "type": "line",
+        "speaker": "Cave monk",
+        "text": "The only exit from the caves below is a portal which leads only to the deepest wilderness!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I don't think I'm strong enough to enter then.",
+            "steps": [
+              {
+                "player": "I don't think I'm strong enough to enter then."
+              }
+            ]
+          },
+          {
+            "text": "Well that is a risk I will have to take.",
+            "steps": [
+              {
+                "player": "Well that is a risk I will have to take."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "the-dramen-tree-attempting-to-chop-down-the-tree": [
+      {
+        "type": "call",
+        "branch": "GphveU"
+      }
+    ],
+    "the-dramen-tree-attempting-to-chop-down-the-tree-while-the-tree-spirit-is-still-alive": [
+      {
+        "type": "call",
+        "branch": "GphveU"
+      }
+    ],
+    "the-dramen-tree-after-the-tree-spirit-is-defeated": [
+      {
+        "type": "message",
+        "text": "With the Tree Spirit defeated you can now chop the tree.",
+        "id": "beh6bP"
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "unavailable",
+        "id": "q7vZqx"
+      }
+    ]
+  },
+  "branches": {
+    "GphveU": [
+      {
+        "type": "line",
+        "speaker": "Tree spirit",
+        "text": "You must defeat me before touching the tree!"
+      }
+    ]
+  }
+}

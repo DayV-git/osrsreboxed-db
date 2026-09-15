@@ -1,0 +1,250 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "prompt": "Do you want to talk about lamps?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Hi, I need fuel for a lamp."
+              },
+              {
+                "npc": "Hello there, the fuel you need is lamp oil, do you need help making it?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "player": "Yes please."
+                      },
+                      {
+                        "npc": "It's really quite simple.  You use the small still in here.  It's all set up, so there's no fiddling around with dials..."
+                      },
+                      {
+                        "npc": "Just put ordinary swamp tar in, and then use a lantern or lamp to get the oil out."
+                      },
+                      {
+                        "player": "Thanks."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Hello."
+              },
+              {
+                "npc": "Oh.. hello, how's it going?"
+              },
+              {
+                "player": "Good thanks."
+              },
+              {
+                "npc": "Good to hear, sorry but I have a few things to do right now."
+              },
+              {
+                "player": "Well I'd better let you get on then."
+              }
+            ]
+          },
+          {
+            "text": "No, I'm more interested in impling jars.",
+            "steps": [
+              {
+                "player": "I have a slightly odd question."
+              },
+              {
+                "npc": "Jolly good, the odder the better. I like oddities."
+              },
+              {
+                "player": "Do you know how I might distil a mix of anchovy oil and flowers so that it forms a layer on the inside of a butterfly jar?"
+              },
+              {
+                "npc": "That is an odd question. I commend you for it. Why would you want to do that?"
+              },
+              {
+                "player": "Apparently, if I can make a jar like this it will be useful for storing implings in."
+              },
+              {
+                "npc": "So, do you have any of this fish-and-flower flavoured oil and a butterfly jar then?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Imp repellent and a butterfly jar in their inventory:",
+                "steps": [
+                  {
+                    "player": "As it happens, I do."
+                  },
+                  {
+                    "npc": "Well then. Hmmm. My lamp oil still may be able to do what you want. Give it a go and see if it works."
+                  },
+                  {
+                    "player": "Thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OFCmPS"
+              },
+              {
+                "player": "Actually, no."
+              },
+              {
+                "npc": "If you go and get them then I may be able to help you. I'm better at coming up with answers if the questions are in my hands."
+              },
+              {
+                "type": "choice",
+                "prompt": "Is there anything else you want to ask?",
+                "options": [
+                  {
+                    "text": "So how do you make anchovy oil?",
+                    "steps": [
+                      {
+                        "player": "So, how do you make anchovy oil?"
+                      },
+                      {
+                        "npc": "Anchovies are pretty oily fish. I'd have thought you could just grind them up and sieve out the bits. You'd probably want to remove any water first - Cooking should do that pretty well."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "sSKSKr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you have a sieve I can use?",
+                    "steps": [
+                      {
+                        "player": "Do you have a sieve I can use?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a sieve in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "Errm, yes. But you already have one. Two sieves is a bit excessive, don't you think?"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "5Sk89L"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a sieve in their bank:",
+                        "steps": [
+                          {
+                            "npc": "Are you sure you don't already have one?"
+                          },
+                          {
+                            "type": "message",
+                            "text": "You already have a sieve that will do the job in your bank.",
+                            "id": "tdrGpL"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "gt-MU-"
+                      },
+                      {
+                        "npc": "Errm, yes. Here, have this one. It's only been used for sieving dead rats out of sewer water."
+                      },
+                      {
+                        "player": "Err, why? Actually, on second thoughts I don't want to know."
+                      },
+                      {
+                        "npc": "Well, it should be ideally suited to your task."
+                      },
+                      {
+                        "player": "Fair enough."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd better go and get the repellent.",
+                    "steps": [
+                      {
+                        "player": "I'd better go and get the repellent."
+                      },
+                      {
+                        "player": "I think so."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Well done, have this."
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy clue scroll",
+            "id": "UtCrhT"
+          },
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "1S67UT"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "4Wkf8s"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy reward casket",
+            "id": "Q_ACXc"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "FUPIL1"
+          }
+        ],
+        "id": "88h9wk"
+      }
+    ]
+  }
+}

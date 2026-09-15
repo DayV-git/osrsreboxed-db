@@ -1,0 +1,48 @@
+{
+  "steps": [
+    {
+      "npc": "Hello there. Do you want to go on a trip to Karamja? We can take you to Musa Point for only 30 coins."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes please.",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "If the player does not have enough coins in their inventory:",
+              "steps": [
+                {
+                  "player": "Oh dear, I don't seem to have enough money."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "4EHa7z"
+            },
+            {
+              "player": "Yes please."
+            },
+            {
+              "type": "action",
+              "text": "The player is transported to Karamja.",
+              "action": "teleport",
+              "action_source": "text",
+              "id": "0dBZni"
+            }
+          ]
+        },
+        {
+          "text": "No, thank you.",
+          "steps": [
+            {
+              "player": "No, thank you."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

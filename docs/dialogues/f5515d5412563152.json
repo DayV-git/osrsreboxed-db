@@ -1,0 +1,365 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there. What do you want to talk about?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "The state of the island.",
+            "steps": [
+              {
+                "player": "Hi, how are things going?"
+              },
+              {
+                "npc": "Well hopefully a lot better now that you've initiated the calm between the Moon Clan and the Fremenniks. Remember, if you want to use our Lunar Spells at any time, pray at the altar beside me and you can modify"
+              },
+              {
+                "npc": "your knowledge!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has lost their Lunar staff:",
+                "steps": [
+                  {
+                    "player": "I've misplaced my staff."
+                  },
+                  {
+                    "npc": "I knew you'd do that, and I used my magic to teleport it back to me."
+                  },
+                  {
+                    "player": "Erm, that doesn't sound too realistic. Thanks!"
+                  },
+                  {
+                    "npc": "Look, do you want it or not?"
+                  },
+                  {
+                    "player": "Sorry, yes. Yes please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "player": "Actually, I'll have to come back when I have a space to carry one."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "fq6h_-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "npc": "But it's going to cost you! It will be 30000 coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "PUoD6V"
+                                  }
+                                ],
+                                "id": "s1VFU-"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 30,000 coins:",
+                                "steps": [
+                                  {
+                                    "type": "action",
+                                    "action": "receive",
+                                    "text": "lunar staff",
+                                    "id": "7xM4K_"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "5vzxJN"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "DZxM9C"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ID8Uon"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Lunar staff, but has lost any of their Lunar equipment:",
+                "steps": [
+                  {
+                    "player": "I've lost my Lunar [item]."
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "npc": "Oh dear, good job I pre-empted you!"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "6jqs-o"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "npc": "I already knew that. I got one especially."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "xAWfpZ"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "npc": "Well of course, I know that already, so I got a backup for you."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "t4N1iW"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "npc": "I know. Good job I knew you would drop it!"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "oiuWIz"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have any free inventory space:",
+                    "steps": [
+                      {
+                        "player": "Unfortunately I don't have space to carry it."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "QjbNFr"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 1 free inventory space:",
+                    "steps": [
+                      {
+                        "npc": "But it's going to cost you! It will be [number] coins!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yeah, I'll pay that!",
+                            "steps": [
+                              {
+                                "player": "Yeah, I'll pay that!"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough money:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "PUoD6V"
+                                  }
+                                ],
+                                "id": "czDgHR"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has enough money:",
+                                "steps": [
+                                  {
+                                    "type": "action",
+                                    "action": "receive",
+                                    "text": "requested item",
+                                    "id": "ugsu76"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "Continues to next missing item, or ends dialogue if that was the last missing item.",
+                                    "id": "2Jv8Zd"
+                                  }
+                                ],
+                                "id": "tOJ47p"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "text": "Continues to next missing item, or ends dialogue if that was the last missing item.",
+                                "id": "kLzEPu"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "cPbMVy"
+                  }
+                ],
+                "id": "-B7QlG"
+              }
+            ]
+          },
+          {
+            "text": "Cyrisus.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before a certain event in While Guthix Sleeps:",
+                "steps": [
+                  {
+                    "player": "Hello again. Seen Cyrisus recently?"
+                  },
+                  {
+                    "npc": "As you mention it, yes. He wanted to create more astral runes."
+                  },
+                  {
+                    "player": "Interesting."
+                  },
+                  {
+                    "npc": "He said something about fighting kalphites, whatever they are."
+                  },
+                  {
+                    "player": "Sounds like his fear of combat really is a problem of the past!"
+                  },
+                  {
+                    "npc": "You've done well. Very well."
+                  }
+                ],
+                "id": "Tdn_pK"
+              },
+              {
+                "type": "condition",
+                "text": "After a certain event in While Guthix Sleeps:",
+                "steps": [
+                  {
+                    "player": "Hi."
+                  },
+                  {
+                    "npc": "Hello there. I hear that Cyrisus is no longer with us."
+                  },
+                  {
+                    "player": "He died fighting for a good cause. He'll be remembered as a great hero."
+                  },
+                  {
+                    "npc": "I suppose the good do die young."
+                  }
+                ],
+                "id": "E3GE5j"
+              }
+            ]
+          },
+          {
+            "text": "Nothing.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "treasure-trails-elite": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "Om013-"
+      },
+      {
+        "npc": "Answer this, please."
+      }
+    ],
+    "treasure-trails-elite-after-solving-the-challenge-scroll": [
+      {
+        "npc": "Well done."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [new clue/casket]",
+        "id": "P-6l5J"
+      },
+      {
+        "type": "message",
+        "text": "You've [been given a new clue/obtained a casket]!",
+        "id": "Z_1KkS"
+      }
+    ]
+  },
+  "branches": {
+    "PUoD6V": [
+      {
+        "npc": "Sorry dear, you don't have enough coins for that."
+      },
+      {
+        "player": "Oh, ok..."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

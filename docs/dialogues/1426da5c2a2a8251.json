@@ -1,0 +1,175 @@
+{
+  "steps": [
+    {
+      "player": "Hi!"
+    },
+    {
+      "type": "random",
+      "options": [
+        {
+          "text": "Dialogue 1",
+          "steps": [
+            {
+              "npc": "Welcome to Mad Eadgar's! Happiness in a bowl!"
+            },
+            {
+              "type": "jump",
+              "reference": "continue",
+              "id": "H03DVB"
+            }
+          ]
+        },
+        {
+          "text": "Dialogue 2",
+          "steps": [
+            {
+              "npc": "Welcome to Mad Eadgar's! You'll never want to leave!"
+            },
+            {
+              "type": "jump",
+              "reference": "continue",
+              "id": "KiL_go"
+            }
+          ]
+        },
+        {
+          "text": "Dialogue 3",
+          "steps": [
+            {
+              "npc": "Welcome to Mad Eadgar's! We don't serve trolls!"
+            },
+            {
+              "type": "jump",
+              "reference": "continue",
+              "id": "XUr4mD"
+            }
+          ]
+        },
+        {
+          "text": "Dialogue 4",
+          "steps": [
+            {
+              "npc": "Welcome to Mad Eadgar's! Serving all day, every day!"
+            },
+            {
+              "type": "jump",
+              "reference": "continue",
+              "id": "rFbr3N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "npc": "Would you care to sample our delicious home cooking?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Why do you live so close to the trolls?",
+          "steps": [
+            {
+              "player": "Why do you live so close to the trolls? Isn't it dangerous?"
+            },
+            {
+              "npc": "Well, I suppose I do keep getting captured by the trolls and thrown in prison...But they always release me in the end, I'm far too old and skinny for their tastes."
+            },
+            {
+              "npc": "In any case, this is my home, and I'm not leaving it. And this area has the tastiest goats!"
+            }
+          ]
+        },
+        {
+          "text": "What do you have to offer?",
+          "steps": [
+            {
+              "player": "What do you have to offer?"
+            },
+            {
+              "npc": "The chef's recommendation for today is mountain goat stew. I'll give some stew in exchange for logs for my fire. They're hard to come by around here."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "I'd like some mountain goat stew, please.",
+                  "steps": [
+                    {
+                      "player": "I'd like some mountain goat stew, please."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have any logs:",
+                      "steps": [
+                        {
+                          "npc": "You don't have any logs! I may be mad, but I'm not stupid!"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "j-AUmx"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has a set of logs:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "give",
+                          "text": "logs",
+                          "id": "Ox8HBF"
+                        },
+                        {
+                          "npc": "Here you go! Enjoy!"
+                        },
+                        {
+                          "type": "message",
+                          "text": "You get a bowl of mountain goat stew.",
+                          "id": "1ycke0"
+                        },
+                        {
+                          "type": "message",
+                          "text": "You eat the mountain goat stew.",
+                          "id": "X0wXon"
+                        },
+                        {
+                          "type": "message",
+                          "text": "It heals some health.",
+                          "id": "hlu8Ez"
+                        }
+                      ],
+                      "id": "shTfZQ"
+                    }
+                  ]
+                },
+                {
+                  "text": "No thanks, Eadgar.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "gBrckb"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "No thanks, Eadgar.",
+          "steps": [
+            {
+              "player": "No thanks, Eadgar."
+            },
+            {
+              "npc": "Your loss!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

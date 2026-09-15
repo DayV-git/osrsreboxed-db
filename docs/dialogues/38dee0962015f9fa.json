@@ -1,0 +1,77 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "Quiet! I'm here observing the lizardmen shamans, try not to blow my cover."
+              },
+              {
+                "player": "You don't seem to be hiding very well."
+              },
+              {
+                "npc": "As if you could do better!"
+              }
+            ]
+          },
+          {
+            "text": "Do you know how many lizardmen I've killed?",
+            "steps": [
+              {
+                "player": "Do you know how many lizardmen I've killed?"
+              },
+              {
+                "npc": "The Shayzien records say you've killed [#] lizardmen since they began tracking your kills. [#] were lizardman shamans."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "Quiet! I'm here observing the lizardmen shamans, try not to blow my cover."
+      },
+      {
+        "player": "You don't seem to be hiding very well."
+      },
+      {
+        "npc": "As if you could do better!"
+      },
+      {
+        "player": "Riiiight, anyways, can I attack these lizardmen shaman?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has less than 100% Shayzien favour:",
+        "steps": [
+          {
+            "npc": "Absolutely not! Do you want to get me killed? Now get out of here and stop trying to blow my cover!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XQak5k"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 100% Shayzien favour:",
+        "steps": [
+          {
+            "npc": "Well I don't like the idea of you risking my cover. You are trusted by the Shayzien people though, so I suppose you can. Just be careful."
+          }
+        ],
+        "id": "Q8sHN8"
+      }
+    ]
+  }
+}

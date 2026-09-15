@@ -1,0 +1,343 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You look ready for combat.",
+            "steps": [
+              {
+                "player": "Well met, fellow adventurer."
+              },
+              {
+                "npc": "Adventurer? I am no mere Adventurer, I am Andros Mai, brother of the Holy Order of Saradomin. You would do well to greet me with respect."
+              },
+              {
+                "player": "Andros Mai? Sorry, but I can't say I've heard of you I'm afraid."
+              },
+              {
+                "npc": "I wouldn't have expected someone of your... stature to know of me."
+              },
+              {
+                "npc": "Tell me, what do you know of the vile Vet'ion?"
+              },
+              {
+                "type": "condition",
+                "text": "With no Vet'ion kills:",
+                "steps": [
+                  {
+                    "player": "Nothing, but I have a feeling you're about to fill me in."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "6pqiBv"
+                  }
+                ],
+                "id": "s62epx"
+              },
+              {
+                "type": "condition",
+                "text": "With at least one Vet'ion kill:",
+                "steps": [
+                  {
+                    "player": "We've crossed swords in the past, I can't say I'm too keen to do it again though."
+                  },
+                  {
+                    "npc": "You challenged him and came out unscathed? Impossible."
+                  },
+                  {
+                    "player": "I'm stronger than I look."
+                  },
+                  {
+                    "player": "But why do you ask? What do you want with Vet'ion?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "giuusp"
+                  }
+                ],
+                "id": "yPfMd4"
+              },
+              {
+                "npc": "Vet'ion was a devout follower of the heretical god Zamorak. It is the will of my order and my duty as a follower of the true god Saradomin to end his tyranny."
+              },
+              {
+                "npc": "After many years in my order's libraries, I stumbled upon an old tome which mentioned Vet'ion's final resting place, which I believe to be his source of power."
+              },
+              {
+                "npc": "His very existence is an insult to my lord Saradomin and I will not suffer it to exist any longer."
+              },
+              {
+                "player": "Then why are you waiting here? Seems to me that you don't want to face Vet'ion."
+              },
+              {
+                "npc": "I have no fear of Vet'ion!"
+              },
+              {
+                "npc": "I am merely meditating and preparing for the battle. I need to focus my mind before going out to find his resting place."
+              },
+              {
+                "player": "It's okay, sometimes I pretend to be busy when there's something I don't want to do, too."
+              },
+              {
+                "npc": "This conversation is over! Leave me before I lose my temper."
+              }
+            ]
+          },
+          {
+            "text": "Ask about rare item.",
+            "condition": "If the player has Viggora's chainmace or the Claws of Callisto:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "With only Viggora's chainmace in the inventory:",
+                "steps": [
+                  {
+                    "player": "Hey. Do you know anything about this?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the chainmace to Andros Mai.",
+                    "id": "8UGzhf"
+                  },
+                  {
+                    "npc": "By Saradomin! That's a Zamorakian made chainmace you have there!"
+                  },
+                  {
+                    "player": "And? Do you know anything about it?"
+                  },
+                  {
+                    "npc": "I know melee weapons in general. Well enough to know most of them can be upgraded."
+                  },
+                  {
+                    "npc": "Perhaps with something sharp to give it more impact as it swings around."
+                  },
+                  {
+                    "player": "Interesting! I'll be on the lookout for a powerful enhancement like that."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "YDHaJQ"
+              },
+              {
+                "type": "condition",
+                "text": "With only the Claws of Callisto in the inventory:",
+                "steps": [
+                  {
+                    "player": "Hey. Do you know anything about this?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the claws to Andros Mai.",
+                    "id": "8JsRWM"
+                  },
+                  {
+                    "npc": "They look like powerful claws. You could probably attach them to a weapon to make the weapon stronger."
+                  },
+                  {
+                    "player": "Interesting! I'll be on the lookout for that."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "36EQB7"
+              },
+              {
+                "type": "condition",
+                "text": "With both in the inventory:",
+                "steps": [
+                  {
+                    "player": "Hey. Do you know anything about this?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the chainmace to Andros Mai.",
+                    "id": "mrQcLI"
+                  },
+                  {
+                    "npc": "By Saradomin! That's a Zamorakian made chainmace you have there!"
+                  },
+                  {
+                    "player": "And? Do you know anything about it?"
+                  },
+                  {
+                    "npc": "I know melee weapons in general. Well enough to know most of them can be upgraded."
+                  },
+                  {
+                    "npc": "Perhaps with something sharp to give it more impact as it swings around."
+                  },
+                  {
+                    "player": "Perhaps I could use this?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show the Claws of Callisto to Andros Mai.",
+                    "id": "lxDGyx"
+                  },
+                  {
+                    "npc": "Yes. Those look like they could be attached to the weapon."
+                  },
+                  {
+                    "player": "Could you combine them?"
+                  },
+                  {
+                    "npc": "While I could, I'd really not like to."
+                  },
+                  {
+                    "player": "Surely you could consider it... For the right price?"
+                  },
+                  {
+                    "npc": "..."
+                  },
+                  {
+                    "npc": "Money has been tight lately..."
+                  },
+                  {
+                    "npc": "And my supplies are running low..."
+                  },
+                  {
+                    "npc": "Fine. But I want 500,000 coins for that. No less."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay 500,000 coins to combine the claws and chainmace?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have enough coins:",
+                            "steps": [
+                              {
+                                "player": "I don't have the money for that."
+                              },
+                              {
+                                "npc": "Feel free to come back when you do."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "VkEVxG"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has enough coins:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "Andros Mai combines the items and gives you the Ursine chainmace (u).",
+                                "id": "wy6I30"
+                              },
+                              {
+                                "npc": "There we go! All done."
+                              }
+                            ],
+                            "id": "QXATkf"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "IxJTfP"
+              }
+            ],
+            "id": "Xmy4Ox"
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-fangs-of-venenatis": [
+      {
+        "player": "Hey. Do you know anything about this?"
+      },
+      {
+        "type": "message",
+        "text": "You show the fangs to Andros Mai.",
+        "id": "Oj70N9"
+      },
+      {
+        "npc": "No. I'm afraid not. They just look like fangs."
+      },
+      {
+        "player": "Fangs indeed. Rather useless it seems."
+      },
+      {
+        "npc": "Perhaps not. I've seen that Derse Venator guy over there handle similar items. Perhaps he knows more."
+      },
+      {
+        "player": "Thanks!"
+      }
+    ],
+    "using-items-on-him-skull-of-vet-ion": [
+      {
+        "player": "Hey. Do you know anything about this?"
+      },
+      {
+        "type": "message",
+        "text": "You show the skull to Andros Mai.",
+        "id": "0bA-J2"
+      },
+      {
+        "npc": "That's him! The vile Vet'Ion. I should like to smash this skull!"
+      },
+      {
+        "player": "Wait! It seems to still contain some magic. Surely we can use it?"
+      },
+      {
+        "npc": "The only thing his skull would be useful for is Zamorakian heresy. I won't stand for it!"
+      },
+      {
+        "player": "Is there really nothing you can do to help me with this?"
+      },
+      {
+        "npc": "Do you see Phabelle over there? Despite her questionable morals, she's my friend."
+      },
+      {
+        "npc": "She's good with magic and may know how to take advantage of the powers in that skull."
+      },
+      {
+        "player": "Thanks!"
+      }
+    ],
+    "using-items-on-him-voidwaker-part": [
+      {
+        "player": "Hey. Do you know anything about this?"
+      },
+      {
+        "type": "message",
+        "text": "You show the weapon piece to Andros Mai.",
+        "id": "06mJxM"
+      },
+      {
+        "npc": "No, I'm afraid not."
+      },
+      {
+        "player": "Oh. Do you know someone who might know more?"
+      },
+      {
+        "npc": "Downstairs you can find Madam Sikaro. Though she's on the wrong path, perhaps she could assist you."
+      },
+      {
+        "player": "Thanks!"
+      }
+    ]
+  }
+}

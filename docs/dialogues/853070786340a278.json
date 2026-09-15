@@ -1,0 +1,179 @@
+{
+  "steps": [
+    {
+      "player": "Hello, I wonder if you could help me on this whole brewing thing..."
+    },
+    {
+      "npc": "I might be able to - what do you need to know?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "How do I brew ales?",
+          "steps": [
+            {
+              "player": "How do I brew ales?"
+            },
+            {
+              "npc": "Well first off you need to fill the vat with water - two bucketfuls should do the trick. Then you'll need to put in two handfuls of barley malt - that's roasted barley by the way."
+            },
+            {
+              "npc": "After that you'll be putting your main ingredient in - this will decide which ale it is you're brewing. There should be some good guides around with recipes in."
+            },
+            {
+              "npc": "Lastly you pour a pot full of ale yeast in, which'll start it off fermenting. Then all you have to do is wait for the good stuff."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "rewvpw"
+            }
+          ]
+        },
+        {
+          "text": "How do I brew cider?",
+          "steps": [
+            {
+              "player": "How do I brew cider?"
+            },
+            {
+              "npc": "First you'll need some apples. You'll need to crush them using this cider-press - four apples should make a full bucket of apple-mush. Take four buckets of mush and fill up the vat."
+            },
+            {
+              "npc": "After that you pour a pot full of ale yeast in, which'll start it off fermenting. Then all you have to do is wait for the good stuff."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "i0UPn-"
+            }
+          ]
+        },
+        {
+          "text": "What do I do once my ale has matured?",
+          "steps": [
+            {
+              "player": "What do I do once my ale has matured?"
+            },
+            {
+              "npc": "Well, once you've got a full vat of the good stuff, just turn the valve and your barrel will fill up with eight pints of whatever your chosen tipple is. Mind it's an empty barrel, though."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "bBFOfi"
+            }
+          ]
+        },
+        {
+          "text": "Do you have any spare ale yeast?",
+          "steps": [
+            {
+              "player": "Do you have any spare ale yeast?"
+            },
+            {
+              "npc": "Well, as a matter of fact I do, although I wouldn't describe it as spare. This ale yeast I've got is the best money can buy, but if you've got a pot I'll fill it for you for 25GP - very cheap as it happens."
+            },
+            {
+              "type": "condition",
+              "text": "With an empty pot, but less than 25 GP:",
+              "steps": [
+                {
+                  "player": "I don't have enough money I'm afraid."
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "n_grm_"
+                }
+              ],
+              "id": "EvPsEp"
+            },
+            {
+              "type": "condition",
+              "text": "With 25 GP, but without an empty pot:",
+              "steps": [
+                {
+                  "player": "I don't have an empty pot I'm afraid."
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "-vw3rQ"
+                }
+              ],
+              "id": "cSXY1-"
+            },
+            {
+              "type": "condition",
+              "text": "Without an empty pot or 25 GP:",
+              "steps": [
+                {
+                  "player": "I don't have an empty pot, or enough money I'm afraid."
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "zLyDe7"
+                }
+              ],
+              "id": "kUvuCB"
+            },
+            {
+              "type": "condition",
+              "text": "With an empty pot and 25 GP:",
+              "steps": [
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "That's a good deal - please fill my pot with ale yeast for 25GP.",
+                      "steps": [
+                        {
+                          "player": "That's a good deal - please fill my pot with ale yeast for 25GP."
+                        },
+                        {
+                          "type": "action",
+                          "text": "Lucrezia fills your empty pot with ale yeast.",
+                          "id": "9bkV-Z"
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "other",
+                          "id": "I1PHpu"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No, that's too much I'm afraid.",
+                      "steps": [
+                        {
+                          "player": "No, that's too much I'm afraid."
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "other",
+                          "id": "uPcXco"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "SxBkba"
+            }
+          ]
+        },
+        {
+          "text": "That's all I need to know, thanks.",
+          "steps": [
+            {
+              "player": "That's all I need to know, thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-the-ascent-of-arceuus": [
+      {
+        "npc": "You've done a great service to the people of Arceuus. Thank you."
+      }
+    ],
+    "standard-dialogue-after-completing-a-kingdom-divided-first-time": [
+      {
+        "player": "Hello Asteros. What brings you to the castle?"
+      },
+      {
+        "npc": "The King's late father asked for an advisor from Arceuus. He was keen for us to have a more central role than we did under the Council."
+      },
+      {
+        "player": "I see. I'm sure the King is glad to have you here."
+      },
+      {
+        "npc": "He does seem willing to take on my advice, which is very welcoming. I hope he remains humble. It is a trait many leaders lack."
+      },
+      {
+        "npc": "Now, is there something else I can do for you? If you're interested, I can offer you the ability to respawn at Kourend Castle upon death."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "npc": "Very well. From now on, you will respawn at Kourend Castle."
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Let me know if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-a-kingdom-divided-subsequent-times": [
+      {
+        "type": "condition",
+        "text": "If the player lost A Dark Disposition:",
+        "steps": [
+          {
+            "npc": "Ah, I believe you are looking for this."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "A Dark Disposition",
+            "id": "8TtRNo"
+          },
+          {
+            "player": "Oh... Thank you..."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "46lym9"
+          }
+        ],
+        "id": "ozExts"
+      },
+      {
+        "player": "Hello Asteros."
+      },
+      {
+        "type": "condition",
+        "text": "If player's current respawn point is not Kourend Castle:",
+        "steps": [
+          {
+            "npc": "Hello there. Would you like me to change your respawn point to Kourend Castle?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "ApiAo6"
+          }
+        ],
+        "id": "IB9NlH"
+      },
+      {
+        "type": "condition",
+        "text": "If player's current respawn point is Kourend Castle:",
+        "steps": [
+          {
+            "npc": "Hello there. Would you like me to revert your respawn point to Lumbridge?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "RaCkss"
+          }
+        ],
+        "id": "3vRQ9o"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "If the respawn point changes to Kourend Castle:",
+                "steps": [
+                  {
+                    "npc": "Very well. From now on, you will respawn at Kourend Castle."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "pgLfyl"
+              },
+              {
+                "type": "condition",
+                "text": "If the respawn point changes to Lumbridge:",
+                "steps": [
+                  {
+                    "npc": "Very well. From now on, you will respawn in Lumbridge."
+                  }
+                ],
+                "id": "1jpzwD"
+              }
+            ]
+          },
+          {
+            "text": "What brings you to the castle?",
+            "steps": [
+              {
+                "player": "What brings you to the castle?"
+              },
+              {
+                "npc": "The King's late father asked for an advisor from Arceuus. He was keen for us to have a more central role than we did under the Council."
+              },
+              {
+                "player": "I see. I'm sure the King is glad to have you here."
+              },
+              {
+                "npc": "He does seem willing to take on my advice, which is very welcoming. I hope he remains humble. It is a trait many leaders lack."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's current respawn point is not Kourend Castle:",
+                "steps": [
+                  {
+                    "npc": "Now, is there something else I can do for you? If you're interested, I can change your respawn point to Kourend Castle."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "oq2qPT"
+                  }
+                ],
+                "id": "k0ZSJE"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's current respawn point is Kourend Castle:",
+                "steps": [
+                  {
+                    "npc": "Now, is there something else I can do for you? If you want, I can revert your respawn point to Lumbridge."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "lUWYQ2"
+                  }
+                ],
+                "id": "nzefy4"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Let me know if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

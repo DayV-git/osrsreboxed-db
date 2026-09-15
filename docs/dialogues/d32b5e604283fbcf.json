@@ -1,0 +1,181 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, and welcome to the Crafting Guild. Accomplished crafters from all over the land come here to use our top notch workshops."
+      },
+      {
+        "type": "choice",
+        "prompt": "Would you like to ask about a Skillcape of Crafting?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Hey, what is that cape you're wearing? I don't recognise it."
+              },
+              {
+                "npc": "This? This is a Skillcape of Crafting. It is a symbol of my ability as master of the Crafting Guild and it provides unlimited teleports here."
+              },
+              {
+                "npc": "If you should ever achieve level 99 Crafting come and talk to me and we'll see if we can sort you out with one."
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "NN74VH"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-player-has-99-crafting": [
+      {
+        "npc": "Hello, and welcome to the Crafting Guild. Accomplished crafters from all over the land come here to use our top notch workshops."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Skillcape",
+            "steps": [
+              {
+                "player": "Are you the person I need to talk to about buying a Skillcape of Crafting?"
+              },
+              {
+                "npc": "I certainly am, and I can see that you are definitely talented enough to own one! The cape has a built-in teleport back to us at the guild too!"
+              },
+              {
+                "npc": "Unfortunately, being such a prestigious item, they are appropriately expensive. I'm afraid I must ask you for 99000 gold."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "99000 gold! Are you mad?",
+                    "steps": [
+                      {
+                        "player": "99000 gold! Are you mad?"
+                      },
+                      {
+                        "npc": "Not at all; there are many other adventurers who would love the opportunity to purchase such a prestigious item! You can find me here if you change your mind."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That's fine.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have 99,000 coins:",
+                        "steps": [
+                          {
+                            "player": "That's fine."
+                          },
+                          {
+                            "player": "But, unfortunately, I don't have enough money with me."
+                          },
+                          {
+                            "npc": "Well, come back and see me when you do."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "YFrIib"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                        "steps": [
+                          {
+                            "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "KyjDAZ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins and enough inventory space:",
+                        "steps": [
+                          {
+                            "player": "That's fine."
+                          },
+                          {
+                            "npc": "Excellent! Wear that cape with pride my friend."
+                          }
+                        ],
+                        "id": "vnP8Wb"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Hood",
+            "steps": [
+              {
+                "player": "May I have another hood for my cape, please?"
+              },
+              {
+                "npc": "Most certainly, and free of charge!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-trying-to-enter-the-guild-without-wearing-a-brown-apron-or-crafting-cape": [
+      {
+        "npc": "Where's your brown apron? You can't come in here unless you're wearing one."
+      },
+      {
+        "player": "Err... I haven't got one."
+      }
+    ],
+    "when-trying-to-enter-the-guild-whilst-wearing-a-brown-apron-or-crafting-cape": [
+      {
+        "npc": "Welcome to the Guild of Master Craftsmen."
+      }
+    ],
+    "young-capeless-master-crafter": [
+      {
+        "npc": "Yeah?"
+      },
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Whassup?"
+      },
+      {
+        "player": "So... are you here to give crafting tips?"
+      },
+      {
+        "npc": "Dude, do I look like I wanna talk to you?"
+      },
+      {
+        "player": "I suppose not."
+      },
+      {
+        "npc": "Right on!"
+      }
+    ],
+    "capeless-master-crafter": [
+      {
+        "npc": "Hello, and welcome to the Crafting Guild. Accomplished crafters from all over the land come here to use our top notch workshops."
+      }
+    ]
+  }
+}

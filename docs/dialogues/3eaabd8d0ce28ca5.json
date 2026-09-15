@@ -1,0 +1,388 @@
+{
+  "default": "before-enlightened-journey",
+  "variants": {
+    "before-enlightened-journey": [
+      {
+        "type": "condition",
+        "text": "Without the requirements:",
+        "steps": [
+          {
+            "npc": "Greetings!"
+          },
+          {
+            "player": "What are you doing?"
+          },
+          {
+            "npc": "Ah, it's a secret I'm afraid."
+          },
+          {
+            "type": "message",
+            "text": "You do not meet all of the requirements to start the Enlightened Journey quest.",
+            "id": "_JNzrU"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "LHDa1z"
+      },
+      {
+        "npc": "Greetings! Would you like to be my number one  accomplice? I mean, assistant?"
+      },
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "I am Auguste. I am going to be the first balloonist in all of Gielinor!"
+      },
+      {
+        "player": "Balloo-what? I thought only monks lived on Entrana."
+      },
+      {
+        "npc": "Well, they do... I was a monk. But I'm so sick of living on this island! I want to explore new frontiers!"
+      },
+      {
+        "player": "And go where no man has gone before?"
+      },
+      {
+        "npc": "Maybe! That sounds good. I was thinking just over to Taverley, though."
+      },
+      {
+        "player": "Why not take the boat then?"
+      },
+      {
+        "npc": "Ugh! Ocean! Don't talk to me about the ocean...oh dear...I feel ill."
+      },
+      {
+        "player": "Whoa, ok, no ocean. How exactly are you going to get off the island, then?"
+      },
+      {
+        "npc": "I have devised a new way to travel. But I need an assistant balloonist to help me build my design."
+      },
+      {
+        "npc": "Are you an experienced adventurer willing to help me?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Enlightened Journey quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Yes! Sign me up."
+              },
+              {
+                "npc": "Wonderful! Let's get started."
+              },
+              {
+                "player": "Wait, I still don't know exactly what we're doing."
+              },
+              {
+                "npc": "Of course, of course, how foolish of me. Well, we are going to make a balloon."
+              },
+              {
+                "player": "Which is what exactly?"
+              },
+              {
+                "npc": "Let me show you!"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "balloon construction diagram",
+                "id": "2FO9r5"
+              }
+            ],
+            "hook": "quest:enlightened-journey:start",
+            "quest": "Enlightened Journey"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I don't think so."
+              },
+              {
+                "npc": "Oh, never mind then."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "initial-dialogue-after-enlightened-journey": [
+      {
+        "npc": "Hello, [player name]. It is good to see you again. My enterprise has grown since we last met. I've expanded all over Gielinor!"
+      },
+      {
+        "npc": "If you'd like to go to a new location, you will have to help fly the balloon again. Some of the routes are very dangerous!"
+      },
+      {
+        "npc": "But each route you complete will earn you Firemaking experience."
+      },
+      {
+        "npc": "Once you've opened a route, it only costs 1 log of the corresponding type to travel there again, from any location you've already opened!"
+      },
+      {
+        "npc": "I have also hired assistants to watch over the balloons at each new location we go to. They will help you get where you want to go."
+      },
+      {
+        "npc": "Do you want to use the balloon? Just so you know, some locations require special logs and high Firemaking skills."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Balloon transport system",
+                "id": "8wgeC3"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me how to make an origami balloon?",
+            "steps": [
+              {
+                "player": "Could you tell me how to make an origami balloon?"
+              },
+              {
+                "npc": "First, use the papyrus on the ball of wool. The papyrus is folded into an origami box and the yarn will support the heat source."
+              },
+              {
+                "npc": "Next, add the unlit candle to the balloon structure. It will act as the heat source."
+              },
+              {
+                "npc": "Now you have an origami balloon!"
+              },
+              {
+                "npc": "If you use your origami balloon with any dye, you can change the colour."
+              },
+              {
+                "npc": "You can release the balloon and watch it float in the air, just use a tinderbox on it."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Could you replace some items for me?",
+            "condition": "If the bomber jacket or cap has been lost",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the bomber cap has not been lost:",
+                "id": "bOybQz"
+              }
+            ],
+            "id": "eIaWb1"
+          }
+        ]
+      },
+      {
+        "npc": "You still seem to have your cap.",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "llLbH4"
+          },
+          {
+            "type": "condition",
+            "text": "If the bomber cap has been lost but there is no free inventory space:",
+            "steps": [
+              {
+                "npc": "You don't have enough free space for your cap."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "M8FxkF"
+              }
+            ],
+            "id": "koHBWr"
+          },
+          {
+            "type": "condition",
+            "text": "If the bomber cap has been lost:",
+            "steps": [
+              {
+                "npc": "Here's your cap. Try to keep better track of it."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "uXpS3w"
+              }
+            ],
+            "id": "zKyhXv"
+          },
+          {
+            "type": "condition",
+            "text": "If the bomber jacket has not been lost:",
+            "steps": [
+              {
+                "npc": "You don't need a new jacket; you still have your original one."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "qs8Rgr"
+              }
+            ],
+            "id": "uNyPv7"
+          },
+          {
+            "type": "condition",
+            "text": "If the bomber jacket has been lost but there is no free inventory space:",
+            "steps": [
+              {
+                "npc": "You don't have enough free space for your jacket."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "I4shfV"
+          },
+          {
+            "type": "condition",
+            "text": "If the bomber jacket has been lost:",
+            "steps": [
+              {
+                "npc": "Here's your jacket, to keep you warm during flight."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "6IUB_G"
+              }
+            ],
+            "id": "zr4M2d"
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you combine my cap and goggles?",
+            "condition": "If the player has a bomber cap and gnome goggles",
+            "steps": [
+              {
+                "npc": "There you go! You look like a true airship pilot now."
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing them:",
+                "steps": [
+                  {
+                    "npc": "I can't combine them if you are wearing them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NgGEtY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have space for the cap and goggles:",
+                "steps": [
+                  {
+                    "npc": "You don't have enough free space for the cap and goggles."
+                  }
+                ],
+                "id": "6RmZ_h"
+              }
+            ],
+            "id": "3dQ2RQ"
+          }
+        ]
+      }
+    ],
+    "subsequent-dialogues-after-enlightened-journey": [
+      {
+        "npc": "Do you want to use the balloon? Just so you know, some locations require special logs and high Firemaking skills."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "rS6g62"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "0Q3SFg"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me how to make an origami balloon?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "XIQBj3"
+              }
+            ]
+          },
+          {
+            "text": "Could you replace some items for me?",
+            "condition": "If the bomber jacket or cap has been lost",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "m0ZJn6"
+              }
+            ],
+            "id": "MNFgB2"
+          },
+          {
+            "text": "Could you combine my cap and goggles?",
+            "condition": "If the player has a bomber cap and gnome goggles",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "LiGqHS"
+              }
+            ],
+            "id": "qBQdLD"
+          }
+        ]
+      }
+    ]
+  }
+}

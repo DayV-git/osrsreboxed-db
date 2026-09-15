@@ -1,0 +1,241 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome to the Laughing Miner pub, human traveller."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Who is that man walking around outside?",
+          "steps": [
+            {
+              "player": "Who is that man walking around outside?"
+            },
+            {
+              "npc": "What man?"
+            },
+            {
+              "player": "I mean the dwarf, the one with the sign."
+            },
+            {
+              "npc": "Oh, him. Yes, we employ him to advertise our pub, he's the cheapest labour we could find. We don't have a lot of money to spare you know, we pay him in beer."
+            },
+            {
+              "player": "But what's wrong with him?"
+            },
+            {
+              "npc": "Well, he's drunk isn't he?"
+            },
+            {
+              "npc": "I told you, he's cheap. He couldn't get any other work since the Red Axe fired him. Been drinking ever since."
+            },
+            {
+              "player": "How did that happen?"
+            },
+            {
+              "npc": "I'm not quite sure, I think he kept wearing the wrong coloured cap all the time. They don't much like it if you don't wear your red uniform into work."
+            },
+            {
+              "player": "They fired him for that??"
+            },
+            {
+              "npc": "The Red Axe will fire you for just about anything if they want to."
+            }
+          ]
+        },
+        {
+          "text": "I'd like a beer please.",
+          "steps": [
+            {
+              "player": "I'd like a beer please."
+            },
+            {
+              "npc": "That'll be 2 gold coins."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Pay.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "With 2 gp:",
+                      "steps": [
+                        {
+                          "npc": "Thanks for your custom."
+                        },
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "beer",
+                          "id": "S3CE3e"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "fCZQTE"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "Without 2 gp:",
+                      "steps": [
+                        {
+                          "player": "Sorry, I don't have 2 coins on me."
+                        }
+                      ],
+                      "id": "zaeaii"
+                    }
+                  ]
+                },
+                {
+                  "text": "Don't pay.",
+                  "steps": [
+                    {
+                      "player": "Sorry, I changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "I'd like some food please.",
+          "steps": [
+            {
+              "player": "I'd like some food please."
+            },
+            {
+              "npc": "I can make you a stew for 20 gold coins."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Pay.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "With 20 gp:",
+                      "steps": [
+                        {
+                          "npc": "Thanks for your custom."
+                        },
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "stew",
+                          "id": "XTQqay"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "-_vFfT"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "Without 20 gp:",
+                      "steps": [
+                        {
+                          "player": "Sorry, I don't have 20 coins on me."
+                        }
+                      ],
+                      "id": "9cbQ2e"
+                    }
+                  ]
+                },
+                {
+                  "text": "Don't pay.",
+                  "steps": [
+                    {
+                      "player": "Sorry, I changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "I'd like a Kelda stout please.",
+          "condition": "If Forgettable Tale... is in progress",
+          "steps": [
+            {
+              "player": "I'd like a Kelda stout please."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has not collected a Kelda stout from the vat upstairs before, or if the player has given a Kelda stout to the Drunken Dwarf:",
+              "steps": [
+                {
+                  "npc": "Sorry, we've stopped serving those. The seeds were too hard to get."
+                },
+                {
+                  "player": "Yeah, tell me about it."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "kdGHbY"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has collected a Kelda stout from the vat upstairs at least once, and has a Kelda stout in a storage (bank) or inventory:",
+              "steps": [
+                {
+                  "npc": "They're quite hard to come by, and I believe you've already got one."
+                },
+                {
+                  "player": "Oh yes."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "Rb6BrL"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has collected a Kelda stout from the vat upstairs at least once, but has lost a Kelda stout:",
+              "steps": [
+                {
+                  "npc": "Here, I found a little left over Kelda stout, just enough for a glass. Take it."
+                },
+                {
+                  "player": "Wow, for free?"
+                },
+                {
+                  "npc": "I don't think I'll be able to sell it to anyone."
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "a Kelda stout",
+                  "id": "Gui2O2"
+                },
+                {
+                  "npc": "So yes, go ahead."
+                }
+              ],
+              "id": "9t8ZoK"
+            }
+          ],
+          "id": "Uh-Zjt"
+        },
+        {
+          "text": "I have to go.",
+          "steps": [
+            {
+              "player": "I have to go."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

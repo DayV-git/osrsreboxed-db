@@ -1,0 +1,572 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "[What ho, sir./What ho, milady./What ho.] Spiffing day for a walk in the park, what?"
+      },
+      {
+        "player": "...spiffing?"
+      },
+      {
+        "npc": "Absolutely, top-hole! Well, can't stay and chat all day, dontchaknow! Ta-ta for now!"
+      },
+      {
+        "player": "Erm... goodbye."
+      }
+    ],
+    "after-recruitment-drive": [
+      {
+        "npc": "[What ho, sir./What ho, milady./What ho.] Jolly good show on the old training grounds thingy, what?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any jobs for me yet?",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:Wanted!",
+                "section": "",
+                "text": "Continues in Transcript:Wanted!",
+                "id": "jx2XNl",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          },
+          {
+            "text": "Can you explain the Gaze of Saradomin to me?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "OAT4rN"
+              }
+            ]
+          },
+          {
+            "text": "Can I buy some armour?",
+            "steps": [
+              {
+                "player": "Can I buy some armour?"
+              },
+              {
+                "npc": "Of course old bean. I can sell you up to Initiate level items only I'm afraid."
+              },
+              {
+                "type": "action",
+                "text": "(Initiate Temple Knight Armoury interface opens.)",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Initiate Temple Knight Armoury",
+                "id": "Ir_9zT"
+              }
+            ]
+          },
+          {
+            "text": "Can I switch respawns please?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "iujCKr"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "fCJ0OJ"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-wanted": [
+      {
+        "npc": "Jolly good show on getting into the White Knights, what?"
+      },
+      {
+        "npc": "Now how can I help you old [boy/girl/bean]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any jobs for me yet?",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:The Slug Menace",
+                "section": "",
+                "text": "Continues in Transcript:The Slug Menace",
+                "id": "550AA2",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          },
+          {
+            "text": "Can you explain the Gaze of Saradomin to me?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "LMko5e"
+              }
+            ]
+          },
+          {
+            "text": "Can I buy some armour?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yujlUh"
+              }
+            ]
+          },
+          {
+            "text": "Can I switch respawns please?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "kH1y0q"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "Spzi9o"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-slug-menace": [
+      {
+        "type": "condition",
+        "text": "If the player has lost their Commorb (v2):",
+        "steps": [
+          {
+            "player": "Hey Tiffy, I lost my CommOrb..."
+          },
+          {
+            "npc": "Very careless of you, what? Here, take another, but be careful of this one!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "the commorb",
+            "id": "usNZAT"
+          }
+        ],
+        "id": "fOsyy-"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed While Guthix Sleeps:",
+        "steps": [
+          {
+            "npc": "Good day, Proselyte. I heard from Akrisae what happened with that Lucien business. Be sure to keep your chin up. We'll get the old boy sooner or later."
+          },
+          {
+            "player": "Thanks, Tiffy."
+          },
+          {
+            "npc": "Don't mention it, old bean. Now, is there anything I can do for you?"
+          },
+          {
+            "type": "jump",
+            "reference": "other",
+            "id": "Iv-ltv"
+          }
+        ],
+        "id": "upb-U5"
+      },
+      {
+        "npc": "Good day Proselyte. Is there anything I can do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any jobs for me yet?",
+            "steps": [
+              {
+                "npc": "Sorry old bean but we are still in the process of organising."
+              },
+              {
+                "npc": "I'm sure that we will have something for you soon, so please feel free to check back later. Anything else I can do for you in the meantime?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "JLb6U-"
+              }
+            ]
+          },
+          {
+            "text": "I have news on that assassin who attacked Entrana.",
+            "condition": "If the player has completed Secrets of the North:",
+            "steps": [
+              {
+                "player": "I have news on that assassin who attacked Entrana."
+              },
+              {
+                "npc": "Ah yes, you've been helping out the Ardougne authorities I hear."
+              },
+              {
+                "player": "You knew?"
+              },
+              {
+                "npc": "Of course! Knowledge is my business, old bean, and it pays to know what's happening across the other kingdoms."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Desert Treasure II:",
+                "steps": [
+                  {
+                    "npc": "Now, as for your assassin, quite messy stuff, what? We've been trying to track him down ever since the Entrana incident, but he's proven quite the tricky one to pin down. Curious him showing up in Ardougne."
+                  },
+                  {
+                    "player": "What are your plans?"
+                  },
+                  {
+                    "npc": "Sadly, very little. Until we can learn more about what he's up to, we don't have much to go on. You have nothing to fear though, we'll find him sooner or later!"
+                  },
+                  {
+                    "npc": "Now, anything else you need, [milady/sirrah]?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "p0h0Lr"
+                  }
+                ],
+                "id": "eaq96Y"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Desert Treasure II:",
+                "steps": [
+                  {
+                    "player": "Well did you also know he was a Mahjarrat?"
+                  },
+                  {
+                    "npc": "A Mahjarrat! You must be pulling on my leg, what?"
+                  },
+                  {
+                    "player": "His name is Sliske. Have you heard of him?"
+                  },
+                  {
+                    "npc": "Sliske, hmm? We have dossiers on many Mahjarrat, but I must confess, this is a new name to me. Poor show! I'll have to see what we have hiding in the archives."
+                  },
+                  {
+                    "player": "While you're there, it might be worth looking up something called the Elder Horn. It's an artefact that Sliske has now claimed. One that has the ability to control minds."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has not completed While Guthix Sleeps:",
+                    "steps": [
+                      {
+                        "npc": "A mind controlling artefact you say? Sounds like I'll need to report this to the top brass. Can't see them being too thrilled about it. Thank you for the update, old bean."
+                      }
+                    ],
+                    "id": "hIYmIn"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed While Guthix Sleeps:",
+                    "steps": [
+                      {
+                        "npc": "A mind controlling artefact you say? First Lucien and the Stone, and now this! The top brass will need to be made aware. Can't see them being too thrilled about it. Thank you for the update, old bean."
+                      }
+                    ],
+                    "id": "apYlQ8"
+                  },
+                  {
+                    "npc": "Now, anything else you need, [milady/sirrah]?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "lxpXid"
+                  }
+                ],
+                "id": "smFJY0"
+              }
+            ],
+            "id": "TTBx-3"
+          },
+          {
+            "text": "Can you explain the Gaze of Saradomin to me?",
+            "steps": [
+              {
+                "player": "I don't really understand this 'Gaze of Saradomin' thing... Do you think you could explain what it does for me?"
+              },
+              {
+                "npc": "Certainly [milady/sirrah]! As you know, we Temple Knights are personally favoured by Saradomin himself."
+              },
+              {
+                "npc": "And when I say personally favoured, I don't mean that sometime off in the future he's going to buy us all a drink!"
+              },
+              {
+                "npc": "He watches over each of us, and when we die he catches us as we fall, and ensures we arrive back at Falador castle safe and sound."
+              },
+              {
+                "npc": "We usually lose some equipment when he does so, but it's a small price to pay to be hale and hearty again, what?"
+              },
+              {
+                "npc": "Some lucky fellows have a similar system going already, but when they die they spawn in that squalid little swamp village Lumbridge."
+              },
+              {
+                "player": "Yeah, what kind of person would want to spawn there... Certainly not me, and I never have! Honest!"
+              },
+              {
+                "npc": "Well, you should be glad that we offer you a step up then! Falador is clearly a far superior town to spend your time in!"
+              },
+              {
+                "npc": "Was there something else you wanted to ask good old Tiffy, [milady/sirrah]?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "crG25A"
+              }
+            ]
+          },
+          {
+            "text": "Can I buy some armour?",
+            "steps": [
+              {
+                "player": "Can I buy some armour?"
+              },
+              {
+                "npc": "Of course old bean. I can sell you up to Proselyte level items only I'm afraid."
+              },
+              {
+                "type": "action",
+                "text": "(Proselyte Temple Knight Armoury interface opens.)",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Proselyte Temple Knight Armoury",
+                "id": "TR5i-k"
+              }
+            ]
+          },
+          {
+            "text": "Can I switch respawns please?",
+            "steps": [
+              {
+                "player": "Can I switch respawns, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is not Falador:",
+                "steps": [
+                  {
+                    "npc": "Ah, so you'd like to respawn in Falador, the good old homestead! Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I want to respawn in Falador.",
+                        "steps": [
+                          {
+                            "player": "Yes, I want to respawn in Falador."
+                          },
+                          {
+                            "npc": "Top-hole, what? Good old Fally is definitely the hot-spot nowadays!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "player": "Actually, no thanks. I like my respawn point."
+                          },
+                          {
+                            "npc": "As you wish, what? Ta-ta for now."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "uTBwMK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is Falador:",
+                "steps": [
+                  {
+                    "npc": "What? You're saying you want to respawn in Lumbridge? Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I want to respawn in Lumbridge.",
+                        "steps": [
+                          {
+                            "player": "Yes, I want to respawn in Lumbridge."
+                          },
+                          {
+                            "npc": "Why anyone would want to visit that smelly little swamp village of oiks is quite beyond me, I'm afraid, but the deed is done now."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "player": "Actually, no thanks. I like my respawn point."
+                          },
+                          {
+                            "npc": "As you wish, what? Ta-ta for now."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zTLHo1"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Well, see you around Tiffy."
+              },
+              {
+                "npc": "Ta-ta for now, old bean!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-knight-s-notes-on-him-if-the-notes-were-not-opened": [
+      {
+        "player": "Sir Tiffy! I got this scroll from a knight near Trollheim. He said I should deliver it to you urgently."
+      },
+      {
+        "npc": "What ho, old [boy/gal/bean]. Well, hand it over and let's have a look, shall we?"
+      },
+      {
+        "npc": "Now, let's see what is so urgent. Hmmm..."
+      },
+      {
+        "npc": "Well, you've been a great help, so I'll tell you a bit about this, shall I? Several weeks ago, a dwarven explorer, named Nestor Peregrine, discovered the entrance to an ancient cave complex while exploring the"
+      },
+      {
+        "npc": "troll mountains. On his return to Keldagrim, he celebrated in a tavern where we have an informant. The dwarf spoke of a great treasure, apparently mentioned in dwarven legend, and of creatures of great"
+      },
+      {
+        "npc": "evil, fighting those of great good. I sent Sir Gerry and a small command of knights to investigate the dwarf's stories several months ago and it appears that he has found the resting place of that incredible weapon: the"
+      },
+      {
+        "npc": "Godsword."
+      },
+      {
+        "player": "The Godsword? What's that?"
+      },
+      {
+        "npc": "During the great God Wars, the evil usurper Zamorak gathered many ancient relics and armies to his cause. There were none powerful enough to stand alone before his might, so our glorious Lord Saradomin"
+      },
+      {
+        "npc": "gathered a triumverate of gods to stem the tide of evil. They came together and, using great magics, they created the Godsword; a weapon so mighty that it could slay even a god. It was forged in the flames of a"
+      },
+      {
+        "npc": "volcano and tempered by the tears of the icyene. The mightiest warriors to stand before the army of evil were the aviansie: birdmen followers of Armadyl. They were a proud and mighty warrior race. To them fell the task of"
+      },
+      {
+        "npc": "delivering the Godsword to the holy armies that gathered to oppose Zamorak's evil. Unfortunately, they were attacked by an army of demons before they could reach the safety of the main army. It was a fiendish"
+      },
+      {
+        "npc": "stroke by the forces of darkness. At the same time as they attacked the aviansie, they also mounted a huge attack on the main armies that opposed them. Realising their intent, several of the gods that were allied against"
+      },
+      {
+        "npc": "Zamorak sent forces to aid the besieged aviansie, who had retreated into a temple in the mountains. The forces of Saradomin and Bandos arrived in the midst of a pitched battle for the Godsword, and it was during this"
+      },
+      {
+        "npc": "battle that the sword was sundered. Shortly thereafter, the evil one cast a spell of such devastation that it flattened the entire northern half of Gielinor, reducing it to what we now call the Wilderness. This temple must"
+      },
+      {
+        "npc": "have collapsed, sealing the combatants in."
+      },
+      {
+        "player": "Surely, one of the groups would have gained the upper hand by now? After all, it's been thousands of years since that battle."
+      },
+      {
+        "npc": "Apparently not. It appears that a millennia-old battle is still being fought beneath the ruins of the temple, and the prize for winning the battle is the Godsword! Hmm... Well, thank you very much, old [boy/gal/bean]. You've been a"
+      },
+      {
+        "npc": "great help. I shall pass it on to my superiors."
+      },
+      {
+        "player": "Is that it, then? Aren't we going to do something?"
+      },
+      {
+        "npc": "Yes, yes. All in good time. I'll have to consult my commanding officer first. Thank you, old [boy/gal/bean], you're dismissed."
+      }
+    ],
+    "using-knight-s-notes-on-him-if-the-notes-were-opened": [
+      {
+        "player": "Sir Tiffy! I got this scroll from a knight near Trollheim. He said I should deliver it to you urgently."
+      },
+      {
+        "npc": "What ho, old [boy/gal/bean]. Well, hand it over and let's have a look, shall we?"
+      },
+      {
+        "npc": "Now, let's see what is so urgent. Hmm... I see that this scroll has been tampered with! The wax seal is broken."
+      },
+      {
+        "player": "Err, yes. It was that way when I got it."
+      },
+      {
+        "npc": "I see. Anyway, let's see what it says."
+      },
+      {
+        "npc": "Oh dear. Well, thank you very much, old [boy/gal/bean]. You've been a great help. I shall pass it on to my superiors."
+      },
+      {
+        "player": "Is that it then? Aren't we going to do something?"
+      },
+      {
+        "npc": "Yes, yes. All in good time. I'll have to consult my commanding officer first. Thank you, old [boy/gal/bean], you're dismissed."
+      }
+    ],
+    "crack-the-clue-ii": [
+      {
+        "npc": "Ah, you must be one of us. I must share this information with you: 40,41;1,6;49;12;1,2;37,41;45;89,75;16,20;103"
+      }
+    ]
+  }
+}

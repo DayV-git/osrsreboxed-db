@@ -1,0 +1,521 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "before-finishing-pandemonium": [
+      {
+        "npc": "Ahoy there, sailor! Can't stop to talk right now, I'm afraid. You'll need to come back later."
+      },
+      {
+        "type": "message",
+        "text": "You need to complete the Pandemonium quest to fully access the Sailing skill.",
+        "id": "P5zeZF"
+      }
+    ],
+    "first-talk-after-completing-pandemonium": [
+      {
+        "npc": "Ahoy there, sailor, and welcome to the Storm Tempor!"
+      },
+      {
+        "player": "Welcome? This place doesn't look very welcoming to me."
+      },
+      {
+        "npc": "What do you mean? We've got the fresh sea breeze, the spray of the ocean water, a supply of the finest rum around, and one of the fiercest storms in Gielinor to contend with."
+      },
+      {
+        "npc": "What's not to love?"
+      },
+      {
+        "player": "Yeah, it's contending with that storm that worries me."
+      },
+      {
+        "npc": "Aye, it's true that the storm's bested many a sailor around these parts. Still, that's what makes things so exciting! We Barracudas live for the rush, and we trust that our skills will save us from a trip to the locker."
+      },
+      {
+        "player": "But why? Could you not just take the safer route around the storm?"
+      },
+      {
+        "npc": "Well, you see, there's value in sailors with skills like ours. Most common folk would think like you and avoid the storm, but that takes time, and as them merchants say, 'time is money.'"
+      },
+      {
+        "npc": "But that's where we come in! Those merchant folk sail up to the south end of the storm, drop off their shipments to one of our boats down there and we make sure it gets up to the Pandemonium!"
+      },
+      {
+        "player": "I see. That does make sense, but what's in it for you guys?"
+      },
+      {
+        "npc": "Why, the thrill of the sport! Sailing isn't just about going places, it's about mastery of the boat, the pull of the sails, the feeling of the helm in your hand and the taste of rum in your mouth!"
+      },
+      {
+        "player": "Sailing as a sport? How does that work? What are the rules?"
+      },
+      {
+        "npc": "Fancy getting involved, do you? Well, we Barracudas have trials set up all across the sea where you can test your mettle against the clock. I'm in charge of this here trial, the Tempor Tantrum."
+      },
+      {
+        "npc": "The objective of this trial is to collect rum shipments and bring them here. To do so, work your way around Tempoross Cove, towards our boat to the south."
+      },
+      {
+        "npc": "While you're out there, keep an eye out for any lost supplies. You'll need to collect all of them to complete the trial."
+      },
+      {
+        "npc": "Sailing over rapids will give you a burst of speed! Try to go over as many as you can. The more rapids you go through in quick succession, the faster you'll go!"
+      },
+      {
+        "npc": "The storm isn't going to make it easy for you. Those storm clouds are a nasty piece of work and they'll slow your boat down if they hit you."
+      },
+      {
+        "npc": "Keep a close eye on them. If they are growing in size, that means they are about to strike. However, don't let your guard down once they do, as they always strike twice!"
+      },
+      {
+        "npc": "As you make your way around, don't forget your objective. You need to keep picking up lost supplies on route to our southern boat."
+      },
+      {
+        "npc": "Once you reach the boat, collect a shipment of rum from it and then make your way back here."
+      },
+      {
+        "npc": "Make sure you come back the opposite side of Tempoross Cove to the way you went, otherwise you're going to end up missing some lost supplies."
+      },
+      {
+        "npc": "If you can deliver all the rum shipments and collect all the lost supplies in the time given, you'll be awarded a Barracuda rank!"
+      },
+      {
+        "npc": "Each trial has three ranks: Swordfish, Shark or Marlin. Each rank is harder than the last."
+      },
+      {
+        "npc": "For this trial, you'll be asked to fetch additional rum shipments and collect even more lost supplies as the rank increases."
+      },
+      {
+        "npc": "You can't attempt the next rank until you beat the one before it. You can also try unranked if you'd like to warm up beforehand."
+      },
+      {
+        "type": "condition",
+        "text": "If below 30 sailing",
+        "steps": [
+          {
+            "npc": "That said, with your Sailing experience I'd suggest sailing elsewhere for now and coming back when you've learned a thing or two."
+          },
+          {
+            "player": "Thanks for the advice, I'll bear that in mind."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bSDS50"
+      },
+      {
+        "type": "condition",
+        "text": "If 30+ sailing",
+        "id": "T_wdgu"
+      },
+      {
+        "player": "I see. Do you have any tips or tricks for me?"
+      },
+      {
+        "npc": "Sure do, sailor!"
+      },
+      {
+        "npc": "First up, you're going to need a boat with at least an oak mast built in order to withstand the storm. Your boat's as good as a goner without that."
+      },
+      {
+        "npc": "Second, your boat will also need to have at least an iron helm to withstand the rapids, but provided you can withstand them, they'll provide a burst of speed to your boat."
+      },
+      {
+        "npc": "Third, avoid them lightning clouds! Even with a strong mast they'll still slow you down."
+      },
+      {
+        "npc": "Fourth, keep your sails trimmed to gain even more speed. This aint no shipwreck salvaging. Go fast or go home!"
+      },
+      {
+        "npc": "Finally, watch out for those rocks. Hitting them will kill all of your boats momentum immediately."
+      },
+      {
+        "player": "Thanks for the advice. I'll bear that in mind."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to attempt the Tempor Tantrum.",
+            "steps": [
+              {
+                "player": "I'd like to attempt the Tempor Tantrum."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is manning the helm:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "The Tempor Tantrum",
+                    "id": "2pYCFi"
+                  }
+                ],
+                "id": "SrBgIB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not manning the helm:",
+                "steps": [
+                  {
+                    "npc": "You should make sure your helm is manned before starting the trial."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "6s9IG4"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has crewmates on their ship:",
+                "steps": [
+                  {
+                    "npc": "For this Barracuda Trial you are not allowed to bring any crewmates."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Can you help me transfer my crew away?",
+                        "steps": [
+                          {
+                            "player": "Can you help me transfer my crew away?"
+                          },
+                          {
+                            "npc": "Yes, I suppose so."
+                          },
+                          {
+                            "type": "action",
+                            "action": "open_interface",
+                            "target": "Crew Management",
+                            "id": "f-fzEO"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I'll come back another time.",
+                        "steps": [
+                          {
+                            "player": "I'll come back another time."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "TmU--H"
+              }
+            ]
+          },
+          {
+            "text": "Can you tell me about the Tempor Tantrum?",
+            "steps": [
+              {
+                "player": "Can you tell me about the Tempor Tantrum?"
+              },
+              {
+                "npc": "Well, you see, there's value in sailors with skills like ours. Most common folk would avoid the storm, but that takes time, and as them merchants say, 'time is money.'"
+              },
+              {
+                "npc": "That's where we come in! Those merchant folk sail up to the south end of the storm, drop off their shipments to one of our boats down there and we make sure it gets up to the Pandemonium!"
+              },
+              {
+                "player": "And what do I need to do during the trial?"
+              },
+              {
+                "npc": "The objective of this trial is to collect rum shipments and bring them here. To do so, work your way around Tempoross Cove, towards our boat to the south."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "QHmOuH"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "The name's Ralph, Rum-Dashed Ralph. I'm a trial master for the Barracudas and I've been tasked with overseeing our operation over here by Storm Tempor."
+              },
+              {
+                "player": "Are there any benefits to being a trial master?"
+              },
+              {
+                "npc": "Plenty! Nothing brings a smile to my face quite like seeing a young budding sailor work at their skills and prove themselves capable of overcoming the storm."
+              },
+              {
+                "npc": "Not to mention, the free rum recovered while doing the trial doesn't go amiss either!"
+              },
+              {
+                "player": "What about those that fail?"
+              },
+              {
+                "npc": "I wish them a safe journey to the locker."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "oY6vtQ"
+              }
+            ]
+          },
+          {
+            "text": "Who are the Barracudas?",
+            "steps": [
+              {
+                "player": "Who are the Barracudas?"
+              },
+              {
+                "npc": "We're only the fastest, most competent, most skilled and good looking sailors to sail the seas! Our motto is 'Anyone from anywhere as long as they can sail.'"
+              },
+              {
+                "npc": "Our goal is to work together and teach anyone willing the skills required to be a master sailor capable of overcoming anything."
+              },
+              {
+                "player": "Can I become a Barracuda?"
+              },
+              {
+                "npc": "Haha! That's the spirit! Of course you can, but only once you prove yourself in our trials. There's a bunch of trial masters like me scattered across the seas. Best our trials and earn your spot in our ranks."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "z9h8nR"
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Ahoy there, sailor, and welcome to the Storm Tempor!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to attempt the Tempor Tantrum.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "WphlKq"
+              }
+            ]
+          },
+          {
+            "text": "Can you tell me about the Tempor Tantrum?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "V8XawS"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any tips or tricks for me?",
+            "steps": [
+              {
+                "player": "Do you have any tips or tricks for me?"
+              },
+              {
+                "npc": "Sure do, sailor!"
+              },
+              {
+                "npc": "First up, you're going to need a boat with at least an oak mast built in order to withstand the storm. Your boat's as good as a goner without that."
+              },
+              {
+                "npc": "Second, your boat will also need to have at least an iron helm to withstand the rapids, but provided you can withstand them, they'll provide a burst of speed to your boat."
+              },
+              {
+                "npc": "Third, avoid them lightning clouds! Even with a strong mast they'll still slow you down."
+              },
+              {
+                "npc": "Fourth, keep your sails trimmed to gain even more speed. This aint no shipwreck salvaging. Go fast or go home!"
+              },
+              {
+                "npc": "Finally, watch out for those rocks. Hitting them will kill all of your boats momentum immediately."
+              },
+              {
+                "player": "Thanks for the advice. I'll bear that in mind."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "WgDsh8"
+              }
+            ]
+          },
+          {
+            "text": "Do I have any rewards to claim?",
+            "steps": [
+              {
+                "player": "Do I have any rewards to claim?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any rewards to reclaim:",
+                "steps": [
+                  {
+                    "npc": "Sorry, but I don't have anything for you at the moment."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "-tTd2O"
+                  }
+                ],
+                "id": "OTSi-N"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost the stormy key before opening its chest:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Rum-dashed Ralph hands you a trial reward: Stormy key.",
+                    "id": "FrFWJ7"
+                  }
+                ],
+                "id": "QhF3t1"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost the barrel stand:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Rum-dashed Ralph hands you a trial reward: Barrel stand.",
+                    "id": "nXlRl4"
+                  }
+                ],
+                "id": "mxLPcM"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost Ralph's fabric roll:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Rum-dashed Ralph hands you a trial reward: Ralph's fabric roll.",
+                    "id": "hrH3RI"
+                  }
+                ],
+                "id": "6Q3fv1"
+              },
+              {
+                "npc": "That's everything I have for you. Good luck in future trials!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "RyREFQ"
+              },
+              {
+                "type": "condition",
+                "text": "Upon reaching Shark rank at the Tempor Tantrum for the first time:",
+                "steps": [
+                  {
+                    "npc": "Woah, look at you go out there! You really surprised me with your mastery! A shark rank well earned."
+                  },
+                  {
+                    "player": "Thanks! I wasn't sure I was going to make it in time."
+                  },
+                  {
+                    "npc": "It's not often I see a sailor come through here with such promise. Here, I'll treat you to a drink on me. My speciality, the whirlpool surprise!"
+                  },
+                  {
+                    "npc": "It's made from rum, fresh bananas, more rum, some sugar cane, and here's the surprise... even more rum!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Ralph hands you two glasses of alcohol from below the deck of his boat.",
+                    "id": "i64Zhk"
+                  },
+                  {
+                    "npc": "If you fancy some more, have a word with Steve Beanie over at the Pandemonium. I'll send word to let you have access to his premium selection, for a price of course."
+                  },
+                  {
+                    "player": "Thanks! Do I have any more rewards to claim?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "sOKgp9"
+                  }
+                ],
+                "id": "6V3f01"
+              }
+            ]
+          },
+          {
+            "text": "More options...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Who are you?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "J1b4G8"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who are the Barracudas?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "WK4ywn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd best be off.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "1bk9kv"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Previous options...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "Sj9ND7"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,545 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-at-port-sarim": [
+      {
+        "npc": "'ello, guvna!"
+      },
+      {
+        "player": "Hello there. Who are you?"
+      },
+      {
+        "npc": "Jim's me name. Just 'avin a butcher's for anyone who wants some stuff done."
+      },
+      {
+        "player": "Oh, in the meat business are you?"
+      },
+      {
+        "npc": "Whatchu' on about? I'm after bees 'n honey."
+      },
+      {
+        "type": "missing",
+        "steps": [
+          {
+            "player": "Ah, so you're a farmer!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "qMlAQb"
+          }
+        ],
+        "id": "J7jw75"
+      },
+      {
+        "type": "missing",
+        "steps": [
+          {
+            "player": "Ah, I'm something of a farmer myself!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "F9TlwT"
+          }
+        ],
+        "id": "ObWVzo"
+      },
+      {
+        "npc": "Use yer loaf! Why'd I be in the tub fer that. I'm brassic ain't I!"
+      },
+      {
+        "player": "Well, I have baked a loaf or two in my time as well."
+      },
+      {
+        "npc": "You taking the mickey?"
+      },
+      {
+        "player": "I'm just trying to work out what you do."
+      },
+      {
+        "npc": "Well, then look at me boat and listen to wot's comin' out me gob!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed Pandemonium:",
+        "steps": [
+          {
+            "player": "I'm sorry, but I have no idea what you're trying to say to me. I'm just going to leave you to it."
+          },
+          {
+            "npc": "Hmph! Suit yourself, guvna."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ImgonK"
+      },
+      {
+        "player": "Ahh, a fellow sailor!"
+      },
+      {
+        "npc": "There we go! Hmm... But tell you what, guvna... If yer in the salt yourself, maybe ye'd be wantin' a bit o' a hand on deck?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 40 Sailing:",
+        "steps": [
+          {
+            "player": "Thanks for the offer, but I'm still pretty new to it all. I don't think I'm ready to be hiring a crew yet, but I'll let you know when I am."
+          },
+          {
+            "npc": "Hmph! Suit yourself, guvna."
+          },
+          {
+            "type": "message",
+            "text": "You need a Sailing level of 40 to manage a crew.",
+            "id": "JNcDsf"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "n0udB8"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 40 Sailing:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Sounds good to me. Why don't you join my crew?",
+                "steps": [
+                  {
+                    "player": "Sounds good to me. Why don't you join my crew?"
+                  },
+                  {
+                    "npc": "Aye aye, guvna. Bound to make some sovs wiv you, ain't I?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You recruit Jobless Jim as a crew member. He heads off in search of your boat.",
+                    "id": "d9ffgr"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You have recruited Jobless Jim as a crew member.",
+                    "id": "_XtxWx"
+                  }
+                ]
+              },
+              {
+                "text": "Thanks for the offer, but I'm good at the moment.",
+                "steps": [
+                  {
+                    "player": "Thanks for the offer, but I'm good at the moment."
+                  },
+                  {
+                    "npc": "Hmph! Suit yourself, guvna."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "W8o-Q0"
+      }
+    ],
+    "standard-dialogue-at-port-sarim-subsequent-dialogue-at-port-sarim": [
+      {
+        "npc": "'ello again, guvna! Changed yer mind 'bout needin' a swab on deck? I can help out any way ye' fancy."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sounds good to me. Why don't you join my crew?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "f3OOE7"
+              }
+            ]
+          },
+          {
+            "text": "Thanks for the offer, but I'm good at the moment.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "svVl3t"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-at-the-pandemonium": [
+      {
+        "npc": "'ello, Cap'n! 'tis a fine nanny goat ya 'av."
+      },
+      {
+        "player": "I find it odd that I have an easier time understanding ghosts than you, Jim."
+      },
+      {
+        "npc": "There ain't an amulet that can contain me rabbit, Cap'n."
+      }
+    ],
+    "at-port-as-a-crew-member": [
+      {
+        "npc": "'Ello, Cap'n! Anyfin' I can help yer with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help bank my cargo hold contents?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If cargo hold is already empty:",
+                "steps": [
+                  {
+                    "npc": "Yer hold's already empty, Cap'n."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NIeTrs"
+              },
+              {
+                "type": "condition",
+                "text": "If there are items in the cargo hold:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(\"Move Cargo to Bank\" interface opens.)",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "Move Cargo to Bank",
+                    "id": "zD3yUl"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Move all available items from your cargo hold to your bank?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "Time to earn me shorts..."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Your crew start moving the contents of the cargo hold...",
+                            "id": "LGAtDu"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the bank has space:",
+                            "steps": [
+                              {
+                                "npc": "Yep, yer cargo hold's barren now. All's in yer' bank."
+                              }
+                            ],
+                            "id": "YOc5TG"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the bank doesn't have space:",
+                            "steps": [
+                              {
+                                "npc": "Bank be a dead fiddle 'n all that. They didn't take anything from your cargo hold."
+                              }
+                            ],
+                            "id": "ArwOTI"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "ua92-i"
+              }
+            ]
+          },
+          {
+            "text": "How are you getting on?",
+            "steps": [
+              {
+                "player": "How are you getting on?"
+              },
+              {
+                "npc": "Could do with more dough, but can't complain 'bout conditions."
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-sea-while-idle": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "C for miles. C for fish."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "I'm a bit taters in this wind."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Wish I had a boat."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Been on me pins all day i 'ave."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-sea-randomly-while-at-the-helm": [
+      {
+        "npc": "I've half-inched the 'elm and me mince pies are on the sails."
+      }
+    ],
+    "at-sea-spotting-an-ocean-encounter": [
+      {
+        "npc": "There's somethin' in the drink to the [compass direction]!"
+      }
+    ],
+    "at-sea-trimming-the-sails": [
+      {
+        "npc": "Trimmed those sails good and proper, Captain!"
+      }
+    ],
+    "at-sea-idle-at-cannon": [
+      {
+        "type": "condition",
+        "text": "If there are no cannon balls in the cargo hold:",
+        "id": "FBqbvh"
+      },
+      {
+        "npc": "I can't find any ammo in the cargo hold."
+      },
+      {
+        "type": "condition",
+        "text": "If there are cannon balls in the cargo hold:",
+        "id": "wbSrL9"
+      },
+      {
+        "npc": "{{tmissing}}"
+      }
+    ],
+    "at-sea-while-at-the-salvaging-hook": [
+      {
+        "npc": "'avin a butchers at the hook."
+      }
+    ],
+    "at-sea-recovering-salvaging": [
+      {
+        "type": "condition",
+        "text": "With space in the cargo hold:",
+        "steps": [
+          {
+            "npc": "Managed to hook some salvage! I'll put it in the cargo hold."
+          }
+        ],
+        "id": "_rMZIV"
+      },
+      {
+        "type": "condition",
+        "text": "If the cargo hold is full:",
+        "steps": [
+          {
+            "npc": "The cargo hold is full. I can't salvage anything."
+          }
+        ],
+        "id": "vEf_uW"
+      },
+      {
+        "type": "condition",
+        "text": "Without the Sailing level for the ship:",
+        "steps": [
+          {
+            "npc": "Afraid that ship is a bit too complicated for me to salvage."
+          }
+        ],
+        "id": "Hd2_Fl"
+      },
+      {
+        "type": "condition",
+        "text": "Without the Sailing level for the salvaging hook:",
+        "steps": [
+          {
+            "npc": "This salvaging hook is a bit too complicated for me."
+          }
+        ],
+        "id": "XHz4g6"
+      },
+      {
+        "type": "condition",
+        "text": "In hazardous waters:",
+        "steps": [
+          {
+            "npc": "It's not safe to salvage shipwrecks that are in hazardous waters."
+          }
+        ],
+        "id": "vjoj_0"
+      }
+    ],
+    "at-sea-trawling": [
+      {
+        "type": "missing",
+        "id": "A4d5ww"
+      }
+    ],
+    "at-sea-catching-a-wind-mote": [
+      {
+        "npc": "I've caught a wind mote!"
+      }
+    ],
+    "at-sea-operating-the-wind-catcher": [
+      {
+        "type": "condition",
+        "text": "Enabling the wind catcher:",
+        "steps": [
+          {
+            "npc": "Enabling the wind catcher!"
+          }
+        ],
+        "id": "Th_lMZ"
+      },
+      {
+        "type": "condition",
+        "text": "Disabling the wind catcher:",
+        "steps": [
+          {
+            "npc": "Disabling the wind catcher!"
+          }
+        ],
+        "id": "-LcoaR"
+      }
+    ],
+    "at-sea-operating-the-gale-catcher": [
+      {
+        "type": "condition",
+        "text": "Enabling the gale catcher:",
+        "steps": [
+          {
+            "npc": "Enabling the gale catcher!"
+          }
+        ],
+        "id": "zC1QKN"
+      },
+      {
+        "type": "condition",
+        "text": "Disabling the gale catcher:",
+        "steps": [
+          {
+            "npc": "Disabling the gale catcher!"
+          }
+        ],
+        "id": "W_tmcZ"
+      }
+    ],
+    "at-sea-making-repairs": [
+      {
+        "type": "condition",
+        "text": "If there are repair kits in the cargo hold:",
+        "steps": [
+          {
+            "npc": "Aye, that's better."
+          }
+        ],
+        "id": "ZgHy_9"
+      },
+      {
+        "type": "condition",
+        "text": "If there are no repair kits in the cargo hold:",
+        "steps": [
+          {
+            "npc": "I can't find any repair kits in the cargo hold."
+          }
+        ],
+        "id": "KbeeM5"
+      }
+    ],
+    "standard-dialogue-pre-sailing-release": [
+      {
+        "npc": "'ello, guvna!"
+      },
+      {
+        "player": "Hello there. Who are you?"
+      },
+      {
+        "npc": "Jim's me name. Just 'avin a butcher's for anyone who wants some stuff done."
+      },
+      {
+        "player": "Oh, in the meat business are you?"
+      },
+      {
+        "npc": "Whatchu' on about? I'm after bees 'n honey."
+      },
+      {
+        "player": "Ah, I'm something of a farmer myself!"
+      },
+      {
+        "npc": "Use yer loaf! Why'd I be in the tub fer that. I'm brassic ain't I!"
+      },
+      {
+        "player": "Well, I have baked a loaf or two in my time as well."
+      },
+      {
+        "npc": "You taking the mickey?"
+      },
+      {
+        "player": "I'm just trying to work out what you do."
+      },
+      {
+        "npc": "Well, then look at me boat and listen to wot's comin' out me gob!"
+      },
+      {
+        "player": "I'm sorry, but I have no idea what you're trying to say to me. I'm just going to leave you to it."
+      },
+      {
+        "npc": "Hmph! Suit yourself, guvna."
+      }
+    ]
+  }
+}

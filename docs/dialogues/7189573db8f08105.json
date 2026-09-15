@@ -1,0 +1,201 @@
+{
+  "steps": [
+    {
+      "type": "line",
+      "speaker": "Banker",
+      "text": "Good day, how may I help you?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I'd like to access my bank account, please.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Bank",
+              "id": "VyxHjF"
+            }
+          ]
+        },
+        {
+          "text": "I'd like to check my PIN settings.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Bank PIN",
+              "id": "btbLrF"
+            }
+          ]
+        },
+        {
+          "text": "I'd like to collect items.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Grand Exchange collection box",
+              "id": "STJkUQ"
+            }
+          ]
+        },
+        {
+          "text": "I'd like to buy more bank slots.",
+          "steps": [
+            {
+              "player": "I'd like to buy more bank slots."
+            },
+            {
+              "type": "condition",
+              "text": "If the player is an Ultimate Ironman:",
+              "steps": [
+                {
+                  "type": "line",
+                  "speaker": "Banker",
+                  "text": "Why? You don't use the bank."
+                },
+                {
+                  "player": "Oh yeah... Never mind then."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "hQPPgk"
+            },
+            {
+              "type": "line",
+              "speaker": "Banker",
+              "text": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+            },
+            {
+              "type": "action",
+              "text": "(Bank space purchase interface opens.)",
+              "action": "open_interface",
+              "action_source": "text",
+              "target": "Bank space purchase",
+              "id": "sCZ9FC"
+            },
+            {
+              "type": "choice",
+              "prompt": "How many do you wish to purchase?",
+              "options": [
+                {
+                  "text": "[number] slots ([number] coins):",
+                  "steps": [
+                    {
+                      "player": "[number] slots please."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Banker",
+                      "text": "Buying [number] additional bank slots will cost [number] coins. Be warned, this purchase is not reversible. Are you happy to proceed?"
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "Yes.",
+                          "steps": [
+                            {
+                              "type": "condition",
+                              "text": "If the player does not have enough coins in their inventory or bank:",
+                              "steps": [
+                                {
+                                  "player": "Oh... I don't seem to have enough money for that. Never mind."
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "VgD83V"
+                            },
+                            {
+                              "player": "Yes, I'm happy with that."
+                            },
+                            {
+                              "type": "line",
+                              "speaker": "Banker",
+                              "text": "Your additional bank slots have been added."
+                            }
+                          ]
+                        },
+                        {
+                          "text": "No.",
+                          "steps": [
+                            {
+                              "player": "Actually, I've changed my mind."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": "Do I have any other options for extra bank space?",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "If the player has set up a bank PIN, an Authenticator and is playing on a Jagex Account:",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Banker",
+                          "text": "I'm afraid not! You've already got as much bank space as you can obtain without purchase."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Banker",
+                          "text": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "above",
+                          "id": "kR11-_"
+                        }
+                      ],
+                      "id": "WUOFQS"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not satisfy all three conditions:",
+                      "steps": [
+                        {
+                          "type": "line",
+                          "speaker": "Banker",
+                          "text": "I'm not supposed to tell you this, but you can obtain more bank space by [setting up a PIN], [setting up an Authenticator] [or] [upgrading to a Jagex Account]."
+                        },
+                        {
+                          "type": "line",
+                          "speaker": "Banker",
+                          "text": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "above",
+                          "id": "A7NbQb"
+                        }
+                      ],
+                      "id": "AI-B57"
+                    }
+                  ]
+                },
+                {
+                  "text": "(Cancel)",
+                  "steps": [
+                    {
+                      "player": "Actually, I've changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

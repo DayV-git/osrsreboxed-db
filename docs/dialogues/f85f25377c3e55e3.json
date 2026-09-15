@@ -1,0 +1,192 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-monkey-madness-i": [
+      {
+        "player": "What are you doing now?"
+      },
+      {
+        "npc": "My squad and I are to remain on this island as undercover operatives. I am collecting information on Awowogei and his policies."
+      }
+    ],
+    "standard-dialogue-after-monkey-madness-ii": [
+      {
+        "npc": "Greetings, [player name]."
+      },
+      {
+        "player": "Hey Garkor, how's it going?"
+      },
+      {
+        "npc": "Very well. Since the 10th squad were recalled from Ape Atoll, King Narnode has named me new Grand Tree Guardian."
+      },
+      {
+        "npc": "I believe I speak on behalf of everyone in the Stronghold when I say thank you for stopping Glough. Who knows what would've happened if you weren't there to foil his schemes."
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "o_ZSvK"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "EKzVbD"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "MwQFoN"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "nxesv4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Garkor",
+            "id": "IjERte"
+          },
+          {
+            "type": "condition",
+            "text": "Before completion of Monkey Madness II:",
+            "steps": [
+              {
+                "npc": "You found me. Excellent. I wasn't sure the order would get here."
+              },
+              {
+                "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "zQ6x3v"
+              }
+            ],
+            "id": "o7B4SO"
+          },
+          {
+            "type": "condition",
+            "text": "After completion of Monkey Madness II:",
+            "steps": [
+              {
+                "npc": "Always good to see you again, [player name]."
+              },
+              {
+                "npc": "I guess you didn't travel far, but since it's you... Here's a little something extra as a tip."
+              },
+              {
+                "type": "condition",
+                "text": "If the reward is a birds nest:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You are given nothing as a tip.",
+                    "id": "4sCp8i"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "U_MMpK"
+              },
+              {
+                "type": "condition",
+                "text": "If the reward is anything else:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "You are given [a/some] [reward item(s)] as a tip.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "JHp_VI"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have a reward token available:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You have [number] credits towards your free delivery token. You are not eligible to get gnome food delivered to you yet.",
+                        "id": "Qiz4XY"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "e-_rpP"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does have a reward token available:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                        "id": "25SVRt"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has an unclaimed reward token:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                            "id": "Wc7VHD"
+                          }
+                        ],
+                        "id": "ssAVCw"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has claimed their reward token:",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "MUFZL3"
+                      }
+                    ],
+                    "id": "uRxftG"
+                  }
+                ],
+                "id": "MiLl5M"
+              }
+            ],
+            "id": "EmVktW"
+          }
+        ],
+        "id": "1BS-4T"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "S-k2m5"
+          }
+        ],
+        "id": "LDKPQF"
+      }
+    ]
+  }
+}

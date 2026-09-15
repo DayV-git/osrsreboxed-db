@@ -1,0 +1,174 @@
+{
+  "default": null,
+  "variants": {
+    "after-holy-grail": [
+      {
+        "npc": "Congratulations, brave knight, on aiding Camelot in so many ways! If we ever require help again, I will make sure to call upon you!"
+      },
+      {
+        "player": "Thanks!"
+      }
+    ],
+    "after-king-s-ransom": [
+      {
+        "npc": "Welcome, brave knight."
+      },
+      {
+        "type": "choice",
+        "prompt": "Merlin says...",
+        "options": [
+          {
+            "text": "I have a piece of memorabilia, from our last adventure, for you.",
+            "condition": "If the player lost the hair clip:",
+            "steps": [
+              {
+                "npc": "I have a piece of memorabilia from our last adventure for you."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "Hair clip",
+                "id": "3bPxLY"
+              }
+            ],
+            "id": "regXwW"
+          },
+          {
+            "text": "I hear you are ready for a new respawn point.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is not Camelot:",
+                "steps": [
+                  {
+                    "player": "Hi, Merlin. I was wondering, can I change my respawn point back to Camelot?"
+                  },
+                  {
+                    "npc": "I would be more than happy to oblige. Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I'm sure.",
+                        "steps": [
+                          {
+                            "player": "Yes, I'm sure."
+                          },
+                          {
+                            "npc": "You have chosen...sensibly."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "player": "Actually, no thanks. I like my respawn point."
+                          },
+                          {
+                            "npc": "Well then, leave me to my business."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "xdQ18w"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's respawn point is Camelot:",
+                "steps": [
+                  {
+                    "player": "Hi, Merlin. I was wondering, can I change my respawn point back to Lumbridge?"
+                  },
+                  {
+                    "npc": "Certainly, if that is what you truly want. Are you sure?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, I'm sure.",
+                        "steps": [
+                          {
+                            "player": "Yes, I'm sure."
+                          },
+                          {
+                            "npc": "I have done as you asked. Your presence will be missed here."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, no thanks. I like my respawn point.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "R7a6DC"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "tisQFC"
+              }
+            ]
+          },
+          {
+            "text": "Would you like to hear how I removed the Sinclairs from Camelot?",
+            "steps": [
+              {
+                "npc": "Would you like to hear how I removed the Sinclairs from Camelot?"
+              },
+              {
+                "player": "Sure!"
+              },
+              {
+                "npc": "Well, after I climbed out the vent, I snuck aboard a passing trade ship that dropped me at Catherby. From there, I returned to Camelot and used the Sinclairs own secret entrance against them. I used some of my"
+              },
+              {
+                "npc": "own inventions to create a great deal of chaos and drove them from the house. Then I made sure they returned to their mansion and told them if they ever stepped foot from it again, I'd turn them all into rabbits."
+              },
+              {
+                "player": "How did you get your magic powers back?"
+              },
+              {
+                "npc": "Ah, Morgan's spell was not hard to break once I had access to my workshop. It's rather technical, so I won't bore you with the details."
+              },
+              {
+                "player": "You had an exciting day!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completion-of-the-knight-waves": [
+      {
+        "npc": "Well done, young adventurer. You truly are a worthy knight."
+      },
+      {
+        "type": "message",
+        "text": "You receive access to the prayers Chivalry and Piety and 20,000 XP in your Hitpoints, Strength, Attack, and Defence skills. You may also speak to Merlin to set your respawn point to Camelot.",
+        "id": "YqkWUX"
+      }
+    ],
+    "after-completion-of-the-knight-waves-speaking-again": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Excuse me for rushing off like this, but I must get back to my workroom."
+      }
+    ]
+  }
+}

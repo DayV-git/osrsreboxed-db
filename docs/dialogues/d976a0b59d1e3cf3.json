@@ -1,0 +1,215 @@
+{
+  "branches": {
+    "fHAJKQ": [
+      {
+        "player": "I'm sorry, I seem to have run out of money."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "type": "condition",
+      "text": "If the player has more than 2,000 coins in their inventory:",
+      "steps": [
+        {
+          "npc": "And what will it be for you, fine friend?"
+        }
+      ],
+      "id": "2UVj_u"
+    },
+    {
+      "type": "condition",
+      "text": "If the player has 2,000 coins or fewer in their inventory:",
+      "steps": [
+        {
+          "npc": "Yes? Can I help you with something?"
+        }
+      ],
+      "id": "PvcZud"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "A beer please.",
+          "steps": [
+            {
+              "player": "A beer please."
+            },
+            {
+              "npc": "That'll be 1 gold coin please."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Pay.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have at least 1 coin:",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "fHAJKQ"
+                        }
+                      ],
+                      "id": "XypKZr"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does have at least 1 coin:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "a beer for 1 coin",
+                          "id": "hJfg_e"
+                        },
+                        {
+                          "npc": "Here you go. One delicious pint of beer."
+                        }
+                      ],
+                      "id": "m-JhT4"
+                    }
+                  ]
+                },
+                {
+                  "text": "Don't pay.",
+                  "steps": [
+                    {
+                      "player": "Sorry, I changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A dwarven stout please.",
+          "steps": [
+            {
+              "player": "A dwarven stout please."
+            },
+            {
+              "npc": "It'll be yours for just 2 gold coins!"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Pay.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have at least 2 coins:",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "fHAJKQ"
+                        }
+                      ],
+                      "id": "iGdSGN"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does have at least 2 coins:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "a dwarven stout for 2 coins",
+                          "id": "4vwQGf"
+                        },
+                        {
+                          "npc": "One dwarven stout, best in all of Keldagrim!"
+                        }
+                      ],
+                      "id": "hAn9RW"
+                    }
+                  ]
+                },
+                {
+                  "text": "Don't pay.",
+                  "steps": [
+                    {
+                      "player": "Sorry, I changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A fine wine please.",
+          "steps": [
+            {
+              "player": "A  fine wine please."
+            },
+            {
+              "npc": "Ah, I see you have taste! A jug of wine will cost you 10 gold coins."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Pay.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have at least 10 coins:",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "fHAJKQ"
+                        }
+                      ],
+                      "id": "qJqUrc"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does have at least 10 coins:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "a jug of wine for 10 coins",
+                          "id": "8XPkJA"
+                        },
+                        {
+                          "npc": "I hope you enjoy it!"
+                        }
+                      ],
+                      "id": "ZwNKQH"
+                    }
+                  ]
+                },
+                {
+                  "text": "Don't pay.",
+                  "steps": [
+                    {
+                      "player": "Sorry, I changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Nothing, thanks.",
+          "steps": [
+            {
+              "player": "Nothing, thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

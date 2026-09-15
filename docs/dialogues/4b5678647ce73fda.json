@@ -1,0 +1,556 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you look after my crops for me?",
+            "steps": [
+              {
+                "player": "Would you look after my crops for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have anything planted in the redwood patch:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "OKrMD5"
+                  }
+                ],
+                "id": "p8zDrG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a redwood planted in the redwood patch:",
+                "steps": [
+                  {
+                    "player": "Would you look after my crops for me?"
+                  },
+                  {
+                    "npc": "If you like, but I want 6 dragonfruit for that."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has 6 dragonfruit:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, it's a deal.",
+                            "steps": [
+                              {
+                                "player": "Okay, it's a deal."
+                              },
+                              {
+                                "npc": "That'll do nicely, sir. Leave it with me - I'll make sure that patch grows for you."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, that's too much.",
+                            "steps": [
+                              {
+                                "player": "No, that's too much."
+                              },
+                              {
+                                "npc": "Well, I'm not wasting my time for free."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Okay, it's a deal and don't ask again.",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "-OKYFp"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "0JZIq8"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have 6 dragonfruit:",
+                    "steps": [
+                      {
+                        "player": "I'm afraid I don't have any of those at the moment."
+                      },
+                      {
+                        "npc": "Well, I'm not wasting my time for free."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Jj_aAc"
+                  }
+                ],
+                "id": "-n_X0Q"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a fully grown redwood in the redwood patch:",
+                "steps": [
+                  {
+                    "npc": "That patch is already fully grown! I don't know what you want me to do with it!"
+                  }
+                ],
+                "id": "6YY4nS"
+              }
+            ]
+          },
+          {
+            "text": "Would you chop my redwood tree down for me?",
+            "condition": "If the player has checked a fully grown redwood tree:",
+            "steps": [
+              {
+                "npc": "These take ages to clear! If you pay me 2000 Coins I'll chop it down for you."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 2,000 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Here's 2000 Coins - chop my tree down please.",
+                        "steps": [
+                          {
+                            "player": "Here's 2000 Coins - chop my tree down please."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Alexandra sets to work...",
+                            "id": "0cnDyW"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want to pay that much, sorry.",
+                        "steps": [
+                          {
+                            "player": "I don't want to pay that much, sorry."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pLmaLC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 2,000 coins:",
+                "steps": [
+                  {
+                    "player": "I don't have 2000 Coins I'm afraid."
+                  }
+                ],
+                "id": "VIOLeJ"
+              }
+            ],
+            "id": "3rOcb9"
+          },
+          {
+            "text": "Can you give me any farming advice?",
+            "steps": [
+              {
+                "player": "Can you give me any farming advice?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "You can put up to five tomatoes, strawberries, apples, bananas or oranges into a fruit basket, although you can't have a mix in the same basket."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "eSq9pu"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "There are seven main Farming areas - Elstan's area near Falador, Dantaera's area near Catherby, Kragen's area near Ardougne, Lyra's area in Morytania, Marisi's area in Hosidius, Alan's area in the Farming Guild and"
+                      },
+                      {
+                        "npc": "Oswallt's area in Prifddinas."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "AL-Ji9"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "Supercompost is far better than normal compost, but more expensive to make. You need to rot the right type of item; show me an item, and I'll tell you if it's super- compostable or not."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "e4qNY5"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "Vegetables, hops and flowers need constant watering - if you ignore my advice, you will sooner or later find yourself in possession of a dead farming patch."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "VciAlw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "steps": [
+                      {
+                        "npc": "There is a special patch for growing Belladonna - I believe that it is somewhere near Draynor Manor, where the ground is a tad 'unblessed'."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "IoxiZp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 6",
+                    "steps": [
+                      {
+                        "npc": "Hops are good for brewing ales. I believe there's a brewery up in Keldagrim somewhere, and I've heard rumours that a place called Phasmatys used to be good for that type of thing. 'Fore they all died, of course."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "uCQ00_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 7",
+                    "steps": [
+                      {
+                        "npc": "Bittercap mushrooms can only be grown in a special patch in Morytania, near the Mort Myre swamp. There the ground is especially dank and suited to growing poisonous fungii."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "44XA8h"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 8",
+                    "steps": [
+                      {
+                        "npc": "You can buy all the farming tools from farming shops, which can be found close to the allotments."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "RdhCpR"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 9",
+                    "steps": [
+                      {
+                        "npc": "Tree seeds must be grown in a plantpot of soil into a sapling, and then transferred to a tree patch to continue growing to adulthood."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "nrQOha"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 10",
+                    "steps": [
+                      {
+                        "npc": "The only way to cure a bush or tree of disease is to prune away the diseased leaves with a pair of secateurs. For all other crops I would just apply some plant-cure."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "eDpExw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 11",
+                    "steps": [
+                      {
+                        "npc": "You can fill plantpots with soil from any empty patch, if you have a gardening trowel."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "e_VpVj"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 12",
+                    "steps": [
+                      {
+                        "npc": "If you need to be rid of your fruit trees for any reason, all you have to do is chop them down and then dig up the stump."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "XIBLgw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 13",
+                    "steps": [
+                      {
+                        "npc": "Don't just throw away your weeds after you've raked a patch - put them in a compost bin and make some compost."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "1TyGVO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 14",
+                    "steps": [
+                      {
+                        "npc": "Applying compost to a patch will not only reduce the chance that your crops will get diseased, but you will also grow more crops to harvest."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "apWQQs"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 15",
+                    "steps": [
+                      {
+                        "npc": "If you want to make your own sacks and baskets you'll need to use the loom that's near the Farming shop in Falador. If you're a good enough craftsman, that is."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "qA9e8o"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 16",
+                    "steps": [
+                      {
+                        "npc": "You don't have to buy all your plantpots you know, you can make them yourself on a pottery wheel. If you're a good enough craftsman, that is."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "WIT4Wx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 17",
+                    "steps": [
+                      {
+                        "npc": "You can put up to ten potatoes, cabbages or onions in vegetable sacks, although you can't have a mix in the same sack."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "E1yuyf"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?",
+            "steps": [
+              {
+                "player": "Can you sell me something?"
+              },
+              {
+                "npc": "That depends on whether I have it to sell. What is it that you're looking for?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Farming Supplies",
+                "id": "--mwX-"
+              }
+            ]
+          },
+          {
+            "text": "I'll come back another time.",
+            "steps": [
+              {
+                "player": "I'll come back another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "pay-redwood-tree-option": [
+      {
+        "type": "condition",
+        "text": "If a redwood sapling has not been planted in the patch:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "OKrMD5"
+          }
+        ],
+        "id": "Wmfig7"
+      },
+      {
+        "type": "condition",
+        "text": "If a redwood sapling is growing in the patch:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player does not have at least 6 dragonfruit:",
+            "steps": [
+              {
+                "npc": "I want 6 dragonfruit for that."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "VrsXOL"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has at least 6 dragonfruit:",
+            "steps": [
+              {
+                "npc": "That'll do nicely, sir. Leave it with me - I'll make sure that patch grows for you."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "lCWrcg"
+          },
+          {
+            "type": "condition",
+            "text": "If the patch protection fee has already been paid:",
+            "steps": [
+              {
+                "npc": "I'm already looking after that patch for you."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "TIJTu_"
+          }
+        ],
+        "id": "2mNfsb"
+      },
+      {
+        "type": "condition",
+        "text": "If the redwood sapling has grown in the patch:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player does not have 2,000 coins:",
+            "steps": [
+              {
+                "npc": "I'll want 2000 Coins to chop down your redwood. These take ages!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "9ZzjD-"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has 2,000 coins:",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Pay 2000 Coins to have your tree chopped down?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Alexandra sets to work...",
+                        "id": "XF2_Od"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "rw8QAD"
+          }
+        ],
+        "id": "KiUFxN"
+      }
+    ]
+  },
+  "branches": {
+    "OKrMD5": [
+      {
+        "npc": "You don't have a sapling planted in that patch. Plant one and I might agree to look after it for you."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

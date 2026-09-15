@@ -1,0 +1,143 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Would you like to buy or sell some scimitars?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please.",
+            "steps": [
+              {
+                "player": "Yes, please."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Daga's Scimitar Smithy",
+                "id": "6EvHQD"
+              }
+            ]
+          },
+          {
+            "text": "No, thanks.",
+            "steps": [
+              {
+                "player": "No, thanks."
+              }
+            ]
+          },
+          {
+            "text": "Do you have any Dragon Scimitars in stock?",
+            "steps": [
+              {
+                "player": "Do you have any Dragon Scimitars in stock?"
+              },
+              {
+                "npc": "It just so happens I recently got a fresh delivery. Do you want to buy one?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, please.",
+                    "steps": [
+                      {
+                        "player": "Yes, please."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 100,000 coins:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You buy a dragon scimitar!",
+                            "id": "US69Fa"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "txjf6x"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 100,000 coins:",
+                        "steps": [
+                          {
+                            "npc": "Sorry but you don't have enough to buy one. At the moment it costs 100000 gold coins."
+                          }
+                        ],
+                        "id": "q_qAFn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thanks.",
+                    "steps": [
+                      {
+                        "player": "No, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-elite": [
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "La_PiG"
+          },
+          {
+            "type": "message",
+            "text": "You've been given a new clue!",
+            "id": "JRLVjR"
+          },
+          {
+            "npc": "Here, have this!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "te-bLX"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an elite reward casket",
+            "id": "KmXpfC"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "-O14tD"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "Mbee36"
+          }
+        ],
+        "id": "v5rI0r"
+      }
+    ]
+  }
+}

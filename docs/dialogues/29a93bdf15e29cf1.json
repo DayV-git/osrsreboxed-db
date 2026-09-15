@@ -1,0 +1,310 @@
+{
+  "default": "before-druidic-ritual",
+  "variants": {
+    "before-druidic-ritual": [
+      {
+        "npc": "What can I do for you young 'un?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've heard you druids might be able to teach me herblore.",
+            "steps": [
+              {
+                "player": "So... I've heard you druids might be able to teach me herblore..."
+              },
+              {
+                "npc": "Herblore eh? You're probably best off talking to Kaqemeex about that; he's the best herblore teacher we currently have. I believe at the moment he's at out stone circle just North of here."
+              },
+              {
+                "player": "Thanks."
+              }
+            ]
+          },
+          {
+            "text": "Actually, I don't need to speak to you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pgW7Vi"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-druidic-ritual": [
+      {
+        "npc": "What can I do for you young 'un?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about Sanfew Serum.",
+            "condition": "If Zogre Flesh Eaters has been partially completed:",
+            "steps": [
+              {
+                "player": "Hey there, can you tell me something about this Sanfew Serum, like how do I make it, and what does it do?"
+              },
+              {
+                "npc": "Certainly. It was after all, my creation, and mine alone. If anyone should know how to make it, it should be me!"
+              },
+              {
+                "player": "Can't fault that logic!"
+              },
+              {
+                "npc": "Ok, essentially this potion is a mixture of a cure poison, cure disease and restore stats all rolled into one! Very handy for the adventurers with an eye on conserving inventory space."
+              },
+              {
+                "player": "Ok, I'm sold... How do you make it?"
+              },
+              {
+                "npc": "Well, it's very easy really. You take a standard super stat restore potion. Add some ground unicorn horn. Then, add some snake weed from the island of Karamja. Finally, add some nail beast nails. You can"
+              },
+              {
+                "npc": "only get these from the area of Morytania, specifically, if you go deep in the Mort Myre swamp."
+              },
+              {
+                "player": "How do you mean, deep into the Mort Myre swamp?"
+              },
+              {
+                "npc": "Well, most adventurers avoid the deep Mort Myre swamp, whereas the Paterdomus trek and the Burgh de Rott trek take you through the most interesting areas. These area's often allow the quickest, but potentially"
+              },
+              {
+                "npc": "more dangerous routes through Mort Myre. This is where you're likely to encounter a Nail beast."
+              },
+              {
+                "player": "Are they very dangerous?"
+              },
+              {
+                "npc": "They can be pretty dangerous. They'll defend for a long time, then attack suddenly and seemingly without warning, landing three viscious attacks at once. This can be pretty lethal. However, the nail beasts themselves"
+              },
+              {
+                "npc": "are curiously wounded from the Sanfew Serum itself...very bizzare, that a potion made from their claws should have such a pronounced effect on them."
+              },
+              {
+                "player": "Ok, that's very helpful. Many thanks for your assistance."
+              }
+            ],
+            "id": "Km-Q5p"
+          },
+          {
+            "text": "Ask general questions.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Have you any more work for me, to help reclaim the circle?",
+                    "steps": [
+                      {
+                        "player": "Have you any more work for me, to help reclaim the circle?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the requirements for Eadgar's Ruse:",
+                        "steps": [
+                          {
+                            "player": "Have you any more work for me to help reclaim the stone circle?"
+                          },
+                          {
+                            "npc": "Ah, you've come just in time. I need a certain herb for the next part of the purification ritual..."
+                          },
+                          {
+                            "npc": "It used to be quite common, but nowadays only the trolls know where to find it. They use it in their cooking, you see. It's a very prized ingredient."
+                          },
+                          {
+                            "player": "And what exactly do you want me to do?"
+                          },
+                          {
+                            "npc": "Journey to the north into the land of the trolls, and find the secret of the herb the trolls call 'goutweed'."
+                          },
+                          {
+                            "npc": "My friend Eadgar lives in the area, and he may be able to help you. Bring some goutweed back and I will teach you something useful."
+                          },
+                          {
+                            "type": "choice",
+                            "prompt": "Start the Eadgar's Ruse quest?",
+                            "options": [
+                              {
+                                "text": "Yes.",
+                                "steps": [
+                                  {
+                                    "player": "I'll do it."
+                                  },
+                                  {
+                                    "npc": "Thank you, adventurer!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "hook": "quest:eadgar-s-ruse:start",
+                                "quest": "Eadgar's Ruse"
+                              },
+                              {
+                                "text": "No.",
+                                "steps": [
+                                  {
+                                    "player": "No thanks."
+                                  },
+                                  {
+                                    "npc": "Oh well. No doubt some other adventurer will eventually come who can help me."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "p55rhQ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the requirements for Eadgar's Ruse except Herblore level:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you are not yet learned enough in the art of Herblore to be able to help me, adventurer..."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You do not meet all of the requirements to start the Eadgar's Ruse quest.",
+                            "id": "d7hL8H"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "E8jyTr"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have the requirements for Eadgar's Ruse:",
+                        "steps": [
+                          {
+                            "npc": "Not just yet, young 'un."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You do not meet all of the requirements to start the Eadgar's Ruse quest.",
+                            "id": "ZLSpnl"
+                          }
+                        ],
+                        "id": "2cSt7J"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I don't need to speak to you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "9F4Phz"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-eadgar-s-ruse": [
+      {
+        "npc": "What can I do for you young 'un?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about Sanfew Serum.",
+            "condition": "If Zogre Flesh Eaters has been partially completed:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "G-4rVp"
+              }
+            ],
+            "id": "fI2PkS"
+          },
+          {
+            "text": "Ask general questions.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Did you say you needed more goutweed?",
+                    "condition": "Without goutweed in your inventory:",
+                    "steps": [
+                      {
+                        "player": "Did you say you needed more goutweed?"
+                      },
+                      {
+                        "npc": "I don't need any more goutweed for the ritual, but it's still quite difficult for me to get. If you ever come across some, bring it to me; I'll exchange it for some other herbs."
+                      }
+                    ],
+                    "id": "Lr3RVq"
+                  },
+                  {
+                    "text": "I have some more goutweed for you.",
+                    "condition": "With goutweed in your inventory:",
+                    "steps": [
+                      {
+                        "player": "I have some more goutweed for you."
+                      },
+                      {
+                        "npc": "Ah, good. Here are some herbs in exchange."
+                      }
+                    ],
+                    "id": "n6jOec"
+                  },
+                  {
+                    "text": "Have you any more work for me, to help reclaim the circle?",
+                    "steps": [
+                      {
+                        "player": "Have you any more work for me to help reclaim the stone circle?"
+                      },
+                      {
+                        "npc": "Well, not right now I don't think young 'un. In fact, I need to make some more preparations myself for the ritual. Rest assured, if I need any more help I will ask you again."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I don't need to speak to you.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "pgW7Vi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "pgW7Vi": [
+      {
+        "player": "Actually, I don't need to speak to you."
+      },
+      {
+        "npc": "Well, we all make mistakes sometimes."
+      }
+    ]
+  }
+}

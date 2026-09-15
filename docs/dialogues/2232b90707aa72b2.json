@@ -1,0 +1,208 @@
+{
+  "default": "before-the-restless-ghost",
+  "variants": {
+    "before-the-restless-ghost": [
+      {
+        "npc": "Go away! I'm meditating!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Well, that's friendly.",
+            "steps": [
+              {
+                "player": "Well, that's friendly."
+              },
+              {
+                "npc": "I SAID go AWAY."
+              },
+              {
+                "player": "Okay, okay... sheesh, what a grouch."
+              }
+            ]
+          },
+          {
+            "text": "I've come to repossess your house.",
+            "steps": [
+              {
+                "player": "I've come to repossess your house."
+              },
+              {
+                "npc": "Under what grounds???"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Repeated failure on mortgage repayments.",
+                    "steps": [
+                      {
+                        "player": "Repeated failure on mortgage repayments."
+                      },
+                      {
+                        "npc": "What?"
+                      },
+                      {
+                        "npc": "But... I don't have a mortgage! I built this house myself!"
+                      },
+                      {
+                        "player": "Sorry. I must have got the wrong address. All the houses look the same around here."
+                      },
+                      {
+                        "npc": "What? What houses? What ARE you talking about???"
+                      },
+                      {
+                        "player": "Never mind."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't know, I just wanted this house.",
+                    "steps": [
+                      {
+                        "player": "I don't know. I just wanted this house..."
+                      },
+                      {
+                        "npc": "Oh... go away and stop wasting my time!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-the-restless-ghost": [
+      {
+        "npc": "Go away! I'm meditating!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Well, that's friendly.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ZiABXY"
+              }
+            ]
+          },
+          {
+            "text": "I've lost the Amulet of Ghostspeak.",
+            "steps": [
+              {
+                "player": "I've lost the Amulet of Ghostspeak."
+              },
+              {
+                "type": "message",
+                "text": "Father Urhney sighs.",
+                "id": "RukJ4I"
+              },
+              {
+                "type": "condition",
+                "text": "If they player currently has it in their inventory:",
+                "steps": [
+                  {
+                    "npc": "What are you talking about? I can see you've got it with you!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "mGk1gL"
+              },
+              {
+                "type": "condition",
+                "text": "If the amulet if stored in a bank, Death's Office, Item Retrieval Service:",
+                "steps": [
+                  {
+                    "npc": "You come here wasting my time... Has it even occurred to you that you've got it stored somewhere? Now GO AWAY!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "je_ue8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have inventory space:",
+                "steps": [
+                  {
+                    "npc": "How careless can you get? Those things aren't easy to come by you know! Now clear some space in your inventory and I'll give you another one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "bQ9eGY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has inventory space:",
+                "steps": [
+                  {
+                    "npc": "How careless can you get? Those things aren't easy to come by you know! It's a good job I've got a spare."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Father Urhney hands you an amulet.",
+                    "id": "mUQrov"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "ghostspeak amulet",
+                    "id": "z2bQM2"
+                  },
+                  {
+                    "npc": "Be more careful this time."
+                  },
+                  {
+                    "player": "Okay, I'll try to be."
+                  }
+                ],
+                "id": "ep4USV"
+              }
+            ]
+          },
+          {
+            "text": "I've come to repossess your house.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1D7jcP"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "with-astral-contact-random": [
+      {
+        "player": "Hello?"
+      },
+      {
+        "npc": "At last! The voice of Saradomin! My years of meditation have paid off!"
+      },
+      {
+        "player": "Um..."
+      },
+      {
+        "npc": "O mighty Saradomin! What is your message to me?"
+      },
+      {
+        "player": "Stop sitting around in a house in a swamp and go and do something useful!"
+      },
+      {
+        "npc": "Oh, thank you Saradomin! I will meditate on what this message means!"
+      }
+    ]
+  }
+}

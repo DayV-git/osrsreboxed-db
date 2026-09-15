@@ -1,0 +1,175 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed the Karamja elite diary:",
+        "steps": [
+          {
+            "npc": "Sorry, but the smithery is closed. You can use the furnace for a fee, and I can hold a coffer of gold so you don't need to pay each time."
+          },
+          {
+            "type": "choice",
+            "prompt": "Furnace coffer: [number] coins",
+            "options": [
+              {
+                "text": "Deposit coins",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player can choose to deposit coins, rounded down to the nearest in multiple of 20.",
+                    "id": "Q_XPiI"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "_vziNs"
+                  }
+                ]
+              },
+              {
+                "text": "Empty coffer",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the coffer is already empty:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "It's already empty.",
+                        "id": "bFPlIM"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "0XmktF"
+                      }
+                    ],
+                    "id": "OtoCac"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If there are coins inside the coffer:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "text": "The players withdraws all of the coins currently in the coffer",
+                        "id": "gP9TY2"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You withdraw [number] coins.",
+                        "id": "0yBm6E"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "dRBk0i"
+                      }
+                    ],
+                    "id": "GYhMDH"
+                  }
+                ]
+              },
+              {
+                "text": "Cancel",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "JpDI86"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed the Karamja elite diary:",
+        "steps": [
+          {
+            "npc": "Sorry, but the smithery is closed. But since you've completed the elite tier of the Karamja diary, I will allow you to use the furnace."
+          }
+        ],
+        "id": "TyhLY8"
+      }
+    ],
+    "standard-dialogue-attempting-to-use-the-furnace-without-coins-in-the-coffer": [
+      {
+        "npc": "Sorry Bwana - I charge a fee of 20 coins to use my furnace."
+      }
+    ],
+    "right-click-coffer-option": [
+      {
+        "type": "choice",
+        "prompt": "Furnace coffer: [number] coins",
+        "options": [
+          {
+            "text": "Deposit coins",
+            "condition": "If the player has not completed the Karamja elite diary:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uiIVLp"
+              }
+            ],
+            "id": "n46Yh5"
+          },
+          {
+            "text": "Deposit coins",
+            "condition": "If the player has completed the Karamja elite diary:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have earned the Elite Karamja reward, so you no longer need to pay to use this furnace.",
+                "id": "OSS1rd"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "BT0RML"
+              }
+            ],
+            "id": "pRYSvR"
+          },
+          {
+            "text": "Empty coffer",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yTv-7u"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "9x0twL"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-yohnus-before-completing-shilo-village": [
+      {
+        "type": "line",
+        "speaker": "Note",
+        "text": "This is not typically possible, because accessing Yohnus requires completion of Shilo Village."
+      },
+      {
+        "npc": "I'm getting out of here Bwana, the place is infested with Zombies."
+      }
+    ]
+  }
+}

@@ -1,0 +1,318 @@
+{
+  "default": "standard-dialogue-subsequent-dialogue",
+  "variants": {
+    "standard-dialogue-initial-dialogue": [
+      {
+        "player": "What are you doing out here on your own?"
+      },
+      {
+        "npc": "I'm not alone! Me and my mates run these streets. You'd better watch your pockets, stranger."
+      },
+      {
+        "player": "What do you mean you run the streets?"
+      },
+      {
+        "npc": "You see those fancy houses?"
+      },
+      {
+        "player": "I think so?"
+      },
+      {
+        "npc": "We keep a lookout to see when the owners leave and come back. Once they're out, we can break in and steal all their stuff!"
+      },
+      {
+        "player": "That sounds risky don't you think? There are guards everywhere."
+      },
+      {
+        "npc": "No one suspects us street urchins. Hidden in plain sight, as they say."
+      },
+      {
+        "npc": "I can give you some info on which houses are free if you like..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sounds good.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "p1seZC"
+              }
+            ]
+          },
+          {
+            "text": "I'm alright for now.",
+            "steps": [
+              {
+                "player": "I'm alright for now."
+              },
+              {
+                "npc": "Suit yourself."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-subsequent-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has not spoken to the \"Dodgy Character\" (Oriana):",
+        "steps": [
+          {
+            "npc": "Hello. Have you met our crew leader yet?"
+          },
+          {
+            "player": "I don't think I have..."
+          },
+          {
+            "npc": "Go chat to them! They should be near the bank... naturally."
+          },
+          {
+            "player": "I'll head over there soon."
+          },
+          {
+            "npc": "Happy thieving, stranger."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "3O8wl4"
+          }
+        ],
+        "id": "F8N76Z"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has already spoken to Oriana:",
+        "steps": [
+          {
+            "player": "Hello there."
+          },
+          {
+            "npc": "Hello. A fine day for stealing, wouldn't you say?"
+          },
+          {
+            "player": "I suppose so, just as long as you're not planning to steal from me."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "jbXhwj"
+          }
+        ],
+        "id": "TKd-jV"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I could do with some information on houses.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player doesn't have any house keys in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You don't have any house keys, do you? You won't find yourself getting very far without any. Maybe come back later?"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "_5jkQC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one house key but less than 15 valuables in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You don't have any valuables worth my time. Come back when you do!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "-labeP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one house key and at least 15 valuables in their inventory but there is no house available for thieving:",
+                "steps": [
+                  {
+                    "npc": "Looks like [Caius/Lavinia/Victor] is returning to [his/her] house. You'll have to wait a moment until we get word of the next house."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "jhyU37"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one house key and at least 15 valuables in their inventory and a house is or will soon be available for thieving:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If it is the player's first time asking (does not require 15 valuables in inventory):",
+                    "steps": [
+                      {
+                        "npc": "You're new around here. Normally I'd charge 15 valuables for information, but I'm feeling generous."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "OSnAKl"
+                      }
+                    ],
+                    "id": "e4P1Gn"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay 15 valuables for information?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the homeowner is about to leave:",
+                            "steps": [
+                              {
+                                "npc": "I hear that [Caius/Lavinia/Victor] might be leaving [his/her] house soon."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "l8Duxn"
+                              }
+                            ],
+                            "id": "jgwKKc"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If this is the first time the player is receiving intel on the current targeted house:",
+                            "steps": [
+                              {
+                                "npc": "Looks like [Caius/Lavinia/Victor] isn't home right now. Go quickly!"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "s2DhlJ"
+                              }
+                            ],
+                            "id": "SaQ1Qb"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has already received intel on the current targeted hosue:",
+                            "steps": [
+                              {
+                                "npc": "Already forgotten? Head over to [Caius/Lavinia/Victor]'s house."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "tXgesN"
+                              },
+                              {
+                                "steps": [
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Yes please.",
+                                        "steps": [
+                                          {
+                                            "player": "Yes please.",
+                                            "steps": [
+                                              {
+                                                "type": "condition",
+                                                "text": "If Caius's or Victor's house is available for thieving:",
+                                                "steps": [
+                                                  {
+                                                    "npc": "His house is south of here."
+                                                  },
+                                                  {
+                                                    "type": "end"
+                                                  }
+                                                ],
+                                                "id": "Z3Q-uY"
+                                              },
+                                              {
+                                                "type": "condition",
+                                                "text": "If Lavinia's house is available for thieving:",
+                                                "steps": [
+                                                  {
+                                                    "npc": "Her house is south east of here."
+                                                  }
+                                                ],
+                                                "id": "cH-MBo"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "I'll find my own way.",
+                                        "steps": [
+                                          {
+                                            "player": "I'll find my own way."
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "npc": "Do you want me to point you in the right direction? {{Anchor|below}}"
+                              }
+                            ],
+                            "id": "h247BQ"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Yes, don't ask me again.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "HNRIJP"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "player": "I'll pass for now."
+                          },
+                          {
+                            "npc": "Suit yourself."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "FC3vOF"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-when-a-wealthy-citizen-is-about-to-re-enter-their-house": [
+      {
+        "npc": "whistle*"
+      }
+    ]
+  }
+}

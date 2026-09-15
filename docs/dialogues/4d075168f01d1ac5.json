@@ -1,0 +1,922 @@
+{
+  "default": "before-shield-of-arrav-is-started",
+  "variants": {
+    "before-shield-of-arrav-is-started": [
+      {
+        "type": "condition",
+        "text": "If talking to Reldo for the first time ever:",
+        "steps": [
+          {
+            "npc": "Hello, stranger."
+          },
+          {
+            "player": "Hello there! The name's [player name]. Who are you?"
+          },
+          {
+            "npc": "My name is Reldo. I'm the palace librarian."
+          },
+          {
+            "player": "Ah, that explains why you're in the library then."
+          },
+          {
+            "npc": "Well, truth be told, I would probably be here even if it wasn't where I worked. I very much like reading, not to mention sharing what I learn with all who are interested."
+          },
+          {
+            "player": "Sounds like a very noble goal!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "Lv4JTD"
+          }
+        ],
+        "id": "IW_KZD"
+      },
+      {
+        "type": "condition",
+        "text": "Otherwise:",
+        "steps": [
+          {
+            "npc": "Hello there, [player name]."
+          }
+        ],
+        "id": "kFBpSz"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm in search of a quest.",
+            "steps": [
+              {
+                "player": "I'm in search of a quest."
+              },
+              {
+                "npc": "Hmm... I don't believe there are any here."
+              },
+              {
+                "npc": "Let me think actually..."
+              },
+              {
+                "npc": "Ah, yes. I think I have something, if you're definitely interested?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's combat level is less than 10.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Before starting this quest, be aware that you combat level is lower than the recommended level of 10.",
+                    "id": "QLLOxo"
+                  }
+                ],
+                "id": "Lzzehj"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Shield of Arrav quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Of course."
+                      },
+                      {
+                        "npc": "Well, if you look around for book called The Shield of Arrav, you'll find a quest in there."
+                      },
+                      {
+                        "npc": "I'm not sure where the book is mind you... but I'm sure it's around here somewhere."
+                      },
+                      {
+                        "player": "Great! Thank you."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "hook": "quest:shield-of-arrav:start",
+                    "quest": "Shield of Arrav"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Actually, I don't think I am. Goodbye."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a message for him:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "The Wise Old Man of Draynor Village sent you this message.",
+                "steps": [
+                  {
+                    "player": "The Wise Old Man of Draynor Village sent you this message."
+                  },
+                  {
+                    "npc": "Ah, I am always delighted to hear from him. You would not imagine the depths of his wisdom!"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has no inventory space for a reward:",
+                    "steps": [
+                      {
+                        "npc": "I'd give you a reward, but you don't seem to have any space for it. Come back when you do."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "8-sbDP"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least one inventory space for a reward:",
+                    "steps": [
+                      {
+                        "type": "random",
+                        "options": [
+                          {
+                            "text": "If the player receives coins:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "Reldo gives you some coins.",
+                                "id": "BfjLdv"
+                              },
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "some coins",
+                                "id": "f5CkYf"
+                              },
+                              {
+                                "npc": "King Roald has been very generous with my salary, so I can spare you some coins for your trouble."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "If the player receives seeds:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "Reldo gives you some seeds.",
+                                "id": "dUlBWy"
+                              },
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "assorted seeds",
+                                "id": "FMeJg4"
+                              },
+                              {
+                                "npc": "These little things seem to be everywhere these days! Perhaps you'd like them?"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "If the player receives runes:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "Reldo gives you some runes.",
+                                "id": "SzA69R"
+                              },
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "assorted runes",
+                                "id": "nTuSuc"
+                              },
+                              {
+                                "npc": "My old friend Aubury sent me some runes in return for some books he wanted. Perhaps you'd like them?"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "s8c04w"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "FeOKl3"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "9ea2nP"
+              }
+            ]
+          },
+          {
+            "text": "What do you do?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WJxZYR"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-shield-of-arrav": [
+      {
+        "npc": "Hello there, [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "9ea2nP"
+              }
+            ]
+          },
+          {
+            "text": "What do you do?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WJxZYR"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "during-the-knight-s-sword-or-the-giant-dwarf": [
+      {
+        "npc": "Hello there, [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm in search of a quest.",
+            "condition": "If Shield of Arrav has not been started:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "xrQF-p"
+              }
+            ],
+            "id": "u2wgr_"
+          },
+          {
+            "text": "What do you know about the Imcando dwarves?",
+            "steps": [
+              {
+                "player": "What do you know about the Imcando dwarves?"
+              },
+              {
+                "npc": "The Imcando dwarves, you say? Let's see..."
+              },
+              {
+                "npc": "Ah, yes... For many hundreds of years, they were the world's most skilled smiths. They used secret smithing knowledge passed down from generation to generation."
+              },
+              {
+                "npc": "Unfortunately, about a century ago, the once thriving group was wiped out during the barbarian invasions of that time."
+              },
+              {
+                "npc": "I believe a few of them survived, but with the bulk of their population destroyed, their numbers dwindled even further. If any are left now, they'll no doubt keep to themselves."
+              },
+              {
+                "npc": "However, I have heard tales of their love for redberry pie. Perhaps one of those could convince one to reveal their true heritage."
+              },
+              {
+                "player": "So I just go around offering random dwarves redberry pie?"
+              },
+              {
+                "npc": "Well, not totally random. Apparently some of the surviving Imcando made a home for themselves near the cliffs on the Asgarnian southern peninsula. That would be a good place to start."
+              }
+            ]
+          },
+          {
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "TGItSU"
+              }
+            ]
+          },
+          {
+            "text": "What do you do?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Nd1Afe"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "during-the-lost-tribe": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about the brooch.",
+            "steps": [
+              {
+                "player": "What can you tell me about this brooch?"
+              },
+              {
+                "npc": "I've never seen that symbol before. Where did you find it?"
+              },
+              {
+                "player": "In a cave beneath Lumbridge."
+              },
+              {
+                "npc": "Very odd. Have you any idea how it got there?"
+              },
+              {
+                "player": "A goblin might have dropped it."
+              },
+              {
+                "npc": "I've never heard of a goblin carrying a brooch like this. But just a minute..."
+              },
+              {
+                "npc": "The other day I filed a book about ancient goblin tribes. It's somewhere at the west end of the library, I think. Maybe that will be of some use."
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have anything to trade?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "hrkxvV"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you do?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "sopis8"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "during-a-tail-of-two-cats": [
+      {
+        "npc": "Hello there, [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have a cat related question.",
+            "steps": [
+              {
+                "player": "I have a cat related question."
+              },
+              {
+                "npc": "Yes?"
+              },
+              {
+                "player": "Well..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player isn't wearing an amulet of catspeak:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Cat",
+                    "text": "Meow."
+                  },
+                  {
+                    "player": "Hmm... My cat is trying to say something but I'm not wearing the Amulet of Catspeak."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "PbZPpE"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing an amulet of catspeak:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Cat",
+                    "text": "Go on... ask him."
+                  },
+                  {
+                    "player": "Okay, okay. I'm on it."
+                  },
+                  {
+                    "player": "Do you know anything about Robert the Strong?"
+                  },
+                  {
+                    "npc": "Ah, Robert the Strong. There's some details on him in one of my books on the history of Gielinor. Let's see now..."
+                  },
+                  {
+                    "npc": "Fourth Age... Popular Lore... Ah here we are, Robert the Strong!"
+                  },
+                  {
+                    "npc": "'Not much is known about the hero called Robert the Strong. Most folk tales describe him as being taller than the tallest human and far stronger than the strongest warrior.'"
+                  },
+                  {
+                    "npc": "'He wields a six foot tall longbow and travels with his faithful panther, Odysseus. He is said to have had a personal crusade against the dragonkin...'"
+                  },
+                  {
+                    "player": "Dragonkin?"
+                  },
+                  {
+                    "npc": "I'm coming to that."
+                  },
+                  {
+                    "npc": "'The stories tell of the dragonkin being an intelligent race of bird-like creatures that walked rather than using their wings. They are said to be immortal, but cannot reproduce.'"
+                  },
+                  {
+                    "npc": "'Because of this, they became very afraid of death and shunned all other races.'"
+                  },
+                  {
+                    "npc": "'Some even say the dragonkin made corrupted versions of themselves for protection, what we now know as dragons. However, this has never been proven.'"
+                  },
+                  {
+                    "player": "Hmm... Doesn't sound very believable."
+                  },
+                  {
+                    "npc": "There's no doubt that some elements of these tales have been overexaggerated for storytelling purposes, but you should be careful of outright dismissing them."
+                  },
+                  {
+                    "npc": "Robert the Strong is a name that often comes up in stories from the Fourth Age. There's no reason not to believe that these folk tales are based on events that actually happened."
+                  },
+                  {
+                    "player": "Thank you Reldo, you've been most... helpful."
+                  },
+                  {
+                    "player": "That was a nice tale for mothers to tell their children, but I don't see how this helps Bob?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cat",
+                    "text": "Don't you think it's odd that no one knows where Bob came from?"
+                  },
+                  {
+                    "player": "I guess, but he's just a cat... right?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cat",
+                    "text": "I'd hoped you would've understood by now that there's more to cats than humans believe!"
+                  },
+                  {
+                    "player": "Ok, ok! I get your point, after all I'm being dragged round Gielinor by... my cat!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cat",
+                    "text": "I wouldn't say dragged... let's call it a partnership!"
+                  },
+                  {
+                    "player": "Ok!"
+                  },
+                  {
+                    "player": "So are you saying that Robert the Strong is... is..."
+                  },
+                  {
+                    "player": "Bob?!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Cat",
+                    "text": "Let's ask Bob!"
+                  },
+                  {
+                    "player": "Let's go!"
+                  }
+                ],
+                "id": "4opoGp"
+              }
+            ]
+          },
+          {
+            "text": "Do you have anything to trade?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "5B9jxW"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "N0tAkq"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "during-dragon-slayer-ii": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about Tristan.",
+            "steps": [
+              {
+                "player": "Hello. I was wondering if you could help me with something."
+              },
+              {
+                "npc": "What do you need?"
+              },
+              {
+                "player": "I'm looking for information on a Fourth Age hero. His name was Tristan and he fought alongside Robert the Strong."
+              },
+              {
+                "npc": "Ah you must mean Tristan Corvo. I can't remember anyone ever asking about him before, most prefer to hear about the bigger heroes like Arrav or Robert."
+              },
+              {
+                "player": "But you know about Tristan?"
+              },
+              {
+                "npc": "Oh yes. What was it you wanted to learn?"
+              },
+              {
+                "player": "I'd like to learn about his descendants. I know they lived in this area."
+              },
+              {
+                "npc": "Well we do have census records which date back to when the city was still called Avarrocka. I'm afraid we don't have anything from before that time though."
+              },
+              {
+                "player": "Hmmm. It might still be worth a look. Where can I find this information?"
+              },
+              {
+                "npc": "I have a book around here somewhere with all of the details, why don't you see if you can find it. It's red if I remember right."
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "6FrtF6"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "during-dragon-slayer-ii-talking-to-him-again": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about Tristan.",
+            "steps": [
+              {
+                "npc": "Have you found that book yet?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has found Varrock census records:",
+                "steps": [
+                  {
+                    "player": "I have it here."
+                  },
+                  {
+                    "npc": "Wonderful, let's have a look."
+                  },
+                  {
+                    "player": "So what does the book say?"
+                  },
+                  {
+                    "npc": "Okay let's see... The Corvo family... Here we are! According to this there was a family by the name of Corvo living in Avarrocka for most of the Fourth Age."
+                  },
+                  {
+                    "npc": "The last entry is from the year 1770 of the Fourth Age."
+                  },
+                  {
+                    "player": "What happened to them?"
+                  },
+                  {
+                    "npc": "Impossible to say for sure but it was around that time that many people left Misthalin to settle in Morytania. It's possible that the Corvo family was among them."
+                  },
+                  {
+                    "npc": "I'm afraid that's all the help I can provide. Port Phasmatys is where most of the Morytania settlers wound up. Perhaps you'll find what you're looking for there."
+                  },
+                  {
+                    "player": "Okay, thanks Reldo."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MMcZnd"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has found Varrock census records but dropped them:",
+                "steps": [
+                  {
+                    "player": "I found it but then I lost it."
+                  },
+                  {
+                    "npc": "You lost it?"
+                  },
+                  {
+                    "player": "I'm sorry. I'm a terrible person."
+                  },
+                  {
+                    "npc": "Well you'd better find it again. These books are very valuable."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "fGUfJ7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not found Varrock census records:",
+                "steps": [
+                  {
+                    "player": "Not yet."
+                  },
+                  {
+                    "npc": "I know it's around here somewhere. It's red if I remember right."
+                  }
+                ],
+                "id": "XGVHt6"
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "gQUjGD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "during-dragon-slayer-ii-talking-to-him-after-showing-him-the-varrock-census-records": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about Tristan.",
+            "steps": [
+              {
+                "player": "Hello."
+              },
+              {
+                "npc": "Did you have any luck finding the Corvo family?"
+              },
+              {
+                "player": "Not yet."
+              },
+              {
+                "npc": "Port Phasmatys might be a good place to look. It's where most of the Morytania settlers wound up."
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "99eo6P"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-beginner": [
+      {
+        "type": "condition",
+        "text": "If the player does not possess a strange device:",
+        "steps": [
+          {
+            "player": "Hi Reldo, I have come to ask you to help with something."
+          },
+          {
+            "npc": "What can I do for you [player name]?"
+          },
+          {
+            "type": "message",
+            "text": "You show Reldo your clue scroll.",
+            "id": "2s2rsk"
+          },
+          {
+            "npc": "Ah! Do you know about hot and cold clues?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, I do.",
+                "steps": [
+                  {
+                    "player": "Yes, I do."
+                  },
+                  {
+                    "npc": "Well then use this strange device to feel where your destination is and dig."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has enough inventory space:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "Strange device",
+                        "id": "lEgKeR"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "zgWBvO"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have enough inventory space:",
+                    "steps": [
+                      {
+                        "npc": "You should make some room for it before I can give you it."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "KKAQr6"
+                  }
+                ]
+              },
+              {
+                "text": "No, I don't.",
+                "steps": [
+                  {
+                    "player": "No, I don't."
+                  },
+                  {
+                    "npc": "Ah, you use a strange device to tell you how far away you are from the place you need to be. When you get to your destination you dig."
+                  },
+                  {
+                    "npc": "Well then use this strange device to feel where your destination is and dig."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has enough inventory space:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "Strange device",
+                        "id": "kcaNNn"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "ZMX-Uu"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have enough inventory space:",
+                    "steps": [
+                      {
+                        "npc": "You should make some room for it before I can give you it."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "B1FadV"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "FIfBFb"
+      },
+      {
+        "type": "condition",
+        "text": "If the player possesses a strange device:",
+        "steps": [
+          {
+            "player": "Hey Reldo, I have one of those clue scrolls again, do you have any advice?"
+          },
+          {
+            "npc": "That strange device will guide you in the same way the key did. Feel it, but be careful as it is very powerful. Good luck."
+          }
+        ],
+        "id": "suxUF1"
+      }
+    ]
+  },
+  "branches": {
+    "9ea2nP": [
+      {
+        "player": "Do you have anything to trade?"
+      },
+      {
+        "npc": "Only knowledge."
+      },
+      {
+        "player": "How much do you want for that then?"
+      },
+      {
+        "npc": "No, sorry, that was just my little joke. I'm not the trading type."
+      },
+      {
+        "player": "Ah well."
+      }
+    ],
+    "WJxZYR": [
+      {
+        "player": "What do you do?"
+      },
+      {
+        "npc": "I am the palace librarian."
+      },
+      {
+        "player": "Ah. That's why you're in the library then."
+      },
+      {
+        "npc": "Yes."
+      },
+      {
+        "npc": "Although I would probably be in here even if I didn't work here. I like reading. Someday I hope to catalogue all of the information stored in these books so all may read it."
+      }
+    ]
+  }
+}

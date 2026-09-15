@@ -1,0 +1,477 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, young [sir/lady/one]. Did you want to work on my farm?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about your farm.",
+            "steps": [
+              {
+                "player": "Tell me about your farm."
+              },
+              {
+                "npc": "I grow fruit here. Special fruit. It grows very fast, but it needs a lot of tending, otherwise it gets the blight and dies."
+              },
+              {
+                "npc": "These days I'm getting old and slow. You can see all the dead plants from where I've tried to farm them."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about yourself.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "i2xBL-"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like to work on your farm.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "LSKRzr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you any rewards?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "wPWKer"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Life here seems rather peaceful.",
+                    "condition": "If any vyre in Darkmeyer mentioned the \"Tithe Farm\" when spoken to:",
+                    "steps": [
+                      {
+                        "player": "Life here seems rather peaceful."
+                      },
+                      {
+                        "npc": "It is most of the time. Something very strange did happen recently though."
+                      },
+                      {
+                        "player": "Oh yeah? What happened?"
+                      },
+                      {
+                        "npc": "Well, you see... Two strange hooded figures recently visited the farm. They had an odd smell to them and kept their faces hidden."
+                      },
+                      {
+                        "npc": "They said they represented some client from the far east and that they wanted to inspect the farm. They had a good look around but seemed rather disappointed when they left."
+                      },
+                      {
+                        "player": "Oh... I'm sure it was nothing."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "SFCsHO"
+                      }
+                    ],
+                    "id": "FZq-Ot"
+                  },
+                  {
+                    "text": "I need to go.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "eZDAsc"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "npc": "I'm a fruit farmer. But now I'm a bit too old for that. Maybe I should try writing books again, like I did when I was younger."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "g3XeIJ"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to work on your farm.",
+            "steps": [
+              {
+                "player": "I'd like to work on your farm."
+              },
+              {
+                "npc": "Alright. Take a handful of seeds from the table, and head into the farm. When you've harvested some fruit, deposit it straight into the sacks."
+              },
+              {
+                "npc": "Remember, you have to water the plants at each stage, otherwise they die of the blight. Fertiliser makes them grow faster... or die faster if you don't water them."
+              },
+              {
+                "npc": "You'll gain a little extra experience if you grow enough of the fruit successfully."
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards?",
+            "steps": [
+              {
+                "player": "Have you any rewards?"
+              },
+              {
+                "type": "action",
+                "text": "(Game opens the rewards interface for the Tithe Farm.)",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "rewards interface for the Tithe Farm",
+                "id": "4pbBkQ"
+              }
+            ]
+          },
+          {
+            "text": "I need to go.",
+            "steps": [
+              {
+                "player": "I need to go."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "wearing-vyre-noble-clothing": [
+      {
+        "npc": "What on earth are you wearing?"
+      },
+      {
+        "player": "I'm here to do some tithing. Blood tithing."
+      },
+      {
+        "npc": "Well this is not that kind of farm! I only let normal people work here, so get lost!"
+      }
+    ],
+    "using-items-on-him-farming-manual": [
+      {
+        "type": "message",
+        "text": "You show the book to Farmer Gricoller.",
+        "id": "NUXX3r"
+      },
+      {
+        "npc": "Oh, yes, I remember writing that a long time ago. I told the publisher it should be in the public domain, so that everyone could share the knowledge."
+      },
+      {
+        "npc": "Of course, that was before I got so old and found I couldn't afford to hire workers for my farm. Oh well, I hope it helped someone. It wasn't much use to anyone around here."
+      }
+    ],
+    "using-items-on-him-kharedst-s-memoirs-with-lunch-by-the-lancalliums-included": [
+      {
+        "player": "Are you the 'Gric' this entry mentions?"
+      },
+      {
+        "type": "message",
+        "text": "You show him 'Lunch by the Lancalliums'.",
+        "id": "XAb0Er"
+      },
+      {
+        "npc": "Yes, I was friends with the last king, it was very sad when he died. The accusations aimed at poor little Rose were ridiculous."
+      },
+      {
+        "player": "Accusations?"
+      },
+      {
+        "npc": "It was all nonesense, the king died naturally! He was old, he'd been on the throne for at least 40 years."
+      },
+      {
+        "player": "Interesting, so he must have waited a while before having children?"
+      },
+      {
+        "npc": "Indeed, he married late and his wife... Unfortunately didn't survive bringing Rose into this world."
+      },
+      {
+        "player": "Oh right, have you seen Rose recently?"
+      },
+      {
+        "npc": "No... After the incident she was locked away. Most have forgotten about her now."
+      },
+      {
+        "player": "Thanks for the information, Gric. Perhaps it'll all make sense once I've found the other pages."
+      },
+      {
+        "npc": "Perhaps."
+      }
+    ],
+    "using-items-on-him-sulphurous-fertiliser": [
+      {
+        "npc": "Ah, fertiliser. I use a lot of that, but I get mine from Hosidius. If you want to give yours to them, go to their storehouse near the bank."
+      }
+    ],
+    "using-items-on-him-farmer-s-strawhat": [
+      {
+        "npc": "I'll give you 60 of my reward points for that."
+      },
+      {
+        "type": "message",
+        "text": "Farmer's strawhat: Exchange the item for 60 reward points?",
+        "id": "bLlnKg"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Farmer's strawhat",
+                "id": "JXUYSt"
+              },
+              {
+                "npc": "Thank you."
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-farmer-s-jacket": [
+      {
+        "npc": "I'll give you 120 of my reward points for that."
+      },
+      {
+        "type": "message",
+        "text": "Farmer's jacket: Exchange the item for 120 reward points?",
+        "id": "td7zXd"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Farmer's jacket",
+                "id": "rSTbQ8"
+              },
+              {
+                "npc": "Thank you."
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-farmer-s-shirt": [
+      {
+        "npc": "I'll give you 120 of my reward points for that."
+      },
+      {
+        "type": "message",
+        "text": "Farmer's shirt: Exchange the item for 120 reward points?",
+        "id": "QuPizS"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Farmer's shirt",
+                "id": "17AW9_"
+              },
+              {
+                "npc": "Thank you."
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-farmer-s-boro-trousers": [
+      {
+        "npc": "I'll give you 100 of my reward points for that."
+      },
+      {
+        "type": "message",
+        "text": "Farmer's boro trousers: Exchange the item for 100 reward points?",
+        "id": "FxxyXE"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Farmer's boro trousers",
+                "id": "tdNC5H"
+              },
+              {
+                "npc": "Thank you."
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-farmer-s-boots": [
+      {
+        "npc": "I'll give you 40 of my reward points for that."
+      },
+      {
+        "type": "message",
+        "text": "Farmer's boots: Exchange the item for 40 reward points?",
+        "id": "rvTeLp"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Accept",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Farmer's boots",
+                "id": "Peecg-"
+              },
+              {
+                "npc": "Thank you."
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-anything-other-than-the-above": [
+      {
+        "npc": "No thanks."
+      }
+    ],
+    "when-entering-the-tithe-farm": [
+      {
+        "type": "condition",
+        "text": "If the player is not carrying Golovanova seeds, Bologano seeds, or Logavano seeds:",
+        "steps": [
+          {
+            "npc": "Take some seeds from the table, otherwise you can't do any farming in there!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "v6gyIF"
+      },
+      {
+        "npc": "Hey, young [sir/lady/one], do you know what you're doing in there?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me how to grow these crops.",
+            "steps": [
+              {
+                "npc": "Grow those seeds in the patches. When you've harvested some fruit, deposit it straight into the sacks."
+              },
+              {
+                "npc": "Remember, you have to water the plants at each stage, otherwise they die of the blight. Fertiliser makes them grow faster... or die faster if you don't water them."
+              },
+              {
+                "npc": "You'll gain a little extra experience if you grow enough of the fruit successfully. So, are you ready to start?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "uDRPSN"
+              }
+            ]
+          },
+          {
+            "text": "Yes, I know what I'm doing.",
+            "steps": [
+              {
+                "player": "Yes, I know what I'm doing."
+              },
+              {
+                "type": "action",
+                "text": "The player enters the Tithe Farm",
+                "id": "olhsCK"
+              }
+            ]
+          },
+          {
+            "text": "I'm an expert - don't ask me this again.",
+            "steps": [
+              {
+                "player": "I'm an expert - don't ask me this again."
+              },
+              {
+                "npc": "Alright, young [sir/lady/one], I won't. Talk to me if you ever want a reminder."
+              },
+              {
+                "type": "action",
+                "text": "The player enters the Tithe Farm",
+                "id": "WkemAG"
+              }
+            ]
+          },
+          {
+            "text": "I don't want to do this anymore.",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "RHuK67"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

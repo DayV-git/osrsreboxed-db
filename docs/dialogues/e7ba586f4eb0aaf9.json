@@ -1,0 +1,188 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings friend. I am a manufacturer of leather."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I buy some leather then?",
+            "steps": [
+              {
+                "player": "Can I buy some leather then?"
+              },
+              {
+                "npc": "I make leather from animal hides. Bring me some cowhides and one gold coin per hide, and I'll tan them into soft leather for you."
+              }
+            ]
+          },
+          {
+            "text": "Leather is rather weak stuff.",
+            "steps": [
+              {
+                "player": "Leather is rather weak stuff."
+              },
+              {
+                "npc": "Normal leather may be quite weak, but it's very cheap - I make it from cowhides for only 1 gp per hide - and it's so easy to craft that anyone can work with it."
+              },
+              {
+                "npc": "Alternatively you could try hard leather. It's not so easy to craft, but I only charge 3 gp per cowhide to prepare it, and it makes much sturdier armour."
+              },
+              {
+                "npc": "I can also tan snake hides and dragonhides, suitable for crafting into the highest quality armour for rangers."
+              },
+              {
+                "player": "Thanks, I'll bear it in mind."
+              }
+            ]
+          },
+          {
+            "text": "What can you tell me about Ali Morrisane?",
+            "condition": "With Rogue Trader completed?{{Fact}}",
+            "steps": [
+              {
+                "player": "What can you tell me about Ali Morrisane?"
+              },
+              {
+                "npc": "I wouldn't mind him setting up shop, but he's brought others in."
+              },
+              {
+                "npc": "Two of them came here and said they were going to put me out of business if I didn't listen to them!"
+              },
+              {
+                "npc": "Hah, as if they think they could threaten me with a hammer and a pair of scissors."
+              },
+              {
+                "player": "What will you do about the threats?"
+              },
+              {
+                "npc": "The other shopkeepers and I won't give in to their threats. Osman's also told us that he'll make sure we're protected."
+              },
+              {
+                "npc": "I'll keep tanning leather for people like you to make into clothes and armour."
+              }
+            ],
+            "id": "n1j3th"
+          }
+        ]
+      }
+    ],
+    "with-one-or-more-hides-in-the-inventory": [
+      {
+        "npc": "Greetings friend. I am a manufacturer of leather."
+      },
+      {
+        "type": "condition",
+        "text": "If one hide in the inventory:",
+        "steps": [
+          {
+            "npc": "I see you have brought me a hide. Would you like me to tan it for you?"
+          }
+        ],
+        "id": "uxVVkN"
+      },
+      {
+        "type": "condition",
+        "text": "If more than one hide in the inventory:",
+        "steps": [
+          {
+            "npc": "I see you have brought me some hides. Would you like me to tan them for you?"
+          }
+        ],
+        "id": "lRQvTy"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Tanning",
+                "id": "NSq585"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Very well, [sir/madam], as you wish."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-ellis-using-any-untanned-leather": [
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Tanning",
+        "id": "zKanDF"
+      }
+    ],
+    "using-items-on-ellis-using-any-tanned-leather": [
+      {
+        "npc": "Er... I have no use for that, I make the stuff!"
+      }
+    ],
+    "using-items-on-ellis-using-any-other-item": [
+      {
+        "npc": "Er... Thanks, but no thanks!"
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy clue scroll",
+            "id": "VGEUjF"
+          },
+          {
+            "type": "message",
+            "text": "You've been given another clue!",
+            "id": "oQgcjb"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YRUSO5"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy reward casket",
+            "id": "2B2ugB"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "1mmDZP"
+          }
+        ],
+        "id": "7DrVrt"
+      }
+    ]
+  }
+}

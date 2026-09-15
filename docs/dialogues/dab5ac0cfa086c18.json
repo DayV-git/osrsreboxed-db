@@ -1,0 +1,100 @@
+{
+  "default": "dialogue",
+  "variants": {
+    "dialogue": [
+      {
+        "npc": "Hello, thanks for rescuing me. Is there anything I can do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How did you end up down here?",
+            "steps": [
+              {
+                "player": "How did you end up down here?"
+              },
+              {
+                "npc": "I travelled down here with my friend Olbertus in search for treasure. When we didn't find anything except his strange structure, he decided to prise off a coin from the stone relief in the other room. Before I knew it the entrance had closed and I was stuck down here."
+              },
+              {
+                "npc": "I tried calling out to Olbertus but he must not have heard me. I don't know what would've happened if you hadn't shown up and saved me."
+              },
+              {
+                "player": "Well, it turns out Olbertus was corrupted by the coin he stole, I managed to get the coin from him and returned it to the relief, he should be fine now."
+              },
+              {
+                "npc": "That's good news at least."
+              },
+              {
+                "npc": "I am quite the proficient tanner, for helping me escape I will offer to tan hides for you. However, they'll be at a slightly higher cost for the convenience of being closer to the source."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "KnKjMQ"
+              }
+            ]
+          },
+          {
+            "text": "Now that you're free, why don't you leave?",
+            "steps": [
+              {
+                "player": "Now that you're free, why don't you leave?"
+              },
+              {
+                "npc": "To be honest, I tried to set up a Tannery on the surface but business was poor, there aren't a lot of dragons in Kourend."
+              },
+              {
+                "npc": "I even heard a rumour that people have learned to tan hides with magic. It's always the same! Magic users stealing jobs from honest tradesman!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on the Lunar spellbook and can cast Tan Leather:",
+                "steps": [
+                  {
+                    "player": "Erm... Yeah! Those magic users..."
+                  }
+                ],
+                "id": "k0R9ns"
+              },
+              {
+                "type": "condition",
+                "text": "If the player cannot cast Tan Leather or is not on the Lunar spellbook:",
+                "steps": [
+                  {
+                    "player": "Oh, wow! I can see why that wouldn't help business."
+                  }
+                ],
+                "id": "OcWIjE"
+              },
+              {
+                "npc": "Anyway, I figured if I was closer to the source of the hides then I might get more business. So I'll try setting up shop down here for a while."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "MQ9ARj"
+              }
+            ]
+          },
+          {
+            "text": "Can you tan some hides for me?",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Tanning",
+                "id": "RkOtNW"
+              }
+            ]
+          },
+          {
+            "text": "I'm good thanks.",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

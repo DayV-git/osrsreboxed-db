@@ -1,0 +1,241 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Sorry, I can't chat while I'm on duty. I have to keep alert."
+      },
+      {
+        "type": "jump",
+        "reference": "other",
+        "id": "sq-AhC"
+      }
+    ],
+    "sophanem-bank": [
+      {
+        "type": "line",
+        "speaker": "Sophanem guard",
+        "text": "How can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing down here?",
+            "steps": [
+              {
+                "player": "What are you doing down here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sophanem guard",
+                "text": "We're here to guard the bank and make sure no one tries anything."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "18OBkJ"
+              }
+            ]
+          },
+          {
+            "text": "Do you have a tinderbox?",
+            "steps": [
+              {
+                "player": "Do you have a tinderbox?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a tinderbox:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sophanem guard",
+                    "text": "I have one I could sell you for 50 coins."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I'll take it.",
+                        "steps": [
+                          {
+                            "player": "I'll take it."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have 50 coins:",
+                            "steps": [
+                              {
+                                "player": "Actually, I don't seem to have enough money on me."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "vfn6Zm"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has 50 coins:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "The guard hands you a tinderbox in exchange for 50 coins.",
+                                "id": "5mF9rl"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "e8_z0u"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Sorry, that's too expensive.",
+                        "steps": [
+                          {
+                            "player": "Sorry, that's too expensive."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Sophanem guard",
+                            "text": "No problem. Come back if you change your mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "tREXKm"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a tinderbox:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Sophanem guard",
+                    "text": "I do, but I'd like to hold on to it for now."
+                  },
+                  {
+                    "player": "That's okay; I've one with me anyway."
+                  }
+                ],
+                "id": "aPBeLE"
+              }
+            ]
+          },
+          {
+            "text": "Do you have a torch?",
+            "steps": [
+              {
+                "player": "Do you have a torch?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sophanem guard",
+                "text": "I'll sell you an unlit one for 200 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'll take it.",
+                    "steps": [
+                      {
+                        "player": "I'll take it."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 200 coins:",
+                        "steps": [
+                          {
+                            "player": "Actually, I don't seem to have enough money on me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "uVRbPq"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 200 coins:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The guard hands you an unlit torch in exchange for 200 coins.",
+                            "id": "cnHVxj"
+                          }
+                        ],
+                        "id": "pnDEHH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sorry, that's too expensive.",
+                    "steps": [
+                      {
+                        "player": "Sorry, that's too expensive."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Sophanem guard",
+                        "text": "No problem. Come back if you change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How come you're not spotty?",
+            "steps": [
+              {
+                "player": "How come you're not spotty?"
+              },
+              {
+                "npc": "Ah, the pox. We weren't here when the outbreak took place. We were out of town trying to catch an antiques thief called Simon Templeton. We've only just got back."
+              },
+              {
+                "player": "Aren't you afraid you'll fall ill as well?"
+              },
+              {
+                "npc": "The only reason we've been let back into the city is because the High Priest believes the pox isn't contagious."
+              },
+              {
+                "npc": "Besides, Sophanem is my home. It will take a lot more than the threat of a few spots to keep me away."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "xMf3h2"
+              }
+            ]
+          },
+          {
+            "text": "You can't. I'd better go.",
+            "steps": [
+              {
+                "player": "You can't. I'd better go."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "entering-the-sophanem-dungeon": [
+      {
+        "type": "line",
+        "speaker": "Bank Guard",
+        "text": "Be careful down there!"
+      }
+    ]
+  }
+}

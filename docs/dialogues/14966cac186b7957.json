@@ -1,0 +1,262 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Greetings adventurer, what can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "The name's Porkai, I look after the village canoe station."
+              },
+              {
+                "player": "Interesting, why does the village have a canoe station?"
+              },
+              {
+                "npc": "So that adventurers, such as yourself, can travel the river. Want to know more about canoes?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "q_WyXo"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No thanks..."
+                      },
+                      {
+                        "npc": "No problem, come back anytime."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you teach me about canoes?",
+            "steps": [
+              {
+                "player": "Could you teach me about canoes?",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "With 1-11 Woodcutting:",
+                    "steps": [
+                      {
+                        "npc": "Well you do not look like you have the right skills to make a canoe at the moment. Try using your axe a bit more first."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "wGCew0"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "With 12-26 Woodcutting:",
+                    "steps": [
+                      {
+                        "npc": "Certainly, swing your axe at this tree here. Then cut it into a canoe, easy stuff."
+                      },
+                      {
+                        "npc": "Unfortunately, you will not be able to carve it into a more reliable canoe right now."
+                      },
+                      {
+                        "player": "Why not?"
+                      },
+                      {
+                        "npc": "By looking at you and your posture holding your axe, you don't have the right skills for that. You will only be able to go to the next stop."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "q3IYJA"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "With 27-41 Woodcutting:",
+                    "steps": [
+                      {
+                        "npc": "Certainly, swing your axe at this tree here. Then cut it into a canoe, easy stuff."
+                      },
+                      {
+                        "npc": "By the looks of it, you can make a reasonable canoe with your skills. You'll be able to make a dugout!"
+                      },
+                      {
+                        "player": "How far will I be able to go in a dugout canoe?"
+                      },
+                      {
+                        "npc": "Two stops sounds about right before it sinks."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "FJzvLE"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "With 42-56 Woodcutting:",
+                    "steps": [
+                      {
+                        "npc": "Certainly, swing your axe at this tree here. Then cut it into a canoe, easy stuff."
+                      },
+                      {
+                        "npc": "I see, you seem like the type of adventurer who could make a very nice canoe."
+                      },
+                      {
+                        "player": "Really, how far will I be able to go?"
+                      },
+                      {
+                        "npc": "A decent distance, but not the whole river."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Pg2uah"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "With 57-99 Woodcutting:",
+                    "steps": [
+                      {
+                        "npc": "Certainly, swing your axe at this tree here. Then cut it into a canoe, easy stuff."
+                      },
+                      {
+                        "npc": "Wow, you seem knowledgeable about the woods, are you a gnome yourself? All joking aside, you will be able to craft the best canoes to go anywhere down the river!"
+                      },
+                      {
+                        "player": "Amazing, thank you."
+                      }
+                    ],
+                    "id": "pN7jdx"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you hold onto my axe?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If they're not already holding onto an axe:",
+                "steps": [
+                  {
+                    "player": "Can you hold onto my axe?"
+                  },
+                  {
+                    "npc": "I sure can, you can even use the axe to make a canoe while I hold onto it for you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "fIkiAe"
+              },
+              {
+                "type": "condition",
+                "text": "If they're already holding onto an axe:",
+                "steps": [
+                  {
+                    "npc": "I already have you're axe, would you like it back?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "player": "Yes, I would like my axe back."
+                          },
+                          {
+                            "npc": "Here's your axe."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "player": "No, hold onto it for me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "glsAW1"
+              },
+              {
+                "type": "condition",
+                "text": "If you don't have a valid axe to give:",
+                "steps": [
+                  {
+                    "npc": "I could, but you don't have an axe that you have the Woodcutting level to use."
+                  }
+                ],
+                "id": "89273U"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "store-axe": [
+      {
+        "type": "condition",
+        "text": "If they're not already holding onto an axe:",
+        "steps": [
+          {
+            "npc": "I'll hold onto that axe for you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "hUi3L8"
+      },
+      {
+        "type": "condition",
+        "text": "If they're already holding onto an axe:",
+        "steps": [
+          {
+            "npc": "Here's your axe."
+          }
+        ],
+        "id": "Ltwb05"
+      }
+    ]
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't learned how to make super antifire potions:",
+        "steps": [
+          {
+            "npc": "Hello. Interested in learning about some potions?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "Xy8g31"
+          }
+        ],
+        "id": "CSulzb"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has learned how to make super antifire potions:",
+        "steps": [
+          {
+            "npc": "Hello. Need anything?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "iIAiyz"
+          }
+        ],
+        "id": "1ijFhQ"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's trade.",
+            "steps": [
+              {
+                "player": "Let's trade."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Myths' Guild Herbalist",
+                "id": "cxsBNW"
+              }
+            ]
+          },
+          {
+            "text": "What kind of potions?",
+            "condition": "If the player hasn't learned how to make super antifire potions yet:",
+            "steps": [
+              {
+                "player": "What kind of potions?"
+              },
+              {
+                "npc": "Here's one I think you'll like. I found this recipe whilst exploring some old frozen ruins."
+              },
+              {
+                "type": "message",
+                "text": "The herbalist teaches you how to make Super antifire potions.",
+                "id": "uBkQU3"
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "npc": "Don't mention it. Would you like to buy any herblore supplies?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Myths' Guild Herbalist",
+                        "id": "MWVBz6"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm good, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "SibOy9"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "5Dts1M"
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "npc": "Here, solve this."
+      },
+      {
+        "type": "message",
+        "text": "Primula hands you a [light/puzzle] box!",
+        "id": "r2f3Cf"
+      }
+    ],
+    "treasure-trails-master-talking-again": [
+      {
+        "type": "condition",
+        "text": "If the puzzle is not solved:",
+        "steps": [
+          {
+            "npc": "That doesn't look solved to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "FO5m0g"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle is solved:",
+        "steps": [
+          {
+            "npc": "Well done [player name]. Here you go."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a [new clue/casket]",
+            "id": "WlsZrI"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a [new clue/casket]!",
+            "id": "PJh57C"
+          }
+        ],
+        "id": "WBf6El"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1862 @@
+{
+  "default": "standard-dialogue-initial-dialogue",
+  "variants": {
+    "standard-dialogue-initial-dialogue": [
+      {
+        "player": "Excuse me, what is this place?"
+      },
+      {
+        "npc": "What is this place? This is Soul Wars, a glorious battleground where you must fight to crush the souls of your enemies!"
+      },
+      {
+        "player": "Really? Are souls easy to crush?"
+      },
+      {
+        "npc": "Easier than you'd imagine."
+      },
+      {
+        "player": "I see. So how does it all work?"
+      },
+      {
+        "npc": "I can give you a demonstration if you're interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's do it.",
+            "steps": [
+              {
+                "player": "Let's do it."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is poisoned or envenomed:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "X1ax1V"
+                  }
+                ],
+                "id": "aqj0hb"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is diseased and not poisoned or envenomed:",
+                "steps": [
+                  {
+                    "npc": "Hmm, you don't look so good. You should cure yourself of disease before I give you the demonstration."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OePI_h"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has restricted items:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "ChaAJA"
+                  }
+                ],
+                "id": "LOSpYY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is skulled on a deadman world:",
+                "steps": [
+                  {
+                    "npc": "Hmm, it looks like you're not actually ready for a demonstration right now."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You are not allowed to take part in the Soul Wars demonstration while skulled on a Deadman mode world.",
+                    "id": "qjyAhP"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "_TycmY"
+              },
+              {
+                "npc": "Very well. Let's get started."
+              },
+              {
+                "type": "action",
+                "text": "Nomad casts a tele-other spell on the player to the demonstration area.",
+                "id": "z0uIHk"
+              }
+            ]
+          },
+          {
+            "text": "Actually, I'm good.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pS0-Ij"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-pre-demonstration-dialogue": [
+      {
+        "npc": "Ah, you again. Are you ready for that demonstration?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's do it.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ZTtby7"
+              }
+            ]
+          },
+          {
+            "text": "I'll pass.",
+            "steps": [
+              {
+                "player": "I'll pass."
+              },
+              {
+                "npc": "So be it. You know where to find me if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-post-demonstration-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player is not on a Soul Wars world:",
+        "steps": [
+          {
+            "npc": "Ah, you again. If you're here to crush some souls then I'm afraid you won't be able to. I can still help with anything else you need though."
+          },
+          {
+            "type": "message",
+            "text": "The Soul Wars minigame is not enabled on this world. You can switch to a Soul Wars world by using the World Switcher in the Logout Menu.",
+            "id": "gHK7S1"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "-T0yAo"
+          }
+        ],
+        "id": "fI_Hnt"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a Soul Wars world:",
+        "steps": [
+          {
+            "npc": "Ah, you again. Are you here to crush some souls? Just head into a waiting area if you want to get started."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "8a5qRG"
+          }
+        ],
+        "id": "taPrJt"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me more about Soul Wars?",
+            "steps": [
+              {
+                "player": "Can you tell me more about Soul Wars?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not on a Soul Wars world:",
+                "steps": [
+                  {
+                    "npc": "Well I've given you the demonstration. Best thing now is to head into a waiting area and get started. That said, you won't be able to do that at the moment."
+                  },
+                  {
+                    "npc": "I can give you the demonstration again if you want? I also have a book that might be useful."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Uksi5l"
+                  }
+                ],
+                "id": "EI48Pa"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a Soul Wars world:",
+                "steps": [
+                  {
+                    "npc": "Well I've given you the demonstration. Best thing now is to head into a waiting area and get started. That said, I can give you the demonstration again if you want? I also have a book that might be useful."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "VgKglJ"
+                  }
+                ],
+                "id": "paCxNC"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you give me the demonstration again?",
+                    "steps": [
+                      {
+                        "player": "Could you give me the demonstration again?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is poisoned or envenomed:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "X1ax1V"
+                          }
+                        ],
+                        "id": "Y43uBV"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is diseased and not poisoned or envenomed:",
+                        "steps": [
+                          {
+                            "npc": "Hmm, you're not looking so great. You should cure yourself of disease before I give you the demonstration."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "E_p4p3"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has restricted items:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "ChaAJA"
+                          }
+                        ],
+                        "id": "T_xXt1"
+                      },
+                      {
+                        "npc": "Very well. Let's get started."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Nomad casts a tele-other spell on the player to the demonstration area.",
+                        "id": "baM0Gb"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could I have the book?",
+                    "steps": [
+                      {
+                        "player": "Could I have the book?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a Soul wars guide in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "It looks like you already have one."
+                          },
+                          {
+                            "player": "Oh, alright then."
+                          },
+                          {
+                            "npc": "Is there something else you need?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "Efi2V_"
+                          }
+                        ],
+                        "id": "H9AjBg"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have a Soul wars guide in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "Of course. Here you go."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "Soul wars guide",
+                            "id": "7v95Vz"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Nomad gives you a book.",
+                            "id": "EI_HSP"
+                          },
+                          {
+                            "npc": "Now, is there something else you need?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "kTRWHX"
+                          }
+                        ],
+                        "id": "vaY1V7"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can we talk about rewards?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "mOfsJk"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can we talk about ammunition?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "cOKAyi"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'm good.",
+                            "steps": [
+                              {
+                                "player": "I'm good."
+                              },
+                              {
+                                "npc": "So be it."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can we talk about rewards?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "xt-hxx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can we talk about ammunition?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "1yqBQT"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I'm good.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "pS0-Ij"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can we talk about rewards?",
+            "steps": [
+              {
+                "player": "Can we talk about rewards?"
+              },
+              {
+                "npc": "Certainly! I sell various rewards to those who have earned Zeal from Soul Wars battles."
+              },
+              {
+                "player": "What kinds of rewards are there?"
+              },
+              {
+                "npc": "I can offer you some of my knowledge in various skills, I can use my abilities to imbue some of your items with additional power, and I also have some items I have found on my travels."
+              },
+              {
+                "npc": "Would you like to see?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "player": "Yes please."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Soul Wars Reward Shop",
+                        "id": "EEwM9J"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      },
+                      {
+                        "npc": "Very well. Is there something else you need?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can you tell me more about Soul Wars?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "WR8Ke6"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can we talk about ammunition?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "uvvZn6"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'm good.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "vM1fEu"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can we talk about ammunition?",
+            "steps": [
+              {
+                "player": "Can we talk about ammunition?"
+              },
+              {
+                "type": "condition",
+                "text": "If Nomad has enchanted Soul Wars capes with an Ava's assembler or assembler max cape:",
+                "steps": [
+                  {
+                    "npc": "How are the new capes working out for you?"
+                  },
+                  {
+                    "player": "Just fine, thanks!"
+                  },
+                  {
+                    "npc": "Great, now get back in there and crush some souls!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Can you tell me more about Soul Wars?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "MAcXGu"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Can we talk about rewards?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "pl8TSj"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Yes, right away!",
+                        "steps": [
+                          {
+                            "player": "Yes, right away!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zRhUQz"
+              },
+              {
+                "type": "condition",
+                "text": "If Nomad has enchanted Soul Wars capes with an Ava's accumulator or its variants:",
+                "steps": [
+                  {
+                    "npc": "How are the new capes working out for you?"
+                  },
+                  {
+                    "player": "Not bad. But I was wondering if they could be improved any further?"
+                  },
+                  {
+                    "npc": "Well if you show me a better device I might be able to sort something out for you."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has an Ava's accumulator or one of its variants, or an Ava's attractor in the player's inventory:",
+                    "steps": [
+                      {
+                        "player": "How about this one?"
+                      },
+                      {
+                        "npc": "You've already shown me this dead chicken. I don't really need to see it again. I might be able to do something if you show me a better one, though."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can you tell me more about Soul Wars?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "3X5DTc"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can we talk about rewards?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "xZNVP0"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Fair enough.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "EyKZ4c"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "Wg-KuO"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has an Ava's assembler or or its variant in the player's inventory:",
+                    "steps": [
+                      {
+                        "player": "How about this one?"
+                      },
+                      {
+                        "npc": "Hmm, very interesting. Let's see what we can do."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Nomad mutters an incantation and enchants your Soul Wars capes!",
+                        "id": "YhCVfx"
+                      },
+                      {
+                        "npc": "There we go! It's not quite the same, but it should work out just fine for you."
+                      },
+                      {
+                        "npc": "Bear in mind that the enchantment is bound to my power and so will only work for you while you are in a Soul Wars battle."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can you tell me more about Soul Wars?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "Cd6qUk"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can we talk about rewards?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "1g7xQx"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Great! Thanks for the help!",
+                            "steps": [
+                              {
+                                "player": "Great! Thanks for the help!"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "qeJuz1"
+                  }
+                ],
+                "id": "x45tmj"
+              },
+              {
+                "type": "condition",
+                "text": "If Nomad has enchanted Soul Wars capes with an Ava's attractor:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "T4MmQz"
+                  }
+                ],
+                "id": "fwtcbZ"
+              },
+              {
+                "type": "condition",
+                "text": "If Nomad has not enchanted Soul Wars capes with any of Ava's devices and the player has completed the Animal Magnetism quest:",
+                "steps": [
+                  {
+                    "npc": "I don't really have time to discuss the finer points of Fletching, you know."
+                  },
+                  {
+                    "player": "No, not like that! You see, I helped create a device which returns my ammunition."
+                  },
+                  {
+                    "npc": "Really? If you could show it to me, I might be able to sort something out for you."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Can you tell me more about Soul Wars?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "ZSQo4j"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Can we talk about rewards?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "Bzuoch"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I see. I'll be back later.",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "WYaRyY"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "STGN7X"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed the Animal Magnetism quest:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "xLrsMw"
+                  }
+                ],
+                "id": "oKKo2z"
+              }
+            ]
+          },
+          {
+            "text": "I don't want to talk to you.",
+            "steps": [
+              {
+                "player": "I don't want to talk to you."
+              },
+              {
+                "npc": "So be it. You know where to find me if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "soul-wars-demonstration-dialogue": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Blue cape (Soul Wars), Blue icon",
+        "id": "uNubFr"
+      },
+      {
+        "type": "action",
+        "text": "The player's run energy is restored to full.",
+        "id": "ZoE0oU"
+      },
+      {
+        "type": "action",
+        "text": "The player is seen wearing the blue cape and blue icon.",
+        "id": "Nt6AGK"
+      },
+      {
+        "player": "Huh?"
+      },
+      {
+        "type": "action",
+        "text": "The player turns to face the Avatar of Creation.",
+        "id": "tJ7Ffq"
+      },
+      {
+        "player": "Yikes!"
+      },
+      {
+        "type": "action",
+        "text": "The player performs a panic emote.",
+        "id": "UzOSsu"
+      },
+      {
+        "player": "Oh boy."
+      },
+      {
+        "type": "action",
+        "text": "The player runs towards Nomad automatically.",
+        "id": "4BgcGr"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-introduction": [
+      {
+        "npc": "Welcome to Soul Wars! Let's get started."
+      },
+      {
+        "player": "So, what's this place all about?"
+      },
+      {
+        "npc": "To the south you will have seen an avatar. You must fight to protect your team's avatar, and defeat the opposing team's avatar."
+      },
+      {
+        "player": "Are you crazy? Have you seen the size of it?"
+      },
+      {
+        "npc": "You're here to fight, not whine."
+      },
+      {
+        "player": "But how am I supposed to take on one of those?"
+      },
+      {
+        "npc": "By capturing the Soul Obelisk, which lies at the centre of the battleground, and offering it soul fragments."
+      },
+      {
+        "npc": "Let's head towards the Obelisk now. I can point out some of the important landmarks on the way. Meet me to the north when you are ready to learn more."
+      },
+      {
+        "type": "action",
+        "text": "The screen fades to black and Nomad teleports northwards.",
+        "id": "Jhs4fK"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-introduction-attempting-to-pass-through-the-blue-or-neutral-barriers": [
+      {
+        "npc": "Hey! Where are you going?"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-introduction-attempting-to-pass-through-the-red-barrier": [
+      {
+        "type": "message",
+        "text": "Only the red team may enter this graveyard.",
+        "id": "BLDmC2"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-introduction-attempting-to-take-items-from-tables": [
+      {
+        "npc": "Hey! You don't need those. You're not in a real battle yet."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-introduction-attempting-to-attack-another-player-s-zimberfizz-or-before-instructed-by-nomad": [
+      {
+        "type": "message",
+        "text": "You've got no reason to bother that poor imp.",
+        "id": "I3qsaw"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-introduction-attempting-to-attack-any-opponents": [
+      {
+        "npc": "Hey! Don't attack those. You're not in a real battle yet."
+      },
+      {
+        "npc": "To continue the demonstration, come speak to me. I'm by the avatar in the south-west of the battleground."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-introduction-stepping-inside-the-western-neutral-graveyard": [
+      {
+        "npc": "This is one of the graveyards that your team can capture."
+      },
+      {
+        "npc": "For the purposes of this demonstration, however, I have kept it inactive."
+      },
+      {
+        "npc": "To continue the demonstration, come speak to me. I'm by the avatar in the south-west of the battleground."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-supplies": [
+      {
+        "npc": "You might find this little area behind me useful for defending your avatar. There's one in the other team's base, too."
+      },
+      {
+        "npc": "During battle, you can gather supplies here to aid you and your teammates."
+      },
+      {
+        "npc": "The Soul Obelisk is just a little way from here. Let's continue on; I'll meet you to the east."
+      },
+      {
+        "type": "action",
+        "text": "The screen fades to black and Nomad teleports eastwards.",
+        "id": "Lz5vNg"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-souls": [
+      {
+        "npc": "Now, to have a chance against an avatar, you are going to need souls. Lots of souls."
+      },
+      {
+        "player": "What am I going to do with souls?"
+      },
+      {
+        "npc": "The Soul Obelisk is immensely powerful and, by channelling souls into it, you can weaken the enemy avatar."
+      },
+      {
+        "player": "How does that work?"
+      },
+      {
+        "npc": "All I know is that it does, and that you should do it. Lots."
+      },
+      {
+        "player": "So, where do I get these souls from?"
+      },
+      {
+        "npc": "You can kill the souls that inhabit the arena ruins and harvest their soul fragments."
+      },
+      {
+        "npc": "For the purposes of this demonstration however, we will use my minion Zimberfizz."
+      },
+      {
+        "npc": "Zimberfizz! Heel!"
+      },
+      {
+        "type": "action",
+        "text": "Zimberfizz appears.",
+        "id": "y7hTAp"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "suvbZ_"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-souls-zimberfizz-soul-fragment": [
+      {
+        "npc": "When you kill a creature in Soul Wars, they will leave a soul fragment behind, which you can use to charge the Soul Obelisk."
+      },
+      {
+        "npc": "Zimberfizz has such a soul fragment. Why don't you kill him and take it?"
+      },
+      {
+        "player": "You want me to kill him?"
+      },
+      {
+        "npc": "Yes!"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-souls-talking-to-nomad-before-killing-zimberfizz": [
+      {
+        "npc": "Come on! Kill him already and get that soul fragment."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-souls-talking-to-nomad-with-the-soul-fragment": [
+      {
+        "npc": "Good job! Let's carry on to the Soul Obelisk and channel this soul fragment into it. It's just to the east, over a bridge and on a small island."
+      },
+      {
+        "type": "action",
+        "text": "The screen fades to black and Nomad teleports eastwards.",
+        "id": "FK4dBU"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-souls-talking-to-nomad-without-the-soul-fragment": [
+      {
+        "npc": "Good job! Now, you've got that soul fragment, right?"
+      },
+      {
+        "player": "About that..."
+      },
+      {
+        "npc": "You've lost it? You're lucky you're not in a real battle yet!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "soul fragment",
+            "id": "cIVLsO"
+          },
+          {
+            "npc": "Here, have this one. Just look after it this time."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "LqsmDY"
+          }
+        ],
+        "id": "4q1ZtN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's inventory is full:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "7XfZkT"
+          }
+        ],
+        "id": "KZVdv3"
+      },
+      {
+        "player": "I'll try..."
+      },
+      {
+        "npc": "Now! Let's carry on to the Soul Obelisk and channel this soul fragment into it. It's just to the east, over a bridge and on a small island."
+      },
+      {
+        "type": "action",
+        "text": "The screen fades to black and Nomad teleports eastwards.",
+        "id": "ZImUxD"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-the-soul-obelisk-talking-to-nomad-without-the-soul-fragment": [
+      {
+        "npc": "Here we are at the Soul Obelisk. Now, you've got that soul fragment, right?"
+      },
+      {
+        "player": "About that..."
+      },
+      {
+        "npc": "You've lost it? You're lucky you're not in a real battle yet!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "soul fragment",
+            "id": "IW6Dgo"
+          },
+          {
+            "npc": "Here, have this one. Just look after it this time."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "WZYTD6"
+          }
+        ],
+        "id": "auZ0qX"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's inventory is full:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "7XfZkT"
+          }
+        ],
+        "id": "LxrXZg"
+      },
+      {
+        "player": "I'll try..."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-the-soul-obelisk-talking-to-nomad-with-the-soul-fragment": [
+      {
+        "npc": "Here we are at the Soul Obelisk. Now, to reap the full benefit of the soul fragment, you will need to first be in control of the Obelisk."
+      },
+      {
+        "player": "How do I do that?"
+      },
+      {
+        "npc": "Various areas of the battleground can come under your team's control. To gain control, you must have more team members than the opposing team in these areas."
+      },
+      {
+        "npc": "If you outnumber the enemy, you will gradually take control. Let's try it out now."
+      },
+      {
+        "npc": "We shall use Zimberfizz to represent an enemy team member."
+      },
+      {
+        "npc": "Minion! Heel!"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "y0HAMd"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-the-soul-obelisk-zimberfizz-returns": [
+      {
+        "type": "action",
+        "text": "Zimberfizz appears again.",
+        "id": "Wu5WQF"
+      },
+      {
+        "npc": "Come on, give him a good kick."
+      },
+      {
+        "player": "I thought he was dead? Didn't we kill him earlier?"
+      },
+      {
+        "npc": "Ha! He wishes! No, his service to me is far from over."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-area-control-after-killing-zimberfizz": [
+      {
+        "type": "action",
+        "text": "The player automatically runs towards Nomad and starts talking to Nomad.",
+        "id": "asnspI"
+      },
+      {
+        "player": "Poor little guy."
+      },
+      {
+        "npc": "Ha! I'm sure he loves the attention, right Zimberfizz?"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "F0iHhx"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-area-control-zimberfizz-s-re-appearance": [
+      {
+        "type": "action",
+        "text": "Zimberfizz appears yet again.",
+        "id": "ucHUY3"
+      },
+      {
+        "npc": "Right, now that Zimberfizz is no longer in the Obelisk's capturable area, you outnumber the enemy! The Soul Obelisk will now begin to fall under your control."
+      },
+      {
+        "type": "action",
+        "text": "Note the Obelisk's progress bar in the top-left of your screen. As you gain control over an area, this bar will fill with the colour of your team.",
+        "id": "4gLfDu"
+      },
+      {
+        "type": "action",
+        "text": "Once the bar is filled with your team's colour, you gain control of the area.",
+        "id": "SXGw3u"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "zeMySf"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-area-control-area-control-continued": [
+      {
+        "type": "action",
+        "text": "The neutral Obelisk is taken control by blue team.",
+        "id": "7pBNEq"
+      },
+      {
+        "type": "action",
+        "text": "You now have control over the Soul Obelisk; it has taken on your team's colour as a result. This is also shown by the Obelisk icon in the top-left of your screen.",
+        "id": "nxqfKm"
+      },
+      {
+        "type": "action",
+        "text": "The three icons at the top-left of the screen tell you which team has control of the capturable areas.",
+        "id": "uK9dD7"
+      },
+      {
+        "npc": "Right. Now, go and charge the Obelisk with that soul fragment and see what happens."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-charging-the-soul-obelisk-if-the-player-destroyed-the-soul-fragment": [
+      {
+        "npc": "Here we are at the Soul Obelisk. Now, you've got that soul fragment, right?"
+      },
+      {
+        "player": "About that..."
+      },
+      {
+        "npc": "You've lost it? You're lucky you're not in a real battle yet!"
+      },
+      {
+        "npc": "Here, have this one. Just look after it this time."
+      },
+      {
+        "player": "I'll try..."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-charging-the-soul-obelisk-talking-to-nomad-before-sacrificing-the-soul-fragment": [
+      {
+        "npc": "Go on, use the soul fragment on the Obelisk."
+      }
+    ],
+    "soul-wars-demonstration-dialogue-charging-the-soul-obelisk-sacrificing-the-soul-fragment": [
+      {
+        "type": "message",
+        "text": "You charge the Soul Obelisk and weaken the enemy avatar.",
+        "id": "039EGl"
+      },
+      {
+        "type": "action",
+        "text": "Player starts running towards Nomad and talks to Nomad automatically.",
+        "id": "3vm3gc"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "TRphDU"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-angry-avatars-talking-to-nomad-after-sacrificing-the-soul-fragment": [
+      {
+        "npc": "Good job! Now that you have charged the Obelisk, the enemy avatar will have been weakened."
+      },
+      {
+        "type": "message",
+        "text": "Note the display in the top-left of the screen. See how the red avatar's strength has decreased.",
+        "id": "1ftO0k"
+      },
+      {
+        "type": "message",
+        "text": "The number shown here represents the percentage of your damage that the avatar will block.",
+        "id": "ytTYnH"
+      },
+      {
+        "player": "So, once I've charged the Obelisk, can I just kick back and wait for the end of the game?"
+      },
+      {
+        "npc": "Ha! I think not! I'm not about to reward those who don't put the effort in!"
+      },
+      {
+        "type": "message",
+        "text": "Note the orange bar in the top-left of the screen. This bar represents how active you have been during the game.",
+        "id": "BfI7uE"
+      },
+      {
+        "type": "message",
+        "text": "Over the course of the battle, the bar will slowly drain. Should the bar drain completely you will be removed from the game due to your inactivity.",
+        "id": "ehLOgi"
+      },
+      {
+        "type": "message",
+        "text": "You can refill the bar by performing actions in the game, such as dealing damage or charging the Obelisk.",
+        "id": "UaNj9M"
+      },
+      {
+        "player": "Oh well. Say, do you think the enemy avatar minds us weakening it like this?"
+      },
+      {
+        "npc": "Hmm, why don't we go find out?"
+      },
+      {
+        "type": "action",
+        "text": "The screen fades to black. The player and Nomad are now by the red team's avatar area.",
+        "id": "UXPSt8"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-angry-avatars-at-the-read-team-s-base": [
+      {
+        "npc": "So, here we are in the enemy base."
+      },
+      {
+        "player": "Is that the enemy avatar over there?"
+      },
+      {
+        "npc": "Yeah, and it looks like you made it pretty mad."
+      },
+      {
+        "player": "What? You're the one that told me to weaken it!"
+      },
+      {
+        "npc": "Ha! Don't worry - I won't let it kill you."
+      },
+      {
+        "player": "Phew!"
+      },
+      {
+        "npc": "Of course, that doesn't mean I won't kill you."
+      },
+      {
+        "player": "What did you say?"
+      },
+      {
+        "type": "action",
+        "text": "Nomad casts a slow projectile Iban's Blast spell without an Iban's staff at the player, with the sound of a trident of the swamp spell cast, instantly killing the player, taking the player back to the blue team's base in the form of a ghost.",
+        "id": "wgvfd_"
+      },
+      {
+        "player": "Argh!"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-ghost": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't do anything for 15 seconds:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The player returns to life.",
+            "id": "ve2hCl"
+          }
+        ],
+        "id": "EFsguQ"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-ghost-talking-to-nomad-as-a-ghost": [
+      {
+        "player": "Wooooooooooo!"
+      },
+      {
+        "npc": "What?"
+      },
+      {
+        "player": "Woooooo! Woooooo!"
+      },
+      {
+        "npc": "Sorry, I don't speak ghost."
+      },
+      {
+        "type": "action",
+        "text": "The player returns to life.",
+        "id": "88K8B2"
+      },
+      {
+        "npc": "There we go! Much better."
+      },
+      {
+        "type": "jump",
+        "reference": "below",
+        "id": "5s5e1i"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-death-talking-to-nomad-as-a-human": [
+      {
+        "npc": "There we go! Much better."
+      },
+      {
+        "type": "action",
+        "text": "When you die in Soul Wars, you become a ghost.",
+        "id": "fjd1FW"
+      },
+      {
+        "type": "action",
+        "text": "After 15 seconds as a ghost, you return to life and can carry on with the fight.",
+        "id": "CbRyhD"
+      },
+      {
+        "player": "Hey! You killed me."
+      },
+      {
+        "npc": "At least it wasn't permanent! Think of it as an opportunity to learn."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "npc": "The other team will be after you and any soul fragments you have collected, after all."
+      },
+      {
+        "npc": "I needed to show you what happens when you fall in battle."
+      },
+      {
+        "player": "Did you turn me into a ghost?"
+      },
+      {
+        "npc": "Not exactly. The Soul Obelisk tried to claim your soul, as it does with all who perish in the battleground."
+      },
+      {
+        "npc": "Only my power brought you here, and returned you to life."
+      },
+      {
+        "player": "Erm, thanks, I guess."
+      },
+      {
+        "npc": "You're more useful to me alive... for now."
+      },
+      {
+        "player": "Are there any other painful things to learn about this place?"
+      },
+      {
+        "npc": "There is much more to this place, but you don't need to know about it yet."
+      },
+      {
+        "npc": "If you want to learn more, I can give you a Soul Wars guide upon our return to the waiting area."
+      },
+      {
+        "npc": "Use the large blue portal at the back of this graveyard to return to the waiting area. Why not sign up for a battle while you're there?"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-leaving-soul-wars-talking-to-nomad-after-completing-the-tutorial": [
+      {
+        "npc": "Use the portal over there to return to the waiting area. I'll see you on the other side!"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-leaving-soul-wars-leave-tutorial": [
+      {
+        "type": "action",
+        "text": "The player's camera fades to black and the player leaves the tutorial and returns to Soul Wars lobby. The player loses the blue cape and blue icon.",
+        "id": "MiEFjo"
+      },
+      {
+        "type": "condition",
+        "text": "If the player finished the demonstration:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "w1V0Bz"
+          }
+        ],
+        "id": "wzoyCo"
+      },
+      {
+        "type": "condition",
+        "text": "If the player left the demonstration early:",
+        "steps": [],
+        "id": "r6gpyL"
+      }
+    ],
+    "soul-wars-demonstration-dialogue-finishing-up": [
+      {
+        "type": "condition",
+        "text": "If the player is not on a Soul Wars world:",
+        "steps": [
+          {
+            "npc": "Here we are. The waiting areas are just south of here, but you won't be able to join a battle right now."
+          },
+          {
+            "type": "action",
+            "text": "The Soul Wars minigame is not enabled on this world. You can switch to a Soul Wars world by using the World Switcher in the Logout Menu.",
+            "id": "k2C4cY"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "lYTOeb"
+          }
+        ],
+        "id": "ZN6pzL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a Soul Wars world:",
+        "steps": [
+          {
+            "npc": "Here we are. Just head south to the waiting areas if you want to join a battle."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "XgIG2v"
+          }
+        ],
+        "id": "jlU_pD"
+      },
+      {
+        "player": "That's all well and good, but what do I get out of all of this?"
+      },
+      {
+        "npc": "I can offer you experience in various skills, and items I have found on my travels."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has free inventory space:",
+        "steps": [
+          {
+            "npc": "I have a copy of the Soul Wars guide here. It contains information that I didn't have time to cover."
+          },
+          {
+            "npc": "You don't need to know it all to get started, but the section on burying bones could be useful."
+          },
+          {
+            "npc": "Did you want to take it and read it in your own time?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes please.",
+                "steps": [
+                  {
+                    "player": "Yes, please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has a Soul wars guide in their inventory:",
+                    "steps": [
+                      {
+                        "npc": "Hmm, it looks like you already have one."
+                      },
+                      {
+                        "npc": "Oh, alright then."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "SmRKut"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player doesn't have a Soul wars guide in their inventory:",
+                    "steps": [
+                      {
+                        "npc": "Here you go."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "Soul wars guide",
+                        "id": "7oJ76d"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "hZz1GM"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "YKi3-l"
+      },
+      {
+        "player": "Okay, thanks."
+      }
+    ],
+    "using-ava-s-devices-on-nomad-ava-s-attractor": [
+      {
+        "player": "Check out this dead chicken!"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has already enchanted Soul Wars capes with an Ava's assembler or its variant:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "kDykVU"
+          }
+        ],
+        "id": "DyjayA"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has already enchanted Soul Wars capes with an Ava's accumulator or its variants:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "osL010"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "rpGxJa"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has already enchanted Soul Wars capes with an Ava's attractor:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "DKoXDf"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "RyOPET"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has not enchanted Soul Wars capes before:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "Df6qki"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "-SjrPx"
+          }
+        ],
+        "id": "_1OmPp"
+      },
+      {
+        "type": "missing",
+        "id": "7GOpgb"
+      }
+    ],
+    "using-ava-s-devices-on-nomad-ava-s-accumulator-accumulator-max-cape-max-cape-or-ranging-cape": [
+      {
+        "player": "Check out this dead chicken!"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has already enchanted Soul Wars capes with an Ava's assembler or its variant:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "kDykVU"
+          }
+        ],
+        "id": "m16Utz"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has already enchanted Soul Wars capes with an Ava's accumulator or its variants:",
+        "steps": [
+          {
+            "npc": "You've already shown me this dead chicken. I don't really need to see it again. I might be able to do something if you show me a better one, though."
+          },
+          {
+            "player": "Fair enough."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "MJKiyh"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed Animal Magnetism (using Ranging cape or Max cape)",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Nomad won't consider looking at Ava's devices until you've completed Animal Magnetism",
+            "id": "3hRqwU"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "72yBy7"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has enchanted Soul Wars capes with an Ava's attractor:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "Fe7Qw5"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "B0-7Gd"
+          }
+        ],
+        "id": "xUfYFf"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has not enchanted Soul Wars capes before:",
+        "steps": [
+          {
+            "npc": "Hmm, very interesting."
+          },
+          {
+            "player": "I was wondering if you could maybe make your capes do something similar to what this does?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "tqJ7fg"
+          }
+        ],
+        "id": "k94KYq"
+      },
+      {
+        "npc": "Let's see what we can do."
+      },
+      {
+        "type": "action",
+        "text": "Nomad performs an emote. A sound of enchanting plays. A visual effect similar to Boost Potion Share plays above Nomad.",
+        "id": "Cc8wvV"
+      },
+      {
+        "type": "unavailable",
+        "id": "dp7cYU"
+      },
+      {
+        "npc": "There we go. It's not quite the same, but it should work out just fine for you."
+      },
+      {
+        "npc": "Bear in mind that the enchantment is bound to my power and so will only work for you while you are in a Soul Wars battle."
+      },
+      {
+        "player": "Great! Thanks for the help!"
+      }
+    ],
+    "using-ava-s-devices-on-nomad-ava-s-assembler-or-assembler-max-cape": [
+      {
+        "player": "Check out this dead chicken!"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has already enchanted Soul Wars capes with an Ava's assembler or its variant:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "kDykVU"
+          }
+        ],
+        "id": "fughhH"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has enchanted Soul Wars capes with an Ava's accumulator or its variant:",
+        "steps": [
+          {
+            "npc": "Hmm, very interesting. This one seems more powerful than the last one you showed me."
+          },
+          {
+            "player": "That's right. I was wondering if you could maybe upgrade your capes again?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "dLpncf"
+          }
+        ],
+        "id": "8JaRfm"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has enchanted Soul Wars capes with an Ava's attractor or its variant:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "uXhHXh"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "LFn7A-"
+          }
+        ],
+        "id": "6kfIzt"
+      },
+      {
+        "type": "condition",
+        "text": "If Nomad has not enchanted Soul Wars capes before:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "HbNiKi"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "hBWDcp"
+          }
+        ],
+        "id": "UpBXot"
+      },
+      {
+        "npc": "Let's see what we can do."
+      },
+      {
+        "type": "action",
+        "text": "Nomad performs an emote. A sound of enchanting plays. A visual effect similar to Boost Potion Share plays above Nomad.",
+        "id": "TCwFkD"
+      },
+      {
+        "type": "unavailable",
+        "id": "iAlSMx"
+      },
+      {
+        "npc": "There we go. It's not quite the same, but it should work out just fine for you."
+      },
+      {
+        "npc": "Bear in mind that the enchantment is bound to my power and so will only work for you while you are in a Soul Wars battle."
+      },
+      {
+        "player": "Great! Thanks for the help!"
+      }
+    ],
+    "at-the-start-of-a-soul-wars-game": [
+      {
+        "npc": "The time is now! Crush their souls!"
+      }
+    ],
+    "prior-to-release": [
+      {
+        "player": "Excuse me, what is this place?"
+      },
+      {
+        "npc": "What is this place? This is Soul Wars, a glorious battleground where you must fight to crush the souls of your enemies!"
+      },
+      {
+        "player": "Really? Are souls easy to crush?"
+      },
+      {
+        "npc": "Easier than you'd imagine."
+      },
+      {
+        "player": "I see. So how does it all work?"
+      },
+      {
+        "npc": "Well I'm still getting things set up right now. Once everything is ready, return to me and I'll give you a demonstration."
+      },
+      {
+        "type": "message",
+        "text": "The Soul Wars minigame will be released on the 6th January 2021.",
+        "id": "sDZvIx"
+      }
+    ],
+    "during-soul-wars-beta": [
+      {
+        "npc": "Here to crush some souls? Just head into a waiting area to the south to get started."
+      }
+    ]
+  },
+  "branches": {
+    "X1ax1V": [
+      {
+        "npc": "Hmm, you're not looking so great. You should cure yourself of poison before I give you the demonstration."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "ChaAJA": [
+      {
+        "npc": "Hmm, it looks like you have some restricted items with you. You should put them somewhere safe before we continue. Food, potions, capes, followers and non-combat items are all restricted."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "pS0-Ij": [
+      {
+        "player": "Actually, I'm good."
+      },
+      {
+        "npc": "So be it. You know where to find me if you change your mind."
+      }
+    ],
+    "7XfZkT": [
+      {
+        "npc": "Make some space and I'll give you one. Just look after it this time."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "kDykVU": [
+      {
+        "npc": "You've already shown me this dead chicken. I don't really need to see it again."
+      },
+      {
+        "player": "Fair enough."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

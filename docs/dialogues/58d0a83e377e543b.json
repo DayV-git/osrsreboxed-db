@@ -1,0 +1,505 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you look after my crops for me?",
+            "steps": [
+              {
+                "player": "Would you look after my crops for me?"
+              },
+              {
+                "npc": "If you like, but I want [relevant protection payment] for that."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay, it's a deal.",
+                    "steps": [
+                      {
+                        "player": "Okay, it's a deal."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You pay the gardener [requested payment] to protect the patch.",
+                        "id": "vErTH7"
+                      },
+                      {
+                        "npc": "[That'll do nicely, sir./That'll do nicely, madam./That'll do nicely.] Leave it with me - I'll make sure that patch grows for you."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, that's too much",
+                    "steps": [
+                      {
+                        "player": "No, that's too much."
+                      },
+                      {
+                        "npc": "Well, I'm not wasting my time for free."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, and don't ask again",
+                    "steps": [
+                      {
+                        "player": "Okay, it's a deal."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You pay the gardener [requested payment] to protect the patch.",
+                        "id": "qarTlc"
+                      },
+                      {
+                        "npc": "[That'll do nicely, sir./That'll do nicely, madam./That'll do nicely.] Leave it with me - I'll make sure that patch grows for you."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have the requested items on them:",
+                "steps": [
+                  {
+                    "player": "I'm afraid I don't have any of those at the moment."
+                  },
+                  {
+                    "npc": "Well, I'm not wasting my time for free."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2tZtgL"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough of the requested items on them:",
+                "steps": [
+                  {
+                    "player": "I'm afraid I don't have enough of those at the moment."
+                  },
+                  {
+                    "npc": "Well, I'm not wasting my time for free."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "QPDxUl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no crops planted:",
+                "steps": [
+                  {
+                    "player": "Would you look after my crops for me?"
+                  },
+                  {
+                    "npc": "You don't have a sapling planted in that patch. Plant one and I might agree to look after it for you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "pYMxXm"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already paid for the crop:",
+                "steps": [
+                  {
+                    "player": "Would you look after my crops for me?"
+                  },
+                  {
+                    "npc": "I don't know what you're talking about - I'm already looking after that patch for you."
+                  },
+                  {
+                    "player": "Oh sorry, I forgot."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "XcoIDE"
+              },
+              {
+                "type": "condition",
+                "text": "If the crop has completed growing:",
+                "steps": [
+                  {
+                    "player": "Would you look after my crops for me?"
+                  },
+                  {
+                    "npc": "That patch is already fully grown! I don't know what you want me to do with it!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "LDag4c"
+              },
+              {
+                "type": "condition",
+                "text": "If the planted crop has died:",
+                "steps": [
+                  {
+                    "player": "Would you look after my crops for me?"
+                  },
+                  {
+                    "npc": "That patch is dead - it's too late for me to do anything about it now."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MLSRcn"
+              },
+              {
+                "type": "condition",
+                "text": "If the planted crop is diseased:",
+                "steps": [
+                  {
+                    "player": "Would you look after my crops for me?"
+                  },
+                  {
+                    "npc": "That patch is diseased - you should cure it before asking me to be responsible for it!"
+                  }
+                ],
+                "id": "HdKFis"
+              }
+            ]
+          },
+          {
+            "text": "Can you give me any farming advice?",
+            "steps": [
+              {
+                "player": "Can you give me any farming advice?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "You can buy all the farming tools from farming shops, which can be found close to the allotments."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Supercompost is far better than normal compost, but more expensive to make. You need to rot the right type of item; show me an item, and I'll tell you if it's super- compostable or not."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "Tree seeds must be grown in a plantpot of soil into a sapling, and then transferred to a tree patch to continue growing to adulthood."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "You can put up to ten potatoes, cabbages or onions in vegetable sacks, although you can't have a mix in the same sack."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "steps": [
+                      {
+                        "npc": "You can fill plantpots with soil from any empty patch, if you have a gardening trowel."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 6",
+                    "steps": [
+                      {
+                        "npc": "Bittercap mushrooms can only be grown in a special patch in Morytania, near the Mort Myre swamp. There the ground is especially dank and suited to growing poisonous fungii."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 7",
+                    "steps": [
+                      {
+                        "npc": "Vegetables, hops and flowers need constant watering - if you ignore my advice, you will sooner or later find yourself in possession of a dead farming patch."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 8",
+                    "steps": [
+                      {
+                        "npc": "You don't have to buy all your plantpots you know, you can make them yourself on a pottery wheel. If you're good enough at crafting, that is."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 9",
+                    "steps": [
+                      {
+                        "npc": "If you want to make your own sacks and baskets you'll need to use the loom that's near the Farming shop in Falador. If you're good enough at crafting, that is."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 10",
+                    "steps": [
+                      {
+                        "npc": "There are many Farming areas out there. I know of Elstan's area near Falador, Dantaera's area near Catherby, Kragen's area near Ardougne, Lyra's area in Morytania, Marisi's area in Hosidius and Alan's area in"
+                      },
+                      {
+                        "npc": "the Farming Guild. That said, I'm sure there's plenty more that I don't know about."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 11",
+                    "steps": [
+                      {
+                        "npc": "If you want to grow fruit trees you could try a few places: Catherby, Brimhaven, Gnome Stronghold and the Farming Guild all have fruit tree patches."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 12",
+                    "steps": [
+                      {
+                        "npc": "You can put up to five tomatoes, strawberries, apples, bananas or oranges into a fruit basket, although you can't have a mix in the same basket."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 13",
+                    "steps": [
+                      {
+                        "npc": "There is a special patch for growing Belladonna - I believe that it is somewhere near Draynor Manor, where the ground is a tad 'unblessed'."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 14",
+                    "steps": [
+                      {
+                        "npc": "Applying compost to a patch will not only reduce the chance that your crops will get diseased, but you will also grow more crops to harvest."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 15",
+                    "steps": [
+                      {
+                        "npc": "The only way to cure a bush or tree of disease is to prune away the diseased leaves with a pair of secateurs. For all other crops I would just apply some plant-cure."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 16",
+                    "steps": [
+                      {
+                        "npc": "Hops are good for brewing ales. There's a brewery over on Aldarin if you fancy trying it."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 17",
+                    "steps": [
+                      {
+                        "npc": "Don't just throw away your weeds after you've raked a patch - put them in a compost bin and make some compost."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "LsqcQd"
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?",
+            "steps": [
+              {
+                "player": "Can you sell me something?"
+              },
+              {
+                "npc": "That depends on whether I have it to sell. What is it that you're looking for?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Farming Supplies",
+                "id": "2Ls9_J"
+              }
+            ]
+          },
+          {
+            "text": "I'll come back another time.",
+            "steps": [
+              {
+                "player": "I'll come back another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-tree-s-health-has-been-checked": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you chop down my tree for me?",
+            "steps": [
+              {
+                "npc": "Well it's a lot of hard work - if you pay me 200 Coins I'll chop it down for you."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 200 coins:",
+                "steps": [
+                  {
+                    "player": "I don't have 200 Coins I'm afraid."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9Y4-6R"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does have at least 200 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Here's 200 Coins - chop my tree down please.",
+                        "steps": [
+                          {
+                            "player": "Here's 200 Coins - chop my tree down please."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Aub chops down the tree and clears the patch.",
+                            "id": "xuBem-"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want to pay that much, sorry.",
+                        "steps": [
+                          {
+                            "player": "I don't want to pay that much, sorry."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "qK4sqn"
+              },
+              {
+                "type": "condition",
+                "text": "If you have the appropriate Woodcutting level for the tree:",
+                "steps": [
+                  {
+                    "npc": "Why? You look like you could chop it down yourself!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes you're right - I'll do it myself.",
+                        "steps": []
+                      },
+                      {
+                        "text": "I can't be bothered - I'd rather pay you to do it.",
+                        "steps": [
+                          {
+                            "npc": "Well it's a lot of hard work - if you pay me 200 Coins I'll chop it down for you.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "IYXEkJ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Hk2cBP"
+              }
+            ]
+          },
+          {
+            "text": "Can you give me any farming advice?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "kQY6WO"
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Xbv04S"
+              }
+            ]
+          },
+          {
+            "text": "I'll come back another time.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "INuuGN"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

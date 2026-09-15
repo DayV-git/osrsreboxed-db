@@ -1,0 +1,471 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-members": [
+      {
+        "npc": "Arrr, what is it that ye be wantin? I can tell ye all about the prices of runes, or perhaps I could combine the charges on yer teleport jewellery."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's a pirate doing here?",
+            "steps": [
+              {
+                "player": "What's a pirate doing here?"
+              },
+              {
+                "npc": "By my sea-blistered skin, I could ask the same of you!"
+              },
+              {
+                "player": "But... I'm not a pirate?"
+              },
+              {
+                "npc": "No? Then what's that smell? The smell o' someone spent too long at sea without a bath!"
+              },
+              {
+                "player": "I think that's probably you."
+              },
+              {
+                "npc": "Har har har! We've got a stern landlubber 'ere! Well, let me tell ye, I'm here for the Grand Exchange! Gonna cash in me loot!"
+              },
+              {
+                "player": "Don't you just want to sell it in a shop or trade it to someone specific?"
+              },
+              {
+                "npc": "By my wave-battered bones! Not when I can sell to the whole world from this very spot!"
+              },
+              {
+                "type": "condition",
+                "text": "If Lunar Diplomacy has been completed:",
+                "steps": [
+                  {
+                    "player": "You pirates are nothing but trouble! Why, once I travelled to Lunar Isle with a bunch of your type, and spent days sailing around in circles!"
+                  },
+                  {
+                    "npc": "Then ye must know me brother! Murky Pat!"
+                  },
+                  {
+                    "player": "Hmmm. Not so sure I remember him."
+                  },
+                  {
+                    "npc": "Well, 'e be on that ship for sure. And I remember 'im tellin' me about some [guy/gal] like ye, getting all mixed up with curses and cabin boys."
+                  },
+                  {
+                    "player": "Yes! That was me!"
+                  },
+                  {
+                    "npc": "Ye sure be a different character."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "w5RpNi"
+                  }
+                ],
+                "id": "PFYNMw"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about the prices of runes.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "FkXzfg"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Combine the charges on my teleport jewellery, please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "FbSz01"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I got to go, erm, swab some decks! Yarr!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "sHOLBJ"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about the prices of runes.",
+            "steps": [
+              {
+                "player": "Tell me about the prices of runes."
+              },
+              {
+                "type": "action",
+                "text": "The Grand Exchange market guide prices of runes are displayed.",
+                "id": "1gU5hm"
+              }
+            ]
+          },
+          {
+            "text": "Combine the charges on my teleport jewellery, please.",
+            "steps": [
+              {
+                "player": "Combine the charges on my teleport jewellery, please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no jewellery that can be combined:",
+                "steps": [
+                  {
+                    "npc": "Arrr, ye've got nothing that I can combine."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "eLfz3I"
+              },
+              {
+                "type": "missing",
+                "id": "UV7tCn"
+              },
+              {
+                "type": "condition",
+                "text": "Unknown exact condition, possible if the player has only one piece of dragonstone jewellery:",
+                "steps": [
+                  {
+                    "npc": "Arrr, ye've nothing I can combine. Maybe ye needs to take yer stuff up to the Wilderness and charge it on the Fountain of Rune. It be more powerful than me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "15ln-T"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have inventory space:",
+                "steps": [
+                  {
+                    "npc": "Arrr, I think ye be a bit short of inventory space."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "GqA35K"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough inventory space and jewellery to be decanted:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "All jewellery in the inventory is decanted.",
+                    "id": "WHRCW9"
+                  },
+                  {
+                    "npc": "Arr, all done."
+                  }
+                ],
+                "id": "6QwkZo"
+              }
+            ]
+          },
+          {
+            "text": "I hear you deal in rings of forging?",
+            "steps": [
+              {
+                "player": "I hear you deal in rings of forging?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any ruby rings if their inventory:",
+                "steps": [
+                  {
+                    "npc": "Arrrr, bring me yer ruby rings to enchant."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "bxY2PC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has ruby rings, but less than 250 coins:",
+                "steps": [
+                  {
+                    "npc": "Arrrr, but they arrre 250gp per ring."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qcZXMr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has ruby rings and at least 250 coins:",
+                "steps": [
+                  {
+                    "npc": "Arrr, 250gp per ring. How many would ye like me to enchant?"
+                  },
+                  {
+                    "type": "input",
+                    "text": "How many rings of forging?",
+                    "id": "e8DRky"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player inputs 0:",
+                    "steps": [
+                      {
+                        "npc": "Arrr, be seeing ya."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "59p38e"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player inputs more than 0:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "give",
+                        "text": "of ruby rings and # of rings {{X}} 250 coins",
+                        "id": "VCmL-1"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "of rings of forging",
+                        "id": "6AJHrQ"
+                      },
+                      {
+                        "npc": "Arrr, pleasure doin' business with ya."
+                      }
+                    ],
+                    "id": "X09WWP"
+                  }
+                ],
+                "id": "CMRtgh"
+              }
+            ]
+          },
+          {
+            "text": "I got to go, erm, swab some decks! Yarr!",
+            "steps": [
+              {
+                "player": "I got to go, erm, swab some decks! Yarr!"
+              },
+              {
+                "npc": "Defer your speech right there! Quit this derogatory and somewhat narrow-minded allusion that all folks of sea voyage are only concerned with washing the decks, looking after parrots and drinking rum. I'll have ye"
+              },
+              {
+                "npc": "know there is much more to a pirate than meets the eye."
+              },
+              {
+                "player": "Aye-aye, captain!"
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "Oh, come on! Lighten up!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-f2p": [
+      {
+        "npc": "Arrr, what is it that ye be wantin? I can tell ye all about the prices of runes."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's a pirate doing here?",
+            "steps": [
+              {
+                "player": "What's a pirate doing here?"
+              },
+              {
+                "npc": "By my sea-blistered skin, I could ask the same of you!"
+              },
+              {
+                "player": "But... I'm not a pirate?"
+              },
+              {
+                "npc": "No? Then what's that smell? The smell o' someone spent too long at sea without a bath!"
+              },
+              {
+                "player": "I think that's probably you."
+              },
+              {
+                "npc": "Har har har! We've got a stern landlubber 'ere! Well, let me tell ye, I'm here for the Grand Exchange! Gonna cash in me loot!"
+              },
+              {
+                "player": "Don't you just want to sell it in a shop or trade it to someone specific?"
+              },
+              {
+                "npc": "By my wave-battered bones! Not when I can sell to the whole world from this very spot!"
+              },
+              {
+                "type": "condition",
+                "text": "If Lunar Diplomacy has been completed:",
+                "steps": [
+                  {
+                    "player": "You pirates are nothing but trouble! Why, once I travelled to Lunar Isle with a bunch of your type, and spent days sailing around in circles!"
+                  },
+                  {
+                    "npc": "Then ye must know me brother! Murky Pat!"
+                  },
+                  {
+                    "player": "Hmmm. Not so sure I remember him."
+                  },
+                  {
+                    "npc": "Well, 'e be on that ship for sure. And I remember 'im tellin' me about some [guy/gal] like ye, getting all mixed up with curses and cabin boys."
+                  },
+                  {
+                    "player": "Yes! That was me!"
+                  },
+                  {
+                    "npc": "Ye sure be a different character."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "ndpFT_"
+                  }
+                ],
+                "id": "WKssTH"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about the prices of runes.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "1ONLhO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I got to go, erm, swab some decks! Yarr!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "TBdqkO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about the prices of runes.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1O080X"
+              }
+            ]
+          },
+          {
+            "text": "I hear you deal in rings of forging?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "h56E8-"
+              }
+            ]
+          },
+          {
+            "text": "I got to go, erm, swab some decks! Yarr!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "5hf9sV"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "action",
+        "text": "Every 250 to 350 ticks:",
+        "id": "ay7kRg"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "No! Me prices, they be goin' down!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Arrr! Another good sale!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "I'm lovin' this Grand Exchange! Arrr!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Sure be a busy place, today."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Yarrr! I'm gonna be rich, I tell ye!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

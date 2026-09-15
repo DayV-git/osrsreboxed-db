@@ -1,0 +1,122 @@
+{
+  "steps": [
+    {
+      "player": "Hello."
+    },
+    {
+      "npc": "Welcome, traveller."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Could you tell me about crystal singing?",
+          "steps": [
+            {
+              "player": "Could you tell me about crystal singing?"
+            },
+            {
+              "npc": "Of course! We elves learned the art long ago, allowing us to form crystals in any way we would like, using just our voices."
+            },
+            {
+              "npc": "It's allowed us to make weapons, armour and tools using the finest crystals."
+            },
+            {
+              "player": "Wow. Is there any way I could do it?"
+            },
+            {
+              "npc": "You might be able to with the help of the crystal bowl over there. As long as you've got the right knowledge of what you're trying to craft."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Could you do it for me?",
+                  "steps": [
+                    {
+                      "player": "Could you do it for me?"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have any crystal material or the requirements for crafting it:",
+                      "steps": [
+                        {
+                          "npc": "You do not have all of the required materials and requirements to make anything."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "3JFQuC"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have any crystal material or the requirements for crafting it:",
+                      "steps": [
+                        {
+                          "type": "missing",
+                          "id": "itKKAv"
+                        }
+                      ],
+                      "id": "aGuqW8"
+                    }
+                  ]
+                },
+                {
+                  "text": "Thanks!",
+                  "steps": [
+                    {
+                      "player": "Thanks!"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Could you sing a song for me?",
+          "steps": [
+            {
+              "npc": "Of course! Would you like me to craft something for you? For some crystal shards, of course."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes please.",
+                  "steps": [
+                    {
+                      "player": "Yes please."
+                    },
+                    {
+                      "type": "jump",
+                      "reference": "above",
+                      "id": "emfrZh"
+                    }
+                  ]
+                },
+                {
+                  "text": "No, thank you. I'd just like to hear you sing.",
+                  "steps": [
+                    {
+                      "player": "No, thank you. I'd just like to hear you sing."
+                    },
+                    {
+                      "type": "message",
+                      "text": "Reese sings you a beautiful song of the elves.",
+                      "id": "ReGoBr"
+                    },
+                    {
+                      "player": "Wow! Thank you."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2100 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-if-the-player-lost-the-amulet-of-the-eye": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about the Amulet of the Eye",
+            "steps": [
+              {
+                "player": "I lost that amulet you gave me."
+              },
+              {
+                "npc": "Not to worry. I found it again."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "npc": "However, you'll need to make space for it before I can give it to you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9nafop"
+              },
+              {
+                "type": "message",
+                "text": "Phileas hands you the Amulet of the Eye.",
+                "id": "xm3rMD"
+              },
+              {
+                "player": "Thanks. I'll try not to lose it this time."
+              },
+              {
+                "npc": "Any time."
+              }
+            ]
+          },
+          {
+            "text": "Something else",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "C2QKHq"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-still-has-the-amulet-of-the-eye-or-has-not-unlocked-it": [
+      {
+        "npc": "Greetings, adventurer. I am Phileas, the Lumbridge Guide. I am here to give information and directions to new players. Is there anything I can help you with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where can I find a quest to go on?",
+            "steps": [
+              {
+                "player": "Where can I find a quest to go on?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed all of Cook's Assistant, The Restless Ghost, X Marks the Spot, Sheep Shearer, Misthalin Mystery, or Rune Mysteries:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid I can't think of any more quests for you. Don't worry though, there'll be plenty more out there. You'll just need to find them."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The minimap in the top right corner of the screen has various icons to show different points of interest. Look for the icon to the left to find quest start points.",
+                    "id": "1iOyqf"
+                  },
+                  {
+                    "npc": "Is there anything else you need help with?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "player": "Yes please."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "jYh_wO"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thank you.",
+                        "steps": [
+                          {
+                            "player": "No thank you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Xvsusy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not started any of Cook's Assistant, The Restless Ghost, X Marks the Spot, Sheep Shearer, Misthalin Mystery, or Rune Mysteries:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player has not completed Cook's Assistant:",
+                    "steps": [
+                      {
+                        "npc": "Well, I've heard my friend the cook is in need of a spot of help. He'll be in the kitchen of this here castle. Just talk to him and he'll set you off."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "F1w9sS"
+                      }
+                    ],
+                    "id": "QSFOG8"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player completed Cook's Assistant but not The Restless Ghost:",
+                    "steps": [
+                      {
+                        "npc": "Well, I heard that Father Aereck could use a hand. You'll find him in the church just here. Talk to him and he'll give you the details."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "-FpwVQ"
+                      }
+                    ],
+                    "id": "m63iiv"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant and The Restless Ghost but not X Marks the Spot:",
+                    "steps": [
+                      {
+                        "npc": "Well, I heard that a chap called Veos needs help finding some treasure. Last I heard, he was looking for assistance in the pub just north of here. Talk to him and see if you can help."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "u77UJY"
+                      }
+                    ],
+                    "id": "jY0t0N"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant, The Restless Ghost, and X Marks the Spot but not Sheep Shearer:",
+                    "steps": [
+                      {
+                        "npc": "Well, I heard that Farmer Fred could use some help. You'll find him on the farm just north of here. Talk to him and see if he needs a hand."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "XqGLDi"
+                      }
+                    ],
+                    "id": "ySQaYX"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant, The Restless Ghost, X Marks the Spot, and Sheep Shearer but not Misthalin Mystery:",
+                    "steps": [
+                      {
+                        "npc": "Well, I heard there was some commotion in the swamp to the south. Might be worth looking into."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "V8-tyQ"
+                      }
+                    ],
+                    "id": "yavk7O"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant, The Restless Ghost, X Marks the Spot, Sheep Shearer, and Misthalin Mystery but not Rune Mysteries:",
+                    "steps": [
+                      {
+                        "npc": "Well, I believe the Duke of Lumbridge requires an errand running for him. You can find him upstairs in the castle. Just talk to him to get the details."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "BfNGLM"
+                      }
+                    ],
+                    "id": "mxHSDy"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The minimap in the top right corner of the screen has various icons to show different points of interest. Look for the icon to the left to find quest start points.",
+                    "id": "sC-Jo9"
+                  },
+                  {
+                    "npc": "Is there anything else you need help with?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "player": "Yes please."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "52-bS2"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thank you.",
+                        "steps": [
+                          {
+                            "player": "No thank you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "_0tY4U"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has started one of the above six quests:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player has started Cook's Assistant:",
+                    "steps": [
+                      {
+                        "npc": "I heard you were already helping the cook. Are you sure you need another quest?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "hb-SrJ"
+                      }
+                    ],
+                    "id": "GpCPBg"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant and has started The Restless Ghost:",
+                    "steps": [
+                      {
+                        "npc": "I heard you were already helping Father Aereck. Are you sure you need another quest?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "t0AK5g"
+                      }
+                    ],
+                    "id": "N2U1LX"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant, The Restless Ghost, and has started X Marks the Spot:",
+                    "steps": [
+                      {
+                        "npc": "I heard you were already helping Veos. Are you sure you need another quest?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "0Uj1tR"
+                      }
+                    ],
+                    "id": "p_xqwe"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant, The Restless Ghost, X Marks the Spot, and has started Sheep Shearer:",
+                    "steps": [
+                      {
+                        "npc": "I heard you were already helping Farmer Fred. Are you sure you need another quest?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "HsQM2s"
+                      }
+                    ],
+                    "id": "0b4idK"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant, The Restless Ghost, X Marks the Spot, Sheep Shearer, and has started Misthalin Mystery:",
+                    "steps": [
+                      {
+                        "npc": "I heard you were already investigating the issue in the swamp. Are you sure you need another quest?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "NXC8Vu"
+                      }
+                    ],
+                    "id": "z1HrDD"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Cook's Assistant, The Restless Ghost, X Marks the Spot, Sheep Shearer, Misthalin Mystery, and has started Rune Mysteries:",
+                    "steps": [
+                      {
+                        "npc": "I heard you were already helping the Duke. Are you sure you need another quest?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "B-yLxh"
+                      }
+                    ],
+                    "id": "hpeRNd"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I want another quest.",
+                        "steps": [
+                          {
+                            "player": "I want another quest."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has neither started nor completed Cook's Assistant:",
+                            "steps": [
+                              {
+                                "npc": "Well, I've heard my friend the cook is in need of a spot of help. He'll be in the kitchen of this here castle. Just talk to him and he'll set you off."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "T3khBu"
+                              }
+                            ],
+                            "id": "L4pUIa"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has started or completed Cook's Assistant but not The Restless Ghost:",
+                            "steps": [
+                              {
+                                "npc": "Well, I heard that Father Aereck could use a hand. You'll find him in the church just here. Talk to him and he'll give you the details."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "1ltNhw"
+                              }
+                            ],
+                            "id": "iTkPCY"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has started or completed Cook's Assistant and The Restless Ghost but not X Marks the Spot:",
+                            "steps": [
+                              {
+                                "npc": "Well, I heard that a chap called Veos needs help finding some treasure. Last I heard, he was looking for assistance in the pub just north of here. Talk to him and see if you can help."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "OK_-mh"
+                              }
+                            ],
+                            "id": "I9R0GW"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has started or completed Cook's Assistant, The Restless Ghost, and X Marks the Spot but not Sheep Shearer:",
+                            "steps": [
+                              {
+                                "npc": "Well, I heard that Farmer Fred could use some help. You'll find him on the farm just north of here. Talk to him and see if he needs a hand."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "OUz75a"
+                              }
+                            ],
+                            "id": "Bc233A"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has started or completed Cook's Assistant, The Restless Ghost, X Marks the Spot, and Sheep Shearer but not Misthalin Mystery:",
+                            "steps": [
+                              {
+                                "npc": "Well, I heard there was some commotion in the swamp to the south. Might be worth looking into."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "AWBee_"
+                              }
+                            ],
+                            "id": "xz5DzK"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has started or completed Cook's Assistant, The Restless Ghost, X Marks the Spot, Sheep Shearer, and Misthalin Mystery but not Rune Mysteries:",
+                            "steps": [
+                              {
+                                "npc": "Well, I believe the Duke of Lumbridge requires an errand running for him. You can find him upstairs in the castle. Just talk to him to get the details."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "xfyMNf"
+                              }
+                            ],
+                            "id": "1ZhL3D"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has either started or completed all six quests:",
+                            "steps": [
+                              {
+                                "npc": "I'm afraid I can't think of any more quests for you. Don't worry though, there'll be plenty more out there. You'll just need to find them."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continue",
+                                "id": "MC0tgk"
+                              }
+                            ],
+                            "id": "MsJ4B0"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The minimap in the top right corner of the screen has various icons to show different points of interest. Look for the icon to the left to find quest start points.",
+                            "id": "O_Tp1A"
+                          },
+                          {
+                            "npc": "Is there anything else you need help with?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please.",
+                                "steps": [
+                                  {
+                                    "player": "Yes please."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "J3ajIO"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thank you.",
+                                "steps": [
+                                  {
+                                    "player": "No thank you."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I'm not too sure what to do."
+                      }
+                    ]
+                  },
+                  {
+                    "npc": "Well if you need a reminder, try having a look at your quest journal."
+                  },
+                  {
+                    "npc": "Is there anything else you need help with?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "player": "Yes please."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "3qu19-"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thank you.",
+                        "steps": [
+                          {
+                            "player": "No thank you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, I'm fine."
+                      }
+                    ]
+                  },
+                  {
+                    "player": "Actually, I'm fine."
+                  }
+                ],
+                "id": "7tAAAb"
+              }
+            ]
+          },
+          {
+            "text": "What monsters should I fight?",
+            "steps": [
+              {
+                "player": "What monsters should I fight?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Combat level below X:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have a weapon in their inventory or equipped:",
+                    "steps": [
+                      {
+                        "npc": "It's going to be tough fighting monsters without a weapon. I suggest you find one of those first."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "How can I get a weapon?",
+                            "steps": [
+                              {
+                                "player": "How can I get a weapon?"
+                              },
+                              {
+                                "npc": "Well you can either make them, find them or buy them."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Where can I find a weapon?",
+                                    "steps": [
+                                      {
+                                        "player": "Where can I find a weapon?"
+                                      },
+                                      {
+                                        "npc": "If you visit the combat tutors south of the general store they may be able to help you with that. Failing that there are a few cheap weapons lying around in the world. For example, you can get an iron dagger if you"
+                                      },
+                                      {
+                                        "npc": "cross the bridge and look in the little hut where some goblins live. If it's not there it probably means someone else has taken it. If you wait a while a new one should appear. As you explore you may find other weapons,"
+                                      },
+                                      {
+                                        "npc": "too."
+                                      },
+                                      {
+                                        "npc": "Is there anything else you need help with?"
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "No thank you.",
+                                            "steps": [
+                                              {
+                                                "player": "No thank you."
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know more about getting weapons.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "_qOcji"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know about something else.",
+                                            "steps": [
+                                              {
+                                                "player": "I'd like to know about something else."
+                                              },
+                                              {
+                                                "npc": "Well, what would you like to know?"
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "initial",
+                                                "id": "NVCe15"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "How do I make a weapon?",
+                                    "steps": [
+                                      {
+                                        "player": "How do I make a weapon?"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player has above X Smithing:",
+                                        "steps": [
+                                          {
+                                            "npc": "You already have a reasonable Smithing level, so I think you know that already."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "bpFmWB"
+                                      },
+                                      {
+                                        "npc": "The Smithing skill allows you to make armour and weapons. Talk to the boy who smelts metal in the furnace, I'm sure he can help."
+                                      },
+                                      {
+                                        "player": "Where can I smith?"
+                                      },
+                                      {
+                                        "npc": "You will find a helpful Smithing tutor in the west of Varrock - that's north of here. Follow the path across the river and head north."
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "Look for this icon in the west of Varrock.",
+                                        "id": "PW0jXF"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "The minimap in the top right corner of the game screen has various icons showing the locations of things. This icon to the left shows where Mining sites are.",
+                                        "id": "wivgKl"
+                                      },
+                                      {
+                                        "npc": "I suggest you go and mine some ore; find the Mining symbol - with the guide symbol near it - in the swamp south of here. The Mining guide there can teach you how to mine ore."
+                                      },
+                                      {
+                                        "npc": "Is there anything else you need help with?"
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Yes please.",
+                                            "steps": [
+                                              {
+                                                "player": "Yes please."
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "initial",
+                                                "id": "7lzhu_"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "No thank you.",
+                                            "steps": [
+                                              {
+                                                "player": "No thank you."
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Where can I buy a weapon?",
+                                    "steps": [
+                                      {
+                                        "player": "Where can I buy a weapon?"
+                                      },
+                                      {
+                                        "npc": "You can get a weapon free from the combat tutors if they think you need it. Failing that, the nearest shop that would sell you something of that nature is Bob's Brilliant Axes in this very town. If you want a bigger"
+                                      },
+                                      {
+                                        "npc": "choice I suggest you head to one of the big cities. If you follow the road east over the bridge and then head north you will eventually reach Varrock, where you can buy all manner of things. You can use the world map"
+                                      },
+                                      {
+                                        "npc": "to help you find your way."
+                                      },
+                                      {
+                                        "npc": "Is there anything else you need help with?"
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "No thank you.",
+                                            "steps": [
+                                              {
+                                                "player": "No thank you."
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know more about getting weapons.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "n2lDbk"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know about something else.",
+                                            "steps": [
+                                              {
+                                                "player": "I'd like to know about something else."
+                                              },
+                                              {
+                                                "npc": "Well, what would you like to know?"
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "initial",
+                                                "id": "hyNMgB"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Could I get a staff like yours?",
+                            "steps": [
+                              {
+                                "player": "Could I get a staff like yours?"
+                              },
+                              {
+                                "npc": "There is no other staff like this in all the land. It's a very important staff. It shows who holds the job as the Lumbridge Guide, and that's me."
+                              },
+                              {
+                                "npc": "Is there anything else you need help with?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "I'd like to know more about getting weapons.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "EMfX_9"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'd like to know about something else.",
+                                    "steps": [
+                                      {
+                                        "player": "I'd like to know about something else."
+                                      },
+                                      {
+                                        "npc": "Well, what would you like to know?"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "initial",
+                                        "id": "nXbjoU"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "No thank you.",
+                                    "steps": [
+                                      {
+                                        "player": "No thank you."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Yes, but what should I fight once I have got a weapon?",
+                            "steps": [
+                              {
+                                "player": "Yes, but what should I fight once I have got a weapon?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "pwritM"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "WV14ac"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has a weapon equipped or in their inventory:",
+                    "steps": [
+                      {
+                        "npc": "There's lots of beasts to fight in the woods around here, especially to the west. There are certainly some goblins and spiders that are pests and could do with being cleared out. There's also a chicken farm or two up the"
+                      },
+                      {
+                        "npc": "road for some fairly easy pickings. Non-player characters usually appear as yellow dots on your minimap, although there are some that you won't be able to fight, such as myself. A monster's combat level is"
+                      },
+                      {
+                        "npc": "shown next to their 'Attack' option. If that level is coloured green it means the monster is weaker than you. If it is red, it means that the monster is tougher than you."
+                      },
+                      {
+                        "npc": "Remember, you will do better if you have better armour and weapons and it's always worth carrying a bit of food to heal yourself."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Where can I get food to heal myself?",
+                            "steps": [
+                              {
+                                "player": "Where can I get food to heal myself?"
+                              },
+                              {
+                                "npc": "There are many different foods in the game such as cabbage, fish, meat and many more. Which do you wish to hear about?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "How do I get cabbages?",
+                                    "steps": [
+                                      {
+                                        "player": "How do I get cabbages?"
+                                      },
+                                      {
+                                        "npc": "There is a field a little distance to the north of here packed full of cabbages which are there for the picking."
+                                      },
+                                      {
+                                        "npc": "You could also farm your own cabbages; there's a Farming patch just south of Falador."
+                                      },
+                                      {
+                                        "npc": "Is there anything else you need help with?"
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "I'd like to know about other food.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "hpUEpH"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know about something else.",
+                                            "steps": [
+                                              {
+                                                "player": "I'd like to know about something else."
+                                              },
+                                              {
+                                                "npc": "Well, what would you like to know?"
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "initial",
+                                                "id": "rLR2SA"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "No thank you."
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "player": "No thank you."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "How do I fish?",
+                                    "steps": [
+                                      {
+                                        "player": "How do I fish?"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player has above X Fishing:",
+                                        "steps": [
+                                          {
+                                            "npc": "I am confused. You are already an experienced fisher. You should know the answer to that already."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "4nkC84"
+                                      },
+                                      {
+                                        "npc": "Fishing spots require different levels and equipment to use. To start Fishing, you'll want to talk to the Fishing tutor who can be found in the swamps south of here. He will also give you a small fishing net if you don't"
+                                      },
+                                      {
+                                        "npc": "own one already."
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "The minimap in the top right corner of the game screen has various icons showing the locations of things. This icon to the left shows where Fishing spots are.",
+                                        "id": "mJfh1c"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "You will need some Fishing equipment. At the Fishing spots to the south you can only use a small fishing net.",
+                                        "id": "SyIrT7"
+                                      },
+                                      {
+                                        "player": "Where could I find one of those?"
+                                      },
+                                      {
+                                        "npc": "You can get them from a Fishing shop or our Fishing Tutor south of here in the swamp. There is a Fishing shop in Port Sarim; you can find it on the world map. Port Sarim is some way to the west of here, beyond"
+                                      },
+                                      {
+                                        "npc": "the village of Draynor."
+                                      },
+                                      {
+                                        "npc": "Is there anything else you need help with?"
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "I'd like to know about other food.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "gcmcuh"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know about something else.",
+                                            "steps": [
+                                              {
+                                                "player": "I'd like to know about something else."
+                                              },
+                                              {
+                                                "npc": "Well, what would you like to know?"
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "initial",
+                                                "id": "3m-EHZ"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "No thank you."
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "player": "No thank you."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Where can I find meat?",
+                                    "steps": [
+                                      {
+                                        "player": "Where can I find meat?"
+                                      },
+                                      {
+                                        "npc": "I suggest you go and kill some chickens. The roads on either side of this river eventually go past a chicken farm. When you have killed some chickens, cook them. You could either make a fire or use a range."
+                                      },
+                                      {
+                                        "npc": "There is a range at the southern end in this town and a Cooking tutor in south Lumbridge near Bob's Brilliant Axes shop."
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "The minimap in the top right corner of the game screen has various icons showing the locations of things. This icon to the left shows where Cooking ranges are.",
+                                        "id": "ek344_"
+                                      },
+                                      {
+                                        "npc": "Is there anything else you need help with?"
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "I'd like to know about other food.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "u0_B8E"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know about something else.",
+                                            "steps": [
+                                              {
+                                                "player": "I'd like to know about something else."
+                                              },
+                                              {
+                                                "npc": "Well, what would you like to know?"
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "initial",
+                                                "id": "wEpDXw"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "No thank you."
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "player": "No thank you."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I get better armour and weapons?",
+                            "steps": [
+                              {
+                                "npc": "Well, you can make them, buy them or talk to the combat tutors just west of here."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "How do I make a weapon?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "b0JgFu"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Where can I buy a weapon?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "7DBI3P"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Could I get a staff like yours?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "pFCMuB"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Okay, thanks, I will go and kill things.",
+                            "steps": [
+                              {
+                                "player": "Okay, thanks, I will go and kill things."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I kill other players?",
+                            "steps": [
+                              {
+                                "player": "Can I kill other players?"
+                              },
+                              {
+                                "npc": "Well, you can go to the Wilderness. That is the area for killing other players. Just keep heading north and eventually you will be bound to reach it. Be very careful, though. Player-killing is not for the unprepared."
+                              },
+                              {
+                                "npc": "I'd suggest that you leave any items you don't want to lose in the bank and take a good supply of food with you."
+                              },
+                              {
+                                "npc": "Is there anything else you need help with?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "No thank you.",
+                                    "steps": [
+                                      {
+                                        "player": "No thank you."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'd like to know more about combat.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "izLFFN"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'd like to know about something else.",
+                                    "steps": [
+                                      {
+                                        "player": "I'd like to know about something else."
+                                      },
+                                      {
+                                        "npc": "Well, what would you like to know?"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "initial",
+                                        "id": "N4sC_X"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "PDViL_"
+                  }
+                ],
+                "id": "_ttZZ6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Combat level above X:",
+                "steps": [
+                  {
+                    "npc": "You're strong enough to work out what monsters to fight for yourself now, but the combat tutors might help you with any questions you have about the skills; they're just over there to the south of the general store."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The minimap in the top right corner of the game screen has various icons showing the locations of things. This icon to the left shows where Combat tutors are.",
+                    "id": "cdfW55"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "AZwXy3"
+                  }
+                ],
+                "id": "FXRnUI"
+              }
+            ]
+          },
+          {
+            "text": "Where can I make money?",
+            "steps": [
+              {
+                "player": "Where can I make money?"
+              },
+              {
+                "npc": "There are many ways to make money in the game. I would suggest either killing monsters or doing a trade skill such as Smithing or Fishing."
+              },
+              {
+                "npc": "Please don't try to get money by begging off other players. It will make you unpopular. Nobody likes a beggar. It is very irritating to have other players asking for your hard-earned cash."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Where can I smith?",
+                    "steps": [
+                      {
+                        "player": "Where can I smith?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "NYpIZb"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do I fish?",
+                    "steps": [
+                      {
+                        "player": "How do I fish?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "KurISc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What monsters should I fight?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "Sv0kIH"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Where can I find more information?",
+            "steps": [
+              {
+                "player": "Where can I find more information?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Useful links section of the account management tab",
+                "id": "5-IYPu"
+              },
+              {
+                "npc": "What you'll want is the OSRS Wiki! I've taken the liberty of opening the useful links section of the account management tab for you. Here you can find a link to the wiki. There's information and guides on almost"
+              },
+              {
+                "npc": "everything, all easily searched and it's even written and maintained by players."
+              },
+              {
+                "npc": "Is there anything else you need help with?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "player": "Yes please."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "ixOwoT"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thank you.",
+                    "steps": [
+                      {
+                        "player": "No thank you."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "More options...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to know more about security.",
+                    "steps": [
+                      {
+                        "player": "I'd like to know more about security."
+                      },
+                      {
+                        "npc": "First I must warn you to take every precaution to keep your RuneScape password and PIN secure. The most important thing to remember is to never give your password to, or share your account with, anyone."
+                      },
+                      {
+                        "npc": "I can also tell you about password security, avoiding item scamming and in-game moderation. I can also tell you about a place called the Stronghold of Security, where you can learn more about account security and"
+                      },
+                      {
+                        "npc": "have a bit of an adventure at the same time."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I'd like to know about password security.",
+                            "steps": [
+                              {
+                                "player": "I'd like to know about password security."
+                              },
+                              {
+                                "npc": "Well, the first thing to remember with password security, which I can't stress enough, is to never tell your password, bank PIN or authenticator details to anyone, not even if they claim to be Jagex staff. Real"
+                              },
+                              {
+                                "npc": "Jagex staff will NEVER ask for your password. Sharing your account is a very bad idea, even if you think that you know and trust the person you are sharing with. Players have lost items and even their"
+                              },
+                              {
+                                "npc": "account this way. Sharing accounts is also against the rules."
+                              },
+                              {
+                                "player": "Is there anything else to be aware of?"
+                              },
+                              {
+                                "npc": "Yes, also be careful where you enter your password. Be aware that fake Old School RuneScape websites exist. These are sites that claim to give things such as item/stat upgrades, free items, beta testing and"
+                              },
+                              {
+                                "npc": "moderator applications. Jagex do not offer any of these services."
+                              },
+                              {
+                                "npc": "Also be aware of trojans and keyloggers. These nasty programs can send everything you type into your device back to the computers of malicious people, so you can lose more than just your Old School RuneScape"
+                              },
+                              {
+                                "npc": "password in this way. To avoid getting these on your device, be very wary of what you download, especially when it comes to downloading third party software. Also be very wary of email attachments and instant"
+                              },
+                              {
+                                "npc": "messenger file transfers, which can contain such things."
+                              },
+                              {
+                                "npc": "Finally, remember the game doesn't censor your password or bank PIN when you type them; anyone who tells you otherwise is probably trying to steal your character or items."
+                              },
+                              {
+                                "npc": "Is there anything else you need help with?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Tell me more about security.",
+                                    "steps": [
+                                      {
+                                        "player": "I'd like to know more about security."
+                                      },
+                                      {
+                                        "npc": "First I must warn you to take every precaution to keep your RuneScape password and PIN secure. The most important thing to remember is to never give your password to, or share your account with, anyone."
+                                      },
+                                      {
+                                        "npc": "I can also tell you about password security, avoiding item scamming and in-game moderation. I can also tell you about a place called the Stronghold of Security, where you can learn more about account security and"
+                                      },
+                                      {
+                                        "npc": "have a bit of an adventure at the same time."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "I'd like to know about password security.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "3dm_JZ"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know more about avoiding item scamming.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "8RH9V_"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know more about in-game moderation.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "qzA8zF"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "I'd like to know about the Stronghold of Security.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "nZnmwL"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'd like to know more about something else.",
+                                    "steps": [
+                                      {
+                                        "player": "I'd like to know about something else."
+                                      },
+                                      {
+                                        "npc": "Well, what would you like to know?"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "initial",
+                                        "id": "BvmwvB"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "No thank you.",
+                                    "steps": [
+                                      {
+                                        "player": "No thank you."
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'd like to know more about avoiding item scamming.",
+                            "steps": [
+                              {
+                                "player": "I'd like to know more about avoiding item scamming."
+                              },
+                              {
+                                "npc": "There are many nice and helpful players in Old School RuneScape; unfortunately, as in real life, there are some who aren't so honest. Some people may try to trick you out of your items. Try not to fall for this as"
+                              },
+                              {
+                                "npc": "Jagex policy is to never return lost items to players that have been scammed. Doing so just encourages users to claim they lost items they never had to gain an unfair advantage. However, people carrying out such"
+                              },
+                              {
+                                "npc": "scams will get banned as it is against the rules."
+                              },
+                              {
+                                "npc": "When trading, you have a second trade confirmation screen. Always double check that you are getting the items you expect on this page as some people may try and change what they are trading at the last minute on"
+                              },
+                              {
+                                "npc": "the first trade screen. Remember when you have clicked accept on the second trade screen, the trade is not reversible."
+                              },
+                              {
+                                "npc": "Try and find out from someone else what an item is before spending a lot of money on it. Not all merchants are honest about the rarity or the uses of their wares. For example, some people try to pass off spinach rolls as"
+                              },
+                              {
+                                "npc": "rare when in fact they're as common as cabbages!"
+                              },
+                              {
+                                "npc": "Be wary of people offering to improve your items. For example, some people will claim they can add a trim to your armour or upgrade your sword to a more powerful one. This is not possible and they are trying"
+                              },
+                              {
+                                "npc": "to steal your hard-earned equipment."
+                              },
+                              {
+                                "npc": "Is there anything else you need help with?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Tell me more about security.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "S6_Q0f"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'd like to know about something else.",
+                                    "steps": [
+                                      {
+                                        "player": "I'd like to know about something else."
+                                      },
+                                      {
+                                        "npc": "Well, what would you like to know?"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "initial",
+                                        "id": "7DkCxC"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "No thank you.",
+                                    "steps": [
+                                      {
+                                        "player": "No thank you."
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'd like to know more about in-game moderation.",
+                            "steps": [
+                              {
+                                "player": "I'd like to know more about in-game moderation."
+                              },
+                              {
+                                "npc": "You will, from time to time, see moderator characters in game. Remember: a real staff member will never ask for your password or any other personal information. There are two types of moderator. You may see Jagex"
+                              },
+                              {
+                                "npc": "staff characters in game - these can be identified by a gold crown next to their name and are the people who work in the Jagex offices. They might be from Customer Support, or they might be a tester or a"
+                              },
+                              {
+                                "npc": "programmer. You may also see player moderators - these can be identified by a silver crown next to their name. Player moderators are trusted players of Old School RuneScape that help keep in-game behaviour in"
+                              },
+                              {
+                                "npc": "line with the Old School RuneScape rules."
+                              },
+                              {
+                                "player": "How do I become a player moderator?"
+                              },
+                              {
+                                "npc": "The only way to become a player moderator is to know and play by the rules laid down by Jagex. Report those who break the rules, help players who need it and one day you might find an invite to become a moderator in"
+                              },
+                              {
+                                "npc": "your Old School RuneScape inbox. Note that Jagex will never contact you in game or by email to become a player moderator."
+                              },
+                              {
+                                "npc": "Is there anything else you need help with?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "No, thank you.",
+                                    "steps": [
+                                      {
+                                        "player": "No thank you."
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Yes, please.",
+                                    "steps": [
+                                      {
+                                        "player": "Yes please."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "initial",
+                                        "id": "-9XVyw"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Tell me more about security.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "IRqZcs"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'd like to know about the Stronghold of Security.",
+                            "steps": [
+                              {
+                                "player": "I'd like to know about the Stronghold of Security."
+                              },
+                              {
+                                "npc": "An exciting new discovery has been made in the Barbarian Village. Soon after they started mining in the middle of the village, one of the miners got caught in a cave."
+                              },
+                              {
+                                "player": "Sounds painful, did he fall on his head?"
+                              },
+                              {
+                                "npc": "No, but it turned out that he had discovered a place unlike any other."
+                              },
+                              {
+                                "player": "How so?"
+                              },
+                              {
+                                "npc": "Well an explorer went to look down there, it's full of new and exciting creatures and other surprises on top of that. It turns out this place can also help you to secure your account more effectively."
+                              },
+                              {
+                                "player": "Wow, that sounds good. Where can I find the explorer to learn more?"
+                              },
+                              {
+                                "npc": "Sadly the explorer went missing and has not been found. However, here is some information to get you started on securing your account. You can find the Barbarian Village north of Falador and west of Varrock."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player doesn't have a security book yet:",
+                                "steps": [
+                                  {
+                                    "type": "action",
+                                    "action": "receive",
+                                    "text": "security book",
+                                    "id": "LJLRfA"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "The guide hands you a book.",
+                                    "id": "aa6GoA"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "continues",
+                                    "id": "-l9d7o"
+                                  }
+                                ],
+                                "id": "LD-Lcq"
+                              },
+                              {
+                                "npc": "Is there anything else you need help with?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Tell me more about security.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "gc95Vd"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'd like to know about something else.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "2XU9o9"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "No thank you.",
+                                    "steps": [
+                                      {
+                                        "player": "No thank you."
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where can I find a bank?",
+                    "steps": [
+                      {
+                        "player": "Where can I find a bank?"
+                      },
+                      {
+                        "npc": "You'll find a bank upstairs in Lumbridge Castle - go right to the top."
+                      },
+                      {
+                        "type": "unavailable",
+                        "id": "T0cYfZ"
+                      },
+                      {
+                        "npc": "Is there anything else you need help with?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes please.",
+                            "steps": [
+                              {
+                                "player": "Yes please.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "E6cDB1"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thank you.",
+                            "steps": [
+                              {
+                                "player": "No thank you."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't need any help.",
+                    "steps": [
+                      {
+                        "player": "No, I can find things myself thank you."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Previous options...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous2",
+                        "id": "qe3-c7"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "contacting-through-astral-contacts-random-option": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "What, who's that?"
+      },
+      {
+        "player": "Hehe... ahem..."
+      },
+      {
+        "player": "This is the voice of your conscience! You've been a very naughty boy haven't you?"
+      },
+      {
+        "npc": "What? No I haven't!"
+      },
+      {
+        "player": "You know what I'm talking about! Don't lie!"
+      },
+      {
+        "npc": "Okay, okay! I'm sorry, I'll never do it again!"
+      },
+      {
+        "player": "If you do it again, you'll be in deep trouble."
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "cJxm6E"
+      },
+      {
+        "npc": "I'm supposed to be the local source of knowledge, but I cannot even solve this puzzle! Do me a favour and solve it for me."
+      },
+      {
+        "type": "message",
+        "text": "The Lumbridge Guide has given you a puzzle box!",
+        "id": "-o659F"
+      }
+    ],
+    "treasure-trails-hard-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "Sorry but you haven't solved the puzzle yet."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "yLWlX8"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Thanks [player name]!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The Lumbridge Guide has given you another clue scroll!",
+                "id": "E8DD3P"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "i3yq4E"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "_ggxQ3"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "pYLktr"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "SQOmwn"
+              }
+            ],
+            "id": "YYyOKE"
+          }
+        ],
+        "id": "tzElhR"
+      }
+    ],
+    "giving-him-the-tarnished-locket-first-time": [
+      {
+        "player": "Does the name 'Philly' mean anything to you by chance?"
+      },
+      {
+        "type": "message",
+        "text": "You present the locket to the Lumbridge Guide.",
+        "id": "fe88Y4"
+      },
+      {
+        "npc": "That locket! Where did you get it?"
+      },
+      {
+        "player": "I found it in a magical rift. Does it belong to you?"
+      },
+      {
+        "npc": "Not exactly... It's a long and sad story."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "It's okay, I have time to listen.",
+            "steps": [
+              {
+                "player": "It's okay, I have time to listen."
+              },
+              {
+                "npc": "Well, if you're sure then."
+              },
+              {
+                "npc": "It all started in my youth when I was part of the Order of Wizards. I frequently spent time travelling across Gielinor, which kept me away from my beloved who worked here in Lumbridge."
+              },
+              {
+                "npc": "Due to being apart, I would often send her gifts. This locket was one of them."
+              },
+              {
+                "player": "I see... I'm not sure I like where this story is going. How come I found the locket in a magic rift then?"
+              },
+              {
+                "npc": "As I said, my research often kept me away from home. During one of my trips away, our house was robbed. My dear Thenia tried to stop them, but they took her life in return. The locket was taken in the robbery."
+              },
+              {
+                "player": "Oh my... I'm so sorry for your loss."
+              },
+              {
+                "npc": "I appreciate your kind words, but this was a long time ago. The pain of losing a loved one never fades, but in time you come to live with it."
+              },
+              {
+                "npc": "Anyway, after that I stepped down from the Order of Wizards. I now spend my days offering guidance to those who come through Lumbridge."
+              },
+              {
+                "player": "I'm still curious to know how it ended up in some rift. Do you have any theories?"
+              },
+              {
+                "npc": "Well... where was this rift?"
+              },
+              {
+                "player": "In an ancient temple. Most things in the rift came from the Abyss."
+              },
+              {
+                "npc": "The Abyss? I wasn't aware anyone had ever been to the Abyss."
+              },
+              {
+                "player": "They hadn't until recently, but the Z.M.I. found a way there."
+              },
+              {
+                "npc": "The Z.M.I.? But could that mean..."
+              },
+              {
+                "player": "What?"
+              },
+              {
+                "npc": "Oh, nothing to worry about. Just me being a silly old man. Tell me more about this temple."
+              },
+              {
+                "player": "It's called the Temple of the Eye. It was built by Saradominist wizards long ago to house a powerful artefact."
+              },
+              {
+                "npc": "The Eye?"
+              },
+              {
+                "player": "You've heard of it?"
+              },
+              {
+                "npc": "Only stories, of which there are very few. Still, I always believed them to be real. After all, why else would an eye be the symbol of the Order of Wizards?"
+              },
+              {
+                "npc": "Ah, but that reminds me, I was not the first in my family to join the order. This amulet was passed down from generation to generation."
+              },
+              {
+                "type": "message",
+                "text": "Phileas shows you an amulet.",
+                "id": "_2HDsR"
+              },
+              {
+                "player": "That looks just like the amulet that led us to the temple!"
+              },
+              {
+                "npc": "As soon as you mentioned it, I wondered if there might be a connection."
+              },
+              {
+                "npc": "The origin of this amulet was something I spent much time puzzling over when I was younger. I'm glad you have answered the question I couldn't."
+              },
+              {
+                "npc": "I'd be happy to give you this amulet in return for that locket. I have no use for it, but that locket is something which holds a lot of sentimental value to me."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Of course you can have the locket.",
+                    "steps": [
+                      {
+                        "player": "Of course you can have the locket."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You exchange the locket for the amulet.",
+                        "id": "HnwS8y"
+                      },
+                      {
+                        "npc": "Thank you for returning this to me. I wish you the best of luck on the rest of your adventures."
+                      },
+                      {
+                        "player": "Thanks, Phileas. I wish you luck also."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd rather keep the locket for myself.",
+                    "steps": [
+                      {
+                        "npc": "Oh, I see. I guess I can't really force you to hand it over. The offer still stands if you ever change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Never mind then. I have to go.",
+            "steps": [
+              {
+                "player": "Never mind then. I have to go."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "giving-him-the-tarnished-locket-after-not-giving-him-the-amulet": [
+      {
+        "npc": "You're back. Would you consider giving me that locket? It holds a lot of sentimental value to me. I'll give you that amulet in return."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Of course you can have the locket.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "e4La9C"
+              }
+            ]
+          },
+          {
+            "text": "I'd rather keep the locket for myself.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "NqK3r-"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

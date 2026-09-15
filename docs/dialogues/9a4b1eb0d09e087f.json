@@ -1,0 +1,410 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "type": "line",
+        "speaker": "Doric",
+        "text": "Hello traveller, what brings you to my humble smithy?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I wanted to use your anvils.",
+            "steps": [
+              {
+                "player": "I wanted to use your anvils."
+              },
+              {
+                "type": "line",
+                "speaker": "Doric",
+                "text": "My anvils get enough work with my own use. I make pickaxes, and it takes a lot of hard work. If you could get me some more materials, then I could let you use them."
+              },
+              {
+                "type": "choice",
+                "prompt": "Start Doric's Quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Yes, I will get you the materials."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Doric",
+                        "text": "Clay is what I use more than anything, to make casts. Could you get me 6 clay, 4 copper ore, and 2 iron ore, please? I could pay a little, and let you use my anvils. Take this pickaxe with you just in case you need it."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not already have all of the materials:",
+                        "id": "aaa-pe"
+                      },
+                      {
+                        "type": "choice",
+                        "options": []
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has all of the materials:",
+                        "steps": [
+                          {
+                            "player": "You know, it's funny you should require those exact things!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Doric",
+                            "text": "What do you mean?"
+                          },
+                          {
+                            "player": "I can usually fit 28 things in my backpack and in a world full of quite literally limitless possibilities, a complete coincidence has occurred!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Doric",
+                            "text": "I don't quite understand what you're saying?"
+                          },
+                          {
+                            "player": "Well, out of pure coincidence, despite definitely not knowing what you were about to request, I just so happened to have carried those exact items!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has the exact amounts:",
+                            "steps": [
+                              {
+                                "player": "In fact, in the exact quantities too!"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "continues",
+                                "id": "vKFJIk"
+                              }
+                            ],
+                            "id": "FgVDzP"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Doric",
+                            "text": "Oh my, that is a coincidence! Pass them here, please. I can spare you some coins for your trouble, and please use my anvils any time you want."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You hand the clay, copper, and iron to Doric.",
+                            "id": "NpBbL9"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Quest complete!",
+                            "id": "wEuzw0"
+                          }
+                        ],
+                        "id": "qv9cGD"
+                      }
+                    ],
+                    "hook": "quest:doric-s-quest:start",
+                    "quest": "Doric's Quest"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No, hitting rocks is for the boring people, sorry."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Doric",
+                        "text": "That is your choice. Nice to meet you anyway."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I want to use your whetstone.",
+            "steps": [
+              {
+                "player": "I wanted to use your whetstone."
+              },
+              {
+                "type": "line",
+                "speaker": "Doric",
+                "text": "The whetstone is for more advanced smithing, but I could let you use it as well as my anvils if you could get me some more materials."
+              },
+              {
+                "type": "choice",
+                "prompt": "Start Doric's Quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "Kd8lzQ"
+                      }
+                    ],
+                    "hook": "quest:doric-s-quest:start",
+                    "quest": "Doric's Quest"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "sT6Lfw"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Mind your own business, shortstuff!",
+            "steps": [
+              {
+                "player": "Mind your own business, shortstuff!"
+              },
+              {
+                "type": "line",
+                "speaker": "Doric",
+                "text": "How nice to meet someone with such pleasant manners. Do come again when you need to shout at someone smaller than you!"
+              }
+            ]
+          },
+          {
+            "text": "I was just checking out the landscape.",
+            "steps": [
+              {
+                "player": "I was just checking out the landscape."
+              },
+              {
+                "type": "line",
+                "speaker": "Doric",
+                "text": "Hope you like it. I do enjoy the solitude of my little home. If you get time, please say hi to my friends in the Dwarven Mine."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Dwarven Mine?",
+                    "steps": [
+                      {
+                        "player": "Dwarven Mine?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Doric",
+                        "text": "Yep, the entrance is in the side of Ice Mountain just to the east of here. They're a friendly bunch. Stop in at Nurmof's store and buy one of my pickaxes!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Will do!",
+                    "steps": [
+                      {
+                        "player": "Will do!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do you make here?",
+            "steps": [
+              {
+                "player": "What do you make here?"
+              },
+              {
+                "type": "line",
+                "speaker": "Doric",
+                "text": "I make pickaxes. I am the best maker of pickaxes in the whole of Gielinor."
+              },
+              {
+                "player": "Do you have any to sell?"
+              },
+              {
+                "type": "line",
+                "speaker": "Doric",
+                "text": "Sorry, but I've got a running order with Nurmof.",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Who's Nurmof?",
+                        "steps": [
+                          {
+                            "player": "Who's Nurmof?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Doric",
+                            "text": "Nurmof has a store over in the Dwarven Mine. You can find the entrance on the side of Ice Mountain to the east of here."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Ah, fair enough.",
+                        "steps": [
+                          {
+                            "player": "Ah, fair enough."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-attempting-to-use-his-anvils-before-the-quest": [
+      {
+        "type": "line",
+        "speaker": "Doric",
+        "text": "Hey, who said you could use that? My anvils get enough work with my own use. I make pickaxes, and it takes a lot of hard work."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sorry, would it be OK if I used your anvils?",
+            "steps": [
+              {
+                "player": "Sorry, would it be OK if I used your anvils?"
+              },
+              {
+                "type": "line",
+                "speaker": "Doric",
+                "text": "If you could get me some more materials then I could let you use them."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, I will get you materials.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "6jWgMA"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, hitting rocks is for the boring people, sorry.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "JkA_QP"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I didn't want to use your anvils anyway.",
+            "steps": [
+              {
+                "player": "I didn't want to use your anvils anyway."
+              },
+              {
+                "type": "line",
+                "speaker": "Doric",
+                "text": "That is your choice."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-attempting-to-use-his-whetstone-before-the-quest": [
+      {
+        "type": "message",
+        "text": "You should probably ask before using that.",
+        "id": "UgCEfK"
+      }
+    ],
+    "starting-off-talking-to-doric-without-all-of-the-materials": [
+      {
+        "type": "line",
+        "speaker": "Doric",
+        "text": "Have you got my materials yet, traveller?"
+      },
+      {
+        "player": "Sorry, I don't have them all yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Doric",
+        "text": "Not to worry, stick at it. Remember, I need 6 clay, 4 copper ore, and 2 iron ore."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where can I find those?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "tBXkqb"
+              }
+            ]
+          },
+          {
+            "text": "Certainly, I'll be right back!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "TkXExN"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-returning-with-all-the-materials": [
+      {
+        "type": "line",
+        "speaker": "Doric",
+        "text": "Have you got my materials yet, traveller?"
+      },
+      {
+        "player": "I have everything you need!"
+      },
+      {
+        "type": "line",
+        "speaker": "Doric",
+        "text": "Many thanks! Pass them here, please. I can spare you some coins for your trouble, and please use my anvils any time you want."
+      },
+      {
+        "type": "message",
+        "text": "You hand the clay, copper, and iron to Doric.",
+        "id": "n6fQmN"
+      },
+      {
+        "type": "action",
+        "text": "Quest complete!",
+        "id": "M4gVPX"
+      },
+      {
+        "type": "unavailable",
+        "id": "JbK3wS"
+      }
+    ]
+  }
+}

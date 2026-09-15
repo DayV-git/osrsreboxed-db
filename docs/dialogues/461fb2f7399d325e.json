@@ -1,0 +1,190 @@
+{
+  "default": "standard-dialogue-before-completing-pandemonium",
+  "variants": {
+    "standard-dialogue-before-completing-pandemonium": [
+      {
+        "npc": "Hello there. Do you want to go on a trip to Karamja? We can take you to Musa Point for only 30 coins."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have enough coins in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh dear, I don't seem to have enough money."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "FUAwJK"
+              },
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "text": "The player is then transported to Karamja.",
+                "id": "oJnbxR"
+              }
+            ]
+          },
+          {
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-pandemonium": [
+      {
+        "type": "condition",
+        "text": "If the player is not wearing Karamja gloves:",
+        "steps": [
+          {
+            "npc": "Hello there. Do you want to travel somewhere? We can take you to Musa Point on Karamja, or if you prefer, we can drop you off at the Pandemonium on the way. It only costs 30 coins."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "x-7FGE"
+          }
+        ],
+        "id": "SttHf4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing Karamja gloves:",
+        "steps": [
+          {
+            "npc": "Hello there. Do you want to travel somewhere? We can take you to Musa Point on Karamja for 15 coins, or if you prefer, for 30 coins we can drop you off at the Pandemonium on the way."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "Gpk1YL"
+          }
+        ],
+        "id": "9PHLnz"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "npc": "Where would you like to go?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to go to Musa Point.",
+                    "steps": [
+                      {
+                        "player": "I'd like to go to Musa Point."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player is then transported to Karamja.",
+                        "id": "aCDRxJ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like to go to the Pandemonium.",
+                    "steps": [
+                      {
+                        "player": "I'd like to go to the Pandemonium."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player is then transported to the Pandemonium.",
+                        "id": "yrFrGT"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I don't want to go anywhere.",
+                    "steps": [
+                      {
+                        "player": "Actually, I don't want to go anywhere."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "sCloOT"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Well done, matey! Here you go!"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy clue scroll",
+            "id": "fOwDsX"
+          },
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "SrdFwc"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Tu39Y3"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy reward casket",
+            "id": "k9SZJj"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "uug2o_"
+          }
+        ],
+        "id": "kzoXRw"
+      }
+    ]
+  }
+}

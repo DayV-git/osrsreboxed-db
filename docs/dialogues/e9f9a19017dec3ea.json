@@ -1,0 +1,238 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "You know it's sometimes funny how things work out, I lose some gold but find an item, or I lose an item and find some gold... no-one ever knows what's gone where ya know."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yeah I know what you mean, found anything recently?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at least level 50 Thieving:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "9gUhZC"
+                  }
+                ],
+                "id": "K3C0mY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has between level 50-98 Thieving, but doesn't have at least level 50 Agility:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "6Iig0y"
+                  }
+                ],
+                "id": "Qr-5iN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has over level 50 Thieving and Agility, or level 99 Thieving outright:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Martin Thwait's Lost and Found.",
+                    "id": "pW6sMo"
+                  }
+                ],
+                "id": "D5i-4T"
+              }
+            ]
+          },
+          {
+            "text": "Can you tell me about your cape?",
+            "steps": [
+              {
+                "player": "Can you tell me about your cape?"
+              },
+              {
+                "npc": "Certainly! Skillcapes are a symbol of achievement. Only people who have mastered a skill and reached level 99 can get their hands on them and gain the benefits they carry."
+              },
+              {
+                "npc": "The Cape of Thieving provides a nice boost to your chances of pickpocketing when worn. Is there anything else I can help you with?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Have you found anything recently?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "5HlfgD"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thank you.",
+                    "steps": [
+                      {
+                        "player": "No thank you."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Okay... I'll be going now.",
+            "steps": [
+              {
+                "player": "Okay... I'll be going now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-trade-option": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have at least level 50 Thieving:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "9gUhZC"
+          }
+        ],
+        "id": "fJ1j5-"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has between level 50-98 Thieving, but doesn't have at least 50 Agility:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "6Iig0y"
+          }
+        ],
+        "id": "6Rg1MV"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has over level 50 Thieving and Agility, or 99 Thieving outright:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_shop",
+            "target": "Martin Thwait's Lost and Found.",
+            "id": "E8bkj3"
+          }
+        ],
+        "id": "qh0IZN"
+      }
+    ],
+    "treasure-trails": [
+      {
+        "npc": "Ah! Here you go!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to answer this for me."
+      },
+      {
+        "type": "message",
+        "text": "Martin has given you a challenge scroll!",
+        "id": "NJLBEN"
+      }
+    ],
+    "treasure-trails-when-spoken-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "How can that be? Go check again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "2KoXTE"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Spot on!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Martin has given you another clue scroll!",
+                "id": "50VFP0"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll",
+                "id": "LkyVce"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "aSgNy6"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "3vw2-w"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "klt56x"
+              }
+            ],
+            "id": "dfC26x"
+          }
+        ],
+        "id": "epEFOh"
+      }
+    ]
+  },
+  "branches": {
+    "9gUhZC": [
+      {
+        "npc": "Sorry, mate. Train up your Thieving skill to at least 50 and I might be able to help you out."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "6Iig0y": [
+      {
+        "npc": "Sorry, mate. Train up your Agility skill to at least 50 and I might be able to help you out."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

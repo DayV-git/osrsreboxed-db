@@ -1,0 +1,906 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Tell me... a story..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay...",
+            "steps": [
+              {
+                "player": "Okay..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have empty hands:",
+                "steps": [
+                  {
+                    "npc": "Perhaps you should empty your hands before you begin."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "xVIAF8"
+              },
+              {
+                "type": "unavailable",
+                "id": "0upJBS"
+              },
+              {
+                "type": "reference",
+                "target": "Transcript:Juna",
+                "section": "List of stories",
+                "text": "A random dialogue will be selected from the list of stories below.",
+                "id": "nBzoOC",
+                "variant": "standard-dialogue-list-of-stories",
+                "resolved": true,
+                "page_available": true
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not gained at least 1 quest point or 100,000 experience since entering the cave, via dialogue:",
+                "steps": [
+                  {
+                    "npc": "Your story has entertained me. But it is a poor sort of adventurer who only tells stories of the past and does not find new stories to tell. I will not let you into the cave again until you have had more adventures!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You cannot enter the cave again until you have gained either one quest point or [experience due] total XP.",
+                    "id": "mr8z1y"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "PlgV_M"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has gained at least 1 quest point or 100,000 experience since entering the cave, and has entered the cave less than 7 days ago, via \"Story\" action:",
+                "steps": [
+                  {
+                    "npc": "It has not been long since your last visit. Come back [tomorrow/in [amount] days]."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZcrLIs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not gained at least 1 quest point or 100,000 experience since entering the cave, and the player hasn't entered the cave in 7 days, via \"Story\" action:",
+                "steps": [
+                  {
+                    "npc": "I fear you will have no new stories to tell me. Come again when you have had more adventures."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You cannot enter the cave again until you have gained either one quest point or [experience due] total XP.",
+                    "id": "Y7mXMq"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "gbeW2g"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not gained at least 1 quest point or 100,000 experience since entering the cave, and the player has entered the cave less than 7 days ago, via \"Story\" action:",
+                "steps": [
+                  {
+                    "npc": "I fear you will have no new stories to tell me. Come again [tomorrow/in [amount] days] if you have had more adventures by then."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You cannot enter the cave again until you have gained either one quest point or [experience due] total XP.",
+                    "id": "3rfO2n"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OHiPEk"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is eligible to enter the cave:",
+                "steps": [
+                  {
+                    "npc": "Your stories have entertained me. I will let you into the cave for a short time."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "During the Sailing XP embargo:",
+                    "steps": [
+                      {
+                        "npc": "I must warn you though, the Tears cannot help you with your sailing abilities at this time, for Guthix does not wish to interfere with the balance."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Do you wish to collect the tears anyway?",
+                        "options": [
+                          {
+                            "text": "Yes, I understand that I won't get Sailing XP.",
+                            "steps": [
+                              {
+                                "player": "I understand."
+                              },
+                              {
+                                "npc": "Collect as much as you can from the blue streams. If you let in water from the green streams, it will take away from the blue. For Guthix is god of balance, and balance lies in the juxtaposition of opposites."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, I'll come back another day.",
+                            "steps": [
+                              {
+                                "player": "I'll come back another day."
+                              },
+                              {
+                                "npc": "As you wish, [player name]."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "FM5Dok"
+                  },
+                  {
+                    "npc": "Collect as much as you can from the blue streams. If you let in water from the green streams, it will take away from the blue. For Guthix is god of balance, and balance lies in the juxtaposition of opposites."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player enters the Tears of Guthix cave",
+                    "id": "1SFGWK"
+                  }
+                ],
+                "id": "xCJjUs"
+              }
+            ]
+          },
+          {
+            "text": "You tell me a story.",
+            "steps": [
+              {
+                "player": "You tell me a story."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not asked Juna to tell them a story before:",
+                "steps": [
+                  {
+                    "npc": "The Third Age of the world was a time of great conflict, of destruction never seen before or since, when all the gods save Guthix warred for control."
+                  },
+                  {
+                    "npc": "The colossal Wyrms, of whom today's dragons are a pale reflection, turned all the sky to fire, while on the ground armies of foot soldiers, goblins and trolls and humans, filled the valleys and plains with blood."
+                  },
+                  {
+                    "npc": "In time the noise of the conflict woke Guthix from His deep slumber, and He rose and stood in the centre of the battlefield so that the splendour of His wrath filled the world, and He called for the conflict to cease!"
+                  },
+                  {
+                    "npc": "Silence fell, for the gods knew that none could challenge the power of the mighty Guthix -- for His power is that of nature itself, to which all other things are subject, in the end."
+                  },
+                  {
+                    "npc": "Guthix reclaimed that which had been stolen from Him, and went back underground to return to His sleep and continue to draw the world's power into Himself."
+                  },
+                  {
+                    "npc": "But on His way into the depths of the earth He sat and rested in this cave; and, thinking of the battle-scarred desert that now stretched from one side of His world to the other, He wept."
+                  },
+                  {
+                    "npc": "And so great was His sorrow, and so great was His life- giving power, that the rocks themselves began to weep with Him."
+                  },
+                  {
+                    "npc": "Later, Guthix noticed that the rocks continued to weep, and that their tears were infused with a small part of His power."
+                  },
+                  {
+                    "npc": "So He set me, His servant, to guard the cave, and He entrusted to me the task of judging who was and was not worthy to access the tears."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ucFMWH"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has asked Juna to tell them a story once before:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Tell me about the Tears of Guthix",
+                        "steps": [
+                          {
+                            "player": "Tell me about the Tears of Guthix."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "HuSag4"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Tell me a new story.",
+                        "steps": [
+                          {
+                            "npc": "I will tell you the story of the light-creatures."
+                          },
+                          {
+                            "npc": "Myriad and beautiful were the creatures and civilizations of the early ages of the world. Gielinor was a work of art, shaped lovingly over the millennia by the creative mind of Guthix."
+                          },
+                          {
+                            "npc": "Only the sturdiest races survived the Godwars, and even then only by abandoning their high culture and gearing their societies towards war. Of the more delicate races there is now no trace, and almost no memory."
+                          },
+                          {
+                            "npc": "One such race had bodies as fragile as snowflakes, yet they built crystal cities that stood for a thousand years."
+                          },
+                          {
+                            "npc": "The wind would whisper through the spires and fill them with sweet harmonies, and the rising sun would shine through the precious gems that studded the towers and create inter plays of light as if rainbows were dancing."
+                          },
+                          {
+                            "npc": "Indeed, so marvellous was this light-show at its height that the patterns of light themselves became alive, and great flocks of luminous creatures rode along the gem- cast beams, each drawn to its own colour."
+                          },
+                          {
+                            "npc": "The creatures you see floating in this chasm are the last sorry remnants of that age. I do not know how they made their way here and survived to this time, but I am grateful for their company."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ez_czC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has asked Juna to tell them a new story twice before:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Tell me about the Tears of Guthix",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "HfZpYR"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Tell me about the light-creatures",
+                        "steps": [
+                          {
+                            "player": "Tell me about the light-creatures."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "mwwxpT"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Tell me a new story.",
+                        "steps": [
+                          {
+                            "npc": "Not long after the start of my vigil a party of goblins happened on my cave. These were the ugly brutes of the gods' armies, but their armour bore a faded patch where the symbol of a god had been removed."
+                          },
+                          {
+                            "npc": "They looked around hesitantly, squinting in the light of crude torches, but as soon as they saw me they raised their spears and charged."
+                          },
+                          {
+                            "npc": "No one may access the Tears of Guthix by force. I sent them tumbling into the chasm."
+                          },
+                          {
+                            "npc": "Two hundred years later another goblin found me. This one was unarmed, and although she was very wary I succeeded in engaging her in conversation."
+                          },
+                          {
+                            "npc": "Since then I have had many more visits from the descendants of those lost warriors, and over the centuries I have seen them change."
+                          },
+                          {
+                            "npc": "They have become timid rather than aggressive, and I have seen the light of intelligence grow in their bulging eyes."
+                          },
+                          {
+                            "npc": "Their stories are repetitive and grim, of scraping a living out of the harsh rock and through ingenuity and toil shaping it into a home."
+                          },
+                          {
+                            "npc": "I have followed the progress of their race, but their individual stories hold little interest for me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "awC1fy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has asked Juna to tell them a new story thrice before:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Tell me about the Tears of Guthix",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "GiC79X"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Tell me about the light-creatures",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "Z6oFh5"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Tell me about the Cave Goblins",
+                        "steps": [
+                          {
+                            "player": "Tell me about the Cave Goblins."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "B9fWhu"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "C-75it"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to receive messages prompting me to return here.",
+            "condition": "If the player has turned off the weekly reminders:",
+            "steps": [
+              {
+                "player": "I'd like to receive messages prompting me to return here."
+              },
+              {
+                "npc": "Very well, when you are eligible to drink from the Tears, you shall be reminded daily."
+              }
+            ],
+            "id": "XRrck_"
+          },
+          {
+            "text": "I don't want any messages reminding me to return here.",
+            "condition": "If the player has turned on the weekly reminders:",
+            "steps": [
+              {
+                "player": "I don't want any messages reminding me to return here."
+              },
+              {
+                "npc": "Very well, it will be up to you to remember when you can return. It is good that you are willing to take responsibility for yourself in this way."
+              }
+            ],
+            "id": "9ANMxX"
+          },
+          {
+            "text": "Can you do something with this icon?",
+            "condition": "If the player has a Guthixian icon in their inventory:",
+            "steps": [
+              {
+                "player": "Can you do something with this icon?"
+              },
+              {
+                "type": "message",
+                "text": "Juna examines your Guthixian icon.",
+                "id": "IGBeWC"
+              },
+              {
+                "npc": "So many aeons have passed since these were made. So many mortals have been born, lived their lives, then died as Balance requires. What stories they must have known!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Staff of the Dead either equipped or in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I would be happy to honour the dead by combining such an icon with your Staff of the Dead. Give the items to me, if you wish."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay, here you go...",
+                        "steps": [
+                          {
+                            "player": "Okay, here you go..."
+                          },
+                          {
+                            "npc": "I would happily honour the dead, and all the stories they must have known, by combining your Staff of the Dead with your icon of my master, Guthix. But this cannot be undone; they will be bound forever."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Combine them. I understand it can't be undone.",
+                                "steps": [
+                                  {
+                                    "player": "Combine them. I understand it can't be undone."
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has only one Guthixian icon and Staff of the Dead in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "message",
+                                        "text": "Juna combines your icon and staff to make a staff of balance.",
+                                        "id": "XInw5V"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "mkXJ-n"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has more than one Guthixian icon and Staff of the Dead in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "message",
+                                        "text": "Juna will offer to make multiple Staves of balance",
+                                        "id": "toQoNi"
+                                      },
+                                      {
+                                        "type": "action",
+                                        "text": "Player chooses how many Staves of balance to create",
+                                        "id": "8i5UKd"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player chooses to make one Staff of Balance:",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "reference": "above",
+                                            "id": "uOuP1D"
+                                          }
+                                        ],
+                                        "id": "Wvzo6L"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player chooses to make more than one Staff of Balance:",
+                                        "steps": [
+                                          {
+                                            "type": "message",
+                                            "text": "Juna combines your icons and staffs to make [2-27] Staffs of Balance.",
+                                            "id": "fk092Y"
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "K97feQ"
+                                      }
+                                    ],
+                                    "id": "teUNwO"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks.",
+                                "steps": [
+                                  {
+                                    "player": "No thanks."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Maybe another time.",
+                        "steps": [
+                          {
+                            "player": "Maybe another time."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "U8Pzvq"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a Staff of the Dead, and any other bladed staff either equipped or in their inventory, or if the player has no bladed staves in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I would be happy to honour the dead by combining such an icon with a Staff of the Dead, if you bring one to me."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player either has a Staff of Balance, a Staff of Light, a Toxic staff (uncharged) or a Toxic staff of the Dead equipped:",
+                    "steps": [
+                      {
+                        "player": "My weapon is sort of like a Staff of the Dead, don't you think?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the equipped weapon is a Staff of Balance:",
+                        "steps": [
+                          {
+                            "npc": "It was, but I appear to have combined it with an icon already."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "2Zaz3u"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the equipped weapon is either a Staff of Light, a Toxic staff (uncharged) or a Toxic staff of the dead:",
+                        "steps": [
+                          {
+                            "npc": "I cannot combine it with that."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "W-23em"
+                      }
+                    ],
+                    "id": "iZ0SBE"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player either has a Staff of Balance, a Staff of Light, a Toxic staff (uncharged) or a Toxic staff of the dead in their inventory, and no bladed staff equipped:",
+                    "steps": [
+                      {
+                        "player": "I've got a weapon in my inventory that's sort of like a Staff of the Dead."
+                      },
+                      {
+                        "npc": "It is not what I seek."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "RrSqo4"
+                  }
+                ],
+                "id": "NKpdaS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no kind of bladed staff equipped or in their inventory:",
+                "steps": [
+                  {
+                    "player": "A Staff of the Dead, you say? Okay, thanks."
+                  }
+                ],
+                "id": "l-n8xW"
+              }
+            ],
+            "id": "AsLW9B"
+          },
+          {
+            "text": "Not now.",
+            "steps": [
+              {
+                "player": "Not now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-list-of-stories": [
+      {
+        "type": "unavailable",
+        "id": "1tpHvu"
+      }
+    ],
+    "standard-dialogue-talking-to-juna-while-collecting-tears": [
+      {
+        "npc": "I will not permit you to be in the cave for long. Collect as many tears as you can."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay.",
+            "steps": [
+              {
+                "player": "Okay."
+              }
+            ]
+          },
+          {
+            "text": "I want to get out now.",
+            "steps": [
+              {
+                "player": "I want to get out now."
+              },
+              {
+                "type": "action",
+                "text": "The player leaves the Tears of Guthix cave",
+                "id": "2mFJse"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-story-option-story-option-while-collecting-tears": [
+      {
+        "npc": "If you wish to tell me more stories, come out here first."
+      }
+    ],
+    "using-items-on-juna-staff-of-the-dead-without-having-a-guthixian-icon": [
+      {
+        "npc": "A Staff of the Dead! I would happily honour the dead, and all the stories they must have known, by combining your staff with an icon of my master, Guthix."
+      },
+      {
+        "npc": "Perhaps you can find such an icon and bring it to me."
+      }
+    ],
+    "using-items-on-juna-guthixian-icon-without-having-a-staff-of-the-dead": [
+      {
+        "player": "Can you do something with this icon?"
+      },
+      {
+        "type": "message",
+        "text": "Juna examines your Guthixian icon.",
+        "id": "3o1XqI"
+      },
+      {
+        "npc": "So many aeons have passed since these were made. So many mortals have been born, lived their lives, then died as Balance requires. What stories they must have known!"
+      },
+      {
+        "npc": "I would happily honour the dead by combining such an icon with a Staff of the Dead, if you bring one to me."
+      },
+      {
+        "player": "A Staff of the Dead, you say? Okay, thanks."
+      }
+    ],
+    "using-items-on-juna-guthixian-icon-or-a-staff-of-the-dead-while-having-both": [
+      {
+        "npc": "I would happily honour the dead, and all the stories they must have known, by combining your Staff of the Dead with your icon of my master, Guthix. But this cannot be undone; they will be bound forever."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Combine them. I understand it can't be undone.",
+            "steps": [
+              {
+                "player": "Combine them. I understand it can't be undone."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has only one Guthixian icon and Staff of the Dead in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Juna combines your icon and staff to make a staff of balance.",
+                    "id": "aM72oH"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5hkK9_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has more than one Guthixian icon and Staff of the Dead in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Juna will offer to make multiple Staves of balance",
+                    "id": "doOOQI"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player chooses how many Staves of balance to create",
+                    "id": "SFShll"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player chooses to make one Staff of Balance:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "uMDSg2"
+                      }
+                    ],
+                    "id": "NydUBg"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player chooses to make more than one Staff of Balance:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Juna combines your icons and staffs to make [2-27] Staffs of Balance.",
+                        "id": "hGGu8j"
+                      }
+                    ],
+                    "id": "AnD2k0"
+                  }
+                ],
+                "id": "5UziJM"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-juna-guthixian-icon-while-having-any-other-bladed-staff-equipped": [
+      {
+        "player": "Can you do something with this icon?"
+      },
+      {
+        "type": "message",
+        "text": "Juna examines your Guthixian icon.",
+        "id": "o6ozV9"
+      },
+      {
+        "npc": "So many aeons have passed since these were made. So many mortals have been born, lived their lives, then died as Balance requires. What stories they must have known!"
+      },
+      {
+        "npc": "I would happily honour the dead by combining such an icon with a Staff of the Dead, if you bring one to me."
+      },
+      {
+        "player": "My weapon is sort of like a Staff of the Dead, don't you think?"
+      },
+      {
+        "type": "condition",
+        "text": "If the equipped weapon is a Staff of Balance:",
+        "steps": [
+          {
+            "npc": "It was, but I appear to have combined it with an icon already."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "_rhkzf"
+      },
+      {
+        "type": "condition",
+        "text": "If the equipped weapon is either a Staff of Light, a Toxic staff (uncharged) or a Toxic staff of the dead:",
+        "steps": [
+          {
+            "npc": "I cannot combine it with that."
+          }
+        ],
+        "id": "1W6nsu"
+      }
+    ],
+    "using-items-on-juna-guthixian-icon-while-having-any-other-bladed-staff-in-the-inventory": [
+      {
+        "player": "Can you do something with this icon?"
+      },
+      {
+        "type": "message",
+        "text": "Juna examines your Guthixian icon.",
+        "id": "SPDiUl"
+      },
+      {
+        "npc": "So many aeons have passed since these were made. So many mortals have been born, lived their lives, then died as Balance requires. What stories they must have known!"
+      },
+      {
+        "npc": "I would be happy to honour the dead by combining such an icon with a Staff of the Dead, if you bring one to me."
+      },
+      {
+        "player": "I've got a weapon in my inventory that's sort of like a Staff of the Dead."
+      },
+      {
+        "npc": "It is not what I seek."
+      }
+    ],
+    "using-items-on-juna-staff-of-balance": [
+      {
+        "npc": "I can do nothing more with that."
+      }
+    ],
+    "using-items-on-juna-staff-of-light-toxic-staff-uncharged-or-toxic-staff-of-the-dead-with-a-guthixian-icon-in-the-inventory": [
+      {
+        "npc": "I cannot combine your icon with that weapon."
+      }
+    ],
+    "using-items-on-juna-using-a-staff-of-light-toxic-staff-uncharged-or-toxic-staff-of-the-dead-without-guthixian-icon-or-using-any-other-item-on-juna": [
+      {
+        "npc": "I do not need that from you."
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "condition",
+        "text": "If the player has no room in their inventory:",
+        "steps": [
+          {
+            "npc": "Hey, I have something for you but you don't have any space for it!"
+          },
+          {
+            "npc": "Your dedication to balance is astounding adventurer."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Sicfzm"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has room in their inventory:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a torn part of a clue scroll",
+            "id": "zU91qM"
+          },
+          {
+            "npc": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You are handed a torn part of a clue scroll.",
+            "id": "m-vFkz"
+          },
+          {
+            "npc": "Your dedication to balance is astounding adventurer."
+          }
+        ],
+        "id": "3DEry2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "default": "before-desert-treasure-i",
+  "variants": {
+    "before-desert-treasure-i": [
+      {
+        "npc": "Leave us to our fate. We care nothing for the world that betrayed us, or those that come from it."
+      }
+    ],
+    "before-desert-treasure-i-while-wearing-saradomin-or-zamorak-items": [
+      {
+        "npc": "I have nothing to say to you, false prophet!"
+      }
+    ],
+    "after-completing-desert-treasure-i": [
+      {
+        "npc": "So have you spoken to my Lord Azzanadra yet?"
+      },
+      {
+        "player": "Yes I have."
+      },
+      {
+        "npc": "And what words did he have for his followers?"
+      },
+      {
+        "player": "Er.... He didn't really mention you at all, but he did teach me some cool new magic spells."
+      },
+      {
+        "npc": "It is understandable perhaps... His poor mind must be addled after all of those years of confinement, he would not willingly ignore his followers..."
+      },
+      {
+        "npc": "Anyway, if he has taught you our ancient magics, you may be interested in purchasing an ancient heirloom that was passed down to me. My ancestor fought in the ancient battles using the"
+      },
+      {
+        "npc": "magic of our god. This heirloom will help you with the speed of your spell- casting."
+      },
+      {
+        "npc": "Normally I could not bear to part with such a priceless relic, but for your help in freeing my Lord Azzanadra, I will be prepared to sell it to you for a mere 80,000 gold."
+      },
+      {
+        "npc": "Are you interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 80,000 coins:",
+                "steps": [
+                  {
+                    "npc": "Stranger... Do not abuse my generosity... I cannot possibly sell it for less than 80,000 gold."
+                  },
+                  {
+                    "npc": "Come back and see me when you have the necessary funds to buy."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "FHTjUy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 80,000 coins or more:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an ancient staff for 80,000 coins",
+                    "id": "J_39m0"
+                  },
+                  {
+                    "npc": "Take care of it, it is the only heirloom from those times I possess, although rumour has it many of our ancient warriors were buried with identical weapons so that they could continue to fight for my Lord in their deaths."
+                  }
+                ],
+                "id": "m45i4l"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "As you wish. Bear my offer in mind should you ever change your decision, I will remain here."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "MKOKn5"
+              }
+            ]
+          },
+          {
+            "text": "Have you got any symbols of your god?",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Eblis gives you a little signet. Its shape matches the icon you saw on the altar in the pyramid.",
+                "id": "ZyuH4y"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-buying-the-ancient-staff": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Greetings!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I found this weird icon. Do you know what it is?",
+            "condition": "If an ancient icon is in the player's inventory:",
+            "steps": [
+              {
+                "player": "I found this weird icon. Do you know what it is?"
+              },
+              {
+                "type": "message",
+                "text": "You show the icon to Eblis.",
+                "id": "JZO_8T"
+              },
+              {
+                "npc": "Fascinating... I've never seen anything like this before, but the magic contained within is unmistakable. I wonder..."
+              },
+              {
+                "player": "Wonder what?"
+              },
+              {
+                "npc": "Stranger, if you were to bring me an Ancient staff, I believe it would be possible to combine it with this icon to create a powerful new weapon."
+              },
+              {
+                "player": "That sounds pretty neat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have an ancient staff in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Then return to me when you have the staff."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ATLque"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an ancient staff in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I see you have the staff with you. Would you like me to combine your Ancient staff with the icon to create an Ancient sceptre? You won't be able to separate them once this is done."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, please!",
+                        "steps": [
+                          {
+                            "player": "Yes, please!"
+                          },
+                          {
+                            "npc": "There you go. Wield its power responsibly, stranger..."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You've been given an Ancient sceptre.",
+                            "id": "98G5-C"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, thanks.",
+                        "steps": [
+                          {
+                            "player": "No, thanks."
+                          },
+                          {
+                            "npc": "Suit yourself."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "lWRbn8"
+              }
+            ],
+            "id": "vDi_xR"
+          },
+          {
+            "text": "Have you got any symbols of your god?",
+            "steps": [
+              {
+                "player": "Have you got any symbols of your god?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "PnblMr"
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you to it.",
+            "steps": [
+              {
+                "player": "I'll leave you to it."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Yes?"
+      },
+      {
+        "player": "What are you serving?"
+      },
+      {
+        "npc": "Blood."
+      },
+      {
+        "player": "Is that it?"
+      },
+      {
+        "npc": "Yes, by the pint. Now, do you want one or not?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sure.",
+            "steps": [
+              {
+                "player": "Sure."
+              },
+              {
+                "npc": "Two coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at least two coins:",
+                "steps": [
+                  {
+                    "player": "Oh dear, I don't seem to have enough money."
+                  },
+                  {
+                    "npc": "Clear off then."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9bIo_5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least two coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You buy a pint of blood.",
+                    "id": "G_CS0_"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "blood pint",
+                    "id": "07Dbj_"
+                  }
+                ],
+                "id": "WeaDrC"
+              }
+            ]
+          },
+          {
+            "text": "I'll pass.",
+            "steps": [
+              {
+                "player": "I'll pass."
+              },
+              {
+                "npc": "Clear off then."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-player-is-disguised-but-has-not-completed-sins-of-the-father": [
+      {
+        "player": "What are you selling?"
+      },
+      {
+        "npc": "To you? Nothing."
+      },
+      {
+        "player": "Why?"
+      },
+      {
+        "npc": "You're new here. I don't sell to new blood. Make a name for yourself and maybe I'll reconsider."
+      }
+    ],
+    "if-the-player-is-not-disguised": [
+      {
+        "npc": "Human! Get back to the slave pens before I call the guards!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,804 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hey you, you here for a reason or do you just like hanging around?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I would like to join your crew.",
+            "steps": [
+              {
+                "player": "I would like to join your crew."
+              },
+              {
+                "npc": "Well you say that now, but I wonder if you can measure up."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has something equipped in the helmet slot",
+                "steps": [
+                  {
+                    "npc": "Well, for a start off, come and see me when you don't have that thing on your head."
+                  },
+                  {
+                    "player": "Why can't I help out while wearing this?"
+                  },
+                  {
+                    "npc": "I need to know you aren't a spy for the other crew, so you'll need to wear a blue bandana."
+                  },
+                  {
+                    "npc": "If you still want to join my crew then go deposit it in the deposit box and come back without anything on your head."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ME7dID"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has items in their inventory",
+                "steps": [
+                  {
+                    "npc": "Hah, think that I'm going to assign you the easy tasks eh?"
+                  },
+                  {
+                    "player": "What do you mean?"
+                  },
+                  {
+                    "npc": "Well, I can see you have some items in your inventory. If you want to join my crew you will need all of it free so you are able to work as hard as everyone else."
+                  },
+                  {
+                    "npc": "There is a bank deposit box next to that greasy oaf Jimmy's stall, go and use it and then come back."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "eHAQEu"
+              },
+              {
+                "type": "condition",
+                "text": "If San Fan's team has more players than Fancy Dan's team",
+                "steps": [
+                  {
+                    "npc": "You seem keen enough, but I have plenty of people on my crew."
+                  },
+                  {
+                    "npc": "If that idiot Dan tries to pressgang more pirates I'll be glad to even the numbers out with you though."
+                  },
+                  {
+                    "player": "Ok, fair enough."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Bx4B0a"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a cat following them:",
+                "steps": [
+                  {
+                    "npc": "That's quite a nice cat. Is it yours?"
+                  },
+                  {
+                    "player": "Yes, why do you ask?"
+                  },
+                  {
+                    "npc": "I'm a bit of a cat person myself. That's why I'll have to ask you to leave it outside."
+                  },
+                  {
+                    "npc": "There's likely to be quite a lot of stuff going on fire in there, and I don't want to see it get hurt."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "xeYsGc"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a different follower out:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You cannot take your follower into the game.",
+                    "id": "n0ffp-"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "zmYtnD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have anything equipped in the helmet slot and no items in their inventory",
+                "steps": [
+                  {
+                    "npc": "Heh, ok, well we'll get you sorted out. Welcome to the crew."
+                  },
+                  {
+                    "npc": "Go wait in the waiting room. I'll call you when we are ready to start."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player is teleported into the Trouble Brewing waiting room.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "RKd0Yn"
+                  }
+                ],
+                "id": "r_4h_r"
+              }
+            ]
+          },
+          {
+            "text": "Who are you, and what is this place?",
+            "steps": [
+              {
+                "player": "Who are you, and what is this place?"
+              },
+              {
+                "npc": "Well, well, looks like someone is fresh off the boat and no mistake!"
+              },
+              {
+                "npc": "A little while ago we had some real problem shipping 'rum' in the island. The Braindeath crew said it had something to do with zombies and the like."
+              },
+              {
+                "npc": "All the pirates on the island got together and decided to make our own still, but of course things got a little out of hand, and now we have two."
+              },
+              {
+                "player": "So with two stills you have plenty of 'rum' right?"
+              },
+              {
+                "npc": "Well we would do, if that scurvy, whelk-eating foppish dog wouldn't keep trying to burn our still to the ground!"
+              },
+              {
+                "player": "I say!"
+              },
+              {
+                "npc": "Neither of us can really corner the 'rum' market at the moment, but we are giving it our best shot."
+              },
+              {
+                "npc": "The code of the island says that we can't attack each other, but after consulting with our fearsome pirate lawyers, we have discovered that destroying each other's property is fine."
+              },
+              {
+                "npc": "Hence, that sniveling, hat-wearing cur keeps trying to burn down my still."
+              },
+              {
+                "npc": "Of course he claims I started this whole thing, but who would trust him anyway?"
+              },
+              {
+                "player": "Can I help out?"
+              },
+              {
+                "npc": "Yes, probably. I have a bunch of jobs that need doing, if you feel up to it."
+              },
+              {
+                "npc": "What would you like to know about?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Brewing 'Rum'",
+                    "steps": [
+                      {
+                        "player": "How do I help you brew 'Rum'?"
+                      },
+                      {
+                        "npc": "Well the stills we have set up are based on the ones on Braindeath island... well roughly at any rate."
+                      },
+                      {
+                        "npc": "All you have to do is help put the ingredients into the hoppers and keep the boilers burning."
+                      },
+                      {
+                        "npc": "If you add enough ingredients to the hoppers then you have the ability to pick up a single bottle of rum when it brews."
+                      },
+                      {
+                        "npc": "So, if ye add 5 buckets of water to the hoppers, then ye get access to one bottle. If you add 3 bowls of coloured water you get access to one bottle, and if you add one of anything else you get access to one bottle."
+                      },
+                      {
+                        "npc": "This is cumulative, meaning that if you add (for example) 10 buckets of water, 3 sweetgrubs and 6 bowls of coloured water, then you have a chance to collect 7 bottles of rum for the team."
+                      },
+                      {
+                        "npc": "The boilers are easy as pie to sort out. You just put some logs in, light them with a tinderbox, and then keep putting logs in until they are good and hot."
+                      },
+                      {
+                        "npc": "Three logs should do it, but it's best to keep heaping them in just in case."
+                      },
+                      {
+                        "npc": "The ingredients are; Bitternuts, Scrapey Tree Bark, Sweetgrubs, Buckets of Water and some Coloured Water."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Where can I get Bitternuts?",
+                            "steps": [
+                              {
+                                "player": "Where can I get Bitternuts?"
+                              },
+                              {
+                                "npc": "There are plenty of Bitternut trees inside this walled off area. The problem is that the trees are too tricky for a human to climb."
+                              },
+                              {
+                                "npc": "You will need to catch a monkey and send it up the tree to get the nut for you."
+                              },
+                              {
+                                "player": "Send it up the tree? How does that work?"
+                              },
+                              {
+                                "npc": "Well, if you were a monkey, and some random person grabbed you, dumped some dye in your fur and shoved you up a tree, you would hurl the closest heavy object at them too."
+                              },
+                              {
+                                "player": "Wait a second, dye?"
+                              },
+                              {
+                                "npc": "Yes, you'll need to get a bowl of coloured water and pour it on the monkey. Otherwise you won't be able to tell which team the monkey belongs too."
+                              },
+                              {
+                                "player": "That makes sense...I think..."
+                              },
+                              {
+                                "npc": "Anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "PB-V19"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I get Scrapey Tree Bark?",
+                            "steps": [
+                              {
+                                "player": "Where can I get Scrapey tree bark...and why do I get the feeling I won't like the answer?"
+                              },
+                              {
+                                "npc": "Inside this walled area there are a few Scrapey trees. They are the big, ill looking ones, you can't miss them."
+                              },
+                              {
+                                "npc": "Basically, you cut them down and then carve the bark off with a knife."
+                              },
+                              {
+                                "npc": "It's pretty simple, except the sap tends so make people feel kind off ill if they get any on themselves."
+                              },
+                              {
+                                "player": "How ill?"
+                              },
+                              {
+                                "npc": "Don't worry, we aren't talking deadly ill or anything."
+                              },
+                              {
+                                "npc": "It's more like you'll feel quite dizzy and weak for a bit."
+                              },
+                              {
+                                "player": "Joy..."
+                              },
+                              {
+                                "npc": "Anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "txkE21"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I get Sweetgrubs?",
+                            "steps": [
+                              {
+                                "player": "Sweetgrubs? What are they?"
+                              },
+                              {
+                                "npc": "Well, lacking any sluglings in the area, we add these little grubs called Sweetgrubs. If you ignore the gag- inducing aftertaste, they are quite sweet."
+                              },
+                              {
+                                "player": "How... how can you drink this stuff?"
+                              },
+                              {
+                                "npc": "Quite easily!"
+                              },
+                              {
+                                "npc": "Pirates are renowned as being tough for a reason."
+                              },
+                              {
+                                "player": "So where do I get these grubs from anyway?"
+                              },
+                              {
+                                "npc": "Well, there are a few sweetgrub mounds inside there. We have a handful of rat meat that you can use on the mounds to draw the grubs to the surface."
+                              },
+                              {
+                                "npc": "Mind your fingers though, they are voracious little things."
+                              },
+                              {
+                                "player": "And here was me thinking that nothing could be more disgusting than Braindeath 'Rum'."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Captian Braindeath",
+                                "text": "Arr, that's where ye'd be wrong [lad/lass], 'cos new, improved Braindeath 'Rum' Classic is now 200% more disgustin' than any leadin' competitor!"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Captian Braindeath",
+                                "text": "Legal disclaimer; the dangerous amount of disgustin' in new Braindeath 'Rum' Classic be too much for pregnant women, donkeys and anyone with more than seven letters in their last name."
+                              },
+                              {
+                                "player": "What was that?"
+                              },
+                              {
+                                "npc": "What was what?"
+                              },
+                              {
+                                "npc": "Is there anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "mNYO8n"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I get buckets of water?",
+                            "steps": [
+                              {
+                                "player": "How do I get..."
+                              },
+                              {
+                                "player": "Wait, no, that question makes me sound like I haven't a clue what I'm doing."
+                              },
+                              {
+                                "player": "Where can I get buckets in there?"
+                              },
+                              {
+                                "npc": "There are a few lying about. Help yourself."
+                              },
+                              {
+                                "npc": "There is a pump in the still, so long as it's working you should have almost unlimited water."
+                              },
+                              {
+                                "player": "Hold on, do I have to add anything disgusting and/or potential lethal to the water before I pour it in?"
+                              },
+                              {
+                                "npc": "Perish the thought!"
+                              },
+                              {
+                                "player": "Ok, just checking."
+                              },
+                              {
+                                "npc": "Anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "-aZDxT"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Where can I get coloured water?",
+                            "steps": [
+                              {
+                                "player": "What sort of coloured water are we talking about here?"
+                              },
+                              {
+                                "npc": "Well, the other still has an area of waste ground with a flower growing on it. If you go and grab one of the flowers and jam it in the kettle, the water will boil out the colour."
+                              },
+                              {
+                                "npc": "We use the colour to keep our rum easily identifiable."
+                              },
+                              {
+                                "player": "So I just empty the kettle into the hopper, right?"
+                              },
+                              {
+                                "npc": "No, no, you'll need to take an empty bowl and fill it from the kettle."
+                              },
+                              {
+                                "npc": "That way you can use the stuff on a monkey if you need to."
+                              },
+                              {
+                                "player": "Use it on a monkey...of course."
+                              },
+                              {
+                                "npc": "Anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "0JjyZ4"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I ask about something else?",
+                            "condition": "If the player has gone through at least one of the above dialogue options:",
+                            "steps": [
+                              {
+                                "player": "Can I ask about something else?"
+                              },
+                              {
+                                "npc": "Ok, what else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous2",
+                                "id": "tHHoew"
+                              }
+                            ],
+                            "id": "h2jfnk"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Repairing the Still",
+                    "steps": [
+                      {
+                        "player": "How do I repair the still?"
+                      },
+                      {
+                        "npc": "Well, assuming those scurvy dogs have managed to set any of it on fire, then you'll need to tip a bucket of water on it before you can repair it."
+                      },
+                      {
+                        "npc": "Then, it all comes down to what part of it was damaged."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "How do I repair Hoppers?",
+                            "steps": [
+                              {
+                                "player": "How can I repair hoppers?"
+                              },
+                              {
+                                "npc": "Well, assuming that they are not on fire, all you need to do is use the heavy lumber patches. They are big enough to cover most holes."
+                              },
+                              {
+                                "player": "Will I need a hammer?"
+                              },
+                              {
+                                "npc": "No, just shove it into place and whack it until it lines up."
+                              },
+                              {
+                                "npc": "Anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "4yXJ-i"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "How do I repair Pipes and the pump?",
+                            "steps": [
+                              {
+                                "player": "How do I repair pipes and the pump?"
+                              },
+                              {
+                                "npc": "Well, if you use a pipe section on the damaged part you should be able to replace it easily."
+                              },
+                              {
+                                "player": "Will I need a hammer?"
+                              },
+                              {
+                                "npc": "No, likely you'll just need to whack the old one out and slot the new one in with your hands."
+                              },
+                              {
+                                "npc": "Anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "ma_h_y"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "How do I repair Bridges?",
+                            "steps": [
+                              {
+                                "player": "How do I repair bridges?"
+                              },
+                              {
+                                "npc": "Well, we have these handy bridge sections you can use to repair the bridges."
+                              },
+                              {
+                                "npc": "The main problem is, while a still will keep working if a bit of it is only damaged, the bridges are completely out of commission if they are even slightly damaged."
+                              },
+                              {
+                                "player": "Is that going to be a problem? I mean, I can jump across I think."
+                              },
+                              {
+                                "npc": "Don't try that! Our lawyers tell us we aren't covered for injuries sustained while jumping over burned bridges."
+                              },
+                              {
+                                "npc": "Seriously, just keep off the bridges until they are fixed."
+                              },
+                              {
+                                "npc": "Anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "zjlO1G"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "How do I get repair items",
+                            "steps": [
+                              {
+                                "player": "Where do I get all this stuff anyway?"
+                              },
+                              {
+                                "npc": "We have a load of items already on a table inside the still. You can also make new ones if you grab some logs."
+                              },
+                              {
+                                "player": "How does that work?"
+                              },
+                              {
+                                "npc": "We have a work table set up in the still. If you use the logs in it you can craft up a handy replacement for part of the still."
+                              },
+                              {
+                                "npc": "Don't worry about them fitting, the things are held together by nails, replacement parts and soot by now."
+                              },
+                              {
+                                "player": "Well...how sanitary..."
+                              },
+                              {
+                                "npc": "Anything else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "Rwsu33"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ok, I think I've heard enough",
+                            "steps": [
+                              {
+                                "player": "Ok, I think I've heard enough."
+                              },
+                              {
+                                "npc": "Fine. Glad I could help."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I ask about something else?",
+                            "condition": "If the player has gone through at least one of the above dialogue options:",
+                            "steps": [
+                              {
+                                "player": "Can I ask about something else?"
+                              },
+                              {
+                                "npc": "Ok, what else?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous2",
+                                "id": "rQFGiV"
+                              }
+                            ],
+                            "id": "rTYuE8"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sabotaging the Still",
+                    "steps": [
+                      {
+                        "player": "So...how would I go about sabotaging the enemy still?"
+                      },
+                      {
+                        "npc": "Ok, here's what you need to do."
+                      },
+                      {
+                        "npc": "The wood around here is really dry and flammable, so take one of the torches, light it up, and then go and attack the enemy still with it."
+                      },
+                      {
+                        "player": "That's it?"
+                      },
+                      {
+                        "npc": "Most of their still is soaked in 'alcohol' and made from tinder dry wood."
+                      },
+                      {
+                        "npc": "Essentially, if it isn't ours, try using a torch on it and see what happens."
+                      },
+                      {
+                        "player": "Ok, I get you."
+                      },
+                      {
+                        "npc": "Anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "IcTVDB"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What will you pay me?",
+                    "steps": [
+                      {
+                        "player": "So what will you give me for helping out?"
+                      },
+                      {
+                        "npc": "Hahahaha! What a mercenary attitude! You'll do fine here."
+                      },
+                      {
+                        "npc": "Well, for each bottle that your team produces, I'll give you one piece of eight."
+                      },
+                      {
+                        "npc": "If you manage to set something on fire then I'll toss in another, same for repairing the still."
+                      },
+                      {
+                        "player": "What can I use these pieces of eight for?"
+                      },
+                      {
+                        "npc": "See Honest Jimmy there? He'll trade you some pretty nice stuff for them."
+                      },
+                      {
+                        "player": "Great!"
+                      },
+                      {
+                        "npc": "Anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "SbIrNs"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok, I think I've heard enough",
+                    "steps": [
+                      {
+                        "player": "Ok, I think I've heard enough."
+                      },
+                      {
+                        "npc": "Fine. Glad I could help."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-on-a-pvp-world": [
+      {
+        "npc": "Hah!"
+      },
+      {
+        "type": "message",
+        "text": "This minigame is unavailable on this world.",
+        "id": "vxA7E-"
+      }
+    ],
+    "standard-dialogue-when-the-player-has-less-than-40-cooking": [
+      {
+        "npc": "Sorry, I don't take anyone that can't cook."
+      },
+      {
+        "player": "Why not?"
+      },
+      {
+        "npc": "Aside from anything else, if you have less than 40 Cooking, then you don't have much of an idea of health and safety when it comes to food."
+      },
+      {
+        "player": "Oh yeah, Saradomin forbid that the 'rum' made from whatever is lying around gets a bit of hair in it."
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Anyone lookin' fer work?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Arr! Looking fer good pirates!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Come join me crew!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Don't join them, join us!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Free(ish) rum fer all!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "Join the winnin' team now!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "npc": "Need pirates fer brewin'!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 8",
+            "steps": [
+              {
+                "npc": "Recruiting!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 9",
+            "steps": [
+              {
+                "npc": "Roll up, roll up!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 10",
+            "steps": [
+              {
+                "npc": "We have dental!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

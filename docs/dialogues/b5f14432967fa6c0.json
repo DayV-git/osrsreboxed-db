@@ -1,0 +1,195 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "What is this strange fountain?"
+      },
+      {
+        "npc": "This is the Ectofuntus, the most marvellous creation of Necrovarus, our glorious leader."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is the Ectofuntus for?",
+            "steps": [
+              {
+                "player": "What is the Ectofuntus for?"
+              },
+              {
+                "npc": "It provides the power to keep us ghosts from passing over into the next plane of existence."
+              },
+              {
+                "player": "And how does it work?"
+              },
+              {
+                "npc": "You have to pour a bucket of ectoplasm into the fountain, a pot of ground bones, and then worship at the Ectofuntus. A unit of unholy power will then be created."
+              },
+              {
+                "player": "Can you do it yourself?"
+              },
+              {
+                "npc": "No, we must rely upon the living, as the worship of the undead no longer holds any inherent power."
+              },
+              {
+                "player": "Why would people waste their time helping you out?"
+              },
+              {
+                "npc": "For every unit of power produced we will give you five Ectotokens. These tokens can be used in Port Phasmatys to purchase various services, not least of which includes access through the main toll gates."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "VLerJh"
+              }
+            ]
+          },
+          {
+            "text": "Where do I get ectoplasm from?",
+            "steps": [
+              {
+                "player": "Where do I get ectoplasm from?"
+              },
+              {
+                "npc": "Necrovarus sensed the power bubbling beneath our feet, and we delved long and deep beneath Port Phasmatys, until we found a pool of natural ectoplasm. You may find it by using the trapdoor over there."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "YC8MVp"
+              }
+            ]
+          },
+          {
+            "text": "How do I grind bones?",
+            "steps": [
+              {
+                "player": "How do I grind bones?"
+              },
+              {
+                "npc": "There is a bone grinding machine upstairs. Put bones of any type into the machine's hopper, and then turn the handle to grind them. You will need a pot to empty the machine of ground up bones."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "gP0JBO"
+              }
+            ]
+          },
+          {
+            "text": "How do I receive Ectotokens?",
+            "steps": [
+              {
+                "player": "How do I receive Ectotokens?"
+              },
+              {
+                "npc": "We disciples keep track of how many units of power have been produced. Just talk to us once you have generated some and we will reimburse you with the correct amount of Ectotokens."
+              },
+              {
+                "player": "How do I generate units of power?"
+              },
+              {
+                "npc": "You have to pour a bucket of ectoplasm into the fountain and then worship at the Ectofuntus with a pot of ground bones. This will create a unit of unholy power."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "wh6rTL"
+              }
+            ]
+          },
+          {
+            "text": "Thanks for your time.",
+            "steps": [
+              {
+                "player": "Thanks for your time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-the-hard-morytania-diary": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I have another bonecrusher, please?",
+            "steps": [
+              {
+                "player": "Can I have another bonecrusher, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a bonecrusher:",
+                "steps": [
+                  {
+                    "npc": "Compliments of Morytania for your efforts throughout the tasks set."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "gx_0kv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has a bonecrusher:",
+                "steps": [
+                  {
+                    "npc": "You already appear to own such a device, mortal."
+                  }
+                ],
+                "id": "TQGxEr"
+              }
+            ]
+          },
+          {
+            "text": "What is this strange fountain?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "XU-Y3y"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "without-a-ghostspeak-amulet": [
+      {
+        "npc": "Woooo wooo wooooo woooo"
+      }
+    ],
+    "claiming-tokens": [
+      {
+        "player": "Can I have the tokens I have earned?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory",
+        "steps": [
+          {
+            "npc": "I have [number] ectotokens waiting for you mortal, but you do not have room in your inventory for them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Qm7P9I"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has room in their inventory",
+        "steps": [
+          {
+            "npc": "Certainly, mortal. Here's [number] ectotokens."
+          }
+        ],
+        "id": "kMOBvC"
+      }
+    ]
+  }
+}

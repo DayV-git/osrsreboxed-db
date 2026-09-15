@@ -1,4 +1,4 @@
-"""Export compact gameplay dialogue for every page in the NPC dialogue category.
+"""Export NPC and quest conversations with stable plugin hook points.
 
 Run with --offline to rebuild from data/dialogues/wiki-pages.json without fetching.
 """
@@ -12,7 +12,17 @@ from pathlib import Path
 import mwparserfromhell as mw
 
 import config
-from scripts.dialogues.fetch import CACHE, fetch, save
+from scripts.dialogues.fetch import (
+    CACHE,
+    QUEST_CACHE,
+    NPC_CACHE,
+    fetch,
+    read_cache,
+    participant_pages,
+    save,
+)
+from scripts.dialogues.hooks import enrich_records
+from scripts.dialogues.compact import compact_record, write_split
 
 
 def clean(raw):
@@ -128,6 +138,23 @@ def parse_step(raw, issues, line):
     if len(templates) == 1 and str(templates[0]) == raw:
         t = templates[0]
         name = str(t.name).strip().lower()
+        # Resolve links before clean() discards their page/section identity.
+        if name in ("tact", "qact"):
+            links = [
+                link
+                for link in mw.parse(str(t)).filter_wikilinks()
+                if str(link.title).strip().startswith(("Transcript:", "#"))
+            ]
+            if len(links) == 1:
+                page, _, section = (
+                    str(links[0].title).strip().replace("_", " ").partition("#")
+                )
+                return dict(
+                    type="reference",
+                    target=page,
+                    section=section,
+                    text=clean(t.get(1).value) if t.has(1) else "",
+                )
         args = {str(p.name).strip(): clean(p.value) for p in t.params}
         text = args.get("1", "")
         if name == "topt":
@@ -230,11 +257,23 @@ def select_default(variants):
         "talking to",
     }
     repeats = {"subsequent dialogue", "repeat dialogue", "subsequent conversation"}
-    initial = {"initial dialogue", "initial conversation", "first conversation"}
+    initial = {
+        "initial dialogue",
+        "initial conversation",
+        "first conversation",
+        "starting off",
+        "starting out",
+    }
     candidates = []
     for key, variant in variants.items():
         steps = variant["steps"]
-        if not steps or steps[0]["type"] not in ("line", "choice", "random"):
+        if not steps or steps[0]["type"] not in (
+            "line",
+            "choice",
+            "random",
+            "condition",
+            "reference",
+        ):
             continue
         *parents, label = [part.strip().casefold() for part in variant["section_path"]]
         if any(parent not in ordinary | initial for parent in parents):
@@ -245,9 +284,18 @@ def select_default(variants):
             rank = 1
         elif label in initial:
             rank = 2
+        elif (
+            parents
+            and parents[0] in initial
+            and re.match(r"(?:talking|speaking) to\b", label)
+            and "again" not in label
+        ):
+            rank = 2
         elif label == "unsectioned":
             rank = 3
-        elif re.match(r"(?:(?:standard|normal) dialogue\s+)?before\b", label):
+        elif label in ("pre-quest", "pre quest", "before quest") or re.match(
+            r"(?:(?:standard|normal) dialogue\s+)?before\b", label
+        ):
             rank = 4
         elif re.match(
             r"(?:without\b|if (?:the player )?(?:isn't|is not) (?:carrying|wearing)\b)",
@@ -265,6 +313,7 @@ def select_default(variants):
 
 def parse_npc(name, raw):
     variants, issues, headings = {}, [], []
+    participants = participant_pages(raw)
     stack = []
     current = None
     raw = re.sub(
@@ -282,7 +331,9 @@ def parse_npc(name, raw):
             current = None
             stack = []
             continue
-        if line.lower().startswith("{{transcript|"):
+        if line.lower().startswith(
+            ("{{transcript|", "{{transcript list|", "{{external|")
+        ):
             continue
         if (
             line.lower().startswith("{{incomplete")
@@ -327,7 +378,10 @@ def parse_npc(name, raw):
                 "Curated: numbered alternatives are random dialogue, not player choices; probabilities unknown."
             ]
     return dict(
-        default=select_default(variants), variants=variants, review_issues=issues
+        default=select_default(variants),
+        variants=variants,
+        review_issues=issues,
+        participants=participants,
     )
 
 
@@ -350,6 +404,7 @@ def gameplay_step(node, name):
                 "action",
                 "target",
                 "reference",
+                "section",
                 "reason",
                 "action_source",
                 "prompt",
@@ -371,13 +426,14 @@ def gameplay_npc(name, parsed):
         key: [gameplay_step(step, name) for step in variant["steps"]]
         for key, variant in parsed["variants"].items()
     }
-    if default and "standard" not in variants:
-        variants = {
-            "standard" if key == default else key: steps
-            for key, steps in variants.items()
-        }
-        default = "standard"
-    return {"default": default, "variants": variants}
+    return {
+        "default": default,
+        "variants": variants,
+        "sections": {
+            key: value["section_path"] for key, value in parsed["variants"].items()
+        },
+        "participants": parsed.get("participants", []),
+    }
 
 
 SHOPS = "shops-items-by-shop.json"
@@ -484,7 +540,7 @@ def action_report(npcs):
         "",
         "Every step in the INFERRED sections was slugged by matching a regex against",
         "the wiki's prose, not by reading a template parameter, and carries",
-        'action_source="text" in docs/npcs-dialogues.json. Read each line and check',
+        'action_source="text" in docs/npc-dialogues.json. Read each line and check',
         "the slug (and target) describe what the prose says. Wrong ones mean a",
         "pattern in PROSE_ACTIONS is too loose; the UNMATCHED section is the other",
         "half of the review -- anything there that clearly is one of the slugs means",
@@ -504,7 +560,7 @@ def action_report(npcs):
         )
         lines.append("-" * 72)
         for (target, text), count in counts.most_common():
-            lines.append(f"  [{count:>3}] {text}")
+            lines.append(f"  [{count:>3}] {text}".rstrip())
             if target:
                 lines.append(f"        target: {target}")
             lines.append(f"        npcs:   {examples((slug, (target, text)))}")
@@ -516,7 +572,7 @@ def action_report(npcs):
     )
     lines.append("-" * 72)
     for text, count in unmatched.most_common():
-        lines.append(f"  [{count:>3}] {text}")
+        lines.append(f"  [{count:>3}] {text}".rstrip())
         lines.append(f"        npcs:   {examples(('', text))}")
     return "\n".join(lines) + "\n"
 
@@ -527,25 +583,56 @@ def main():
         "--offline", action="store_true", help="Use the saved wiki sources."
     )
     parser.add_argument(
-        "--out", type=Path, default=config.DOCS_PATH / "npcs-dialogues.json"
+        "--out", type=Path, default=config.DOCS_PATH / "npc-dialogues.json"
+    )
+    parser.add_argument(
+        "--refresh", action="store_true", help="Refresh cached wiki revisions"
     )
     args = parser.parse_args()
-    pages = json.loads(CACHE.read_text()) if args.offline else fetch()
-    npcs, issues = {}, {}
-    for title, page in sorted(pages.items()):
-        name = title.removeprefix("Transcript:")
-        parsed = parse_npc(name, page["wikitext"])
-        npcs[name] = gameplay_npc(name, parsed)
-        if parsed["review_issues"]:
-            issues[title] = parsed["review_issues"]
+    if args.offline and args.refresh:
+        parser.error("--refresh cannot be combined with --offline")
+    if args.offline:
+        missing = [
+            str(path) for path in (CACHE, QUEST_CACHE, NPC_CACHE) if not path.exists()
+        ]
+        if missing:
+            parser.error(
+                "Missing source caches; run online first: " + ", ".join(missing)
+            )
+    pages = read_cache(CACHE) if args.offline else fetch(refresh=args.refresh)
+    npcs, quests, issues = {}, {}, {}
+    for sources, output in ((pages, npcs), (read_cache(QUEST_CACHE), quests)):
+        for title, page in sorted(sources.items()):
+            if page.get("missing"):
+                issues[title] = [{"reason": "Missing referenced page"}]
+                continue
+            name = title.removeprefix("Transcript:")
+            parsed = parse_npc(name, page["wikitext"])
+            output[name] = gameplay_npc(name, parsed)
+            output[name]["source"] = {"page": title, "revision": page["revision"]}
+            if parsed["review_issues"]:
+                issues[title] = parsed["review_issues"]
+    if npcs.keys() & quests.keys():
+        raise ValueError("NPC and quest transcript names overlap")
+    index = enrich_records(npcs, quests, read_cache(NPC_CACHE), clean)
     resolved = resolve_shops(npcs, shop_index())
-    save(args.out, npcs)
-    save(config.DATA_PATH / "dialogues" / "review-issues.json", issues)
+    resolved += resolve_shops(quests, shop_index())
     report = config.DATA_PATH / "dialogues" / "inferred-actions.txt"
-    report.write_text(action_report(npcs))
+    report.write_text(action_report({**npcs, **quests}))
+    authoring = {}
+    for group in (npcs, quests):
+        for name, record in group.items():
+            authoring["Transcript:" + name] = compact_record(record)
+    save(config.DATA_PATH / "dialogues" / "authoring-index.json", authoring)
+    dialogues = dict(sorted({**npcs, **quests}.items()))
+    save(args.out, dialogues)
+    save(args.out.with_name("npc-dialogues-minified.json"), dialogues, minified=True)
+    save(args.out.with_name("npc-dialogue-index.json"), index)
+    write_split(args.out.parent, (npcs, quests))
+    save(config.DATA_PATH / "dialogues" / "review-issues.json", issues)
     print(
-        f"Wrote {len(npcs)} NPCs, {sum(len(n['variants']) for n in npcs.values())} variants, "
-        f"{sum(n['default'] is not None for n in npcs.values())} selected defaults to {args.out}"
+        f"Wrote {len(npcs)} NPCs and {len(quests)} quest/reference pages, {sum(len(n.get('variants', {'standard-dialogue': n.get('steps', [])})) for n in npcs.values())} variants, "
+        f"{sum('steps' in n or n.get('default') is not None for n in npcs.values())} selected defaults to {args.out}"
     )
     print(f"Resolved {resolved} interfaces to a named shop")
 

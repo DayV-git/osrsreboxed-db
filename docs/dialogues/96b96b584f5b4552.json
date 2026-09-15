@@ -1,0 +1,218 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "What happened to the old man who used to be the doorman?"
+      },
+      {
+        "npc": "You mean my father? He went into retirement, I've taken over the family business instead."
+      },
+      {
+        "player": "Your father! But you don't look anything like him!"
+      },
+      {
+        "npc": "No, fortunately for me I inherited my good looks from my mother."
+      }
+    ],
+    "attempting-to-open-the-magic-door": [
+      {
+        "type": "condition",
+        "text": "If the player has any kind of sacks:",
+        "steps": [
+          {
+            "npc": "Sorry, we cannot allow you to bring those sacks into the market for security reasons."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "EhzhNS"
+      },
+      {
+        "npc": "You may not pass through this door without paying the trading tax."
+      },
+      {
+        "player": "So how much is the tax?"
+      },
+      {
+        "npc": "The cost is one diamond."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay...",
+            "steps": [
+              {
+                "player": "Okay..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player brought a diamond:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Player goes through the Magic door.",
+                    "id": "8FWu8-"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "RuGpH5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player did not bring a diamond:",
+                "steps": [
+                  {
+                    "player": "...but..."
+                  },
+                  {
+                    "player": "I haven't brought my diamonds with me."
+                  },
+                  {
+                    "npc": "No tax, no entry."
+                  }
+                ],
+                "id": "067rrj"
+              }
+            ]
+          },
+          {
+            "text": "A diamond? Are you crazy?",
+            "steps": [
+              {
+                "player": "A diamond? Are you crazy?"
+              },
+              {
+                "npc": "Not at all. Those are the rules."
+              }
+            ]
+          },
+          {
+            "text": "I haven't brought my diamonds with me.",
+            "steps": [
+              {
+                "player": "I haven't brought my diamonds with me."
+              },
+              {
+                "npc": "No tax, no entry."
+              }
+            ]
+          },
+          {
+            "text": "What do you do with all the diamonds you get?",
+            "steps": [
+              {
+                "player": "What do you do with all the diamonds you get?"
+              },
+              {
+                "npc": "Ever heard of fairylights? Well how do you think we make 'em? First we collect a pile of gems and then we get a spider to spin 'em into a long web, we light the jewels by imbuing each one with a little bit of magic."
+              },
+              {
+                "player": "So you're telling me fairylights are made out of gems?"
+              },
+              {
+                "npc": "That's right, how else could we make 'em twinkle so beautifully?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-nuff-s-certificate-on-a-gatekeeper-next-to-zanaris-market": [
+      {
+        "type": "condition",
+        "text": "Before studying the certificate:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the certificate to the Gate Keeper.",
+            "id": "bHKWAX"
+          },
+          {
+            "player": "Do you know what these strange marks mean?"
+          },
+          {
+            "npc": "That you've been doodelling? If you don't mind I have a job to do, please stop distracting me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Zivhe-"
+      },
+      {
+        "type": "condition",
+        "text": "After studying the certificate:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the certificate to the Gate Keeper.",
+            "id": "l6tgd9"
+          },
+          {
+            "player": "Do you know what these strange marks mean?"
+          },
+          {
+            "npc": "No I don't and I'm trying to work here. Please stop distracting me!"
+          }
+        ],
+        "id": "_XIsZT"
+      }
+    ],
+    "gatekeeper-near-the-entrance-to-the-tanglefoot-s-lair-during-fairytale-i": [
+      {
+        "player": "What are you doing all the way over here? Shouldn't you be at the market door?"
+      },
+      {
+        "npc": "Yes, that's my usual spot, but the Godfather said I should be here, so here I am."
+      }
+    ],
+    "gatekeeper-near-the-entrance-to-the-tanglefoot-s-lair-after-fairytale-i": [
+      {
+        "npc": "Hello, did you just come from the market gates? Are my brothers doing their job well? I do worry that they'll start letting people into the market for free without me being there to supervise them!"
+      }
+    ],
+    "gatekeeper-near-the-entrance-to-the-tanglefoot-s-lair-attempting-to-enter-the-shady-grove-without-magic-secateurs": [
+      {
+        "type": "line",
+        "speaker": "Gate Keeper",
+        "text": "I'm afraid nobody is allowed in there, orders from the boss."
+      }
+    ],
+    "gatekeeper-near-the-entrance-to-the-tanglefoot-s-lair-attempting-to-enter-the-grove-after-obtaining-magic-secateurs": [
+      {
+        "type": "line",
+        "speaker": "Gate Keeper",
+        "text": "I've received orders to let you through if you want. Good luck."
+      },
+      {
+        "type": "message",
+        "text": "You squeeze past the thorny vines into a small tunnel.",
+        "id": "hLSauM"
+      }
+    ],
+    "gatekeeper-near-the-entrance-to-the-tanglefoot-s-lair-attempting-to-enter-the-grove-after-defeating-tanglefoot": [
+      {
+        "type": "line",
+        "speaker": "Gate Keeper",
+        "text": "Be careful in there, there are still some of those baby Tanglefootii around."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has lost Queen's secateurs:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You find the Queen's secateurs!",
+            "id": "5g9tcY"
+          }
+        ],
+        "id": "s6o8AI"
+      }
+    ]
+  }
+}

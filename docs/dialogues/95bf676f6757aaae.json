@@ -1,0 +1,189 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "[Ah, hello there, laddie/Ah, hello there, lassie/Ah, hello there]! I've just dug up an old treasure chest of mine."
+      },
+      {
+        "npc": "Problem is, these old hands o'mine aren't as useful as they used t'be, and the lock on that chest is a little bit too fiddly for ol' Cap'n Arnav. Could you help me out?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I'll help you unlock your chest.",
+            "steps": [
+              {
+                "player": "Yes, I'll help you unlock your chest."
+              },
+              {
+                "npc": "There are three columns. What you need to do for me is to match up each picture with the word underneath the column, and then unlock the chest."
+              },
+              {
+                "type": "action",
+                "text": "(Capt' Arnav's treasure chest interface opens.)",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Capt' Arnav's treasure chest",
+                "id": "7UatNz"
+              }
+            ]
+          },
+          {
+            "text": "No, sorry.",
+            "steps": [
+              {
+                "player": "No, sorry."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "solving-the-puzzle": [
+      {
+        "npc": "Ah, well done matey, that's the right combination. Here, have a little somethin' for helpin' me out."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "one of his possible rewards",
+        "id": "vxpXPm"
+      }
+    ],
+    "failing-the-puzzle-once": [
+      {
+        "npc": "Arrr! That be nowhere near close! Did ye not listen the first time around?"
+      },
+      {
+        "player": "Sorry, I must have misunderstood your instructions. Could I hear them again please?"
+      },
+      {
+        "npc": "Right, right. What you need to do is click on the arrows to roll the cylinders round to the different items."
+      },
+      {
+        "npc": "When the items in the middle row all match the words written under the column then you'll have solved the lock."
+      },
+      {
+        "npc": "Is that a little clearer?"
+      },
+      {
+        "player": "Certainly. Let me try again."
+      },
+      {
+        "type": "action",
+        "text": "(Capt' Arnav treasure chest interface opens.)",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Capt' Arnav treasure chest",
+        "id": "Lz9U8G"
+      }
+    ],
+    "failing-the-puzzle-twice": [
+      {
+        "npc": "Arrr! I'd better find someone else."
+      }
+    ],
+    "talking-to-him-after-the-event": [
+      {
+        "npc": "Arrr, I'd better be off."
+      }
+    ],
+    "other-people-s-capt-arnav": [
+      {
+        "npc": "Arrr, you're not the person I be needin'."
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "Upon spawning in for the player:",
+        "steps": [
+          {
+            "npc": "Avast there, [player name]!"
+          }
+        ],
+        "id": "V_yZuB"
+      },
+      {
+        "type": "condition",
+        "text": "While waiting for a response by the player:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "Ahoy, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "Parley wi' me, my old fruit!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "I needs yer help, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "npc": "I got treasure here, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 5",
+                "steps": [
+                  {
+                    "npc": "Shiver me' timbers, are you ignoring me?"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 6",
+                "steps": [
+                  {
+                    "npc": "Will ye help an old pirate, [player name]?"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 7",
+                "steps": [
+                  {
+                    "npc": "I knows somethin' you should knows, [player name]."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "j-ENjO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not respond in time:",
+        "steps": [
+          {
+            "npc": "Maybe later."
+          }
+        ],
+        "id": "Z2INZY"
+      }
+    ]
+  }
+}

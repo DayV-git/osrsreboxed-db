@@ -1,0 +1,71 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello again, [player name]."
+      },
+      {
+        "player": "Hello. How's the repair work going?"
+      },
+      {
+        "npc": "I'm working on it. I can always do with more iron sheets, so if you've got any more, I'll give you 20 gp per sheet."
+      },
+      {
+        "player": "Thanks, I'll remember that."
+      }
+    ],
+    "with-one-or-more-iron-sheets-in-inventory": [
+      {
+        "type": "condition",
+        "text": "With one sheet:",
+        "steps": [
+          {
+            "npc": "Hello again, [player name]. Were you wanting to sell me that iron sheet? I'd give you 20 gp for it."
+          }
+        ],
+        "id": "xcSwA6"
+      },
+      {
+        "type": "condition",
+        "text": "With multiple sheets:",
+        "steps": [
+          {
+            "npc": "Hello again, [player name]. Were you wanting to sell me those iron sheets? I'd give you [amount] gp."
+          }
+        ],
+        "id": "XbQ_-C"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, that'll do nicely.",
+            "steps": [
+              {
+                "player": "Yes, that'll do nicely."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "[amount] coins for the iron sheet",
+                "id": "D7uyIe"
+              }
+            ]
+          },
+          {
+            "text": "No, I'd rather not.",
+            "steps": [
+              {
+                "player": "No, I'd rather not."
+              },
+              {
+                "npc": "That's ok."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

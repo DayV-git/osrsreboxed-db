@@ -1,0 +1,842 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Alright, mate. What do you need?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to buy a new boat.",
+            "steps": [
+              {
+                "player": "I'd like to buy a new boat."
+              },
+              {
+                "npc": "Sure thing, mate. Which one do you fancy?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Boat Emporium",
+                "id": "RE3MFk"
+              },
+              {
+                "type": "action",
+                "text": "After choosing a boat:",
+                "id": "KWpDI6"
+              },
+              {
+                "type": "condition",
+                "text": "When buying a raft:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your brand new boat has been delivered to the Pandemonium.",
+                    "id": "l4_LYS"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "n2Kv1K"
+              },
+              {
+                "type": "condition",
+                "text": "When buying a skiff:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your brand new boat has been delivered to the Pandemonium.",
+                    "id": "b9I_8f"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ak8g6K"
+              },
+              {
+                "type": "condition",
+                "text": "When buying a sloop:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your brand new boat has been delivered to the Pandemonium.",
+                    "id": "0v437f"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MWSknt"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You don't have enough coins to buy this boat.",
+                    "id": "6YBS-q"
+                  }
+                ],
+                "id": "I6nwMH"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to customise a boat.",
+            "steps": [
+              {
+                "player": "I'd like to customise a boat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't own any boats:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "vTzouL"
+                  }
+                ],
+                "id": "8NTilU"
+              },
+              {
+                "npc": "Righto, mate. Just tell me which one you want to work on and I'll get everything set up."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Boat Customisation",
+                "id": "QOUd6i"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to recover a boat.",
+            "steps": [
+              {
+                "player": "I'd like to recover a boat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't own any boats:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "vTzouL"
+                  }
+                ],
+                "id": "G5eOh7"
+              },
+              {
+                "npc": "No worries, mate! Just tell me which one you need and I'll get a port wizard to zap it right over."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Recover Boat",
+                "id": "YGg-VG"
+              },
+              {
+                "type": "condition",
+                "text": "After choosing a boat:",
+                "id": "vaSQPR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's chosen boat has items in cargo:",
+                "steps": [
+                  {
+                    "npc": "It seems there's something in the cargo hold of that boat, mate. If the port wizard recovers the boat, any fish, salvage, crates or bounty parts will be lost."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Recover your boat for [number] coins? Some cargo will be lost.",
+                    "options": [
+                      {
+                        "text": "Yes, recover it without cargo.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "HOORg9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, I'd like to keep my cargo.",
+                        "steps": [
+                          {
+                            "player": "I won't bother then. I'd like to keep my cargo."
+                          },
+                          {
+                            "npc": "No worries, mate. Come back at any time."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "RIdIRT"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's chosen boat is bottled and in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Looks like you have that boat bottled, mate, it's in your Inventory. No need to recover it!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "izYQz1"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's chosen boat is bottled and in their bank:",
+                "steps": [
+                  {
+                    "npc": "Looks like you have that boat bottled, mate, it's in your Bank. No need to recover it!"
+                  },
+                  {
+                    "type": "end"
+                  },
+                  {
+                    "npc": "Alright, mate, let's call in the port wizard."
+                  },
+                  {
+                    "type": "random",
+                    "options": []
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's chosen boat was docked at another port:",
+                    "steps": [
+                      {
+                        "npc": "All done! The boat is now docked here at the Pandemonium."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "9r5aAJ"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's chosen boat was lost at sea:",
+                    "steps": [
+                      {
+                        "npc": "All done! The boat is now docked here at the Pandemonium, but there's bad news, mate. Because the boat was lost at sea, the port wizard won't have been able to recover any fish, salvage, crates or bounty parts"
+                      },
+                      {
+                        "npc": "from your cargo hold."
+                      },
+                      {
+                        "player": "Ah, I see. Thanks anyway."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "aoUR4l"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's chosen boat was capsized:",
+                    "steps": [
+                      {
+                        "npc": "All done! The boat is now docked here at the Pandemonium, but there's bad news, mate. Because the boat had capsized, the port wizard won't have been able to recover any fish, salvage, crates or bounty parts"
+                      },
+                      {
+                        "npc": "from your cargo hold."
+                      },
+                      {
+                        "player": "Ah, I see. Thanks anyway."
+                      }
+                    ],
+                    "id": "KHXbNK"
+                  }
+                ],
+                "id": "J8IY3s"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to destroy a boat.",
+            "steps": [
+              {
+                "player": "I'd like to destroy a boat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't own any boats:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "vTzouL"
+                  }
+                ],
+                "id": "tQtaRV"
+              },
+              {
+                "npc": "It's your boat's funeral, I guess."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Destroy Boat",
+                "id": "Xjn1_z"
+              },
+              {
+                "type": "action",
+                "text": "After choosing a boat:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player's chosen boat has items in cargo:",
+                    "steps": [
+                      {
+                        "npc": "It looks like you've got things stored in your cargo hold, mate. Gotta warn you that these will be lost if the boat is destroyed."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "If you destroy the boat, the items in the cargo hold will be lost.",
+                        "options": []
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Are you sure you want to destroy your boat?",
+                        "options": [
+                          {
+                            "text": "Yes, destroy it.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "l-EaOV"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, don't destroy it.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "x5b7qL"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "On3pfM"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Are you sure you want to destroy your boat?",
+                    "options": []
+                  }
+                ],
+                "id": "RMdiNJ"
+              }
+            ]
+          },
+          {
+            "text": "More options...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could I have another captain's log?",
+                    "steps": [
+                      {
+                        "player": "Could I have another captain's log?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have one:",
+                        "steps": [
+                          {
+                            "npc": "Sure thing, mate."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Junior Jim gives you a log book.",
+                            "id": "59uVyL"
+                          },
+                          {
+                            "player": "Thanks!"
+                          },
+                          {
+                            "npc": "Not a problem. Don't forget to see Charles down in the cave on the island if you need more help with charting."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "sG-kBP"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has one:",
+                        "steps": [
+                          {
+                            "npc": "Are you sure? Looks like you've got one already."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "I'm sure.",
+                                "steps": [
+                                  {
+                                    "player": "I'm sure."
+                                  },
+                                  {
+                                    "npc": "Fair enough, mate."
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "Junior Jim gives you a log book.",
+                                    "id": "kqqzfi"
+                                  },
+                                  {
+                                    "player": "Thanks!"
+                                  },
+                                  {
+                                    "npc": "Not a problem. Don't forget to see Charles down in the cave on the island if you need more help with charting."
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, never mind.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, never mind."
+                                  },
+                                  {
+                                    "npc": "No worries, mate."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "87eQY_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you have any tips on how I can become a better sailor?",
+                    "steps": [
+                      {
+                        "player": "Do you have any tips on how I can become a better sailor?"
+                      },
+                      {
+                        "type": "unavailable",
+                        "steps": [
+                          {
+                            "npc": "To be frank, mate, I'd say you're already at the top of your game. Still, I guess I can probably chuck a few pointers your way. Let's have a butchers..."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "BN0a6g"
+                          }
+                        ],
+                        "id": "fyw4yQ"
+                      },
+                      {
+                        "npc": "Yeah, I reckon I can probably chuck a few pointers your way. Let's have a butchers..."
+                      },
+                      {
+                        "npc": "Right, you've got all sorts of ways you can buff up your sailing skills. There's port tasks, sea charting, shipwreck salvaging, Barracuda Trials, deep sea trawling, and probably loads more I've gone and forgotten about."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Can you tell me more about port tasks?",
+                            "steps": [
+                              {
+                                "player": "Can you tell me more about port tasks?"
+                              },
+                              {
+                                "npc": "Sure thing, mate. You'll find that a lot of ports will have a notice board where folks have gone and stuck up some ads for jobs they want sorting."
+                              },
+                              {
+                                "npc": "Might be they want some cargo lugging about, or maybe they're after someone to pop out and do a bit of killing for them."
+                              },
+                              {
+                                "player": "And is there anything I should keep in mind while doing these tasks?"
+                              },
+                              {
+                                "npc": "Well, after you've gone and accepted a task or two, you'll want to keep your captain's log handy. It's good for keeping tabs on what jobs you're currently grafting away at."
+                              },
+                              {
+                                "npc": "Also, if you're doing a bit of courier work, you might find it handy to get a couple of crewmates on board. They can help you shift the goods about so you're not knackering yourself by carrying one crate at a time."
+                              },
+                              {
+                                "player": "Makes sense. Thanks, Jim."
+                              },
+                              {
+                                "npc": "No worries, mate. Wanting any other tips?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "S38W8G"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can you tell me more about sea charting?",
+                            "steps": [
+                              {
+                                "player": "Can you tell me more about sea charting?"
+                              },
+                              {
+                                "npc": "Well, mate, sea charting is all about heading out and improving your own knowledge of the sea itself. Your captain's log has all sorts of cracking tips on how to do so."
+                              },
+                              {
+                                "npc": "If you want to know more, your best shout's going to be heading down into the cave on the island for a chinwag with Charles. He's the local expert on this sort of stuff."
+                              },
+                              {
+                                "player": "I might just do that. Thanks, Jim."
+                              },
+                              {
+                                "npc": "Not a problem, mate. Do you need any more tips?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "e2XTey"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can you tell me more about shipwreck salvaging?",
+                            "steps": [
+                              {
+                                "player": "Can you tell me more about shipwreck salvaging?"
+                              },
+                              {
+                                "npc": "Well, as the name suggests, mate, it's all about salvaging old shipwrecks from the sea. Keeps the place nice and tidy, and allows you to snag some swag from those that don't need it anymore."
+                              },
+                              {
+                                "npc": "To get started, you're going to want to head over to the shipyard and sort yourself out with a proper nice salvaging hook. The flashier the hook, the quicker you'll be able to salvage."
+                              },
+                              {
+                                "npc": "Once you've got your hook all nicely set up, it's time to head out and find a shipwreck. You've got plenty of different types to pick from. Once you spot a good one, just use the hook to get stuck in."
+                              },
+                              {
+                                "npc": "You'll want to keep salvaging until you're feeling chuffed with your haul. Then you just need to use a salvaging station to sort through it all. Any half-decent port's going to have one."
+                              },
+                              {
+                                "player": "I see. Thanks for the information."
+                              },
+                              {
+                                "npc": "Always a pleasure, mate. Wanting any other tips?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "2ovsIk"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can you tell me more about Barracuda Trials?",
+                            "steps": [
+                              {
+                                "player": "Can you tell me more about Barracuda Trials?"
+                              },
+                              {
+                                "npc": "Sure can, mate. The Barracudas are a top group of daredevils, but they're also proper show-offs. They like to head out in their fancy boats, giving it proper beans and pushing them right to the limit."
+                              },
+                              {
+                                "npc": "If you're a bit of a cheeky sod yourself, you might want to get involved in one of their trials. All of them are about speeding around and clocking the best time possible."
+                              },
+                              {
+                                "npc": "Anyway, if you fancy it, the nearest one is just south of here in the Storm Tempor. Just don't go being a lemon and jumping in without a boat that's up to the task. Last thing you want is to go and sink!"
+                              },
+                              {
+                                "player": "I'll be sure to keep that in mind. Thanks, Jim."
+                              },
+                              {
+                                "npc": "No worries, mate. Need any other tips?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "Zp9t1g"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "More options...",
+                            "steps": [
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Can you tell me more about deep sea trawling?",
+                                    "steps": [
+                                      {
+                                        "player": "Can you tell me more about deep sea trawling?"
+                                      },
+                                      {
+                                        "npc": "To be honest, mate, it's not something I'm properly clued up on. The basic gist though is that it's all about heading out in your boat to snag some fish that you wouldn't normally be able to get your mitts on."
+                                      },
+                                      {
+                                        "npc": "Still, you don't need to worry, mate. I may not be able to help you, but word is there's a geezer who can over in Port Roberts. Kellan is his name apparently."
+                                      },
+                                      {
+                                        "player": "I see. Thanks for the information."
+                                      },
+                                      {
+                                        "npc": "Not a problem, mate. Do you need any more tips?"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "other",
+                                        "id": "4qi6Xf"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Is there anything else I should keep in mind?",
+                                    "steps": [
+                                      {
+                                        "player": "Is there anything else I should keep in mind?"
+                                      },
+                                      {
+                                        "npc": "Well, mate, you're going to want to keep taking full advantage of the shipyard. If you don't keep regularly upgrading your boat and the facilities on it, you're just holding yourself back for no good reason."
+                                      },
+                                      {
+                                        "npc": "Speaking of which, don't be afraid to sort yourself out with more than one boat. That way you can have different ones with different facilities on them. Do that, and you'll be golden regardless of what you're up to."
+                                      },
+                                      {
+                                        "npc": "Another thing to remember is that you don't need to go it alone. Get yourself a proper bang up crew, mate. They'll be able to help you with all sorts of things on your boat."
+                                      },
+                                      {
+                                        "npc": "Just speak to the Crew Registrar down the docks and she'll get you properly sorted out."
+                                      },
+                                      {
+                                        "npc": "Finally, mate, while self-betterment is ace and all that, don't forget to kick back, chill out, and enjoy yourself! Sometimes it ain't about the destination, it's about the journey!"
+                                      },
+                                      {
+                                        "player": "Very true. Thanks, Jim."
+                                      },
+                                      {
+                                        "npc": "Always a pleasure, mate. Need any other tips?"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "other",
+                                        "id": "EJ0X3a"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Actually, let's talk about something else.",
+                                    "steps": [
+                                      {
+                                        "player": "Actually, let's talk about something else."
+                                      },
+                                      {
+                                        "npc": "No worries, mate."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "initial",
+                                        "id": "SpKSKs"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Previous options...",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "14rJ_a"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nothing, thanks.",
+                    "steps": [
+                      {
+                        "player": "Nothing, thanks."
+                      },
+                      {
+                        "npc": "No worries, mate."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Previous options...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "Qw_Hs4"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "limbo-dialogue": [
+      {
+        "player": "Junior Jim! How's it going?"
+      },
+      {
+        "npc": "Calm down, mate. You seem cheery for someone out in the middle of nowhere."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Well, mate. Some people like to call it Limbo... But I always thought that was the game with the stick."
+              },
+              {
+                "player": "Sure, but... Where are we?"
+              },
+              {
+                "npc": "Somewhere out at sea. What does it matter? All the same, now you're here, isn't it?."
+              }
+            ]
+          },
+          {
+            "text": "I want to get back on the boat.",
+            "steps": [
+              {
+                "npc": "Good luck with that, mate!"
+              },
+              {
+                "type": "message",
+                "text": "If you wish to get back on board the boat you were on, please switch to world <number>.",
+                "id": "7rcWDy"
+              },
+              {
+                "type": "choice",
+                "prompt": "Would you like to open the world switcher?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "text": "The world switcher opens.",
+                        "action": "open_interface",
+                        "action_source": "text",
+                        "target": "The world switcher",
+                        "id": "fYPi4W"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I want to get back to land.",
+            "steps": [
+              {
+                "player": "I want to get back to land."
+              },
+              {
+                "npc": "Alright, let's get you on your way then..."
+              },
+              {
+                "type": "action",
+                "text": "The player is teleported to The Pandemonium.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "vjxSGn"
+              }
+            ]
+          },
+          {
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "npc": "Well, I thought it'd be nice to go on a little vacation. Get away from all the rabble."
+              },
+              {
+                "npc": "Didn't account for the rabble showing up here, did I?"
+              },
+              {
+                "player": "Vacation? Is life on the Pandemonium all that taxing?"
+              },
+              {
+                "npc": "Don't you go getting sarky with me, mate! Not like you ever work a hard day, is it?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "before-completing-pandemonium": [
+      {
+        "npc": "Can I help you, mate?"
+      },
+      {
+        "player": "I don't think so."
+      },
+      {
+        "npc": "Okay... You should probably get going then."
+      }
+    ]
+  },
+  "branches": {
+    "vTzouL": [
+      {
+        "npc": "Sorry, mate, but you don't seem to own any boats."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

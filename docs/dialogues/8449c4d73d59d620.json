@@ -1,0 +1,181 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Welcome, traveller."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you tell me about crystal singing?",
+            "steps": [
+              {
+                "player": "Could you tell me about crystal singing?"
+              },
+              {
+                "npc": "Of course! We elves learned the art long ago, allowing us to form crystals in any way we would like, using just our voices."
+              },
+              {
+                "npc": "It's allowed us to make weapons, armour and tools using the finest crystals."
+              },
+              {
+                "player": "Wow. Is there any way I could do it?"
+              },
+              {
+                "npc": "You might be able to with the help of the crystal bowl over there. As long as you've got the right knowledge of what you're trying to craft."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you do it for me?",
+                    "steps": [
+                      {
+                        "player": "Could you do it for me?"
+                      },
+                      {
+                        "type": "action",
+                        "text": "(Continues with singing dialogue.)",
+                        "id": "P4PyAq"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks!",
+                    "steps": [
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could you sing a song for me?",
+            "steps": [
+              {
+                "player": "Could you sing a song for me?"
+              },
+              {
+                "npc": "Of course! Would you like me to craft something for you? For some crystal shards, of course."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "player": "Yes please."
+                      },
+                      {
+                        "type": "action",
+                        "text": "(Continues with singing dialogue.)",
+                        "id": "dG87QD"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thank you. I'd just like to hear you sing.",
+                    "steps": [
+                      {
+                        "player": "No, thank you. I'd just like to hear you sing."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Conwenna sings you a beautiful song of the elves.",
+                        "id": "bk_oSp"
+                      },
+                      {
+                        "player": "Wow! Thank you."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-singing-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player does not have all the required materials and requirements:",
+        "steps": [
+          {
+            "npc": "You do not have all of the required materials and requirements to make anything."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "DPlTw5"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the required materials and requirements:",
+        "steps": [
+          {
+            "npc": "What would you like me to craft for you?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player selects a crystal helm:",
+            "steps": [
+              {
+                "player": "A crystal helm."
+              },
+              {
+                "type": "message",
+                "text": "This will consume your armour seed as well as your crystal shards. Reverting the helmet will not give you any crystal shards back.",
+                "id": "PbRhvr"
+              },
+              {
+                "type": "choice",
+                "prompt": "Are you sure you wish to proceed?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Conwenna sings a beautiful song, transforming the crystals and creating a crystal helm.",
+                        "id": "S2PZHM"
+                      },
+                      {
+                        "player": "Thank you!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, and don't ask again.",
+                    "steps": [
+                      {
+                        "type": "missing",
+                        "id": "-l__ml"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "207Lcz"
+          }
+        ],
+        "id": "MprBlq"
+      }
+    ]
+  }
+}

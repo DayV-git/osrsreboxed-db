@@ -1,0 +1,270 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Excuse me."
+      },
+      {
+        "npc": "What is it, human?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing up here? It doesn't seem very safe.",
+            "steps": [
+              {
+                "player": "What are you doing up here? It doesn't seem very safe."
+              },
+              {
+                "npc": "On the contrary, it would not be safe if we were not up here!"
+              },
+              {
+                "npc": "You see, that creature up there has a powerful divine energy about it. That energy is used to protect itself and interfere with our own divine capabilities."
+              },
+              {
+                "player": "Divine capabilities? You mean praying to the gods?"
+              },
+              {
+                "npc": "Praying? Yes. To the gods? That is open to interpretation."
+              },
+              {
+                "player": "It is?"
+              },
+              {
+                "npc": "I do not have the time nor desire to explain the advanced concepts of theology to you, but you should know that the Dwarves of Cam Torum take a different approach to worship than your kind."
+              },
+              {
+                "npc": "Anyway, the point is that without experienced seers to aid you, you may find yourself unable to utilise your prayers as you normally would."
+              },
+              {
+                "player": "Interesting. So we need to work together to subdue this creature?"
+              },
+              {
+                "npc": "Indeed, just follow our lead and you'll be fine... probably."
+              },
+              {
+                "player": "Great! I'm happy to help!"
+              },
+              {
+                "npc": "Good. If you have any further questions about your role here, speak to Taala."
+              },
+              {
+                "player": "I will, thank you."
+              }
+            ]
+          },
+          {
+            "text": "Could I trade some tomes in?",
+            "steps": [
+              {
+                "player": "Could I trade some tomes in?"
+              },
+              {
+                "npc": "Very well."
+              },
+              {
+                "type": "unavailable",
+                "id": "fA_gfJ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player inputs 0:",
+                "steps": [
+                  {
+                    "npc": "You can't trade in zero of an item."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "faMzaJ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player inputs more than 1:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Trade in 1x Tome of Earth (empty) for 250x soiled pages?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You trade 1x Tome of Earth (empty) for some soiled pages.",
+                            "id": "ZegaC-"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "nOdHUI"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-as-the-fight-begins": [
+      {
+        "npc": "Let's make this beastie move!"
+      }
+    ],
+    "overhead-dialogue-throughout-the-body-phase": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Block its attacks with your prayers!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Let's convince that beastie to move!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-completing-the-body-phase": [
+      {
+        "npc": "Nicely done!"
+      },
+      {
+        "type": "action",
+        "text": "The seer runs to the Hueycoatl's tail that's blocking the path.",
+        "id": "vvvxQv"
+      },
+      {
+        "npc": "Steady now!"
+      },
+      {
+        "type": "action",
+        "text": "The Hueycoatl's tail moves, clearing a path to the top of the mountain.",
+        "id": "8fjHJw"
+      },
+      {
+        "npc": "Let's go!"
+      },
+      {
+        "type": "action",
+        "text": "The seer runs towards the three pillars.",
+        "id": "FdOvhU"
+      }
+    ],
+    "overhead-dialogue-upon-reaching-the-three-pillars-at-the-start-of-the-head-phase": [
+      {
+        "npc": "Keep praying to bolster your strength!"
+      }
+    ],
+    "overhead-dialogue-throughout-the-rest-of-the-fight-after-reaching-the-pillars": [
+      {
+        "npc": "Keep praying to charge the pillars!"
+      }
+    ],
+    "overhead-dialogue-throughout-the-head-and-final-phases-only": [
+      {
+        "npc": "Show that beastie what we're made of!"
+      }
+    ],
+    "overhead-dialogue-after-charging-up-enough-power": [
+      {
+        "type": "condition",
+        "text": "If one of the three pillars isn't charged up:",
+        "steps": [
+          {
+            "npc": "We need to charge all of the pillars using our prayers!"
+          }
+        ],
+        "id": "3ukh-9"
+      },
+      {
+        "type": "condition",
+        "text": "If all three pillars are charged up:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1"
+              }
+            ]
+          },
+          {
+            "npc": "Excellent! The pillars are boosting your strength!"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Dialogue 2"
+              }
+            ]
+          },
+          {
+            "npc": "Well done! The power of the pillars is yours!"
+          }
+        ],
+        "id": "A33HwF"
+      }
+    ],
+    "overhead-dialogue-when-the-tail-phase-starts": [
+      {
+        "npc": "It's shielded itself! You need to break its concentration!"
+      }
+    ],
+    "overhead-dialogue-throughout-the-tail-phase": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Watch out for its slam!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Go for the tail! It's a weakspot!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-as-the-final-phase-starts": [
+      {
+        "npc": "Well done! Now, let's weaken it a little more!"
+      }
+    ],
+    "overhead-dialogue-as-the-hueycoatl-is-defeated": [
+      {
+        "npc": "We did it! Well done!"
+      }
+    ],
+    "overhead-dialogue-upon-being-forced-down-the-mountain-by-the-hueycoatl": [
+      {
+        "npc": "Oof!"
+      }
+    ]
+  }
+}

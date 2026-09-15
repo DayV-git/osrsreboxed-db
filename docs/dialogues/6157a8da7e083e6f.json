@@ -1,0 +1,185 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there! Can I sew ye somethin' tegether?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you mean?",
+            "steps": [
+              {
+                "player": "What do you mean?"
+              },
+              {
+                "npc": "Well, ye see it works like this: I can sew yer eye patches onto yer pirate hats or pirate bandanas. Just pirate bandanas mind ye, I hate the feel of snakeskin."
+              },
+              {
+                "type": "message",
+                "text": "Patchy shudders at the thought of touching snakeskin.",
+                "id": "XcMET1"
+              },
+              {
+                "npc": "I also sew crab claw gauntlets on to pirate hooks, highwayman masks to black cavaliers, mime masks to black berets, partyhats to glasses and monocles to top hats."
+              },
+              {
+                "npc": "If ye also have some flippers and suitably evil lookin' claws, I can probably put them together too."
+              },
+              {
+                "npc": "It costs 500 coins te do it, and 600 coins te get them separated again afterwards if ye change yer mind."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Why does it cost more to get them separated again?",
+                    "steps": [
+                      {
+                        "player": "Why does it cost more to get them separated again?"
+                      },
+                      {
+                        "npc": "Wear and tear on scissors. So, do ye have anything ye wants doin?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "5fGtGa"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Let me see what you can do.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "5VywBn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thank you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "I9hV_C"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let me see what you can do.",
+            "steps": [
+              {
+                "player": "Let me see what you can do."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Patchy",
+                "id": "8UiV0k"
+              }
+            ]
+          },
+          {
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              },
+              {
+                "npc": "Fair enough. See you around!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "Hello there! Can I sew ye somethin' tegether?"
+      },
+      {
+        "player": "What do you mean?"
+      },
+      {
+        "npc": "Well, ye see it works like this; I can sew yer eye patches onto yer pirate hats or pirate bandanas."
+      },
+      {
+        "npc": "Just pirate bandanas mind ye, I hate the feel of snakeskin. (Shudder)"
+      },
+      {
+        "npc": "It costs 500 gold te do it, and 600 gold te get them separated."
+      },
+      {
+        "player": "Ok, why does it cost more to get them separated than put together?"
+      },
+      {
+        "npc": "Wear and tear on scissors."
+      },
+      {
+        "npc": "On another note, I also sew crab claw gauntlets on to pirate hooks, highwayman masks to black cavaliers, mime masks to black berets, partyhats to glasses and monocles to top hats if ye have them with ye."
+      },
+      {
+        "npc": "If ye also have some flippers and suitably evil lookin' claws, I can probably put them together too."
+      },
+      {
+        "npc": "So, do ye have anything ye wants doin?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "player": "Yes please!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 500 or more coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Patchy",
+                    "id": "sMlFA5"
+                  }
+                ],
+                "id": "SQhiO0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has fewer than 500 coins:",
+                "steps": [
+                  {
+                    "npc": "Sure, but remember I charge 500 coins, so if you don't have them you'll have to come back later!"
+                  }
+                ],
+                "id": "aQ8s_7"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "player": "No."
+              },
+              {
+                "npc": "Fair enough. See you around!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

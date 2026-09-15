@@ -1,0 +1,120 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Creeespy frogs' legs! Get your creeeespy frogs' legs! You want some crispy frogs' legs? Just 10gp."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 10 coins:",
+                "steps": [
+                  {
+                    "player": "But I don't have enough money on me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "LLUjwD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "Looks like your hands are full. You'll have to free up some inventory space before I sell you anything."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "M_x9yg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 10 coins and enough inventory spaces:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "coated frogs' legs",
+                    "id": "aP3D4k"
+                  },
+                  {
+                    "npc": "There you go."
+                  }
+                ],
+                "id": "9onJZf"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Crispy!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Creeeespy frogs' legs!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Get your crispy frogs' legs!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Frogs' legs!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Crispy frogs' legs!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

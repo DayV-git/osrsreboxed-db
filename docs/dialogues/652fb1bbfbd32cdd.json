@@ -1,0 +1,720 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Ahahahaha! I am Count Check, the renowned security expert. Would you like me to check your account to see if it is secure?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Check my account, Count Check!",
+            "steps": [
+              {
+                "player": "Check my account, Count Check!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's account has a Bank PIN and is attached to a Jagex Account:",
+                "steps": [
+                  {
+                    "npc": "You have a Jagex Account, and you have set a Bank PIN, so you pass my checks! As you've passed my check for the first time, I award you a prize."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "lamp",
+                    "id": "7ZjkFt"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "DnPNl4"
+                  }
+                ],
+                "id": "5sFIt3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's account has a Bank PIN and is attached to a Jagex Account, but has already received the lamp:",
+                "steps": [
+                  {
+                    "npc": "You have a Jagex Account, and you have set a Bank PIN, so you pass my checks! As you've passed my check before, there's no prize now."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "8767CH"
+                  }
+                ],
+                "id": "t9qsoX"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's account has a Bank PIN, but is not attached to a Jagex Account:",
+                "steps": [
+                  {
+                    "npc": "You do not have a Jagex Account, so you fail my checks! You should upgrade before we meet again."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "HsOZhj"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's account does not have a Bank PIN and is not attached to a Jagex Account:",
+                "steps": [
+                  {
+                    "npc": "You do not have a Jagex Account, nor a Bank PIN, so so you fail my checks! Please upgrade before we meet again."
+                  }
+                ],
+                "id": "bjPnM0"
+              }
+            ]
+          },
+          {
+            "text": "Can you give me any advice?",
+            "steps": [
+              {
+                "player": "Can you give me any advice?"
+              },
+              {
+                "npc": "I can! Count with the Count as I count the steps to securing your account:"
+              },
+              {
+                "npc": "ONE... unique password!"
+              },
+              {
+                "npc": "Never use the same password for different accounts, or on different websites. If it got leaked, all of your accounts would become vulnerable at once!"
+              },
+              {
+                "npc": "TWO... step verification for your email account!"
+              },
+              {
+                "npc": "Good email providers let you set up two-step verification, maybe by generating security codes on a second device, or by sending codes to your phone. Make sure you've enabled this."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's account is attached to a Jagex Account:",
+                "steps": [
+                  {
+                    "npc": "THREE... Um... Use a Jagex Account. I can see you already do this."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Carry on.",
+                        "steps": [
+                          {
+                            "player": "Carry on."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "cgYhKI"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "What's that got to do with THREE?",
+                        "steps": [
+                          {
+                            "player": "What's that got to do with THREE?"
+                          },
+                          {
+                            "npc": "Look, I'd got something for ONE, TWO and FOUR, and I like counting, okay? Don't interrupt my flow!"
+                          },
+                          {
+                            "player": "..."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "vw6g83"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "cuyiDC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's account is not attached to a Jagex Account:",
+                "steps": [
+                  {
+                    "npc": "THREE... Um... Use a Jagex Account."
+                  },
+                  {
+                    "npc": "Visit the RuneScape website and log in to update your Account settings."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Carry on.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "BldZU-"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "What's that got to do with THREE?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "jiQPFj"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "ula2z3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has set up a bank PIN:",
+                "steps": [
+                  {
+                    "npc": "FOUR... digit Bank PIN! I can see you have set one."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "zNOJ6e"
+                  }
+                ],
+                "id": "lpZ5HM"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not set up a bank PIN:",
+                "steps": [
+                  {
+                    "npc": "FOUR... digit Bank PIN!"
+                  },
+                  {
+                    "npc": "Next time you visit a bank, talk to a banker and ask to check your PIN settings."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "4ww2HV"
+                  }
+                ],
+                "id": "cxAK5F"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is an Ultimate Ironman:",
+                "steps": [
+                  {
+                    "npc": "FOUR... digit Bank PIN! I can see you do not use banks, by the way."
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "g_8UFy"
+                  }
+                ],
+                "id": "7M6q42"
+              },
+              {
+                "npc": "Muhahahahhaa! Such fun it is to count!"
+              },
+              {
+                "type": "action",
+                "text": "Lightning strikes the Count's square.",
+                "id": "scwB1y"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "FqN-Ou"
+              }
+            ]
+          },
+          {
+            "text": "Where can I learn more about security?",
+            "steps": [
+              {
+                "player": "Where can I learn more about security?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not visited the Stronghold of Security:",
+                "steps": [
+                  {
+                    "npc": "The Stronghold of Security, in Barbarian Village. I see you have not visited it. Would you like to? I can send you straight there - but only once."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Teleport to the Stronghold of Security?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "The player is teleported to the entrance of the Stronghold of Security.",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "OkOwlH"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "npc": "So may I check your account for you?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "BNxHWI"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "0rc7mi"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has visited the Stronghold of Security:",
+                "steps": [
+                  {
+                    "npc": "The Stronghold of Security, in Barbarian Village. There is much to learn there. But while you are here, may I check your account for you?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "Ywuc8B"
+                  }
+                ],
+                "id": "R40Jh7"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "As you may see, I am a vampyre, from Morytania. I left there when I heard the terrible news and now I choose to spend my days warning others of the perils that lay in wait for them."
+              },
+              {
+                "player": "The perils?"
+              },
+              {
+                "npc": "Yes, be warned! The travellers of these lands face danger from outside. Accounts can be stolen, and when that happens one can lose everything one has worked for."
+              },
+              {
+                "npc": "I've left my vampyric ways behind me, and now I spend my days letting everyone know of this terrible danger."
+              },
+              {
+                "npc": "In return for my dedication, I have been blessed with the ability to check if adventurers are ready to defend themselves against these account thieves."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "If you're a vampyre, how did you cross the Salve?",
+                    "condition": "If the player has completed Priest in Peril:",
+                    "steps": [
+                      {
+                        "player": "If you're a vampyre, how did you cross the Salve?"
+                      },
+                      {
+                        "npc": "What do you mean? 'If' I am a vampyre? Of course I am a vampyre! See my pale complexion, my teeth, my outfit - how could anyone doubt I am a true vampyre?"
+                      },
+                      {
+                        "npc": "I used to stalk the night drinking blood like vampyres do, and I am certainly not just a role-playing enthusiast in a costume! Never question that!"
+                      },
+                      {
+                        "player": "Right."
+                      },
+                      {
+                        "npc": "So may I check your account for you?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "e6djSi"
+                      }
+                    ],
+                    "id": "feZf0u"
+                  },
+                  {
+                    "text": "Check my account, Count Check!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ARcYi3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you give me any advice?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ns38su"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where can I learn more about security?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "z0KdoD"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll see you another time.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "QXtKwy"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll see you another time.",
+            "steps": [
+              {
+                "player": "I'll see you another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "random-event-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has a Jagex Account and a bank PIN:",
+        "steps": [
+          {
+            "npc": "Ahahahaha! I, Count Check, have checked your account. You have a Jagex Account, and you have set a Bank PIN, so you pass my checks! Enjoy your prize."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "PMO5Sk"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a Jagex Account, but does not have a bank PIN:",
+        "steps": [
+          {
+            "npc": "Ahahahaha! I, Count Check, have checked your account. You do not have a Bank PIN, so you fail my checks! Talk to a banker to set a PIN before we meet again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "uN_mMM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a Jagex Account:",
+        "steps": [
+          {
+            "npc": "Ahahahaha! I, Count Check, have checked your account. You do not have a Jagex Account, so you fail my checks! You should upgrade before we meet again."
+          },
+          {
+            "type": "message",
+            "text": "To upgrade your account, visit the RuneScape Website and log in to update your Account settings.",
+            "id": "hLtzJR"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Rytbby"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a Jagex Account or a bank PIN:",
+        "steps": [
+          {
+            "npc": "Ahahahaha! I, Count Check, have checked your account. You do not have a Jagex Account, nor a Bank PIN, so so you fail my checks! Please upgrade before we meet again."
+          },
+          {
+            "type": "message",
+            "text": "To upgrade your account, visit the RuneScape Website and log in to update your Account settings.",
+            "id": "j40mcm"
+          },
+          {
+            "type": "message",
+            "text": "To set a Bank PIN, talk to a banker and ask to check your PIN settings.",
+            "id": "iB7y3N"
+          }
+        ],
+        "id": "WvULj-"
+      }
+    ],
+    "random-event-dialogue-talking-to-him-again-as-he-s-leaving": [
+      {
+        "npc": "I must be leaving now."
+      }
+    ],
+    "random-event-dialogue-other-player-s-event": [
+      {
+        "npc": "I came to check [player name], not you."
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "Upon spawning in for the player:",
+        "steps": [
+          {
+            "npc": "Ahahahaha, [player name]!"
+          }
+        ],
+        "id": "cNrECu"
+      },
+      {
+        "type": "condition",
+        "text": "While waiting for a response by the player:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "Please let me check you, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "I have come to check you, [player name]..."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3"
+              }
+            ]
+          }
+        ],
+        "id": "RNfMgn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not respond in time:",
+        "steps": [
+          {
+            "npc": "Ahahahaha, ONE more person ignored me..."
+          }
+        ],
+        "id": "Q1FeGq"
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hello - who are you?",
+            "steps": [
+              {
+                "npc": "Hello [player name] you look like you've seen a ghost."
+              },
+              {
+                "player": "Well, not a ghost, but... well... you're a vampyre aren't you? Shouldn't you be in Morytania?"
+              },
+              {
+                "npc": "Ah yes, I miss that place. So lovely and dark. I left there when I heard the terrible news and now I choose to spend the rest of my days warning others of the perils that lay in wait for them."
+              },
+              {
+                "player": "Terrible news? Peril? I don't like the sound of this. Is there something I should know?"
+              },
+              {
+                "npc": "Yes be warned! The travellers of these lands face danger from outside. Accounts that allow them access to this magical place can be stolen and when that happens they could lose everything they have worked so hard"
+              },
+              {
+                "npc": "for. I've left my Vampyre ways behind me and now spend my days letting everyone know of this terrible danger. In return for my dedication I have been blessed with a unique ability to be able to check if"
+              },
+              {
+                "npc": "adventurers who speak with me are ready to defend themselves against these account thieves."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "_xTxmF"
+              }
+            ]
+          },
+          {
+            "text": "Check my account.",
+            "steps": [
+              {
+                "player": "Can you check to see if my account is secure?"
+              },
+              {
+                "npc": "Ok let me check your account security, but before I do there are some things that even I can not see. Firstly you must have a unique password for your account and not share it with anyone else and secondly make"
+              },
+              {
+                "npc": "sure you have 2 step verification for your registered recovery email. I'll leave it with you to make sure both of those things are in place."
+              },
+              {
+                "player": "A unique password that I don't share, and 2 step verification on my email... got it."
+              },
+              {
+                "npc": "Now let me take a look at some of your other security settings for you..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has set up an authenticator:",
+                "steps": [
+                  {
+                    "npc": "You are using the authenticator! Excellent. This will help to keep your account secure."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "7ED2C_"
+                  }
+                ],
+                "id": "uTkY9c"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not set up an authenticator:",
+                "steps": [
+                  {
+                    "npc": "You aren't using the authenticator! This is a disaster. You should enable this to keep your account secure. Simply visit the support link on the oldschool.runescape.com website."
+                  }
+                ],
+                "id": "ybFJUl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has set up a bank PIN:",
+                "steps": [
+                  {
+                    "npc": "You have a bank PIN. This is good, but make sure that it's one that can't be easily guessed."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "ncrgVd"
+                  }
+                ],
+                "id": "gNUROq"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not set up a bank PIN:",
+                "steps": [
+                  {
+                    "npc": "You really should set a bank PIN. If your account does get stolen, your items in the bank and other places like the GE will be safe."
+                  }
+                ],
+                "id": "TVZFd6"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "K36kfg"
+              }
+            ]
+          },
+          {
+            "text": "Count for me.",
+            "steps": [
+              {
+                "player": "Is there an easy way to remember all these account security things?"
+              },
+              {
+                "npc": "Yes there is. by counting. I am a count, who likes to count and check accounts. You can ask me to check your account at any time you like and if you want to remember my top tips for account security just ask me"
+              },
+              {
+                "npc": "to count for you. The count loves to count."
+              },
+              {
+                "npc": "Count with the count to easily remember my top account security tips:"
+              },
+              {
+                "npc": "One... unique password."
+              },
+              {
+                "npc": "Two... step email verification."
+              },
+              {
+                "npc": "Free... authenticator."
+              },
+              {
+                "npc": "Four... digit bank PIN!"
+              },
+              {
+                "npc": "Muhahahahhaa!"
+              },
+              {
+                "type": "action",
+                "text": "Lightning strikes the Count's square.",
+                "id": "5E04JP"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "09fAnK"
+              }
+            ]
+          },
+          {
+            "text": "Where can I learn more?",
+            "steps": [
+              {
+                "player": "Is there somewhere I can learn more about account security?"
+              },
+              {
+                "npc": "Yes! The Stronghold of Security which can be accessed via Barbarian Village."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "-cNyR5"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,426 @@
+{
+  "default": null,
+  "variants": {
+    "starting-the-quest-climbing-down-hole-before-reading-journal": [
+      {
+        "type": "message",
+        "text": "You have no reason to go down there.",
+        "id": "5DPM8u"
+      }
+    ],
+    "starting-the-quest-searching-the-tent": [
+      {
+        "type": "choice",
+        "prompt": "Start The Garden of Death quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You search the tent and find a journal. You take it.",
+                "id": "FLIJGW"
+              }
+            ],
+            "hook": "quest:the-garden-of-death:start",
+            "quest": "The Garden of Death"
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "starting-the-quest-searching-the-camping-equipment": [
+      {
+        "type": "condition",
+        "text": "If the players does not have secateurs in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You search through the camping equipment and find some secateurs. You take them.",
+            "id": "8YLvcl"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "OooLjQ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has secateurs in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You search through the camping equipment, but find nothing of interest.",
+            "id": "DPtMFf"
+          }
+        ],
+        "id": "ChpYRu"
+      }
+    ],
+    "the-first-dungeon-searching-the-stone-table": [
+      {
+        "type": "message",
+        "text": "You search the table and find a stone tablet. You take it.",
+        "id": "flbYPc"
+      }
+    ],
+    "the-first-dungeon-reading-the-stone-tablet": [
+      {
+        "type": "message",
+        "text": "As you finish reading, you spot a note stuck to the back of the tablet.",
+        "id": "fhVAxZ"
+      },
+      {
+        "type": "choice",
+        "prompt": "Take the note?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You take the note. Upon closer inspection, it looks to be written in the same handwriting as the journal you found earlier.",
+                "id": "fBeqSs"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "the-first-dungeon-searching-other-objects": [
+      {
+        "type": "message",
+        "text": "You search the table and find a carving. You take it.",
+        "id": "dL-PXz"
+      },
+      {
+        "type": "message",
+        "text": "You search the table and find a carving. You take it.",
+        "id": "H4r5QT"
+      },
+      {
+        "type": "message",
+        "text": "You find a note next to the vase. You take it.",
+        "id": "idGs9s"
+      },
+      {
+        "type": "message",
+        "text": "The chest contains some hourglasses. A label on the chest reads 'Miki Toka'.",
+        "id": "eHJ525"
+      }
+    ],
+    "the-first-dungeon-translating-words": [
+      {
+        "type": "message",
+        "text": "Enter a possible translation for a word you've found:",
+        "id": "say3wd"
+      },
+      {
+        "type": "condition",
+        "text": "If an invalid word is entered:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You can't think of any suitable translations for that word.",
+            "id": "_4pWCk"
+          }
+        ],
+        "id": "md6vmN"
+      },
+      {
+        "type": "condition",
+        "text": "If a correct translation is entered, but the player hasn't seen the word yet in-game:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You feel like that word has potential, but you can't think of any suitable translations for it at the moment.",
+            "id": "Vwg1WE"
+          }
+        ],
+        "id": "73Lfdh"
+      },
+      {
+        "type": "condition",
+        "text": "If a correct translation is entered for a word the player has seen:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've discovered a new translation: [correct translation] &equals; [the word]",
+            "id": "K9h3Ha"
+          }
+        ],
+        "id": "JYhrXo"
+      },
+      {
+        "type": "choice",
+        "prompt": "Attempt another translation?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Enter a possible translation for a word you've found:",
+                "id": "SgNISl"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "message",
+        "text": "You feel that you've translated enough words to read some of the text on the stone tablet.",
+        "id": "wKk9jg"
+      }
+    ],
+    "the-second-dungeon-interacting-with-the-vines": [
+      {
+        "type": "message",
+        "text": "You spot a note on the floor near the vines. You take it.",
+        "id": "-9OgAS"
+      },
+      {
+        "type": "message",
+        "text": "You cut through the vines.",
+        "id": "do9sTb"
+      }
+    ],
+    "the-second-dungeon-searching-the-stone-table": [
+      {
+        "type": "message",
+        "text": "You search the table and find a stone tablet. You take it.",
+        "id": "KMQ9_z"
+      }
+    ],
+    "the-second-dungeon-searching-other-objects": [
+      {
+        "type": "message",
+        "text": "You search the table and find a carving. You take it.",
+        "id": "QCeXTV"
+      },
+      {
+        "type": "message",
+        "text": "You find a carving next to the vase. You take it.",
+        "id": "Pj70Yu"
+      },
+      {
+        "type": "message",
+        "text": "The vase seems to contain some very old compost. A label on the vase reads 'Tlane Kualt'.",
+        "id": "yhNufN"
+      },
+      {
+        "type": "message",
+        "text": "The chest contains some body runes. A label on the chest reads 'Olkat'.",
+        "id": "PQF8ti"
+      },
+      {
+        "type": "message",
+        "text": "You search the rubble and find a carving. You take it.",
+        "id": "Wavz_q"
+      }
+    ],
+    "the-third-dungeon-searching-the-stone-table": [
+      {
+        "type": "message",
+        "text": "You search the table and find a stone tablet. You take it.",
+        "id": "zILLoa"
+      }
+    ],
+    "the-third-dungeon-searching-other-objects": [
+      {
+        "type": "message",
+        "text": "You search the chest and find a compass. You take it.",
+        "id": "UJR5br"
+      },
+      {
+        "type": "message",
+        "text": "You search the table and find a carving. You take it.",
+        "id": "L7u8oM"
+      },
+      {
+        "type": "message",
+        "text": "You search the table and find a carving. You take it.",
+        "id": "TxP73_"
+      },
+      {
+        "type": "message",
+        "text": "You find a carving next to the vase. You take it.",
+        "id": "Q7620s"
+      },
+      {
+        "type": "message",
+        "text": "You find a carving next to the mushroom. You take it.",
+        "id": "dpc9U9"
+      }
+    ],
+    "the-third-dungeon-inspecting-the-compass": [
+      {
+        "type": "message",
+        "text": "Rather than the usual labels, the compass points are instead marked as 'Makt', 'Uitt', 'Takam' and 'Silam'.",
+        "id": "cX3GX2"
+      }
+    ],
+    "the-third-dungeon-searching-other-objects-2": [
+      {
+        "type": "message",
+        "text": "You search the chest and find a compass. You take it.",
+        "id": "cbbLCv"
+      },
+      {
+        "type": "message",
+        "text": "You search the table and find a carving. You take it.",
+        "id": "C4oTMa"
+      },
+      {
+        "type": "message",
+        "text": "You search the table and find a carving. You take it.",
+        "id": "1EUolA"
+      },
+      {
+        "type": "message",
+        "text": "You find a carving next to the vase. You take it.",
+        "id": "ICQ1FG"
+      },
+      {
+        "type": "message",
+        "text": "You find a carving next to the mushroom. You take it.",
+        "id": "lNka0T"
+      }
+    ],
+    "the-fourth-dungeon-searching-the-stone-table": [
+      {
+        "type": "message",
+        "text": "You search the table and find a stone tablet. You take it.",
+        "id": "Z1j2kw"
+      }
+    ],
+    "the-fourth-dungeon-searching-other-objects": [
+      {
+        "type": "message",
+        "text": "You search the table and find a stone tablet. You take it.",
+        "id": "XwvKQO"
+      },
+      {
+        "type": "message",
+        "text": "You search the rubble and find a carving. You take it.",
+        "id": "r7448d"
+      },
+      {
+        "type": "message",
+        "text": "You search the chest and find a carving. You take it.",
+        "id": "uGsDqH"
+      },
+      {
+        "type": "message",
+        "text": "You search the table and find a carving. You take it.",
+        "id": "o850Np"
+      },
+      {
+        "type": "message",
+        "text": "You find a carving next to the vase. You take it.",
+        "id": "c20vup"
+      },
+      {
+        "type": "message",
+        "text": "The chest contains what look to be home teleport tablets. A label on the chest reads 'Antil'.",
+        "id": "ik8IHy"
+      },
+      {
+        "type": "message",
+        "text": "You search the rubble and find a note. You take it.",
+        "id": "c0W2Nm"
+      }
+    ],
+    "the-fourth-dungeon-reading-the-stone-tablet-after-translating-it": [
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "As you finish reading, you spot a note on the floor. However, you don't have enough room to take it.",
+            "id": "3Zq5W9"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "98t8-D"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "As you finish reading, you spot a note stuck to the back of the tablet.",
+            "id": "9BxwoT"
+          },
+          {
+            "type": "choice",
+            "prompt": "Take the note?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You take the note.",
+                    "id": "YBLHVE"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": []
+              }
+            ]
+          }
+        ],
+        "id": "Gy9FwW"
+      }
+    ],
+    "the-fourth-dungeon-reading-the-warning-note": [
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "ZsMuIY"
+      },
+      {
+        "type": "message",
+        "text": "Although you've now discovered the fate of the Old Ones, you feel that there could be more to find. Perhaps you should continue exploring and see if you can fully translate the stone tablets.",
+        "id": "bzJycF"
+      }
+    ],
+    "the-fourth-dungeon-fully-translating-stone-tablets": [
+      {
+        "type": "message",
+        "text": "You feel that you've translated enough words to fully understand all of the stone tablets!",
+        "id": "L1cVhR"
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "unavailable",
+        "id": "xtWsEQ"
+      }
+    ]
+  }
+}

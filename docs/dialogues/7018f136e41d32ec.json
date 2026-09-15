@@ -1,0 +1,606 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello again. Are you after another device, or some information, or would you like to see my goods for sale?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Devices, please.",
+            "steps": [
+              {
+                "player": "Devices, please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Dizana's quiver or Blessed Dizana's quiver and either one of Ava's devices or a Ranging cape in their inventory:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Ava's devices.",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "(Ava's Devices interface opens.)",
+                            "action": "open_interface",
+                            "action_source": "text",
+                            "target": "Ava's Devices",
+                            "id": "j2LQkR"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dizana's Quiver.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "my7mtI"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "MXpMcD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have Dizana's quiver in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Ava's Devices interface opens.)",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "Ava's Devices",
+                    "id": "87Xpdm"
+                  }
+                ],
+                "id": "0qq5wL"
+              }
+            ]
+          },
+          {
+            "text": "I'd like information, please.",
+            "steps": [
+              {
+                "player": "I'd like information, please."
+              },
+              {
+                "npc": "Just a few bits of information before you run away to persecute rock crabs or cows."
+              },
+              {
+                "npc": "Firstly, your new device won't work if you are wearing certain metallic chest armours."
+              },
+              {
+                "npc": "The magnetic attraction required for operation would cause feedback, so the device does not allow such incompatible item equip page."
+              },
+              {
+                "npc": "Secondly, although the device is calibrated to attract only arrow heads, there is a chance that other magnetically active items will be attracted."
+              },
+              {
+                "npc": "The arrow recovery function of the devices is slightly different and relies upon a harmonic bond between your arrows and the chicken's magnet. You'll thus only recover arrows which you have fired rather than those"
+              },
+              {
+                "npc": "fired by nearby folks."
+              },
+              {
+                "npc": "You'll also need to move about if you want to collect arrows since the gathering of long-lost arrowheads can't work otherwise."
+              },
+              {
+                "npc": "Finally, the device will only work when worn. It automatically deactivates in other circumstances."
+              },
+              {
+                "npc": "I was worried about what would happen if you were to place it in a bank in its active state, so I've made sure it only works when it's on your back."
+              }
+            ]
+          },
+          {
+            "text": "Can I have more locator orbs, please?",
+            "steps": [
+              {
+                "player": "Can I have more locator orbs, please?"
+              },
+              {
+                "type": "action",
+                "text": "(Locator orb request interface opens.)",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Locator orb request",
+                "id": "o1E-Qt"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "[amount] orbs",
+                "id": "Uzirig"
+              },
+              {
+                "type": "message",
+                "text": "Ava gives you [another orb/[amount] orbs].",
+                "id": "1IB_eh"
+              }
+            ]
+          },
+          {
+            "text": "More options...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to see your stuff for sale, please.",
+                    "steps": [
+                      {
+                        "player": "I'd like to see your stuff for sale, please."
+                      },
+                      {
+                        "npc": "Here's my shop."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Ava's Odds and Ends",
+                        "id": "SZrlR3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you know anything about saving cannonballs?",
+                    "condition": "If the player has completed Pandemonium:",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't own a ballistic attractor schematic:",
+                        "steps": [
+                          {
+                            "player": "Do you know anything about saving cannonballs?"
+                          },
+                          {
+                            "npc": "What an oddly specific question."
+                          },
+                          {
+                            "npc": "As it happens the principle is much the same as the backpack we made."
+                          },
+                          {
+                            "player": "Can you explain how to make something like that for my boat?"
+                          },
+                          {
+                            "npc": "Well, if we increase the flux via some bigonometry we should be able to create a dipolar ordnance grabber, or D.O.G., to fetch your balls."
+                          },
+                          {
+                            "player": "...?"
+                          },
+                          {
+                            "npc": "Upscaling the power of your backpack device might give us the pulling power we need to create a ballistic attractor to reclaim your ammo."
+                          },
+                          {
+                            "player": "...?"
+                          },
+                          {
+                            "npc": "I'll draw you a picture of a big magnet and you can stick it to your boat."
+                          },
+                          {
+                            "player": "...!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Ava quickly scribbles some complicated looking schematics onto some paper for you, and then thrusts them into your hands.",
+                            "id": "xcs6-R"
+                          },
+                          {
+                            "npc": "There, that should do what you need."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "bYHaYD"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already owns a ballistic attractor schematic or has read it:",
+                        "steps": [
+                          {
+                            "player": "Do you know anything about saving cannonballs?"
+                          },
+                          {
+                            "npc": "Yes, and now you also know it!"
+                          }
+                        ],
+                        "id": "BN_FyY"
+                      }
+                    ],
+                    "id": "kFX_Ga"
+                  },
+                  {
+                    "text": "I'll just head off, I think.",
+                    "steps": [
+                      {
+                        "player": "I'll just head off, I think."
+                      },
+                      {
+                        "npc": "Thanks for the help with my bed; see you again."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Previous options...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "YRsRkm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-dizana-s-quiver-or-blessed-dizana-s-quiver-on-ava-if-the-quiver-has-not-been-upgraded-before": [
+      {
+        "player": "Mind taking a look at this quiver for me?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have one of Ava's devices or a Ranging cape in their inventory:",
+        "steps": [
+          {
+            "npc": "Hmm..."
+          },
+          {
+            "npc": "That truly is a remarkable piece of equipment."
+          },
+          {
+            "npc": "Bring me one of my devices. I might be able to link the two!"
+          },
+          {
+            "player": "Wow! Really? I better go and grab one."
+          },
+          {
+            "npc": "If you've got the materials, I can make one now for you?"
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Ava's Devices",
+            "id": "wOyuFc"
+          }
+        ],
+        "id": "qKkmCD"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has one of Ava's devices or a Ranging cape in their inventory:",
+        "steps": [
+          {
+            "npc": "Let me see..."
+          },
+          {
+            "npc": "Extraordinary..."
+          },
+          {
+            "npc": "That quiver has some of the finest leatherwork I've ever seen!"
+          },
+          {
+            "player": "I was wondering if you could maybe make it... better?"
+          },
+          {
+            "npc": "Better? Let me see... I might be able to do something."
+          },
+          {
+            "npc": "I'll see if I can link it to the device you have with you."
+          },
+          {
+            "type": "message",
+            "text": "Ava takes the quiver and fiddles around with it for a bit...",
+            "id": "7Xbw7R"
+          },
+          {
+            "npc": "..."
+          },
+          {
+            "npc": "Ouch!"
+          },
+          {
+            "npc": "That's some tough material..."
+          },
+          {
+            "npc": "Move that here..."
+          },
+          {
+            "npc": "There we go! That's some of my finest work, if I do say so myself."
+          },
+          {
+            "player": "Great! Thanks for the help!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has Ava's attractor:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ava's attractor.",
+                "id": "qwRUF7"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "V3--1D"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has Ava's accumulator:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ava's accumulator.",
+                "id": "5RwX7g"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "qjsT-x"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has Ava's assembler:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ava's assembler.",
+                "id": "eEn_ja"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "SwWDf6"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Masori assembler:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Masori assembler.",
+                "id": "49p3lY"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "Z2uVmB"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Ranging cape:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ranging cape.",
+                "id": "RdONNQ"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "FVWpDg"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Ranging cape(t):",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ranging cape(t).",
+                "id": "4b0v15"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "BVaGga"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Max cape:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Max cape.",
+                "id": "RzVkkA"
+              }
+            ],
+            "id": "vGkq3c"
+          }
+        ],
+        "id": "cCEwYw"
+      }
+    ],
+    "using-dizana-s-quiver-or-blessed-dizana-s-quiver-on-ava-if-the-quiver-has-been-upgraded-before-but-not-with-ava-s-assembler": [
+      {
+        "type": "condition",
+        "text": "If the player does not have one of Ava's upgraded devices in their inventory:",
+        "steps": [
+          {
+            "player": "Mind taking a look at this quiver for me?"
+          },
+          {
+            "npc": "Let me see..."
+          },
+          {
+            "npc": "Hmm..."
+          },
+          {
+            "npc": "Looks like that quiver could be modified further. Come back to me with another device to modify it."
+          },
+          {
+            "player": "Fair enough."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "u_-QLo"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has one of Ava's upgraded devices:",
+        "steps": [
+          {
+            "npc": "Mind taking another look at that quiver I showed you before?"
+          },
+          {
+            "npc": "Hmm, interesting... It seems to lack the power you have in your other device there."
+          },
+          {
+            "player": "That's right. I was wondering if you could help with that?"
+          },
+          {
+            "npc": "I'll give it a good go!"
+          },
+          {
+            "type": "message",
+            "text": "Ava takes the quiver and fiddles around with it for a bit...",
+            "id": "4OwlTa"
+          },
+          {
+            "npc": "..."
+          },
+          {
+            "npc": "Ouch!"
+          },
+          {
+            "npc": "That's some tough material..."
+          },
+          {
+            "npc": "Move that here..."
+          },
+          {
+            "npc": "There we go! That's some of my finest work, if I do say so myself."
+          },
+          {
+            "player": "Great! Thanks for the help!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has Ava's accumulator:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ava's accumulator.",
+                "id": "A3Vej5"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "I7rW4V"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has Ava's assembler:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ava's assembler.",
+                "id": "o6Qv1O"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "T3Kbz9"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Masori assembler:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Masori assembler.",
+                "id": "BCTq9N"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "atqYBQ"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Ranging cape:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ranging cape.",
+                "id": "XTOtg7"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "DgJbFz"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Ranging cape(t):",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Ranging cape(t).",
+                "id": "BNMMgn"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "vEFbUr"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a Max cape:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Your quiver now shares the ammo saving effect of your Max cape.",
+                "id": "CCx4I1"
+              }
+            ],
+            "id": "mj3Prx"
+          }
+        ],
+        "id": "cit4Zc"
+      }
+    ],
+    "using-dizana-s-quiver-or-blessed-dizana-s-quiver-on-ava-if-the-quiver-has-already-been-upgraded-with-ava-s-assembler": [
+      {
+        "npc": "Hmm..."
+      },
+      {
+        "npc": "It seems like that quiver is as good as it's going to get!"
+      },
+      {
+        "player": "Fair enough."
+      }
+    ],
+    "using-any-other-item-on-ava": [
+      {
+        "npc": "I'm not sure what you are trying to do; are you sure you aren't slightly deranged?"
+      }
+    ]
+  }
+}

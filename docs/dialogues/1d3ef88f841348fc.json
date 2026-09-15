@@ -1,0 +1,172 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome to the Alchemical Society. What can I help you with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is the main facility of the Alchemical Society. We're an organisation who fuse the forgotten teachings of the Old Ones with traditional Gielinorian Herblore practices."
+              },
+              {
+                "npc": "The lab under our feet allows us to fund our research by producing useful products for the kingdom."
+              },
+              {
+                "player": "So you do things differently to the druids of the mainland?"
+              },
+              {
+                "npc": "In a way, but we very much respect Herblore as a profession and recognise that whatever your druids do definitely works. Our goal is to advance the study of Herblore, not replace it."
+              },
+              {
+                "npc": "Anyway, I'm a little busy at the moment, but I'm sure some of the other lab assistants would love to tell you more!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "1VhUQl"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Thanks! I'd better be going now.",
+                    "steps": [
+                      {
+                        "player": "Thanks! I'd better be going now."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do you do around here?",
+            "steps": [
+              {
+                "player": "What do you do around here?"
+              },
+              {
+                "npc": "When I'm not working in the lab, I'm normally somewhere around here researching or administrating our orders. There's an awful lot of paperwork to get through!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "ydWhZb"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Thanks! I'd better be going now.",
+                    "steps": [
+                      {
+                        "player": "Thanks! I'd better be going now."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can I buy some potions?",
+            "steps": [
+              {
+                "player": "Can I buy some potions?"
+              },
+              {
+                "npc": "We're not really a shop, so our products are not available to buy directly. Everything we make gets shipped wholesale around the kingdom."
+              },
+              {
+                "npc": "You look like the adventuring type anyway. I can't imagine our products would be of much use to you."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "2519dg"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Thanks! I'd better be going now.",
+                    "steps": [
+                      {
+                        "player": "Thanks! I'd better be going now."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Nothing. I'll be going now.",
+            "steps": [
+              {
+                "player": "Nothing. I'll be going now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-attempting-to-enter-the-alchemical-society-for-the-first-time": [
+      {
+        "npc": "Hey! Where do you think you're going?"
+      },
+      {
+        "player": "I wanted to see what was down these stairs."
+      },
+      {
+        "npc": "We are the Alchemical Society and those stairs lead to our lab and production facilities."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have at least 60 Herblore:",
+        "steps": [
+          {
+            "player": "Oh... I think its best that I stay away then."
+          },
+          {
+            "type": "message",
+            "text": "A Herblore level of 60 is required to enter the lab.",
+            "id": "VOOCCF"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "K7Ytht"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 60 Herblore:",
+        "steps": [
+          {
+            "player": "I'm actually quite skilled in Herblore. Would it be possible for me to join?"
+          },
+          {
+            "npc": "You are? Well, we're always looking for new members, provided they have the aptitude needed. In that case, head on in and talk to Supervisor Lalo. He'll show you how everything works."
+          },
+          {
+            "type": "action",
+            "text": "The player enters the Alchemical Society",
+            "id": "N2NpqG"
+          }
+        ],
+        "id": "pvQsKk"
+      }
+    ]
+  }
+}

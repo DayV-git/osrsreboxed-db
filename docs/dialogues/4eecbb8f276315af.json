@@ -1,0 +1,175 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-during-or-after-completing-underground-pass": [
+      {
+        "player": "Hi there, you okay?"
+      },
+      {
+        "npc": "Ooooh, my head... I'm fried."
+      },
+      {
+        "player": "What's wrong?"
+      },
+      {
+        "npc": "Too much of this home brew my friend. We make it from plant roots, but it blows your head off."
+      },
+      {
+        "npc": "You don't wanna put it near any naked flames. I've got a barrel full of it here, want some?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay then.",
+            "steps": [
+              {
+                "player": "Okay then."
+              },
+              {
+                "npc": "Here you go... Hic!"
+              },
+              {
+                "type": "message",
+                "text": "You take a sip of brew from Kamen's glass...",
+                "id": "jChhkV"
+              },
+              {
+                "player": "Aaarrgghh!"
+              },
+              {
+                "type": "message",
+                "text": "...it tastes horrific and burns your throat.",
+                "id": "gTu_i6"
+              },
+              {
+                "npc": "Ha ha! I warned you that it's strong stuff. Have a good meal. It may sober you up a bit. I could part with some food for a few coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay then.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "Without enough inventory space:",
+                        "steps": [
+                          {
+                            "npc": "75 coins pleashe."
+                          },
+                          {
+                            "npc": "You'll need to make some room in your inventory first."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "R8vyq8"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Without enough coins:",
+                        "steps": [
+                          {
+                            "npc": "75 coins pleashe."
+                          },
+                          {
+                            "player": "Oh dear, I haven't enough money..."
+                          },
+                          {
+                            "npc": "Sorry, I can't just give it away to anyone that walks past."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "QQglA9"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "With enough coins and inventory space:",
+                        "steps": [
+                          {
+                            "player": "Okay then."
+                          },
+                          {
+                            "npc": "75 coins pleashe."
+                          },
+                          {
+                            "type": "message",
+                            "text": "The dwarf gives you some food.",
+                            "id": "dpKhqe"
+                          },
+                          {
+                            "npc": "Enjoy."
+                          }
+                        ],
+                        "id": "sVUswe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      },
+                      {
+                        "npc": "Well come back any time."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Your losh... Hic!"
+              },
+              {
+                "npc": "Well maybe a good meal? I could part with some food for a few coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay then.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "VtJVkJ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "j215pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-overhead-dialogue": [
+      {
+        "npc": "Hic!"
+      }
+    ]
+  }
+}

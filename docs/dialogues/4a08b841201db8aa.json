@@ -1,0 +1,419 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue-after-horror-from-the-deep": [
+      {
+        "player": "I see you managed to escape from those monsters intact!"
+      },
+      {
+        "npc": "It seems I was not as injured as I thought I was after all! I must thank you again for all of your help! Now, about that casket you found on that monster's corpse..."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the rusty casket:",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "I have it here. You said you might be able to tell me something about it..."
+          },
+          {
+            "npc": "I can indeed! Here, let me have a closer look... Yes! There is something written on it!"
+          },
+          {
+            "npc": "It is very faint, however... Can you read it?"
+          },
+          {
+            "type": "choice",
+            "prompt": "What does the casket say?",
+            "options": [
+              {
+                "text": "Saradomin",
+                "steps": [
+                  {
+                    "player": "I think it says... Saradomin..."
+                  },
+                  {
+                    "npc": "Are you sure? I mean, are you REALLY sure? Maybe you'd better look again..."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "What does the casket say?",
+                    "options": [
+                      {
+                        "text": "Saradomin",
+                        "steps": [
+                          {
+                            "player": "Nope, it definitely says Saradomin."
+                          },
+                          {
+                            "npc": "I think you're right! Hand it here, and let's see what's inside!"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "Damaged book (Saradomin)",
+                            "id": "wZLOyL"
+                          },
+                          {
+                            "npc": "Wow! It's a Holy Book of Saradomin! I thought these things had all vanished! Well, it's all yours, I hope you appreciate it."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Zamorak",
+                        "steps": [
+                          {
+                            "player": "Nope, it definitely says Zamorak."
+                          },
+                          {
+                            "npc": "I think you're right! Hand it here, and let's see what's inside!"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "Damaged book (Zamorak)",
+                            "id": "UDtF8K"
+                          },
+                          {
+                            "npc": "Wow! It's an Unholy Book of Zamorak! I thought these things had all vanished! Well, it's all yours, I hope you appreciate it."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Guthix",
+                        "steps": [
+                          {
+                            "player": "Nope, it definitely says Guthix."
+                          },
+                          {
+                            "npc": "I think you're right! Hand it here, and let's see what's inside!"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "Damaged book (Guthix)",
+                            "id": "frpSFr"
+                          },
+                          {
+                            "npc": "Wow! It's Guthix's Book of Balance! I thought these things had all vanished! Well, it's all yours, I hope you appreciate it."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I wish it were one of the other gods.",
+                        "steps": [
+                          {
+                            "player": "I wish it were one of the other gods. I'd prefer my reward to be aligned to a different god, not Saradomin, Zamorak or Guthix."
+                          },
+                          {
+                            "npc": "The sea's always washing up interesting stuff around my lighthouse. Perhaps I'll find something more suitable for you in future."
+                          },
+                          {
+                            "npc": "For now, this casket definitely says Saradomin, Zamorak or Guthix. Which do you think it is?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "OyfUr6"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Zamorak",
+                "steps": [
+                  {
+                    "player": "I think it says... Zamorak..."
+                  },
+                  {
+                    "npc": "Are you sure? I mean, are you REALLY sure? Maybe you'd better look again..."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "What does the casket say?",
+                    "options": [
+                      {
+                        "text": "Saradomin",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "DoRA0N"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Zamorak",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "G6qooD"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Guthix",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "KtWUWH"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I wish it were one of the other gods.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "PWiCxP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Guthix",
+                "steps": [
+                  {
+                    "player": "I think it says... Guthix..."
+                  },
+                  {
+                    "npc": "Are you sure? I mean, are you REALLY sure? Maybe you'd better look again..."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "What does the casket say?",
+                    "options": [
+                      {
+                        "text": "Saradomin",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "SmhBo4"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Zamorak",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "s2IRtJ"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Guthix",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "rAc-xM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I wish it were one of the other gods.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "v_-SOP"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Guthix"
+              }
+            ]
+          }
+        ],
+        "id": "hD2VgZ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the rusty casket:",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "I never had any casket from that monster...?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a full inventory:",
+            "action_source": "text",
+            "steps": [
+              {
+                "npc": "Why, of course you did! You dropped it and I picked it up! Now, free up some inventory space so we can see what's inside it."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "eJFBto"
+          },
+          {
+            "type": "condition",
+            "text": "If the player dropped it after obtaining it:",
+            "action_source": "text",
+            "steps": [
+              {
+                "npc": "Why, of course you did! You dropped it and I picked it up! I have it right here!"
+              },
+              {
+                "npc": "Now let's have a look at it... There is some writing on it, but it is very faint... Can you make it out?"
+              },
+              {
+                "type": "choice",
+                "prompt": "What does the casket say?",
+                "options": [
+                  {
+                    "text": "Saradomin",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "gzFdjJ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Zamorak",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "OvRLDh"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Guthix",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "QZ1fEJ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I wish it were one of the other gods.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "yz6jAw"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "cx3iZU"
+          }
+        ],
+        "id": "AqvzxU"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the rusty casket stored somewhere:",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "I have it stored safely."
+          },
+          {
+            "npc": "Well, bring it here and let's take a look at it!"
+          }
+        ],
+        "id": "u-4NPO"
+      }
+    ],
+    "initial-dialogue-after-horror-from-the-deep-using-the-rewards-option": [
+      {
+        "npc": "Ah yes, I wanted to talk to you about the casket you found on that monster's corpse..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "_hBY4f"
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Hello again, adventurer. What brings you this way?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I see your wares?",
+            "steps": [
+              {
+                "player": "Can I see your wares?"
+              },
+              {
+                "npc": "Sure thing! I think you'll find my prices are remarkable!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "The Lighthouse Store",
+                "id": "q6pxd5"
+              }
+            ]
+          },
+          {
+            "text": "Have you found any more prayerbooks?",
+            "steps": [
+              {
+                "player": "Have you found any more prayerbooks?"
+              },
+              {
+                "npc": "It's amazing how things like that keep washing up on the shore in caskets. Take a look at what I've got..."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Jossik's salvaged prayerbooks",
+                "id": "iz5K28"
+              }
+            ]
+          },
+          {
+            "text": "Nothing, really. Good bye.",
+            "steps": [
+              {
+                "player": "Nothing, really. Good bye."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

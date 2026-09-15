@@ -1,0 +1,219 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-cook-s-assistant": [
+      {
+        "npc": "How is the adventuring going, my friend?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any other quests for me?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is on a free-to-play world:",
+                "steps": [
+                  {
+                    "npc": "I don't have anything for you to do right now, sorry."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NMPUpC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a members' world:",
+                "steps": [
+                  {
+                    "type": "reference",
+                    "target": "Transcript:Recipe for Disaster/Another Cook's Quest",
+                    "section": "",
+                    "text": "Continues in Transcript:Recipe for Disaster/Another Cook's Quest",
+                    "id": "HqcWnQ",
+                    "resolved": false,
+                    "page_available": true
+                  }
+                ],
+                "id": "r1C5xz"
+              }
+            ]
+          },
+          {
+            "text": "I am getting strong and mighty.",
+            "steps": [
+              {
+                "player": "I am getting strong and mighty. Grrr"
+              },
+              {
+                "npc": "Glad to hear it."
+              }
+            ]
+          },
+          {
+            "text": "I keep on dying.",
+            "steps": [
+              {
+                "player": "I keep on dying."
+              },
+              {
+                "npc": "Ah well, at least you keep coming back to life!"
+              }
+            ]
+          },
+          {
+            "text": "Can I use your range?",
+            "steps": [
+              {
+                "player": "Can I use your range?"
+              },
+              {
+                "npc": "Go ahead - it's a very good range. It's easier to use than most other ranges."
+              },
+              {
+                "npc": "Its called the Cook-o-matic 100. It uses a combination of state of the art temperature regulation and magic."
+              },
+              {
+                "player": "Will it mean my food will burn less often?"
+              },
+              {
+                "npc": "Well, that's what the salesman told us anyway..."
+              },
+              {
+                "player": "Thanks?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-recipe-for-disaster": [
+      {
+        "npc": "You were seriously great when you defeated the Culinaromancer! I can't believe I nearly caused all of those people to be killed! So how is the adventuring going now?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any other quests for me?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "hBkXPo"
+              }
+            ]
+          },
+          {
+            "text": "I am getting strong and mighty.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "W-6j82"
+              }
+            ]
+          },
+          {
+            "text": "I keep on dying.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "H2OQmp"
+              }
+            ]
+          },
+          {
+            "text": "Can I use your range?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "xeUzt_"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-interacting-with-the-cooking-range-in-lumbridge-castle-before-finishing-cook-s-assistant": [
+      {
+        "npc": "Hey, who said you could use that?"
+      }
+    ],
+    "treasure-trails-beginner": [
+      {
+        "npc": "Well done."
+      },
+      {
+        "type": "unavailable",
+        "id": "hUk70L"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [new clue scroll/casket]",
+        "id": "BNOEnl"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I've always wondered how many cannons the castle has. Could you find out for me?"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "gzFRhj"
+      },
+      {
+        "type": "message",
+        "text": "The cook has given you a challenge scroll!",
+        "id": "sE97wq"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please tell me how many cannons there are."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "Hmm, I don't think that's right."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "-bkaHa"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Cheers!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "[another clue scroll/a casket]",
+            "id": "IRlWFe"
+          },
+          {
+            "type": "message",
+            "text": "The cook has given you [another clue scroll/a casket]!",
+            "id": "oXyHlG"
+          }
+        ],
+        "id": "wskkyv"
+      }
+    ]
+  }
+}

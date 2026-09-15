@@ -1,0 +1,568 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Kuani! Someone's come to visit the birds!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed 10 rumours and has not claimed the free whistle blueprint:",
+        "steps": [
+          {
+            "npc": "I've spotted you working hard to help the guild. How would you like a basic quetzal whistle blueprint to help you get back here in the future?"
+          },
+          {
+            "type": "choice",
+            "prompt": "Take the free whistle blueprint?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "I'd love one!"
+                  },
+                  {
+                    "npc": "You'll need to use the blueprint to craft a whistle from a willow log. Make sure it works for you. There's no standard size whistle nowadays."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Basic quetzal whistle blueprint",
+                    "id": "nhTsPI"
+                  },
+                  {
+                    "npc": "When you want to charge your whistle, be sure to bring some of those lovely meats you're gathering up here for the birds. If they eat well you'll get a lot more use out of them!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "PJnZpg"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "Not right now, thanks."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "XtclD-"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "GKpuC9"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I'm Pitri, though most of the others call me birdbrain."
+              },
+              {
+                "player": "On account of the...?"
+              },
+              {
+                "npc": "The birds, yes. I just feel so at home amongst them... Though I am more partial to cooked food than the raw stuff they get."
+              },
+              {
+                "npc": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "MuL9yg"
+              }
+            ]
+          },
+          {
+            "text": "Can you teach me about the birds?",
+            "steps": [
+              {
+                "player": "Can you teach me about the birds?"
+              },
+              {
+                "npc": "Absolutely! Like many in Varlamore, we here at the guild use quetzals to help us move people and reports throughout the entire network of transport nodes."
+              },
+              {
+                "npc": "We also have these handy quetzal whistles that allow us to call for one to take us back to the guild. They're pretty magical and work at very long ranges."
+              },
+              {
+                "player": "Could I get my hands on one of those whistles?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed 10 rumours:",
+                "steps": [
+                  {
+                    "npc": "Once you've become more settled in with us at the guild, absolutely."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "BL0Rxe"
+                  }
+                ],
+                "id": "loMqQk"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed 10 rumours:",
+                "steps": [
+                  {
+                    "npc": "Sure! I have a blueprint set aside for you to grab when you're ready."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "03svOF"
+                  }
+                ],
+                "id": "TH_fZ1"
+              },
+              {
+                "player": "So how do you motivate the birds?"
+              },
+              {
+                "npc": "Food, mostly. They're big fans of the raw meats that the hunters bring back with them. I'm worried they may be waiting to eat us, quite honestly!"
+              },
+              {
+                "player": "Well, they're certainly big enough to try."
+              },
+              {
+                "npc": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "P4sERg"
+              }
+            ]
+          },
+          {
+            "text": "Can you recharge my whistle?",
+            "condition": "If the player has a whistle in their inventory:",
+            "steps": [
+              {
+                "player": "Can you recharge my whistle?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no raw hunter meats or Quetzal feed:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bT6Zxb"
+                  }
+                ],
+                "id": "AsW-HZ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has one raw hunter meat or Quetzal feed:",
+                "steps": [
+                  {
+                    "npc": "Sure thing!"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the whistle is fully charged after exchanging raw hunter meat or Quetzal feed:",
+                    "steps": [
+                      {
+                        "npc": "Looks like the birds are all full for now. Make them work a bit before feeding them again!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "MfT1XK"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the whistle is partially charged after exchanging raw hunter meat or Quetzal feed:",
+                    "steps": [
+                      {
+                        "npc": "There you go. Some whistle charges for you!"
+                      }
+                    ],
+                    "id": "mMoFPl"
+                  }
+                ],
+                "id": "wHxIL6"
+              }
+            ],
+            "id": "rYcPle"
+          },
+          {
+            "text": "How do I get my hands on more whistles?",
+            "condition": "If the player has claimed the free whistle blueprint:",
+            "steps": [
+              {
+                "player": "How do I get my hands on more whistles?"
+              },
+              {
+                "npc": "I can produce another blueprint for you, for a small cost."
+              },
+              {
+                "player": "What sort of small cost?"
+              },
+              {
+                "npc": "500 coins. These blueprints are my art, and before you say anything, 'exposure' is the last thing I want out here in the savannah."
+              },
+              {
+                "type": "choice",
+                "prompt": "Buy another whistle blueprint?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "npc": "Here you go, one whistle blueprint."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a Basic quetzal whistle blueprint",
+                        "id": "tX2GIW"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "WzYUt6"
+          },
+          {
+            "text": "I've lost my perfected whistle. Do you have any spares?",
+            "condition": "If the player lost their perfected whistle:",
+            "steps": [
+              {
+                "player": "I've lost my perfected whistle. Do you have any spares?"
+              },
+              {
+                "npc": "Someone found one just the other day and gave it to me in case someone came to claim it. Could it be yours?"
+              },
+              {
+                "player": "It's possible? Can I see it?"
+              },
+              {
+                "npc": "Of course!"
+              },
+              {
+                "player": "That notch in the tail, that scratch on the underside... Yes, it's mine! I can't believe it!"
+              },
+              {
+                "npc": "Here you go! I'm afraid it has no charges left, though."
+              },
+              {
+                "player": "Thank you!"
+              }
+            ],
+            "id": "w5SV31"
+          },
+          {
+            "text": "Can I get a whistle with unlimited charges?",
+            "condition": "First time:",
+            "steps": [
+              {
+                "player": "Can I get a whistle with unlimited charges?"
+              },
+              {
+                "npc": "I see you already have a Perfected quetzal whistle, I can upgrade it for you at a cost."
+              },
+              {
+                "player": "How much is this going to set me back."
+              },
+              {
+                "npc": "I don't want your coins. Instead, I would like 10,000 charges worth of food for the birds here. You can give that to me piece by piece as well if need be."
+              },
+              {
+                "player": "That sounds good to me, I have some food for the birds right here."
+              },
+              {
+                "type": "choice",
+                "prompt": "Give Pitri food for the birds?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player turns in less than 10,000 charges worth of meat:",
+                        "steps": [
+                          {
+                            "npc": "Thanks for the feed, you still need to give me another [number] charges worth of food for the birds."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "xNxGjf"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has turned in 10,000 charges worth of meat:",
+                        "steps": [
+                          {
+                            "npc": "Thanks for all the food, I'll be glad to give you a whistle with infinite charges. The first one is free of course, any more will cost you though."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a Perfected quetzal whistle(i)",
+                            "id": "tjWH_-"
+                          }
+                        ],
+                        "id": "CiMKaN"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "rZEaEt"
+          },
+          {
+            "text": "I have some more food for the birds.",
+            "condition": "Subsequent times:",
+            "steps": [
+              {
+                "player": "I have some more food for the birds."
+              },
+              {
+                "type": "choice",
+                "prompt": "Give Pitri food for the birds?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "npc": "Thanks for all the food, I'll be glad to give you a whistle with infinite charges. The first one is free of course, any more will cost you though."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "X6DCIy"
+          },
+          {
+            "text": "Can I get a Perfected quetzal whistle with unlimited charges?",
+            "condition": "If the player has received the perfected quetzal whistle(i):",
+            "steps": [
+              {
+                "player": "Can I get another Perfected quetzal whistle with unlimited charges?"
+              },
+              {
+                "npc": "I can produce another whistle for you, for a moderate cost."
+              },
+              {
+                "player": "What sort of moderate cost?"
+              },
+              {
+                "npc": "50,000 coins. These whistles are my art and not that easy to make. Plus a small fee for the charges."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 50,000 coins:",
+                "steps": [
+                  {
+                    "player": "Ah, I can't afford one right now. I'll pop back later."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ERwPtN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 50,000 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Buy another Perfected quetzal whistle(i)?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "Here you go, one Perfected quetzal whistle with unlimited charges."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "pbHzId"
+              }
+            ],
+            "id": "eAyvnN"
+          },
+          {
+            "text": "I'd better be off.",
+            "steps": [
+              {
+                "player": "I'd better be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-choosing-the-recharge-whistle-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have a whistle in their inventory:",
+        "steps": [
+          {
+            "npc": "Odd. You don't seem to have a whistle I can recharge."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "e-grr7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a whistle with no raw hunter meats/Quetzal feed in their inventory or if the whistle is fully charged:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "bT6Zxb"
+          }
+        ],
+        "id": "1pH1xb"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one raw hunter meat or Quetzal feed to recharge their whistle:",
+        "steps": [
+          {
+            "npc": "There you go. Some whistle charges for you!"
+          }
+        ],
+        "id": "5vTih0"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "yUP_Vq"
+      },
+      {
+        "npc": "Please solve this for me. I have other things to be thinking about."
+      },
+      {
+        "type": "message",
+        "text": "Soar Leader Pitri has given you a puzzle box!",
+        "id": "1AtQpw"
+      }
+    ],
+    "treasure-trails-hard-when-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "Sorry but you haven't solved the puzzle yet."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "dFHfAV"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Thanks [player name]!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "MlTdOw"
+              },
+              {
+                "type": "message",
+                "text": "Soar Leader Pitri has given you another clue scroll!",
+                "id": "fQxTOZ"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "0Y03fA"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a Reward casket (hard)",
+                "id": "DHtx2F"
+              },
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "OAz2FF"
+              }
+            ],
+            "id": "PVIbXE"
+          }
+        ],
+        "id": "zt12Iv"
+      }
+    ]
+  },
+  "branches": {
+    "bT6Zxb": [
+      {
+        "npc": "Doesn't look like you've got anything I can feed to the birds here. You'll want to get some of the raw meats that the hunters bring back with them."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

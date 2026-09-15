@@ -1,0 +1,343 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-attempting-to-open-the-cell-door-before-starting-waterfall-quest": [
+      {
+        "npc": "What are you doing down here? Leave before you get yourself into trouble."
+      }
+    ],
+    "standard-dialogue-attempting-to-open-the-cell-door-without-the-key-after-waterfall-quest": [
+      {
+        "type": "message",
+        "text": "Golrie has locked himself in.",
+        "id": "t0pNEH"
+      }
+    ],
+    "standard-dialogue-after-waterfall-quest": [
+      {
+        "player": "Hello, Golrie."
+      },
+      {
+        "npc": "Hello again."
+      },
+      {
+        "player": "Do you mind if I have another look through this stuff?"
+      },
+      {
+        "npc": "No, of course not."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You look amongst the junk on the floor and find Glarial's pebble but you don't have enough room to take it.",
+            "id": "DNgHwE"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "AR6FSZ"
+      },
+      {
+        "type": "message",
+        "text": "You look amongst the junk on the floor and find Glarial's pebble.",
+        "id": "DNQCLo"
+      }
+    ],
+    "standard-dialogue-talking-to-golrie-with-the-pebble": [
+      {
+        "player": "Hello, Golrie."
+      },
+      {
+        "npc": "Hello again."
+      },
+      {
+        "player": "Any luck getting out?"
+      },
+      {
+        "npc": "Not yet, but don't worry. I'm sure I'll work something out. I just need some time to think."
+      },
+      {
+        "player": "Well good luck."
+      }
+    ],
+    "standard-dialogue-after-the-path-of-glouphrie": [
+      {
+        "player": "Hello, Golrie. How's it going?"
+      },
+      {
+        "npc": "Better now I'm on the right side of these bars."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Found anything interesting recently?",
+            "condition": "If the player does not have Cadarn lineage in their inventory:",
+            "steps": [
+              {
+                "player": "Found anything interesting recently?"
+              },
+              {
+                "npc": "It just so happens I have. Take a look at this book."
+              },
+              {
+                "type": "message",
+                "text": "Golrie gives you a book.",
+                "id": "Vxh-OJ"
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "1jNhWZ"
+              }
+            ],
+            "id": "8W3h5n"
+          },
+          {
+            "text": "I managed to find that device.",
+            "steps": [
+              {
+                "player": "I managed to find that device."
+              },
+              {
+                "npc": "Wonderful! Though you know, I don't think you ever actually mentioned what the device does."
+              },
+              {
+                "player": "It counteracts illusion magic in the surrounding area. This one should cover the whole of the Tree Gnome Village. It might be useful for someone to remember that in case it's needed again."
+              },
+              {
+                "npc": "Oh, well I'll be sure to keep that in mind."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I found Bolrie's diary. Do you know anything about it?",
+                    "steps": [
+                      {
+                        "player": "I found Bolrie's diary. Do you know anything about it?"
+                      },
+                      {
+                        "npc": "Of course! Bolrie is my grandfather... assuming he's still alive, at least."
+                      },
+                      {
+                        "player": "Bolrie... Golrie... I should have guessed. You seem to like giving your children similar names, just to be confusing."
+                      },
+                      {
+                        "npc": "Certainly, in our family that's true. King Bolren is also Bolrie's younger brother, in case you didn't know."
+                      },
+                      {
+                        "player": "So that means you're King Bolren's grand-nephew, right?"
+                      },
+                      {
+                        "npc": "That's right."
+                      },
+                      {
+                        "player": "Does that mean that you're in line for the throne?"
+                      },
+                      {
+                        "npc": "Gnomes don't have a hereditary monarchy. We have a democratic monarchy. We vote for our kings."
+                      },
+                      {
+                        "player": "Oh, that's unusual. So you've never thought about being the King?"
+                      },
+                      {
+                        "npc": "That might be fun. I wouldn't want to be like gramps though. He liked wars a bit too much. I do sometimes discuss the Khazard War with the hobgobbos, but they don't have a particularly sharp political sense."
+                      },
+                      {
+                        "npc": "Personally, I don't think we should fight his troops head- on. We're smarter than that. We should come up with some ingenious method of defeating Khazard, like they did at the Battle of Atarisundri!"
+                      },
+                      {
+                        "player": "You're very well informed for a gnome in a cave. Most gnomes I've talked to have forgotten most of their own history."
+                      },
+                      {
+                        "npc": "Gnomes don't tend to dwell on the past, but I suppose I'm not a typical gnome. I get lots of time to think and read in here."
+                      },
+                      {
+                        "player": "So have you heard from Bolrie recently?"
+                      },
+                      {
+                        "npc": "No, the parcels stopped arriving a few years ago. I guess he's either found what he was looking for, or has died in the attempt."
+                      },
+                      {
+                        "player": "What was he looking for?"
+                      },
+                      {
+                        "npc": "I'm not sure. He was definitely obsessed with finding out as much as he could about elven magic. He also seemed to have a bit of a grudge against Glouphrie."
+                      },
+                      {
+                        "player": "Maybe he's looking for Glouphrie."
+                      },
+                      {
+                        "npc": "Who knows, eh? Who knows?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "VdnJns"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where did that crystal bowl come from?",
+                    "steps": [
+                      {
+                        "player": "Where did that crystal bowl come from?"
+                      },
+                      {
+                        "npc": "A huge battle tortoise arrived a while back carrying a crate with it in. Sent by gramps, of course. It looks pretty, doesn't it? Would probably look great with some plants in it."
+                      },
+                      {
+                        "player": "I don't think it's meant to be used as a plant pot."
+                      },
+                      {
+                        "npc": "Well, what's it for then?"
+                      },
+                      {
+                        "player": "It's a singing bowl. You can use it to shape elven crystal."
+                      },
+                      {
+                        "npc": "Ohh... How exciting!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "x4ionJ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd better get going.",
+                    "steps": [
+                      {
+                        "player": "I'd better get going."
+                      },
+                      {
+                        "npc": "See you later."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have a question about your storeroom.",
+            "condition": "After choosing \"I managed to find that device.\":",
+            "steps": [
+              {
+                "player": "I have a question about your storeroom."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I found Bolrie's diary. Do you know anything about it?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "kbyrKu"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where did that crystal bowl come from?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "rn5G2j"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd better get going.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "QJHX6y"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "UeoHWi"
+          },
+          {
+            "text": "I lost that pebble.",
+            "condition": "If the player does not have Glarial's pebble in their inventory:",
+            "steps": [
+              {
+                "player": "I lost that pebble."
+              },
+              {
+                "npc": "Not to worry. It turned up here again."
+              },
+              {
+                "type": "message",
+                "text": "Golrie gives you the pebble.",
+                "id": "8I7WUW"
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "kljpPr"
+              }
+            ],
+            "id": "tMACB5"
+          },
+          {
+            "text": "Can I use your key?",
+            "condition": "If the player does not have Key (Tree Gnome Village Dungeon) in their inventory:",
+            "steps": [
+              {
+                "player": "Can I use your key?"
+              },
+              {
+                "npc": "If you wanna go in there with them hob-gobs, that's your business."
+              },
+              {
+                "type": "message",
+                "text": "Golrie gives you a key.",
+                "id": "4oakcM"
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "BjA2LM"
+              }
+            ],
+            "id": "JfBoPM"
+          },
+          {
+            "text": "I'll leave you to it.",
+            "steps": [
+              {
+                "player": "I'll leave you to it."
+              },
+              {
+                "npc": "Yes, lots to do. Them hob-gobs left my stuff out here in a right mess. Until next time."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

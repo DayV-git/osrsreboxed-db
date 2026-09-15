@@ -1,0 +1,873 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hey, [player name]. Got any abyssal pearls you want to trade?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "player": "Let's see what you have."
+              },
+              {
+                "npc": "I have my general store, but I also have a small collection of lanterns available, if that interests you?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I see your general items?",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Temple Supplies",
+                        "id": "RSNpUm"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Lanterns, you say?",
+                    "steps": [
+                      {
+                        "player": "Lanterns, you say?"
+                      },
+                      {
+                        "npc": "Yes, powerful artefacts of The Abyss. We have accumulated a small collection of them from all of the fighting."
+                      },
+                      {
+                        "player": "Do the wizards not use them in the fight against the abyss?"
+                      },
+                      {
+                        "npc": "Absolutely not. We know how powerful they are, yet their magic is too unknown to us to risk using."
+                      },
+                      {
+                        "player": "Could I have one to aid in the fight?"
+                      },
+                      {
+                        "npc": "I'm afraid I can't just give you one. We're under strict instructions to only provide lanterns to people who prove themselves as committed to the cause."
+                      },
+                      {
+                        "player": "How committed does one have to be?"
+                      },
+                      {
+                        "npc": "If you've fought the abyss enough to amass 1,500 abyssal pearls, that would be enough."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough abyssal pearls in their inventory:",
+                        "steps": [
+                          {
+                            "player": "Ah, I don't have enough on me right now."
+                          },
+                          {
+                            "npc": "That's alright. Feel free to come back when you have more pearls on you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "TxWvgk"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 1,500 abyssal pearls in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "As long as you are aware of how powerful they are, and that I can trust you won't lost it."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "I understand how powerful these are, I'd like to buy one.",
+                                "steps": [
+                                  {
+                                    "type": "missing",
+                                    "id": "mxgm7s"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "I'm not sure I'm ready to buy one yet.",
+                                "steps": []
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "Ja_oUN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What's that rift guardian doing over there?",
+            "steps": [
+              {
+                "player": "What's that rift guardian doing over there?"
+              },
+              {
+                "npc": "They're great, aren't they? I don't know their name, if they even have one, so I just call them Rifty."
+              },
+              {
+                "npc": "That rift they have is a folded-space storage rift, just like the ones Traiborn uses! Small on the outside, but big on the inside!"
+              },
+              {
+                "player": "But what's the rift for?"
+              },
+              {
+                "npc": "The guardians use it to store things. If you help hold back the Abyss, they'll let you take things from the rift in return."
+              },
+              {
+                "npc": "Anyway, did you want to trade?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "OJZloC"
+              }
+            ]
+          },
+          {
+            "text": "Why are you selling things here?",
+            "steps": [
+              {
+                "player": "Why are you selling things here?"
+              },
+              {
+                "npc": "Sedridor told us to make sure there was plenty of incentive for people to help us. He also wants us to gather abyssal pearls for research purposes. I thought this would be a good way of doing both!"
+              },
+              {
+                "player": "So you sell things in exchange for abyssal pearls?"
+              },
+              {
+                "npc": "Exactly! I've got some interesting things from the Wizards' Tower, along with some cool stuff the Guardians of the Rift gave us. Want to take a look?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Y1wMUV"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me more about this place.",
+            "steps": [
+              {
+                "player": "Could you tell me more about this place."
+              },
+              {
+                "npc": "Well, I only really know what the Great Guardian told us. This is the Temple of the Eye, or at least, what's left of it. It was built long ago to house the Eye, a powerful Saradominist artefact."
+              },
+              {
+                "npc": "Apparently, servants of some 'Fallen Empire' desired this artefact. However, in their attempt to steal it, they accidently opened a rift into a deadly area of the Abyss called the Scar."
+              },
+              {
+                "npc": "Were it not for the Justiciar of the Lion, the rift would have endangered all of Gielinor. She used the Eye to close it and then created the Guardians of the Rift to protect this temple."
+              },
+              {
+                "npc": "Of course, the rift is open again now, but with our help, the Guardians of the Rift are keeping it under control."
+              },
+              {
+                "npc": "Anyway, did you want to trade?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "XbwB2J"
+              }
+            ]
+          },
+          {
+            "text": "I found this dye in the rewards rift...",
+            "condition": "If the player is holding a dye:",
+            "steps": [
+              {
+                "player": "I found this dye in the rewards rift..."
+              },
+              {
+                "npc": "And you want me to change it to a different one?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, but how did you know?",
+                    "steps": [
+                      {
+                        "player": "Well, yes, but how did you know?"
+                      },
+                      {
+                        "npc": "You'd be surprised at how often this happens. Lots of adventurers have been pulling bottles of dye out of that rift, only to wish they'd got a different one. I've ended up with plenty of spares."
+                      },
+                      {
+                        "npc": "So on that note, would you like me to swap your dye for you?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I'd like to swap my abyssal red dye for some abyssal green dye.",
+                            "condition": "If the player has abyssal red dye:",
+                            "steps": [
+                              {
+                                "player": "I'd like to swap my abyssal red dye for some abyssal green dye."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Felix exchanges your abyssal red dye for some abyssal green dye.",
+                                "id": "_GlvTG"
+                              },
+                              {
+                                "player": "Thanks, Felix."
+                              },
+                              {
+                                "npc": "Any time, [player name]."
+                              }
+                            ],
+                            "id": "rK8SEQ"
+                          },
+                          {
+                            "text": "I'd like to swap my abyssal red dye for some abyssal blue dye.",
+                            "condition": "If the player has abyssal red dye:",
+                            "steps": [
+                              {
+                                "player": "I'd like to swap my abyssal red dye for some abyssal blue dye."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Felix exchanges your abyssal red dye for some abyssal blue dye.",
+                                "id": "9Aa63w"
+                              },
+                              {
+                                "player": "Thanks, Felix."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "DHXyyO"
+                              }
+                            ],
+                            "id": "PkuRab"
+                          },
+                          {
+                            "text": "I'd like to swap my abyssal green dye for some abyssal red dye.",
+                            "condition": "If the player has abyssal green dye:",
+                            "steps": [
+                              {
+                                "player": "I'd like to swap my abyssal green dye for some abyssal red dye."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Felix exchanges your abyssal green dye for some abyssal red dye.",
+                                "id": "6UtE9d"
+                              },
+                              {
+                                "player": "Thanks, Felix."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "17Mldv"
+                              }
+                            ],
+                            "id": "ZqQmd2"
+                          },
+                          {
+                            "text": "I'd like to swap my abyssal green dye for some abyssal blue dye.",
+                            "condition": "If the player has abyssal green dye:",
+                            "steps": [
+                              {
+                                "player": "I'd like to swap my abyssal green dye for some abyssal blue dye."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Felix exchanges your abyssal green dye for some abyssal blue dye.",
+                                "id": "f1fFnZ"
+                              },
+                              {
+                                "player": "Thanks, Felix."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "2pmFi9"
+                              }
+                            ],
+                            "id": "EcM6dE"
+                          },
+                          {
+                            "text": "I'd like to swap my abyssal blue dye for some abyssal red dye.",
+                            "condition": "If the player has abyssal blue dye:",
+                            "steps": [
+                              {
+                                "player": "I'd like to swap my abyssal blue dye for some abyssal red dye."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Felix exchanges your abyssal blue dye for some abyssal red dye.",
+                                "id": "K3QxOx"
+                              },
+                              {
+                                "player": "Thanks, Felix."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "hSMY-f"
+                              }
+                            ],
+                            "id": "Vq5nBk"
+                          },
+                          {
+                            "text": "I'd like to swap my abyssal blue dye for some abyssal green dye.",
+                            "condition": "If the player has abyssal blue dye:",
+                            "steps": [
+                              {
+                                "player": "I'd like to swap my abyssal blue dye for some abyssal green dye."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Felix exchanges your abyssal blue dye for some abyssal green dye.",
+                                "id": "YAtU05"
+                              },
+                              {
+                                "player": "Thanks, Felix."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "VjGI_4"
+                              }
+                            ],
+                            "id": "jgaqoD"
+                          },
+                          {
+                            "text": "Actually, I've changed my mind.",
+                            "steps": [
+                              {
+                                "player": "Actually, I've changed my mind."
+                              },
+                              {
+                                "npc": "Not a problem. Feel free to come back if you change your mind."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, I'd like to sell it to you.",
+                    "steps": [
+                      {
+                        "player": "No, I'd like to sell it to you."
+                      },
+                      {
+                        "npc": "Oh? Usually I trade them for other dyes, I suppose I could buy one from you instead for my own research."
+                      },
+                      {
+                        "npc": "Which dye did you want to sell?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "wL7D7y"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "El-TN7"
+          },
+          {
+            "text": "I lost an item from the rewards rift.",
+            "condition": "If the player lost an item:",
+            "steps": [
+              {
+                "player": "I lost an item from the rewards rift."
+              },
+              {
+                "npc": "What was the item?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "A locket.",
+                    "condition": "If the player lost the Tarnished locket:",
+                    "steps": [
+                      {
+                        "player": "A locket."
+                      },
+                      {
+                        "npc": "It's funny you should mention that. I actually found an old locket while rummaging through the rift myself."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has no inventory space:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "57UWJM"
+                          }
+                        ],
+                        "id": "sqmccR"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Felix gives you the tarnished locket.",
+                        "id": "aojaYk"
+                      },
+                      {
+                        "player": "Thanks, Felix!"
+                      }
+                    ],
+                    "id": "HxAwRK"
+                  },
+                  {
+                    "text": "A bag.",
+                    "condition": "If the player lost the Lost bag:",
+                    "steps": [
+                      {
+                        "player": "A bag."
+                      },
+                      {
+                        "npc": "It's funny you should mention that. I actually found a bag with strange markings on it while rummaging through the rift myself."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has no inventory space:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "57UWJM"
+                          }
+                        ],
+                        "id": "ANdVdw"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Felix gives you the lost bag.",
+                        "id": "UCw88t"
+                      },
+                      {
+                        "player": "Thanks, Felix!"
+                      }
+                    ],
+                    "id": "GoNU2f"
+                  },
+                  {
+                    "text": "Actually, it doesn't matter.",
+                    "steps": [
+                      {
+                        "player": "Actually, it doesn't matter."
+                      },
+                      {
+                        "npc": "Fair enough."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "8BZfjp"
+          },
+          {
+            "text": "I'd like to sell you something from the rewards rift.",
+            "condition": "If the player is holding a dye or lantern:",
+            "steps": [
+              {
+                "player": "I'd like to sell you something from the rewards rift."
+              },
+              {
+                "npc": "Oh? Usually I sell items to you adventurers. What did you have in mind?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Abyssal green dye",
+                    "condition": "If the player has abyssal green dye:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You present the abyssal green dye to Felix.",
+                        "id": "rKbpn3"
+                      },
+                      {
+                        "npc": "An abyssal green dye? I can offer you 50 abyssal pearls for that."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Sell your abyssal green dye for 50 abyssal pearls?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You sell your abyssal green dye for 50 abyssal pearls.",
+                                "id": "1No4Er"
+                              },
+                              {
+                                "npc": "Come back if you have any more items from the rift to sell."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "Ak9boj"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "qkLWJl"
+                  },
+                  {
+                    "text": "Abyssal blue dye",
+                    "condition": "If the player has abyssal blue dye:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You present the abyssal blue dye to Felix.",
+                        "id": "3qqAqy"
+                      },
+                      {
+                        "npc": "An abyssal blue dye? I can offer you 50 abyssal pearls for that."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Sell your abyssal blue dye for 50 abyssal pearls?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You sell your abyssal blue dye for 50 abyssal pearls.",
+                                "id": "hu6hWA"
+                              },
+                              {
+                                "npc": "Come back if you have any more items from the rift to sell."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "GHll8J"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "32RVNN"
+                  },
+                  {
+                    "text": "Abyssal red dye",
+                    "condition": "If the player has abyssal red dye:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You present the abyssal red dye to Felix.",
+                        "id": "5rkDWa"
+                      },
+                      {
+                        "npc": "An abyssal red dye? I can offer you 50 abyssal pearls for that."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Sell your abyssal red dye for 50 abyssal pearls?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You sell your abyssal red dye for 50 abyssal pearls.",
+                                "id": "XJI400"
+                              },
+                              {
+                                "npc": "Come back if you have any more items from the rift to sell."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "DhTquC"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "qggrYW"
+                  },
+                  {
+                    "text": "Abyssal lantern",
+                    "condition": "If the player has an abyssal lantern:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You present the Abyssal lantern to Felix.",
+                        "id": "ZR-kzU"
+                      },
+                      {
+                        "npc": "An abyssal lantern? I can offer you 100 abyssal pearls for that."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Sell your abyssal lantern for 100 abyssal pearls?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You sell your abyssal lantern for 100 abyssal pearls.",
+                                "id": "POUtFr"
+                              },
+                              {
+                                "npc": "Come back if you have any more items from the rift to sell."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "TP-zkd"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "vIvYTP"
+                  },
+                  {
+                    "text": "Never mind.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "Ak9boj"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "egBoE0"
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              },
+              {
+                "npc": "Alright. See you later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-an-abyssal-dye-on-felix": [
+      {
+        "type": "condition",
+        "text": "For abyssal red dye:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the abyssal red dye to Felix.",
+            "id": "AYqDVu"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "qALGZ7"
+          }
+        ],
+        "id": "gsGL6o"
+      },
+      {
+        "type": "condition",
+        "text": "For abyssal green dye:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the abyssal green dye to Felix.",
+            "id": "jO5bDE"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "fQn3WV"
+          }
+        ],
+        "id": "oUlXAn"
+      },
+      {
+        "type": "condition",
+        "text": "For abyssal blue dye:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You show the abyssal blue dye to Felix.",
+            "id": "6b_GU4"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "JMPPmo"
+          }
+        ],
+        "id": "HXI64L"
+      },
+      {
+        "player": "I found this dye in the rewards rift..."
+      },
+      {
+        "npc": "And you want me to change it to a different one?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, but how did you know?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yZ19hM"
+              }
+            ]
+          },
+          {
+            "text": "No, I'd like to sell it to you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "kfspIl"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-desert-treasure-ii-the-fallen-empire": [
+      {
+        "npc": "Hey, [player name]. I heard about Persten. I can't believe it..."
+      },
+      {
+        "player": "I know, Felix. I'm sorry."
+      },
+      {
+        "npc": "I wish I could have met her... The real her I mean. I bet she'd have known how to properly close this rift."
+      },
+      {
+        "npc": "I guess it's just down to us though. Speaking of which, back to work I guess. Did you have any abyssal pearls you wanted to trade?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "CvxNjr"
+              }
+            ]
+          },
+          {
+            "text": "What's that rift guardian doing over there?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "k5HnQE"
+              }
+            ]
+          },
+          {
+            "text": "Why are you selling things here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "YREmBS"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me more about this place.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "5XbQKr"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "gF0mpO"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "57UWJM": [
+      {
+        "npc": "I'd happily give it to you, but you don't have space for it. Come back when you do."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "Ak9boj": [
+      {
+        "player": "On second thoughts, I'll keep it for myself."
+      },
+      {
+        "npc": "Very well, come back if you change your mind."
+      }
+    ]
+  }
+}

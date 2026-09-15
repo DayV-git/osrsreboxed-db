@@ -1,0 +1,700 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "action",
+        "text": "The Butler bows",
+        "action": "emote",
+        "action_source": "text",
+        "id": "0gXfwH"
+      },
+      {
+        "npc": "Good day, [sir/madam]. Would [sir/madam] care to hire a good butler for 5000 coins?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What can you do?",
+            "steps": [
+              {
+                "player": "What can you do?"
+              },
+              {
+                "npc": "I can fulfill all [sir/madam]'s domestic service needs with efficiency and impeccable manners. I hate to boast, but I can say with confidence that no mortal can make trips to the bank or sawmill faster than I!"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about your previous jobs",
+            "steps": [
+              {
+                "player": "Tell me about your previous jobs."
+              },
+              {
+                "npc": "From a humble beginning as a dish-washer I have worked my way up through the ranks of domestic service in the households of nobles from Varrock and Ardougne. As a life-long servant I have naturally"
+              },
+              {
+                "npc": "suppressed any personality of my own and trained myself never to use the second person when talking to a superior. I have usually worked in the large households of the aristocracy, but now that such a large"
+              },
+              {
+                "npc": "number of private persons are building their own houses I decided to offer them my services."
+              }
+            ]
+          },
+          {
+            "text": "You're hired!",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 40 Construction:",
+                "steps": [
+                  {
+                    "npc": "I must respectfully decline, [sir/madam]. I offer a very exclusive service and will only work for people with over level 40 Construction."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "w-hvOv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a servant already:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You already have a servant.",
+                    "id": "YfgxkE"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "GUMdVw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a second bedroom with a bed:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You need a second bedroom with a bed for your servant to sleep in.",
+                    "id": "DF1l2m"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "g4ICgQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money in their inventory:",
+                "steps": [
+                  {
+                    "player": "You're hired... well, I don't have the money on me, but can I owe you? I'm good for it, honest."
+                  },
+                  {
+                    "npc": "I regret that I cannot agree to begin my duties until I have been paid."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "pzjymx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the above conditions met and the player doesn't have a servant:",
+                "steps": [
+                  {
+                    "npc": "Thank you, [sir/madam]. I can start work immediately."
+                  }
+                ],
+                "id": "TLyXT2"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-if-the-player-has-not-yet-asked-the-butler-to-perform-a-task": [
+      {
+        "type": "condition",
+        "text": "If the player used the bellpull to call the Butler",
+        "steps": [
+          {
+            "npc": "You rang, [sir/madam]?"
+          }
+        ],
+        "id": "0AmsdQ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player left clicked \"Talk\" to the Butler",
+        "steps": [
+          {
+            "npc": "Yes, [sir/madam]?"
+          }
+        ],
+        "id": "3DROQv"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Serve...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tea",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player has a kitchen with the required furniture",
+                        "steps": [
+                          {
+                            "npc": "Very good, [sir/madam]. [Sir/Madam]'s tea will be ready shortly."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The Butler prepares tea",
+                            "id": "IaQS-f"
+                          },
+                          {
+                            "npc": "Your tea, [sir/madam]. Does [sir/madam] take milk?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please",
+                                "steps": [
+                                  {
+                                    "player": "Yes please."
+                                  },
+                                  {
+                                    "type": "unavailable",
+                                    "id": "5bbOI7"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks",
+                                "steps": [
+                                  {
+                                    "player": "No thanks."
+                                  },
+                                  {
+                                    "type": "unavailable",
+                                    "id": "clV15W"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually I don't want any",
+                                "steps": [
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "R6bdS1"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a kitchen with the required furniture",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "rwzyli"
+                          }
+                        ],
+                        "id": "R_q9ru"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dinner",
+                    "steps": [
+                      {
+                        "npc": "Very good, [sir/madam]."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a dining table:",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "5mHR3h"
+                          }
+                        ],
+                        "id": "X_Upsw"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a dining table:",
+                        "steps": [
+                          {
+                            "npc": "I regret that I cannot make a meal unless [sir/madam] has a dining table for me to serve it on."
+                          }
+                        ],
+                        "id": "Wzz_XP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Drinks",
+                    "steps": [
+                      {
+                        "player": "Serve drinks please."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has an ale barrel",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "pi111S"
+                          }
+                        ],
+                        "id": "LEhBOq"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have an ale barrel",
+                        "steps": [
+                          {
+                            "npc": "I cannot serve drinks unless you have a kitchen with an ale barrel, [sir/madam]."
+                          }
+                        ],
+                        "id": "CzvybU"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Go to the bank...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Take something to the bank",
+                    "steps": [
+                      {
+                        "player": "Can you fetch something from the bank for me?"
+                      },
+                      {
+                        "npc": "Certainly, [sir/madam]. If [sir/madam] would simply tell me the items [he/she] requires?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Bring something from the bank",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Wooden planks",
+                            "steps": [
+                              {
+                                "type": "input",
+                                "text": "Enter amount:",
+                                "id": "bmr7L1"
+                              },
+                              {
+                                "type": "action",
+                                "text": "The Butler fetches the requested item(s)",
+                                "id": "idslpx"
+                              },
+                              {
+                                "npc": "Your goods, [sir/madam]."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Oak planks",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "IXbtaI"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Teak planks",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "iotqDY"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Mahogany planks",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "vVkpvx"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "More...",
+                            "steps": [
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Soft clay",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "tgbei8"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Limestone brick",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "qSiuY8"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Steel bar",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "Byb7g4"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Cloth",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "zs2gG3"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "More...",
+                                    "steps": [
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Gold leaf",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "oT9ZAk"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Marble block",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "IURQHP"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Magic housing stone",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "Oc5MjD"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "More...",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous2",
+                                                "id": "-KOcsv"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Go to the sawmill...",
+            "steps": [
+              {
+                "npc": "Certainly, [sir/madam]. If [sir/madam] would care to give me the logs?"
+              }
+            ]
+          },
+          {
+            "text": "Greet guests",
+            "steps": [
+              {
+                "player": "Stay at the entrance and greet guests."
+              },
+              {
+                "npc": "Very good, [sir/madam]."
+              }
+            ]
+          },
+          {
+            "text": "You're fired",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "GzeI6s"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-if-the-player-has-asked-the-butler-to-perform-a-bank-sawmill-task": [
+      {
+        "type": "choice",
+        "prompt": "Repeat last task?",
+        "options": [
+          {
+            "text": "[Task]"
+          },
+          {
+            "text": "Something else...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eelaG5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-if-the-butler-requires-payment-from-player": [
+      {
+        "npc": "If you do not pay me I will have to give you my notice, sir. My fee is 5000 coins."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, here's 5,000 coins.",
+            "steps": [
+              {
+                "player": "Okay here's 5000 coins."
+              },
+              {
+                "npc": "Thank you sir."
+              },
+              {
+                "npc": "Your goods sir."
+              },
+              {
+                "type": "action",
+                "text": "Butler is paid and player can continue on with services/receive requested items.",
+                "id": "qJIaag"
+              }
+            ]
+          },
+          {
+            "text": "I'll pay you later.",
+            "steps": [
+              {
+                "player": "I'll pay you later."
+              },
+              {
+                "type": "action",
+                "text": "Butler is not paid and will not continue on with his services/give requested items until payment is made.",
+                "id": "p2YZvC"
+              }
+            ]
+          },
+          {
+            "text": "You're fired!",
+            "steps": [
+              {
+                "player": "You're fired!"
+              },
+              {
+                "npc": "Very well, sir."
+              },
+              {
+                "type": "action",
+                "text": "Butler is fired. Will leave the house and not return until rehired again.",
+                "id": "hH9yX1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-if-the-player-uses-an-item-on-the-butler": [
+      {
+        "npc": "Shall I take that to the bank, [sir/madam]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "input",
+                "text": "Enter amount:",
+                "id": "ANPUkY"
+              },
+              {
+                "npc": "Very good, [sir/madam]."
+              },
+              {
+                "type": "action",
+                "text": "The Butler takes the requested item(s) to the bank",
+                "id": "YwwD52"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "player": "No"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-if-the-player-uses-logs-on-the-butler": [
+      {
+        "npc": "Shall I take that to the bank or to the sawmill, [sir/madam]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sawmill",
+            "steps": [
+              {
+                "type": "unavailable",
+                "id": "ZXbl0F"
+              },
+              {
+                "npc": "The sawmill's fee would be [x], [sir/madam]."
+              },
+              {
+                "type": "action",
+                "text": "Convert the planks for [x] coins?",
+                "id": "EPNoQD"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "steps": [
+                      {
+                        "npc": "Very good, [sir/madam]."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The Butler takes the requested log(s) to the sawmill",
+                        "id": "BjV1vS"
+                      },
+                      {
+                        "npc": "Your goods, [sir/madam]."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Bank",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "WyCOGK"
+              }
+            ]
+          },
+          {
+            "text": "Never mind",
+            "steps": [
+              {
+                "player": "Never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-when-the-butler-greets-a-guest": [
+      {
+        "npc": "[player name] is entertaining in the [room]. Would [sir/madam] care to follow me?"
+      },
+      {
+        "type": "action",
+        "text": "Butler transports the player to host",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "lRjdPX"
+      }
+    ]
+  }
+}

@@ -1,0 +1,545 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-outside-daimon-s-crater": [
+      {
+        "type": "condition",
+        "text": "If the player is not on a Deadman Mode world:",
+        "steps": [
+          {
+            "npc": "Don't suppose you've come across any strange emblems or artefacts along your journey? Ancient artefacts?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "j79VY4"
+          }
+        ],
+        "id": "xdP6bp"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a Deadman Mode world:",
+        "steps": [
+          {
+            "npc": "Don't suppose you've come across any strange emblems or artefacts along your journey? Ancient artefacts, or archaic emblems - I trade in either sort."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "5tm_wq"
+          }
+        ],
+        "id": "2xdIOv"
+      },
+      {
+        "player": "Nothing to report now."
+      },
+      {
+        "npc": "If you find any, please bring them to me. I am happy to offer rewards for such items."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's trade for rewards.",
+            "steps": [
+              {
+                "player": "Let's trade for rewards."
+              },
+              {
+                "npc": "I don't carry rewards out here, it is far too dangerous."
+              },
+              {
+                "npc": "Meet me in Daimon's Crater if you would like to buy rewards."
+              }
+            ]
+          },
+          {
+            "text": "Can I have a PK skull, please?",
+            "condition": "If the player is not skulled:",
+            "steps": [
+              {
+                "player": "Can I have a PK skull, please?"
+              },
+              {
+                "type": "choice",
+                "prompt": "A PK skull means you drop ALL your items on death.",
+                "options": [
+                  {
+                    "text": "Give me a PK skull.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You are now skulled.",
+                        "id": "6Aypcs"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "tEZYeT"
+          },
+          {
+            "text": "Can you make my PK skull last longer?",
+            "condition": "If the player is skulled:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Confirmation screen opens.)",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Confirmation",
+                "id": "PFWmDA"
+              }
+            ],
+            "id": "xyWqno"
+          },
+          {
+            "text": "I'll leave you alone.",
+            "steps": [
+              {
+                "player": "I'll leave you alone."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-right-click-rewards": [
+      {
+        "npc": "I don't carry rewards out here, it is far too dangerous."
+      },
+      {
+        "npc": "Meet me in Daimon's Crater if you would like to buy rewards."
+      }
+    ],
+    "standard-dialogue-within-daimon-s-crater": [
+      {
+        "npc": "Hello, wanderer. How may I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is Daimon's Crater. Once, it was home to a group of demons who set up a fortress inside this dormant volcano to mine rare minerals. However, their activity reactivated the volcano, resulting in their demise."
+              },
+              {
+                "npc": "Years later, humans settled in the ruins. Convinced that they were the descendants of the demons, they began to hunt each other for fun."
+              },
+              {
+                "npc": "Today, the crater is home to Bounty Hunter, a magnificent battle arena where you can engage in combat and test your mettle against skilled opponents."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "VUuBnj"
+              }
+            ]
+          },
+          {
+            "text": "How do I play Bounty Hunter?",
+            "condition": "After selecting other dialogue",
+            "steps": [
+              {
+                "player": "How do I play Bounty Hunter?"
+              },
+              {
+                "npc": "Before entering the arena, ensure that you have enough coins in your Coffer to participate. Upon entering, you will be assigned a Target to fight."
+              },
+              {
+                "npc": "Locate your Targets and engage them in combat, defeating them to claim your reward."
+              },
+              {
+                "player": "That sounds easy enough."
+              },
+              {
+                "npc": "If you require further information about the Bounty Hunter, feel free to ask the Corrupted Warrior. They will be able to answer any questions you may have."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "r6fThI"
+              }
+            ],
+            "id": "0WLIu4"
+          },
+          {
+            "text": "What level Targets might I be assigned?",
+            "steps": [
+              {
+                "player": "What level Targets might I be assigned?"
+              },
+              {
+                "npc": "You may be assigned Targets up to [value] levels stronger than you."
+              },
+              {
+                "type": "choice",
+                "prompt": "Current maximum: [value] levels higher",
+                "options": [
+                  {
+                    "text": "Set maximum to 5 levels higher",
+                    "steps": [
+                      {
+                        "npc": "Very well, you may be assigned Targets up to 5 levels stronger than you. This range only applies to Targets, as Rogue fights will always have a range of 5 from your combat level."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Set maximum to 10 levels higher",
+                    "steps": [
+                      {
+                        "npc": "Very well, you may be assigned Targets up to 10 levels stronger than you. This range only applies to Targets, as Rogue fights will always have a range of 5 from your combat level."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Set maximum to 15 levels higher",
+                    "steps": [
+                      {
+                        "npc": "Very well, you may be assigned Targets up to 15 levels stronger than you. This range only applies to Targets, as Rogue fights will always have a range of 5 from your combat level."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd like to manage my Coffer.",
+            "steps": [
+              {
+                "player": "I'd like to manage my Coffer."
+              },
+              {
+                "npc": "Do you want to add or remove coins from your coffer?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Current coffer: [number of coins]",
+                "options": [
+                  {
+                    "text": "Deposit coins."
+                  },
+                  {
+                    "text": "Withdraw coins."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's trade for rewards.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Bounty Hunter Store opens",
+                "action": "open_shop",
+                "action_source": "text",
+                "target": "Bounty Hunter Store",
+                "id": "p_iSBT"
+              }
+            ]
+          },
+          {
+            "text": "Can I have a PK skull, please?",
+            "condition": "If the player is not skulled",
+            "steps": [
+              {
+                "player": "Can I have a PK skull, please?"
+              },
+              {
+                "type": "choice",
+                "prompt": "A PK skull means you drop ALL your items on death.",
+                "options": [
+                  {
+                    "text": "Give me a PK skull.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You are now skulled.",
+                        "id": "fX1Wjn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "ivnIFq"
+          },
+          {
+            "text": "Can you make my PK skull last longer?",
+            "condition": "If the player is skulled",
+            "steps": [
+              {
+                "player": "Can you make my PK skull last longer?"
+              },
+              {
+                "type": "condition",
+                "text": "If the skull can be extended:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Extend your PK skull duration?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Your PK skull will now last for the full 20 minutes.",
+                            "id": "IWVXX4"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "CacJgB"
+              },
+              {
+                "type": "condition",
+                "text": "If the skull can not be extended:",
+                "steps": [
+                  {
+                    "npc": "Sorry, I can't extend your PK skull beyond its existing duration."
+                  }
+                ],
+                "id": "MwKUKd"
+              }
+            ],
+            "id": "cdFsBA"
+          },
+          {
+            "text": "What do the different colour skulls mean?",
+            "steps": [
+              {
+                "player": "What do the different colour skulls mean?"
+              },
+              {
+                "npc": "The different colours represent risk values. Bronze is up to 200,000. Iron is up to 800,000. Green is up to 2,000,000. Blue is up to 8,000,000. Red is any amount greater than 8,000,000."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "3i3gRv"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "free-to-play": [
+      {
+        "npc": "Hello, wanderer."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I used to deal in certain... emblems, for my master in the north. But now he has entrusted me with a new responsibility as the keeper of Bounty Hunter."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I have a PK skull, please?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "kwz1D6"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Good bye, trader.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "o_r2kz"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can I have a PK skull, please?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "VCk23x"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye, trader.",
+            "steps": [
+              {
+                "player": "Goodbye, trader."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "deadman-mode-while-owning-archaic-emblems": [
+      {
+        "npc": "I seek certain... archaic emblems, and I believe you have some, either on your person or in your bank. I'll happily take yours off your hands for a handsome fee."
+      },
+      {
+        "type": "choice",
+        "prompt": "Sell ALL your archaic emblems?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The trader awards you [X] points.",
+                "id": "8E314M"
+              },
+              {
+                "npc": "Thank you. My master in the north will be very pleased."
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              },
+              {
+                "npc": "Let me know if you change your mind. My master is always looking to add to his collection."
+              },
+              {
+                "type": "condition",
+                "text": "If the diary task hasn't been completed yet:",
+                "steps": [
+                  {
+                    "npc": "My master is pleased by your interest in emblem-hunting, so I'll mark that task off on your diary."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "ETdpN3"
+                  }
+                ],
+                "id": "R7UEMC"
+              },
+              {
+                "npc": "What can I do for you, wanderer?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's trade for rewards.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "7OoRcl"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I have a PK skull, please?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "mqYZ5v"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll leave you alone.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "0dnFp6"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "deadman-mode-using-an-archaic-emblem-on-him": [
+      {
+        "type": "choice",
+        "prompt": "Sell ALL your archaic emblems?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "YH4Agn"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              },
+              {
+                "npc": "Let me know if you change your mind. My master is always looking to add to his collection."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "deadman-mode-requesting-a-skull-at-grand-exchange": [
+      {
+        "npc": "I don't think the guards would like me to do that in this world."
+      }
+    ]
+  }
+}

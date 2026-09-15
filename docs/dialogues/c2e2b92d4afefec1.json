@@ -1,0 +1,552 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "What am I to do?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's wrong?",
+            "steps": [
+              {
+                "player": "What's wrong?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Oh dear, oh dear, oh dear, I'm in a terrible terrible mess! It's the Duke's birthday today, and I should be making him a lovely big birthday cake."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "I've forgotten to buy the ingredients. I'll never get them in time now. He'll sack me! What will I do? I have four children and a goat to look after. Would you help me? Please?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Cook's Assistant quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Yes, I'll help you."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Cook",
+                        "text": "Oh thank you, thank you. I need milk, an egg and flour. I'd be very grateful if you can get them for me."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has the necessary items:",
+                        "steps": [
+                          {
+                            "player": "I have all of those ingredients on me already!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "That's an odd coincidence... Were you planning on making a cake too?"
+                          },
+                          {
+                            "player": "Not exactly. I just had an odd feeling you might be needing these ingredients. If I see a cook, I presume there's food of some kind! Lucky guess I suppose."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "Well thank you! Hand them over, please."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You hand the cook all of the ingredients.",
+                            "id": "qPWhXs"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "You've brought me everything I need! I am saved! Thank you!"
+                          },
+                          {
+                            "player": "So do I get to go to the Duke's Party?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "I'm afraid not, only the big cheeses get to dine with the Duke."
+                          },
+                          {
+                            "player": "Well, maybe one day I'll be important enough to sit on the Duke's table."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Cook",
+                            "text": "Maybe, but I won't be holding my breath."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "vci6DY"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have the necessary items:",
+                        "steps": [
+                          {
+                            "player": "So where do I find these ingredients then?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Where do I find some flour?",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Cook",
+                                    "text": "There is a Mill fairly close, go North and then West. Mill Lane Mill is just off the road to Draynor. I usually get my flour from there."
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has an empty pot with them:",
+                                    "steps": [
+                                      {
+                                        "type": "line",
+                                        "speaker": "Cook",
+                                        "text": "Talk to Millie, she'll help, she's a lovely girl and a fine Miller. Make sure you take a pot with you for the flour though, you've got one on you already."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "other",
+                                        "id": "xSWPoP"
+                                      }
+                                    ],
+                                    "id": "6smrb1"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player does not have an empty pot with them:",
+                                    "steps": [
+                                      {
+                                        "type": "line",
+                                        "speaker": "Cook",
+                                        "text": "Talk to Millie, she'll help, she's a lovely girl and a fine Miller. Make sure you take a pot with you for the flour though, there should be one on the table in here."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "other",
+                                        "id": "02HG3O"
+                                      }
+                                    ],
+                                    "id": "aVGicp"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "How about milk?",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Cook",
+                                    "text": "There is a cattle field on the other side of the river, just across the road from the Groats' Farm."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Cook",
+                                    "text": "Talk to Gillie Groats, she looks after the Dairy cows - she'll tell you everything you need to know about milking cows!"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has an empty bucket with them:",
+                                    "steps": [
+                                      {
+                                        "type": "line",
+                                        "speaker": "Cook",
+                                        "text": "You'll need an empty bucket for the milk itself. I do see you've got a bucket with you already luckily!"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "other",
+                                        "id": "DHKYm8"
+                                      }
+                                    ],
+                                    "id": "LtDYHW"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player does not have an empty bucket with them:",
+                                    "steps": [
+                                      {
+                                        "type": "line",
+                                        "speaker": "Cook",
+                                        "text": "You'll need an empty bucket for the milk itself. The general store just north of the castle will sell you one for a couple of coins."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "other",
+                                        "id": "zosP8v"
+                                      }
+                                    ],
+                                    "id": "m8g9IW"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "And eggs? Where are they found?",
+                                "steps": [
+                                  {
+                                    "type": "line",
+                                    "speaker": "Cook",
+                                    "text": "I normally get my eggs from the Groats' farm, on the other side of the river."
+                                  },
+                                  {
+                                    "type": "line",
+                                    "speaker": "Cook",
+                                    "text": "But any chicken should lay eggs."
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Where do I find some flour?",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "reference": "above",
+                                            "id": "-JW4C_"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "How about milk?",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "reference": "above",
+                                            "id": "g6sogV"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "And eggs? Where are they found?",
+                                        "steps": [
+                                          {
+                                            "type": "jump",
+                                            "reference": "above",
+                                            "id": "0GrL3v"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "I've got all the information I need. Thanks.",
+                                        "steps": [
+                                          {
+                                            "player": "I've got all the information I need. Thanks."
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, I know where to find this stuff.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, I know where to find this stuff."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "QDPNgE"
+                      }
+                    ],
+                    "hook": "quest:cook-s-assistant:start",
+                    "quest": "Cook's Assistant"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No, I don't feel like it. Maybe later."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Cook",
+                        "text": "Fine. I always knew you Adventurer types were callous beasts. Go on your merry way!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You're a cook, why don't you bake me a cake?",
+            "steps": [
+              {
+                "player": "You're a cook, why don't you bake me a cake?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "sniff* Don't talk to me about cakes..."
+              },
+              {
+                "player": "What's wrong?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "AQvKDD"
+              }
+            ]
+          },
+          {
+            "text": "You don't look very happy.",
+            "steps": [
+              {
+                "player": "You don't look very happy."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "No, I'm not. The world is caving in around me - I am overcome by dark feelings of impending doom."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What's wrong?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "9-PVJa"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd take the rest of the day off if I were you.",
+                    "steps": [
+                      {
+                        "player": "I'd take the rest of the day off if I were you."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Cook",
+                        "text": "No, that's the worst thing I could do. I'd get in terrible trouble."
+                      },
+                      {
+                        "player": "Well maybe you need to take a holiday..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Cook",
+                        "text": "That would be nice, but the Duke doesn't allow holidays for core staff."
+                      },
+                      {
+                        "player": "Hmm, why not run away to the sea and start a new life as a Pirate?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Cook",
+                        "text": "My wife gets sea sick, and I have an irrational fear of eyepatches. I don't see it working myself."
+                      },
+                      {
+                        "player": "I'm afraid I've run out of ideas."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Cook",
+                        "text": "I know I'm doomed."
+                      },
+                      {
+                        "player": "What's wrong?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "kP50rh"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Nice hat!",
+            "steps": [
+              {
+                "player": "Nice hat!"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Err thank you. It's a pretty ordinary cooks hat really."
+              },
+              {
+                "player": "Still, suits you. The trousers are pretty special too."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Its all standard cook's issue uniform..."
+              },
+              {
+                "player": "The whole hat, apron, stripey trousers ensemble - it works. It make you looks like a real cook."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "I am a real cook! I haven't got time to be chatting about Culinary Fashion. I am in desperate need of help!"
+              },
+              {
+                "player": "What's wrong?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "5_CUs9"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-the-cook-again": [
+      {
+        "type": "line",
+        "speaker": "Cook",
+        "text": "How are you getting on with finding the ingredients?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not obtained anything yet:",
+        "steps": [
+          {
+            "player": "I haven't got any of them yet, I'm still looking."
+          },
+          {
+            "type": "line",
+            "speaker": "Cook",
+            "text": "Please get the ingredients quickly - I'm running out of time! The Duke will throw me into the streets!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player hasn't handed in at least one item. Items are removed from the list when handed in:",
+            "id": "qghdWI"
+          },
+          {
+            "type": "message",
+            "text": "You still need to get: A bucket of milk A pot of flour An egg",
+            "id": "UxCH5X"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I'll get right on it.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Can you remind me how to find these things again?",
+                "steps": [
+                  {
+                    "player": "So where do I find these ingredients then?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "pkP6S5"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "YUVvh3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the ingredients:",
+        "steps": [
+          {
+            "player": "Here's a bucket of milk."
+          },
+          {
+            "player": "Here's a pot of flour."
+          },
+          {
+            "player": "Here's a fresh egg."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not brought all the ingredients:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Thanks for the ingredients you have got so far. Please get the rest quickly - I'm running out of time! The Duke will throw me into the streets!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "fqNNNE"
+              }
+            ],
+            "id": "OYHTNa"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has brought all the ingredients:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "You've brought me everything I need! I am saved! Thank you!"
+              },
+              {
+                "player": "So do I get to go to the Duke's Party?"
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "I'm afraid not, only the big cheeses get to dine with the Duke."
+              },
+              {
+                "player": "Well, maybe one day I'll be important enough to sit on the Duke's table."
+              },
+              {
+                "type": "line",
+                "speaker": "Cook",
+                "text": "Maybe, but I won't be holding my breath."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "_FB4HO"
+          }
+        ],
+        "id": "ZJGbmd"
+      },
+      {
+        "type": "unavailable",
+        "id": "pqY-5o"
+      }
+    ]
+  }
+}

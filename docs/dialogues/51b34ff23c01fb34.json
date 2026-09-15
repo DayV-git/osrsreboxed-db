@@ -1,0 +1,168 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Ooh, I'm all dizzy..."
+      },
+      {
+        "player": "Why's that?"
+      },
+      {
+        "npc": "Well, watching that wheel go round and round and round..."
+      },
+      {
+        "npc": "and round and round and round..."
+      },
+      {
+        "player": "Looks like you need a bit of a rest."
+      },
+      {
+        "npc": "and round and round and round again..."
+      },
+      {
+        "player": "See you around!"
+      },
+      {
+        "npc": "Very funny."
+      }
+    ],
+    "gnome-restaurant": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "kAmyPq"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "sp2SMn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "nam_IV"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "9cTGKJ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Ermin",
+            "id": "_wk3Kp"
+          },
+          {
+            "npc": "Ahhh. Thank you, I'll take few minutes from spinning to enjoy this."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "z3VagM"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "ObO1bT"
+                  }
+                ],
+                "id": "uh9b5S"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Jpi4yn"
+              }
+            ],
+            "id": "uW6GSg"
+          }
+        ],
+        "id": "8HEwdP"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "3f55lF"
+          }
+        ],
+        "id": "mB5scM"
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Here you go, you solved it!"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy clue scroll",
+            "id": "p0UMYK"
+          },
+          {
+            "type": "message",
+            "text": "You've been given another clue!",
+            "id": "fEnP5e"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "0lJroZ"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy reward casket",
+            "id": "MS4PL1"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "VPsqPz"
+          }
+        ],
+        "id": "sxOXgW"
+      }
+    ]
+  }
+}

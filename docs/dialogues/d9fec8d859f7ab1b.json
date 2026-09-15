@@ -1,0 +1,73 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you look after my crops for me?",
+            "steps": [
+              {
+                "player": "Would you look after my crops for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If no sapling is planted in the patch:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "1bafcP"
+                  }
+                ],
+                "id": "MnR5gK"
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?",
+            "steps": [
+              {
+                "npc": "That depends on whether I have it to sell. What is it that you're looking for?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Farming Supplies",
+                "id": "MNbMEa"
+              }
+            ]
+          },
+          {
+            "text": "I'll come back another time.",
+            "steps": [
+              {
+                "player": "I'll come back another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-the-pay-option": [
+      {
+        "type": "condition",
+        "text": "If no sapling is planted in the patch:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "1bafcP"
+          }
+        ],
+        "id": "jjXRPJ"
+      }
+    ]
+  },
+  "branches": {
+    "1bafcP": [
+      {
+        "npc": "You don't have a sapling planted in that patch. Plant one and I might agree to look after it for you."
+      }
+    ]
+  }
+}

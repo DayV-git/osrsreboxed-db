@@ -1,0 +1,253 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player does not have silk in their inventory",
+        "steps": [
+          {
+            "npc": "I buy silk. If you ever want to sell any silk, bring it here."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "5_2zRe"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has silk in their inventory:",
+        "steps": [
+          {
+            "player": "Hello. I have some fine silk from far away to sell to you."
+          },
+          {
+            "npc": "Ah I may be interested in that. What sort of price were you looking at per piece of silk?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "20 coins.",
+                "steps": [
+                  {
+                    "player": "20 coins."
+                  },
+                  {
+                    "npc": "Ok suits me."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "20 coins",
+                    "id": "Nhu6bi"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "80 coins.",
+                "steps": [
+                  {
+                    "player": "80 coins."
+                  },
+                  {
+                    "npc": "80 coins? That's a bit steep! How about 40 coins?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Ok, 40 sounds good.",
+                        "steps": [
+                          {
+                            "player": "Ok, 40 sounds good."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "40 coins",
+                            "id": "USwIIt"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "50, and that's my final price.",
+                        "steps": [
+                          {
+                            "player": "50, and that's my final price."
+                          },
+                          {
+                            "npc": "Done."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "50 coins",
+                            "id": "0WaIF-"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, that is not enough.",
+                        "steps": [
+                          {
+                            "player": "No, that is not enough."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "120 coins.",
+                "steps": [
+                  {
+                    "player": "120 coins."
+                  },
+                  {
+                    "npc": "You'll never get that much for it. I'll be generous and give you 50 for it."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Ok, I guess 50 will do.",
+                        "steps": [
+                          {
+                            "player": "Ok, I guess 50 will do."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "50 coins",
+                            "id": "4mdBwY"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I'll give it to you for 60.",
+                        "steps": [
+                          {
+                            "player": "I'll give it to you for 60."
+                          },
+                          {
+                            "npc": "You drive a hard bargain, but I guess that will have to do."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "60 coins",
+                            "id": "obiSDZ"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, that is not enough.",
+                        "steps": [
+                          {
+                            "player": "No, that is not enough."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "200 coins.",
+                "steps": [
+                  {
+                    "player": "200 coins."
+                  },
+                  {
+                    "npc": "Don't be ridiculous! That is far too much. You insult me with that price."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "MrouLE"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has noted silk in their inventory",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Silk merchant",
+            "text": "I buy silk. If you ever want to sell any silk, bring it here."
+          },
+          {
+            "player": "I've got some silk here. Will you buy it?"
+          },
+          {
+            "type": "line",
+            "speaker": "Silk merchant",
+            "text": "Silk? You're not carrying any silk."
+          },
+          {
+            "player": "Yes I am."
+          },
+          {
+            "type": "line",
+            "speaker": "Silk merchant",
+            "text": "No, you're carrying { number of noted silk in inventory } bits of paper that say they can be exchanged for silk at a bank or general store. I'm not buying those. Fetch me some real silk, then we'll trade."
+          },
+          {
+            "player": "Oh, alright."
+          }
+        ],
+        "id": "BCl0ry"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "If Anwen notices the player stealing from her stall:",
+        "steps": [
+          {
+            "npc": "Hey! Get your hands off there!"
+          }
+        ],
+        "id": "USW9lV"
+      },
+      {
+        "type": "condition",
+        "text": "If the player recently stole from Anwen and tries to talk to her:",
+        "steps": [
+          {
+            "npc": "You're the one who stole something from me!"
+          },
+          {
+            "npc": "Guards guards!"
+          }
+        ],
+        "id": "Ecgq_c"
+      }
+    ]
+  }
+}

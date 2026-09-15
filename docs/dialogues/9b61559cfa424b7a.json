@@ -1,0 +1,176 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hi."
+      },
+      {
+        "npc": "Greetings. What wisdom do you seek?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "Me? I'm here to grant you rewards for any of the Pizazz Points you may have earned in this training arena. Like my fellow Guardians, I am part of the arena and live to ensure its safe running."
+              },
+              {
+                "player": "I see."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "o7dc5I"
+              }
+            ]
+          },
+          {
+            "text": "Can I trade my Pizazz Points please?",
+            "steps": [
+              {
+                "player": "Can I trade my Pizazz Points please?"
+              },
+              {
+                "npc": "Why of course."
+              },
+              {
+                "type": "action",
+                "text": "Magic Training Arena Shop interface opens.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Magic Training Arena Shop",
+                "id": "xqcnK3"
+              }
+            ]
+          },
+          {
+            "text": "Got anything else I can buy?",
+            "steps": [
+              {
+                "player": "Got anything else I can buy?"
+              },
+              {
+                "npc": "Well, we do stock a special book that you may be interested in, which provides a comprehensive guide to this training arena. It costs 200 coins. Would you like one?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not own an Arena book:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That sounds useful. Yes please.",
+                        "steps": [
+                          {
+                            "player": "That sounds useful. Yes please."
+                          },
+                          {
+                            "npc": "Very good, that'll be 200 coins please!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 200 coins:",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "Arena book",
+                                "id": "amGo1s"
+                              },
+                              {
+                                "npc": "Thank you."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous2",
+                                "id": "CAlQXj"
+                              }
+                            ],
+                            "id": "uSLowD"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has less than 200 coins:",
+                            "steps": [
+                              {
+                                "player": "Sorry, I don't have enough money."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "hz7-n1"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I don't want some dusty old book.",
+                        "steps": [
+                          {
+                            "player": "I don't want some dusty old book."
+                          },
+                          {
+                            "npc": "It's not old and it certainly isn't dusty, but suit yourself."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "YgHXTV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does own an Arena book:",
+                "steps": [
+                  {
+                    "player": "No thanks, I already have one."
+                  },
+                  {
+                    "npc": "Let me know if you lose it."
+                  }
+                ],
+                "id": "Dne0F9"
+              }
+            ]
+          },
+          {
+            "text": "Thanks, bye!",
+            "steps": [
+              {
+                "player": "Thanks, bye!"
+              },
+              {
+                "npc": "Use what you've learned, young one."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-entrance-guardian-hasn-t-been-spoken-to": [
+      {
+        "player": "Hi."
+      },
+      {
+        "npc": "Greetings. Have you spoken to my fellow Guardian downstairs?"
+      },
+      {
+        "player": "Nope."
+      },
+      {
+        "npc": "Well, you need to talk to him first."
+      }
+    ]
+  }
+}

@@ -1,0 +1,435 @@
+{
+  "default": "standard-dialogue-before-completing-pirate-s-treasure",
+  "variants": {
+    "standard-dialogue-before-completing-pirate-s-treasure": [
+      {
+        "npc": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I journey on this ship?",
+            "steps": [
+              {
+                "player": "Can I journey on this ship?"
+              },
+              {
+                "npc": "You need to be searched before you can board."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Why?",
+                    "steps": [
+                      {
+                        "player": "Why?"
+                      },
+                      {
+                        "npc": "Because Asgarnia has banned the import of intoxicating spirits."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "H2c2S5"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Search away, I have nothing to hide.",
+                    "steps": [
+                      {
+                        "player": "Search away, I have nothing to hide."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have karamjan rum in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "Well you've got some odd stuff, but it's all legal. Now you need to pay a boarding charge of 30 coins."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Ok.",
+                                "steps": [
+                                  {
+                                    "player": "Ok."
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player does not have enough coins:",
+                                    "steps": [
+                                      {
+                                        "player": "Oh dear, I don't seem to have enough money."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "l2iXlt"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has 30 coins:",
+                                    "steps": [
+                                      {
+                                        "type": "message",
+                                        "text": "You pay 30 coins and board the ship.",
+                                        "id": "QF4lwJ"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "The ship arrives at Port Sarim.",
+                                        "id": "spUxIX"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "GGmLiT"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player is wearing Karamja gloves and has 15 coins:",
+                                    "steps": [
+                                      {
+                                        "npc": "Hang on a sec... Aren't those Karamja gloves? I thought I'd seen you helping around the island. You can go on half price mate."
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "You pay 15 coins and board the ship.",
+                                        "id": "ThyZB7"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "The ship arrives at Port Sarim.",
+                                        "id": "yo5ec1"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "UmgeOy"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Oh, I'll not bother then.",
+                                "steps": [
+                                  {
+                                    "player": "Oh, I'll not bother then."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "[Charm] Or perhaps you could let me travel for free?",
+                                "condition": "If the player has the Ring of Charos(a) equipped:",
+                                "steps": [
+                                  {
+                                    "player": "Or perhaps you could let me travel for free?"
+                                  },
+                                  {
+                                    "npc": "Yes, perhaps I could. Okay, jump aboard then."
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "You board the ship.",
+                                    "id": "upG45P"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "The ship arrives at Port Sarim.",
+                                    "id": "9VGrva"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "1x6H5V"
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "XJqfyr"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has karamjan rum in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "Aha, trying to smuggle rum are we?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Umm... it's for personal use?",
+                                "steps": [
+                                  {
+                                    "player": "Umm... it's for personal use?"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "The customs officer confiscates your rum.",
+                                    "id": "pUSUQY"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "You will need to find some way to smuggle it off the island...",
+                                    "id": "fYDFBG"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "[Charm] This is not the Karamja rum you are looking for.",
+                                "condition": "If the player has the Ring of Charos(a) equipped:",
+                                "steps": [
+                                  {
+                                    "player": "This is not the Karamja rum you are looking for."
+                                  },
+                                  {
+                                    "npc": "This is not the Karamja rum we are looking for."
+                                  },
+                                  {
+                                    "player": "Well that was easy!"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "You dance for joy...",
+                                    "id": "nTUU6k"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "...and accidentally drop the rum.",
+                                    "id": "CO6KKg"
+                                  },
+                                  {
+                                    "player": "Drat..."
+                                  }
+                                ],
+                                "id": "52ANdM"
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "Nk3zwc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're not putting your hands on my things!",
+                    "steps": [
+                      {
+                        "player": "You're not putting your hands on my things!"
+                      },
+                      {
+                        "npc": "You're not getting on this ship then."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Does Karamja have unusual customs then?",
+            "steps": [
+              {
+                "player": "Does Karamja have any unusual customs then?"
+              },
+              {
+                "npc": "I'm not that sort of customs officer."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-pirate-s-treasure": [
+      {
+        "npc": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I journey on this ship?",
+            "steps": [
+              {
+                "player": "Can I journey on this ship?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Hey, I know you, you work at the plantation."
+                  },
+                  {
+                    "npc": "I don't think you'll try smuggling anything, you just need to pay a boarding charge of 30 coins."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Ok.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "J8HzFJ"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Oh, I'll not bother then.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "ihIyKc"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "[Charm] Or perhaps you could let me travel for free?",
+                        "condition": "If the player has the Ring of Charos(a) equipped:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "gD39ry"
+                          }
+                        ],
+                        "id": "6xrMp6"
+                      }
+                    ]
+                  }
+                ],
+                "id": "jjZzlW"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Spot inspection. You don't mind do you?"
+                  },
+                  {
+                    "npc": "Aha, trying to smuggle rum eh?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Umm... it's for personal use?",
+                        "steps": [
+                          {
+                            "player": "Umm... it's for personal use?"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The customs officer confiscates your rum.",
+                            "id": "et2BjU"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "[Charm] This is not the Karamja rum you are looking for.",
+                        "condition": "If the player has the Ring of Charos(a) equipped:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "2WYaQN"
+                          }
+                        ],
+                        "id": "mMDsDN"
+                      }
+                    ]
+                  }
+                ],
+                "id": "d0TjyV"
+              }
+            ]
+          },
+          {
+            "text": "Does Karamja have unusual customs then?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "3suLwx"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-right-click-pay-fare-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have 30 coins:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You do not have enough coins to pay passage, you need 30.",
+            "id": "QCc989"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "o99Ow0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing Karamja gloves and does not have 15 coins:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You do not have enough coins to pay passage. You need 15 when wearing the Karamja gloves.",
+            "id": "QmGgqs"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YaxGxl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has 30 coins:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You pay 30 coins and board the ship.",
+            "id": "KUSwFC"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "I3nqhc"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing Karamja gloves and has 15 coins:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The officer smiles as she recognises your Karamja gloves and lets you pass for half price - 15 coins.",
+            "id": "KAxD0X"
+          }
+        ],
+        "id": "8Iyms5"
+      }
+    ]
+  }
+}

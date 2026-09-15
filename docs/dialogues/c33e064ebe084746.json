@@ -1,0 +1,1969 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "unsectioned": [
+      {
+        "type": "unavailable",
+        "id": "BbOgNs"
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "npc": "Yes [sir/m'am]? Can I help you at all?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "You're in the main waiting area of Keldagrim Carts- station."
+              },
+              {
+                "player": "Cart-station? What goes on here then?"
+              },
+              {
+                "npc": "Keldagrim is the hub of all the traffic of the dwarven realm. Almost every dwarven outpost has railtracks leading to Keldagrim, connecting them all for easy travel and transportation of goods."
+              },
+              {
+                "player": "Amazing! And what powers the carts? Magic?"
+              },
+              {
+                "npc": "Oh, no no, we dwarves don't use magic. No, all of this is powered by steam engines, developed during the past few centuries after the Consortium came to power."
+              },
+              {
+                "player": "Thanks for the info."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "98pFl4"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "player": "Where can you take me?"
+              },
+              {
+                "npc": "Let's see, we could let you travel to Ice Mountain, or to the Grand Exchange."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has finished Fishing Contest:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J_nLvw"
+                  }
+                ],
+                "id": "weKKjf"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "rtu_bl"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to buy a ticket.",
+            "steps": [
+              {
+                "player": "I'd like to buy a ticket."
+              },
+              {
+                "npc": "And where would you like to go?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "To the Grand Exchange.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uafMrG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "To Ice Mountain.",
+                    "steps": [
+                      {
+                        "player": "I'd like to buy a ticket to Ice Mountain."
+                      },
+                      {
+                        "npc": "That'll be 150 gold coins please."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Buy.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "0KhJd8"
+                                  }
+                                ],
+                                "id": "Eo59i3"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "olyHwH"
+                                  }
+                                ],
+                                "id": "cmFhw_"
+                              },
+                              {
+                                "npc": "Thanks, carts to Ice Mountain depart from track 1."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Don't buy.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I changed my mind."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "OXQkic"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "[Charm] Only pay half.",
+                            "condition": "If the player is wearing the Ring of Charos(a):",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "NdHQMS"
+                                  }
+                                ],
+                                "id": "E-5Pm7"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "da-0BL"
+                                  }
+                                ],
+                                "id": "RtFnQf"
+                              },
+                              {
+                                "npc": "You're alright, I suppose... I can let you go for 75 coins. And remember, carts to Ice Mountain depart from track 1."
+                              }
+                            ],
+                            "id": "UC91m7"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "To White Wolf Mountain.",
+                    "condition": "If the player has finished Fishing Contest:",
+                    "steps": [
+                      {
+                        "player": "I'd like to buy a ticket to White Wolf Mountain."
+                      },
+                      {
+                        "npc": "That'll be 100 gold coins please."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Buy.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "4T84XE"
+                                  }
+                                ],
+                                "id": "nA6cXC"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "QgoLAE"
+                                  }
+                                ],
+                                "id": "dnl5NR"
+                              },
+                              {
+                                "npc": "Thanks. Go to track 4 for carts heading to White Wolf Mountain."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Don't buy.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I changed my mind."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "cIOPNG"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "[Charm] Only pay half.",
+                            "condition": "If the player is wearing the Ring of Charos(a):",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "3qnco1"
+                                  }
+                                ],
+                                "id": "EO9SCP"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "4oCBT1"
+                                  }
+                                ],
+                                "id": "Y8sKre"
+                              },
+                              {
+                                "npc": "You're a decent human, I suppose... I can let you go for 50 coins. Go to track 4 for the carts heading to White Wolf Mountain."
+                              }
+                            ],
+                            "id": "cq4UWy"
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "my0qn0"
+                  },
+                  {
+                    "text": "Nowhere.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "NIHltW"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tickets": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Grand Exchange (free)",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Bz_hS_"
+              }
+            ]
+          },
+          {
+            "text": "Ice Mountain (150 coins)",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have enough coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "ORDw_z"
+                  }
+                ],
+                "id": "IhfzVl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any inventory space:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dBX6CX"
+                  }
+                ],
+                "id": "SRFTkp"
+              }
+            ]
+          },
+          {
+            "text": "White Wolf Mountain (100 coins)",
+            "condition": "If the player has finished Fishing Contest:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "YFqUQU"
+              }
+            ],
+            "id": "eHuhmt"
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "tickets-ring-of-charos-a-equipped": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Grand Exchange (free)",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "kuXs8k"
+              }
+            ]
+          },
+          {
+            "text": "Ice Mountain (75 coins)",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "w09-gg"
+              }
+            ]
+          },
+          {
+            "text": "White Wolf Mountain (50 coins)",
+            "condition": "If the player has finished Fishing Contest:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "dwfAqP"
+              }
+            ],
+            "id": "pnbWsf"
+          },
+          {
+            "text": "Cancel",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "CdUxQ5"
+      }
+    ],
+    "standard-dialogue-2": [
+      {
+        "npc": "Anything I can help you with?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is the Keldagrim Carts-station, human."
+              },
+              {
+                "player": "Cart-station? What goes on here then?"
+              },
+              {
+                "npc": "Keldagrim is the hub of all the traffic of the dwarven realm. Almost every dwarven outpost has railtracks leading to Keldagrim, connecting them all for easy travel and transportation of goods."
+              },
+              {
+                "player": "Amazing! And what powers the carts? Magic?"
+              },
+              {
+                "npc": "Oh, no no, we dwarves don't use magic. No, all of this is powered by steam engines, developed during the past few centuries after the Consortium came to power."
+              },
+              {
+                "player": "Thanks for the info."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "cTB2Me"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "npc": "Let's see, we could let you travel to Ice Mountain, or to the Grand Exchange."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has finished Fishing Contest:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J_nLvw"
+                  }
+                ],
+                "id": "v-tQvG"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "V3riGp"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to buy a ticket.",
+            "steps": [
+              {
+                "player": "I'd like to buy a ticket."
+              },
+              {
+                "npc": "And where would you like to go?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "To the Grand Exchange.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uafMrG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "To Ice Mountain.",
+                    "steps": [
+                      {
+                        "player": "I'd like to buy a ticket to Ice Mountain."
+                      },
+                      {
+                        "npc": "That'll be 150 gold coins please."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Buy.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "3lfm7V"
+                                  }
+                                ],
+                                "id": "TweIps"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "rp8dmb"
+                                  }
+                                ],
+                                "id": "We01Vt"
+                              },
+                              {
+                                "npc": "Thanks, carts to Ice Mountain depart from track 1."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Don't buy.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I changed my mind."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "VoE3OR"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "[Charm] Only pay half.",
+                            "condition": "If the player is wearing the Ring of Charos(a):",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "2H37RV"
+                                  }
+                                ],
+                                "id": "eZZIq_"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "7Cgz0l"
+                                  }
+                                ],
+                                "id": "xxHbU0"
+                              },
+                              {
+                                "npc": "You're alright, I suppose... I can let you go for 75 coins. And remember, carts to Ice Mountain depart from track 1."
+                              }
+                            ],
+                            "id": "JpLNrD"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "To White Wolf Mountain.",
+                    "condition": "If the player has finished Fishing Contest:",
+                    "steps": [
+                      {
+                        "player": "I'd like to buy a ticket to White Wolf Mountain."
+                      },
+                      {
+                        "npc": "That'll be 100 gold coins please."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Buy.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "AOUW5A"
+                                  }
+                                ],
+                                "id": "nLDHeB"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "Cz0T6x"
+                                  }
+                                ],
+                                "id": "JJT9im"
+                              },
+                              {
+                                "npc": "Thanks. Go to track 4 for carts heading to White Wolf Mountain."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Don't buy.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I changed my mind."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "2Gcb4_"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "[Charm] Only pay half.",
+                            "condition": "If the player is wearing the Ring of Charos(a):",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "j9ILCd"
+                                  }
+                                ],
+                                "id": "jqVidK"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "593f17"
+                                  }
+                                ],
+                                "id": "8V0eWU"
+                              },
+                              {
+                                "npc": "You're a decent human, I suppose... I can let you go for 50 coins. Go to track 4 for the carts heading to White Wolf Mountain."
+                              }
+                            ],
+                            "id": "rAimlX"
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "Qj2N0i"
+                  },
+                  {
+                    "text": "Nowhere.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "NIHltW"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tickets-2": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Grand Exchange (free)",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Bz_hS_"
+              }
+            ]
+          },
+          {
+            "text": "Ice Mountain (150 coins)",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have enough coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "ORDw_z"
+                  }
+                ],
+                "id": "9U0dIo"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any inventory space:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dBX6CX"
+                  }
+                ],
+                "id": "6sCzv5"
+              }
+            ]
+          },
+          {
+            "text": "White Wolf Mountain (100 coins)",
+            "condition": "If the player has finished Fishing Contest:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "WljNEF"
+              }
+            ],
+            "id": "ZXnmd8"
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "tickets-ring-of-charos-a-equipped-2": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Grand Exchange (free)",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "rWneyY"
+              }
+            ]
+          },
+          {
+            "text": "Ice Mountain (75 coins)",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "MQZsRm"
+              }
+            ]
+          },
+          {
+            "text": "White Wolf Mountain (50 coins)",
+            "condition": "If the player has finished Fishing Contest:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "yg72_3"
+              }
+            ],
+            "id": "zunuOR"
+          },
+          {
+            "text": "Cancel",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "DPjF_x"
+      }
+    ],
+    "standard-dialogue-3": [
+      {
+        "npc": "Out of the way human!"
+      },
+      {
+        "player": "Why, what's happening?"
+      },
+      {
+        "npc": "There's important traffic coming through here and I don't want any stray humans distracting me."
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "unavailable",
+        "id": "EZ8xyQ"
+      }
+    ],
+    "standard-dialogue-4": [
+      {
+        "npc": "Tickets, tickets, get your tickets here!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is the Keldagrim Carts-station, human."
+              },
+              {
+                "player": "Cart-station? What goes on here then?"
+              },
+              {
+                "npc": "Keldagrim is the hub of all the traffic of the dwarven realm. Almost every dwarven outpost has railtracks leading to Keldagrim, connecting them all for easy travel and transportation of goods."
+              },
+              {
+                "player": "Amazing! And what powers the carts? Magic?"
+              },
+              {
+                "npc": "Oh, no no, we dwarves don't use magic. No, all of this is powered by steam engines, developed during the past few centuries after the Consortium came to power."
+              },
+              {
+                "player": "Thanks for the info."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "4P1YXG"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "npc": "Let's see, we could let you travel to Ice Mountain, or to the Grand Exchange."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has finished Fishing Contest:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J_nLvw"
+                  }
+                ],
+                "id": "Ezf5WB"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "EQsqU3"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to buy a ticket.",
+            "steps": [
+              {
+                "player": "I'd like to buy a ticket."
+              },
+              {
+                "npc": "And where would you like to go?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "To the Grand Exchange.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uafMrG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "To Ice Mountain.",
+                    "steps": [
+                      {
+                        "player": "I'd like to buy a ticket to Ice Mountain."
+                      },
+                      {
+                        "npc": "That'll be 150 gold coins please."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Buy.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "bNGrh_"
+                                  }
+                                ],
+                                "id": "eZ60_n"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "0Cplce"
+                                  }
+                                ],
+                                "id": "-ZVk5b"
+                              },
+                              {
+                                "npc": "Thanks, carts to Ice Mountain depart from track 1."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Don't buy.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I changed my mind."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "q05mHS"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "[Charm] Only pay half.",
+                            "condition": "If the player is wearing the Ring of Charos(a):",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "weqrrg"
+                                  }
+                                ],
+                                "id": "2ewvkq"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "NVAj-j"
+                                  }
+                                ],
+                                "id": "wbaV6Z"
+                              },
+                              {
+                                "npc": "You're alright, I suppose... I can let you go for 75 coins. And remember, carts to Ice Mountain depart from track 1."
+                              }
+                            ],
+                            "id": "sjsYVK"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "To White Wolf Mountain.",
+                    "condition": "If the player has finished Fishing Contest:",
+                    "steps": [
+                      {
+                        "player": "I'd like to buy a ticket to White Wolf Mountain."
+                      },
+                      {
+                        "npc": "That'll be 100 gold coins please."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Buy.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "7B_ePG"
+                                  }
+                                ],
+                                "id": "1dLAyO"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "YWhNum"
+                                  }
+                                ],
+                                "id": "Twist2"
+                              },
+                              {
+                                "npc": "Thanks. Go to track 4 for carts heading to White Wolf Mountain."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Don't buy.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I changed my mind."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "e9SKmL"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "[Charm] Only pay half.",
+                            "condition": "If the player is wearing the Ring of Charos(a):",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "KGoWvu"
+                                  }
+                                ],
+                                "id": "fykWUe"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "LzZfKH"
+                                  }
+                                ],
+                                "id": "c2Ofpr"
+                              },
+                              {
+                                "npc": "You're a decent human, I suppose... I can let you go for 50 coins. Go to track 4 for the carts heading to White Wolf Mountain."
+                              }
+                            ],
+                            "id": "d1B3--"
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "K8R95V"
+                  },
+                  {
+                    "text": "Nowhere.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "NIHltW"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tickets-3": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Grand Exchange (free)",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Bz_hS_"
+              }
+            ]
+          },
+          {
+            "text": "Ice Mountain (150 coins)",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have enough coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "ORDw_z"
+                  }
+                ],
+                "id": "VfBz4J"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any inventory space:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dBX6CX"
+                  }
+                ],
+                "id": "V8KhFp"
+              }
+            ]
+          },
+          {
+            "text": "White Wolf Mountain (100 coins)",
+            "condition": "If the player has finished Fishing Contest:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "YDLGM0"
+              }
+            ],
+            "id": "9Y78qv"
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "tickets-ring-of-charos-a-equipped-3": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Grand Exchange (free)",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "dUePbP"
+              }
+            ]
+          },
+          {
+            "text": "Ice Mountain (75 coins)",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "EkqlTX"
+              }
+            ]
+          },
+          {
+            "text": "White Wolf Mountain (50 coins)",
+            "condition": "If the player has finished Fishing Contest:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "mbgPKS"
+              }
+            ],
+            "id": "vIVDkC"
+          },
+          {
+            "text": "Cancel",
+            "steps": [
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "6qn0WE"
+      }
+    ],
+    "standard-dialogue-5": [
+      {
+        "npc": "Wot you want?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Can't you see I'm 'aving a lil' break?"
+              },
+              {
+                "player": "Now that you mention it, yes."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "player": "Where can you take me?"
+              },
+              {
+                "npc": "Can't you see I'm 'aving a lil' break?"
+              },
+              {
+                "player": "Now that you mention it, yes."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to buy a ticket.",
+            "steps": [
+              {
+                "player": "I'd like to buy a ticket."
+              },
+              {
+                "npc": "Can't you see I'm 'aving a lil' break?"
+              },
+              {
+                "player": "Now that you mention it, yes."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "player": "I have to go."
+              },
+              {
+                "npc": "Then why did ya waste my time?"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "Q_Fz_o"
+      }
+    ],
+    "standard-dialogue-6": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is the Keldagrim Carts-station, human."
+              },
+              {
+                "player": "Cart-station? What goes on here then?"
+              },
+              {
+                "npc": "Keldagrim is the hub of all the traffic of the dwarven realm. Almost every dwarven outpost has railtracks leading to Keldagrim, connecting them all for easy travel and transportation of goods."
+              },
+              {
+                "player": "Amazing! And what powers the carts? Magic?"
+              },
+              {
+                "npc": "Oh, no no, we dwarves don't use magic. No, all of this is powered by steam engines, developed during the past few centuries after the Consortium came to power."
+              },
+              {
+                "player": "Thanks for the info."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "_tFoTS"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "player": "Where can you take me?"
+              },
+              {
+                "npc": "Let's see, we could let you travel to Ice Mountain, or to the Grand Exchange."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has finished Fishing Contest:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "J_nLvw"
+                  }
+                ],
+                "id": "pes-fT"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "ZInti3"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to buy a ticket.",
+            "steps": [
+              {
+                "player": "I'd like to buy a ticket."
+              },
+              {
+                "npc": "And where would you like to go?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "To the Grand Exchange.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "uafMrG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "To Ice Mountain.",
+                    "steps": [
+                      {
+                        "player": "I'd like to buy a ticket to Ice Mountain."
+                      },
+                      {
+                        "npc": "That'll be 150 gold coins please."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Buy.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "rFDhm8"
+                                  }
+                                ],
+                                "id": "gPwG7q"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "qprLB5"
+                                  }
+                                ],
+                                "id": "e1cw96"
+                              },
+                              {
+                                "npc": "Thanks, carts to Ice Mountain depart from track 1."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Don't buy.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I changed my mind."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "1hNZvM"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "[Charm] Only pay half.",
+                            "condition": "If the player is wearing the Ring of Charos(a):",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "M3kPWJ"
+                                  }
+                                ],
+                                "id": "QHr8ej"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "IpK2To"
+                                  }
+                                ],
+                                "id": "JMDch-"
+                              },
+                              {
+                                "npc": "You're alright, I suppose... I can let you go for 75 coins. And remember, carts to Ice Mountain depart from track 1."
+                              }
+                            ],
+                            "id": "tz03xF"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "To White Wolf Mountain.",
+                    "condition": "If the player has finished Fishing Contest:",
+                    "steps": [
+                      {
+                        "player": "I'd like to buy a ticket to White Wolf Mountain."
+                      },
+                      {
+                        "npc": "That'll be 100 gold coins please."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Buy.",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "mfzqPu"
+                                  }
+                                ],
+                                "id": "teyg1L"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "og8oZX"
+                                  }
+                                ],
+                                "id": "r8HtKn"
+                              },
+                              {
+                                "npc": "Thanks. Go to track 4 for carts heading to White Wolf Mountain."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Don't buy.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I changed my mind."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "pkv6TV"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "[Charm] Only pay half.",
+                            "condition": "If the player is wearing the Ring of Charos(a):",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have enough coins:",
+                                "steps": [
+                                  {
+                                    "player": "I'm sorry, I've run out of money."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "hwgXxW"
+                                  }
+                                ],
+                                "id": "oNYz5Y"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have any inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "FmysB_"
+                                  }
+                                ],
+                                "id": "LOOZhB"
+                              },
+                              {
+                                "npc": "You're a decent human, I suppose... I can let you go for 50 coins. Go to track 4 for the carts heading to White Wolf Mountain."
+                              }
+                            ],
+                            "id": "UuJ5ED"
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "JhidiE"
+                  },
+                  {
+                    "text": "Nowhere.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "NIHltW"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tickets-4": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Grand Exchange (free)",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "Bz_hS_"
+              }
+            ]
+          },
+          {
+            "text": "Ice Mountain (150 coins)",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have enough coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "ORDw_z"
+                  }
+                ],
+                "id": "bqkYTz"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any inventory space:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "dBX6CX"
+                  }
+                ],
+                "id": "wFICXM"
+              }
+            ]
+          },
+          {
+            "text": "White Wolf Mountain (100 coins)",
+            "condition": "If the player has finished Fishing Contest:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "COrfRw"
+              }
+            ],
+            "id": "bz_oTG"
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "tickets-ring-of-charos-a-equipped-4": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Grand Exchange (free)",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "zsi9mV"
+              }
+            ]
+          },
+          {
+            "text": "Ice Mountain (75 coins)",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "sSZpka"
+              }
+            ]
+          },
+          {
+            "text": "White Wolf Mountain (50 coins)",
+            "condition": "If the player has finished Fishing Contest:",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as dialogue for Ice Mountain (150 coins).)",
+                "id": "j8r6f2"
+              }
+            ],
+            "id": "Y9-4Nf"
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "inspecting-the-trapdoor-at-the-grand-exchange": [
+      {
+        "npc": "Ahoy up there! Would you like to ride our minecart to Keldagrim? It's free."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "inspecting-the-trapdoor-at-the-grand-exchange-inspecting-the-trapdoor-at-the-grand-exchange-with-a-follower": [
+      {
+        "npc": "Ahoy up there! You'd better pick up your follower before you come down here and ride the minecart."
+      }
+    ],
+    "riding-a-train-cart-at-the-front-of-the-queue-with-a-ticket-and-follower": [
+      {
+        "npc": "Watch out, [sir/madam]! Don't want anything to run over your follower!"
+      }
+    ],
+    "overhead-dialogue-keldagrim-ticket-vendor": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Tickets! Tickets!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Buy your tickets here!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Selling tickets!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-keldagrim-announcer": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Ice Mountain carts departing from Track 1!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Grand Exchange carts departing from Track 3!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "White Wolf Mountain carts departing from Track 4!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Mind the cart!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "J_nLvw": [
+      {
+        "npc": "I could also let you go to White Wolf Mountain, since you've befriended our brothers there."
+      }
+    ],
+    "uafMrG": [
+      {
+        "player": "I'd like to buy a ticket to the Grand Exchange."
+      },
+      {
+        "npc": "Oh, that service is free. Just hop on a cart on Track 3, and away you go."
+      }
+    ],
+    "NIHltW": [
+      {
+        "player": "I have to go."
+      },
+      {
+        "npc": "Just remember, wherever you go, you go there faster through Keldagrim Carts."
+      }
+    ],
+    "Bz_hS_": [
+      {
+        "npc": "That service is free. Just hop on a cart on Track 3, and away you go."
+      }
+    ],
+    "ORDw_z": [
+      {
+        "player": "I'm sorry, I've run out of money."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "dBX6CX": [
+      {
+        "npc": "I'm sorry, [sir/madam], but I don't believe you can hold the ticket."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

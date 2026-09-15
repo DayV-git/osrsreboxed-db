@@ -1,0 +1,906 @@
+{
+  "branches": {
+    "vbxGFH": [
+      {
+        "npc": "You do not seem to be very devoted to any god. I will not let you have a divine symbol unless you have level 70 prayer."
+      }
+    ],
+    "s0bYrZ": [
+      {
+        "player": "No way!"
+      },
+      {
+        "npc": "Well we can't have just any pauper using a money-bag as a symbol, can we? You'll have to choose a different symbol."
+      }
+    ]
+  },
+  "steps": [
+    {
+      "npc": "Hmm? What's that, young [man/woman/one]? What can I do for you?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I don't know, what can you do for me?",
+          "steps": [
+            {
+              "player": "I don't know, what can you do for me?"
+            },
+            {
+              "npc": "Hmm, well, mmm, do you have a family crest? I keep track of every Gielinor family, you know, so I might be able to find yours."
+            },
+            {
+              "npc": "I'm also something of an, mmm, a painter. If you've met any important persons or visited any nice places I could paint them for you."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Can you see if I have a family crest?",
+                  "steps": [
+                    {
+                      "player": "Can you see if I have a family crest?"
+                    },
+                    {
+                      "npc": "What is your name?"
+                    },
+                    {
+                      "player": "[player name]."
+                    },
+                    {
+                      "npc": "Mmm, [player name], let me see...",
+                      "steps": [
+                        {
+                          "type": "condition",
+                          "text": "If the player doesn't have 16 Construction:",
+                          "id": "PgNKW-"
+                        },
+                        {
+                          "npc": "First things first, young [man/woman/one]! There is not much point in having a family crest if you cannot display it. You should train construction until you can build a wall decoration in your dining room."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "npc": "According to my records, your crest is [current family crest]."
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "I don't like that crest. Can I have a different one?",
+                          "steps": [
+                            {
+                              "npc": "Mmm, very well. Changing your crest will cost 5,000 coins."
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player doesn't have enough money:",
+                              "steps": [
+                                {
+                                  "player": "I'll have to go get some."
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "bWcmMN"
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has enough money:",
+                              "steps": [
+                                {
+                                  "npc": "There are sixteen different symbols; which one would you like?",
+                                  "steps": [
+                                    {
+                                      "type": "choice",
+                                      "options": [
+                                        {
+                                          "text": "Shield of Arrav",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has not completed Shield of Arrav:",
+                                              "steps": [
+                                                {
+                                                  "npc": "But that legendary shield is still lost! I don't think it would be proper for you to wear its symbol."
+                                                },
+                                                {
+                                                  "type": "end"
+                                                }
+                                              ],
+                                              "id": "j62EZO"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has completed Shield of Arrav:",
+                                              "steps": [
+                                                {
+                                                  "npc": "Ah yes, the shield that you helped to retrieve. You have certainly earned the right to wear its symbol."
+                                                },
+                                                {
+                                                  "type": "action",
+                                                  "action": "give",
+                                                  "text": "5,000 coins",
+                                                  "id": "rD0rPf"
+                                                }
+                                              ],
+                                              "id": "ymQodA"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Asgarnia",
+                                          "steps": [
+                                            {
+                                              "npc": "Ah, splendid, splendid. There is no better symbol than that of our fair land!"
+                                            },
+                                            {
+                                              "type": "jump",
+                                              "reference": "above",
+                                              "id": "OqmKZ3"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Dorgeshuun symbol",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has not completed The Lost Tribe:",
+                                              "steps": [
+                                                {
+                                                  "npc": "Hmm, have you ever even met the Dorgeshuun? I don't think you should wear their symbol until you have made contact with that lost tribe."
+                                                }
+                                              ],
+                                              "id": "PejgPW"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has completed The Lost Tribe:",
+                                              "steps": [
+                                                {
+                                                  "npc": "Ah yes, our new neighbours under Lumbridge. I hear you were the one who made contact with them, jolly good."
+                                                },
+                                                {
+                                                  "type": "jump",
+                                                  "reference": "above",
+                                                  "id": "F7n2v5"
+                                                }
+                                              ],
+                                              "id": "dKyN-7"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Dragon",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has not completed Dragon Slayer I:",
+                                              "steps": [
+                                                {
+                                                  "npc": "When the dragon on Crandor Isle remains undefeated? I think you should prove yourself a dragon-slayer before you can wear a dragon symbol!"
+                                                },
+                                                {
+                                                  "type": "end"
+                                                }
+                                              ],
+                                              "id": "qg8aZe"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has completed Dragon Slayer I:",
+                                              "steps": [
+                                                {
+                                                  "npc": "I see you are a mighty dragon-slayer! You have certainly earned the right to wear a dragon symbol."
+                                                },
+                                                {
+                                                  "type": "jump",
+                                                  "reference": "above",
+                                                  "id": "TBheT5"
+                                                }
+                                              ],
+                                              "id": "irbW7_"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Fairy",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has not completed Lost City:",
+                                              "steps": [
+                                                {
+                                                  "npc": "A fairy? Fairies are rumoured to exist in a lost city somewhere. I don't think I should let you use them as a symbol until you have met them in person."
+                                                },
+                                                {
+                                                  "type": "end"
+                                                }
+                                              ],
+                                              "id": "_aZ7ih"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has completed Lost City:",
+                                              "steps": [
+                                                {
+                                                  "npc": "Hmm, mmm, yes, everyone likes pretty fairies."
+                                                },
+                                                {
+                                                  "type": "jump",
+                                                  "reference": "above",
+                                                  "id": "4bqpQT"
+                                                }
+                                              ],
+                                              "id": "gB8hQ4"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Guthix",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player does not have 70 Prayer:",
+                                              "steps": [
+                                                {
+                                                  "type": "call",
+                                                  "branch": "vbxGFH"
+                                                }
+                                              ],
+                                              "id": "MybEzI"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has 70 Prayer:",
+                                              "steps": [
+                                                {
+                                                  "npc": "Guthix, god of balance! I'm a Saradominist myself, you know, but we all find meaning in our way, what?"
+                                                },
+                                                {
+                                                  "type": "jump",
+                                                  "reference": "above",
+                                                  "id": "v5TDc2"
+                                                }
+                                              ],
+                                              "id": "m7Lfzz"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "HAM",
+                                          "steps": [
+                                            {
+                                              "npc": "Hmm, I'm not sure I like that HAM group, their beliefs are a little extreme for me. But if that's what you want."
+                                            },
+                                            {
+                                              "type": "jump",
+                                              "reference": "above",
+                                              "id": "3ZUw8m"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Horse",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player doesn't have a toy horsey in their inventory:",
+                                              "steps": [
+                                                {
+                                                  "npc": "A horse? I know people talk about them, but I'm not at all sure they ever existed. I don't think I could let you use one as your symbol unless you can fetch me some kind of model of one."
+                                                },
+                                                {
+                                                  "type": "end"
+                                                }
+                                              ],
+                                              "id": "aSgK_x"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has a toy horsey in their inventory:",
+                                              "id": "dtgqEg"
+                                            },
+                                            {
+                                              "npc": "Ah, I see you've brought a toy horse for me to see. An interesting beast. Certainly you can use that as your crest if you like, although it seems a bit strange to me.",
+                                              "steps": []
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Jogre",
+                                          "steps": [
+                                            {
+                                              "npc": "A Jungle Ogre, eh? Odd beast, very odd."
+                                            },
+                                            {
+                                              "type": "jump",
+                                              "reference": "above",
+                                              "id": "ySHXMq"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Kandarin",
+                                          "steps": [
+                                            {
+                                              "npc": "Our neighbours in the west? Very good, very good."
+                                            },
+                                            {
+                                              "type": "jump",
+                                              "reference": "above",
+                                              "id": "cO-YdP"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Misthalin",
+                                          "steps": [
+                                            {
+                                              "npc": "Ah, the fair land of Lumbridge and Varrock."
+                                            },
+                                            {
+                                              "type": "jump",
+                                              "reference": "above",
+                                              "id": "37g9u0"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Money",
+                                          "steps": [
+                                            {
+                                              "npc": "You wish to represent yourself by a moneybag? I think to make that meaningful I should increase the price to 500,000 coins. Do you agree?"
+                                            },
+                                            {
+                                              "type": "choice",
+                                              "options": [
+                                                {
+                                                  "text": "All right",
+                                                  "steps": [
+                                                    {
+                                                      "player": "All right."
+                                                    },
+                                                    {
+                                                      "type": "condition",
+                                                      "text": "If the player doesn't have enough money:",
+                                                      "steps": [
+                                                        {
+                                                          "player": "But I'll have to go and fetch the money."
+                                                        },
+                                                        {
+                                                          "type": "end"
+                                                        }
+                                                      ],
+                                                      "id": "OIPV81"
+                                                    },
+                                                    {
+                                                      "type": "condition",
+                                                      "text": "If the player has enough money:",
+                                                      "steps": [
+                                                        {
+                                                          "npc": "You wish to represent yourself by a money bag? I think to make that meaningful I should increase the price to 500,000 coins. Do you agree?"
+                                                        },
+                                                        {
+                                                          "type": "choice",
+                                                          "options": [
+                                                            {
+                                                              "text": "All right",
+                                                              "steps": [
+                                                                {
+                                                                  "player": "All right."
+                                                                },
+                                                                {
+                                                                  "npc": "Thank you very much! You may now use a money-bag as your symbol."
+                                                                }
+                                                              ]
+                                                            },
+                                                            {
+                                                              "text": "No way",
+                                                              "steps": [
+                                                                {
+                                                                  "type": "call",
+                                                                  "branch": "s0bYrZ"
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ],
+                                                      "id": "5tDf73"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "text": "No way",
+                                                  "steps": [
+                                                    {
+                                                      "type": "call",
+                                                      "branch": "s0bYrZ"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Saradomin",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player does not have 70 Prayer:",
+                                              "steps": [
+                                                {
+                                                  "type": "call",
+                                                  "branch": "vbxGFH"
+                                                }
+                                              ],
+                                              "id": "rS9uI_"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has 70 Prayer:",
+                                              "steps": [
+                                                {
+                                                  "npc": "Ah, the great god Saradomin! May he smile on your house as you adorn it with his symbol!"
+                                                },
+                                                {
+                                                  "type": "jump",
+                                                  "reference": "above",
+                                                  "id": "hOzKnr"
+                                                }
+                                              ],
+                                              "id": "hXd87x"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Skull",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player does not have a Skull:",
+                                              "steps": [
+                                                {
+                                                  "npc": "A symbol of death? You do not seem like a killer to me; perhaps some other symbol would suit you better."
+                                                },
+                                                {
+                                                  "type": "end"
+                                                }
+                                              ],
+                                              "id": "ihsYOW"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has a Skull:",
+                                              "steps": [
+                                                {
+                                                  "npc": "Of... of course you can have a skull symbol, sir/madam!"
+                                                }
+                                              ],
+                                              "id": "FjSslP"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Varrock",
+                                          "steps": [
+                                            {
+                                              "npc": "Ah, Varrock, a fine city!"
+                                            },
+                                            {
+                                              "type": "jump",
+                                              "reference": "above",
+                                              "id": "qA8ZT4"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Zamorak",
+                                          "steps": [
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player does not have 70 Prayer:",
+                                              "steps": [
+                                                {
+                                                  "type": "call",
+                                                  "branch": "vbxGFH"
+                                                }
+                                              ],
+                                              "id": "DLb4xv"
+                                            },
+                                            {
+                                              "type": "condition",
+                                              "text": "If the player has 70 Prayer:",
+                                              "steps": [
+                                                {
+                                                  "npc": "The god of Chaos? It is a terrible thing to worship that evil being. But if that is what you wish..."
+                                                },
+                                                {
+                                                  "type": "jump",
+                                                  "reference": "above",
+                                                  "id": "-2X-il"
+                                                }
+                                              ],
+                                              "id": "pSHrf2"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "id": "lz_O44"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Thanks!",
+                          "steps": [
+                            {
+                              "player": "Thanks!"
+                            },
+                            {
+                              "npc": "You're welcome, my [boy/girl]."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": "Can I buy a painting?",
+                  "steps": [
+                    {
+                      "player": "Can I buy a painting?"
+                    },
+                    {
+                      "npc": "Would you like a portrait or an, mmm, a landscape? Or a map, maybe?"
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "A portrait",
+                          "steps": [
+                            {
+                              "player": "A portrait please."
+                            },
+                            {
+                              "npc": "Mmm, well, there are a few portraits I can paint. I can only let you have one if you've got some connection with that person though. Who would you like?"
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed Merlin's Crystal and Holy Grail:",
+                              "id": "VJakBs"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "King Arthur",
+                                  "steps": [
+                                    {
+                                      "npc": "That will be, mmm, 1000 coins please."
+                                    },
+                                    {
+                                      "type": "condition",
+                                      "text": "If the player doesn't have enough money:",
+                                      "steps": [
+                                        {
+                                          "player": "I don't have that much money on me."
+                                        },
+                                        {
+                                          "type": "end"
+                                        }
+                                      ],
+                                      "id": "eJifzx"
+                                    },
+                                    {
+                                      "type": "condition",
+                                      "text": "If the player has enough money:",
+                                      "steps": [
+                                        {
+                                          "type": "choice",
+                                          "options": [
+                                            {
+                                              "text": "All right",
+                                              "steps": [
+                                                {
+                                                  "player": "All right."
+                                                },
+                                                {
+                                                  "npc": "There you go."
+                                                },
+                                                {
+                                                  "type": "action",
+                                                  "action": "receive",
+                                                  "text": "their requested portrait.",
+                                                  "id": "Rh0qHh"
+                                                },
+                                                {
+                                                  "type": "end"
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "text": "No thanks",
+                                              "steps": [
+                                                {
+                                                  "player": "No thanks."
+                                                },
+                                                {
+                                                  "npc": "Well, mmm, maybe some other time, mmm?"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "id": "4ffnYZ"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed Plague City:",
+                              "id": "gPapXV"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Elena of Ardougne",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "F6YUdu"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed The Giant Dwarf:",
+                              "id": "X53gg2"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "King Alvis of Keldagrim",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "p0TUzI"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed Throne of Miscellania:",
+                              "id": "-ZYBIi"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "The Prince and Princess of Miscellania",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "BmL1pN"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "text": "A landscape",
+                          "steps": [
+                            {
+                              "player": "A landscape please."
+                            },
+                            {
+                              "npc": "Mmm, well, I can paint a few places. Where have you had your adventures?"
+                            },
+                            {
+                              "type": "choice",
+                              "options": []
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed Cook's Assistant, Rune Mysteries, Sheep Shearer and The Restless Ghost:",
+                              "id": "RgMiER"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "The River Lum",
+                                  "steps": [
+                                    {
+                                      "npc": "That will be, mmm, 2000 coins please."
+                                    },
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "V1zHHI"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed Prince Ali Rescue, Tourist Trap, The Feud, and The Golem:",
+                              "id": "3V7iXY"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "The Kharid desert",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "JxPXZJ"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed Ghosts Ahoy, Shades of Mort'ton, Creature of Fenkenstrain, and Haunted Mine:",
+                              "id": "aaBuUS"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Morytania",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "QD27OE"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed Pirate's Treasure, Shilo Village, and Tai Bwo Wannai Trio:",
+                              "id": "WB5m08"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Karamja",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "XOMdN9"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has completed Roving Elves:",
+                              "id": "Zv9jlI"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Isafdar",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "3sM0xt"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "text": "A map",
+                          "steps": [
+                            {
+                              "player": "A map please."
+                            },
+                            {
+                              "npc": "Mmm, yes, ah, I have painted maps of the known world on several different sizes of parchment.  Which size would you like?"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Small",
+                                  "steps": [
+                                    {
+                                      "npc": "That will be, mmm, 1000 coins please."
+                                    },
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "z9C7bV"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "Medium",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "X-dUBM"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "Large",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "above",
+                                      "id": "WR4cWo"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Nothing, thanks",
+          "steps": [
+            {
+              "player": "Nothing thanks."
+            },
+            {
+              "npc": "Mmm, well, see you some other time maybe."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,470 @@
+{
+  "default": "standard-dialogue-before-the-knight-s-sword",
+  "variants": {
+    "standard-dialogue-before-the-knight-s-sword": [
+      {
+        "player": "What is that cape you're wearing?"
+      },
+      {
+        "npc": "It's a Skillcape of Smithing. It shows that I'm a master blacksmith, but that's only to be expected - after all, my ancestors were the greatest blacksmiths in dwarven history."
+      },
+      {
+        "npc": "If you ever achieve level 99 Smithing you'll be able to wear a cape like this, and receive more experience when smelting gold ore."
+      }
+    ],
+    "standard-dialogue-after-the-knight-s-sword": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you make me another of Sir Vyvin's swords?",
+            "steps": [
+              {
+                "player": "Can you make me another of Sir Vyvin's swords?"
+              },
+              {
+                "npc": "You want that knight's sword again? I suppose you brought me a lovely pie, so I don't mind. I'll need a blurite ore and two iron bars, like before."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a blurite ore and two iron bars:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Thurgo makes you another sword",
+                    "id": "Hjor6B"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Blurite sword",
+                    "id": "Pxwbxo"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Uhwcdt"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the required materials:",
+                "steps": [
+                  {
+                    "player": "Okay, I'll go and find that."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9KLZO4"
+              }
+            ]
+          },
+          {
+            "text": "Would you like a redberry pie?",
+            "steps": [
+              {
+                "player": "Would you like a redberry pie?"
+              },
+              {
+                "type": "message",
+                "text": "You see Thurgo's eyes light up.",
+                "id": "EWOYJR"
+              },
+              {
+                "type": "condition",
+                "text": "Normal dialogue:",
+                "steps": [
+                  {
+                    "npc": "I'd never say no to a redberry pie! We Imcando dwarves love them - they're GREAT!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You hand over the pie. Thurgo eats the pie. Thurgo pats his stomach.",
+                    "id": "-NgeFj"
+                  },
+                  {
+                    "npc": "By Guthix! THAT was good pie! Anyone who makes pie like THAT has got to be alright!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "Te6iSd"
+                  }
+                ],
+                "id": "xdHeYu"
+              },
+              {
+                "type": "condition",
+                "text": "Unknown condition:",
+                "steps": [
+                  {
+                    "npc": "Another? By Guthix, you are generous! I like you!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You watch Thurgo greedily gobble down the pie.",
+                    "id": "i37Hjd"
+                  },
+                  {
+                    "npc": "BUUUUUUUUUUUUUURP Mmmmm... I could eat redberry pies all day!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "YtsiqS"
+              }
+            ]
+          },
+          {
+            "text": "What is that cape you're wearing?",
+            "condition": "If the player does not have 99 Smithing:",
+            "steps": [
+              {
+                "player": "What is that cape you're wearing?"
+              },
+              {
+                "npc": "It's a Skillcape of Smithing. It shows that I'm a master blacksmith, but that's only to be expected - after all, my ancestors were the greatest blacksmiths in dwarven history."
+              },
+              {
+                "npc": "If you ever achieve level 99 Smithing you'll be able to wear a cape like this, and receive more experience when smelting gold ore."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "1_9n1V"
+          },
+          {
+            "text": "Can we talk about skillcapes?",
+            "condition": "If the player has 99 Smithing:",
+            "steps": [
+              {
+                "player": "Can we talk about skillcapes?"
+              },
+              {
+                "npc": "What do you need, human?"
+              },
+              {
+                "player": "Now that I am so skilled at Smithing, can I buy a Skillcape of Smithing from you?"
+              },
+              {
+                "npc": "I reckon so; we master smiths must stick together! I'll give it to you for just 99000 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sorry, that's too much money.",
+                    "steps": [
+                      {
+                        "player": "Sorry, that's too much money."
+                      },
+                      {
+                        "npc": "Too much money? A smith of your calibre should be able to make that amount in an hour!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Of course I'll pay you.",
+                    "steps": [
+                      {
+                        "player": "Of course I'll pay you."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 99,000 coins:",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "MlCvSw"
+                          }
+                        ],
+                        "id": "weSfj5"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                        "steps": [
+                          {
+                            "npc": "All Skillcapes come with a free hood. It's part of a deal: buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "wILgtq"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins and enough inventory space:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a Smithing cape and hood",
+                            "id": "arpFDu"
+                          },
+                          {
+                            "npc": "Excellent! Wear that cape with pride my friend."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "H9EpBb"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "dc8krH"
+          },
+          {
+            "text": "I've met another Imcando dwarf.",
+            "condition": "If the player has talked to Ramarno after completing Below Ice Mountain:",
+            "steps": [
+              {
+                "player": "I've met another Imcando dwarf."
+              },
+              {
+                "npc": "I very much doubt that [player name]. I'm the last Imcando dwarf left in Gielinor."
+              },
+              {
+                "player": "No it's true. I was accidentally helping some grave robbers unearth some treasure below Ice Mountain. Long story short, it turned out to be the ruins of Camdozaal."
+              },
+              {
+                "npc": "Camdozaal?"
+              },
+              {
+                "player": "Yes!"
+              },
+              {
+                "npc": "I don't believe me ears! Tell me what else you know!"
+              },
+              {
+                "player": "Well there's not much left there really. It's just a ruin."
+              },
+              {
+                "player": "But there's a lone Imcando dwarf keeping it alive. His name is Ramarno."
+              },
+              {
+                "npc": "Ramarno..."
+              },
+              {
+                "player": "He's managed to keep the city going all these years, even with his lack of vision."
+              },
+              {
+                "npc": "Thank you for bringing me this news [player name]. I'll need to make some time to see the city with my own eyes."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "F1FA4v"
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "steps": [
+          {
+            "player": "Can you help me make another crowbar?"
+          },
+          {
+            "npc": "I can indeed. We'll need a hammer, a steel bar, and of course, a redberry pie."
+          },
+          {
+            "player": "I don't have all of that I'm afraid..."
+          },
+          {
+            "npc": "Well, come back when you do."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "9wYw5I"
+      }
+    ],
+    "standard-dialogue-using-imcandoria-s-fall-on-thurgo": [
+      {
+        "player": "What do you make of this, Thurgo?"
+      },
+      {
+        "type": "message",
+        "text": "Thurgo quickly reads the book.",
+        "id": "emVvVI"
+      },
+      {
+        "npc": "Hmph, who wrote this text? It seems new."
+      },
+      {
+        "player": "I-"
+      },
+      {
+        "npc": "Nevermind! If you ever plan on going back to this island, I'll happily come along."
+      },
+      {
+        "player": "Oh... Umm... Err..."
+      },
+      {
+        "player": "So you believe it could possibly lead to the ancient ruins of your race?"
+      },
+      {
+        "npc": "I'll believe it when I see it... Now begone, I've got things to do."
+      },
+      {
+        "player": "Alright, Thurgo. I'll see you later."
+      }
+    ],
+    "delivering-a-letter-from-the-wise-old-man": [
+      {
+        "player": "The Wise Old Man says he's got the information you wanted. Here's his message."
+      },
+      {
+        "npc": "Ooh, thanks. I've been hoping he'd send me that information soon, although I wouldn't mind if he'd send me a pie instead!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory upon collecting a reward:",
+        "steps": [
+          {
+            "npc": "I'd give you a reward, but you don't seem to have any space for it. Come back when you do."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "81c13b"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one free space:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player is rewarded with herbs:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Thurgo gives you some banknotes that can be exchanged for herbs.",
+                "id": "CNUFDk"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "an assortment of herbs",
+                "id": "fNxK93"
+              },
+              {
+                "npc": "Some guy died down in the hole just north of my house, and he dropped these herbs. Here, take them."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "sMJZWy"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is rewarded with coins:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Thurgo gives you some coins.",
+                "id": "pxxOZm"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "some coins",
+                "id": "NsTiB7"
+              },
+              {
+                "npc": "Here's some cash for your time."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "FIRppE"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is rewarded with gems:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a gem",
+                "id": "oRJxgB"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Emerald",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Thurgo gives you an Uncut emerald!",
+                        "id": "GSFhCe"
+                      },
+                      {
+                        "npc": "I found this while I was mining. Hope you like it."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "1UYOtV"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is rewarded with seeds:",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "86Blli"
+              }
+            ],
+            "id": "pvc-wy"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is rewarded with runes:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Thurgo gives you some runes.",
+                "id": "hz0A9y"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "an assortment of runes",
+                "id": "ESV6rP"
+              },
+              {
+                "npc": "Magic isn't really my thing. Here, take these."
+              }
+            ],
+            "id": "8KUUwh"
+          }
+        ],
+        "id": "fwQmwJ"
+      }
+    ]
+  }
+}

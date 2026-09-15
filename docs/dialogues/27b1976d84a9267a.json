@@ -1,0 +1,151 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome, you can buy fishing equipment at my store. We'll also give you a good price for any fish that you catch."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Let's see what you've got then.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Harry's Fishing Shop.",
+              "id": "sn-HBf"
+            }
+          ]
+        },
+        {
+          "text": "Can I get a fish for this bowl?",
+          "condition": "If the player has either a fishbowl filled with water or both water and seaweed in their inventory:",
+          "steps": [
+            {
+              "player": "Can I get a fish for this bowl?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a fishbowl filled with only water in their inventory:",
+              "steps": [
+                {
+                  "npc": "Sorry, you need to put some seaweed into the bowl first."
+                },
+                {
+                  "player": "Seaweed?"
+                },
+                {
+                  "npc": "Yes, the fish seem to like it. Come and see me when you have put some in the bowl."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "ZqYwCF"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a fishbowl filled with water and seaweed in their inventory:",
+              "steps": [
+                {
+                  "npc": "Yes you can!"
+                },
+                {
+                  "npc": "I can see that you have a nicely filled fishbowl there to use, and you can catch a fish from my aquarium if you want."
+                },
+                {
+                  "npc": "You will need a special net to do this though, and I sell them for 10 gold."
+                },
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "I'll take it!",
+                      "steps": [
+                        {
+                          "player": "I'll take it!"
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player has 10 coins:",
+                          "steps": [
+                            {
+                              "type": "action",
+                              "action": "receive",
+                              "text": "Tiny net",
+                              "id": "2WT853"
+                            },
+                            {
+                              "npc": "Here you go!"
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ],
+                          "id": "u9Sn0l"
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player doesn't have has 10 coins:",
+                          "steps": [
+                            {
+                              "npc": "Well, I'll be happy to give you the net once you have the cash, but not before!"
+                            }
+                          ],
+                          "id": "d_YeYO"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No thanks, later maybe",
+                      "steps": [
+                        {
+                          "player": "No thanks, later maybe."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "KJz46Z"
+            }
+          ],
+          "id": "lLUaWp"
+        },
+        {
+          "text": "Do you have any fishfood?",
+          "condition": "If the player has either a fishbowl filled with water or both water and seaweed in their inventory:",
+          "steps": [
+            {
+              "player": "Do you have any fishfood?"
+            },
+            {
+              "npc": "Sorry, I'm all out. I used up the last of it feeding the fish in the aquarium."
+            },
+            {
+              "npc": "I have some empty boxes though, they have the ingredients written on the back. I'm sure if you pick up a pestle and mortar you will be able to make your own."
+            },
+            {
+              "type": "action",
+              "action": "receive",
+              "text": "An empty box",
+              "id": "NnWqGe"
+            },
+            {
+              "npc": "Here. I can hardly charge you for an empty box."
+            }
+          ],
+          "id": "77DS40"
+        },
+        {
+          "text": "Sorry, I'm not interested.",
+          "steps": [
+            {
+              "player": "Sorry, I'm not interested."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

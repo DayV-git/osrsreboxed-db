@@ -1,0 +1,104 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "You're under arrest! I've come to lock you up."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, guv, I'll come quietly.",
+            "steps": [
+              {
+                "player": "Okay, guv, I'll come quietly."
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported to the pillory.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "WDnBrz"
+              }
+            ]
+          },
+          {
+            "text": "I'm not coming.",
+            "steps": [
+              {
+                "player": "I'm not coming."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-the-player-chooses-the-i-m-not-coming-option-or-moves-to-a-random-event-free-zone": [
+      {
+        "npc": "Hmmph!"
+      }
+    ],
+    "other-players-pillory-guard": [
+      {
+        "npc": "I'm here to arrest [player name]."
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "Upon spawning in for the player & waiting for a response by the player:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "[player name], you're under arrest!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "I've come to arrest you, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "Come and be locked up, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "npc": "Report to me for punishment, [player name]!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "DR2sVl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not respond in time:",
+        "steps": [
+          {
+            "npc": "Maybe later."
+          }
+        ],
+        "id": "KRuhBe"
+      }
+    ]
+  }
+}

@@ -215,7 +215,7 @@ def test_every_shop_keeps_its_literal_key():
 
 def test_open_shop_targets_are_keys_of_the_shops_dump():
     shops = json.loads((config.DOCS_PATH / dialogues_update.SHOPS).read_text())
-    dialogues = json.loads((config.DOCS_PATH / "npcs-dialogues.json").read_text())
+    dialogues = json.loads((config.DOCS_PATH / "npc-dialogues.json").read_text())
     targets = set()
 
     def walk(node):

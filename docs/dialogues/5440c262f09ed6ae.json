@@ -1,0 +1,207 @@
+{
+  "default": "before-clock-tower",
+  "variants": {
+    "before-clock-tower": [
+      {
+        "player": "Hello monk."
+      },
+      {
+        "npc": "Hello adventurer. My name is Brother Kojo. Do you happen to know the time?"
+      },
+      {
+        "player": "No, sorry, I don't."
+      },
+      {
+        "npc": "Exactly! This clock tower has recently broken down, and without it nobody can tell the correct time. I must fix it before the town people become too angry!"
+      },
+      {
+        "npc": "I don't suppose you could assist me in the repairs? I'll pay you for your help."
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Clock Tower quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "OK old monk, what can I do?"
+              },
+              {
+                "npc": "Oh, thank you kind [sir/madam]! In the cellar below, you'll find four cogs. They're too heavy for me, but you should be able to carry them one at a time."
+              },
+              {
+                "npc": "I know one goes on each floor... but I can't exactly remember which goes where specifically. Oh well, I'm sure you can figure it out fairly easily."
+              },
+              {
+                "player": "Well, I'll do my best."
+              },
+              {
+                "npc": "Thank you again! And remember to be careful, the cellar is full of strange beasts!"
+              }
+            ],
+            "hook": "quest:clock-tower:start",
+            "quest": "Clock Tower"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Not now old monk."
+              },
+              {
+                "npc": "OK then. Come back and let me know if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-clock-tower": [
+      {
+        "player": "Hello again Brother Kojo."
+      },
+      {
+        "npc": "Oh hello there traveller. You've done a grand job with the clock. It's just like new."
+      }
+    ],
+    "with-a-chart-and-sextant-in-the-inventory": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Hello, traveller, how can I help?"
+      },
+      {
+        "player": "I'm trying to learn how to be a navigator."
+      },
+      {
+        "npc": "I don't know if I can help you there."
+      },
+      {
+        "player": "The professor from the Observatory says that I need a watch."
+      },
+      {
+        "npc": "Ah, that I can help you with. I've been tinkering with this new idea of a watch and made a few. The problem is the villagers don't see the point as they have the Clock Tower!"
+      },
+      {
+        "player": "Can I have one?"
+      },
+      {
+        "npc": "You can have this one! It's the display model."
+      },
+      {
+        "type": "message",
+        "text": "Brother Kojo has given you a watch.",
+        "id": "TTCGJG"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Watch",
+        "id": "-2P78v"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Ah! Here you go!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to answer this for me."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "WzMzwL"
+      },
+      {
+        "type": "message",
+        "text": "Brother Kojo has given you a challenge scroll!",
+        "id": "KbgU7V"
+      }
+    ],
+    "treasure-trails-hard-speaking-to-him-again-with-the-challenge-scroll-in-the-inventory": [
+      {
+        "type": "condition",
+        "text": "If the player did not answer the challenge scroll already:",
+        "steps": [
+          {
+            "npc": "Please enter the answer to the question."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "i_SbeL"
+          }
+        ],
+        "id": "RcbZf-"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "How can that be? Go check again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KX3FGZ"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "You really clocked that one!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Brother Kojo has given you another clue scroll!",
+                "id": "byW46G"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll (hard)",
+                "id": "j8RV4H"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "x-hVS3"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "9xB32X"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket (hard)",
+                "id": "BO5Xfr"
+              }
+            ],
+            "id": "47OJAD"
+          }
+        ],
+        "id": "4Y5afd"
+      }
+    ]
+  }
+}

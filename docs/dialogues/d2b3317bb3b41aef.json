@@ -1,0 +1,624 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue": [
+      {
+        "npc": "You look like someone who can handle themselves. Are you intending to partake in the Theatre of Blood?"
+      },
+      {
+        "player": "Maybe?"
+      },
+      {
+        "npc": "You're wondering what's in it for you I suppose. The citizens of Meiyerditch come here looking for freedom, but I can tell you're no citizen."
+      },
+      {
+        "npc": "Don't worry, you're not the first to sneak in. The guards here turn a blind eye to that sort of thing. Outsiders generally perform better in the Theatre, so make for more interesting entertainment."
+      },
+      {
+        "player": "Where are you going with this?"
+      },
+      {
+        "npc": "You're strong enough to survive the Theatre, but you need a reason to try. I have a little proposition for you."
+      },
+      {
+        "player": "Go on..."
+      },
+      {
+        "npc": "The Theatre is owned by Lady Verzik Vitur, a vampyre noble. I represent a party that has certain... interests in Verzik."
+      },
+      {
+        "npc": "Enter the Theatre and beat the challenges within. Doing so would be quite the embarrassment for Verzik, something that my associates would very much appreciate."
+      },
+      {
+        "player": "You want me to embarrass her? I guess that doesn't sound too bad."
+      },
+      {
+        "npc": "Be aware, this will be no easy challenge. While you may well succeed alone, the guards will let you enter in a group of up to five. I suggest you take advantage of this."
+      },
+      {
+        "npc": "You can use the notice board to find suitable allies with whom to enter the Theatre."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Have you any advice to help me?",
+            "steps": [
+              {
+                "player": "Have you any advice to help me?"
+              },
+              {
+                "npc": "Actually, I do. Verzik's magic prevents most forms of teleportation. However, there is a special crystal with the power to overcome this restriction."
+              },
+              {
+                "npc": "I have... acquired some shards of the crystal. Do not ask me how. If you take one into the Theatre, you can use it to teleport to safety in an emergency."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I have some of these crystals?",
+                    "steps": [
+                      {
+                        "player": "Can I have some of these crystals?"
+                      },
+                      {
+                        "npc": "Of course. It will cost you though."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Mysterious Stranger (shop)",
+                        "id": "pwUWom"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What's all this really about?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "YDQkT7"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks for the information.",
+                    "steps": [
+                      {
+                        "type": "missing",
+                        "id": "ap542r"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What's all this really about?",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:A Night at the Theatre",
+                "section": "",
+                "text": "Continues in Transcript:A Night at the Theatre",
+                "id": "UI6gL4",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          },
+          {
+            "text": "Very well. I'll do my best.",
+            "steps": [
+              {
+                "player": "Very well, I'll do my best."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "initial-dialogue-trying-to-enter-the-theatre-before-talking-to-the-mysterious-stranger": [
+      {
+        "npc": "Hey. Over here."
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Any luck in the Theatre?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What am I meant to be doing again?",
+            "steps": [
+              {
+                "player": "What am I meant to be doing again?"
+              },
+              {
+                "npc": "Enter the Theatre and beat the challenges within. Doing so would cause great embarrasment to Verzik, and my associates would very much appreciate it."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "j0y8ya"
+              }
+            ]
+          },
+          {
+            "text": "What's all this really about?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "LS0QZp"
+              }
+            ]
+          },
+          {
+            "text": "Can I get those teleport crystals you mentioned?",
+            "steps": [
+              {
+                "player": "Can I get those teleport crystals you mentioned?"
+              },
+              {
+                "npc": "Of course."
+              },
+              {
+                "type": "action",
+                "text": "(Shop interface opens.)",
+                "action": "open_interface",
+                "action_source": "text",
+                "id": "pS2Uwe"
+              }
+            ]
+          },
+          {
+            "text": "Not yet.",
+            "steps": [
+              {
+                "player": "Not yet."
+              },
+              {
+                "npc": "Return to me when that changes."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subsequent-dialogue-claiming-additional-xp-lamps": [
+      {
+        "npc": "You again. My master is very impressed with your work. On his behalf, allow me to reward you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "one antique lamp",
+        "id": "1tXjB4"
+      }
+    ],
+    "after-a-night-at-the-theatre": [
+      {
+        "type": "condition",
+        "text": "If the player hasn't earned any Sinhaza shrouds:",
+        "steps": [
+          {
+            "npc": "You again. What can I do for you?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "hTvyX7"
+          }
+        ],
+        "id": "FY0RCF"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has earned any Sinhaza shrouds:",
+        "steps": [
+          {
+            "npc": "You again. My master is very impressed with your work. I have something for you, if you desire."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "zl7vj_"
+          }
+        ],
+        "id": "WhwoJ-"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I get those teleport crystals you mentioned?",
+            "steps": [
+              {
+                "player": "Can I get those teleport crystals you mentioned?"
+              },
+              {
+                "npc": "Of course."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Mysterious Stranger (shop)",
+                "id": "7jQW6q"
+              }
+            ]
+          },
+          {
+            "text": "What do you have for me?",
+            "condition": "If the player can claim a Sinhaza shroud:",
+            "steps": [
+              {
+                "player": "What do you have for me?"
+              },
+              {
+                "npc": "You may choose which reward you desire."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Take Sinhaza shroud tier 1.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The Mysterious Stranger hands you a cape.",
+                        "id": "gSf8rO"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Take Sinhaza shroud tier 2.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The Mysterious Stranger hands you a cape.",
+                        "id": "NXbwIR"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Take Sinhaza shroud tier 3.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The Mysterious Stranger hands you a cape.",
+                        "id": "JllTiR"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Take Sinhaza shroud tier 4.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The Mysterious Stranger hands you a cape.",
+                        "id": "r6iRyv"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Take Sinhaza shroud tier 5.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The Mysterious Stranger hands you a cape.",
+                        "id": "D4x-sy"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "-nVpES"
+          },
+          {
+            "text": "Could you show me one of those memories again?",
+            "steps": [
+              {
+                "player": "Could you show me one of those memories again?"
+              },
+              {
+                "npc": "Which memory would you like to see?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "The memory of the Maiden of Sugadinti.",
+                    "steps": [
+                      {
+                        "player": "The memory of the Maiden of Sugadinti."
+                      },
+                      {
+                        "npc": "As you wish."
+                      },
+                      {
+                        "npc": "Prepare yourself!"
+                      },
+                      {
+                        "type": "reference",
+                        "target": "Transcript:A Night at the Theatre",
+                        "section": "",
+                        "text": "A cutscene begins. See Transcript:A Night at the Theatre for the full transcript",
+                        "id": "8OrmAt",
+                        "resolved": false,
+                        "page_available": true
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The memory of the Pestilent Bloat.",
+                    "steps": [
+                      {
+                        "player": "The memory of the Pestilent Bloat."
+                      },
+                      {
+                        "npc": "As you wish."
+                      },
+                      {
+                        "npc": "Prepare yourself!"
+                      },
+                      {
+                        "type": "reference",
+                        "target": "Transcript:A Night at the Theatre",
+                        "section": "",
+                        "text": "A cutscene begins. See Transcript:A Night at the Theatre for the full transcript",
+                        "id": "foybvX",
+                        "resolved": false,
+                        "page_available": true
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The memory of the Nylocas Vasilias.",
+                    "steps": [
+                      {
+                        "player": "The memory of the Nylocas Vasilias."
+                      },
+                      {
+                        "npc": "As you wish."
+                      },
+                      {
+                        "npc": "Prepare yourself!"
+                      },
+                      {
+                        "type": "reference",
+                        "target": "Transcript:A Night at the Theatre",
+                        "section": "",
+                        "text": "A cutscene begins. See Transcript:A Night at the Theatre for the full transcript",
+                        "id": "IrpTqm",
+                        "resolved": false,
+                        "page_available": true
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The memory of Sotetseg.",
+                    "steps": [
+                      {
+                        "player": "The memory of Sotetseg."
+                      },
+                      {
+                        "npc": "As you wish."
+                      },
+                      {
+                        "npc": "Prepare yourself!"
+                      },
+                      {
+                        "type": "reference",
+                        "target": "Transcript:A Night at the Theatre",
+                        "section": "",
+                        "text": "A cutscene begins. See Transcript:A Night at the Theatre for the full transcript",
+                        "id": "0md_3I",
+                        "resolved": false,
+                        "page_available": true
+                      }
+                    ]
+                  },
+                  {
+                    "text": "More options...",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "The memory of Xarpus.",
+                            "steps": [
+                              {
+                                "player": "The memory of Xarpus."
+                              },
+                              {
+                                "npc": "As you wish."
+                              },
+                              {
+                                "npc": "Prepare yourself!"
+                              },
+                              {
+                                "type": "reference",
+                                "target": "Transcript:A Night at the Theatre",
+                                "section": "",
+                                "text": "A cutscene begins. See Transcript:A Night at the Theatre for the full transcript",
+                                "id": "2sS6av",
+                                "resolved": false,
+                                "page_available": true
+                              }
+                            ]
+                          },
+                          {
+                            "text": "The memory of the Nylocas Queen.",
+                            "steps": [
+                              {
+                                "player": "The memory of the Nylocas Queen."
+                              },
+                              {
+                                "npc": "As you wish."
+                              },
+                              {
+                                "npc": "Prepare yourself!"
+                              },
+                              {
+                                "type": "reference",
+                                "target": "Transcript:A Night at the Theatre",
+                                "section": "",
+                                "text": "A cutscene begins. See Transcript:A Night at the Theatre for the full transcript",
+                                "id": "hbnCHI",
+                                "resolved": false,
+                                "page_available": true
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Actually, I've changed my mind.",
+                            "steps": [
+                              {
+                                "player": "Actually, I've changed my mind."
+                              },
+                              {
+                                "npc": "Very well.'"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Previous options...",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "35-a1c"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "player": "Nothing, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-the-blood-moon-rises": [
+      {
+        "type": "condition",
+        "text": "If the player hasn't earned any Sinhaza shrouds:",
+        "steps": [
+          {
+            "npc": "Greetings, friend. What can I do for you?"
+          }
+        ],
+        "id": "DsCAXL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has earned any Sinhaza shrouds:",
+        "steps": [
+          {
+            "npc": "Greetings, friend. I have something for you, if you desire."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "IK5mvH"
+          }
+        ],
+        "id": "3ea7nd"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could I have some teleport crystals?",
+            "steps": [
+              {
+                "player": "Could I have some teleport crystals?"
+              },
+              {
+                "npc": "Of course."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Mysterious Stranger (shop)",
+                "id": "QlB8-7"
+              }
+            ]
+          },
+          {
+            "text": "What do you have for me? (if the player hasn't earned any Sinhaza shrouds)",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "75bw6n"
+              }
+            ]
+          },
+          {
+            "text": "Could you show me a memory?",
+            "steps": [
+              {
+                "player": "Could you show me a memory?"
+              },
+              {
+                "npc": "Which memory would you like to see?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "BmUVsJ"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "before-theatre-release": [
+      {
+        "npc": "You should be careful around here friend. If I can tell you don't belong here, they probably can as well."
+      }
+    ]
+  }
+}

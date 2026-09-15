@@ -1,0 +1,177 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-talking-to-the-snake-charmer": [
+      {
+        "player": "Wow, a snake charmer! Can I have a go? Can I have a go? Please?"
+      },
+      {
+        "type": "message",
+        "text": "The snake charmer is focusing intently on his music and doesn't seem to notice you.",
+        "id": "gIPxjQ"
+      }
+    ],
+    "standard-dialogue-using-a-coin-on-the-money-pot": [
+      {
+        "type": "message",
+        "text": "The snake charmer snaps out of his trance and directs his full attention to you.",
+        "id": "Pg3lMf"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Wow, a snake charmer! Can I have a go? Can I have a go? Please?",
+            "steps": [
+              {
+                "player": "Wow, a snake charmer! Can I have a go? Can I have a go? Please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough space in the inventory:",
+                "steps": [
+                  {
+                    "npc": "If it means that you'll leave me alone, I will happily give you my snake charming super starter kit, complete with flute and basket. But you're clearly over burdened as it is."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "R-ZW5K"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already owns a flute:",
+                "steps": [
+                  {
+                    "npc": "Ah, I see you've lost your basket. Here you are, now leave me alone! You're ruining the show."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a snake basket",
+                    "id": "Y3IL4b"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "nJAtvc"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already owns a basket:",
+                "steps": [
+                  {
+                    "npc": "Ah, I see you've lost your snake charming flute. Here you go, now leave me alone! You're distracting my punters... er, I mean, crowd."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a snake flute",
+                    "id": "YJYlWt"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "8yZQDi"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not own either:",
+                "steps": [
+                  {
+                    "npc": "If you're that desperate to try, have my patented snake charming starter kit. It comes with a special snake charming flute and a basket to keep your charmed snakes in. Now, leave me alone!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The snake charmer gives you a snake charming flute and a basket.",
+                    "id": "u7V4Pe"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a snake flute and snake basket",
+                    "id": "wXgto_"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "18_JZ8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already owns both the flute and basket:",
+                "steps": [
+                  {
+                    "npc": "I'm not stopping you! You have your own snake charming flute."
+                  }
+                ],
+                "id": "bQculI"
+              }
+            ]
+          },
+          {
+            "text": "I want to talk to you about animal charming.",
+            "condition": "Ratcatchers dialogue:",
+            "steps": [
+              {
+                "player": "I want to talk to you about animal charming."
+              },
+              {
+                "type": "condition",
+                "text": "If the player no longer owns a music scroll:",
+                "steps": [
+                  {
+                    "player": "I've lost some of the gear you gave me."
+                  },
+                  {
+                    "npc": "What do you need?"
+                  },
+                  {
+                    "player": "I've lost the music."
+                  },
+                  {
+                    "npc": "There you go. Now if you don't mind I'm busy trying to charm this here snake."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a music scroll",
+                    "id": "RUEg7H"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WbGJHc"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already owns a music scroll:",
+                "steps": [
+                  {
+                    "player": "Hello."
+                  },
+                  {
+                    "npc": "Yes?"
+                  },
+                  {
+                    "player": "Can you teach me any more about animal charming."
+                  },
+                  {
+                    "npc": "No, I doubt it. I believe your talents lie in other areas."
+                  }
+                ],
+                "id": "v8GKhp"
+              }
+            ],
+            "id": "oxqYKk"
+          }
+        ]
+      }
+    ]
+  }
+}

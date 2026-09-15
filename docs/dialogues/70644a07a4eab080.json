@@ -1,0 +1,596 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Git back ter work, ye young varmint! There's treasure in them walls, and it's not gonna mine itself while ye stand here yappin'."
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "How do I mine here?",
+            "steps": [
+              {
+                "player": "How do I mine here?"
+              },
+              {
+                "npc": "Git ahold of yer pickaxe, find a vein of ore, and set to work. If ye got a bit of skill, ye'll have a pocket o' pay- dirt in no time."
+              },
+              {
+                "npc": "I've built me a contraption to wash the pay-dirt. Just drop yer pay-dirt in the hopper, an' wait fer it at the other end."
+              },
+              {
+                "npc": "I won't charge ye fer usin' my contraption, but ye'd better fix it yerself when it breaks. A good whack with a hammer usually settles it."
+              },
+              {
+                "npc": "Now will ye be gettin' to work now, or are ye gonna keep yappin' like a doggone galoot?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "R4aVEU"
+              }
+            ]
+          },
+          {
+            "text": "Would you like to trade?",
+            "steps": [
+              {
+                "player": "Would you like to trade?"
+              },
+              {
+                "npc": "If ye've found yerself some golden nuggets in this 'ere mine, I'll do you a swap, yeah."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Prospector Percy's Nugget Shop",
+                "id": "PemEvQ"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "npc": "Why, I'm Percy. Prospector Percy, the roughest, toughest, gruffest miner in the land. I've been pannin' fer gold since I were a young-un, and here's where I've struck it lucky."
+              },
+              {
+                "type": "choice",
+                "prompt": "What would you like to say?",
+                "options": [
+                  {
+                    "text": "Excuse me, but what language are you speaking?",
+                    "steps": [
+                      {
+                        "player": "Excuse me, but what language are you speaking?"
+                      },
+                      {
+                        "npc": "Don't ye give me any of yer lip, ye dern varmint! Young'uns these days got no respect."
+                      },
+                      {
+                        "player": "Do go on."
+                      },
+                      {
+                        "npc": "This here's the richest seam of ore I've found in all my days. After I built a contraption for washing the pay- dirt, the dwarves let me run things down here."
+                      },
+                      {
+                        "npc": "Now, have ye any more idjit questions, or are ye ready to do some real work?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "0By_wn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You discovered this mine?",
+                    "steps": [
+                      {
+                        "player": "You discovered this mine?"
+                      },
+                      {
+                        "npc": "This here's the richest seam of ore I've found in all my days. After I built a contraption for washing the pay- dirt, the dwarves let me run things down here."
+                      },
+                      {
+                        "npc": "Now, have ye any more idjit questions, or are ye ready to do some real work?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "N8SAn-"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Is there anything else I can unlock here?",
+            "steps": [
+              {
+                "player": "Is there anything else I can unlock here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has none of the three upgrades unlocked:",
+                "steps": [
+                  {
+                    "npc": "Let me have a think..."
+                  },
+                  {
+                    "npc": "If ye've got level 57 Mining, ye could pay to use my restricted mine, up the ladder. 100 nuggets gives unlimited access."
+                  },
+                  {
+                    "npc": "How would ye like it if the sack were bigger? I'll let ye have more ore in there if ye pays me 200 nuggets."
+                  },
+                  {
+                    "npc": "I can give ye access to a special hopper in the restricted mine for 50 nuggets, but you'll need access to the restricted mine first."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Restricted mine access: 100 nuggets",
+                        "steps": [
+                          {
+                            "player": "I'd like to buy access to the restricted mine, please."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has 100 nuggets and is at least level 54 Mining:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You pay Percy 100 nuggets.",
+                                "id": "oc01u6"
+                              },
+                              {
+                                "npc": "Right, ye can go up there whenever ye likes. Just behave yerself, or my Ma will tan yer hide."
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "gDIrfC"
+                              }
+                            ],
+                            "id": "NWLyzF"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player is not at least level 57 Mining:",
+                            "steps": [
+                              {
+                                "npc": "Ye'll need level 57 Mining first. An' don't think ye can fool me with yer potions and fancy stat-boosts. Get yer level up for real."
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "zZbpUq"
+                              }
+                            ],
+                            "id": "2QIYv4"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have 100 nuggets:",
+                            "steps": [
+                              {
+                                "npc": "That'll be 100 nuggets. If ye ain't got enough, ye'd better do some more mining - that's how ye gets stuff round here!"
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "A63syc"
+                              }
+                            ],
+                            "id": "tIxEMT"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Bigger sack: 200 nuggets",
+                        "steps": [
+                          {
+                            "player": "I'd like to get the bigger sack, please."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has 200 nuggets:",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "ckYf8E"
+                              }
+                            ],
+                            "id": "3KwYrB"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have 200 nuggets:",
+                            "steps": [
+                              {
+                                "npc": "That'll be 200 nuggets. If ye ain't got enough, ye'd better do some more mining - that's how ye gets stuff round here!"
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "1BW_xO"
+                              }
+                            ],
+                            "id": "9S11oi"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "NaxSH8"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zvLeYG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has only the upper level unlocked:",
+                "steps": [
+                  {
+                    "npc": "Ye can already climb the ladder to the restricted mine. But how would ye like it if the sack were bigger? I'll let ye have more ore in there if ye pays me 200 nuggets."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Bigger sack: 200 nuggets",
+                        "steps": [
+                          {
+                            "player": "I'd like to get the bigger sack, please."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has 200 nuggets:",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "dsGxMP"
+                              }
+                            ],
+                            "id": "pL1CUD"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have 200 nuggets:",
+                            "steps": [
+                              {
+                                "npc": "That'll be 200 nuggets. If ye ain't got enough, ye'd better do some more mining - that's how ye gets stuff round here!"
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "Tlo77k"
+                              }
+                            ],
+                            "id": "YE6ElR"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "-dxcuQ"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "jgc8hZ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has only the bigger sack unlocked:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "5cZ0Yl"
+                  }
+                ],
+                "id": "TfuNDw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has both the upper level and bigger sack unlocked without the super hopper unlocked:",
+                "steps": [
+                  {
+                    "npc": "I can give ye access to a special hopper in the restricted mine for 50 nuggets, it connects to the hopper down here."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Restricted hopper: 50 nuggets",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player has 50 nuggets:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You pay Percy 50 nuggets.",
+                                "id": "gj_wc0"
+                              },
+                              {
+                                "npc": "Ye can now use that fancy new hopper in the restricted mine."
+                              },
+                              {
+                                "npc": "Well, now, I think ye've got everything already. Ye can already go climb the ladder to the restricted mine, ye've got the bigger sack capacity too and ye have access to that restricted hopper."
+                              }
+                            ],
+                            "id": "jn4mlQ"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have 50 nuggets:",
+                            "steps": [
+                              {
+                                "npc": "That'll be 50 nuggets. If ye ain't got enough, ye'd better do some more mining - that's how ye gets stuff round here!"
+                              },
+                              {
+                                "player": "Is there anything else I can unlock here?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "SUS28_"
+                              }
+                            ],
+                            "id": "FZDMV9"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "Plujds"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "PcP0Ov"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1hHwkR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the upper level, bigger sack, and super hopper unlocked:",
+                "steps": [
+                  {
+                    "npc": "Well, now, I think ye've got everything already. Ye can already go climb the ladder to the restricted mine, ye've got the bigger sack capacity too and ye have access to that restricted hopper."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "lOhXgR"
+                  }
+                ],
+                "id": "U2QZ5p"
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you alone.",
+            "steps": [
+              {
+                "player": "I'll leave you alone."
+              },
+              {
+                "npc": "Dern straight ye will."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "entering-eastern-dark-tunnel-without-diary-completion": [
+      {
+        "npc": "Oi, git yerself out of that hole! It's not safe in there."
+      },
+      {
+        "type": "message",
+        "text": "You must complete the Medium Tier tasks from the Falador Achievement Diary before Percy will let you use that tunnel.",
+        "id": "l026zH"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Ah! Here you go!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to answer this for me."
+      },
+      {
+        "type": "message",
+        "text": "Percy has given you a challenge scroll!",
+        "id": "JbieN9"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "O-ONrm"
+      }
+    ],
+    "treasure-trails-hard-when-spoken-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "How can that be? Go check again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "q3WaVl"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Spot on!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Percy has given you another clue scroll!",
+                "id": "Oy0XHt"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll (hard)",
+                "id": "ENab4x"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "sbZurf"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "x2JkyF"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket (hard)",
+                "id": "FbhWet"
+              }
+            ],
+            "id": "Wp98y2"
+          }
+        ],
+        "id": "skcBwY"
+      }
+    ],
+    "overhead-dialogue-when-one-waterwheel-is-broken": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "We got us a jammed wheel!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Ye'd better fix that wheel!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Git yer hammer an' fix that wheel!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-when-both-waterwheels-are-broken": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "That water ain't flowing!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Both them wheels be jammed!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Git yer hammer an' fix them wheels!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

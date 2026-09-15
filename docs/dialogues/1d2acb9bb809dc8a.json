@@ -1,0 +1,194 @@
+{
+  "default": "before-making-history-or-after-the-enchanted-key",
+  "variants": {
+    "before-making-history-or-after-the-enchanted-key": [
+      {
+        "npc": "Silver! Silver! Best prices for buying and selling in all Kandarin!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Ardougne Silver Stall.",
+                "id": "XHvPMh"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-making-history": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Hello, I hope Jorral was pleased with that Journal."
+      },
+      {
+        "player": "I'm sure it's been a valuable find."
+      },
+      {
+        "type": "condition",
+        "text": "If the player no longer has an Enchanted key:",
+        "steps": [
+          {
+            "player": "What I came to ask was: I lost that key you gave me."
+          },
+          {
+            "npc": "Oh dear, luckily I found it, but it'll cost you 500gp as I know it's valuable."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes please.",
+                "steps": [
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player doesn't have enough money:",
+                    "steps": [
+                      {
+                        "npc": "You don't have enough money, sorry."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "PaZHfR"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player doesn't have enough inventory space:",
+                    "steps": [
+                      {
+                        "npc": "You don't have the space to carry it! Empty some space in your inventory."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "PkuYso"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has inventory space and enough money:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "give",
+                        "text": "500 coins",
+                        "id": "57gscX"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "Enchanted key",
+                        "id": "uDpunX"
+                      },
+                      {
+                        "npc": "Thank you, enjoy!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "q4Kcl6"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "q_Kz9y"
+      },
+      {
+        "type": "condition",
+        "text": "If the player still has an Enchanted key on a steel key ring:",
+        "steps": [
+          {
+            "npc": "You know you can use that enchanted key you have on your keyring all over Gielinor. Who knows what you might find?"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "07rNIp"
+      },
+      {
+        "type": "condition",
+        "text": "If the player still has an Enchanted key in the bank:",
+        "steps": [
+          {
+            "npc": "You know you can use that enchanted key you've got stored? You can use it all over Gielinor. Who knows what you might find?"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "hiIg7x"
+      },
+      {
+        "type": "condition",
+        "text": "If the player still has an Enchanted key in the inventory:",
+        "steps": [
+          {
+            "npc": "You know you can use that enchanted key you have all over Gielinor. Who knows what you might find?"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "9kVLlg"
+      },
+      {
+        "type": "condition",
+        "text": "After completing The Enchanted Key miniquest and the Enchanted key dissolving:",
+        "steps": [
+          {
+            "player": "Oh, You know that key you gave me?"
+          },
+          {
+            "npc": "Yes?"
+          },
+          {
+            "player": "It dissolved!"
+          },
+          {
+            "npc": "Really? I suppose it served its purpose."
+          }
+        ],
+        "id": "APjFg8"
+      }
+    ]
+  }
+}

@@ -1,0 +1,475 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-port-phasmatys-before-unlocking-permanent-access": [
+      {
+        "npc": "Hello there. Want to travel to Slepe? I charge 10,000 coins for the journey."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 10,000 coins:",
+                "steps": [
+                  {
+                    "npc": "Doesn't look like you have enough money. I charge 10,000 coins for the journey."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WeN-ol"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 10,000 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Player gives Andras 10,000 coins.",
+                    "id": "oKRC_P"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Andras transports the player to Slepe.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "DBbfR9"
+                  }
+                ],
+                "id": "1MJLzm"
+              }
+            ]
+          },
+          {
+            "text": "Where's Slepe?",
+            "steps": [
+              {
+                "player": "Where's Slepe?"
+              },
+              {
+                "npc": "It's a small village to the south of here. You can walk but the boat is safer and faster."
+              },
+              {
+                "player": "Is there anything to do there?"
+              },
+              {
+                "npc": "I guess that depends what interests you. The place is pretty quiet, though there's been rumours recently of a great evil making its home beneath the village."
+              },
+              {
+                "npc": "There's also Ver Sinhaza to the south, home to the Theatre of Blood. It's definitely worth having a look around, even if you don't intend to participate yourself."
+              },
+              {
+                "npc": "So, do you want to go to Slepe?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "e4VvAa"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thank you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "T3pdPT"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Why is it so expensive?",
+            "steps": [
+              {
+                "player": "Why is it so expensive?"
+              },
+              {
+                "npc": "Not many people want to visit this part of the world so I have to keep the price high. If I didn't I wouldn't be able to keep my boat maintained."
+              },
+              {
+                "npc": "So, do you want to go to Slepe?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "Keve6E"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thank you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "subtco"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll give you 1,000,000 coins for permanent access.",
+            "condition": "If the player has not paid Andras 1,000,000 coins for permanent access:",
+            "steps": [
+              {
+                "player": "I'll give you 1,000,000 coins for permanent access."
+              },
+              {
+                "npc": "1,000,000 coins! Are you serious?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 1,000,000 coins:",
+                "steps": [
+                  {
+                    "player": "No. I don't have that sort of money."
+                  },
+                  {
+                    "npc": "Oh, I see. So, do you want to go to Slepe?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "Hqt5hM"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thank you.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "_sZLq8"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "vUIWny"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does has at least 1,000,000 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes. Here's 1,000,000 coins.",
+                        "steps": [
+                          {
+                            "player": "Yes. Here's 1,000,000 coins."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Player gives Andras 1,000,000 coins.",
+                            "id": "MZwzba"
+                          },
+                          {
+                            "type": "message",
+                            "text": "You pay Andras 1,000,000 coins for for permanent access to his boat.",
+                            "id": "B-sMVT"
+                          },
+                          {
+                            "npc": "Thank you so much. Now, do you want to go to Slepe?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "FpgmzH"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thank you.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "iqMoYq"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No. That's too much for me to spend.",
+                        "steps": [
+                          {
+                            "player": "No. That's too much for me to spend."
+                          },
+                          {
+                            "npc": "Oh, I see. So, do you want to go to Slepe?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "B9Pomr"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thank you.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "TkHr67"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "a4SwVQ"
+              }
+            ],
+            "id": "blnaDj"
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-port-phasmatys-after-unlocking-permanent-access": [
+      {
+        "npc": "Hello there. Want to travel to Slepe?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "text": "Andras transports the player to Slepe.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "h-MPdz"
+              }
+            ]
+          },
+          {
+            "text": "Where's Slepe?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "xe-dlN"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "SkwQNY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-slepe": [
+      {
+        "npc": "Hello there. Want to return to Port Phasmatys?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "text": "Andras transports the player to Port Phasmatys.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "PPY6Ao"
+              }
+            ]
+          },
+          {
+            "text": "Is there anything to do around here?",
+            "steps": [
+              {
+                "player": "Is there anything to do around here?"
+              },
+              {
+                "npc": "Well you have Slepe just north of here. It's mostly a quiet place, though there's been rumours recently of a great evil making its home beneath the village."
+              },
+              {
+                "npc": "There's also Ver Sinhaza. You can find it south of here. There's a gap in the northern wall that you can get through."
+              },
+              {
+                "player": "What's Ver Sinhaza?"
+              },
+              {
+                "npc": "It's a large vampyric castle, home to the Theatre of Blood. The vampyres claim that the Theatre is one of the greatest combat challenges around. Definitely worth a look even if you don't want to participate."
+              },
+              {
+                "npc": "Anyway, did you want to return to Port Phasmatys?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "O1uQsP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thank you.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "qAJ2Iw"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-travel-option-or-using-the-boat-to-travel-port-phasmatys": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have at least 10,000 coins:",
+        "steps": [
+          {
+            "npc": "Doesn't look like you have enough money. I charge 10,000 coins for the journey."
+          }
+        ],
+        "id": "dnkjPy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have at least 10,000 coins:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "Player gives Andras 10,000 coins.",
+            "id": "5vpObV"
+          },
+          {
+            "type": "action",
+            "text": "Andras transports the player to Slepe.",
+            "action": "teleport",
+            "action_source": "text",
+            "id": "0OaWCl"
+          }
+        ],
+        "id": "AtOdta"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has paid for permanent access:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "Andras transports the player to Slepe.",
+            "action": "teleport",
+            "action_source": "text",
+            "id": "cs_zPd"
+          }
+        ],
+        "id": "DS_9wK"
+      }
+    ],
+    "right-click-travel-option-or-using-the-boat-to-travel-slepe": [
+      {
+        "type": "action",
+        "text": "Andras transports the player to Port Phasmatys.",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "_mMPtk"
+      }
+    ]
+  }
+}

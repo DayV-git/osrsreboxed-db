@@ -1,0 +1,124 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-mining-guild-entrances": [
+      {
+        "npc": "Welcome to the Mining Guild. Can I help you with anything?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What have you got in the Guild?",
+            "steps": [
+              {
+                "player": "What have you got in the guild?"
+              },
+              {
+                "npc": "All sorts of things! There's plenty of coal rocks along with some iron, mithril and adamantite as well."
+              },
+              {
+                "npc": "Deeper in the guild you'll find even more rocks including some runite! The best bit though is our amethyst mine, the only one in the land!"
+              },
+              {
+                "npc": "There's no better mining site anywhere!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "SCzEsy"
+              }
+            ]
+          },
+          {
+            "text": "What do you dwarves do with the ore you mine?",
+            "steps": [
+              {
+                "player": "What do you dwarves do with the ore you mind?"
+              },
+              {
+                "npc": "What do you think? We smelt it into bars, smith the metal to make armour and weapons, then we exchange them for goods and services."
+              },
+              {
+                "player": "I don't see many dwarves selling armour or weapons here."
+              },
+              {
+                "npc": "No, this is only a mining outpost. We dwarves don't much like to settle in human cities. Most of the ore is carted off to Keldagrim, the great dwarven city. They've got a special blast furnace up there - it makes"
+              },
+              {
+                "npc": "smelting the ore so much easier. There are plenty of dwarven traders working in Keldagrim. Anyway, can I help you with anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "JVQ8HD"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'm fine.",
+            "steps": [
+              {
+                "player": "No thanks, I'm fine."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-mining-guild-entrances-attempting-enter-the-mining-guild-without-60-mining": [
+      {
+        "npc": "Sorry, but you're not experienced enough to go in there."
+      },
+      {
+        "type": "message",
+        "text": "You need a Mining level of 60 to access the Mining Guild.",
+        "id": "OgHi8I"
+      }
+    ],
+    "standard-dialogue-inside-the-mining-guild": [
+      {
+        "player": "What's through this door?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a free-to-play world:",
+        "steps": [
+          {
+            "npc": "Nothing that you're allowed to see I'm afraid."
+          },
+          {
+            "type": "end",
+            "reason": "members"
+          }
+        ],
+        "id": "W7gzZ3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a members' world:",
+        "steps": [
+          {
+            "npc": "This leads deeper into the guild.  Through here you'll find even more rocks including runite and amethyst!"
+          },
+          {
+            "player": "Can I go in?"
+          },
+          {
+            "npc": "Of course. Go right ahead."
+          }
+        ],
+        "id": "XVwn3O"
+      }
+    ],
+    "standard-dialogue-inside-the-mining-guild-attempting-to-go-into-the-members-area-of-the-guild-on-a-free-to-play-world": [
+      {
+        "npc": "Sorry, but you're not allowed in there."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ]
+  }
+}

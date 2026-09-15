@@ -1,0 +1,79 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-if-the-player-hasn-t-completed-the-elite-karamja-diary": [
+      {
+        "npc": "I am offering a cart ride to Brimhaven, if you're interested. It will cost [amount] coins. Is that okay?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please, I'd like to go to Brimhaven.",
+            "steps": [
+              {
+                "player": "Yes please, I'd like to go to Brimhaven."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hop into the cart and the driver urges the horses on. You take a taxing journey through the jungle to Brimhaven. You feel tired from the journey, but at least you didn't have to walk all that distance.",
+                    "id": "Wm9q59"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Eccr96"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough coins:",
+                "steps": [
+                  {
+                    "npc": "Sorry, but it looks as if you don't have enough money. Come and see me when you have enough for the ride."
+                  }
+                ],
+                "id": "95Fos0"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Okay, Bwana, let me know if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-has-completed-the-elite-karamja-diary": [
+      {
+        "npc": "I am offering a cart ride to Brimhaven, if you're interested. For you, it's free."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "LtP-rD"
+      }
+    ],
+    "talking-to-vigroy-before-completing-shilo-village": [
+      {
+        "type": "line",
+        "speaker": "Note",
+        "text": "This is not typically possible, because accessing Vigroy requires completion of Shilo Village."
+      },
+      {
+        "npc": "Sorry, I'm busy. I've got to get out of here! This place is swarming with zombies."
+      }
+    ]
+  }
+}

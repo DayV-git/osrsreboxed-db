@@ -1,0 +1,228 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings, human... can I interest you in some fine gems?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Show me the wares!",
+            "steps": [
+              {
+                "player": "Show me the wares!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Green Gemstone Gems",
+                "id": "AX5SRK"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-getting-an-item-request": [
+      {
+        "npc": "Hello! I've got a little quest for you, are you interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I love quests!",
+            "steps": [
+              {
+                "player": "Yes, I love quests!"
+              },
+              {
+                "npc": "That's the spirit! Now, what I need is [X] [item]. And I need them within [X]] minutes as well."
+              },
+              {
+                "player": "Not much of a quest, but I'll do it. Just [X] [item] in [X] minutes."
+              }
+            ]
+          },
+          {
+            "text": "No, quests are dull and boring.",
+            "steps": [
+              {
+                "player": "No, quests are dull and boring."
+              },
+              {
+                "npc": "Don't be so dismissive, you didn't even hear what I wanted to ask you!"
+              },
+              {
+                "player": "I don't want to! I just want to kill things!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-talking-to-him-before-acquiring-the-item-request": [
+      {
+        "npc": "Are my [X] [item] arriving anytime soon?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Not anytime soon. Or at all.",
+            "steps": [
+              {
+                "player": "Not anytime soon. Or at all. I've given up on looking for them."
+              },
+              {
+                "npc": "Couldn't you decide that in advance? You're certainly lacking in manners!"
+              }
+            ]
+          },
+          {
+            "text": "Soon, yes, I hope so.",
+            "steps": [
+              {
+                "player": "Soon, yes, I hope so."
+              },
+              {
+                "npc": "Good, soon can't be soon enough for me!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-talking-to-him-after-failing-to-bring-the-request-in-time": [
+      {
+        "npc": "Time's up! And I don't have my [X] [item]!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the items:",
+        "steps": [
+          {
+            "player": "You're right, I'm sorry."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "xg4beT"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the items:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "2fc7_r"
+          }
+        ],
+        "id": "MFJVN8"
+      }
+    ],
+    "keldagrim-tasks-handing-in-the-item-request": [
+      {
+        "player": "Good news, I got you [X] [item]!"
+      },
+      {
+        "npc": "And not a minute too late! Great!"
+      },
+      {
+        "type": "condition",
+        "text": "Ore item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you prefer me to teach you a bit about how you can mine more efficiently?"
+          }
+        ],
+        "id": "tqyubd"
+      },
+      {
+        "type": "condition",
+        "text": "Bar item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you like me to show you some smithing tricks?"
+          }
+        ],
+        "id": "GlXb6E"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like the gold.",
+            "steps": [
+              {
+                "player": "I'd like the gold."
+              }
+            ]
+          },
+          {
+            "text": "Please teach me that.",
+            "steps": [
+              {
+                "player": "Please teach me that."
+              },
+              {
+                "type": "message",
+                "text": "You feel more experienced.",
+                "id": "qOiogy"
+              }
+            ]
+          },
+          {
+            "text": "Show me the gold!",
+            "condition": "Alternative to the other gold option:",
+            "steps": [
+              {
+                "player": "Show me the gold!"
+              }
+            ],
+            "id": "x3JGMN"
+          },
+          {
+            "text": "Enlighten me.",
+            "condition": "Alternative to the other xp option:",
+            "steps": [
+              {
+                "player": "Enlighten me."
+              },
+              {
+                "type": "message",
+                "text": "You feel more experienced.",
+                "id": "WVO8iK"
+              }
+            ],
+            "id": "ZkJ3E2"
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-catching-the-player-trying-to-steal-from-his-gem-stall": [
+      {
+        "npc": "Hands off those gems!"
+      }
+    ],
+    "overhead-dialogue-interacting-with-him-after-stealing-from-his-gem-stall-recently": [
+      {
+        "npc": "You're the thief! Stop!"
+      },
+      {
+        "npc": "Guards, get this filthy human!"
+      }
+    ]
+  }
+}

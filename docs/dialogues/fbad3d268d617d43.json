@@ -1,0 +1,160 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Good day. What are you up to?"
+      },
+      {
+        "npc": "My job is to ensure that everyone can use the bank safely. Shifty types always hang around banks, you know."
+      },
+      {
+        "npc": "You're not shifty, are you?"
+      },
+      {
+        "player": "No, of course not."
+      },
+      {
+        "npc": "Jolly good. Carry on then."
+      }
+    ],
+    "gnome-restaurant": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "xNO5px"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "n5NZl7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "VAWe4B"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YZxrjE"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Guard Vemmeldo",
+            "id": "qMA4zi"
+          },
+          {
+            "npc": "Thank you. Be vigilant."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "mvnAjU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "Ky5JBG"
+                  }
+                ],
+                "id": "h2tliE"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "j5jFh8"
+              }
+            ],
+            "id": "FpcSdH"
+          }
+        ],
+        "id": "ohWUli"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "vqM15k"
+          }
+        ],
+        "id": "QkEKqP"
+      }
+    ],
+    "treasure-trails-elite": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "DpTIfG"
+      },
+      {
+        "npc": "Please help me with this!"
+      }
+    ],
+    "treasure-trails-elite-after-answering-correctly": [
+      {
+        "npc": "Well done!",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the reward is another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've been given a new clue!",
+                "id": "4NUh_N"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "O_XFgw"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "XE083J"
+              }
+            ],
+            "id": "-fJO1_"
+          }
+        ]
+      }
+    ]
+  }
+}

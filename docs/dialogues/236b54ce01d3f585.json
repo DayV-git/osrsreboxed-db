@@ -1,0 +1,368 @@
+{
+  "default": null,
+  "variants": {
+    "if-the-player-has-never-paid-ferox-to-switch-their-respawn-point": [
+      {
+        "npc": "Welcome wanderer."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "You're surrounded by a relic of a long lost kingdom."
+              },
+              {
+                "player": "What happened here?"
+              },
+              {
+                "npc": "Oh, I couldn't really tell you that."
+              },
+              {
+                "npc": "This place has sat in ruin for an age, slowly destroyed by the harsh climate of the Wilderness."
+              },
+              {
+                "player": "If it's a ruin, what's the point in being here?"
+              },
+              {
+                "npc": "I search for knowledge. I want to know what happened to this part of the world."
+              },
+              {
+                "npc": "Whilst looking for answers, I slowly turned this broken town into a safe haven for travellers. Welcome to Ferox Enclave."
+              },
+              {
+                "player": "Quite a dangerous place for a town, don't you think?"
+              },
+              {
+                "npc": "It is, but that's why it's needed! Look around, you can see how many others share my opinion."
+              },
+              {
+                "npc": "You'll find yourself quite safe inside my enclave - the protective barriers should keep any troublemakers out."
+              },
+              {
+                "npc": "I will warn you though, if you've had Teleblock cast upon you, I will not allow you back into the Enclave. You'd be a danger to the others gathered here."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What can you do for me?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "MmWjZb"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll be heading off then.",
+                    "steps": [
+                      {
+                        "player": "Thanks for the information! I'll take a look around."
+                      },
+                      {
+                        "npc": "Tread carefully my friend."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What can you do for me?",
+            "steps": [
+              {
+                "player": "What can you do for me?"
+              },
+              {
+                "npc": "Well, if you'd like, I can make it so you respawn in our Enclave. It'll put you right in the heart of all the chaos that surrounds us."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me more.",
+                    "steps": [
+                      {
+                        "player": "Tell me more."
+                      },
+                      {
+                        "npc": "This is how it'll work: When you die, you'll respawn right here in Ferox Enclave, just outside the pub we've set up. You will lose your items as normal of course."
+                      },
+                      {
+                        "npc": "I won't be able to do anything if you die somewhere like Castle Wars or the Emir's Arena; they have their own magic to keep you safe."
+                      },
+                      {
+                        "npc": "It'll cost you though! Transporting you here is no easy task. 5 million coins should do it, that'd be a one time fee of course."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Without at least five million coins in the inventory:",
+                        "steps": [
+                          {
+                            "player": "I don't have that much money on me."
+                          },
+                          {
+                            "npc": "Understandable, you'd have to be a brave [man/woman] to be carrying that much gold out here."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "-4ixfH"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "With at least five million coins in the inventory:",
+                        "steps": [
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Okay, switch my respawn to Ferox Enclave.",
+                                "steps": [
+                                  {
+                                    "player": "Okay, switch my respawn to Ferox Enclave."
+                                  },
+                                  {
+                                    "type": "action",
+                                    "action": "give",
+                                    "text": "5 million coins",
+                                    "id": "hQ0o-u"
+                                  },
+                                  {
+                                    "npc": "Thank you, you'll respawn in the Enclave from here on out."
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "I'm not interested.",
+                                "steps": [
+                                  {
+                                    "player": "I'm not interested."
+                                  },
+                                  {
+                                    "npc": "Can't say I blame you, this wouldn't be my choice either."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "I1NYYx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That doesn't interest me.",
+                    "steps": [
+                      {
+                        "player": "That doesn't interest me."
+                      },
+                      {
+                        "npc": "Come find me if you change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Nevermind.",
+            "steps": [
+              {
+                "player": "Never mind, I'm just looking around."
+              },
+              {
+                "npc": "So be it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-player-has-paid-ferox-to-switch-their-respawn-point-before": [
+      {
+        "npc": "Welcome wanderer."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "d0KNNo"
+              }
+            ]
+          },
+          {
+            "text": "Ask about your respawn point.",
+            "steps": [
+              {
+                "player": "Can I talk to you about my respawn location?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's current respawn location is not the Ferox Enclave:",
+                "steps": [
+                  {
+                    "npc": "Would you like to respawn back in Ferox Enclave again?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Please switch my respawn back to the Enclave.",
+                        "steps": [
+                          {
+                            "player": "Please switch my respawn back to the Enclave."
+                          },
+                          {
+                            "npc": "The Wilderness takes a toll on a [man's/woman's] soul. Are you sure you can handle it?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes, switch my respawn to the Enclave.",
+                                "steps": [
+                                  {
+                                    "player": "Yes, switch my respawn to the Enclave."
+                                  },
+                                  {
+                                    "npc": "Fair enough, it has been done."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No, maybe another time.",
+                                "steps": [
+                                  {
+                                    "player": "No, maybe another time."
+                                  },
+                                  {
+                                    "npc": "Understandable."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, I don't want to respawn in the Enclave",
+                        "steps": [
+                          {
+                            "player": "No, I don't want to respawn in the Enclave."
+                          },
+                          {
+                            "npc": "Understandable."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "VDyLlr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's current respawn point is the Ferox Enclave:",
+                "steps": [
+                  {
+                    "npc": "How are you finding our sanctuary?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Please switch my respawn back to Lumbridge.",
+                        "steps": [
+                          {
+                            "player": "Please switch my respawn back to Lumbridge."
+                          },
+                          {
+                            "npc": "Can't say I blame you, the Wilderness starts to wear down the soul after a while."
+                          },
+                          {
+                            "npc": "But are you sure? Come and see me if you want to respawn in our Enclave again; I won't need any more money from you."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes, switch my respawn to Lumbridge.",
+                                "steps": [
+                                  {
+                                    "player": "Yes, switch my respawn to Lumbridge."
+                                  },
+                                  {
+                                    "npc": "Done."
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No, I'll keep the Enclave respawn.",
+                                "steps": [
+                                  {
+                                    "player": "No, I'll keep the Enclave respawn."
+                                  },
+                                  {
+                                    "npc": "Fine."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "It's working for me so far, thanks.",
+                        "steps": [
+                          {
+                            "player": "It's working for me so far, thanks."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "puaNjb"
+              }
+            ]
+          },
+          {
+            "text": "Nevermind.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1CrlyI"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

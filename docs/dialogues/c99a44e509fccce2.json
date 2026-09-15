@@ -1,0 +1,333 @@
+{
+  "default": null,
+  "variants": {
+    "starting-out-searching-the-bookcase": [
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You search the bookcase and find a battered book. However, you don't have enough room to take it.",
+            "id": "-bMsfy"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "yPxG4L"
+      },
+      {
+        "type": "condition",
+        "text": "Otherwise:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You search the bookcase and find a battered book. You take it.",
+            "id": "zbHpWN"
+          }
+        ],
+        "id": "XD6B4I"
+      }
+    ],
+    "starting-out-reading-the-battered-book": [
+      {
+        "type": "message",
+        "text": "The book has two parts: an introduction and an instruction section.",
+        "id": "7H9wWm"
+      },
+      {
+        "type": "message",
+        "text": "You flip the book open to the introduction and start reading.",
+        "id": "d02yra"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's combat level is lower than 15:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 15.",
+            "id": "AtO8qS"
+          }
+        ],
+        "id": "uzCPvD"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Elemental Workshop I quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Battered book interface opens",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Battered book",
+                "id": "kmwxMM"
+              }
+            ],
+            "hook": "quest:elemental-workshop-i:start",
+            "quest": "Elemental Workshop I"
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "starting-out-slicing-open-the-battered-book": [
+      {
+        "type": "message",
+        "text": "You make a small cut in the spine of the book.",
+        "id": "E23Ep7"
+      },
+      {
+        "type": "message",
+        "text": "Inside you find a small, old, battered key.",
+        "id": "p7FO44"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You drop the key on the floor as you have no space in your backpack.",
+            "id": "_WQHWG"
+          }
+        ],
+        "id": "sSeavZ"
+      }
+    ],
+    "starting-out-using-an-item-other-than-the-key-on-the-wall": [
+      {
+        "type": "message",
+        "text": "You can't unlock the door with that.",
+        "id": "baEBVH"
+      }
+    ],
+    "entering-the-elemental-workshop-climbing-down-the-staircase": [
+      {
+        "player": "Now to explore this area thoroughly, to find what forgotten secrets it contains."
+      }
+    ],
+    "entering-the-elemental-workshop-interacting-with-the-hatch-attempting-to-open-it": [
+      {
+        "type": "message",
+        "text": "You're unable to open the locked hatch.",
+        "id": "7KQ6Tg"
+      }
+    ],
+    "entering-the-elemental-workshop-interacting-with-the-hatch-using-an-item-on-it": [
+      {
+        "type": "message",
+        "text": "You try to stuff the object into the keyhole. It doesn't fit.",
+        "id": "jYhct8"
+      }
+    ],
+    "entering-the-elemental-workshop-getting-the-water-flowing-turning-the-handles": [
+      {
+        "type": "message",
+        "text": "You turn the handle.",
+        "id": "DTFLOD"
+      }
+    ],
+    "entering-the-elemental-workshop-getting-the-water-flowing-resetting-the-flow-gates": [
+      {
+        "type": "message",
+        "text": "You hear the sound of the flow gates resetting.",
+        "id": "8D6mU3"
+      }
+    ],
+    "entering-the-elemental-workshop-getting-the-water-flowing-activating-the-water-wheel": [
+      {
+        "type": "message",
+        "text": "You hear the sound of a water wheel starting up.",
+        "id": "KkBCkj"
+      }
+    ],
+    "entering-the-elemental-workshop-searching-the-leather-crate": [
+      {
+        "type": "message",
+        "text": "You find some leather.",
+        "id": "2XX4Gd"
+      }
+    ],
+    "entering-the-elemental-workshop-fixing-the-bellows": [
+      {
+        "type": "condition",
+        "text": "Without the materials:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need a piece of leather, some thread and a needle to fix this.",
+            "id": "KuPowA"
+          }
+        ],
+        "id": "F9L69f"
+      },
+      {
+        "type": "condition",
+        "text": "With the materials:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You stitch the leather over the hole in the bellows.",
+            "id": "w-3IWn"
+          }
+        ],
+        "id": "9m4xhW"
+      }
+    ],
+    "entering-the-elemental-workshop-activating-the-bellows": [
+      {
+        "type": "message",
+        "text": "You pull the lever.",
+        "id": "XRAFMr"
+      },
+      {
+        "type": "condition",
+        "text": "If the bellows has not been repaired:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Nothing happens; the lever resets itself.",
+            "id": "m1Su0q"
+          }
+        ],
+        "id": "FZj8vv"
+      },
+      {
+        "type": "condition",
+        "text": "If the bellows has been repaired:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The bellows pump air down the pipe.",
+            "id": "48-DDG"
+          }
+        ],
+        "id": "0vsCxN"
+      }
+    ],
+    "entering-the-elemental-workshop-deactivating-the-bellows": [
+      {
+        "type": "message",
+        "text": "You pull the lever.",
+        "id": "HtMjD8"
+      },
+      {
+        "type": "message",
+        "text": "The bellows stop pumping air.",
+        "id": "TYobM6"
+      }
+    ],
+    "entering-the-elemental-workshop-lighting-the-furnace-using-any-other-item-on-the-furnace": [
+      {
+        "type": "message",
+        "text": "The furnace is cold and useless for anything.",
+        "id": "Hbu_mr"
+      }
+    ],
+    "entering-the-elemental-workshop-lighting-the-furnace-using-a-tinderbox-on-the-furnace": [
+      {
+        "type": "message",
+        "text": "The tinderbox cannot make a spark large enough to light this.",
+        "id": "8QiIJv"
+      }
+    ],
+    "entering-the-elemental-workshop-lighting-the-furnace-filling-a-stone-bowl": [
+      {
+        "type": "message",
+        "text": "You fill the bowl with hot lava.",
+        "id": "dPqRMA"
+      }
+    ],
+    "entering-the-elemental-workshop-lighting-the-furnace-using-a-stone-bowl-of-lava-on-the-furnace": [
+      {
+        "type": "message",
+        "text": "You empty the lava into the furnace.",
+        "id": "zIuiRs"
+      },
+      {
+        "type": "message",
+        "text": "The furnace bursts to life.",
+        "id": "tHaUK5"
+      }
+    ],
+    "entering-the-elemental-workshop-forging-the-bar-using-elemental-ore-on-a-normal-furnace-outside-the-workshop": [
+      {
+        "type": "message",
+        "text": "This furnace is not hot enough to smelt elemental ore.",
+        "id": "7VE5M8"
+      }
+    ],
+    "entering-the-elemental-workshop-forging-the-bar-casting-superheat-on-the-elemental-ore": [
+      {
+        "type": "message",
+        "text": "Even this spell is not hot enough to heat this item.",
+        "id": "eRWT_u"
+      }
+    ],
+    "entering-the-elemental-workshop-forging-the-bar-using-the-elemental-ore-on-the-furnace-without-enough-coal": [
+      {
+        "type": "message",
+        "text": "You need four heaps of coal to smelt elemental ore.",
+        "id": "iOyjmr"
+      }
+    ],
+    "entering-the-elemental-workshop-forging-the-bar-using-the-elemental-ore-on-the-furnace-with-enough-coal": [
+      {
+        "type": "message",
+        "text": "You place the elemental ore and four heaps of coal into the furnace.",
+        "id": "PwC9n6"
+      },
+      {
+        "type": "message",
+        "text": "You retrieve a bar of elemental metal.",
+        "id": "jzMiCL"
+      }
+    ],
+    "entering-the-elemental-workshop-crafting-the-shield-using-the-workbench-without-elemental-metal": [
+      {
+        "type": "message",
+        "text": "You don't have any suitable metals to use with this workbench.",
+        "id": "0Qbq--"
+      }
+    ],
+    "entering-the-elemental-workshop-crafting-the-shield-using-the-workbench-without-a-hammer": [
+      {
+        "type": "message",
+        "text": "You need a hammer to work the metal with.",
+        "id": "sXsfXY"
+      }
+    ],
+    "entering-the-elemental-workshop-crafting-the-shield-using-the-workbench-without-the-slashed-book": [
+      {
+        "type": "message",
+        "text": "This workbench is too complicated. You need instructions to follow.",
+        "id": "RnycrJ"
+      }
+    ],
+    "entering-the-elemental-workshop-crafting-the-shield-using-the-workbench-with-the-proper-items": [
+      {
+        "type": "message",
+        "text": "Following the instructions in the book, you make an elemental shield.",
+        "id": "OvQlSc"
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "f0-q02"
+      },
+      {
+        "type": "unavailable",
+        "id": "hsD8y_"
+      }
+    ]
+  }
+}

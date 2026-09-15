@@ -1,0 +1,126 @@
+{
+  "steps": [
+    {
+      "npc": "Good day sir. Could I interest you in one of our finest Bloody Bracers? It's a local speciality."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "One Bloody Bracer please.",
+          "steps": [
+            {
+              "player": "One Bloody Bracer please."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has less than 99 coins:",
+              "steps": [
+                {
+                  "npc": "That will be 99 coins."
+                },
+                {
+                  "player": "I don't have that much."
+                },
+                {
+                  "npc": "Then for now, our business is at an end."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "mlw9o8"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has at least 99 coins:",
+              "steps": [
+                {
+                  "npc": "That will be 99 coins."
+                },
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "Here you go.",
+                      "steps": [
+                        {
+                          "player": "Here you go."
+                        },
+                        {
+                          "type": "message",
+                          "text": "You buy a Bloody Bracer.",
+                          "id": "58Z72R"
+                        },
+                        {
+                          "npc": "Enjoy."
+                        },
+                        {
+                          "player": "Thanks."
+                        }
+                      ]
+                    },
+                    {
+                      "text": "I'm not paying that!",
+                      "steps": [
+                        {
+                          "player": "I'm not paying that!"
+                        },
+                        {
+                          "npc": "Then for now, our business is at an end."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "zosSof"
+            }
+          ]
+        },
+        {
+          "text": "What happened to Carl?",
+          "steps": [
+            {
+              "player": "What happened to Carl?"
+            },
+            {
+              "npc": "Carl?"
+            },
+            {
+              "player": "The old barkeep."
+            },
+            {
+              "npc": "Oh yes, Carl!"
+            },
+            {
+              "npc": "He had to leave I'm afraid. Fear not though. I have taken over things here."
+            },
+            {
+              "player": "And you are?"
+            },
+            {
+              "npc": "Roy is the name. Now, could I interest you in one of our finest Bloody Bracers?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "23JMYg"
+            }
+          ]
+        },
+        {
+          "text": "I'm not thirsty.",
+          "steps": [
+            {
+              "player": "I'm not thirsty."
+            },
+            {
+              "npc": "Then for now, our business is at an end."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

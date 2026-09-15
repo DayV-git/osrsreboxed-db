@@ -1,0 +1,924 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Yeah, what do you want?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "It's none of your business now get lost."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Perhaps five gold coins will make it my business?",
+                    "steps": [
+                      {
+                        "player": "Perhaps five gold coins will make it my business?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 5 coins:",
+                        "steps": [
+                          {
+                            "npc": "Don't try to fool me, you don't have five gold coins! Before you try to bribe someone, make sure you have the money effendi!"
+                          },
+                          {
+                            "npc": "Guards!! Guards!"
+                          },
+                          {
+                            "npc": "Let's see how good you are with Desert Survival techniques."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You're bundled into the back of a cart and blindfolded...",
+                            "id": "I7Pk51"
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player is teleported somewhere north-west of the mining camp",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "VgzQ0g"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Sometime later you wake up in the desert.",
+                            "id": "ulJjuB"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has any filled waterskins:",
+                            "steps": [
+                              {
+                                "type": "line",
+                                "speaker": "Guard",
+                                "text": "You won't be needing that water anymore!"
+                              }
+                            ],
+                            "id": "3T0c1x"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The guards move off leaving you stranded in the desert.",
+                            "id": "v2an8N"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "LHT15h"
+                      },
+                      {
+                        "npc": "Well, it certainly will help... -- The guard takes the five gold coins. -- Now then, what did you want to know?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "What is this place?",
+                            "steps": [
+                              {
+                                "player": "What is this place?"
+                              },
+                              {
+                                "npc": "It's just a mining camp. Prisoners are sent here from Al-Kharid. They serve out their sentence by mining. Most prisoners will end their days here, surrounded by desert."
+                              },
+                              {
+                                "player": "So you could almost say that they got their ... 'Just Desserts'"
+                              },
+                              {
+                                "npc": "You could say that... -- There is an awkward pause --"
+                              },
+                              {
+                                "npc": "But it wouldn't be very funny."
+                              },
+                              {
+                                "player": "When they talk about 'the silence of the desert', this must be what they mean."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Can I take a look around the place?",
+                                    "steps": [
+                                      {
+                                        "player": "Can I take a look around the place?"
+                                      },
+                                      {
+                                        "npc": "Not really. The Captain won't let you in the compound. He's the only one who has the key to the gate. And if you talk to him, he'll probably just order us to kill you. Unless..."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Does the Captain order you to kill a lot of people?",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "gFi8X6"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Unless what?",
+                                            "steps": [
+                                              {
+                                                "player": "Unless what?"
+                                              },
+                                              {
+                                                "npc": "Unless he has a use for you. He's been trying to track down someone called 'Al Zaba Bhasim'. You could offer to catch him and that might put you in his good books?"
+                                              },
+                                              {
+                                                "type": "choice",
+                                                "options": [
+                                                  {
+                                                    "text": "Where would I find this Al Zaba Bhasim?",
+                                                    "steps": [
+                                                      {
+                                                        "player": "Where would I find this Al Zaba Bhasim?"
+                                                      },
+                                                      {
+                                                        "npc": "Well, he could be anywhere. He's a nomadic desert dweller. However, they say that he's frequently to be found to the west in the hospitality of the tenti's."
+                                                      },
+                                                      {
+                                                        "type": "choice",
+                                                        "options": [
+                                                          {
+                                                            "text": "The Tenti's, who are they?",
+                                                            "steps": [
+                                                              {
+                                                                "player": "The Tenti's, who are they?"
+                                                              },
+                                                              {
+                                                                "npc": "Well, we're not really sure what their proper name is. But they live in tents so we call them the 'Tenti's'."
+                                                              },
+                                                              {
+                                                                "type": "choice",
+                                                                "options": [
+                                                                  {
+                                                                    "text": "Okay, thanks.",
+                                                                    "steps": [
+                                                                      {
+                                                                        "type": "jump",
+                                                                        "reference": "below",
+                                                                        "id": "iXSBSL"
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "text": "Is Al Zaba Bhasim very tough?",
+                                                                    "steps": [
+                                                                      {
+                                                                        "player": "Is Al Zaba Bhasim very tough?"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Well, I'm not sure, but by all accounts, he is a slippery fellow. The Captain has been trying to capture him for years. A bit of a waste of time if you ask me. Anyway, I have to get going, I do have work to do."
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "text": "Okay, thanks.",
+                                                            "steps": [
+                                                              {
+                                                                "type": "jump",
+                                                                "reference": "below",
+                                                                "id": "jOSQrb"
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "Okay, thanks.",
+                                                    "steps": [
+                                                      {
+                                                        "type": "jump",
+                                                        "reference": "below",
+                                                        "id": "nm6C6K"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Okay, thanks.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "ejns4p"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What are you guarding?",
+                            "steps": [
+                              {
+                                "player": "What are you guarding?"
+                              },
+                              {
+                                "npc": "Well, if you have to know, we're making sure that no prisoners get out. -- The guard gives you a disapproving look. -- And to make sure that unauthorised people don't get in."
+                              },
+                              {
+                                "npc": "-- The guard looks around nervously. -- You'd better go soon before the Captain orders us to kill you."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Does the Captain order you to kill a lot of people?",
+                                    "steps": [
+                                      {
+                                        "player": "Does the Captain order you to kill a lot of people?"
+                                      },
+                                      {
+                                        "npc": "-- The guard snorts. --*Snort* Just about anyone who talks to him."
+                                      },
+                                      {
+                                        "npc": "Unless he has a use for you, he'll probably just order us to kill you. And it's such a horrible job cleaning up the mess afterwards."
+                                      },
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Not to mention the senseless waste of human life.",
+                                            "steps": [
+                                              {
+                                                "player": "Not to mention the senseless waste of human life."
+                                              },
+                                              {
+                                                "npc": "Huh? Them's your words, not mine."
+                                              },
+                                              {
+                                                "type": "choice",
+                                                "options": [
+                                                  {
+                                                    "text": "It doesn't sound as if you respect your Captain much.",
+                                                    "steps": [
+                                                      {
+                                                        "player": "It doesn't sound as if you respect your Captain much."
+                                                      },
+                                                      {
+                                                        "type": "message",
+                                                        "text": "-- The guard looks around conspiratorially. --",
+                                                        "id": "IIT0xs"
+                                                      },
+                                                      {
+                                                        "npc": "Well, to be honest. We think he's not exactly as brave as he makes out. But we have to follow his orders. If someone called him a coward, or managed to trick him into a one-on-one duel many of us bet that he'd be"
+                                                      },
+                                                      {
+                                                        "npc": "beaten."
+                                                      },
+                                                      {
+                                                        "player": "And how could I trick him into a one-on-one duel?"
+                                                      },
+                                                      {
+                                                        "npc": "Like all cowards, he likes to be made to feel important. If anyone insults him outright, he just gets us to do his dirty work. However, if he thinks he's better than you, if you compliment him, he may feel that he can defeat"
+                                                      },
+                                                      {
+                                                        "npc": "you. And if he initiated a duel, all the men agreed that they wouldn't intervene. We think he'd be slaughtered in double quick time."
+                                                      },
+                                                      {
+                                                        "type": "choice",
+                                                        "options": [
+                                                          {
+                                                            "text": "Can I have a bet on that?",
+                                                            "steps": [
+                                                              {
+                                                                "player": "Can I have a bet on that?"
+                                                              },
+                                                              {
+                                                                "type": "condition",
+                                                                "text": "If the player already placed a bet:",
+                                                                "steps": [
+                                                                  {
+                                                                    "npc": "Sorry, we've already taken your bet, wouldn't want any cheating now. Anyway, I have to get back to work. See ya around..."
+                                                                  },
+                                                                  {
+                                                                    "type": "end"
+                                                                  }
+                                                                ],
+                                                                "id": "fvOYqQ"
+                                                              },
+                                                              {
+                                                                "npc": "Well, if you think you stand a chance, sure. But remember, if he gives us an order, we have to obey."
+                                                              },
+                                                              {
+                                                                "type": "choice",
+                                                                "options": [
+                                                                  {
+                                                                    "text": "I'll bet 5 gold that I win.",
+                                                                    "steps": [
+                                                                      {
+                                                                        "player": "I'll bet 5 gold that I win."
+                                                                      },
+                                                                      {
+                                                                        "type": "condition",
+                                                                        "text": "If the player doesn't have enough gold:",
+                                                                        "steps": [
+                                                                          {
+                                                                            "type": "call",
+                                                                            "branch": "G9g3_S"
+                                                                          }
+                                                                        ],
+                                                                        "id": "g_dn7i"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Great, I'll take that bet."
+                                                                      },
+                                                                      {
+                                                                        "type": "message",
+                                                                        "text": "You hand over 5 gold coins.",
+                                                                        "id": "o-_I_y"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Ok, if you win, you'll get 6 gold back. Anyway, I have to get going, I do have work to do. -- The guard walks off. --"
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "text": "I'll bet 10 gold that I win.",
+                                                                    "steps": [
+                                                                      {
+                                                                        "player": "I'll bet 10 gold that I win."
+                                                                      },
+                                                                      {
+                                                                        "type": "condition",
+                                                                        "text": "If the player doesn't have enough gold:",
+                                                                        "steps": [
+                                                                          {
+                                                                            "type": "call",
+                                                                            "branch": "G9g3_S"
+                                                                          }
+                                                                        ],
+                                                                        "id": "tvpPNH"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Great, I'll take that bet."
+                                                                      },
+                                                                      {
+                                                                        "type": "message",
+                                                                        "text": "You hand over 10 gold coins.",
+                                                                        "id": "uGn9qt"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Ok, if you win, you'll get 12 gold back. Anyway, I have to get going, I do have work to do. -- The guard walks off. --"
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "text": "I'll bet 15 gold that I win.",
+                                                                    "steps": [
+                                                                      {
+                                                                        "player": "I'll bet 15 gold that I win."
+                                                                      },
+                                                                      {
+                                                                        "type": "condition",
+                                                                        "text": "If the player doesn't have enough gold:",
+                                                                        "steps": [
+                                                                          {
+                                                                            "type": "call",
+                                                                            "branch": "G9g3_S"
+                                                                          }
+                                                                        ],
+                                                                        "id": "rSB7-N"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Great, I'll take that bet."
+                                                                      },
+                                                                      {
+                                                                        "type": "message",
+                                                                        "text": "You hand over 15 gold coins.",
+                                                                        "id": "MSShcd"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Ok, if you win, you'll get 19 gold back. Anyway, I have to get going, I do have work to do. -- The guard walks off. --"
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "text": "I'll bet 20 gold that I win.",
+                                                                    "steps": [
+                                                                      {
+                                                                        "player": "I'll bet 20 gold that I win."
+                                                                      },
+                                                                      {
+                                                                        "type": "condition",
+                                                                        "text": "If the player doesn't have enough gold:",
+                                                                        "steps": [
+                                                                          {
+                                                                            "type": "call",
+                                                                            "branch": "G9g3_S"
+                                                                          }
+                                                                        ],
+                                                                        "id": "ai4EX-"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Great, I'll take that bet."
+                                                                      },
+                                                                      {
+                                                                        "type": "message",
+                                                                        "text": "You hand over 20 gold coins.",
+                                                                        "id": "jI-ftH"
+                                                                      },
+                                                                      {
+                                                                        "npc": "Ok, if you win, you'll get 30 gold back. Anyway, I have to get going, I do have work to do. -- The guard walks off. --"
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "text": "Okay, thanks.",
+                                                                    "steps": [
+                                                                      {
+                                                                        "type": "jump",
+                                                                        "reference": "below",
+                                                                        "id": "qCU8hx"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "text": "Okay, thanks.",
+                                                            "steps": [
+                                                              {
+                                                                "type": "jump",
+                                                                "reference": "below",
+                                                                "id": "aVtXMN"
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "Okay, thanks.",
+                                                    "steps": [
+                                                      {
+                                                        "type": "jump",
+                                                        "reference": "below",
+                                                        "id": "RrTagv"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Okay, thanks.",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "uPBL_u"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Okay, thanks.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "mC5Ehx"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "player": "Okay, thanks."
+                      },
+                      {
+                        "npc": "Yeah, whatever!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What are you guarding?",
+            "steps": [
+              {
+                "player": "What are you guarding?"
+              },
+              {
+                "npc": "Get lost before I chop off your head!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "dcCIat"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Perhaps these five gold coins will sweeten your mood?",
+                    "steps": [
+                      {
+                        "player": "Perhaps five gold coins will sweeten your mood?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 5 coins:",
+                        "steps": [
+                          {
+                            "npc": "Don't try to fool me, you don't have five gold coins! Before you try to bribe someone, make sure you have the money effendi!"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "Z_nwHb"
+                          }
+                        ],
+                        "id": "SrA5NH"
+                      },
+                      {
+                        "npc": "Well, it certainly will help!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "-- The guard takes the five gold coins. --",
+                        "id": "7pv7WO"
+                      },
+                      {
+                        "npc": "Now then, what did you want to know?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "What is this place?",
+                            "steps": [
+                              {
+                                "player": "What is this place?"
+                              },
+                              {
+                                "npc": "It's just a mining camp. Prisoners are sent here from Al-Kharid. They serve out their sentence by mining. Most prisoners will end their days here, surrounded by desert."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "eHV5NW"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What are you guarding?",
+                            "steps": [
+                              {
+                                "player": "What are you guarding?"
+                              },
+                              {
+                                "npc": "Well, if you have to know, we're making sure that no prisoners get out. -- The guard gives you a disapproving look. -- And to make sure that unauthorised people don't get in."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "H7X4k0"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'm looking for a woman called Ana, have you seen her?",
+                            "steps": [
+                              {
+                                "player": "I'm looking for a woman called Ana, have you seen her?"
+                              },
+                              {
+                                "npc": "Hmm, well, we get a lot of people in here. But not many women though... Saw one come in last week...."
+                              },
+                              {
+                                "npc": "But I don't know if it's the woman you're looking for?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "What is this place?",
+                                    "steps": [
+                                      {
+                                        "player": "What is this place?"
+                                      },
+                                      {
+                                        "npc": "It's just a mining camp. Prisoners are sent here from Al-Kharid. They serve out their sentence by mining. Most prisoners will end their days here, surrounded by desert."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "0mW19f"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "What are you guarding?",
+                                    "steps": [
+                                      {
+                                        "player": "What are you guarding?"
+                                      },
+                                      {
+                                        "npc": "Well, if you have to know, we're making sure that no prisoners get out. -- The guard gives you a disapproving look. -- And to make sure that unauthorised people don't get in."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "sYuQzg"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'm looking for a woman called Ana, have you seen her?",
+            "steps": [
+              {
+                "player": "I'm looking for a woman called Ana, have you seen her?"
+              },
+              {
+                "npc": "No, now get lost!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Perhaps five gold coins will help you remember?",
+                    "steps": [
+                      {
+                        "player": "Perhaps five gold coins will help you remember?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 5 coins:",
+                        "steps": [
+                          {
+                            "npc": "Don't try to fool me, you don't have five gold coins! Before you try to bribe someone, make sure you have the money effendi!"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "tjWEDd"
+                          }
+                        ],
+                        "id": "BRKbgS"
+                      },
+                      {
+                        "npc": "Well, it certainly will help!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "-- The guard takes the five gold coins. --",
+                        "id": "oG_6Lf"
+                      },
+                      {
+                        "npc": "Now then, what did you want to know?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I'm looking for a woman called Ana, have you seen her?",
+                            "steps": [
+                              {
+                                "player": "I'm looking for a woman called Ana, have you seen her?"
+                              },
+                              {
+                                "npc": "Hmm, well, we get a lot of people in here. But not many women though... Saw one come in last week...."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "nqO9xc"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What is this place?",
+                            "steps": [
+                              {
+                                "player": "What is this place?"
+                              },
+                              {
+                                "npc": "It's just a mining camp. Prisoners are sent here from Al-Kharid. They serve out their sentence by mining. Most prisoners will end their days here, surrounded by desert."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "TbgB-V"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What are you guarding?",
+                            "steps": [
+                              {
+                                "player": "What are you guarding?"
+                              },
+                              {
+                                "npc": "Well, if you have to know, we're making sure that no prisoners get out. -- The guard gives you a disapproving look. -- And to make sure that unauthorised people don't get in."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "2-ZYJw"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "7PDFd_"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "trying-to-attack-a-mercenary": [
+      {
+        "type": "message",
+        "text": "This mercenary looks very fierce. Are you sure you want to attack him?",
+        "id": "S4qEaP"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I can take him on!",
+            "steps": [
+              {
+                "npc": "Guards!! Guards!"
+              },
+              {
+                "type": "action",
+                "text": "(The player is hit 4 times before they are transported into the desert.)",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "CYUQee"
+              }
+            ]
+          },
+          {
+            "text": "Er, no thanks, I've had second thoughts about it.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You decide not to fight the Mercenary.",
+                "id": "cmftu2"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "collecting-a-bet": [
+      {
+        "player": "Hey, I've come to collect my bet!"
+      },
+      {
+        "npc": "Well, I guess congratulations are in order."
+      },
+      {
+        "player": "Thanks!"
+      },
+      {
+        "npc": "And we'll only charge the paltry sum of... erm..."
+      },
+      {
+        "npc": "The guards starts to do some mental calculations. You can see his brow furrow and he starts to sweat profusely."
+      },
+      {
+        "type": "condition",
+        "text": "If the player bet 5 coins:",
+        "steps": [
+          {
+            "npc": "Five gold for cleaning up the mess. You have won 1 Gold piece! Well done..! Ha, ha, ha ha! -- The guards walk off chuckling to themselves. --"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "drGHie"
+      },
+      {
+        "type": "condition",
+        "text": "If the player bet 10 coins:",
+        "steps": [
+          {
+            "npc": "10 gold for cleaning up the mess. You have won 2 Gold pieces! Well done..! Ha, ha, ha ha! -- The guards walk off chuckling to themselves. --"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NDvmfs"
+      },
+      {
+        "type": "condition",
+        "text": "If the player bet 15 coins:",
+        "steps": [
+          {
+            "npc": "15 gold for cleaning up the mess. You have won 4 Gold pieces! Well done..! Ha, ha, ha ha! -- The guards walk off chuckling to themselves. --"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "74-g6E"
+      },
+      {
+        "type": "condition",
+        "text": "If the player bet 20 coins:",
+        "steps": [
+          {
+            "npc": "20 gold for cleaning up the mess. You have won 10 Gold pieces! Well done..! Ha, ha, ha, ha! -- The guards walk off chuckling to themselves. --"
+          }
+        ],
+        "id": "xt5rIZ"
+      }
+    ]
+  },
+  "branches": {
+    "G9g3_S": [
+      {
+        "npc": "Huh! It looks like you're betting with money you don't have."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

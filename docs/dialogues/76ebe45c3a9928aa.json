@@ -1,0 +1,203 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings and welcome to my pickaxe shop. Do you want to buy my premium quality pickaxes?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Nurmof's Pickaxe Shop.",
+                "id": "zSEJf4"
+              }
+            ]
+          },
+          {
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              }
+            ]
+          },
+          {
+            "text": "Are your pickaxes better than other pickaxes, then?",
+            "steps": [
+              {
+                "player": "Are your pickaxes better than other pickaxes, then?"
+              },
+              {
+                "npc": "Of course they are! My pickaxes are made of higher grade metal than your ordinary bronze pickaxes, allowing you to mine that ore just a little bit faster than normal."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "with-a-dragon-pickaxe-broken-in-inventory": [
+      {
+        "player": "Hi Nurmof, I found this earlier..."
+      },
+      {
+        "npc": "Oh, a dragon pickaxe! And a broken one at that. I haven't seen one of those in a while."
+      },
+      {
+        "player": "Can you fix it for me? I was told you're the dwarf to see!"
+      },
+      {
+        "npc": "I did indeed fix pickaxes in the past, many years ago. They were a lot more common back then."
+      },
+      {
+        "npc": "In fact, this is the first broken pickaxe I've seen in a very long time!"
+      },
+      {
+        "player": "Why were there so many broken pickaxes back then?"
+      },
+      {
+        "npc": "Ore rocks used to be quite unstable. They would randomly explode when you were mining them."
+      },
+      {
+        "player": "That sounds terrifying!"
+      },
+      {
+        "npc": "It was. But then one day, the explosions just... stopped. As if someone flipped an off switch somewhere."
+      },
+      {
+        "npc": "I've not seen a broken pickaxe since then!"
+      },
+      {
+        "player": "Will you still be able to fix mine for me?"
+      },
+      {
+        "npc": "I should think so. I'll need to buy some new tools."
+      },
+      {
+        "npc": "They're quite expensive, but they will get the job done. The pickaxe will be as good as new when I've finished with it."
+      },
+      {
+        "npc": "The cost will be about..."
+      },
+      {
+        "npc": "...let me see. I need another one of these, and I can reuse that if I replace the drill bit from there..."
+      },
+      {
+        "npc": "...hmm, and this needs a full clean, oh and I don't have one of those anymore..."
+      },
+      {
+        "npc": "...okay! It'll cost about 2,500,000 GP, give or take a few coins. Would you like me to fix it for you?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Pay Nurmof 2,500,000 GP to fix your dragon pickaxe?",
+        "options": [
+          {
+            "text": "Yes, let's do it.",
+            "steps": [
+              {
+                "player": "Yes, let's do it."
+              },
+              {
+                "npc": "Lovely! Okay, give me a moment. It may take a little while, it's a tough metal to work with."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 2,500,000 gp in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Nurmof goes into a nearby hidden room, and from within, you hear the sound of a hammer striking metal.",
+                    "id": "G6FpKN"
+                  },
+                  {
+                    "type": "message",
+                    "text": "..he did say it would take a little while.",
+                    "id": "xwiMnf"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Nurmof hands you the repaired dragon pickaxe.",
+                    "id": "rs9Nzt"
+                  },
+                  {
+                    "npc": "There you go, good as new, just like I said!"
+                  },
+                  {
+                    "player": "Thank you very much. I'll take good care of it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "vMnAyg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 2,500,000 gp in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh, I actually don't have enough coins on me! I'll come back with more."
+                  },
+                  {
+                    "npc": "I'll be here!"
+                  }
+                ],
+                "id": "D6SF2P"
+              }
+            ]
+          },
+          {
+            "text": "That's rather expensive...",
+            "steps": [
+              {
+                "player": "That's rather expensive..."
+              },
+              {
+                "npc": "It is! But you can't cheap out on quality. If a job's worth doing, do it well."
+              },
+              {
+                "npc": "I'm also the only one who can repair pickaxes these days, so you don't really have much choice!"
+              },
+              {
+                "type": "choice",
+                "prompt": "Pay Nurmof 2,500,000 GP to fix your dragon pickaxe?",
+                "options": [
+                  {
+                    "text": "Okay then, let's do it.",
+                    "steps": [
+                      {
+                        "player": "Okay then, let's do it."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "tnDpgI"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll think about it.",
+                    "steps": [
+                      {
+                        "player": "I'll think about it."
+                      },
+                      {
+                        "npc": "I'll be here!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

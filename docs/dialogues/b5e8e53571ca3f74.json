@@ -1,0 +1,144 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello, what's going on?"
+      },
+      {
+        "npc": "Greetings, I am trying to rejuvenate the forests with a ritual. Would you like to help?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, I'm not interested.",
+            "steps": [
+              {
+                "npc": "Oh, well, if you change your mind, just ask."
+              }
+            ]
+          },
+          {
+            "text": "Sure, How can I help?",
+            "steps": [
+              {
+                "npc": "If you could help block the odd ritual circles by standing on them, I will be able to power up the ritual."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-completing-the-event": [
+      {
+        "type": "condition",
+        "text": "If the player completes at least one step of the ritual:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player only receives anima bark:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Well done, you completed [1-8] step[s] of the ritual! The Dryad has left you a gift...",
+                "id": "8rl0f8"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a number of anima bark correlating to the number of correct steps",
+                "id": "Iy2c-N"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "7ZueRb"
+          },
+          {
+            "type": "condition",
+            "text": "If the player also receives a Petal garland:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The Dryad also hands you a Petal garland.",
+                "id": "vLpMT9"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a Petal garland",
+                "id": "zufVRN"
+              }
+            ],
+            "id": "inkggB"
+          }
+        ],
+        "id": "DISjmd"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "If 0% progress was made during the event:",
+        "steps": [
+          {
+            "npc": "No ritual steps were completed."
+          }
+        ],
+        "id": "UZOqJG"
+      },
+      {
+        "type": "condition",
+        "text": "If 1-24% progress was made during the event:",
+        "steps": [
+          {
+            "npc": "Under one-quarter of the ritual steps have been completed."
+          }
+        ],
+        "id": "U3yWVF"
+      },
+      {
+        "type": "condition",
+        "text": "If 25-49% progress was made during the event:",
+        "steps": [
+          {
+            "npc": "Over one-quarter of the ritual steps have been completed."
+          }
+        ],
+        "id": "eNZg0a"
+      },
+      {
+        "type": "condition",
+        "text": "If 50-74% progress was made during the event:",
+        "steps": [
+          {
+            "npc": "Over half the ritual steps have been completed."
+          }
+        ],
+        "id": "hwb2rB"
+      },
+      {
+        "type": "condition",
+        "text": "If 75-99% progress was made during the event:",
+        "steps": [
+          {
+            "npc": "Over three-quarters of the ritual steps were completed. Well done!"
+          }
+        ],
+        "id": "K36tzI"
+      },
+      {
+        "type": "condition",
+        "text": "If 100% progress was made during the event:",
+        "steps": [
+          {
+            "npc": "You all completed every ritual step, amazing!"
+          }
+        ],
+        "id": "rOebnD"
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "steps": [
+    {
+      "type": "condition",
+      "text": "If the player has under 46 Hunter:",
+      "steps": [
+        {
+          "npc": "Sorry, but I can only provide services to qualified members of the Hunter Guild."
+        },
+        {
+          "type": "message",
+          "text": "You need 46 Hunter to access Hunter Guild amenities.",
+          "id": "26Wk1f"
+        },
+        {
+          "type": "end"
+        }
+      ],
+      "id": "yi0NR9"
+    },
+    {
+      "type": "condition",
+      "text": "If the player has at least 46 Hunter:",
+      "steps": [
+        {
+          "npc": "Hi there. How's it going?"
+        },
+        {
+          "type": "choice",
+          "options": [
+            {
+              "text": "What do you do here?",
+              "steps": [
+                {
+                  "player": "What do you do here?"
+                },
+                {
+                  "npc": "I keep the hunters well equipped! I can sell you hunting equipment at a reasonable price."
+                },
+                {
+                  "type": "jump",
+                  "reference": "other",
+                  "id": "bbBgea"
+                }
+              ]
+            },
+            {
+              "text": "What have you got for sale?",
+              "steps": [
+                {
+                  "player": "What have you got for sale?"
+                },
+                {
+                  "npc": "Hunting supplies for every occasion."
+                },
+                {
+                  "type": "action",
+                  "action": "open_shop",
+                  "target": "Imia's Supplies",
+                  "id": "Zi724q"
+                }
+              ]
+            },
+            {
+              "text": "Never mind.",
+              "steps": [
+                {
+                  "player": "Never mind."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "id": "ergw-n"
+    }
+  ]
+}

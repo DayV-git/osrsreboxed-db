@@ -1,0 +1,326 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-gnome-stronghold-and-tree-gnome-village": [
+      {
+        "npc": "You friend of gnome people, you friend of mine. Would you like me to take you somewhere?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thanks, old tree.",
+            "steps": [
+              {
+                "player": "No thanks, old tree."
+              }
+            ]
+          },
+          {
+            "text": "Where can I go?",
+            "steps": [
+              {
+                "player": "Where can I go?"
+              },
+              {
+                "npc": "You can travel to the trees which are related to me."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Spirit tree",
+                "id": "O5H1YZ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player selects a valid destination:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You place your hands on the dry tough bark of the spirit tree, and feel a surge of energy run through your veins.",
+                    "id": "6VbuZl"
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player is taken to their chosen destination.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "c5vLEt"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Ezt-uQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player picks the current location:",
+                "steps": [
+                  {
+                    "npc": "You're already here."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Spirit tree",
+                    "id": "70-1aV"
+                  }
+                ],
+                "id": "XQUaa2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player picks 'Farming Guild' with an available Spirit tree grown, but has less than 85 Farming:",
+                "steps": [
+                  {
+                    "npc": "Travel to that area is restricted."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need a Farming level of at least 85 to teleport there.",
+                    "id": "TKl2b9"
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Spirit tree",
+                    "id": "UyJorb"
+                  }
+                ],
+                "id": "BdFvTu"
+              },
+              {
+                "type": "condition",
+                "text": "If the player picks 'Laguna Aurorae', but has not visited the area:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Spirit Tree",
+                    "text": "You cannot travel to that land at this time."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You must have visited Laguna Aurorae before you can travel there.",
+                    "id": "CVe7JQ"
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Spirit tree",
+                    "id": "x5Kz9m"
+                  }
+                ],
+                "id": "9lMAVz"
+              },
+              {
+                "type": "condition",
+                "text": "If the player picks 'Your house', but it's an unavailable destination:",
+                "steps": [
+                  {
+                    "npc": "None of my brethren are in your house."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Spirit tree",
+                    "id": "9f01gU"
+                  }
+                ],
+                "id": "XaTvzE"
+              },
+              {
+                "type": "condition",
+                "text": "If the player picks any other unavailable destination:",
+                "steps": [
+                  {
+                    "npc": "None of my brethren are at that location."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Spirit tree",
+                    "id": "GwdBNz"
+                  }
+                ],
+                "id": "i43bBS"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-other-locations": [
+      {
+        "npc": "Hello gnome friend. Where would you like to go?"
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Spirit tree",
+        "id": "FDunvY"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "FgRWBQ"
+      }
+    ],
+    "standard-dialogue-all-locations": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed Tree Gnome Village:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The tree doesn't feel like talking.",
+            "id": "4-dQly"
+          },
+          {
+            "type": "condition",
+            "text": "For trees grown in farming patches:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The tree won't transport you until you've completed the Tree Gnome Village quest.",
+                "id": "-5ODsc"
+              }
+            ],
+            "id": "DXTlFW"
+          }
+        ],
+        "id": "KIz4Jb"
+      }
+    ],
+    "standard-dialogue-last-destination-option": [
+      {
+        "type": "condition",
+        "text": "If the player has not set a previous destination:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Spirit Tree",
+            "text": "This once, you will have to tell me where you wish to go, for I do not yet know where to take you back."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Spirit tree",
+            "id": "Qggq7c"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "qOYJd8"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is at their previous destination:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Spirit Tree",
+            "text": "You're already here."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Spirit tree",
+            "id": "4NknZO"
+          }
+        ],
+        "id": "XZrwHC"
+      }
+    ],
+    "treasure-trails-tree-gnome-village-tree-hard": [
+      {
+        "npc": "Ah! A challenge for you."
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need to test your mental strength before you can proceed."
+      },
+      {
+        "type": "message",
+        "text": "The spirit tree magically gives you a challenge scroll!",
+        "id": "vh1qS5"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "aeUOKj"
+      }
+    ],
+    "treasure-trails-tree-gnome-village-tree-hard-when-spoken-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "How can that be? Go check again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XVk7E1"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "I am most impressed!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The spirit tree magically gives you another clue scroll!",
+                "id": "gVnwo1"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "6PYTrQ"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "32t7jU"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "6HNieu"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "lExGI2"
+              }
+            ],
+            "id": "0jW0zW"
+          }
+        ],
+        "id": "cT0WPl"
+      }
+    ]
+  }
+}

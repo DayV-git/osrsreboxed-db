@@ -1,0 +1,162 @@
+{
+  "steps": [
+    {
+      "npc": "Do you want to buy any fine silks?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "How much are they?",
+          "steps": [
+            {
+              "player": "How much are they?"
+            },
+            {
+              "npc": "3 gp."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "No. That's too much for me.",
+                  "steps": [
+                    {
+                      "player": "No. That's too much for me."
+                    },
+                    {
+                      "npc": "2 gp and that's as low as I'll go."
+                    },
+                    {
+                      "npc": "I'm not selling it for any less. You'll probably go and sell it in Varrock for a profit, anyway."
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "2 gp sounds good.",
+                          "steps": [
+                            {
+                              "player": "2 gp sounds good."
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has enough money:",
+                              "steps": [
+                                {
+                                  "type": "message",
+                                  "text": "You buy some silk for 2 gp.",
+                                  "id": "eEkQ65"
+                                },
+                                {
+                                  "type": "action",
+                                  "action": "receive",
+                                  "text": "Silk",
+                                  "id": "NirMRI"
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "f8mJhp"
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player does not have enough money:",
+                              "steps": [
+                                {
+                                  "player": "Oh dear. I don't have enough money."
+                                },
+                                {
+                                  "npc": "Well, come back when you do have some money!"
+                                }
+                              ],
+                              "id": "13HCow"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "No, really. I don't want it.",
+                          "steps": [
+                            {
+                              "player": "No, really. I don't want it."
+                            },
+                            {
+                              "npc": "Okay, but that's the best price you're going to get."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": "Okay, that sounds good.",
+                  "steps": [
+                    {
+                      "player": "Okay, that sounds good."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has enough money:",
+                      "steps": [
+                        {
+                          "type": "message",
+                          "text": "You buy some silk for 3 gp.",
+                          "id": "GZnaVK"
+                        },
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "Silk",
+                          "id": "1lib8I"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "pMw6wc"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have enough money:",
+                      "steps": [
+                        {
+                          "type": "jump",
+                          "reference": "above",
+                          "id": "dcC4Fj"
+                        }
+                      ],
+                      "id": "4lSDFL"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "No. Silk doesn't suit me.",
+          "steps": [
+            {
+              "player": "No. Silk doesn't suit me."
+            }
+          ]
+        },
+        {
+          "text": "I'm in search of a man named Avan Fitzharmon.",
+          "condition": "If the player has started Family Crest, but not met Avan:",
+          "steps": [
+            {
+              "player": "I'm in search of a man named Avan Fitzharmon."
+            },
+            {
+              "npc": "Can't say as I've seen him... I'm sure if he's been to Al Kharid recently someone around here will have though."
+            }
+          ],
+          "id": "ueIy9V"
+        }
+      ]
+    }
+  ]
+}

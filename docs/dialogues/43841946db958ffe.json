@@ -1,0 +1,156 @@
+{
+  "default": "before-the-fremennik-trials",
+  "variants": {
+    "before-the-fremennik-trials": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Don't talk to me! I don't have time for the likes of you!"
+      },
+      {
+        "type": "message",
+        "text": "You do not meet all of the requirements to start the Lunar Diplomacy quest.",
+        "id": "Mw2fYK"
+      }
+    ],
+    "standard-dialogue-rellekka-without-a-seal-of-passage": [
+      {
+        "npc": "You won't make many friends on Lunar Isle without your Seal of Passage."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That's fine, I'm just going to Pirates' Cove.",
+            "steps": [
+              {
+                "player": "That's fine, I'm just going to Pirates' Cove."
+              },
+              {
+                "type": "action",
+                "text": "Player is transported to Pirates' cove",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "Zy03Vt"
+              }
+            ]
+          },
+          {
+            "text": "Oh, I'd better go back and get it.",
+            "steps": [
+              {
+                "player": "Oh, I'd better go back and get it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-rellekka-with-a-seal-of-passage": [
+      {
+        "player": "Hi Lokar, can you take me back to your ship?"
+      },
+      {
+        "npc": "Sheesh, make your mind up [pal/lady], I'm not a taxi service!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Go now.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Player is transported to Pirates' cove",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "1iO5AM"
+              }
+            ]
+          },
+          {
+            "text": "Don't go.",
+            "steps": [
+              {
+                "player": "Actually, I've changed my mind. Again. I don't want to go."
+              },
+              {
+                "npc": "You are possibly the most indecisive person I have ever met..."
+              },
+              {
+                "player": "Well, 'bye then."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-pirates-cove": [
+      {
+        "player": "Hello again Lokar."
+      },
+      {
+        "npc": "Hi again [Fremennik name]! What can I do for you?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have a Seal of Passage:",
+        "steps": [
+          {
+            "player": "Do I still need the Seal of Passage?"
+          },
+          {
+            "npc": "Yeah, why?"
+          },
+          {
+            "player": "I lost it."
+          },
+          {
+            "npc": "Silly you. You'll have to go back to Brundt the Chieftain to get another before you can go on to Lunar Isle."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "Ulbnop"
+          }
+        ],
+        "id": "W9inFo"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you take me back to Rellekka?",
+            "steps": [
+              {
+                "player": "Can you take me back to Rellekka please?"
+              },
+              {
+                "npc": "Hey, if you want to go back to loserville with all the losers, who am I to stop you?"
+              },
+              {
+                "type": "action",
+                "text": "Player is transported to Rellekka",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "XRE4z2"
+              }
+            ]
+          },
+          {
+            "text": "Nothing thanks.",
+            "steps": [
+              {
+                "player": "Nothing thanks! I just saw you here and thought I'd say hello!"
+              },
+              {
+                "npc": "Hey, I knew you seemed cool when I met you [Fremennik name]!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

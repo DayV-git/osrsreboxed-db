@@ -1,0 +1,91 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-if-the-player-does-not-have-a-ghostspeak-amulet-equipped": [
+      {
+        "npc": "Woooo wooo wooooo woooo"
+      }
+    ],
+    "standard-dialogue-if-the-player-has-a-ghostspeak-amulet-equipped": [
+      {
+        "npc": "Do you want something, mortal?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you and why are you here?",
+            "steps": [
+              {
+                "player": "Who are you and why are you here?"
+              },
+              {
+                "npc": "Once I was a merchant. I worked hard and became wealthy, very wealthy. I was brave too, storing my possessions in two great chests here, where few would dare to interfere with them."
+              },
+              {
+                "npc": "But I was not strong enough. One day a witch allied with the pirates of the north; between their strength and her magic, they killed me. The pirates carried one of my chests away to their ship."
+              },
+              {
+                "npc": "I keep vigil here now, as it interests me to watch adventurers come to raid this little chest, whenever they can find one of my keys."
+              },
+              {
+                "npc": "My bigger chest was taken north to the pirates' ship - a brave adventurer may like to raid that one instead, if they can handle the perils of the north. I kept more wealth in that one."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "lUorcw"
+              }
+            ]
+          },
+          {
+            "text": "I've got your key.",
+            "condition": "If the player has a Larran's key in their inventory:",
+            "steps": [
+              {
+                "player": "I've got your key."
+              },
+              {
+                "npc": "Well done, adventurer. I have two chests, containing my wealth from the days when I was alive. The smaller one is here, and the bigger one was taken far to the north, to the pirates' ship."
+              },
+              {
+                "npc": "You can use the key to open either of them. The bigger one, in the pirates' ship, contains more wealth than this small one."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "p2Zog2"
+              }
+            ],
+            "id": "trgoGz"
+          },
+          {
+            "text": "Can you give me anything?",
+            "steps": [
+              {
+                "player": "Can you give me anything?"
+              },
+              {
+                "npc": "If you want my worldly goods, open my chests with my keys. Adventurers occasionally find my keys while slaying monsters in the Wilderness, on assignment from the witch Krystilia."
+              },
+              {
+                "npc": "I do not know why Krystilia sends adventurers to find my keys instead of looting the chest herself. Perhaps it amuses her to send people into this land to risk their lives."
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you to it.",
+            "steps": [
+              {
+                "player": "I'll leave you to it."
+              },
+              {
+                "npc": "I will be here if you return."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

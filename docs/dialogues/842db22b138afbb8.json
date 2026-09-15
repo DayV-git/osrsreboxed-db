@@ -1,0 +1,226 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-gielinor": [
+      {
+        "npc": "Can you come and help me, [player name]? I've got a problem with some graves."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, I'll help with your graves.",
+            "steps": [
+              {
+                "player": "Okay, I'll help with your graves."
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported to Leo's graveyard",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "itKY6-"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I'm busy.",
+            "steps": [
+              {
+                "player": "Sorry, I'm busy."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-graveyard": [
+      {
+        "npc": "You have to help me, [player name]! I've put the wrong coffins into these graves."
+      },
+      {
+        "npc": "I need you to pick up the coffin from each grave, see who's inside it, and bury it in the grave with the correct gravestone."
+      }
+    ],
+    "standard-dialogue-when-talked-to-again": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I think I've finished!",
+            "steps": [
+              {
+                "player": "I think I've finished!"
+              },
+              {
+                "type": "condition",
+                "text": "If not every coffin is in the correct grave:",
+                "steps": [
+                  {
+                    "npc": "That's a good attempt, but it's just not right. Try looking in the coffins to learn who is in them, and read the gravestones to see who is supposed to be buried there."
+                  },
+                  {
+                    "player": "All right, I'll give it another shot."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "B53g6F"
+              },
+              {
+                "type": "condition",
+                "text": "If every coffin is in the correct grave:",
+                "steps": [
+                  {
+                    "npc": "Wonderful! That's taken care of them. I'll take you back, and give you your reward."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Gravedigger event reward",
+                    "id": "LAtxJW"
+                  }
+                ],
+                "id": "jusTFE"
+              }
+            ]
+          },
+          {
+            "text": "Remind me what I'm supposed to do.",
+            "steps": [
+              {
+                "player": "Remind me what I'm supposed to do."
+              },
+              {
+                "npc": "I need you to pick up the coffin from each grave, see who's inside it, and bury it in the grave with the correct gravestone."
+              },
+              {
+                "type": "unavailable",
+                "id": "9PWONY"
+              },
+              {
+                "type": "unavailable",
+                "id": "ARJWjy"
+              },
+              {
+                "type": "unavailable",
+                "id": "6Z1te-"
+              },
+              {
+                "type": "unavailable",
+                "id": "KfJ15U"
+              },
+              {
+                "type": "unavailable",
+                "id": "RTFCUW"
+              },
+              {
+                "type": "unavailable",
+                "id": "UTK3AF"
+              }
+            ]
+          },
+          {
+            "text": "I want to leave now.",
+            "steps": [
+              {
+                "player": "I want to leave now."
+              },
+              {
+                "npc": "In that case, I'll take you back to where I found you."
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported to back to the previous location",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "qDsSR3"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-upon-dying-inside-the-graveyard": [
+      {
+        "npc": "Welcome back!"
+      },
+      {
+        "player": "What? But how am I still here?"
+      },
+      {
+        "npc": "You died, and now you are in a graveyard."
+      },
+      {
+        "npc": "Where did you think you would go?"
+      }
+    ],
+    "other-player-s-leo": [
+      {
+        "npc": "Sorry, I need help from [player name]."
+      }
+    ],
+    "when-talked-to-while-despawning": [
+      {
+        "npc": "Goodbye."
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "Upon spawning in for the player & waiting for a response by the player:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "Hello, [player name]?"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "Please help me, [player name]."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "I need your help, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "npc": "Can I borrow you for a minute, [player name]?"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ZhH-Iw"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not respond in time:",
+        "steps": [
+          {
+            "npc": "Maybe later."
+          }
+        ],
+        "id": "RjyfxR"
+      }
+    ]
+  }
+}

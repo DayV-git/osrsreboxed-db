@@ -1,0 +1,86 @@
+{
+  "steps": [
+    {
+      "npc": "Oh... Nilsal. Unusual to see someone up here. What can I do for you?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What do you do around here?",
+          "steps": [
+            {
+              "player": "What do you do around here?"
+            },
+            {
+              "npc": "I used to work downstairs... but I started using the lab after hours for my own projects and the supervisor found out. Now I've been assigned to rooftop duty to look after the plants."
+            },
+            {
+              "player": "Sorry to hear that. At least the view is good!"
+            },
+            {
+              "type": "jump",
+              "reference": "previous",
+              "id": "stKEZ_"
+            }
+          ]
+        },
+        {
+          "text": "Do you have any tips for potion production?",
+          "steps": [
+            {
+              "player": "Do you have any tips for potion production?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has not joined the Alchemical Society:",
+              "steps": [
+                {
+                  "npc": "I do, but only for fellow members of the Alchemical Society. Perhaps you should join up if you're interested in Herblore."
+                },
+                {
+                  "player": "Interesting... Perhaps I should."
+                },
+                {
+                  "type": "jump",
+                  "reference": "previous",
+                  "id": "k9XIpd"
+                }
+              ],
+              "id": "y2DyhS"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has joined the Alchemical Society:",
+              "steps": [
+                {
+                  "npc": "Yes... Make good use of the digweed once they're ready to pick. Choose which potion you use it on wisely!"
+                },
+                {
+                  "npc": "Oh, and the processing tables can be sped up a bit if you use them correctly. You might need to do some experimenting to figure that out."
+                },
+                {
+                  "player": "Interesting..."
+                },
+                {
+                  "type": "jump",
+                  "reference": "previous",
+                  "id": "p4b0i8"
+                }
+              ],
+              "id": "cewHIF"
+            }
+          ]
+        },
+        {
+          "text": "Thanks! I'd better be going now.",
+          "steps": [
+            {
+              "player": "Thanks! I'd better be going now."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,499 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings! What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to buy a new boat.",
+            "steps": [
+              {
+                "player": "I'd like to buy a new boat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's Sailing level is too low:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid I can't help you with that as you don't have permission to use the docks here."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need a Sailing level of 20 to buy a boat here.",
+                    "id": "CqWvBp"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "-JDFYT"
+              },
+              {
+                "npc": "Of course! Which one would you like?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Boat Emporium",
+                "id": "YQlSvC"
+              },
+              {
+                "type": "action",
+                "text": "After choosing a boat:",
+                "id": "fhe2kv"
+              },
+              {
+                "type": "condition",
+                "text": "When buying a raft:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your brand new boat has been delivered to Catherby.",
+                    "id": "H5VJfN"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "X7TFoM"
+              },
+              {
+                "type": "condition",
+                "text": "When buying a skiff:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your brand new boat has been delivered to Catherby.",
+                    "id": "PfS81v"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "8v3ESA"
+              },
+              {
+                "type": "condition",
+                "text": "When buying a sloop:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your brand new boat has been delivered to Catherby.",
+                    "id": "vdYJfX"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "bHRUDj"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You don't have enough coins to buy this boat.",
+                    "id": "Jbsm5w"
+                  }
+                ],
+                "id": "a4u3dq"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to customise a boat.",
+            "steps": [
+              {
+                "player": "I'd like to customise a boat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's Sailing level is too low:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid I can't help you with that as you don't have permission to use the docks here."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need a Sailing level of 20 to customise a boat here.",
+                    "id": "ZNflQY"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "cwYkY7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't own any boats:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pZWhCS"
+                  }
+                ],
+                "id": "_UbZkH"
+              },
+              {
+                "npc": "Not a problem. Just let me know which boat you want to customise and I'll get things set up for you."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Boat Customisation",
+                "id": "E0xYQf"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to recover a boat.",
+            "steps": [
+              {
+                "player": "I'd like to recover a boat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's Sailing level is too low:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid I can't help you with that as you don't have permission to use the docks here."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need a Sailing level of 20 to recover a boat here.",
+                    "id": "bIrQ7n"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "BBrPye"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't own any boats:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pZWhCS"
+                  }
+                ],
+                "id": "3YqbR-"
+              },
+              {
+                "npc": "Certainly! Let me know which boat you want retrieving and I'll call in a port wizard to teleport it over."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Recover Boat",
+                "id": "YnleDP"
+              },
+              {
+                "type": "condition",
+                "text": "After choosing a boat:",
+                "id": "UBcZMb"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's chosen boat has items in cargo:",
+                "steps": [
+                  {
+                    "npc": "Ah, it seems there's something in the cargo hold of that boat. If the port wizard recovers the boat, any fish, salvage, crates or bounty parts will be lost."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Recover your boat for [number] coins? Some cargo will be lost.",
+                    "options": [
+                      {
+                        "text": "Yes, recover it without cargo.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "knI-rG"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, I'd like to keep my cargo.",
+                        "steps": [
+                          {
+                            "player": "I won't bother then. I'd like to keep my cargo."
+                          },
+                          {
+                            "npc": "Understandable. Come back at any time."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "vYVPx7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's chosen boat is bottled and in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Looks like you have that boat bottled, it's in your Inventory. No need to recover it!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "7pezts"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's chosen boat is bottled and in their bank:",
+                "steps": [
+                  {
+                    "npc": "Looks like you have that boat bottled, it's in your Bank. No need to recover it!"
+                  },
+                  {
+                    "type": "end"
+                  },
+                  {
+                    "npc": "Right, time to call in the port wizard."
+                  },
+                  {
+                    "type": "random",
+                    "options": []
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's chosen boat was docked at another port:",
+                    "steps": [
+                      {
+                        "npc": "All done! The boat is now docked here at Catherby."
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "1guZAW"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's chosen boat was lost at sea:",
+                    "steps": [
+                      {
+                        "npc": "All done! The boat is now docked here at Catherby. However, I'm afraid that because it was lost at sea, the port wizard won't have been able to recover any fish, salvage, crates or bounty parts from your cargo hold."
+                      },
+                      {
+                        "player": "Ah, I see. Thanks anyway."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "mS5F56"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's chosen boat was capsized:",
+                    "steps": [
+                      {
+                        "npc": "All done! The boat is now docked here at Catherby. However, I'm afraid that because it had capsized, the port wizard won't have been able to recover any fish, salvage, crates or bounty parts from your cargo hold."
+                      },
+                      {
+                        "player": "Ah, I see. Thanks anyway."
+                      }
+                    ],
+                    "id": "_M9s9b"
+                  }
+                ],
+                "id": "XrljRA"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to destroy a boat.",
+            "steps": [
+              {
+                "player": "I'd like to destroy a boat."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't own any boats:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "pZWhCS"
+                  }
+                ],
+                "id": "od2snM"
+              },
+              {
+                "npc": "Yes, I can sort that for you. We love a bit of free scrap here."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Destroy Boat",
+                "id": "yefSVJ"
+              },
+              {
+                "type": "action",
+                "text": "After choosing a boat:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player's chosen boat has items in cargo:",
+                    "steps": [
+                      {
+                        "npc": "It looks like you have items stored in your cargo hold. I must warn you that these will be lost if the boat is destroyed."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "If you destroy the boat, the items in the cargo hold will be lost.",
+                        "options": []
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Are you sure you want to destroy your boat?",
+                        "options": [
+                          {
+                            "text": "Yes, destroy it.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "oBvBlf"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, don't destroy it.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "CDEAMf"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "tdLSGF"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Are you sure you want to destroy your boat?",
+                    "options": []
+                  }
+                ],
+                "id": "bd_TsR"
+              }
+            ]
+          },
+          {
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "player": "Nothing, thanks."
+              },
+              {
+                "npc": "Fair enough."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "before-completing-pandemonium": [
+      {
+        "npc": "Greetings! What can I do for you?"
+      },
+      {
+        "player": "Hello there. What do you do around here?"
+      },
+      {
+        "npc": "I'm a shipwright. I supply boats of all kinds to anyone with the money to afford them."
+      },
+      {
+        "player": "Interesting... Would I be able to buy one?"
+      },
+      {
+        "npc": "Sorry, but I don't have any ready for sale right now. I'm sure I will soon, so keep checking back."
+      },
+      {
+        "player": "Okay, fair enough."
+      },
+      {
+        "type": "message",
+        "text": "You need to complete the Pandemonium quest to fully access the Sailing skill.",
+        "id": "uKjZ-b"
+      }
+    ],
+    "before-completing-pandemonium-buy-boat-customise-boat-or-recover-boat": [
+      {
+        "npc": "I'm afraid I can't help you with that at the moment. You'll have to come back later."
+      },
+      {
+        "type": "message",
+        "text": "You need to complete the Pandemonium quest to fully access the Sailing skill.",
+        "id": "4xP7lv"
+      }
+    ],
+    "standard-dialogue-pre-sailing-release": [
+      {
+        "npc": "Greetings! What can I do for you?"
+      },
+      {
+        "player": "Hello there. What do you do around here?"
+      },
+      {
+        "npc": "I'm a shipwright. I supply boats of all kinds to anyone with the money to afford them."
+      },
+      {
+        "player": "Interesting... Would I be able to buy one?"
+      },
+      {
+        "npc": "Sorry, but I don't have any ready for sale right now. I'm sure I will soon, so keep checking back."
+      },
+      {
+        "player": "Okay, fair enough."
+      },
+      {
+        "type": "message",
+        "text": "The Sailing skill will release on the 19th November.",
+        "id": "VCAqBT"
+      }
+    ],
+    "standard-dialogue-pre-sailing-release-buy-boat-customise-boat-or-recover-boat": [
+      {
+        "npc": "I'm afraid I can't help you with that at the moment. You'll have to come back later."
+      },
+      {
+        "type": "message",
+        "text": "The Sailing skill will release on the 19th November.",
+        "id": "h7-sze"
+      }
+    ]
+  },
+  "branches": {
+    "pZWhCS": [
+      {
+        "npc": "I'm afraid you don't seem to own any boats."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

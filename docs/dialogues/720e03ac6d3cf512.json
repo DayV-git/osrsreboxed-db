@@ -1,0 +1,249 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello! I'm Lorelai. Welcome to the Warriors' Guild basement!"
+      },
+      {
+        "player": "What are you doing down here?"
+      },
+      {
+        "npc": "I'm training this group of special Cyclopes to be stronger and more powerful for Kamfreena."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's special about these Cyclopes?",
+            "steps": [
+              {
+                "player": "What's special about these Cyclopes?"
+              },
+              {
+                "npc": "They have a chance of dropping a new, more powerful defender. Kamfreena doesn't want just anyone getting their hands on one so she moved them down here and tasked me with training them."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "_JPBBq"
+              }
+            ]
+          },
+          {
+            "text": "How exactly are you training them?",
+            "steps": [
+              {
+                "npc": "With a punishing routine of combat, fighting and the odd death!"
+              },
+              {
+                "player": "So, you just let them fight each other and hope they get stronger?"
+              },
+              {
+                "npc": "Of course not, that would just be cruel! Kamfreena and I only allow the most worthy of adventurers to fight these cyclopes."
+              },
+              {
+                "player": "I am a mighty adventurer! Can I fight them?"
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "12QSD7"
+              }
+            ]
+          },
+          {
+            "text": "Can I fight them?",
+            "steps": [
+              {
+                "player": "I am a mighty adventurer! Can I fight them?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not shown her a rune defender:",
+                "steps": [
+                  {
+                    "npc": "You'll need to display your skills as a Warrior before I can allow you to enter the room."
+                  },
+                  {
+                    "player": "How can I do that?"
+                  },
+                  {
+                    "npc": "Bring me a Rune Defender and I shall unlock the door for you, this shows me you have dedicated enough time to fighting the Cyclops upstairs."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I have a Rune Defender here.",
+                        "steps": [
+                          {
+                            "player": "I have a Rune Defender here, please let me in!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have a rune defender:",
+                            "steps": [
+                              {
+                                "npc": "And the Wise Old Man is my Dad... come back when you have the Rune Defender!"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "Yo_F7L"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has a rune defender:",
+                            "steps": [
+                              {
+                                "npc": "Very well, I've unlocked the door but you'll still need 100 tokens from upstairs before you can enter as well as 10 for every minute you want to stay inside. Have fun in there!"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "qmAT3g"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Bye!",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "_sngwr"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "i_oUi3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already show her a rune defender:",
+                "steps": [
+                  {
+                    "npc": "Yes, you have already proved yourself to me, the door is unlocked."
+                  }
+                ],
+                "id": "bdmFzx"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "See you around."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-a-rune-defender-on-lorelai-before-unlocking-the-room": [
+      {
+        "player": "I have a Rune Defender here, please let me in!"
+      },
+      {
+        "npc": "Very well, I've unlocked the door but you'll still need 100 tokens from upstairs before you can enter as well as 10 for every minute you want to stay inside. Have fun in there!"
+      }
+    ],
+    "standard-dialogue-attempting-to-open-the-basement-door-to-the-cyclopes-room-before-first-talking-to-lorelai-but-with-the-player-having-a-rune-defender-in-inventory": [
+      {
+        "npc": "I see you have a worthy defender! I'll release some cyclops to help you get an upgrade. They are quite mean and strong though..."
+      }
+    ],
+    "standard-dialogue-using-a-rune-defender-on-lorelai-after-already-unlocking-the-room": [
+      {
+        "npc": "You've already proved yourself to me, the door is unlocked."
+      }
+    ],
+    "standard-dialogue-using-a-dragon-defender-on-lorelai": [
+      {
+        "npc": "Congratulations you've found a Dragon defender! You're welcome to go back inside and try to get more."
+      }
+    ],
+    "after-running-out-of-tokens-in-the-room": [
+      {
+        "npc": "Your time is up, please make your way to the exit."
+      }
+    ],
+    "after-running-out-of-tokens-in-the-room-if-the-player-does-not-leave-the-room-after-100-ticks": [
+      {
+        "npc": "Next time, please leave as soon as your time is up."
+      }
+    ],
+    "attempting-to-take-off-the-attack-cape-or-max-cape-while-in-the-room": [
+      {
+        "npc": "You must keep your attack skillcape or max cape equipped to stay in the area."
+      }
+    ],
+    "claim-tokens-dialogue": [
+      {
+        "player": "May I claim my tokens please?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has earned Warrior guild tokens, but has no inventory space:",
+        "steps": [
+          {
+            "npc": "You don't have space to carry them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "fFp9P0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has earned Warrior guild tokens:",
+        "steps": [
+          {
+            "npc": "Of course! Here you go, you've earned [number] token[s]!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Warrior guild tokens",
+            "id": "vcm_0Z"
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "u2_051"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not earned Warrior guild tokens:",
+        "steps": [
+          {
+            "npc": "I'm afraid you have not earned any tokens yet. Try some of the activities around the guild to earn some."
+          },
+          {
+            "player": "Ok, I'll go see what I can find."
+          }
+        ],
+        "id": "P0eBhk"
+      }
+    ],
+    "talk-to-rory": [
+      {
+        "npc": "Ahh I see you've met Rory. As a young Cyclops he's not ready for combat yet so he keeps me company."
+      }
+    ]
+  }
+}

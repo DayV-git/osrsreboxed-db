@@ -1,0 +1,316 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hehhh... What do you need?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What can you actually do?",
+            "steps": [
+              {
+                "player": "What can you actually do?"
+              },
+              {
+                "npc": "Banknote conversion, mostly - exchanging banknotes for real items. I specialise in metal bars. But I can't face doing it just now."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Are you alright?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "pHuAsK"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll be off.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "R3wS8N"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Are you alright?",
+            "steps": [
+              {
+                "player": "Are you alright?"
+              },
+              {
+                "npc": "Ohhh... can't complain. I just can't cope with being stuck here, by the bank. I want to travel - that's why they call me Isles. Really, I want to go to the island called Grimstone!"
+              },
+              {
+                "npc": "I don't know much about it, but it sounds like the most exciting island ever! I bet I could engage better with my work if I lived there, so I could finally earn a bit of cash."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I haven't sailed to Grimstone yet, either.",
+                    "condition": "If the player has never been to Grimstone:",
+                    "steps": [
+                      {
+                        "player": "I haven't sailed to Grimstone yet, either."
+                      },
+                      {
+                        "npc": "Maybe one day I'll meet someone who'll take me there, so that I can work."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "1z5DDv"
+                      }
+                    ],
+                    "id": "ibZ8ib"
+                  },
+                  {
+                    "text": "Would you like me to sail you to Grimstone?",
+                    "condition": "If the player has been to Grimstone:",
+                    "steps": [
+                      {
+                        "player": "Would you like me to sail you to Grimstone?"
+                      },
+                      {
+                        "npc": "That sounds amazing! Yes, I'll hop aboard your boat, next time you embark from here. Thank you."
+                      }
+                    ],
+                    "id": "ZMEOh8"
+                  },
+                  {
+                    "text": "What can you actually do?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "E7jg-0"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll be off.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "BVS6q9"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "player": "I'll be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-him-after-agreeing-to-sail-to-grimstone": [
+      {
+        "npc": "Thanks again for the invitation to Grimstone. I'll hop aboard your boat, next time you embark from Port Roberts."
+      }
+    ],
+    "standard-dialogue-talking-to-him-while-he-is-on-a-boat": [
+      {
+        "npc": "Thanks again for the ride to Grimstone."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So what can you do?",
+            "steps": [
+              {
+                "player": "So what can you do?"
+              },
+              {
+                "npc": "Exchanging banknotes for real items, mostly. I specialise in metal bars. Once I've got my head together, I'll get to work, maybe once we're on Grimstone."
+              },
+              {
+                "player": "Okay."
+              }
+            ]
+          },
+          {
+            "text": "Okay.",
+            "steps": [
+              {
+                "player": "Okay."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-him-upon-disembarking-at-grimstone": [
+      {
+        "npc": "It's wonderful to be here, but this coastline is very exposed! Maybe you could show me somewhere on the island where I could shelter."
+      }
+    ],
+    "standard-dialogue-talking-to-him-upon-entering-the-grimstone-dungeon": [
+      {
+        "npc": "Oh, this is much better. I could definitely get on with my work in here! I'll find somewhere warm to work..."
+      },
+      {
+        "type": "message",
+        "text": "Isles wanders off to find somewhere warm to work.",
+        "id": "sHLMLB"
+      }
+    ],
+    "standard-dialogue-talking-to-him-by-the-ancient-furnace": [
+      {
+        "npc": "Hello again! Now I'm working, do you want me to exchange banknotes for metal bars? I'll only charge 100 coins for each banknote, since you were kind enough to bring me here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "npc": "Hand me the banknotes you wish me to exchange."
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "npc": "I exchange banknotes for real items. Most of my colleagues do this work in shops, or places like that, but I wanted to visit more exciting places, hence my name. So you brought me here."
+              },
+              {
+                "npc": "Anyway, do you want any banknotes converted? My stock of items is limited to some metal bars, at the moment, but I've got lots of those!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "j6DFl3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "LyP83D"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unnoting-dialogue": [
+      {
+        "type": "choice",
+        "prompt": "Exchange [item]?",
+        "options": [
+          {
+            "text": "Exchange 1: 100 coins."
+          },
+          {
+            "text": "Exchange 5: 500 coins."
+          },
+          {
+            "text": "Exchange X."
+          },
+          {
+            "text": "Cancel."
+          }
+        ]
+      }
+    ],
+    "unnoting-dialogue-unnoted-items": [
+      {
+        "npc": "I exchange banknotes for real items. That's not a banknote."
+      }
+    ],
+    "unnoting-dialogue-incompatible-item": [
+      {
+        "npc": "Sorry, I don't have that kind of item. I've got plenty of metal bars, though."
+      }
+    ],
+    "unnoting-dialogue-metal-bar-that-can-not-be-used-for-cannonballs": [
+      {
+        "npc": "Sorry, I don't have that kind of metal bar. Try something that might be better for making cannonballs."
+      }
+    ],
+    "unnoting-dialogue-without-at-least-100-coins": [
+      {
+        "npc": "I charge 100 coins for exchanging each banknote."
+      }
+    ],
+    "unnoting-dialogue-full-inventory": [
+      {
+        "npc": "Your inventory is too full."
+      }
+    ],
+    "using-items-on-isles-before-he-s-at-the-ancient-furnace": [
+      {
+        "type": "condition",
+        "text": "The used item is a valid noted item:",
+        "steps": [
+          {
+            "npc": "Sorry, I'm not ready to work at the moment."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "SZ0o1T"
+      },
+      {
+        "type": "condition",
+        "text": "The item is not valid note:",
+        "steps": [
+          {
+            "npc": "Sorry, I can't do anything with that."
+          }
+        ],
+        "id": "U1ELbw"
+      }
+    ]
+  }
+}

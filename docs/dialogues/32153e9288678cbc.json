@@ -1,0 +1,419 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-if-the-player-has-not-completed-all-achievement-diaries": [
+      {
+        "npc": "Hey there!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "My name is Twiggy O'Korn and I am the Mistress of all of the Achievement Diaries. It is a pleasure to make your acquaintance."
+              },
+              {
+                "player": "Likewise."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "RbE3Bn"
+              }
+            ]
+          },
+          {
+            "text": "That's a nice cape - please tell me about it.",
+            "steps": [
+              {
+                "player": "That's a nice cape - please tell me about it."
+              },
+              {
+                "npc": "Ah yes, this is a Cape of Accomplishment, available only to those who complete every single Achievement Diary."
+              }
+            ]
+          },
+          {
+            "text": "Goodbye!",
+            "steps": [
+              {
+                "player": "Goodbye!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-has-completed-all-achievement-diaries": [
+      {
+        "npc": "Hey there!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "AjPUDn"
+              }
+            ]
+          },
+          {
+            "text": "Can I get a cape like yours?",
+            "steps": [
+              {
+                "player": "Can I get a cape like yours?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 99,000 coins:",
+                "steps": [
+                  {
+                    "npc": "I see you've completed all the Achievement Diaries - well done! However, the capes cost 99,000 coins."
+                  },
+                  {
+                    "player": "I'll be back."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "rY_q1o"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the money but doees not have two free inventory spaces:",
+                "steps": [
+                  {
+                    "npc": "I see you've completed all the Achievement Diaries - well done! However, you'll need to free up some space to hold the cape and hood."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Q8V1Xr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 99,000 coins and two free inventory spaces:",
+                "steps": [
+                  {
+                    "npc": "I see you've completed all the Achievement Diaries - well done! Now, I'll need 99,000 coins to cover my costs."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "What are your costs?",
+                        "steps": [
+                          {
+                            "player": "What are your costs?"
+                          },
+                          {
+                            "npc": "Squirrel food, mostly. It's not like it grows on trees, you know! Anyway, do you want the cape?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Okay, here's 99,000 coins.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "b9G3i0"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, forget it.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "UOJFoL"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, here's 99,000 coins.",
+                        "steps": [
+                          {
+                            "player": "Okay, here's 99,000 coins."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Twiggy sells you a cape and hood.",
+                            "id": "TkdagW"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a Achievement diary cape and Achievement diary hood",
+                            "id": "IrG5Gq"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, forget it.",
+                        "steps": [
+                          {
+                            "player": "Actually, forget it."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "AvsC0t"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "_pvOTb"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-has-an-achievement-diary-cape-in-their-bank-or-inventory": [
+      {
+        "npc": "Hey there!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Cape",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Who are you?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "xAyNsQ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I buy another cape?",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 99,000 coins:",
+                        "steps": [
+                          {
+                            "npc": "I don't think you can afford one at the moment. They cost 99,000 coins."
+                          },
+                          {
+                            "player": "Maybe another time."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "djujm5"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins:",
+                        "steps": [
+                          {
+                            "npc": "It'll cost you another 99,000 coins. You do realise you already own a cape and hood, right?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "I want another set. Here's 99,000 coins.",
+                                "steps": [
+                                  {
+                                    "player": "I want another set. Here's 99,000 coins."
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "Twiggy sells you a cape and hood.",
+                                    "id": "VYbFWp"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, forget it.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "yZH4-G"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "VPVZQm"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins without two free inventory spaces:",
+                        "steps": [
+                          {
+                            "npc": "You can, but you'll need to free up some space to hold the cape and hood."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "nPYAs0"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have an achievement diary hood:",
+                        "steps": [
+                          {
+                            "player": "I've lost the hood from my cape."
+                          },
+                          {
+                            "npc": "That's not a problem. I'll give you another one."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Twiggy gives you another hood.",
+                            "id": "rpyYGV"
+                          }
+                        ],
+                        "id": "p42My-"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ERc1aM"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Hood",
+            "steps": [
+              {
+                "player": "May I have another hood for my cape, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a free inventory space:",
+                "steps": [
+                  {
+                    "npc": "You don't appear to have enough space in your inventory, come back and see me when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "r1Btt5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one free inventory space:",
+                "steps": [
+                  {
+                    "npc": "Most certainly, and free of charge!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Twiggy hands you another hood for your cape.",
+                    "id": "wOENj7"
+                  }
+                ],
+                "id": "C1nfpR"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-random-chance-about-2": [
+      {
+        "npc": "Hey there!"
+      },
+      {
+        "npc": "Here, have some chocolate!"
+      },
+      {
+        "player": "Wow, thanks!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a chocolate bar",
+        "id": "W3Bc8r"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Q_4U2L"
+              }
+            ]
+          },
+          {
+            "text": "That's a nice cape - please tell me about it.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "k_xkbA"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "R-N9kl"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

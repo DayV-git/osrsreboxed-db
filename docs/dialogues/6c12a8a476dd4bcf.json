@@ -1,0 +1,185 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, friend?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I sell you some ore?",
+            "steps": [
+              {
+                "player": "Can I sell you some ore?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no unnoted iron or silver ore in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Certainly. I will buy any iron or silver ore you mine. Speak to me again when you have some."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qr1vGu"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has unnoted iron or silver ore in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I will give you [X] gold pieces for the ore you are carrying."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "player": "Okay."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "player": "No."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "0kMp3y"
+              }
+            ]
+          },
+          {
+            "text": "Why do the Dorgeshuun live underground?",
+            "steps": [
+              {
+                "player": "Why do the Dorgeshuun live underground?"
+              },
+              {
+                "npc": "Our ancient legends say that goblins were created by an evil god in order to fight in a huge war. This god sent the Dorgeshuun tribe to fight a battle where all would die."
+              },
+              {
+                "npc": "But our ancestors escaped by hiding in a deep hole in the ground where our god could not find us. Eventually an earthquake sealed the hole and they were forever safe."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "The war is over now, so you can return to the surface.",
+                    "steps": [
+                      {
+                        "player": "The war is over now, so you can return to the surface."
+                      },
+                      {
+                        "npc": "Even if the gods are no longer at war, I find it hard to believe that a tribe of peaceful goblins would be safe above. I have heard of humans coming down into the caves to slaughter our people!"
+                      },
+                      {
+                        "npc": "But even if we could return, we would not want to. We are adapted to living underground, and we have built a home for ourselves that we do not want to leave."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What was the name of your god?",
+                    "steps": [
+                      {
+                        "player": "What was the name of your god?"
+                      },
+                      {
+                        "npc": "Our ancestors did not speak his name, thinking that to do so would attract his attention. His name has been unspoken for so long that it is now entirely forgotten."
+                      },
+                      {
+                        "npc": "That is for the best. We have survived perfectly well without gods, and we do not want a return to the old ways."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What happened to your arm?",
+            "steps": [
+              {
+                "player": "What happened to your arm?"
+              },
+              {
+                "npc": "I lost it in a mining accident a few years ago."
+              },
+              {
+                "npc": "This area is very unstable. That's why we put markers on the wall showing the safest path."
+              }
+            ]
+          },
+          {
+            "text": "Can you show me the way out of the mines?",
+            "steps": [
+              {
+                "player": "Can you show me the way out of the mines?"
+              },
+              {
+                "npc": "Certainly. Come back soon!"
+              },
+              {
+                "type": "message",
+                "text": "Mistag shows you the way through the tunnels.",
+                "id": "uzpbCL"
+              }
+            ]
+          },
+          {
+            "text": "Can you show me the way to the water mill cellar?",
+            "steps": [
+              {
+                "player": "Can you show me the way to the water mill cellar?"
+              },
+              {
+                "npc": "Certainly. Come back soon!"
+              },
+              {
+                "type": "message",
+                "text": "Mistag shows you the way through the tunnels.",
+                "id": "_mrum5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-the-brooch-on-him": [
+      {
+        "player": "Is this your brooch?"
+      },
+      {
+        "npc": "Yes! I thought I'd lost it. Thank you."
+      },
+      {
+        "npc": "Have one of these helmets. It will be useful if you want to work in the mine."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Mining helmet",
+        "id": "a-40GY"
+      }
+    ],
+    "standard-dialogue-using-a-brooch-on-him-again": [
+      {
+        "player": "Is this your brooch?"
+      },
+      {
+        "npc": "You returned my brooch earlier."
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "steps": [
+    {
+      "npc": "Who are you and what do you want?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "None of your business!",
+          "steps": [
+            {
+              "player": "None of your business!"
+            },
+            {
+              "player": "I go where I like and do what I like."
+            },
+            {
+              "npc": "Not in my house. Be gone!"
+            },
+            {
+              "npc": "Be gone, intruder!"
+            },
+            {
+              "type": "action",
+              "text": "The player is teleported outside the Sorceress's house",
+              "action": "teleport",
+              "action_source": "text",
+              "id": "0i7LDa"
+            }
+          ]
+        },
+        {
+          "text": "I'm here to kill you!",
+          "steps": [
+            {
+              "player": "I'm here to kill you!"
+            },
+            {
+              "npc": "I think not!"
+            },
+            {
+              "npc": "Be gone, intruder!"
+            },
+            {
+              "type": "action",
+              "text": "The player is teleported outside the Sorceress's house",
+              "action": "teleport",
+              "action_source": "text",
+              "id": "ZeBKnf"
+            }
+          ]
+        },
+        {
+          "text": "Can I have some sq'irks please?",
+          "steps": [
+            {
+              "player": "Can I have some sq'irks please?"
+            },
+            {
+              "npc": "What do you want them for?"
+            },
+            {
+              "player": "Someone asked me to bring them some."
+            },
+            {
+              "npc": "Who?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player hasn't completed Beneath Cursed Sands",
+              "steps": [
+                {
+                  "player": "Osman."
+                },
+                {
+                  "npc": "In that case I'm sorry, but you can't. I have had a falling out with him recently and would rather not oblige him."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "-CUEsk"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has completed Beneath Cursed Sands",
+              "steps": [
+                {
+                  "player": "Selim."
+                },
+                {
+                  "npc": "In that case I'm sorry, but you can't. I have had a falling out with his master recently and would rather not oblige him."
+                }
+              ],
+              "id": "aF6MrP"
+            }
+          ]
+        },
+        {
+          "text": "I'm just passing by.",
+          "steps": [
+            {
+              "player": "I'm just passing by."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

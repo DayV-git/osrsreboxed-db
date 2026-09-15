@@ -1,0 +1,344 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there! I am known as the Makeover Mage! I have spent many years researching magics that can change your physical appearance!"
+      },
+      {
+        "npc": "I can alter your physical form with my magic, there's no fee. Would you like me to perform my magics upon you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me more about this 'make-over'.",
+            "steps": [
+              {
+                "player": "Tell me more about this 'make-over'."
+              },
+              {
+                "npc": "Why, of course! Basically, and I will try and explain this so that you will understand it correctly,"
+              },
+              {
+                "npc": "I use my secret magical technique to melt your body down into a puddle of its elements."
+              },
+              {
+                "npc": "When I have broken down all trace of your body, I then rebuild it into the form I am thinking of!"
+              },
+              {
+                "npc": "Or, you know, somewhere vaguely close enough anyway."
+              },
+              {
+                "player": "Uh... that doesn't sound particularly safe to me..."
+              },
+              {
+                "npc": "It's as safe as houses! Why, I have only had thirty-six major accidents this month!"
+              },
+              {
+                "npc": "So what do you say? Feel like a change? There's no fee."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "GhKwP_"
+              }
+            ]
+          },
+          {
+            "text": "Sure, I'll have a makeover.",
+            "steps": [
+              {
+                "player": "Sure, I'll have a makeover."
+              },
+              {
+                "npc": "Good choice, good choice. You wouldn't want to carry on looking like that, I'm sure!"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Makeover Mage{{!}}Select skin colour and gender",
+                "id": "lWVTBy"
+              },
+              {
+                "type": "action",
+                "text": "Player selects skin colour and/or gender",
+                "id": "eCzYHr"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Woah!"
+                      },
+                      {
+                        "player": "What?"
+                      },
+                      {
+                        "npc": "You still look human!"
+                      },
+                      {
+                        "player": "Uh... Thanks, I guess."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Hmm... you didn't feel any unexpected growths anywhere around your head just then did you?"
+                      },
+                      {
+                        "player": "Uh... no...?"
+                      },
+                      {
+                        "npc": "Good, good! I was worried for a second there!"
+                      },
+                      {
+                        "player": "Uh... Thanks, I guess."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "Whew! That was lucky!"
+                      },
+                      {
+                        "player": "What was?"
+                      },
+                      {
+                        "npc": "Nothing! It's all fine! You seem alive anyway!"
+                      },
+                      {
+                        "player": "Uh... Thanks, I guess."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "Two arms... two legs... one head... it seems that spell finally worked okay!"
+                      },
+                      {
+                        "player": "Uh... Thanks, I guess."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Cool amulet! Can I have one?",
+            "steps": [
+              {
+                "player": "Cool amulet! Can I have one?"
+              },
+              {
+                "npc": "No problem, but please remember that the amulet I will sell you is only a copy of my own. It contains no magical powers, and as such will only cost you 100 coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at least 100 coins:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough money for that."
+                  },
+                  {
+                    "npc": "Anyway, would you like me to alter your physical form? For you, I'll do it for free!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "xnSV_t"
+                  }
+                ],
+                "id": "6lki0i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "player": "No way! That's far too expensive."
+                  },
+                  {
+                    "npc": "That's fair enough, my jewellery is not to everyone's taste."
+                  },
+                  {
+                    "npc": "Anyway, would you like me to alter your physical form? For you, I'll do it for free!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "1gk0S3"
+                  }
+                ],
+                "id": "ezWCks"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough space and at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sure, here you go.",
+                        "steps": [
+                          {
+                            "player": "Sure, here you go."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You receive an amulet in exchange for 100 coins.",
+                            "id": "XHjd3R"
+                          },
+                          {
+                            "npc": "Anyway, would you like me to alter your physical form? For you, I'll do it for free!"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "-FFutj"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No way! That's far too expensive.",
+                        "steps": [
+                          {
+                            "player": "I don't have room to hold it. Maybe another time."
+                          },
+                          {
+                            "npc": "Anyway, would you like me to alter your physical form? For you, I'll do it for free!"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "j7RvSv"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "CfWavq"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Ehhh... suit yourself."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-when-switching-gender": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Ahah!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Ooh!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "demonic-skin-contract": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about Demonic Skin.",
+            "steps": [
+              {
+                "player": "I need to show you this piece of skin!"
+              },
+              {
+                "npc": "Excuse me?"
+              },
+              {
+                "player": "Oh, context! This contract says that I can unlock Demonic Skin if I bring it to you."
+              },
+              {
+                "npc": "Ohh!"
+              },
+              {
+                "npc": "Yes, I remember discussing this with small red fellow recently."
+              },
+              {
+                "npc": "If you give me the contract I will indeed be able to give you Demonic Skin."
+              },
+              {
+                "type": "message",
+                "text": "This contract will unlock the ability to choose Demonic Skin (red) during a makeover. Would you like to hand it in?",
+                "id": "k3nAlp"
+              },
+              {
+                "type": "choice",
+                "prompt": "This will consume the contract.",
+                "options": [
+                  {
+                    "text": "Unlock Demonic Skin",
+                    "steps": [
+                      {
+                        "npc": "There you go! Come and talk to me again any time you'd like a makeover."
+                      },
+                      {
+                        "player": "I will, thanks."
+                      },
+                      {
+                        "type": "unavailable",
+                        "id": "GmXjZ2"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Talk about makeovers.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "7kSyFZ"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

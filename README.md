@@ -16,7 +16,7 @@ This fork updates the JSON data only. The other APIs in the upstream project are
 | NPC drop tables, keyed by NPC ID | [`docs/drops-json/npc-drops.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/npc-drops.json), [`subtables.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/subtables.json) | `python -m scripts.drops.update` |
 | NPC right-click options and their menu slots | [`docs/npcs-interactions.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npcs-interactions.json) | `python -m scripts.npcs.update` |
 | Shop stock and prices, with the NPC that runs each shop | [`docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json), [`shops-by-npc.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-by-npc.json) | `python -m scripts.shops.update` |
-| NPC dialogue transcripts, with gameplay steps slugged | [`docs/npcs-dialogues.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npcs-dialogues.json) | `python -m scripts.dialogues.update` |
+| NPC dialogue transcripts, with gameplay steps slugged | [`docs/npc-dialogues.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npc-dialogues.json) | `python -m scripts.dialogues.update` |
 
 The upstream files are unchanged and still published:
 

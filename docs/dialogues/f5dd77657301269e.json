@@ -1,0 +1,95 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-the-completion-of-temple-of-ikov-if-sided-against-lucien": [
+      {
+        "player": "I have defeated Lucien!"
+      },
+      {
+        "npc": "Well done friend! He will not be able to return for a while, this is good news!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have an Armadyl pendant in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Can I have another pendant?",
+                "steps": [
+                  {
+                    "player": "Can I have another pendant?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have an Armadyl pendant in their inventory or bank:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The guardian gives you another pendant.",
+                        "id": "ASjFMa"
+                      },
+                      {
+                        "player": "Cheers. Catch you later."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "QULfY0"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has an Armadyl pendant in their bank:",
+                    "steps": [
+                      {
+                        "npc": "I'm sure you've got one stored somewhere."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "vpcA8g"
+                  }
+                ]
+              },
+              {
+                "text": "See you around.",
+                "steps": [
+                  {
+                    "player": "See you around."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "dqSR9N"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an Armadyl pendant in their inventory:",
+        "steps": [
+          {
+            "player": "Great. Thanks for the pendant."
+          }
+        ],
+        "id": "uRs6-V"
+      }
+    ],
+    "standard-dialogue-after-the-completion-of-temple-of-ikov-if-sided-with-lucien": [
+      {
+        "npc": "Thou is a foul agent of Lucien! Such an agent must die!"
+      },
+      {
+        "type": "action",
+        "text": "The guardian attacks the player.",
+        "id": "1rbR2r"
+      }
+    ]
+  }
+}

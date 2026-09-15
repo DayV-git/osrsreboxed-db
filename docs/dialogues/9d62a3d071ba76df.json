@@ -1,0 +1,302 @@
+{
+  "default": "standard-dialogue-without-a-camulet",
+  "variants": {
+    "standard-dialogue-without-a-camulet": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask the camel about its dung.",
+            "steps": [
+              {
+                "player": "I'm sorry to bother you, but could you spare me a little dung?"
+              },
+              {
+                "type": "message",
+                "text": "The camel didn't seem to appreciate that question.",
+                "id": "_sC7a7"
+              }
+            ]
+          },
+          {
+            "text": "Say something unpleasant.",
+            "steps": [
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "player": "Mmm... looks like that camel would make a nice kebab."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "MUi4Sv"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "player": "If I go near that camel, it'll probably bite my hand off."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "NaO5_-"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "player": "I wonder if that camel has fleas..."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "3uZSPm"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The camel tries to stamp on your foot, but you pull it back quickly.",
+                        "id": "ZCl7Og"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The camel turns its head and glares at you.",
+                        "id": "q0Efmg"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The camel spits at you, and you jump back hurriedly.",
+                        "id": "3XBIic"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Neither - I'm a polite person.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-a-camulet": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask the camel about its dung.",
+            "steps": [
+              {
+                "player": "I'm sorry to bother you, but could you spare me a little dung?"
+              },
+              {
+                "npc": "Are you serious?"
+              },
+              {
+                "player": "Oh yes. If you'd be so kind..."
+              },
+              {
+                "type": "condition",
+                "text": "If Neferti has recently provided her dung:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The camel ponders for a moment...",
+                    "id": "wjgCMM"
+                  },
+                  {
+                    "npc": "I'm sorry, but I can't really help you right now. Perhaps you should ask me again later, or try a different camel."
+                  },
+                  {
+                    "player": "Fair enough."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "r7NYfd"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "Well, just you close your eyes first. I'm not doing it while you're watching me!"
+                  },
+                  {
+                    "npc": "I hope that's what you wanted!"
+                  },
+                  {
+                    "player": "Ohhh yes. Lovely."
+                  }
+                ],
+                "id": "XI_p4l"
+              }
+            ]
+          },
+          {
+            "text": "Say something unpleasant.",
+            "steps": [
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "player": "If I go near that camel, it'll probably bite my hand off."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "96NHyd"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "player": "Mmm... looks like that camel would make a nice kebab."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "C07fzX"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "player": "I wonder if that camel has fleas..."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "f2gagn"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "npc": "What was that?"
+              },
+              {
+                "player": "Er, nothing important."
+              },
+              {
+                "npc": "Wait, you're a human, aren't you? Have you come from outside this town?"
+              },
+              {
+                "player": "Yes, I have."
+              },
+              {
+                "npc": "Oh, how wonderful! Does that mean I can finally leave this place and see the world outside?"
+              },
+              {
+                "player": "Wouldn't your master have to take you?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Beneath Cursed Sands:",
+                "steps": [
+                  {
+                    "npc": "The plagues mean that my master isn't allowed to leave. It's so boring here, and I'd like to travel."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "amY8-9"
+                  }
+                ],
+                "id": "OqVv-m"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Beneath Cursed Sands:",
+                "steps": [
+                  {
+                    "npc": "My master has no interest in leaving. It's so boring here, and I'd like to travel."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "0Hgz8t"
+                  }
+                ],
+                "id": "8_eGzg"
+              },
+              {
+                "npc": "Travelling's what camels do best, you know."
+              },
+              {
+                "npc": "I don't suppose you could take me with you, could you?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Beneath Cursed Sands:",
+                "steps": [
+                  {
+                    "player": "How do I know you're not ill as well?"
+                  },
+                  {
+                    "npc": "Well, I haven't turned funny colours yet, so I'm probably not. Will you take me with you?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "xtgLGZ"
+                  }
+                ],
+                "id": "O0To3V"
+              },
+              {
+                "player": "I don't really have space for a camel, sorry."
+              },
+              {
+                "npc": "Oh well. Come back some time, and bring me news of the rest of the world."
+              }
+            ]
+          },
+          {
+            "text": "Neither - I'm a polite person.",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

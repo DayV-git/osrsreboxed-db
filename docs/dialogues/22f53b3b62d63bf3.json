@@ -1,0 +1,184 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "What? Oh, hello. I was deep in thought. Did you want me to show you the prices of weapons and armour?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You seem a bit flustered.",
+            "steps": [
+              {
+                "player": "You seem a bit flustered."
+              },
+              {
+                "npc": "Sorry, I'm just deep in thought. I'm waiting for many deals to complete today."
+              },
+              {
+                "player": "What sort of things are you selling?"
+              },
+              {
+                "npc": "Good old weapons and armour! My people - dwarves, you understand - are hoping I can trade with humans."
+              },
+              {
+                "player": "It looks like you've come to the right place for that."
+              },
+              {
+                "npc": "I have indeed, my friend. Now, can I help you?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, show me the prices of weapons and armour.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "QaWZJu"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll leave you alone.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "ejJn2l"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yes, show me the prices of weapons and armour.",
+            "steps": [
+              {
+                "player": "Yes, show me the prices of weapons and armour."
+              },
+              {
+                "type": "action",
+                "text": "Grand Exchange: Weapons and Armour opens",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Grand Exchange: Weapons and Armour",
+                "id": "dETh9U"
+              }
+            ]
+          },
+          {
+            "text": "Can you tell me about the bank's auto-charging services?",
+            "steps": [
+              {
+                "player": "Can you tell me about the bank's auto-charging services?"
+              },
+              {
+                "npc": "Hm? Oh, yes. If you don't want to charge your items yourself, you can have the bank attendant do it for you on withdrawal."
+              },
+              {
+                "player": "How do they know how many charges to add?"
+              },
+              {
+                "npc": "You can tell them how many you would like for each item. Or if you'd like, I can let them know a minimum threshold for all items."
+              },
+              {
+                "type": "choice",
+                "prompt": "Set a global minimum charge threshold?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "prompt": "Are you sure? Some charging resources may not be retrievable.",
+                        "options": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "I don't think that's necessary, but thank you for offering."
+                      },
+                      {
+                        "npc": "Alright then. Where was I...?"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you alone.",
+            "steps": [
+              {
+                "player": "I'll leave you alone."
+              },
+              {
+                "npc": "Thank you, I have much on my mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Wow, that's cheap."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Oh. That didn't sell so well."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Hmmm. If I spend twenty thousand on that, then..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Jackpot! I'm in the money now!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Hahaha! Trading the likes of which I have never seen."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

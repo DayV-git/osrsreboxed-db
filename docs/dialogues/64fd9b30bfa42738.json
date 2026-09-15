@@ -1,0 +1,270 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello adventurer, what can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's that cute creature wandering around?",
+            "condition": "Before The Eyes of Glouphrie:",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:The Eyes of Glouphrie",
+                "section": "",
+                "text": "Continues in Transcript:The Eyes of Glouphrie",
+                "id": "7bGF7e",
+                "resolved": false,
+                "page_available": true
+              }
+            ],
+            "id": "wE7qam"
+          },
+          {
+            "text": "Hello, just wanted a chat.",
+            "condition": "After The Eyes of Glouphrie:",
+            "steps": [
+              {
+                "player": "Hello, just wanted a chat.."
+              },
+              {
+                "npc": "It's always a pleasure to catch up with an another mage! Especially one who has helped me so much!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a crystal saw or crystal seed:",
+                "steps": [
+                  {
+                    "npc": "Oh, by the way, I found this odd thing lying around, does it belong to you?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Brimstail shows you a small crystal seed.",
+                    "id": "K-ERv4"
+                  },
+                  {
+                    "player": "Oh, yes - I was wondering where that had gone..."
+                  },
+                  {
+                    "npc": "You should look after your things more carefully you know..."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Crystal saw seed",
+                    "id": "GVEki3"
+                  },
+                  {
+                    "player": "Thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "10iNBU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a crystal saw or crystal seed:",
+                "steps": [
+                  {
+                    "npc": "How are your researches going?"
+                  },
+                  {
+                    "player": "Oh, not so bad. I'll let you know if I find anything I think you'll find interesting..."
+                  },
+                  {
+                    "npc": "Thanks! I'd appreciate that."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NzKDX1"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a crystal seed or uses it on Brimstail:",
+                "steps": [
+                  {
+                    "player": "What's this seed do?"
+                  },
+                  {
+                    "npc": "Fascinating ... a crystal seed. You should have a look at the crystal bowl in the other room, must be related..."
+                  },
+                  {
+                    "player": "Thanks, I'll do that..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "3CM48T"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a crystal saw or uses it on Brimstail:",
+                "steps": [
+                  {
+                    "player": "What's this crystal saw do?"
+                  },
+                  {
+                    "npc": "I've no idea, it must have been Oaknock's, he liked talking to the elves."
+                  },
+                  {
+                    "player": "Where would I find out how the thing works?"
+                  },
+                  {
+                    "npc": "Errm, I'm not sure. Have a chat with Hazelmere, maybe he'll know. He was around when"
+                  },
+                  {
+                    "npc": "Oaknock was alive and might have seen him use it."
+                  },
+                  {
+                    "player": "Excellent idea, I'll do that. Thanks."
+                  }
+                ],
+                "id": "oVKeof"
+              }
+            ],
+            "id": "czBaEC"
+          },
+          {
+            "text": "Can you teleport me to the Rune Essence Mine?",
+            "steps": [
+              {
+                "player": "Can you teleport me to the Rune Essence?"
+              },
+              {
+                "npc": "Okay. Hold onto your hat!"
+              },
+              {
+                "npc": "Senventior Disthine Molenko!"
+              },
+              {
+                "type": "action",
+                "text": "Brimstail teleports the player to the rune essence mine.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "PDYldg"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "PpGWaD"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "lCDoQy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "7e1AEQ"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "HvgHIu"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Brimstail",
+            "id": "ISXycQ"
+          },
+          {
+            "npc": "You have my gratitude, young delivery person!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "0TFyrH"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "21aIQk"
+                  }
+                ],
+                "id": "CHqH6q"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "VLallT"
+              }
+            ],
+            "id": "K7PYbS"
+          }
+        ],
+        "id": "0HkQr_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "jOboSi"
+          }
+        ],
+        "id": "OYkCa8"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "Well done!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [new clue/casket]",
+        "id": "kY7dEB"
+      },
+      {
+        "type": "message",
+        "text": "You've obtained a [new clue/casket]!",
+        "id": "goV-Vg"
+      }
+    ]
+  }
+}

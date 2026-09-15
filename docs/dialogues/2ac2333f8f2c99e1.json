@@ -1,0 +1,117 @@
+{
+  "default": null,
+  "variants": {
+    "first-time-dialogue": [
+      {
+        "npc": "Hello! You must be the human that's been helping out around here."
+      },
+      {
+        "player": "That's me!"
+      },
+      {
+        "npc": "Well, I'm Nama, one of the elders who specialises in dealing with the gryphons."
+      },
+      {
+        "player": "Pleased to meet you. So what brings you out here?"
+      },
+      {
+        "npc": "One of the more problematic gryphons has made a home in this cave. I'm here to keep an eye on it."
+      },
+      {
+        "player": "I see. Perhaps I could help with that."
+      },
+      {
+        "npc": "Help is always appreciated, but I wouldn't go charging in there without good reason. We don't want to anger the gryphon unnecessary."
+      },
+      {
+        "type": "message",
+        "text": "You can only fight the gryphon in this cave if you've been assigned to do so by a Slayer Master.",
+        "id": "F9PbEH"
+      }
+    ],
+    "first-time-dialogue-subsequent-dialogue": [
+      {
+        "npc": "Hello again!"
+      },
+      {
+        "player": "Hello there. How are things with that gryphon?"
+      },
+      {
+        "npc": "Thankfully it hasn't been overly aggressive so far. It's important we keep it in check, but we don't want to go overboard and anger it unnecessary."
+      },
+      {
+        "type": "message",
+        "text": "You can only fight the gryphon in this cave if you've been assigned to do so by a Slayer Master.",
+        "id": "jWltFN"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any useful statistics for me?",
+            "steps": [
+              {
+                "player": "Do you have any useful statistics for me?"
+              },
+              {
+                "npc": "I do!"
+              },
+              {
+                "type": "action",
+                "text": "Opens Shellbane Gryphon Statistics",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Shellbane Gryphon Statistics",
+                "id": "QaJQC6"
+              }
+            ]
+          },
+          {
+            "text": "Can I come in if I have a clue scroll?",
+            "condition": "If the player has the shellbane gryphon elite clue step in their inventory:",
+            "steps": [
+              {
+                "player": "Can I come in if I have a clue scroll?"
+              },
+              {
+                "npc": "A clue scroll, you say? Let me see..."
+              },
+              {
+                "npc": "Hmm... yes, that would appear to be this gryphon. Very well, I will allow you to fight it once, but no more than that."
+              }
+            ],
+            "id": "Uz1VQF"
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attempting-to-enter-cave-entrance": [
+      {
+        "npc": "Sorry, but I can't let you go in there without permission."
+      },
+      {
+        "type": "message",
+        "text": "You can only fight the gryphon in this cave if you've been assigned to do so by a Slayer Master.",
+        "id": "dZKtgm"
+      }
+    ],
+    "attempting-to-attack-shellbane-gryphon-without-a-task": [
+      {
+        "npc": "Wait! That gryphon does not currently pose a threat to us. You shouldn't attack it without permission!"
+      },
+      {
+        "type": "message",
+        "text": "Elder Nama wants you to stick to your Slayer assignments.",
+        "id": "akMneA"
+      }
+    ]
+  }
+}

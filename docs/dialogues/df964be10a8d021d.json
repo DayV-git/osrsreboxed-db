@@ -1,0 +1,169 @@
+{
+  "default": "standard-dialogue-pre-quest",
+  "variants": {
+    "standard-dialogue-pre-quest": [
+      {
+        "player": "Hello there, What's wrong?"
+      },
+      {
+        "npc": "yawn*...oh, hello...*yawn* I'm sorry! I'm just so tired! I haven't slept in a week!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why can't you sleep, what's wrong?",
+            "steps": [
+              {
+                "player": "Why can't you sleep, what's wrong?"
+              },
+              {
+                "npc": "It's brother Androe's son! With his constant: Waaaaaah! Waaaaaaaaah! Androe said it's natural, but it's so annoying!"
+              },
+              {
+                "player": "I suppose that's what kids do."
+              },
+              {
+                "npc": "He was fine, up until last week! Thieves broke in! They stole his favourite sleeping blanket!"
+              },
+              {
+                "npc": "Now he won't rest until it's returned... ...and that means neither can I!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I help at all?",
+                    "steps": [
+                      {
+                        "player": "Can I help at all?"
+                      },
+                      {
+                        "npc": "Please do. We won't be able to help you as we are peaceful men but we would be grateful for your help!"
+                      },
+                      {
+                        "player": "Where are they?"
+                      },
+                      {
+                        "npc": "They hide in a secret cave in the forest. It's hidden under a ring of stones. Please, bring back the blanket!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm sorry to hear that! I hope you find his blanket.",
+                    "steps": [
+                      {
+                        "player": "I'm sorry to hear that! I hope you find his blanket."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry! I'm too busy to hear your problems!",
+            "steps": [
+              {
+                "player": "Sorry! I'm too busy to hear your problems!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-post-quest": [
+      {
+        "npc": "Dum dee do la la! *hiccup* That was some party!"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Ah! Here you go!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to answer this for me."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "iQn7rZ"
+      },
+      {
+        "type": "unavailable",
+        "id": "pV0sJp"
+      }
+    ],
+    "treasure-trails-hard-while-holding-the-challenge-scroll": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "How can that be? Go check again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "paa8HM"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Spot on!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "clue scroll (hard)",
+                "id": "dHKCFh"
+              },
+              {
+                "type": "message",
+                "text": "Brother Omad has given you another clue scroll!",
+                "id": "VwSfI1"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "iZ-GlD"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "reward casket (hard)",
+                "id": "M4povH"
+              },
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "qJ2MhH"
+              }
+            ],
+            "id": "JF6ZW5"
+          }
+        ],
+        "id": "BCsHqM"
+      }
+    ]
+  }
+}

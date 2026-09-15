@@ -1,0 +1,124 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "action",
+        "text": "The Maid bows",
+        "action": "emote",
+        "action_source": "text",
+        "id": "Jm6qCU"
+      },
+      {
+        "npc": "Oh! Please hire me, [sir/madam]! I'm very good, well, I'm not bad, and my fee's only 1000 coins."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What can you do?",
+            "steps": [
+              {
+                "player": "What can you do?"
+              },
+              {
+                "npc": "Well, I can, um. I can cook meals and make tea and everything, and I can even take things to and from the bank for you. I won't make any mistakes this time and everything will be fine!"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about your previous jobs",
+            "steps": [
+              {
+                "player": "Tell me about your previous jobs."
+              },
+              {
+                "npc": "Oh! Oh! I, well, I, er. It wasn't really my fault, I mean, it was, but not really. I mean, how was I to know that that plate was so valuable? It was just lying around and I don't know art, it just looked like a pretty pattern and"
+              },
+              {
+                "npc": "I just had to use it because there weren't enough plates. And no one had told me that Dennis was off sick and hadn't fed the dogs so I wasn't expecting them to jump up at me when I was carrying the food and it, it"
+              },
+              {
+                "npc": "went all over the place, gravy and potatoes and bits of fine porcelain and I'm so sorry. It won't happen again, I promise."
+              }
+            ]
+          },
+          {
+            "text": "You're hired!",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 25 Construction:",
+                "steps": [
+                  {
+                    "npc": "Oh! Oh dear! I'm terribly sorry, [sir/madam], but I'm not allowed to work for anyone unless they have level 25 Construction. If a house is poorly made I might damage it by mistake!"
+                  }
+                ],
+                "id": "rNGbqw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a servant already:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You already have a servant.",
+                    "id": "mSpILC"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "4Ch7Ei"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a second bedroom with a bed:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You need a second bedroom with a bed for your servant to sleep in.",
+                    "id": "J8KD_l"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MOxAqs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money in their inventory:",
+                "steps": [
+                  {
+                    "player": "You're hired... well, I don't have the money on me, but can I owe you? I'm good for it, honest."
+                  },
+                  {
+                    "npc": "Oh... I'm terribly sorry, [sir/madam], but I'd really prefer to be paid before I start work."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "s66ZLa"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the above conditions met and the player doesn't have a servant:",
+                "steps": [
+                  {
+                    "player": "You're hired!"
+                  },
+                  {
+                    "npc": "Oh! Oh, thank you [sir/madam], thank you!"
+                  }
+                ],
+                "id": "MTjjX9"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

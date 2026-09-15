@@ -1,0 +1,136 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Now you look like someone who goes to a lot of fancy dress parties."
+      },
+      {
+        "player": "Errr...what are you saying exactly?"
+      },
+      {
+        "npc": "I'm just saying that perhaps you would like to peruse my selection of garments."
+      },
+      {
+        "npc": "Or, if that doesn't interest you, then maybe you have something else to offer? I'm always on the look out for interesting or unusual new materials."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, lets see what you've got then.",
+            "steps": [
+              {
+                "player": "Okay, let's see what you've got then."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Fancy Clothes Store",
+                "id": "7E_2Gl"
+              }
+            ]
+          },
+          {
+            "text": "Do you have a spare Priest Gown?",
+            "condition": "During Biohazard:",
+            "steps": [
+              {
+                "player": "Do you have a spare Priest Gown?"
+              },
+              {
+                "npc": "Well I do sell them. I don't hand them out for free though. This is a shop not a charity."
+              },
+              {
+                "player": "Please! It's really important."
+              },
+              {
+                "npc": "Well I suppose you can have this old one. It's not in good enough condition to sell."
+              },
+              {
+                "type": "message",
+                "text": "You are given a Priest Gown.",
+                "id": "AWfD6H"
+              },
+              {
+                "player": "Thank you."
+              }
+            ],
+            "id": "txU5uf"
+          },
+          {
+            "text": "Could you make another bird costume for me?",
+            "steps": [
+              {
+                "player": "Could you make another eagle costume for me?"
+              },
+              {
+                "npc": "Certainly, if you can supply the materials. I'll need appropriate feathers, swamp tar and some yellow dye. It'll also cost you 25 gold pieces."
+              },
+              {
+                "player": "I'll see what I can do."
+              }
+            ]
+          },
+          {
+            "text": "I think I might just leave the perusing for now thanks.",
+            "steps": [
+              {
+                "player": "I think I might just leave the perusing for now, thanks."
+              }
+            ]
+          },
+          {
+            "text": "Can you make clothing suitable for hunting in?",
+            "steps": [
+              {
+                "player": "Can you make clothing suitable for hunting?"
+              },
+              {
+                "npc": "Certainly. Take a look at my range of made-to-order items. If you can supply the furs, I'll gladly make any of these for you."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Custom Fur Clothing",
+                "id": "l08Vzv"
+              }
+            ]
+          },
+          {
+            "text": "What sort of unusual materials did you have in mind?",
+            "steps": [
+              {
+                "player": "What sort of unusual materials did you have in mind?"
+              },
+              {
+                "npc": "Well, some more colourful feathers might be useful. For some surreal reason, all I normally seem to get offered are large quantities of rather beaten-up looking chicken feathers."
+              },
+              {
+                "npc": "People must have some very strange pastimes around these parts, that's all I can say."
+              },
+              {
+                "player": "Ok, let's see what you've got then."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Fancy Clothes Store",
+                "id": "u7z1Bf"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "on-a-non-members-world": [
+      {
+        "npc": "Sorry, we're closed at the moment."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ]
+  }
+}

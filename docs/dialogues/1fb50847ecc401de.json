@@ -1,0 +1,119 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Eyup. Not too often we get visitors down here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Beats me. All I know is, there's dust devils in here, and I'm here to make sure only people with permission can kill 'em."
+              },
+              {
+                "player": "Can I kill them?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has dust devils as a slayer task:",
+                "steps": [
+                  {
+                    "npc": "You got a Slayer task for it, so sure, be my guest."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "eOBI9P"
+                  }
+                ],
+                "id": "FgLVb4"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have dust devils as a slayer task:",
+                "steps": [
+                  {
+                    "npc": "Not without a Slayer task. Go talk to a Slayer Master about it."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "hLTwkk"
+                  }
+                ],
+                "id": "0L03OE"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "The name's Dusty Aliv. I guard this place for the Slayer Masters."
+              },
+              {
+                "player": "That doesn't sound like a great job."
+              },
+              {
+                "npc": "Eh, it has its perks. Plus it beats flying around Gielinor after numbskulls like you trying to deliver mail like some people I know."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "bJtOTl"
+              }
+            ]
+          },
+          {
+            "text": "Nice sword.",
+            "steps": [
+              {
+                "player": "Nice sword."
+              },
+              {
+                "npc": "Thanks. Probably shouldn't tell you about the previous owner though."
+              },
+              {
+                "player": "What happened to them?"
+              },
+              {
+                "npc": "Let's just say the heat got to them."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "MCqO33"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "See ya."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-attempting-to-kill-monsters-that-aren-t-part-of-a-player-s-slayer-task": [
+      {
+        "npc": "Oi! Only people with a Slayer task can slay in here!"
+      }
+    ]
+  }
+}

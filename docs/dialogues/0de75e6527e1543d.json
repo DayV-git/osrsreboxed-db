@@ -1,0 +1,192 @@
+{
+  "default": "standard-dialogue-before-recruiting",
+  "variants": {
+    "standard-dialogue-before-recruiting": [
+      {
+        "npc": "Hello!"
+      },
+      {
+        "player": "Hello there. Who are you?"
+      },
+      {
+        "npc": "Ada! Nice to meet you!"
+      },
+      {
+        "player": "What are you waiting here for?"
+      },
+      {
+        "npc": "I'm looking for an adventure! This place is meant to be the perfect place to find one for a budding pirate like me!"
+      },
+      {
+        "player": "Pirate?"
+      },
+      {
+        "npc": "Well... the good kind!"
+      },
+      {
+        "player": "I see. Well, I've never really had to look for an adventure myself. Personally I find I just stumble into them instead."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed Pandemonium:",
+        "steps": [
+          {
+            "npc": "Really? Well, I hope that happens to me soon!"
+          },
+          {
+            "player": "I'm sure it will. Good luck!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "x9uh9G"
+      },
+      {
+        "npc": "Really? Well, perhaps I'd be better off sticking with you then."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 40 Sailing:",
+        "steps": [
+          {
+            "player": "Sorry, but I'm still pretty new to it all. I don't think I'm ready to be hiring a crew yet, but I'll let you know when I am."
+          },
+          {
+            "npc": "Oh, fair enough."
+          },
+          {
+            "type": "message",
+            "text": "You need a Sailing level of 40 to manage a crew.",
+            "id": "JBpDSP"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "b7k_kZ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 40 Sailing:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I'd definitely be happy to have you on my crew.",
+                "steps": [
+                  {
+                    "player": "I'd definitely be happy to have you on my crew."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have 55 Sailing:",
+                    "steps": [
+                      {
+                        "npc": "Hang on... You don't actually look like much of an adventurer to me. I don't think this will work."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You require the following to recruit this crew member: Level 55 Sailing.",
+                        "id": "v8hFIR"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "AxbvZ7"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has 55 Sailing:",
+                    "steps": [
+                      {
+                        "npc": "Great! I reckon this will be a fun adventure! I'll see you on your boat..."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You recruit Adventurer Ada as a crew member.",
+                        "id": "Pvw114"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You have recruited Adventurer Ada as a crew member.",
+                        "id": "LrndO0"
+                      }
+                    ],
+                    "id": "h-QjWR"
+                  }
+                ]
+              },
+              {
+                "text": "Sorry, but I'm not really in a place for you to join me right now.",
+                "steps": [
+                  {
+                    "player": "Sorry, but I'm not really in a place for you to join me right now."
+                  },
+                  {
+                    "npc": "Oh, fair enough."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "buaLi_"
+      }
+    ],
+    "subsequent-dialogue-before-recruiting": [
+      {
+        "npc": "Hello again! Reckon you're ready for me to join you yet?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 40 Sailing:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "AmouT9"
+          }
+        ],
+        "id": "WSzQLo"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 40 Sailing:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "ycOxIK"
+          }
+        ],
+        "id": "mAb5c9"
+      }
+    ],
+    "when-at-the-pandemonium-after-joining-crew": [
+      {
+        "npc": "Captain!"
+      },
+      {
+        "player": "Hey there. How are you enjoying being part of the crew?"
+      },
+      {
+        "npc": "I'm looking forward to the next adventure! I might start writing down what we get up to."
+      },
+      {
+        "player": "Well, that might save me a bit of time on my captain's log."
+      },
+      {
+        "npc": "Great!"
+      }
+    ],
+    "while-at-sea": [
+      {
+        "type": "missing",
+        "id": "Ih6F2k"
+      }
+    ]
+  }
+}

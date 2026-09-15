@@ -1,0 +1,89 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome my friend to the Old Nite! What can I do for you?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Got anything strong to drink?",
+          "steps": [
+            {
+              "player": "Got anything strong to drink?"
+            },
+            {
+              "npc": "Of course I do! I can offer you a big tasty beer, yours for only two coins."
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have at least 2 coins:",
+              "steps": [
+                {
+                  "player": "Oh dear, I don't seem to have enough money."
+                },
+                {
+                  "npc": "No worries, there's a bank just around the corner if you want to grab some coin."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "6T5JIE"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has at least 2 coins:",
+              "steps": [
+                {
+                  "player": "Sure, I'll take a beer."
+                },
+                {
+                  "type": "action",
+                  "action": "give",
+                  "text": "2 coins",
+                  "id": "DAdnDG"
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "beer",
+                  "id": "pqvEAf"
+                }
+              ],
+              "id": "NJjE_l"
+            }
+          ]
+        },
+        {
+          "text": "Your pub looks a bit rough.",
+          "steps": [
+            {
+              "player": "Your pub looks a bit rough."
+            },
+            {
+              "npc": "It's all part of the aesthetic! Adventurers who've just returned from the fight of their lives don't want a fancy la-de-da establishment like you'd find down south."
+            },
+            {
+              "npc": "They want somewhere to relax and have some hearty ale."
+            },
+            {
+              "player": "And that's what you offer with your broken tables and glass covered floors?"
+            },
+            {
+              "npc": "Aye it is, because here at the Old Nite, your safety is our lowest priority!"
+            }
+          ]
+        },
+        {
+          "text": "Just browsing...",
+          "steps": [
+            {
+              "player": "Just browsing..."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

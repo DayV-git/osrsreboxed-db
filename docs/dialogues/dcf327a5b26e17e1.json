@@ -1,0 +1,158 @@
+{
+  "steps": [
+    {
+      "npc": "Hello there. I am Gerardus, master cartographer. Do you have any charts of the ocean you would be willing to share with me?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes, have a look at my charts...",
+          "steps": [
+            {
+              "player": "Yes, have a look at my charts..."
+            },
+            {
+              "type": "condition",
+              "text": "If the player doesn't have their captain's log:",
+              "steps": [
+                {
+                  "npc": "You... don't appear to have any with you."
+                },
+                {
+                  "player": "Oh, let me go and fetch my captain's log."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "9ns9ll"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has charts to show him:",
+              "steps": [
+                {
+                  "type": "message",
+                  "text": "You show your charts to Gerardus.",
+                  "id": "Y-NG_M"
+                },
+                {
+                  "npc": "Yes, these are some fantastic charts! Please, accept these..."
+                },
+                {
+                  "type": "message",
+                  "text": "For completely charting the Northern Ocean, Gerardus hands you... a book about lighthouses?",
+                  "id": "5qaYl8"
+                },
+                {
+                  "type": "message",
+                  "text": "For completely charting the Unquiet Ocean, Gerardus hands you... a burned key?",
+                  "id": "Qz_mPA"
+                },
+                {
+                  "type": "message",
+                  "text": "For completely charting the Shrouded Ocean, Gerardus hands you... a weird black orb?",
+                  "id": "saTpWp"
+                },
+                {
+                  "type": "message",
+                  "text": "For completely charting the Ardent Ocean, Gerardus hands you... a bedsheet?",
+                  "id": "PCS897"
+                },
+                {
+                  "player": "... What am I meant to do with these?"
+                },
+                {
+                  "npc": "I'm not sure, but you seem like a smart person. I'm sure you'll figure something out."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "kqTqdW"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has nothing new to show him:",
+              "steps": [
+                {
+                  "npc": "Hmm... these are indeed nice charts, but I'm afraid you've shown me all of these already."
+                }
+              ],
+              "id": "HxhbKu"
+            }
+          ]
+        },
+        {
+          "text": "Do you have any spare trinkets?",
+          "condition": "After previously receiving any item from him:",
+          "steps": [
+            {
+              "player": "Do you have any spare trinkets?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player still has any items received from Gerardus or has used them all to get paint:",
+              "steps": [
+                {
+                  "npc": "Well, I do have plenty of trinkets, but I suspect you've gotten all the use out of anything I could give you."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "STglNr"
+            },
+            {
+              "type": "condition",
+              "text": "If the player is missing any items they haven't used to get paint:",
+              "steps": [
+                {
+                  "npc": "Of course!"
+                },
+                {
+                  "type": "message",
+                  "text": "Gerardus hands you another book about lighthouses. You get the feeling he might have had too many of them in the first place.",
+                  "id": "i_1DtE"
+                }
+              ],
+              "id": "Jf8DMl"
+            }
+          ],
+          "id": "dZUvQ_"
+        },
+        {
+          "text": "What's in it for me?",
+          "steps": [
+            {
+              "player": "What's in it for me?"
+            },
+            {
+              "npc": "Well, over the years, while out mapping the world, I have amassed a collection of.... rare and valuable items."
+            },
+            {
+              "npc": "My maps are now only a few seas from completion. If you're able to help me, I will make sure you are well rewarded for your troubles. So, what do you say?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "oMJj47"
+            }
+          ]
+        },
+        {
+          "text": "No, goodbye.",
+          "steps": [
+            {
+              "player": "No, goodbye."
+            },
+            {
+              "npc": "Oh."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

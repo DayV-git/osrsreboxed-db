@@ -1,0 +1,102 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hey, down there! What is it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are you here?",
+            "steps": [
+              {
+                "player": "Why are you here?"
+              },
+              {
+                "npc": "For the dragons, of course! I've always wanted to slay dragons. I've found they're a bit tough, though, even with all this kit I've got, but I'll slay them one day."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Monkey Madness II:",
+                "steps": [
+                  {
+                    "npc": "My little cousin is a Slayer Master, lucky girl. But one day I'll be a mighty dragon-slayer, and they'll give me a job like that too."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "h_qQ95"
+                  }
+                ],
+                "id": "zqkAo2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Monkey Madness II:",
+                "steps": [
+                  {
+                    "npc": "My little brother became a Slayer Master recently. That job should have been mine - he's just a little brat! But one day I'll be a mighty dragon-slayer, and they'll give me a job like that too."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "3e2htr"
+                  }
+                ],
+                "id": "2K3Jhk"
+              }
+            ]
+          },
+          {
+            "text": "Can I kill the dragons in here?",
+            "steps": [
+              {
+                "player": "Can I kill the dragons in here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has bronze, iron or steel dragons as a slayer task:",
+                "steps": [
+                  {
+                    "npc": "Yes, certainly, since you've been assigned to do so."
+                  }
+                ],
+                "id": "CttL6S"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have bronze, iron or steel dragons as a slayer task:",
+                "steps": [
+                  {
+                    "npc": "No, you haven't got an assignment to slay these dragons. Go and train somewhere else."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "BzG4Pj"
+                  }
+                ],
+                "id": "Bkrytd"
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "player": "I'll be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-attempting-to-kill-monsters-that-aren-t-part-of-a-player-s-slayer-task": [
+      {
+        "npc": "I'm sure that's not what you're meant to be slaying."
+      }
+    ]
+  }
+}

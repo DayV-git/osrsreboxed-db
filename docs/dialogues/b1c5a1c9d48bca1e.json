@@ -1,0 +1,2427 @@
+{
+  "default": "starting-off-talking-to-anne-or-will",
+  "variants": {
+    "starting-off-talking-to-anne-or-will": [
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Ah, look what we have here, Will! This looks like someone who needs a good job!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Goodness, Anne, I think you're right! This one's clearly never worked an honest day in their life, and it's about time someone changed that!"
+      },
+      {
+        "player": "But I don't need a..."
+      },
+      {
+        "type": "condition",
+        "text": "If the quest cannot be started:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Anne",
+            "text": "Alas! We are sadly not currently in a place where we can take on any more staff, but let us hope that changes soon!"
+          },
+          {
+            "player": "Okay..."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "W3C3C9"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Well, let's not waste any more time! Stranger, are you ready for your interview?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Pandemonium quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "I guess so...?"
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Let's get you started with a nice easy question: What is your name?"
+              },
+              {
+                "player": "[player name]."
+              },
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "Pleased to meet you, [player name]. I'm Anne, and this is Will."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Next question: Do you have any experience captaining a ship?"
+              },
+              {
+                "player": "Not really..."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Oh..."
+              },
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "Will, it's important we not be too picky! It's a competitive market, after all."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Okay, final question: Do you agree to waive all rights to pursue legal action against your new employer in the event of injury or horrific death?"
+              },
+              {
+                "player": "Is that likely to happen?"
+              },
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "Not at all!"
+              },
+              {
+                "player": "I'm not sure if I..."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Excellent! Well then, [player name], I'm pleased to say that we have the results of your interview. You bring some impressive stuff to the table. We'd love to offer you the role!"
+              },
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "Congratulations!"
+              },
+              {
+                "player": "Thanks... only, you didn't actually mention what the role was..."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Ah, how forgetful of us! Given that you've already accepted, how about we discuss the details on our ship."
+              },
+              {
+                "player": "But I didn't accept anything..."
+              },
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "Just let us know when you're ready, and we'll hop aboard!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I guess I'm ready...",
+                    "steps": [
+                      {
+                        "player": "I guess I'm ready..."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has no inventory space:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "KpSbKi"
+                          }
+                        ],
+                        "id": "CCJ1aq"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Will",
+                        "text": "Then let us away!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player, Will, and Anne go to the ship.",
+                        "id": "BDfVg8"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd rather not...",
+                    "steps": [
+                      {
+                        "player": "I'd rather not..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Will",
+                        "text": "Well, don't take too long. This work won't do itself, will it?"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "hook": "quest:pandemonium:start",
+            "quest": "Pandemonium"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Sorry, but I'm not looking for a job right now. I'm just going to go..."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Oh, you'll be back, friend! You already know you can't turn down an opportunity like this!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-anne-or-will-after-starting-the-quest": [
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Ah, there you are! Time to get on with your interview!"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Let's get you started with a nice easy question: What is your name?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "sNE2nc"
+      }
+    ],
+    "starting-off-talking-to-anne-or-will-after-being-offered-the-job": [
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Ah, there you are, [player name]. Are you ready to hop aboard our ship?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I guess so...",
+            "steps": [
+              {
+                "player": "I guess so..."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Then let us away!"
+              }
+            ]
+          },
+          {
+            "text": "I'd rather not...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ajgf7P"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-the-boat-talking-to-anne-or-will": [
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Lovely! The open sea!"
+      },
+      {
+        "player": "It's not really that open... We haven't even left port yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Well, good news, [player name], because that's where you come in! You're our new helm!"
+      },
+      {
+        "player": "Helm?"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "It means you're in charge of the ship's helm! In other words, you're responsible for steering the ship!"
+      },
+      {
+        "player": "It's more of a boat really..."
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Well, we all have to start somewhere!"
+      },
+      {
+        "player": "Right... So if I'm manning the helm, what will you two be doing?"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Well, it's simple, isn't it? We're in charge!"
+      },
+      {
+        "player": "Have you ever actually done this before?"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Many times!"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Just never on our own ship before! This is an exciting first day for... well, we haven't actually named our business yet, but I'm sure we'll come up with a good name soon."
+      },
+      {
+        "player": "And what does this business do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "We salvage shipwrecks of course!"
+      },
+      {
+        "player": "Of course. Alright then, I don't remember doing it, but apparently I committed to this. Where is our first wreck?"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "We've got a good one to get us started! Last time we were on the Pandemonium, we purchased a map that should lead us to an old pirate wreck."
+      },
+      {
+        "player": "The Pandemonium?"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Have you never been? It's a great place for a drink! We'll have to take you there!"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "But first, let's collect some salvage! According to the map, the wreck is just east of the Karamja Shipyard, so south of here."
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Over to you, [player name]! Take the helm when ready."
+      }
+    ],
+    "at-the-boat-talking-to-will-or-anne-before-sailing-off": [
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "This is your bit, [player name]! Take the helm when ready."
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Remember, you need to take us to the wreck. It should be east of the Karamja Shipyard, so south of here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, I'll get to it.",
+            "steps": [
+              {
+                "player": "Okay, I'll get to it."
+              }
+            ]
+          },
+          {
+            "text": "Actually, I want to go back to Port Sarim.",
+            "steps": [
+              {
+                "player": "Actually, I want to go back to Port Sarim."
+              },
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "This isn't the can-do attitude we need, [player name], but fine, we'll go back..."
+              },
+              {
+                "type": "action",
+                "text": "The player goes back to Port Sarim.",
+                "id": "VuZpfc"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-the-boat-deploying-the-salvaging-hook-before-sailing-off": [
+      {
+        "type": "call",
+        "branch": "XNeJmf"
+      }
+    ],
+    "at-the-boat-talking-to-will-or-anne-back-at-port-sarim": [
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Hello there, [player name]. Shall we hop back aboard our ship?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay.",
+            "steps": [
+              {
+                "player": "Okay."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "KpSbKi"
+                  }
+                ],
+                "id": "jS98T4"
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Excellent! Let us away!"
+              },
+              {
+                "type": "action",
+                "text": "The player, Will, and Anne go back to the ship.",
+                "id": "Nm7LVw"
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": [
+              {
+                "player": "Not right now."
+              },
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Well, don't take too long. This work won't do itself, will it?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sailing-the-boat-while-the-ship-is-moving": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "The wreck should be south of here."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "The wreck should be south west of here."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "The wreck should be south east of here."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "The wreck should be north of here."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "The wreck should be north west of here."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "The wreck should be north east of here."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "You need to head south of here."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 8",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "You need to head south."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 9",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "You need to head north."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 10",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "You need to head west."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 11",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "You need to head east."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 12",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "We need to be going south."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 13",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "We need to be going north."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 14",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "We need to be going east."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 15",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "We need to be going west."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 16",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "You need to head south west."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 17",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "You need to head south east."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 18",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "You need to head north west."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 19",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "You need to head north east."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sailing-the-boat-when-the-ship-is-losing-wind": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "You need to trim the sails, [player name]! We need to catch that wind!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "You need to trim the sails, [player name]! We need to catch that wind!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sailing-the-boat-if-the-player-fails-to-gain-more-wind": [
+      {
+        "type": "message",
+        "text": "The wind does down and your sails with it.",
+        "id": "gKW0ji"
+      }
+    ],
+    "sailing-the-boat-if-the-ship-gains-wind": [
+      {
+        "type": "message",
+        "text": "You feed a gust of wind.",
+        "id": "DH9kK6"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "[player name]! The sails need trimming! Don't miss out on that wind!"
+      }
+    ],
+    "sailing-the-boat-if-the-wind-is-picking-up": [
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "The wind's picked up, [player name]! You'll need to trim the sails!"
+      }
+    ],
+    "sailing-the-boat-if-the-player-deploys-the-salvaging-hook-but-not-at-the-salvaging-location": [
+      {
+        "type": "call",
+        "branch": "XNeJmf"
+      }
+    ],
+    "sailing-the-boat-if-the-wind-picks-up-and-the-player-trims-the-sails": [
+      {
+        "type": "message",
+        "text": "You trim the sails, catching the wind for a burst of speed!",
+        "id": "q_UpQM"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Will",
+                "text": "Very good!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "Good work!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Anne",
+                "text": "Nicely done!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sailing-the-boat-if-the-player-sets-the-sails-before-starting-to-move-the-ship": [
+      {
+        "type": "message",
+        "text": "You need to be manning the sails or manning the helm to adjust the sails.",
+        "id": "ZRCDYY"
+      }
+    ],
+    "reaching-the-salvaging-point": [
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Right, now that we're here, I think it's time to do some salvaging!"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "When you're ready, [player name], just lower the salvaging hook and let's see what we can find!"
+      },
+      {
+        "player": "Hang on... why am I lowering the hook? I thought the helm was my responsibility?"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Yes! The helm... and the hook!"
+      },
+      {
+        "player": "Of course. I'll just do everything while you two reap the rewards. Sounds about right."
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Don't go getting grumpy on us now, [player name]. This isn't about the rewards. It's all about the experience!"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "That's right! Think of what you'll learn today!"
+      },
+      {
+        "player": "sigh*"
+      }
+    ],
+    "reaching-the-salvaging-point-talking-to-anne-or-will-after-arriving-at-the-salvaging-point": [
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Right, now that we're here, I think it's time to do some salvaging!"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "When you're ready, [player name], just lower the salvaging hook and let's see what we can find!"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "ALRuwI"
+      }
+    ],
+    "reaching-the-salvaging-point-talking-to-anne-or-will-after-they-explain-salvaging-or-interacting-with-the-helm-or-sails": [
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Time for some salvaging, [player name]! When you're ready, just lower the salvaging hook and let's see what we can find!"
+      }
+    ],
+    "reaching-the-salvaging-point-deploying-the-salvaging-hook": [
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You don't have enough room in your inventory to use the salvaging hook.",
+            "id": "bVoVAP"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XUpDAq"
+      },
+      {
+        "player": "Right then, let's give this a go."
+      },
+      {
+        "type": "message",
+        "text": "You use the salvaging hook to gather an old cup and a mysterious medallion.",
+        "id": "p40qKY"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Well?"
+      },
+      {
+        "player": "What do you make of these?"
+      },
+      {
+        "type": "message",
+        "text": "You show Will what you found.",
+        "id": "tHqfi7"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "The medallion! Anne, we've found it!"
+      },
+      {
+        "player": "You were looking for this?"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "That's right! And now that we've found it, I'm afraid we don't really need you anymore."
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Sorry, [player name]. If it's any consolation, you did a great job! Unfortunately, we just have to let you go."
+      },
+      {
+        "type": "action",
+        "text": "Anne pushes the player overboard.",
+        "id": "hQBGdU"
+      }
+    ],
+    "reaching-the-salvaging-point-swimming-to-shore": [
+      {
+        "player": "Eugh..."
+      },
+      {
+        "player": "Where am I?"
+      },
+      {
+        "type": "action",
+        "text": "The player walks over to the Pandemonium.",
+        "id": "dpOs4I"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yo ho ho and a Jolly Roger to you, me hearty! I can see from the fact that you're totally drenched from head to toe that you are a fellow scallywag sailor! The name's Steve Beanie! Pleased to meet you."
+      },
+      {
+        "type": "jump",
+        "reference": "below",
+        "id": "e9tBwN"
+      }
+    ],
+    "at-the-pandemonium-talking-to-squawking-steve-beanie": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yo ho ho and a Jolly Roger to you, me hearty! I can see from the fact that you're totally drenched from head to toe that you are a fellow scallywag sailor! The name's Steve Beanie! Pleased to meet you."
+      },
+      {
+        "player": "I think I must be having some sort of fever dream... or maybe I'm dead?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Ha! Far from it, matey! Though the fever dream I can't comment on. They're rather common around here... but I assure you that it's well-nigh certainly like enough most likely not the rum doing it!"
+      },
+      {
+        "player": "Okay... You said words there, but I don't think they actually formed a sentence."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Ah, me wee hearty! You seem to be having quite the crisis! Thankfully, you've rigged the starboard and docked yourself at the right port! Welcome to the Pandemonium!"
+      },
+      {
+        "player": "Pandemonium?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Aye! To be sure! This here is the finest establishment in all the seas. Sit back! Have a drink! Let the good times, and the rum, flow!"
+      },
+      {
+        "player": "If this is the Pandemonium, do you know of a pair of salvagers called Will and Anne?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Avast ye! You name a pair of pinching looting plundering seadogs!"
+      },
+      {
+        "player": "I see. So you do know them. They claimed to have purchased a map here, but I'm guessing they weren't being totally honest about that..."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Purchased?! Purchased?! You're pulling my leg, you scallywag! Those scurvy dogs came here and broke the one rule of the Pandemonium! That map was pilfered! Stolen!"
+      },
+      {
+        "player": "Well, I had quite the fun run in with them myself. They had me help them salvage an old shipwreck before throwing me overboard."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Arrr, you poor scallywag."
+      },
+      {
+        "player": "Thank you. It was the map they stole that led them to the wreck. What do you know about it?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Not a lot, I'm afraid. You should hoist your sails and go speak to Ribs instead. It was his map they looted. He's the old dog over in the corner. Avast!"
+      }
+    ],
+    "at-the-pandemonium-talking-to-squaking-steve-beanie-again": [
+      {
+        "type": "condition",
+        "text": "If the player has not yet asked about Will and Anne:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "'Squawking' Steve Beanie",
+            "text": "The scallywag sailor returns! Have you come for a drink? We only have the best here on the Pandemonium!"
+          },
+          {
+            "player": "If this is the Pandemonium, do you know of a pair of salvagers called Will and Anne?"
+          },
+          {
+            "type": "line",
+            "speaker": "'Squawking' Steve Beanie",
+            "text": "Avast ye! You name a pair of pinching looting plundering seadogs!"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "2otoVC"
+          }
+        ],
+        "id": "CNjUL8"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "player": "Let's see what you have."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aye!"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Pandemonium",
+                "id": "n-AhO0"
+              }
+            ]
+          },
+          {
+            "text": "About Will and Anne...",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Those plundering seadogs! Did you speak to Ribs about them? It was his map they looted. He's the old dog over in the corner."
+              },
+              {
+                "player": "Thanks. I'll go and speak to him now."
+              }
+            ]
+          },
+          {
+            "text": "I think I might have lost a cup here.",
+            "condition": "If the player lost the old cup:",
+            "steps": [
+              {
+                "player": "I think I might have lost a cup here."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aye! Someone handed it in earlier. Here you go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Steve tries to give you a cup, but you don't have enough room to take it.",
+                    "id": "c2hHrr"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "'Squawking' Steve Beanie",
+                    "text": "Blistering barnacles! You don't seem to have room for it. You'd better come back later."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "43Ms0-"
+              },
+              {
+                "type": "message",
+                "text": "Steve gives you a cup.",
+                "id": "P7HYtI"
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Yo ho ho!"
+              }
+            ],
+            "id": "-1Fgxk"
+          },
+          {
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "player": "Nothing, thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Shiver me timbers!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-the-pandemonium-talking-to-chartin-charles-mcatless": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "type": "line",
+        "speaker": "Chartin' Charles McAtless",
+        "text": "Hello there. I'm afraid I only talk to proper sailors, and I can see you're not quite at that level yet. However, you are welcome to admire me from afar."
+      }
+    ],
+    "at-the-pandemonium-talking-to-junior-jim": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Can I help you, mate?"
+      },
+      {
+        "player": "I don't think so."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Okay... You should probably get going then."
+      }
+    ],
+    "at-the-pandemonium-talking-to-the-crew-registrar": [
+      {
+        "type": "line",
+        "speaker": "Crew Registrar",
+        "text": "Hello there!"
+      },
+      {
+        "player": "Who are you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Crew Registrar",
+        "text": "I'm the crew registrar. Here to cut through the red tape of crew management for anyone who needs it!"
+      },
+      {
+        "player": "A lot of paperwork in managing a crew is there?"
+      },
+      {
+        "type": "line",
+        "speaker": "Crew Registrar",
+        "text": "You'd be surprised. Quality assurance guideline QA-275 states all crew must be appropriately fit and healthy after being subjected to QA form QA-275."
+      },
+      {
+        "type": "line",
+        "speaker": "Crew Registrar",
+        "text": "QA-123 requires all crew to pass a mandatory cargo data protection course if the vessel can be fitted with a cargo hold."
+      },
+      {
+        "type": "line",
+        "speaker": "Crew Registrar",
+        "text": "Then of course we have QA-441, which defines the background checks that any crewmate operating a sail must pass. And all that's without even considering QA- 215..."
+      },
+      {
+        "player": "That all sounds a bit much!"
+      },
+      {
+        "type": "line",
+        "speaker": "Crew Registrar",
+        "text": "Well, it's not for everyone. Still, if you ever find yourself in need of a crew, you know where to find me."
+      }
+    ],
+    "at-the-pandemonium-talking-to-ribs": [
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "Ahoy, young whippersnapper. Have you come to hear a tale from old Ribs?"
+      },
+      {
+        "player": "Kind of, I guess. I was hoping you could tell me about Will and Anne, along with the map they stole."
+      },
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "A dark day. A very dark day. Those young fools know not what they have wrought upon themselves."
+      },
+      {
+        "player": "That being?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "A curse! A curse most foul! That map marked the resting place of the Crimson Kraken! She was a deadly vessel, captained by none other than Barnacle Barnaby himself!"
+      },
+      {
+        "player": "Barnacle Barnaby? Who's that then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "You have not heard the tale of Barnacle Barnaby? You have not heard of the scourge of the Unquiet Ocean?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, tell me about him.",
+            "steps": [
+              {
+                "player": "No, tell me about him."
+              },
+              {
+                "type": "line",
+                "speaker": "Ribs",
+                "text": "He was a cruel and vicious pirate. Orchestrator of the Driftwood Massacre and unleasher of the Plague of Black Mists. He believed himself untouchable, but his arrogance was his undoing."
+              },
+              {
+                "type": "line",
+                "speaker": "Ribs",
+                "text": "Despite the warnings of many, Barnacle Barnaby attempted to plunder the Skullhorde, but his only reward was a deadly curse. It destroyed the Crimson Kraken, condemning all on board to a watery grave."
+              },
+              {
+                "player": "And you had a map leading to the wreck of the Kraken?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ribs",
+                "text": "Aye! I purchased the map from Ulrich the Unfortunate, the sole survivor of the Kraken, but I had no intention of using it. I knew that no good would ever come from seeking the Kraken."
+              },
+              {
+                "player": "Then why not destroy the map?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ribs",
+                "text": "And risk the wrath of Barnaby's ghost? No. Better the map be locked away, so that neither it nor the curse could harm anyone else."
+              },
+              {
+                "player": "I'm not sure I quite follow your reasoning for keeping it, but I guess it doesn't matter now. I'm afraid Will and Anne found and looted the Kraken."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "HECnEM"
+              }
+            ]
+          },
+          {
+            "text": "Now's not really the time for tales.",
+            "steps": [
+              {
+                "player": "Now's not really the time for tales."
+              },
+              {
+                "type": "line",
+                "speaker": "Ribs",
+                "text": "You are a fool for thinking that way, but on your head be it. The short of it is that Barnaby and the Kraken were cursed, condemning him and his crew to a watery grave."
+              },
+              {
+                "player": "I see. Well, I'm afraid Will and Anne found and looted the Kraken."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "h1HpuD"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "I feared as much, though part of me still hoped it would not come to be. Tell me, did they find Barnaby's medallion?"
+      },
+      {
+        "player": "They did. It was actually the only thing they were interested in."
+      },
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "Then the foul curse is now free once more. They must be stopped!"
+      },
+      {
+        "player": "Well, I do have my own personal reasons for wanting Will and Anne dealt with. Maybe I could try and find them."
+      },
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "You are a brave soul indeed, but that is just what is needed at a time like this."
+      },
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "You should talk to Steve. He already put out a bounty for Will and Anne after the theft. He might have heard something about where they could have gone."
+      }
+    ],
+    "at-the-pandemonium-talking-to-ribs-again": [
+      {
+        "type": "line",
+        "speaker": "Ribs",
+        "text": "Ahoy, young whippersnapper. Did you speak to Steve about that bounty?"
+      },
+      {
+        "player": "Not yet. I'll go and see him now."
+      }
+    ],
+    "at-the-pandemonium-talking-to-squawking-steve-beanie-again": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "_aMzVK"
+              }
+            ]
+          },
+          {
+            "text": "About Will and Anne...",
+            "steps": [
+              {
+                "player": "About Will and Anne..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Those plundering seadogs! Did you speak to Ribs about them?"
+              },
+              {
+                "player": "I did. He seems to think they might have unleashed some sort of curse."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Ah, the curse of Barnacle Barnaby! It's one of Ribs' favourite tales. Just a myth of course, but the old dog does love his stories."
+              },
+              {
+                "player": "Well, myths aside, Ribs mentioned you'd put a bounty out for Will and Anne. I'd be quite keen to track them down myself."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Yo ho ho! A mighty good decision! It's a generous bounty indeed. You don't go breaking the one rule of the Pandemonium and expect to get away with it!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What exactly is this one rule you keep mentioning?",
+                    "steps": [
+                      {
+                        "player": "What exactly is this one rule you keep mentioning?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Avast! The mainland kingdoms have no authority here. Their laws do not apply. Instead, we just have our one rule that keeps the Pandemonium afloat: Never disrespect your fellow patron."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "We don't care who you are. Indeed, pirates and customs officers can enjoy a drink here, side by side. Savvy?"
+                      },
+                      {
+                        "player": "So anyone is welcome here as long as they don't commit an offense against any of the other patrons?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Yarr! You've got it!"
+                      },
+                      {
+                        "player": "I see. So, back to Will and Anne. Do you have any idea where they might have gone?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Shiver me timbers! I'm afraid not. Old Grog said he might try and track them down. Perhaps he has an idea of where to find them."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "5TDCa4"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you have any idea where Will and Anne might have gone?",
+                    "steps": [
+                      {
+                        "player": "Do you have any idea where Will and Anne might have gone?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Shiver me timbers! I'm afraid not. Old Grog said he might try and track them down. Perhaps he has an idea of where to find them."
+                      },
+                      {
+                        "player": "And where would I find Old Grog?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Ah, the old scallywag left not that long ago, but he'll be back here before long. He enjoys a drink far too much! In the meantime, you should hoist the sails and ready your vessel!"
+                      },
+                      {
+                        "player": "But I don't have a vessel..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "What? But then how did you get here?"
+                      },
+                      {
+                        "player": "Will and Anne threw me overboard and I washed up here. I did mention this earlier..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Blistering barnacles! Well, you won't be getting far without a boat of your own. You should head to the docks and speak with Junior Jim, our local shipwright. He'll get you sorted out."
+                      },
+                      {
+                        "player": "Alright, I'll go and see him."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Jolly Roger!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I think I might have lost a cup here.",
+            "condition": "If the player lost the old cup:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "biE6zw"
+              }
+            ],
+            "id": "pAfp8-"
+          },
+          {
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "b2Aijt"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-the-pandemonium-subsequent-dialogue-with-squawking-steve-beanie": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "PQZ094"
+              }
+            ]
+          },
+          {
+            "text": "About Will and Anne...",
+            "steps": [
+              {
+                "player": "About Will and Anne..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aye! Old Grog hasn't returned yet, but I'm sure he'll be back soon. In the meantime, you should head to the docks and speak with Junior Jim, our local shipwright. He'll get you sorted out with a boat of your own."
+              },
+              {
+                "player": "Alright, I'll go and see him."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Jolly Roger!"
+              }
+            ]
+          },
+          {
+            "text": "I think I might have lost a cup here.",
+            "condition": "If the player lost the old cup:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "orcSAp"
+              }
+            ],
+            "id": "4sgadi"
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "q5Z5lu"
+              }
+            ]
+          },
+          {
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "bQ7fcw"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-junior-jim": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Can I help you, mate?"
+      },
+      {
+        "player": "Are you Junior Jim?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "That's me. What do you need then?"
+      },
+      {
+        "player": "Steve said you might be able to sort me out with a boat."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "You don't have a boat?"
+      },
+      {
+        "player": "No."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Ha! We've got ourselves a Billy-no-boats! Classic! Yeah, I can sort you out with a boat, but it's gonna cost you."
+      },
+      {
+        "player": "How much?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Well, what do you have?"
+      },
+      {
+        "player": "Er... I do have this cup I found. Perhaps I could trade it for a boat."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Alright, let's have a gander at it."
+      },
+      {
+        "type": "condition",
+        "text": "If the player lost the old cup:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "IlKVPa"
+          }
+        ],
+        "id": "A7s0Gf"
+      },
+      {
+        "type": "message",
+        "text": "You show the cup to Junior Jim.",
+        "id": "LXQu-W"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Hmm... Yeah, yeah, I can work with this. This old rusty cup will get you the finest raft I have!"
+      },
+      {
+        "player": "Sorry, I think I must have misheard you. Did you say raft?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "That's right! The best one I have!"
+      },
+      {
+        "player": "I was kind of hoping for a bit more than a raft. It's not just the cup I have. I'm sure I can make up the funds to buy something bigger."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Sorry, mate, but even if you could, the raft is all I've got to hand right now. Besides, you're gonna want to build up some experience before you captain anything too big. A raft will be perfect for you."
+      },
+      {
+        "player": "Okay..."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Lighten up, mate. I'll have plenty more vessels in stock soon. Come back once you've got a bit more know-how and I'll be able to sort you right out."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Now, about your raft... With that cup I'll be able to sort you out with the finest helm, but it won't be enough to cover the sails."
+      },
+      {
+        "player": "But I won't get anywhere without sails!"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Don't panic, you silly plonker. I ain't about to send you off on a raft with no sails. I'll sort them out for you, but I'll just need a little favour in return."
+      },
+      {
+        "player": "What favour?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "I've got some cargo I need picking up from Port Sarim and bringing back here. In return for sorting you out with some sails, I'll need you to go and collect it for me."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Oh, and I tell you what, I'll even set you up with the materials to whack together a cargo hold. You won't be shifting that cargo far without one."
+      },
+      {
+        "player": "Thanks!"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Now, hand over that cup and we can get cracking."
+      },
+      {
+        "type": "message",
+        "text": "You give the cup to Junior Jim.",
+        "id": "jkS3Ej"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Right, time to sort you out with a cargo hold. Let's head on over to the shipyard..."
+      },
+      {
+        "type": "action",
+        "text": "Junior Jim and the player head to the shipyard.",
+        "id": "TIfJ86"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "You'll want to grab yourself some tools from the crates over there, mate. After that, just use the gangplank to hop onto your raft. Once you're on board, you can get to work."
+      }
+    ],
+    "talking-to-junior-jim-talking-to-junior-jim-again-before-showing-him-the-cup-or-using-the-cup-on-him": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "You're back! Do you have that cup? If so, let's have a gander at it."
+      },
+      {
+        "type": "condition",
+        "text": "If the player lost the cup:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "IlKVPa"
+          }
+        ],
+        "id": "hf2_5G"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the cup:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Junior Jim",
+            "text": "Hmm... Yeah, yeah, I can work with this. This old rusty cup will get you the finest raft I have!"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "1Nbnie"
+          }
+        ],
+        "id": "a8695u"
+      }
+    ],
+    "talking-to-junior-jim-talking-to-junior-jim-after-giving-him-the-cup": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Right, time to sort you out with a cargo hold. Let's head on over to the shipyard..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "XnuXo-"
+      }
+    ],
+    "the-shipyard-talking-to-junior-jim-again": [
+      {
+        "player": "What should I do now?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not grabbed both the sawmill and hammer before talking to him:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Junior Jim",
+            "text": "You'll want to grab yourself some tools from the crates over there, mate. After that, just use the gangplank to hop onto your raft. Once you're on board, you can get to work."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WjitRI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player talks to Jim after grabbing the tools:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Junior Jim",
+            "text": "Just use the gangplank over there to hop onto your raft. Once you're on board, you can use your tools to build a cargo hold. Don't worry about the materials, mate. I'm supplying those this time."
+          }
+        ],
+        "id": "3rjK-a"
+      }
+    ],
+    "the-shipyard-taking-from-the-crate-of-hammers": [
+      {
+        "type": "condition",
+        "text": "If the player does not already have a hammer:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You take a hammer from the crate.",
+            "id": "niwCRR"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Q7H8oK"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has a hammer:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The crate is full of hammers, but you leave them as you already have one.",
+            "id": "aWG1rA"
+          }
+        ],
+        "id": "xuFc3_"
+      }
+    ],
+    "the-shipyard-taking-from-the-crate-of-saws": [
+      {
+        "type": "condition",
+        "text": "If the player does not already have a saw:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You take a saw from the crate.",
+            "id": "CnlEDp"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "N0YXhs"
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has a saw:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The crate is full of saws, but you leave them as you already have one.",
+            "id": "OgmTuK"
+          }
+        ],
+        "id": "VWaptx"
+      }
+    ],
+    "the-shipyard-modify-boat-schematics-before-building-the-cargo-hold": [
+      {
+        "type": "message",
+        "text": "This is the schematics board. It's used to upgrade core parts of your boat, such as the hull. However, you have no reason to use it right now. You should focus on building your cargo hold instead.",
+        "id": "MX3O0s"
+      }
+    ],
+    "the-shipyard-building-the-cargo-hold": [
+      {
+        "type": "message",
+        "text": "Junior Jim helpfully provides the materials required to build the cargo hold.",
+        "id": "bu1EIn"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Very nice! Now, use the gangplank to hop back up here and we can get going."
+      }
+    ],
+    "the-shipyard-attempting-to-modify-the-cargo-hold": [
+      {
+        "type": "message",
+        "text": "It doesn't seem like a good idea to modify anything right now.",
+        "id": "4nO6I_"
+      }
+    ],
+    "the-shipyard-talking-to-junior-jim-again-2": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Smashing job on that cargo hold, mate. Let's get back to the Pandemonium, shall we?"
+      },
+      {
+        "type": "action",
+        "text": "The player is taken back to The Pandemonium",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "HrNl3J"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Okay, looks like that's you all sorted, mate. I'd say you're now ready to set sail!"
+      },
+      {
+        "player": "How exciting!"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Why don't you take your new raft out for a spin? You can head over to Port Sarim and collect that cargo for me. Oh, which reminds me, now that you're officially a captain, you'll need one of these."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Junior Jim tries to give you a log book, but you don't have enough room to take it.",
+            "id": "-8Oi7b"
+          },
+          {
+            "type": "line",
+            "speaker": "Junior Jim",
+            "text": "Ah, seems you don't have room for it, mate. Why don't you come back later?"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "K30w8b"
+      },
+      {
+        "type": "message",
+        "text": "Junior Jim gives you a log book.",
+        "id": "7jgwOg"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Your very own captain's log! You can use that to keep track of your adventures out at sea, including any work you might end up taking on."
+      },
+      {
+        "player": "Like collecting your cargo?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Right on, mate! In fact, I'll make a note of that in your log now."
+      },
+      {
+        "type": "message",
+        "text": "Junior Jim updates your log with details on his request. You can consult the log at any point for a reminder on what he needs you to do.",
+        "id": "DgYchr"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "And that's you all ready to go, mate! Just hop on your new raft when ready. If you need help finding my cargo, just check in with the port master when you get to Port Sarim."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Now, unless you fancy a cheeky dip, the gangplank down the docks will be your best bet for getting on board."
+      },
+      {
+        "type": "message",
+        "text": "You can embark or disembark from your boat via docking points found around the world. To find a docking point, just look for the relevant icon on your map.",
+        "id": "LhIFh_"
+      }
+    ],
+    "the-shipyard-talking-to-junior-jim-after-he-gives-you-the-captain-s-log": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "You'll be needing one of these, mate."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Junior Jim tries to give you a log book, but you don't have enough room to take it.",
+            "id": "GvrTRJ"
+          },
+          {
+            "type": "line",
+            "speaker": "Junior Jim",
+            "text": "Ah, seems you don't have room for it. Why don't you come back later?"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "JFe9GO"
+      },
+      {
+        "type": "message",
+        "text": "Junior Jim gives you a log book.",
+        "id": "g4CUrq"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "WWB9Ma"
+      }
+    ],
+    "the-shipyard-subsequent-dialogue-with-junior-jim": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "You should be all ready to go, mate! Just hop on your new raft when ready. If you need help finding my cargo, just check in with the port master when you get to Port Sarim."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Now, unless you fancy a cheeky dip, the gangplank down the docks will be your best bet for getting on board."
+      },
+      {
+        "type": "message",
+        "text": "You can embark or disembark from your boat via docking points found around the world. To find a docking point, just look for the relevant icon on your map.",
+        "id": "_mDPVw"
+      }
+    ],
+    "at-port-sarim-talking-to-the-port-master": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Port master",
+        "text": "Hi there. Do you need help with anything?"
+      },
+      {
+        "player": "I'm here to pick up some cargo for Junior Jim on the Pandemonium."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is holding the cargo:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Port master",
+            "text": "Looks like you already have it. You'll need to take it back to the Pandemonium now."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "abPgqO"
+      },
+      {
+        "type": "line",
+        "speaker": "Port master",
+        "text": "Ah, you must be new to this. You can pick up and drop off cargo just over there at the ledger table."
+      },
+      {
+        "type": "message",
+        "text": "Cargo can be picked up and dropped off at ledger tables found in various ports around the world. To find a ledger table, just look for the relevant icon on your map.",
+        "id": "GXKRAn"
+      }
+    ],
+    "at-port-sarim-taking-cargo-from-the-ledger-table": [
+      {
+        "type": "message",
+        "text": "You pick up a crate of ship parts.",
+        "id": "8bdD6i"
+      }
+    ],
+    "at-port-sarim-depositing-cargo-at-the-ledger-table": [
+      {
+        "type": "message",
+        "text": "You deposit the crate of ship parts.",
+        "id": "odpNJQ"
+      }
+    ],
+    "at-the-pandemonium-disembarking-the-boat-while-the-cargo-is-still-in-the-hold": [
+      {
+        "type": "choice",
+        "prompt": "Jim's cargo is still in your cargo hold.",
+        "options": [
+          {
+            "text": "Disembark anyway.",
+            "steps": []
+          },
+          {
+            "text": "Remain on the boat.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "at-the-pandemonium-talking-to-junior-jim-after-he-asks-for-the-cargo": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Alright, mate. How are you doing collecting my cargo?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not carrying the cargo:",
+        "steps": [
+          {
+            "player": "I'm still working on it."
+          },
+          {
+            "type": "line",
+            "speaker": "Junior Jim",
+            "text": "Well, you'd better hop back onto your raft then. Unless you fancy a cheeky dip, the gangplank down the docks will be your best bet for getting on board."
+          },
+          {
+            "type": "message",
+            "text": "You can embark or disembark from your boat via docking points found around the world. To find a docking point, just look for the relevant icon on your map.",
+            "id": "teg4gz"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "dnoJFg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is carrying the cargo:",
+        "steps": [
+          {
+            "player": "I've got it right here."
+          },
+          {
+            "type": "line",
+            "speaker": "Junior Jim",
+            "text": "Very nice! Just hand that over to the port master and he'll sort it out. Come let me know once you're done."
+          },
+          {
+            "player": "Okay, will do."
+          }
+        ],
+        "id": "p6q3K5"
+      }
+    ],
+    "at-the-pandemonium-talking-to-the-port-master": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Port master",
+        "text": "Hi there. Can I help you with anything?"
+      },
+      {
+        "player": "I'm here to drop off some cargo for Junior Jim."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not carrying the cargo:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Port master",
+            "text": "You don't seem to have any cargo on you."
+          },
+          {
+            "player": "Oh, I must have left it in my cargo hold. I'll be right back."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ypYvbi"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is carrying the cargo:",
+        "steps": [
+          {
+            "player": "I'm here to drop off some cargo for Junior Jim."
+          },
+          {
+            "type": "line",
+            "speaker": "Port master",
+            "text": "Ah, very good. Just put it over by the ledger table and I'll get it sorted."
+          },
+          {
+            "type": "message",
+            "text": "Cargo can be picked up and dropped off at ledger tables found in various ports around the world. To find a ledger table, just look for the relevant icon on your map.",
+            "id": "0fVUf_"
+          }
+        ],
+        "id": "TpqvDF"
+      }
+    ],
+    "at-the-pandemonium-dropping-off-the-cargo-on-the-ledger-table": [
+      {
+        "type": "message",
+        "text": "You deliver the crate of ship parts.",
+        "id": "Bvs9Sf"
+      },
+      {
+        "type": "line",
+        "speaker": "Port master",
+        "text": "Thanks, sailor. I'll get that all sorted out. You should go let Jim know his cargo is here."
+      }
+    ],
+    "at-the-pandemonium-talking-to-the-port-master-after-dropping-off-the-cargo": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Port master",
+        "text": "Hi there. Can I help you with anything?"
+      },
+      {
+        "player": "I'm fine, thanks."
+      }
+    ],
+    "at-the-pandemonium-talking-to-junior-jim-after-depositing-the-cargo": [
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Alright, mate."
+      },
+      {
+        "player": "I collected your cargo and left it with the port master."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Very nice! That's us all squared up then. You ought to pop back once you've got a bit more experience with that raft. By then I should have some new vessels for sale."
+      },
+      {
+        "type": "message",
+        "text": "Shipwrights like Junior Jim can sell you new boats or help you upgrade your existing ones. To find a shipwright, just look for the relevant icon on your map.",
+        "id": "EIOEfn"
+      },
+      {
+        "player": "I might just do that. Any tips on the best ways to get that experience?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "To be honest, mate, I'd say one of the best things would be to take on more work like what you just did for me. A lot of ports will have a notice board where folks advertise jobs they want sorting."
+      },
+      {
+        "type": "message",
+        "text": "Port tasks can be accepted from notice boards found in various ports around the world. To find a notice board, just look for the relevant icon on your map.",
+        "id": "VOIS_P"
+      },
+      {
+        "player": "Sounds good. Anything else?"
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Well, now that you're officially a big cheese captain, you might want to start charting the sea for your own records. That log book I gave you has all sorts of cracking tips on how to do so."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Oh, and while we're on about charting, I've also chucked some useful bits and bobs in your cargo hold."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "First up, I've left you a couple of repair kits in there. Perfect for if you go being a numpty and end up sailing straight into a proper big storm or a big group of sharks."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "The other thing in there is a spyglass. It's a proper handy charting tool that's great for getting a good look at things while out at sea."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "There's a chap called Charles who used to be pretty good at the whole charting thing who might be able to help you more. You can find him down in the cave on the island."
+      },
+      {
+        "type": "message",
+        "text": "Your captain's log contains details on how to chart the sea. You can consult the log at any time for hints on what to chart. Charles in the cave on the Pandemonium can also help you out with sea charting.",
+        "id": "mBygf3"
+      },
+      {
+        "player": "Great! Thanks, Jim. I'd better go check in with Steve now and see if Old Grog is back."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "Don't mention it, mate."
+      }
+    ],
+    "talking-to-steve": [
+      {
+        "type": "line",
+        "speaker": "Old Grog",
+        "text": "Is this the one?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Aye! This Jolly Roger here is pretty keen to see some justice dealt! Old Grog, meet... er..."
+      },
+      {
+        "player": "[player name]."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "[player name]! And [player name], meet Old Grog."
+      },
+      {
+        "player": "Pleased to meet you."
+      },
+      {
+        "type": "line",
+        "speaker": "Old Grog",
+        "text": "Steve tells me you're keen to see Will and Anne dealt with. I'm open to sharing the bounty, but only if you have what it takes. I have no time for layabouts."
+      },
+      {
+        "player": "I won't let you down!"
+      },
+      {
+        "type": "line",
+        "speaker": "Old Grog",
+        "text": "We'll see. I saw that raft you rocked up in. If that's all you bring to the table, then you have some work to do."
+      },
+      {
+        "type": "line",
+        "speaker": "Old Grog",
+        "text": "It will take me some time to track Will and Anne down, but make no mistake, I will find them. I expect you to be ready by the time that happens. Don't be a disappointment."
+      },
+      {
+        "player": "You have my word."
+      },
+      {
+        "type": "line",
+        "speaker": "Old Grog",
+        "text": "Good. Now, that's me done drinking. Time to get to work. I'll keep Steve updated on my progress, so make sure you're checking in with him. He'll let you know once I have something."
+      },
+      {
+        "type": "message",
+        "text": "Old Grog departs.",
+        "id": "C5l2Ww"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yo ho ho, [player name]! Best you not waste time! Belay your helm and abaft your rigging! Get out there and make sure you're ready for Old Grog!"
+      },
+      {
+        "player": "Will do!"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "To help you on your way, I've got some pirate looty here for you! Sawmill coupons! Useful if you want a top vessel like mine."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Oh, and don't forget to pop back for a drink from time to time. My rum is to die for! Now, avast!"
+      },
+      {
+        "type": "action",
+        "text": "Quest complete!",
+        "id": "SJ3WVd"
+      }
+    ],
+    "talking-to-steve-talking-to-steve-again-after-old-grog-departs": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yo ho ho, [player name]! Best you not waste time! Belay your helm and abaft your rigging! Get out there and make sure you're ready for Old Grog!"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "Wb0rz8"
+      }
+    ],
+    "miscellaneous-before-sailing-release": [
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Ah, look what we have here, Will! This looks like someone who needs a good job!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Goodness, Anne, I think you're right! This one's clearly never worked an honest day in their life, and it's about time someone changed that!"
+      },
+      {
+        "player": "But I don't need a..."
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Alas! We are sadly not currently in a place where we can take on any more staff, but let us hope that changes soon!"
+      },
+      {
+        "player": "Okay..."
+      },
+      {
+        "type": "message",
+        "text": "The Sailing skill will release on the 19th November.",
+        "id": "p4oZij"
+      }
+    ],
+    "miscellaneous-on-a-deadman-mode-world": [
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Ah, look what we have here, Will! This looks like someone who needs a good job!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Goodness, Anne, I think you're right! This one's clearly never worked an honest day in their life, and it's about time someone changed that!"
+      },
+      {
+        "player": "But I don't need a..."
+      },
+      {
+        "type": "line",
+        "speaker": "Anne",
+        "text": "Alas! We are sadly not currently in a place where we can take on any more staff, but let us hope that changes soon!"
+      },
+      {
+        "player": "Okay..."
+      },
+      {
+        "type": "message",
+        "text": "Sailing quests are currently unavailable on this world.",
+        "id": "QG2TcP"
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "unavailable",
+        "id": "MpmcxM"
+      }
+    ]
+  },
+  "branches": {
+    "KpSbKi": [
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "Oh dear! It doesn't quite look like you are! You'll need to make some room to carry some things before we head off!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "XNeJmf": [
+      {
+        "type": "line",
+        "speaker": "Will",
+        "text": "You need to take us to the wreck before we can use the salvaging hook, [player name]. It should be east of the Karamja Shipyard, so south of here."
+      }
+    ],
+    "IlKVPa": [
+      {
+        "player": "I seem to have lost it."
+      },
+      {
+        "type": "line",
+        "speaker": "Junior Jim",
+        "text": "You've got no boat. You've got no cup. You're fresh out of luck it would seem, mate. You'd best hope you lost it here on the Pandemonium. If so, someone might have handed it in to Steve."
+      },
+      {
+        "player": "Then I guess I'd better go see if Steve has it."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

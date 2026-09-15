@@ -1,0 +1,249 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello human."
+      },
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "This guild contains minerals that haven't been found anywhere else. I'm here to try and identify them."
+      },
+      {
+        "npc": "If you come across any unusual minerals when mining here I'll take them off your hands. Don't worry, I'll make it worth your while."
+      },
+      {
+        "npc": "I've also been digging out this cave recently. I found a bunch of amethyst in there."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have minerals to trade.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Mining Guild Mineral Exchange",
+                "id": "MZsJvM"
+              }
+            ]
+          },
+          {
+            "text": "What can you offer me?",
+            "steps": [
+              {
+                "player": "What can you offer me?"
+              },
+              {
+                "npc": "I have some gloves that will help you when Mining. When you wear these gloves you'll find that some rocks will instantly respawn."
+              },
+              {
+                "player": "How do they do that?"
+              },
+              {
+                "npc": "Magic!"
+              },
+              {
+                "npc": "Beyond that, I could consider letting you access this new cave. It seems to contain even more minerals."
+              },
+              {
+                "npc": "So, what would you like?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to view the shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Mining Guild Mineral Exchange",
+                        "id": "Z_0uxt"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like access to the cave.",
+                    "condition": "If the player has not been granted access to the diary amethyst mine:",
+                    "steps": [
+                      {
+                        "player": "I'd like access to the cave."
+                      },
+                      {
+                        "npc": "Now hold on. There's a lot of minerals in there, and digging out the cave was hard work. Only a true friend of Falador would be allowed in there."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has not completed the Elite Falador Diary:",
+                        "steps": [
+                          {
+                            "npc": "You don't seem like you're quite there yet. Come speak to me again once you have completed the Elite Falador Achievement Diary."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "2dZeck"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the Elite Falador Diary:",
+                        "steps": [
+                          {
+                            "npc": "And you truly are a friend of Falador. Well done on completing the Elite Falador Achievement Diary. Go on in, you may access the cave."
+                          }
+                        ],
+                        "id": "7A98aE"
+                      }
+                    ],
+                    "id": "WU3Fgg"
+                  },
+                  {
+                    "text": "That's all thank you.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "WhNt-5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I don't want to receive minerals.",
+            "condition": "If the player is currently receiving unidentified minerals:",
+            "steps": [
+              {
+                "player": "I don't want to receive minerals."
+              },
+              {
+                "npc": "Very well. You'll no longer find any minerals when you mine here. If you change your mind just let me know."
+              }
+            ],
+            "id": "PffGOf"
+          },
+          {
+            "text": "I'd like to receive minerals.",
+            "condition": "If the player is currently not receiving unidentified minerals:",
+            "steps": [
+              {
+                "player": "I'd like to receive minerals."
+              },
+              {
+                "npc": "As you wish. You'll now find minerals when you mine here. Let me know if you want to change this."
+              }
+            ],
+            "id": "L-yk7m"
+          },
+          {
+            "text": "Can you combine my mining gloves?",
+            "steps": [
+              {
+                "player": "Can you combine my mining gloves?"
+              },
+              {
+                "npc": "I guess I could combine some Mining gloves with some Superior mining gloves. These new gloves would require 70 Mining to equip."
+              },
+              {
+                "npc": "It wouldn't be free though. I'd want 40 minerals in return."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "That's fine. Combine my gloves.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have all the items needed to create expert mining gloves:",
+                        "steps": [
+                          {
+                            "npc": "You don't have any gloves for me to combine. You'll need to bring me some Mining gloves and some Superior mining gloves."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "bm0qkV"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not enough unidentified minerals:",
+                        "steps": [
+                          {
+                            "npc": "You don't have enough minerals. You need at least 40."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "si9Yun"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has all the items needed to create expert mining gloves:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "expert mining gloves",
+                            "id": "U84pMm"
+                          },
+                          {
+                            "npc": "There you go. I've combined your gloves into some Expert mining gloves. Enjoy."
+                          }
+                        ],
+                        "id": "5Inl7x"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That's too much.",
+                    "steps": [
+                      {
+                        "npc": "Fair enough. I'll be here if you change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's all.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "WhNt-5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attempting-to-enter-the-diary-amethyst-mine-without-granted-access": [
+      {
+        "npc": "Hey, you! You're not allowed in there! Come speak to me first."
+      },
+      {
+        "player": "I'm sorry."
+      }
+    ]
+  },
+  "branches": {
+    "WhNt-5": [
+      {
+        "player": "That's all thank you."
+      },
+      {
+        "npc": "Don't forget to come to me if you find any minerals."
+      }
+    ]
+  }
+}

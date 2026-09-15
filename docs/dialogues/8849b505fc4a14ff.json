@@ -1,0 +1,303 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-on-main-game-worlds": [
+      {
+        "npc": "Hello, I've got some wares in you might have lost. Care to take a look?"
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "Who are you and what do you sell?",
+            "steps": [
+              {
+                "player": "Who are you and what do you sell?"
+              },
+              {
+                "npc": "I'm Chris, travelling repairman. If you need something repaired, I can do it for you if you've got the money for it."
+              },
+              {
+                "npc": "I've also got a collection of items people end up losing a lot. Nothing fancy, and certainly nothing you couldn't get elsewhere, maybe for free. Still, I charge a convenience fee for having it right here. Interested?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Show me what you've got.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "6JQT_J"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "2V0Ld4"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Show me what you've got.",
+            "steps": [
+              {
+                "player": "Show me what you've got."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Lost Property shop",
+                "id": "B70SU2"
+              }
+            ]
+          },
+          {
+            "text": "About items that break when people kill me...",
+            "steps": [
+              {
+                "player": "About items that break when people kill me..."
+              },
+              {
+                "npc": "Yeah, some things will break if you get killed in the Wilderness. And if you die deep in the Wilderness, they can vanish altogether."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you fix them?",
+                    "steps": [
+                      {
+                        "player": "Can you fix them?"
+                      },
+                      {
+                        "npc": "For a fee, sure. Just show me the broken item."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you stop them vanishing in deep Wilderness?",
+                    "steps": [
+                      {
+                        "player": "Can you stop them vanishing in deep Wilderness?"
+                      },
+                      {
+                        "npc": "Well, if you bring me a Trouver Parchment and some coins, I can enchant some items so they won't disappear if you end up losing them deep in the Wilderness."
+                      },
+                      {
+                        "npc": "If you need a Trouver Parchment, there's a mage up in Ferox Enclave called Justine who sells them. I've also heard rumours there's a cave in the Wilderness with creatures that sometimes carry them as well."
+                      },
+                      {
+                        "player": "Why would wild creatures be carrying magic parchments?"
+                      },
+                      {
+                        "npc": "Eh, some poor sap walks in carrying one, gets himself killed, and the creature just hangs on to it as a trophy? I can see it."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-on-pvp-arena-worlds": [
+      {
+        "npc": "Hey there. I can't offer my usual services right now, but if you're interested, I picked up a few bits that would let me change your appearance, if you're interested."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I get a body makeover?",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Makeover Mage{{!}}Select skin colour and gender",
+                "id": "jRCYhe"
+              },
+              {
+                "type": "action",
+                "text": "Player selects skin colour and/or gender",
+                "id": "SUY-QA"
+              },
+              {
+                "npc": "Huh, I knew the Makeover Mage said that would work, but I didn't actually believe them!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Actually, I could do with a haircut."
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If the player is female:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Hairdresser{{!}}Select a hairstyle",
+            "id": "3IfUjO"
+          },
+          {
+            "type": "action",
+            "text": "Player selects hairstyle",
+            "id": "GW-C3b"
+          },
+          {
+            "npc": "Not too shabby from some sheep shears, if I do say so myself!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ImY5KI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is male:",
+        "steps": [
+          {
+            "npc": "Are you looking for a haircut or a shave?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "A haircut, please!",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "hQhDfs"
+                  }
+                ]
+              },
+              {
+                "text": "A shave, please!",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "I55Llg"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "VVtAw0"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any clothes?",
+            "steps": [
+              {
+                "npc": "Are you wanting a new top or some new legwear?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "A new top, please!",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Thessalia's Makeovers",
+                        "id": "PHVvKI"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Player selects clothing",
+                        "id": "4oyJuX"
+                      },
+                      {
+                        "npc": "Really? I got that out of a bin in Draynor! Well, if you're sure..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Some new legwear, please!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "nc-WNo"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd really like a new pair of shoes.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Yrsa's Shoe Store",
+                "id": "aOjGet"
+              },
+              {
+                "type": "action",
+                "text": "Player selects shoe colour and/or style",
+                "id": "-jzTO3"
+              },
+              {
+                "npc": "Well, they'll keep the sand off your feet at least..."
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "npc": "Suit yourself. Literally, I guess."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-attempting-to-smith-on-the-nearby-anvil": [
+      {
+        "npc": "Hey, hands off my anvil!"
+      },
+      {
+        "player": "But I just wanted to smith on it! It's right by a bank-"
+      },
+      {
+        "npc": "Because I put it there, you fool! If you want an anvil by a bank, I suggest you find your own!"
+      }
+    ]
+  }
+}

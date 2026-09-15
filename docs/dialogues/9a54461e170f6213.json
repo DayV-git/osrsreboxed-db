@@ -1,0 +1,565 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "'Ello, and what are you after then?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "player": "I need another assignment."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a high combat level:",
+                "steps": [
+                  {
+                    "npc": "You're actually very strong, are you sure you don't want Chaeldar in Zanaris to assign you a task?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "No that's okay, I'll take a task from you.",
+                        "steps": [
+                          {
+                            "player": "No that's okay, I'll take a task from you."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "0Zs3oW"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Oh okay then, I'll go talk to Chaeldar.",
+                        "steps": [
+                          {
+                            "player": "Oh okay then, I'll go talk to Chaeldar."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Qnqbnl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an assignment yet:",
+                "steps": [
+                  {
+                    "npc": "Excellent, you're doing great. Your new task is to kill [amount] [task monster]."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JECeoC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [task monster], you have [amount] to go."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the assignment isn't on Aya's task list:",
+                    "steps": [
+                      {
+                        "npc": "Although, it's not an assignment that I'd normally give... I guess I could give you a new assignment, if you'd like."
+                      },
+                      {
+                        "npc": "If you do get a new one, you will reset your standard task streak of [task streak amount]. Is that okay? It won't affect your Wilderness task streak of [task streak amount]."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, please.",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "DERQEZ"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, thanks.",
+                            "steps": [
+                              {
+                                "player": "No, thanks."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "jmh5Ze"
+                  }
+                ],
+                "id": "qN9PlA"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster], with [amount] to go."
+                  },
+                  {
+                    "npc": "I don't think that's a suitable task for you. Shall I cancel it? This will not wipe your task streaks."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, please cancel it.",
+                        "steps": [
+                          {
+                            "player": "Yes, please cancel it."
+                          },
+                          {
+                            "npc": "Alright, consider the task cancelled. You can now get a new assignment when you want one."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, thanks, I want to try doing it.",
+                        "steps": [
+                          {
+                            "npc": "No, thanks, I want to try doing it."
+                          },
+                          {
+                            "npc": "Good luck with that."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the assignment is on Aya's task list:",
+                    "steps": [],
+                    "id": "LmAfUT"
+                  }
+                ],
+                "id": "WunR8O"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me, or anything to trade?"
+              },
+              {
+                "npc": "I have quite a few rewards you can earn, and a wide variety of Slayer equipment for sale."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Look at rewards.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Rewards",
+                        "id": "89Flfn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look at shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Equipment (shop)",
+                        "id": "adzs4U"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "player": "Let's talk about the difficulty of my assignments."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has disabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I can handle any task.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I can handle any task."
+                          },
+                          {
+                            "npc": "That's the spirit."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "In future, please don't give anything too tough.",
+                        "steps": [
+                          {
+                            "player": "In future, please don't give anything too tough."
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will now take the player's combat level into account.",
+                            "id": "1pJq3X"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "NCV2_v"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I don't want anything too tough.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I don't want anything too tough."
+                          },
+                          {
+                            "npc": "Okay, we'll keep checking your combat level."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Stop checking my combat level - I can take anything!",
+                        "steps": [
+                          {
+                            "player": "Stop checking my combat level - I can take anything!"
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will no longer take the player's combat level into account.",
+                            "id": "XPYBsE"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "CGOF0i"
+              }
+            ]
+          },
+          {
+            "text": "I'm here about blessed axes again.",
+            "condition": "If the player has completed Animal Magnetism:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a blessed axe in their inventory:",
+                "steps": [
+                  {
+                    "player": "Hello, I'm here about the blessed axe again."
+                  },
+                  {
+                    "npc": "I suppose you want a new axe?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Actually, yes.",
+                        "steps": [
+                          {
+                            "player": "Actually, yes."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have either a mithril axe or a holy symbol in their inventory:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "Qgqzui"
+                              }
+                            ],
+                            "id": "mEi6jO"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has a mithril axe and a holy symbol in their inventory:",
+                            "steps": [
+                              {
+                                "npc": "Here's the replacement; be more careful with this one, eh?"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "rRTN21"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I can do without for now, thanks.",
+                        "steps": [
+                          {
+                            "player": "Not right now."
+                          },
+                          {
+                            "npc": "Goodbye, then. You may, of course, return if you decide you want a new axe."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "UHNnVZ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a blessed axe in their inventory:",
+                "steps": [
+                  {
+                    "player": "Hello, I'm here about the blessed axe again."
+                  },
+                  {
+                    "npc": "You already have an axe in your bag but you want another?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Actually, yes.",
+                        "steps": [
+                          {
+                            "player": "Actually, yes."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have either a mithril axe or a holy symbol in their inventory:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "Qgqzui"
+                              }
+                            ],
+                            "id": "sJ4wj1"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has a mithril axe and a holy symbol in their inventory:",
+                            "steps": [
+                              {
+                                "npc": "Here's the replacement; be more careful with this one, eh?"
+                              }
+                            ],
+                            "id": "EiB42j"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I can do without for now, thanks.",
+                        "steps": [
+                          {
+                            "player": "Not right now."
+                          },
+                          {
+                            "npc": "Goodbye, then. You may, of course, return if you decide you want a new axe."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "iPa3tZ"
+              }
+            ],
+            "id": "rDFjdY"
+          },
+          {
+            "text": "So you're filling in for Turael?",
+            "condition": "During While Guthix Sleeps:",
+            "steps": [
+              {
+                "player": "So you're filling in for Turael?"
+              },
+              {
+                "npc": "That I am. It's been quite a while since I last did this sort of thing, but my brother wants one last adventure, so here I am."
+              },
+              {
+                "player": "So you've done this before?"
+              },
+              {
+                "npc": "Oh yes. In fact, I was doing it before my brother was. Back in his adventuring days, I was the one here teaching people the basics."
+              },
+              {
+                "npc": "After Spria was born, he retired from his life of thrill- seeking. That's when he took over from me."
+              },
+              {
+                "player": "Interesting... I never knew that."
+              },
+              {
+                "npc": "He doesn't talk about his adventures much, but once you get him going, you won't be able to make him stop!"
+              }
+            ],
+            "id": "a4Bu8J"
+          },
+          {
+            "text": "About Turael...",
+            "condition": "After completing While Guthix Sleeps:",
+            "steps": [
+              {
+                "player": "About Turael..."
+              },
+              {
+                "npc": "You need not share your condolences with me, adventurer. I've been prepared for this for a long time."
+              },
+              {
+                "player": "You have?"
+              },
+              {
+                "npc": "My brother was a thrill-seeker his whole life. Even after he retired, I always knew something would come and pull him back in."
+              },
+              {
+                "player": "And that something was me. I'm sorry..."
+              },
+              {
+                "npc": "Don't be. He died doing what he loved, and he died a hero. He wouldn't have had it any other way."
+              }
+            ],
+            "id": "tVWdPV"
+          },
+          {
+            "text": "Er... Nothing...",
+            "steps": [
+              {
+                "player": "Er... Nothing..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "via-the-astral-contact-spell": [
+      {
+        "type": "missing",
+        "id": "2xknFk"
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Very well done, take this."
+      },
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "_bnTAR"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "fVzVFi"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "QXDQT_"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "GNK0yR"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy reward casket",
+            "id": "C0-xQd"
+          }
+        ],
+        "id": "LWBF7E"
+      }
+    ]
+  },
+  "branches": {
+    "Qgqzui": [
+      {
+        "npc": "You'll need to hand over both a mithril axe and holy symbol of Saradomin. You don't have an axe in your pack, so I'm not able to help."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

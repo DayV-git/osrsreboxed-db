@@ -1,0 +1,201 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-completing-vale-totems": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Hello there. Would you like to exchange research?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please!",
+            "steps": [
+              {
+                "player": "Yes please!"
+              },
+              {
+                "npc": "Very good! I'll happily exchange some treasures I've found in return for your findings!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Vale Research Exchange",
+                "id": "mEloyB"
+              }
+            ]
+          },
+          {
+            "text": "I need another notebook.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If player has Sacraments of Ent Folk in their inventory:",
+                "steps": [
+                  {
+                    "player": "I need another notebook."
+                  },
+                  {
+                    "npc": "Are you sure? It looks like you already have one."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qwaA3j"
+              },
+              {
+                "type": "condition",
+                "text": "If player does not have Sacraments of Ent Folk in their inventory:",
+                "steps": [
+                  {
+                    "player": "I need another notebook."
+                  },
+                  {
+                    "npc": "Not a problem! Here you go."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Ranulph gives you a notebook.",
+                    "id": "dMUMGJ"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Sacraments of Ent Folk",
+                    "id": "cuP0g_"
+                  },
+                  {
+                    "player": "Thanks!"
+                  }
+                ],
+                "id": "MdLtwG"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Well, I'll be here if you need anything."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-vale-totems-rewards-on-him-fletching-knife": [
+      {
+        "type": "choice",
+        "prompt": "Trade your fletching knife for 175 Vale Research Points?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "CDPDBx"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-vale-totems-rewards-on-him-bow-string-spool": [
+      {
+        "type": "choice",
+        "prompt": "Trade your bow string spool for 125 Vale Research Points?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "CbZgTy"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-vale-totems-rewards-on-him-greenman-mask": [
+      {
+        "type": "choice",
+        "prompt": "Trade your greenman mask for 125 Vale Research Points?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "CoAdVU"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Grand work! You'll want this as a reward!"
+      },
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "j9ZToL"
+          },
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "fCjAM-"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WNiPJ-"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a reward casket",
+            "id": "uW1zy-"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "rVnBdF"
+          }
+        ],
+        "id": "-J6mo0"
+      }
+    ]
+  }
+}

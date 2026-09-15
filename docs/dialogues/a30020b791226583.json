@@ -1,0 +1,108 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-the-tourist-trap": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How is the camp holding up?",
+            "steps": [
+              {
+                "player": "How is the camp holding up?"
+              },
+              {
+                "npc": "The whole place is falling apart, to be honest. I'd jump at the chance to shut it all down for good."
+              }
+            ]
+          },
+          {
+            "text": "Why don't you leave this camp and join my crew?",
+            "condition": "If the player has completed Pandemonium",
+            "steps": [
+              {
+                "player": "Why don't you leave this camp and join my crew?"
+              },
+              {
+                "npc": "Your crew? As in, go back to sailing?"
+              },
+              {
+                "player": "Of course!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 50 Sailing:",
+                "steps": [
+                  {
+                    "npc": "It's tempting, but you don't look like you'd last a day on the high seas."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You require the following to recruit this crew member: Level 50 Sailing. Completion of The Tourist Trap.",
+                    "id": "mAZ15n"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "nmHiiz"
+              },
+              {
+                "npc": "I can't see how I could refuse an offer like that! Let's get to it!"
+              },
+              {
+                "type": "message",
+                "text": "You recruit Captain Siad as a crew member. He departs for the Pandemonium.",
+                "id": "X9319m"
+              },
+              {
+                "type": "message",
+                "text": "You have recruited Captain Siad as a crew member.",
+                "id": "n44Caa"
+              }
+            ],
+            "id": "HM8sw4"
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "Until next time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-the-tourist-trap-historical": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How is the camp holding up?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "DYc9ex"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "tRcR4B"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

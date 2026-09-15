@@ -1,0 +1,94 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "You look like somebody who could use a bit of armour. What do you say?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'll take a look.",
+            "steps": [
+              {
+                "player": "I'll take a look."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Aneirin's Armour",
+                "id": "4gdVn4"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Maybe I overestimated you. I suppose such fine equipment isn't for everyone."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-repair-option": [
+      {
+        "type": "condition",
+        "text": "If the player has nothing to repair in their inventory:",
+        "steps": [
+          {
+            "npc": "You don't have anything I can repair."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "jamKCg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has something that can be repaired in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Repair that item: [cost to repair single item] coins.",
+                "steps": [
+                  {
+                    "npc": "There you go, happy doing business with you!"
+                  }
+                ]
+              },
+              {
+                "text": "Repair all items: [cost to repair all items] coins.",
+                "condition": "If the player has more than one thing that can be repaired in their inventory:",
+                "steps": [
+                  {
+                    "npc": "There you go, happy doing business with you!"
+                  }
+                ],
+                "id": "JTCnhq"
+              },
+              {
+                "text": "Cancel.",
+                "steps": []
+              }
+            ]
+          }
+        ],
+        "id": "b7IBqG"
+      }
+    ],
+    "using-an-item-on-aneirin": [
+      {
+        "npc": "Sorry friend, but I can't do anything with that."
+      }
+    ]
+  }
+}

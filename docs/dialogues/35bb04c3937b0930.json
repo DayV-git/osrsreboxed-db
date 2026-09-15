@@ -1,0 +1,245 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue": [
+      {
+        "npc": "Greetings, adventurer. How can I be of service?"
+      },
+      {
+        "player": "I'm not sure. What type of services do you provide?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed The Blood Moon Rises:",
+        "steps": [
+          {
+            "npc": "I have a client in need of... specimens. I'll happily take any grown dogs off your hands."
+          },
+          {
+            "player": "What does your client use them for?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "Z_BUix"
+          }
+        ],
+        "id": "pWDdMj"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed The Blood Moon Rises:",
+        "steps": [
+          {
+            "npc": "Father Sugadinti is in need of... specimens. I'll happily take any grown dogs off your hands."
+          },
+          {
+            "player": "What does he use them for?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "6W-dgx"
+          }
+        ],
+        "id": "hkh9Bp"
+      },
+      {
+        "npc": "That is not information I am privy to."
+      },
+      {
+        "player": "What's in it for me?"
+      },
+      {
+        "npc": "I can compensate you. A modest sum of blood runes, in exchange for each dog you bring me."
+      },
+      {
+        "npc": "Would you like to make an exchange?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have a dog with them:",
+        "steps": [
+          {
+            "player": "I'm afraid I don't have a dog to offer you."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not completed The Blood Moon Rises:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "lRihSI"
+              }
+            ],
+            "id": "HSDNLd"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has completed The Blood Moon Rises:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5m7hMk"
+              }
+            ],
+            "id": "k91ZWh"
+          }
+        ],
+        "id": "hGR3b-"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a dog with them:",
+        "steps": [
+          {
+            "player": "I have a dog if you're interested."
+          },
+          {
+            "type": "jump",
+            "reference": "below",
+            "id": "yNMc0C"
+          }
+        ],
+        "id": "gYF39w"
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "You've come once again, adventurer. Would you like to make an exchange?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have a dog with them:",
+        "steps": [
+          {
+            "player": "I'm afraid I don't have a dog to offer you."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not completed The Blood Moon Rises:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "lRihSI"
+              }
+            ],
+            "id": "Z8iIFs"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has completed The Blood Moon Rises:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "5m7hMk"
+              }
+            ],
+            "id": "1bK6Rb"
+          }
+        ],
+        "id": "CyXu7d"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a dog with them:",
+        "steps": [
+          {
+            "player": "I have a dog if you're interested."
+          },
+          {
+            "type": "jump",
+            "reference": "below",
+            "id": "ImVh8v"
+          }
+        ],
+        "id": "Z5c5F5"
+      }
+    ],
+    "using-items-on-them-grown-dog": [
+      {
+        "type": "message",
+        "text": "You show the stranger your [dog].",
+        "id": "t8PaQT"
+      },
+      {
+        "npc": "An excellent specimen. I can offer you [100/200] blood runes in exchange for your [dog]?"
+      },
+      {
+        "type": "message",
+        "text": "Exchange your [dog] for [100/200] blood runes?",
+        "id": "fi27Gn"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, thank you. I won't be selling any dogs today."
+              },
+              {
+                "npc": "The offer is always open."
+              }
+            ]
+          },
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "I'll accept your offer."
+              },
+              {
+                "type": "message",
+                "text": "You exchange your [dog] for [100/200] blood runes.",
+                "id": "-U1iB7"
+              },
+              {
+                "npc": "Pleasure doing business, adventurer. Please, return if you have more to offer. Father Sugadinti will always accept such fine specimens."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-them-regular-puppy": [
+      {
+        "npc": "I'm afraid I cannot take them so young. They need to be fully grown for Father Sugadinti."
+      }
+    ],
+    "using-items-on-them-hellpuppy": [
+      {
+        "npc": "That fiery one would be more effort than it is worth, although I appreciate the offer."
+      }
+    ],
+    "using-items-on-them-bloodhound": [
+      {
+        "npc": "That is a rare breed. For the deal to be fair, you would need to be compensated more blood runes than I can offer."
+      }
+    ],
+    "using-items-on-them-any-other-item": [
+      {
+        "npc": "I'm afraid my client is only interested in canines, although I appreciate the offer."
+      }
+    ]
+  },
+  "branches": {
+    "lRihSI": [
+      {
+        "npc": "Please, return when you do. My client is always in need of more specimens."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "5m7hMk": [
+      {
+        "npc": "Please, return when you do. Father Sugadinti is always in need of more specimens."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

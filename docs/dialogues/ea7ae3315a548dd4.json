@@ -1,0 +1,350 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "npc": "I'm one of Trader Stan's crew. We are all part of one of the largest fleet of trading and sailing vessels to ever sail the seas."
+              },
+              {
+                "npc": "If you want to get to a port in a hurry, then you can charter one of our ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "npc": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "npc": "We certainly do! We have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "player": "Yes, let's see what you're trading."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Trader Stan's Trading Post",
+                        "id": "TwQVDu"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "rzmokz"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Isn't it tricky to sail about in those clothes?",
+                    "steps": [
+                      {
+                        "player": "Isn't it tricky to sail about in those clothes?"
+                      },
+                      {
+                        "npc": "Tricky? Tricky!"
+                      },
+                      {
+                        "npc": "With all due credit, Trader Stan is a great employer, but he insists we wear the latest in high fashion even when sailing."
+                      },
+                      {
+                        "npc": "Do you have even the slightest idea how tricky it is to sail in this stuff?"
+                      },
+                      {
+                        "npc": "Some of us tried tearing it and arguing that it was too fragile to wear when on a boat, but he just had it enchanted to re-stitch itself."
+                      },
+                      {
+                        "npc": "It's hard to hate him when we know how much he shells out on this gear, but if I fall overboard because of this getup one more time, I'm going to quit."
+                      },
+                      {
+                        "player": "Wow, that's kind of harsh."
+                      },
+                      {
+                        "npc": "Yes... Anyway, would you like to take a look at our exotic wares from around the world? Or would you like to charter a ship?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "BON-iU"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "cp72IU"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "npc": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Charter ship",
+                    "id": "mbDjCu"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player selects destination",
+                    "id": "8WudTZ"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Sailing to [destination] costs [x] coins.",
+                    "id": "ihG9Wq"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "The player is transported to the destination",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "U7KiEJ"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "mmm4uy"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "pl6h8_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player chooses Crandor during Dragon Slayer I:",
+                "steps": [
+                  {
+                    "npc": "Crandor? Are you crazy? No charter ship would take you to that island. You'd need to use your own ship, but even then, you'd need a miracle to find a safe route there!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "XLEH9H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Sorry, but we aren't a laundry ship. You'll need to leave those dirty bedsheets behind."
+                  },
+                  {
+                    "player": "Would you let me bring it if I told you it was a security blanket?"
+                  },
+                  {
+                    "npc": "No, then we would just mock you."
+                  },
+                  {
+                    "player": "Ah, I see."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "78kMDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Is that your bedsheet covered in filthy slime?"
+                  },
+                  {
+                    "player": "I can say in all honesty that it is not."
+                  },
+                  {
+                    "npc": "Well, whoever it belongs to, it's not coming on this ship!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KoR3ZR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid we can't take you anywhere if you're trying to smuggle that rum."
+                  }
+                ],
+                "id": "1R0gqM"
+              }
+            ]
+          },
+          {
+            "text": "What brings you all the way out here?",
+            "condition": "At The Great Conch",
+            "steps": [
+              {
+                "player": "What brings you all the way out here?"
+              },
+              {
+                "npc": "The same thing that brings us everywhere, friend. We're here to trade. The tortugans were reluctant at first, but we eventually convinced them to let us do business with them."
+              },
+              {
+                "npc": "It's a shame they won't let us actually go beyond the docks though. I'd quite like to see the rest of their island..."
+              },
+              {
+                "npc": "Anyway, would you like to take a look at our exotic wares from around the world? Or would you like to charter a ship?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "A421cq"
+              }
+            ],
+            "id": "PKvZU7"
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-charter-option": [
+      {
+        "type": "condition",
+        "text": "If the player has the bedsheet in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "NL21aK"
+          }
+        ],
+        "id": "lC3qky"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the ectoplasm covered bedsheet in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "hUfuT4"
+          }
+        ],
+        "id": "fm4qjy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has Karamjan rum in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "dJ6uOt"
+          }
+        ],
+        "id": "tJNIJ5"
+      }
+    ],
+    "right-click-charter-to-current-location": [
+      {
+        "npc": "Why do you want to travel to a port you are already at? Do you want to travel somewhere else?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, choose a new destination.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Charter ship",
+                "id": "3YgFcG"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "KjwO4v"
+              }
+            ]
+          },
+          {
+            "text": "No, stay at this port.",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

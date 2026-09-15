@@ -1,0 +1,71 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Do you want to trade?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you selling?",
+            "steps": [
+              {
+                "player": "What are you selling?"
+              },
+              {
+                "npc": "The finest smiths from all over Gielinor come here to work, and I buy the fruit of their craft. Armour made from the higher metals!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's have a look then.",
+                    "steps": [
+                      {
+                        "player": "Let's have a look then."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Armour store.",
+                        "id": "lzOHWB"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "RQFLwk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "You just don't appreciate the beauty of fine metalwork."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sometimes-when-attempting-to-open-the-gate-to-the-anvils-with-less-than-60-smithing": [
+      {
+        "npc": "Only the top smiths are allowed in there!"
+      }
+    ]
+  }
+}

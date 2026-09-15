@@ -1,0 +1,251 @@
+{
+  "steps": [
+    {
+      "npc": "Why howdy there, sailor! Welcome to this here fine shipyard. Anything I can help ya with?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Can you tell me more about this place?",
+          "steps": [
+            {
+              "player": "Can you tell me more about this place?"
+            },
+            {
+              "npc": "Why, this is the shipyard, of course! I'd say it's the finest one in all of Gielinor!"
+            },
+            {
+              "player": "How many others even are there in Gielinor?"
+            },
+            {
+              "npc": "Ha! You're a funny one, sailor! Anyhoo, this here is the place where ya can modify your boat to your heart's content! Ya can do that in two ways."
+            },
+            {
+              "npc": "Once you're on board, you'll find that you've got different spots on your boat for different facilities! If ya can't find what you're looking for, be sure to check the other spots as well!"
+            },
+            {
+              "player": "But what if I don't have the right skillsets?"
+            },
+            {
+              "npc": "Well now, I reckon we might be able to help ya out there... for a price of course!"
+            },
+            {
+              "npc": "Now, the other way ya can modify your boat is by upgrading the core components of it. If ya fancy doing that, you'll wanna use this here schematics board!"
+            },
+            {
+              "npc": "Much like with building facilities, ya can use the board to pick the part of your boat ya wanna upgrade!"
+            },
+            {
+              "npc": "Now, it's important ya keep in mind that these upgrades are the big ones! They're too much to handle solo, so we'll wrangle up some of the workers to lend ya a hand. They'll also supply the tools for ya!"
+            },
+            {
+              "player": "That's very kind of them. What's the catch?"
+            },
+            {
+              "npc": "Well, while they're happy to give ya a helping hand, they are going to expect ya to take the lead."
+            },
+            {
+              "player": "And if I'm not skilled enough to take the lead?"
+            },
+            {
+              "npc": "Well, we might be able to help ya out there... for a price of course!"
+            },
+            {
+              "player": "Of course."
+            },
+            {
+              "npc": "Anyhoo, I think that just about covers the shipyard. Anything else I can do for ya?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "X6into"
+            }
+          ]
+        },
+        {
+          "text": "What do you have for sale?",
+          "steps": [
+            {
+              "player": "What do you have for sale?"
+            },
+            {
+              "npc": "I've got a few basic shipbuilding supplies that ya might find handy. Take a look, sailor!"
+            },
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Seb's Shipyard Supplies",
+              "id": "a98IOc"
+            }
+          ]
+        },
+        {
+          "text": "Could you help me repair my boat?",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "If the boat is not damaged:",
+              "steps": [
+                {
+                  "npc": "Looks like ya boat's already all fine and dandy, sailor."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "ZRdARM"
+            },
+            {
+              "player": "Could you help me repair my boat?"
+            },
+            {
+              "npc": "Sure thing, sailor. That'll cost ya [..] coins."
+            },
+            {
+              "type": "choice",
+              "prompt": "Have your boat repaired for [..] coins?",
+              "options": [
+                {
+                  "text": "Yes.",
+                  "steps": [
+                    {
+                      "player": "Sounds good to me."
+                    },
+                    {
+                      "npc": "Alrighty! Let's call some of the workers over..."
+                    },
+                    {
+                      "type": "message",
+                      "text": "Some workers make repairs to your boat.",
+                      "id": "Ij9KSc"
+                    },
+                    {
+                      "npc": "That's all done for ya, sailor."
+                    }
+                  ]
+                },
+                {
+                  "text": "Yes, and don't ask again.",
+                  "steps": [
+                    {
+                      "player": "Sounds good to me."
+                    },
+                    {
+                      "npc": "Alrighty! Let's call some of the workers over..."
+                    },
+                    {
+                      "type": "message",
+                      "text": "Some workers make repairs to your boat.",
+                      "id": "olqkTa"
+                    },
+                    {
+                      "npc": "That's all done for ya, sailor."
+                    }
+                  ]
+                },
+                {
+                  "text": "No.",
+                  "steps": [
+                    {
+                      "player": "Actually, I'd rather not."
+                    },
+                    {
+                      "npc": "Fair enough, sailor."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Where can I get materials for my boat?",
+          "steps": [
+            {
+              "player": "Where can I get materials for my boat?"
+            },
+            {
+              "npc": "Well, ain't that the question on everyone's mind, sailor? But to answer, it depends on what materials you'll be wanting."
+            },
+            {
+              "npc": "Ya look like a smart enough sailor to know where to find logs and bars. Nails, ya make from taking a metal bar to an anvil."
+            },
+            {
+              "npc": "For planks, you'll need to take matching logs to a sawmill. I know there's a few around, but I like to get mine from the one north east of Varrock."
+            },
+            {
+              "npc": "If ya need standard hull parts, you'll wanna take five planks to a workbench. We've got one right here, but any good shipwright's gonna have one."
+            },
+            {
+              "npc": "If it's standard keel parts ya need, you'll wanna take five metal bars to any old anvil."
+            },
+            {
+              "npc": "For the larger hull parts or keel parts, don't overthink it. Just grab five of the standard parts and put them together in the same way!"
+            },
+            {
+              "npc": "Obviously, some raw materials are rarer than others, and some of them ya might need to go sail that great blue marble to get."
+            },
+            {
+              "npc": "Finally, if it helps ya at all, I've got some basic supplies for sale."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "nkfRsn"
+            }
+          ]
+        },
+        {
+          "text": "I might need help building things on my boat.",
+          "steps": [
+            {
+              "player": "I might need help building things on my boat."
+            },
+            {
+              "npc": "Well, ya wouldn't be the first, sailor! I reckon ya probably won't be the the last either. Don't worry though, we can help ya out... for a price of course!"
+            },
+            {
+              "player": "And what sort of price should I expect?"
+            },
+            {
+              "npc": "Well, that there depends on how hard the job is. The more skills needed, the more money you're gonna need to part with."
+            },
+            {
+              "player": "So you're telling me you won't be able to spare your best shipwrights?"
+            },
+            {
+              "npc": "Yeah I'd say that's a good way of putting it. In general, we'll only be able to help ya with things that use less fancy materials. Mithril and mahogany are gonna be the limit."
+            },
+            {
+              "npc": "We're also only gonna be able to help ya with the more standard parts and facilities, so hulls, sails, helms, keels, cannons, salvaging hooks and cargo holds."
+            },
+            {
+              "player": "I see. So once things start to get complicated, I'm going to have to do it myself?"
+            },
+            {
+              "npc": "Afraid so, sailor. Oh, and don't forget that even when we're helping ya out, we're still gonna need ya to supply the materials."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "QhhyMU"
+            }
+          ]
+        },
+        {
+          "text": "Goodbye.",
+          "steps": [
+            {
+              "player": "Goodbye."
+            },
+            {
+              "npc": "See ya later, sailor."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

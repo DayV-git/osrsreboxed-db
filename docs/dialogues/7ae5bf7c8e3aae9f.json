@@ -1,0 +1,812 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome to the farming guild. How may I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the guild.",
+            "steps": [
+              {
+                "player": "Tell me about the guild."
+              },
+              {
+                "npc": "After the Shayzien Army cleared out the lizardmen in this area, I founded this guild with some fellow Hosidius farmers."
+              },
+              {
+                "player": "Why here? Why not within the safety of Kourend?"
+              },
+              {
+                "npc": "The heat of the volcano allows us to grow things here that would never survive in the climate of Kourend. The discoveries we have made are worth the extra risk."
+              },
+              {
+                "player": "Fair enough, anything else I should know about the guild?"
+              },
+              {
+                "npc": "The guild is split into three tiers, with only advanced farmers being allowed access to the upper echelons."
+              },
+              {
+                "npc": "Would you like to hear more about one of the tiers?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about the beginner tier.",
+                    "steps": [
+                      {
+                        "player": "Tell me about the beginner tier."
+                      },
+                      {
+                        "npc": "In the beginner tier you can access farming patches for cacti, allotments, bushes and flowers. You'll also find some shops with useful farming supplies."
+                      },
+                      {
+                        "npc": "Would you like to hear more about another tier?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "0VE7W4"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about the intermediate tier.",
+                    "steps": [
+                      {
+                        "player": "Tell me about the intermediate tier."
+                      },
+                      {
+                        "npc": "In the intermediate tier you can access farming patches for herbs and trees. You'll also find the anima and hespori patches which are unique to this guild."
+                      },
+                      {
+                        "npc": "Would you like to hear more about another tier?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "T7dNpq"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about the advanced tier.",
+                    "steps": [
+                      {
+                        "player": "Tell me about the advanced tier."
+                      },
+                      {
+                        "npc": "In the advanced tier you can access farming patches for fruit trees and spirit trees. You'll also find the redwood and celastrus patches which are unique to this guild."
+                      },
+                      {
+                        "npc": "Would you like to hear more about another tier?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "KewsaM"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "npc": "My name is Jane, and I am the founder of the Farming Guild."
+              },
+              {
+                "npc": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about the guild.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "AceIfQ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like a farming contract.",
+                    "condition": "If the player does not have a contract:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "m4-eRU"
+                      }
+                    ],
+                    "id": "K_lqbk"
+                  },
+                  {
+                    "text": "I've completed my farming contract.",
+                    "condition": "If the player has completed a contract:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "F1S9ry"
+                      }
+                    ],
+                    "id": "iZiltz"
+                  },
+                  {
+                    "text": "What's my current farming contract?",
+                    "condition": "If the player has a contract:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "iqqEGr"
+                      }
+                    ],
+                    "id": "3bLdbY"
+                  },
+                  {
+                    "text": "That's all, thanks.",
+                    "steps": [
+                      {
+                        "player": "That's all, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you have any jobs for me?",
+            "steps": [
+              {
+                "player": "Do you have any jobs for me?"
+              },
+              {
+                "npc": "Well we always need to rotate the crops we're growing to stop the soil from tiring due to lack of nutrients. It would be great if you could help out with that."
+              },
+              {
+                "player": "What would I need to do?"
+              },
+              {
+                "npc": "If you're interested, I can give you a farming contract which tells you what to plant within the guild. Complete the contract, and I'll give you some seeds as a thank you."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like a farming contract.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "RNP332"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks for the information.",
+                    "steps": [
+                      {
+                        "player": "Thanks for the information."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd like a farming contract.",
+            "condition": "If the player does not have a contract:",
+            "steps": [
+              {
+                "player": "I'd like a farming contract."
+              },
+              {
+                "npc": "What kind of contract would you like?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Easy Contract (Requires 45 Farming)",
+                    "steps": [
+                      {
+                        "player": "Could I have an easy contract please?"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "new easy contract",
+                        "id": "ZbHmkz"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the contract involves a check-healthable plant:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "8qpys9"
+                          }
+                        ],
+                        "id": "DHoVyu"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the contract does not involve a check-healthable plant:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "yBjroX"
+                          }
+                        ],
+                        "id": "Zo_Biv"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Medium Contract (Requires 65 Farming)",
+                    "steps": [
+                      {
+                        "player": "Could I have a medium contract please?"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "new medium contract",
+                        "id": "xUIyxF"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ZQ6r02"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hard Contract (Requires 85 Farming",
+                    "steps": [
+                      {
+                        "player": "Could I have a hard contract please?"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "new hard contract",
+                        "id": "RzAPRH"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the contract involves a check-healthable plant:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "8qpys9"
+                          }
+                        ],
+                        "id": "iYrufb"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the contract does not involve a check-healthable plant:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "yBjroX"
+                          }
+                        ],
+                        "id": "T5b4DQ"
+                      },
+                      {
+                        "type": "end"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "pWNuGz"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "ClFFAI"
+          },
+          {
+            "text": "I've completed my farming contract.",
+            "condition": "If the player has completed a contract:",
+            "steps": [
+              {
+                "player": "I've completed my farming contract."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "npc": "You'll be wanting a reward then. Come back when you have some room to take it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CVolcI"
+              },
+              {
+                "npc": "You'll be wanting a reward then. Here's a seed pack."
+              },
+              {
+                "type": "message",
+                "text": "Guildmaster Jane has given you a seed pack.",
+                "id": "W5mCd_"
+              },
+              {
+                "type": "choice",
+                "prompt": "Take another contract?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Easy Contract (Requires 45 Farming)",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "-fn3sX"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Medium Contract (Requires 65 Farming)",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "HIBGz3"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Hard Contract (Requires 85 Farming)",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "8FBqoH"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No."
+                      },
+                      {
+                        "npc": "Fair enough. Come back when you want another one."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Take another [difficulty] contract.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "L_su7u"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "_iw52F"
+          },
+          {
+            "text": "What's my current farming contract?",
+            "condition": "If the player has a contract:",
+            "steps": [
+              {
+                "player": "What's my current farming contract?"
+              },
+              {
+                "type": "condition",
+                "text": "If the contract involves a check-healthable plant:",
+                "steps": [
+                  {
+                    "npc": "We need you to grow [a/some] [plant(s)]. I'll reward you once you have checked [its/their] health."
+                  }
+                ],
+                "id": "Ma-Qjl"
+              },
+              {
+                "type": "condition",
+                "text": "If the contract does not involve a check-healthable plant:",
+                "steps": [
+                  {
+                    "npc": "We need you to grow some [plant]s. I'll reward you once they've been fully harvested."
+                  }
+                ],
+                "id": "MjgIwK"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have anything easier?",
+                    "steps": [
+                      {
+                        "player": "Do you have anything easier?"
+                      },
+                      {
+                        "npc": "I suppose I could give you a different contract, if you're sure."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes please.",
+                            "steps": [
+                              {
+                                "player": "Yes please."
+                              },
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "new contract of a lower tier",
+                                "id": "c_B_6d"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "player": "No thanks."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thank you.",
+                    "steps": [
+                      {
+                        "player": "Thank you."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "FxPK7A"
+          },
+          {
+            "text": "How many farming contracts have I completed?",
+            "steps": [
+              {
+                "player": "How many farming contracts have I completed?"
+              },
+              {
+                "npc": "You've completed [amount] farming contracts."
+              },
+              {
+                "npc": "Is there anything else I can help you with?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about the guild.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "8KxjCy"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like a farming contract.",
+                    "condition": "If the player does not have a contract:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "V7xATg"
+                      }
+                    ],
+                    "id": "JOIs67"
+                  },
+                  {
+                    "text": "I've completed my farming contract.",
+                    "condition": "If the player has completed a contract:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "BkNm11"
+                      }
+                    ],
+                    "id": "cu4Tuq"
+                  },
+                  {
+                    "text": "What's my current farming contract?",
+                    "condition": "If the player has a contract:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "NqXNrf"
+                      }
+                    ],
+                    "id": "ShakyI"
+                  },
+                  {
+                    "text": "That's all, thanks.",
+                    "steps": [
+                      {
+                        "player": "That's all, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can I trade in some spirit seeds?",
+            "steps": [
+              {
+                "player": "Can I trade in some spirit seeds?"
+              },
+              {
+                "npc": "Of course, I will also take potted spirit seeds and saplings. What would you like to trade in?"
+              },
+              {
+                "type": "action",
+                "text": "Exchange interface opens",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Exchange",
+                "id": "5wW389"
+              }
+            ]
+          },
+          {
+            "text": "I'm just passing by.",
+            "steps": [
+              {
+                "player": "I'm just passing by."
+              },
+              {
+                "npc": "Sure, let me know if there's anything I can do for you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "spirit-seed-exchange": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Spirit seed",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have any spirit seeds:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you have no Spirit seeds to trade in, come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "pwtelg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has spirit seeds:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade in your Spirit seed for a seed pack.",
+                    "id": "O5dx96"
+                  }
+                ],
+                "id": "YqFKkB"
+              }
+            ]
+          },
+          {
+            "text": "Spirit seedling",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have any spirit seedlings:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you have no Spirit seedlings to trade in, come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ORAxgf"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has spirit seedlings:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade in your Spirit seedling for a seed pack.",
+                    "id": "3COsVX"
+                  }
+                ],
+                "id": "UeSVFK"
+              }
+            ]
+          },
+          {
+            "text": "Spirit seedling(w)",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have any spirit seedling(w)s:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you have no Spirit seedling(w)s to trade in, come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ACafWo"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has spirit seedling(w)s:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade in your Spirit seedling(w) for a seed pack.",
+                    "id": "zfCexF"
+                  }
+                ],
+                "id": "qqxZjx"
+              }
+            ]
+          },
+          {
+            "text": "Spirit sapling",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have any spirit saplings:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you have no Spirit saplings to trade in, come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "mJ7999"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has spirit saplings:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade in your Spirit sapling for a seed pack.",
+                    "id": "nCf8Cd"
+                  }
+                ],
+                "id": "KzyHhw"
+              }
+            ]
+          },
+          {
+            "text": "All",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have anything to trade in:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you have nothing to trade in, come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "lugDuP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has something to trade in:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade in your spirit seed items for a seed pack.",
+                    "id": "V1Oc0l"
+                  }
+                ],
+                "id": "uy7WYS"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "entering-different-areas-of-the-farming-guild-without-the-required-level-intermediate-area": [
+      {
+        "npc": "Hey! You need a Farming level of at least 65 to enter that area of the Farming Guild."
+      }
+    ],
+    "entering-different-areas-of-the-farming-guild-without-the-required-level-advanced-area": [
+      {
+        "npc": "Hey! You need a Farming level of at least 85 to enter that area of the Farming Guild."
+      }
+    ],
+    "attempting-to-pick-the-same-specific-contract-back-to-back": [
+      {
+        "npc": "While I am letting you pick your own contracts, I won't allow you to pick the same one again. We must ensure that the patches can be rotated to stop the soil tiring from lack of nutrients."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "-SwGE_"
+      }
+    ]
+  },
+  "branches": {
+    "8qpys9": [
+      {
+        "npc": "Please could you grow [a/some] [plant(s)] for us? I'll reward you once you have checked [its/their] health."
+      }
+    ],
+    "yBjroX": [
+      {
+        "npc": "Please could you grow some [plant]s for us? I'll reward you once they have been fully harvested."
+      }
+    ]
+  }
+}

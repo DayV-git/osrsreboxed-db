@@ -1,0 +1,472 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you sell me some furs?",
+            "steps": [
+              {
+                "player": "Can you sell me some furs?"
+              },
+              {
+                "npc": "Yeah, sure. They're 20 gold coins each."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yeah, okay, here you go.",
+                    "steps": [
+                      {
+                        "player": "Yeah, OK, here you go."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 20 coins:",
+                        "steps": [
+                          {
+                            "player": "Oh dear, I don't have enough money!"
+                          },
+                          {
+                            "npc": "Well, my best price is 18 coins."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "OK, here you go.",
+                                "steps": [
+                                  {
+                                    "player": "OK, here you go."
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player does not have 18 coins:",
+                                    "steps": [
+                                      {
+                                        "player": "Oh dear, I don't have that either."
+                                      },
+                                      {
+                                        "npc": "Well, I can't go any cheaper than that mate. I've got a family to feed."
+                                      },
+                                      {
+                                        "player": "Oh well, never mind."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "Q7OMgJ"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has 18 coins:",
+                                    "steps": [
+                                      {
+                                        "type": "unavailable",
+                                        "id": "NadQdn"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "kdhaaq"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks, I'll leave it.",
+                                "steps": [
+                                  {
+                                    "player": "No thanks, I'll leave it."
+                                  },
+                                  {
+                                    "npc": "It's your loss mate."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "x04WAW"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 20 coins:",
+                        "steps": [
+                          {
+                            "type": "unavailable",
+                            "id": "3_d3a5"
+                          }
+                        ],
+                        "id": "L9V3lA"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "20 gold coins? That's an outrage!",
+                    "steps": [
+                      {
+                        "player": "20 gold coins? That's an outrage!"
+                      },
+                      {
+                        "npc": "Well, I can't go any cheaper than that mate. I have a family to feed."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Hello. I am in search of a quest.",
+            "steps": [
+              {
+                "player": "Hello! I am in search of a quest."
+              },
+              {
+                "npc": "Sorry kiddo, I'm a fur trader not a damsel in distress."
+              }
+            ]
+          },
+          {
+            "text": "Would you like to buy my grey wolf fur?",
+            "condition": "If the player has grey wolf fur:",
+            "steps": [
+              {
+                "player": "Would you like to buy my grey wolf fur?"
+              },
+              {
+                "npc": "GREY WOLF FUR??? NOW you're talking!"
+              },
+              {
+                "npc": "Grey wolf fur is something of a desirable item to me."
+              },
+              {
+                "npc": "I'll take all you have for 120 gold pieces per fur, does that sound fair?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yep, sounds fine.",
+                    "steps": [
+                      {
+                        "player": "Yep, that sounds fine."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Baereck buys the grey wolf furs one at a time.",
+                        "id": "gVtrao"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No! I almost got my throat torn out by a wolf to get this!",
+                    "steps": [
+                      {
+                        "player": "No! I almost got my throat torn out by a wolf to get this!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[Charm] Are you sure? You don't see quality furs like this too often.",
+                    "condition": "If the player is wearing the Ring of Charos(a):",
+                    "steps": [
+                      {
+                        "player": "Are you sure? You don't see quality furs like this too often."
+                      },
+                      {
+                        "npc": "Mmm, let me have another look."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has exactly one grey wolf fur:",
+                        "steps": [
+                          {
+                            "npc": "That is a really fine piece of fur. Tell you what, I'll give you 150 gold pieces for it."
+                          }
+                        ],
+                        "id": "ob-8Kx"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has more than one grey wolf fur:",
+                        "steps": [
+                          {
+                            "npc": "Those are really fine pieces of fur. Tell you what, I'll give you 150 gold pieces each for them."
+                          }
+                        ],
+                        "id": "uu3JKi"
+                      },
+                      {
+                        "player": "Now that's more like it!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Baereck buys the grey wolf furs one at a time.",
+                        "id": "DYKXJq"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ],
+                    "id": "AWY94f"
+                  }
+                ]
+              }
+            ],
+            "id": "jTjizl"
+          },
+          {
+            "text": "Would you like to buy my fur?",
+            "condition": "If the player has fur or bear fur and no grey wolf fur:",
+            "steps": [
+              {
+                "player": "Would you like to buy my fur?"
+              },
+              {
+                "npc": "Let's have a look at it."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has bear fur:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hand Baraek your fur to look at.",
+                    "id": "SzlUSZ"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has exactly one bear fur:",
+                    "steps": [
+                      {
+                        "npc": "It's not in the best condition. I guess I could give you 12 coins for it."
+                      }
+                    ],
+                    "id": "ckLffW"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has more than one bear fur:",
+                    "steps": [
+                      {
+                        "npc": "It's not in the best condition. I guess I could give you 12 coins for each one."
+                      }
+                    ],
+                    "id": "MiZtpS"
+                  }
+                ],
+                "id": "GufeVC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player only has fur and not bear fur:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hand Baraek your fur to look at.",
+                    "id": "QHSyZw"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has exactly one fur:",
+                    "steps": [
+                      {
+                        "npc": "It's not in the best of condition. I guess I could give you 12 coins for it."
+                      }
+                    ],
+                    "id": "zHxApT"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has more than one fur:",
+                    "steps": [
+                      {
+                        "npc": "It's not in the best of condition. I guess I could give you 12 coins for each one."
+                      }
+                    ],
+                    "id": "UJ3KKe"
+                  }
+                ],
+                "id": "Nzu7sw"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yeah, that'll do.",
+                    "steps": [
+                      {
+                        "player": "Yeah, that'll do."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Baraek buys the bear furs and furs one at a time.",
+                        "id": "l6vm0Q"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I think I'll keep hold of it actually.",
+                    "steps": [
+                      {
+                        "player": "I think I'll keep hold of it actually!"
+                      },
+                      {
+                        "npc": "Oh ok. Didn't want it anyway!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[Charm] Are you sure? You don't see quality furs like this too often.",
+                    "condition": "If the player is wearing the Ring of Charos(a):",
+                    "steps": [
+                      {
+                        "player": "Are you sure? You don't see quality furs like this too often."
+                      },
+                      {
+                        "npc": "Mmm, let me have another look."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has exactly one bear fur, or no bear fur and exactly one fur:",
+                        "steps": [
+                          {
+                            "npc": "That is a really fine piece of fur. Tell you what, I'll give you 20 gold pieces for it."
+                          }
+                        ],
+                        "id": "7-A-XJ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player more than one fur/bear fur:",
+                        "steps": [
+                          {
+                            "npc": "Those are really fine pieces of fur. Tell you what, I'll give you 20 gold pieces each for them."
+                          }
+                        ],
+                        "id": "1heI7h"
+                      },
+                      {
+                        "player": "Now that's more like it!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Baraek buys the furs one at a time.",
+                        "id": "9HKMOH"
+                      },
+                      {
+                        "player": "Thanks!"
+                      }
+                    ],
+                    "id": "53XFPu"
+                  }
+                ]
+              }
+            ],
+            "id": "bQW4z-"
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I must ask you something..."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "d0xwCa"
+      },
+      {
+        "type": "message",
+        "text": "Baraek has given you a challenge scroll!",
+        "id": "GLZjbB"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "Wrong! Try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "QWKRLR"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct."
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "rpXipz"
+              },
+              {
+                "type": "message",
+                "text": "Baraek has given you another clue scroll!",
+                "id": "HdNjgp"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "mL2Dnc"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a medium reward casket",
+                "id": "5wdR15"
+              },
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "plVQbP"
+              }
+            ],
+            "id": "0PRx8M"
+          }
+        ],
+        "id": "Xz_47Q"
+      }
+    ]
+  }
+}

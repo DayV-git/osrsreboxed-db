@@ -1,0 +1,308 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, chum, fancy buyin' some designer jewellery? They've come all the way from Ardougne! Most pukka!"
+      },
+      {
+        "player": "Erm, no. I'm all set, thanks."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a free-to-play world:",
+        "steps": [
+          {
+            "npc": "Okay, chum, would you like me to show you the very latest potion prices?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Who are you?",
+                "steps": [
+                  {
+                    "player": "Who are you?"
+                  },
+                  {
+                    "npc": "Why, I'm Bob! Your friendly seller of smashin' goods!"
+                  },
+                  {
+                    "player": "So what do you have to sell?"
+                  },
+                  {
+                    "npc": "Oh, not much at the moment. Cuz, ya know, business being so well and cushie."
+                  },
+                  {
+                    "player": "You don't really look like you're being so successful."
+                  },
+                  {
+                    "npc": "You plonka! It's all a show, innit! If I let people knows I'm in good business they'll want a share of the moolah!"
+                  },
+                  {
+                    "player": "You conveniently have a response for everything."
+                  },
+                  {
+                    "npc": "That's the Ardougne way, my friend."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "wjoD8K"
+                  }
+                ]
+              },
+              {
+                "text": "Can you show me the prices for potions?",
+                "steps": [
+                  {
+                    "player": "Can you show me the prices for potions?"
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Bob Barter (herbs){{!}}Grand Exchange: Herbs and Potions",
+                    "id": "YZxwcN"
+                  }
+                ]
+              },
+              {
+                "text": "I'll leave you to it.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "URfihy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a members world:",
+        "steps": [
+          {
+            "npc": "Okay, chum, so what can I do for you? I can tell you the very latest herb & potion prices, or perhaps I could help you decant your potions."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Who are you?",
+                "steps": [
+                  {
+                    "player": "Who are you?"
+                  },
+                  {
+                    "npc": "Why, I'm Bob! Your friendly seller of smashin' goods!"
+                  },
+                  {
+                    "player": "So what do you have to sell?"
+                  },
+                  {
+                    "npc": "Oh, not much at the moment. Cuz, ya know, business being so well and cushie."
+                  },
+                  {
+                    "player": "You don't really look like you're being so successful."
+                  },
+                  {
+                    "npc": "You plonka! It's all a show, innit! If I let people knows I'm in good business they'll want a share of the moolah!"
+                  },
+                  {
+                    "player": "You conveniently have a response for everything."
+                  },
+                  {
+                    "npc": "That's the Ardougne way, my friend."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "gkBWIp"
+                  }
+                ]
+              },
+              {
+                "text": "Can you show me the prices for herbs and potions?",
+                "steps": [
+                  {
+                    "player": "Can you show me the prices for herbs and potions?"
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Bob Barter (herbs){{!}}Grand Exchange: Herbs and Potions",
+                    "id": "PyQrKs"
+                  }
+                ]
+              },
+              {
+                "text": "Can you decant things for me?",
+                "steps": [
+                  {
+                    "player": "Can you decant things for me?"
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Decanting interface",
+                    "id": "blbkyQ"
+                  }
+                ]
+              },
+              {
+                "text": "I'll leave you to it.",
+                "steps": []
+              }
+            ]
+          }
+        ],
+        "id": "mZkZDs"
+      }
+    ],
+    "decanting-doses-less-than-4": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Let's see what you have..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player can't fit spare spare containers in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You're a bit short of inventory space."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "m1oCBs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player cannot afford spare containers:",
+                "steps": [
+                  {
+                    "npc": "You're a bit short of empty vessels or cash. Empty vials cost {{#expr:{{GEP|vial}}+2}} coins each and cups cost {{#expr:{{GEP|empty cup}}+2}} coins each."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "uY0rn7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player can only afford a few containers:",
+                "steps": [
+                  {
+                    "npc": "There, I've done what I can, but you're a bit short of empty vessels or cash. Empty vials cost {{#expr:{{GEP|vial}}+2}} coins each and cups cost {{#expr:{{GEP|empty cup}}+2}} coins each."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "I0uJiZ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player can afford all spare containers:",
+                "steps": [
+                  {
+                    "npc": "There, all done."
+                  }
+                ],
+                "id": "Ys8rx2"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Two plus two is four, minus one that's three..."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "dwCsJa"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "decanting-4-dose": [
+      {
+        "npc": "There, all done."
+      }
+    ],
+    "decanting-nothing-decantable": [
+      {
+        "npc": "I don't think you've got anything that I can decant."
+      }
+    ],
+    "decanting-trying-to-decant-in-free-to-play": [
+      {
+        "npc": "Sorry, mate, you'll have to come back later for that."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Please, please, please work."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "I'm in the money!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "I could have sworn that would have worked."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Now what should I buy?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Hope this item sells well."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

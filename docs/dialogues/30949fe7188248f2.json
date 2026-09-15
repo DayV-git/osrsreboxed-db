@@ -1,0 +1,296 @@
+{
+  "default": "standard-dialogue-before-fishing-contest",
+  "variants": {
+    "standard-dialogue-before-fishing-contest": [
+      {
+        "npc": "Hmmph. What do you want?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I was wondering what was down those stairs?",
+            "steps": [
+              {
+                "player": "I was just wondering what was down those stairs?"
+              },
+              {
+                "npc": "You can't go down there!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I didn't want to anyway.",
+                    "steps": [
+                      {
+                        "player": "I didn't want to anyway."
+                      },
+                      {
+                        "npc": "Good. Because you can't."
+                      },
+                      {
+                        "player": "Because I don't want to."
+                      },
+                      {
+                        "npc": "Because you can't. So that's fine."
+                      },
+                      {
+                        "player": "Yes, it is."
+                      },
+                      {
+                        "npc": "Yes. Fine."
+                      },
+                      {
+                        "player": "Absolutely."
+                      },
+                      {
+                        "npc": "Well then."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "lQiuyJ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why not?",
+                    "steps": [
+                      {
+                        "player": "Why not?"
+                      },
+                      {
+                        "npc": "This is the home of the Mountain Dwarves. How would you like it if I wanted to take a shortcut through your home?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Ooh... is this a shortcut to somewhere?",
+                            "steps": [
+                              {
+                                "player": "Ooh... is this a shortcut to somewhere?"
+                              },
+                              {
+                                "npc": "Well, it is a lot easier to go this way to get past White Wolf Mountain than through those wolf filled passes."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Oh, sorry, I hadn't realised it was private.",
+                            "steps": [
+                              {
+                                "player": "Oh, sorry, I hadn't realised it was private."
+                              },
+                              {
+                                "npc": "Well, it is."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "If you were my friend I wouldn't mind it.",
+                            "steps": [
+                              {
+                                "player": "If you were my friend I wouldn't mind."
+                              },
+                              {
+                                "npc": "Yes, but I don't even know you."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Well, let's be friends!",
+                                    "steps": [
+                                      {
+                                        "player": "Well, let's be friends!"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player is on a Quest Speedrunning world:",
+                                        "steps": [
+                                          {
+                                            "npc": "I'd rather not, thank you."
+                                          },
+                                          {
+                                            "type": "message",
+                                            "text": "This quest is not available on Speedrunning Worlds.",
+                                            "id": "SxP3Mj"
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "ALVP78"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player does not meet the requirements to begin Fishing Contest:",
+                                        "steps": [
+                                          {
+                                            "npc": "I'd rather not, thank you."
+                                          },
+                                          {
+                                            "type": "message",
+                                            "text": "You do not meet all of the requirements to start the Fishing Contest quest.",
+                                            "id": "EeaI11"
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "2994eS"
+                                      },
+                                      {
+                                        "npc": "I don't make friends easily. People need to earn my trust first.",
+                                        "steps": [
+                                          {
+                                            "type": "choice",
+                                            "prompt": "Start the Fishing Contest quest?",
+                                            "options": [
+                                              {
+                                                "text": "Yes.",
+                                                "steps": [
+                                                  {
+                                                    "player": "And how am I meant to do that?"
+                                                  },
+                                                  {
+                                                    "npc": "My, we are the persistent one aren't we?"
+                                                  },
+                                                  {
+                                                    "npc": "Well, there's a certain gold artefact we're after. We dwarves are big fans of gold! This artefact is the first prize at the Hemenster fishing competition."
+                                                  },
+                                                  {
+                                                    "npc": "Fortunately we have acquired a pass to enter that competition..."
+                                                  },
+                                                  {
+                                                    "npc": "Unfortunately Dwarves don't make good fishermen."
+                                                  },
+                                                  {
+                                                    "player": "Fortunately I'm alright at fishing!"
+                                                  },
+                                                  {
+                                                    "npc": "Okay. I entrust you with our competition pass. Don't forget to take some gold with you for the entrance fee."
+                                                  },
+                                                  {
+                                                    "type": "message",
+                                                    "text": "You got the Fishing Contest Pass!",
+                                                    "id": "4okXde"
+                                                  },
+                                                  {
+                                                    "npc": "Go to Hemenster and do us proud!"
+                                                  }
+                                                ],
+                                                "hook": "quest:fishing-contest:start",
+                                                "quest": "Fishing Contest"
+                                              },
+                                              {
+                                                "text": "No.",
+                                                "steps": [
+                                                  {
+                                                    "player": "You're a grumpy little man aren't you?"
+                                                  },
+                                                  {
+                                                    "npc": "Don't you know it."
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "You're a grumpy little man aren't you?",
+                                    "steps": [
+                                      {
+                                        "player": "You're a grumpy little man aren't you?"
+                                      },
+                                      {
+                                        "npc": "Don't you know it."
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm bigger than you. Let me by.",
+                    "steps": [
+                      {
+                        "player": "I'm bigger than you. Let me by!"
+                      },
+                      {
+                        "player": "...stumpy."
+                      },
+                      {
+                        "npc": "Go away! You're not going to bully your way in HERE!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "T_OXv5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I was just stopping to say hello!",
+            "steps": [
+              {
+                "player": "I was just stopping to say hello!"
+              },
+              {
+                "npc": "Hello then."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "mz7s7n"
+              }
+            ]
+          },
+          {
+            "text": "Do you have a brother?",
+            "steps": [
+              {
+                "player": "Do you have a brother?"
+              },
+              {
+                "npc": "What if I do! It's no business of yours."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "WX2dNX"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-fishing-contest": [
+      {
+        "npc": "Welcome, oh great Fishing Champion! Feel free to pop by and use our tunnel any time."
+      },
+      {
+        "player": "Thank you, I think I'll stop by for a beer one day."
+      }
+    ],
+    "using-additional-fishing-trophies-on-him": [
+      {
+        "npc": "Well you already gave me one, but I won't say no to another, thank you kindly!"
+      }
+    ]
+  }
+}

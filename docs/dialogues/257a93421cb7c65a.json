@@ -1,0 +1,152 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "More digging, less talking!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's going on here?",
+            "steps": [
+              {
+                "player": "What's going on here?"
+              },
+              {
+                "npc": "I'm digging for saltpetre, of course. Got to have plenty of saltpetre for the farms. You should grab a spade and get to work too - they always need saltpetre."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "eNOReA"
+              }
+            ]
+          },
+          {
+            "text": "What can I do with saltpetre?",
+            "steps": [
+              {
+                "player": "What can I do with saltpetre?"
+              },
+              {
+                "npc": "It's a critical ingredient in a special fertiliser used on the farms here. Just mix it with some compost - ordinary compost, not that super stuff - to make the fertiliser."
+              },
+              {
+                "npc": "Once you've got fertiliser, you can use it on Farmer Gricoller's fruit farm. Alternatively, Hosidius farmers always want some. You could sell it to them."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "HM4erp"
+              }
+            ]
+          },
+          {
+            "text": "Have you got a spare spade?",
+            "steps": [
+              {
+                "player": "Have you got a spare spade?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a spade:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have a free inventory space:",
+                    "steps": [
+                      {
+                        "npc": "Yes, but you've got no room for it."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "YBV1vr"
+                      }
+                    ],
+                    "id": "y6p_N_"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has a free inventory space:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Konoo gives you a spade.",
+                        "id": "3rNw0S"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "ju-jtq"
+                      }
+                    ],
+                    "id": "WuzD98"
+                  }
+                ],
+                "id": "BEn7WS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a spade:",
+                "steps": [
+                  {
+                    "npc": "Yes, but I can see you don't need it."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "4ohAMt"
+                  }
+                ],
+                "id": "tGXDeR"
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you to work.",
+            "steps": [
+              {
+                "player": "I'll leave you to work."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Very well done, now let me get back to digging!"
+      },
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "g8Avj9"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "tSPdNP"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "_MxjXd"
+          }
+        ],
+        "id": "Cj6KSY"
+      }
+    ]
+  }
+}

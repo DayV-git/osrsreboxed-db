@@ -1,0 +1,704 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "action",
+        "text": "The Demon butler bows",
+        "action": "emote",
+        "action_source": "text",
+        "id": "QXE8zI"
+      },
+      {
+        "npc": "Greetings! I am Alathazdrar, butler to the Demon Lords, and I offer thee my services for a mere 10000 coins!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What can you do?",
+            "steps": [
+              {
+                "player": "What can you do?"
+              },
+              {
+                "npc": "I have learned my trade under the leash of some of the harshest masters of the Demon Dimensions. I can cook to satisfy the most infernal stomachs, and fly on wings of flame to deposit thine items in the bank or bring"
+              },
+              {
+                "npc": "planks from the sawmill in seconds."
+              }
+            ]
+          },
+          {
+            "text": "Tell me about your previous jobs",
+            "steps": [
+              {
+                "player": "Tell me about your previous jobs."
+              },
+              {
+                "npc": "For millennia I have served and waited on the mighty Demon Lords of the Infernal Dimensions. I began as a humble footman in the household of Lord Thammaron, and for several centuries I was the private valet to"
+              },
+              {
+                "npc": "Delrith. I have also worked in the Grim Underworld, escorting the souls of the dead to their final abodes. But the incessant shadows and hellfire weary me, so I have come to serve mortal masters in the realms of light."
+              }
+            ]
+          },
+          {
+            "text": "You're hired!",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 50 Construction:",
+                "steps": [
+                  {
+                    "npc": "You, a mere mortal with level [1-49] Construction, wish to employ ME, butler to Great Ones of the Outer Darkness? Ha ha ha! I refuse to work for anyone below level 50 Construction."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "LKcSWX"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a servant already:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You already have a servant.",
+                    "id": "BdkrE7"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "8aMg0I"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a second bedroom with a bed:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You need a second bedroom with a bed for your servant to sleep in.",
+                    "id": "hMnnvL"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "b5lmIK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money in their inventory:",
+                "steps": [
+                  {
+                    "player": "You're hired... well, I don't have the money on me, but can I owe you? I'm good for it, honest."
+                  },
+                  {
+                    "npc": "I regret, Master, that I must insist on payment up front."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5FjPNr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the above conditions met and the player doesn't have a servant:",
+                "steps": [
+                  {
+                    "player": "You're hired!"
+                  },
+                  {
+                    "npc": "I shall devote my every art to thy service, my Master."
+                  }
+                ],
+                "id": "U3-Zn8"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Serve...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tea",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player has a kitchen with the required furniture",
+                        "steps": [
+                          {
+                            "npc": "Thou shalt taste the very tea of the Demon Lords themselves!"
+                          },
+                          {
+                            "type": "action",
+                            "text": "The Demon butler prepares tea",
+                            "id": "QZU5XT"
+                          },
+                          {
+                            "npc": "Behold, thy beverage is complete. Dost thou wish its dark heart softened by the milk of the cow?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please",
+                                "steps": [
+                                  {
+                                    "player": "Yes please."
+                                  },
+                                  {
+                                    "type": "unavailable",
+                                    "id": "na9mlV"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks",
+                                "steps": [
+                                  {
+                                    "player": "No thanks."
+                                  },
+                                  {
+                                    "type": "unavailable",
+                                    "id": "i2KySR"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually I don't want any",
+                                "steps": [
+                                  {
+                                    "player": "Actually I don't want any."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "8_gDf7"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a kitchen with the required furniture",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "y_OlsC"
+                          }
+                        ],
+                        "id": "tvUDaZ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dinner",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player has a dining table:",
+                        "id": "T4fqNF"
+                      },
+                      {
+                        "npc": "I shall prepare thee a banquet fit for the lords of Pandemonium!",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "The Demon butler prepares curry",
+                            "id": "n2VQOv"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a dining table:",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "ETLVJ6"
+                          }
+                        ],
+                        "id": "Cvo5eU"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Drinks",
+                    "steps": [
+                      {
+                        "player": "Serve drinks please."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has an ale barrel",
+                        "steps": [
+                          {
+                            "npc": "I shall keep the drink flowing, Master!"
+                          },
+                          {
+                            "type": "action",
+                            "text": "The Demon butler prepares ale",
+                            "id": "TX_ic3"
+                          },
+                          {
+                            "npc": "Desire'st thou a beverage, my lord?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes please",
+                                "steps": [
+                                  {
+                                    "npc": "Enjoy thy drink!"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks",
+                                "steps": [
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Something else",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous2",
+                                    "id": "rBS_0Z"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "8TczqQ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have an ale barrel",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "M2ZdcW"
+                          }
+                        ],
+                        "id": "1pI4VM"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Go to the bank...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Take something to the bank...",
+                    "steps": [
+                      {
+                        "player": "Can you take something to the bank for me?"
+                      },
+                      {
+                        "npc": "Give any item to me, and I shall take it swiftly to the bank where it will be safe from thieves and harm."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Bring something from the bank...",
+                    "steps": [
+                      {
+                        "player": "Can you fetch something from the bank for me?"
+                      },
+                      {
+                        "npc": "What item dost thou desire, Master?",
+                        "steps": [
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Wooden planks",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has the requested item in their bank:",
+                                    "steps": [
+                                      {
+                                        "npc": "Master, I have returned with what you asked me to retrieve."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "sdaR7j"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player lacks the requested item in their bank:",
+                                    "steps": [
+                                      {
+                                        "npc": "My lord, I cannot conjure items out of the air. You do not have any of those items in your bank!"
+                                      }
+                                    ],
+                                    "id": "a0CTrw"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Oak planks",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "6mJDGi"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Teak planks",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "Rb7OWa"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Mahogany planks",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "NPGcle"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Soft clay",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "GoVmai"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Limestone brick",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "iK-ZWI"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Steel bar",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "GYqX1n"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Cloth",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "cWIxZ1"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Gold leaf",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "Rtwmqh"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Marble block",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "DAacOz"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Magic housing stone",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "Same as above.",
+                                    "id": "Td0QEm"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Go to the sawmill...",
+            "steps": [
+              {
+                "npc": "Give me some logs and I will bound to the sawmill in mighty demonic strides!"
+              }
+            ]
+          },
+          {
+            "text": "Greet guests",
+            "steps": [
+              {
+                "player": "Stay at the entrance and greet guests."
+              },
+              {
+                "npc": "Yes, Master. I shall spread the aura of thy hospitality to all visitors!"
+              }
+            ]
+          },
+          {
+            "text": "You're fired",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Do you really want to fire your servant?",
+                "options": []
+              }
+            ]
+          },
+          {
+            "text": "Outfits",
+            "steps": [
+              {
+                "player": "So, Alathazdrar, I've been thinking about your wardrobe."
+              },
+              {
+                "npc": "[My... wardrobe, sir?/My... wardrobe, madam?/My... wardrobe,?]"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Default appearance",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the butler already has the default appearance:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fWxqWD"
+                          }
+                        ],
+                        "id": "lFc2Hs"
+                      },
+                      {
+                        "player": "Would you mind chaning into a more classic look for me?"
+                      },
+                      {
+                        "npc": "[You wish is my command sir./You wish is my command madam./You wish is my command.]"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Leagues VI - Demonic Pacts",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the butler already has Demonic Pacts appearance:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "fWxqWD"
+                          }
+                        ],
+                        "id": "K4O3iZ"
+                      },
+                      {
+                        "player": "Would you mind dressing up for me?"
+                      },
+                      {
+                        "npc": "Excuse me?"
+                      },
+                      {
+                        "player": "I was thinking maybe a suit jacket?"
+                      },
+                      {
+                        "npc": "A suit jacket?"
+                      },
+                      {
+                        "player": "Yeah, and maybe do something with your horns?"
+                      },
+                      {
+                        "npc": "My horns?!"
+                      },
+                      {
+                        "player": "Is that a problem?"
+                      },
+                      {
+                        "npc": "[Of course not sir./Of course not madam./Of course not.] Whatever you require."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nevermind",
+                    "steps": [
+                      {
+                        "player": "Actually, nevermind. You look fine as you are."
+                      },
+                      {
+                        "npc": "[Very good sir./Very good madam./Very good.]"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-request-for-payment": [
+      {
+        "npc": "Master, the time for my payment draws near! My fee is 10,000 coins."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, here's 10,000 coins.",
+            "condition": "If at least 10,000gp is available:",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "L-vwXK"
+              }
+            ],
+            "id": "vv5C6P"
+          },
+          {
+            "text": "I'll pay you later.",
+            "steps": [
+              {
+                "player": "I'll pay you later."
+              }
+            ]
+          },
+          {
+            "text": "You're fired!",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "MAoO4p"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-when-payment-is-due": [
+      {
+        "npc": "Master, if thou desirest my continued service, thou must render unto me the 10,000 coins that are due me!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, here's 10,000 coins.",
+            "condition": "If at least 10,000gp is available:",
+            "steps": [
+              {
+                "npc": "Thank you, Master. Thou hast my unfailing service."
+              }
+            ],
+            "id": "cEKiRG"
+          },
+          {
+            "text": "I'll pay you later.",
+            "steps": [
+              {
+                "player": "I'll pay you later."
+              }
+            ]
+          },
+          {
+            "text": "You're fired!",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "fDzE25"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-the-player-owned-house-attempting-to-bank-bones": [
+      {
+        "npc": "Bones are a tool of prayer, and demonic magic prevents me from touching them, my Lord."
+      }
+    ]
+  },
+  "branches": {
+    "fWxqWD": [
+      {
+        "player": "Actually, nevermind. You look fine as you are."
+      },
+      {
+        "npc": "[Very good sir./Very good madam./Very good.]"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

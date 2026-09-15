@@ -1,0 +1,95 @@
+{
+  "default": null,
+  "variants": {
+    "watchtower-standard-dialogue-north-west-guards": [
+      {
+        "type": "condition",
+        "text": "If the player is not carrying the relic:",
+        "steps": [
+          {
+            "npc": "Stop, creature! Only ogres and their friends allowed in this city. Show me a sign of companionship, like a lost relic or somefing, and you may pass."
+          },
+          {
+            "npc": "Until then, back to whence you came!"
+          },
+          {
+            "type": "action",
+            "text": "(The ogre guard pushes you back down the hill, stunning you and dealing 3 damage)",
+            "id": "QRQKCo"
+          }
+        ],
+        "id": "df_SVa"
+      }
+    ],
+    "watchtower-standard-dialogue-east-guards": [
+      {
+        "type": "condition",
+        "text": "First conversation:",
+        "steps": [
+          {
+            "npc": "Halt! You cannot pass here."
+          },
+          {
+            "player": "I am a friend to ogres."
+          },
+          {
+            "npc": "You will be my friend only with gold. Bring me a bar of pure gold and I will let you pass."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "UQYS4Q"
+      },
+      {
+        "type": "condition",
+        "text": "Future conversations:",
+        "steps": [
+          {
+            "npc": "Creature, did you bring me the gold?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is not carrying a gold bar:",
+            "steps": [
+              {
+                "player": "No, I don't have it."
+              },
+              {
+                "npc": "No gold, no passage. Get out of this city!"
+              },
+              {
+                "type": "action",
+                "text": "(The ogre guard pushes you back down the hill, stunning you and dealing 3 damage)",
+                "id": "YF057i"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "X-svcI"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is carrying a gold bar:",
+            "steps": [
+              {
+                "player": "Here it is!"
+              },
+              {
+                "type": "action",
+                "text": "(The gold bar is removed from the player's inventory)",
+                "id": "Cy5w9B"
+              },
+              {
+                "npc": "It's brought it! On your way."
+              }
+            ],
+            "id": "1nTVwr"
+          }
+        ],
+        "id": "pOnYqD"
+      }
+    ]
+  }
+}

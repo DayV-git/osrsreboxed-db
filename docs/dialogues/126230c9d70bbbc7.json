@@ -1,0 +1,540 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there! Welcome to my special antiques boutique."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "I'm a specialist at identifying rare and antique weapons, specifically swords, but I plan to branch out. If you have any old and rusty weapons that you want me to check out, just show them to me, pay me 100 Gold and"
+              },
+              {
+                "npc": "I'll see if you have an antique on your hands."
+              },
+              {
+                "npc": "I can also repair some antique weapons and armours, just show me the item and I'll let you know if I can repair it and for how much."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "L_Xwmq"
+              }
+            ]
+          },
+          {
+            "text": "What's involved?",
+            "steps": [
+              {
+                "player": "What's involved?"
+              },
+              {
+                "npc": "Well, pay me 100 Gold and I'll see if any rusty swords that you've found are actually worth anything. Some of them might be worth some money! If it's an antique item though, I reserve the right to purchase it"
+              },
+              {
+                "npc": "immediately for adding to my own personal collection. I'll give you fair price for it."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "FY0JqD"
+              }
+            ]
+          },
+          {
+            "text": "What do I get from this?",
+            "steps": [
+              {
+                "player": "What do I get from this?"
+              },
+              {
+                "npc": "If I can reclaim the sword with my own specialist skills, I'll return it to you in peak condition. If it's an antique, I'll just give you what I think it's worth and I generally pay quite well. However, if it's just a piece of junk, I'll"
+              },
+              {
+                "npc": "simply give you the bad news and get rid of the item for you."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "z8pf0L"
+              }
+            ]
+          },
+          {
+            "text": "Ok, I'll give it a go!",
+            "steps": [
+              {
+                "player": "Ok, I'll give it a go!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no rusty swords and no rusty scimitars:",
+                "steps": [
+                  {
+                    "npc": "Sorry my friend, but you don't seem to have any swords that need to be identified."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KHTz9R"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money:",
+                "steps": [
+                  {
+                    "npc": "Sorry my friend, but you don't seem to have enough money to cover my fee!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "TtonTv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has both a rusty sword and rusty scimitar:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Which would you like to identify?",
+                    "id": "-pht2G"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "The sword",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "DzLgId"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "The scimitar",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "qR81PW"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "GjeAqP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a rusty sword:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hand Tindel 100 coins plus the rusty sword.",
+                    "id": "2R4udv"
+                  },
+                  {
+                    "type": "action",
+                    "text": "(Same as rusty sword dialogue.)",
+                    "id": "Yaf6pt"
+                  }
+                ],
+                "id": "uNIJeT"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a rusty scimitar:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hand Tindel 100 coins plus the rusty scimitar.",
+                    "id": "SFZA18"
+                  },
+                  {
+                    "type": "action",
+                    "text": "(Same as rusty scimitar dialogue.)",
+                    "id": "S0wGie"
+                  }
+                ],
+                "id": "VfWqwb"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-tindel-marchant-using-a-rusty-sword-on-tindel-marchant": [
+      {
+        "type": "message",
+        "text": "You hand Tindel 100 coins plus the rusty sword.",
+        "id": "njjgdL"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a bronze sword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a bronze sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a bronze sword.",
+            "id": "MSEEjY"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "t2ALiu"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a bronze longsword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a bronze long sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a bronze long sword.",
+            "id": "VxFfBG"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XTxAae"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is an iron sword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be an iron sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you an iron sword.",
+            "id": "a5DqP8"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "rzO8OF"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is an iron longsword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a long sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a long sword.",
+            "id": "ZyMFo6"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "lPav9s"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a steel sword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a steel sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a steel sword.",
+            "id": "zWzB-_"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "B8ehz0"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a steel longsword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a steel long sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a steel long sword.",
+            "id": "f-z5pY"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6rYzMa"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a black sword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a black sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a black sword.",
+            "id": "vLX3tZ"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gDZE-w"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a black longsword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a black longsword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a black longsword.",
+            "id": "Ezf9Uk"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "M187jP"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a mithril sword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a mithril sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a mithril sword.",
+            "id": "dXdVxG"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "y0K81W"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a mithril longsword:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a mithril long sword."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a mithril long sword.",
+            "id": "aBE0te"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "JX-xY_"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is nothing:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "9o9S-d"
+          }
+        ],
+        "id": "g4tLv_"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a rare antique:",
+        "steps": [
+          {
+            "npc": "Wow! The item you gave me was a very rare antique...no real use...but hey, it's worth some money!"
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you [number] coins.",
+            "id": "JEgL-F"
+          },
+          {
+            "npc": "That's a fair price for the item! I'll add it to my collection!"
+          }
+        ],
+        "id": "14yFiP"
+      }
+    ],
+    "using-items-on-tindel-marchant-using-a-rusty-scimitar-on-tindel-marchant": [
+      {
+        "type": "message",
+        "text": "You hand Tindel 100 coins plus the rusty scimitar.",
+        "id": "yBsQ2s"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a bronze scimitar:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a bronze scimitar."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a bronze scimitar.",
+            "id": "IpPOCE"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "4DiFbe"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is an iron scimitar:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be an iron scimitar."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you an iron scimitar.",
+            "id": "LQH7yq"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6IKZs2"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a steel scimitar:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a steel scimitar."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a steel scimitar.",
+            "id": "tQtEG0"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gvdiwd"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a black scimitar:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a black scimitar."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a black scimitar.",
+            "id": "1AahbO"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Liuvlc"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a mithril scimitar:",
+        "steps": [
+          {
+            "npc": "There you go my friend, it turned out to be a mithril scimitar."
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you a mithril scimitar.",
+            "id": "0-fSSc"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "rw4Tfe"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is nothing:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "9o9S-d"
+          }
+        ],
+        "id": "N9ns6n"
+      },
+      {
+        "type": "condition",
+        "text": "If the result is a rare antique:",
+        "steps": [
+          {
+            "npc": "Wow! The item you gave me was a very rare antique...no real use...but hey, it's worth some money!"
+          },
+          {
+            "type": "message",
+            "text": "Tindel gives you [number] coins.",
+            "id": "KII-Av"
+          },
+          {
+            "npc": "That's a fair price for the item! I'll add it to my collection!"
+          }
+        ],
+        "id": "ywcM6q"
+      }
+    ]
+  },
+  "branches": {
+    "9o9S-d": [
+      {
+        "npc": "Sorry my friend, but the item wasn't worth anything. I've disposed of it for you."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

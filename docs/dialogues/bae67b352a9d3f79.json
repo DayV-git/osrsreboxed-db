@@ -1,0 +1,548 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "lacking-the-requirements-for-rum-deal": [
+      {
+        "player": "Hello there!"
+      },
+      {
+        "npc": "Mornin'."
+      },
+      {
+        "player": "Got any quests?"
+      },
+      {
+        "npc": "I may have a quest, but you don't look like you'd be able to handle the kind of monsters I have problems with."
+      }
+    ],
+    "starting-rum-deal": [
+      {
+        "player": "Hello there!"
+      },
+      {
+        "npc": "Mornin'."
+      },
+      {
+        "npc": "Hey...you're an adventurer, right?"
+      },
+      {
+        "player": "Yes I am!"
+      },
+      {
+        "player": "Got any quests for me?"
+      },
+      {
+        "npc": "Yeah, I do, as a matter of fact!"
+      },
+      {
+        "npc": "(Ahem.)"
+      },
+      {
+        "npc": "I am a poor, dispossessed nobleman, forced by circumstance to lurk in the middle of nowhere, soliciting help from passers-by."
+      },
+      {
+        "npc": "You see, my fiendish half-brother has seized my estates and forced me into exile."
+      },
+      {
+        "npc": "The simple lemon farmers suffer under his tyrannous yoke, and only a brave adventurer can lift his iron boot from the neck of the poor."
+      },
+      {
+        "npc": "To reclaim my lands I will need to have my family sword returned to me so that I may present it as proof of my rulership."
+      },
+      {
+        "npc": "Will you help me find my family sword?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Rum Deal quest?",
+        "options": [
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, I don't think I'll help you out this time."
+              },
+              {
+                "npc": "Look, I think I'll wait here for someone a little more... you know..."
+              },
+              {
+                "npc": "...heroic."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-rum-deal-talking-to-pirate-pete-after-refusing-to-fight-the-demon": [
+      {
+        "player": "Had any luck finding someone to slay the demon?"
+      },
+      {
+        "npc": "What?"
+      },
+      {
+        "npc": "Oh! Yes! The demon, with the oppression and stuff!"
+      },
+      {
+        "npc": "No, not yet. Why?"
+      },
+      {
+        "type": "choice",
+        "options": []
+      }
+    ],
+    "starting-rum-deal-talking-to-pirate-after-asking-him-for-a-reward": [
+      {
+        "player": "Hello again!"
+      },
+      {
+        "npc": "Oh, it's you again."
+      },
+      {
+        "npc": "So, what brings you down here today?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've decided to help you for free.",
+            "steps": [
+              {
+                "player": "I've decided to help you for free! I will dispose of this evil half-brother of yours and leave you what little money is left to feed your family."
+              },
+              {
+                "npc": "Wonderful! Just pick up your diversion and we'll leave!"
+              },
+              {
+                "player": "What diversion?"
+              },
+              {
+                "type": "unavailable",
+                "id": "3Lg7N6"
+              }
+            ]
+          },
+          {
+            "text": "No reason.",
+            "steps": [
+              {
+                "type": "unavailable",
+                "id": "jcdh-M"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "player": "Do I know you?"
+      },
+      {
+        "npc": "Yes, you owe me some money."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on the dock north of Port Phasmatys:",
+        "steps": [
+          {
+            "npc": "Want a lift to Braindeath Island?"
+          },
+          {
+            "player": "Well, possibly, but could I go to Mos Le'Harmless instead?"
+          },
+          {
+            "npc": "Nope. It's Braindeath island or nothing. Interested?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "5dXy6v"
+          }
+        ],
+        "id": "O4qFpr"
+      },
+      {
+        "type": "condition",
+        "text": "If player is on Braindeath Island:",
+        "steps": [
+          {
+            "npc": "Want a lift to Port Phasmatys?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Okay!",
+                "steps": [
+                  {
+                    "player": "Okay!"
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "npc": "All right. I'll need to use my Magical Teleporting Bottle."
+                          },
+                          {
+                            "player": "Magical Teleporting Bottle?"
+                          },
+                          {
+                            "npc": "Yes. Just turn around three times, then clap your hands and say the place you want to go."
+                          },
+                          {
+                            "player": "This I have to see."
+                          },
+                          {
+                            "player": "Oh well, here goes."
+                          },
+                          {
+                            "player": "One..."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "9eeEan"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "npc": "Would you like a hand with your stuff? You seemed to have dropped something."
+                          },
+                          {
+                            "player": "Where?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "YaONYt"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "npc": "All right. You know that it's going to cost extra to take your friend as well, right?"
+                          },
+                          {
+                            "player": "What friend?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "EkjjT1"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "npc": "Certainly. By the way, you have a spider in your hair."
+                          },
+                          {
+                            "player": "Oh no! Get it out, get it out!"
+                          },
+                          {
+                            "npc": "Sure, turn around and I'll get it for you."
+                          },
+                          {
+                            "player": "Thanks!"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "D_2V9e"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 5",
+                        "steps": [
+                          {
+                            "npc": "Well I'll be more than happy to..."
+                          },
+                          {
+                            "npc": "Egad! Did you see that?"
+                          },
+                          {
+                            "player": "What? Where?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "ve4Q2Q"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "action",
+                    "text": "Pirate Pete hits the player on the head.",
+                    "id": "SsIc9Q"
+                  },
+                  {
+                    "player": "OW!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Fades to black, player appears on Braindeath Island.",
+                    "id": "XVTmc0"
+                  },
+                  {
+                    "player": "Ooooh... my head..."
+                  },
+                  {
+                    "npc": "Are you ok? You, errr..."
+                  },
+                  {
+                    "type": "random",
+                    "options": [
+                      {
+                        "text": "Dialogue 1",
+                        "steps": [
+                          {
+                            "npc": "...missed your mouth while drinking from a bottle. Hence the bottle-shaped bruises."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "UlC41O"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 2",
+                        "steps": [
+                          {
+                            "npc": "...slipped and slid into a brick wall."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "4Cs7Y4"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 3",
+                        "steps": [
+                          {
+                            "npc": "...managed to fall onto my boot while I was practicing kicking."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "lH6ZW2"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Dialogue 4",
+                        "steps": [
+                          {
+                            "npc": "...hit your head on my oars while I was rowing over."
+                          },
+                          {
+                            "npc": "Twice."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "J_i8hQ"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "player": "Wow... I'm lucky I wasn't seriously hurt!"
+                  }
+                ]
+              },
+              {
+                "text": "Not now",
+                "steps": [
+                  {
+                    "player": "Not now."
+                  },
+                  {
+                    "player": "I'm getting an awful headache talking to you. Any idea why?"
+                  },
+                  {
+                    "npc": "No idea whatsoever."
+                  }
+                ]
+              },
+              {
+                "text": "Why do I get a headache every time I see you?",
+                "steps": [
+                  {
+                    "player": "Why do I get a headache every time I see you?"
+                  },
+                  {
+                    "npc": "Well, it's possibly the weight of all of your expensive items giving you a sore back."
+                  },
+                  {
+                    "npc": "As a doctor I can tell you that sometimes a bad back can manifest as a headache."
+                  },
+                  {
+                    "player": "You're a doctor?"
+                  },
+                  {
+                    "npc": "I'm on a break."
+                  },
+                  {
+                    "npc": "Regardless, I can tell you that if you hand me your most expensive items, then the pain will disappear."
+                  },
+                  {
+                    "npc": "CoughonceyouturnaroundagainCough!"
+                  },
+                  {
+                    "player": "What was that last bit?"
+                  },
+                  {
+                    "npc": "Nothing..."
+                  }
+                ]
+              },
+              {
+                "text": "Are you any relation to Party Pete?",
+                "steps": [
+                  {
+                    "player": "Are you any relation to Party Pete?"
+                  },
+                  {
+                    "npc": "Yes I am, he's my cousin."
+                  },
+                  {
+                    "player": "Well, you don't sound too happy about it. What happened?"
+                  },
+                  {
+                    "npc": "Well, I arranged with all my friends to have a party at his place."
+                  },
+                  {
+                    "npc": "But then I humiliated myself by trying to dance with the knights."
+                  },
+                  {
+                    "npc": "All of them collapsed on me in a horrific, jangling pile."
+                  },
+                  {
+                    "npc": "I tried to salvage the night by having all the balloons come down..."
+                  },
+                  {
+                    "player": "So what happened?"
+                  },
+                  {
+                    "npc": "I didn't know that someone had swapped the balloons with cannonballs!"
+                  },
+                  {
+                    "npc": "The casualties were horrific..."
+                  },
+                  {
+                    "npc": "That was the worst fifth birthday party in the history of the world."
+                  },
+                  {
+                    "player": "I'm sure it wasn't that bad."
+                  },
+                  {
+                    "npc": "Not according to the Official History of Gielinor!"
+                  },
+                  {
+                    "npc": "Every edition... the pictures bring it all back..."
+                  },
+                  {
+                    "player": "Ouch..."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Z4Pn2W"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Please solve this for me. I have other things to be thinking about."
+      },
+      {
+        "type": "message",
+        "text": "Pirate Pete has given you a puzzle box!",
+        "id": "Zo52KF"
+      }
+    ],
+    "treasure-trails-hard-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "Sorry but you haven't solved the puzzle yet."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "F0TN-r"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Thanks [player name]!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Pirate Pete has given you another clue scroll!",
+                "id": "dNSe6p"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "4AerSF"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "tWJWcg"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "HTjK2w"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "lYV2mm"
+              }
+            ],
+            "id": "Em4Gyz"
+          }
+        ],
+        "id": "qTdsUJ"
+      }
+    ]
+  }
+}

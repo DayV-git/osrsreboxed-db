@@ -1,0 +1,254 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "You left the shrine. Did Zulrah reject your sacrifice?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I killed Zulrah.",
+            "steps": [
+              {
+                "player": "I killed Zulrah."
+              },
+              {
+                "npc": "Is that what you think? Board the boat again, and I am sure you will find Zulrah has overcome whatever pitiful attacks you used against him."
+              }
+            ]
+          },
+          {
+            "text": "Remind me how this ritual works.",
+            "steps": [
+              {
+                "player": "Remind me how this ritual works."
+              },
+              {
+                "npc": "Once I have brought you to the shrine, I will leave you there as an offering to Zulrah. You cannot use the boat to return."
+              },
+              {
+                "npc": "You can use your magical powers to flee from Zulrah's grasp, though that would defeat the point of the sacrifice, and you'll have to try again."
+              },
+              {
+                "npc": "When Zulrah inevitably kills you, I may be able to retrieve your dropped possessions. If so, I will hold them here."
+              },
+              {
+                "npc": "Now board the boat and prepare to be sacrificed."
+              }
+            ]
+          },
+          {
+            "text": "I'm off.",
+            "steps": [
+              {
+                "player": "I'm off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-her-before-offering-yourself-as-a-sacrifice": [
+      {
+        "npc": "Leave me, human, I have a sacrifice to prepare. If you wish for information, go and see the High Priestess."
+      }
+    ],
+    "standard-dialogue-attempting-to-board-the-boat-before-offering-yourself-as-a-sacrifice": [
+      {
+        "npc": "The sacrificial boat is not for you! Begone, and do not meddle in our sacred rites."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "But I really want to ride the boat!",
+            "steps": [
+              {
+                "player": "But I really want to ride the boat!"
+              },
+              {
+                "npc": "You display complete ignorance of our sacred rites. Perhaps the High Priestess will consent to enlighten you."
+              }
+            ]
+          },
+          {
+            "text": "I'm off.",
+            "steps": [
+              {
+                "player": "I'm off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-her-after-offering-yourself-as-a-sacrifice": [
+      {
+        "player": "The High Priestess said I could offer myself as a sacrifice to Zulrah."
+      },
+      {
+        "npc": "It is rare for a traveller to make such an offer! Very well, I shall explain the ritual to you..."
+      },
+      {
+        "npc": "Once I have brought you to the shrine, I will leave you there as an offering to Zulrah. You cannot use the boat to return."
+      },
+      {
+        "npc": "You can use your magical powers to flee from Zulrah's grasp, though that would defeat the point of the sacrifice, and you'll have to try again."
+      },
+      {
+        "npc": "When Zulrah inevitably kills you, I may be able to retrieve your dropped possessions. If so, I will hold them here."
+      },
+      {
+        "npc": "Are you ready to face Zulrah?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, let's go.",
+            "steps": [
+              {
+                "player": "Yes, let's go."
+              },
+              {
+                "npc": "I shall now transport you to Zulrah's shrine and offer your life on behalf of our tribe."
+              }
+            ]
+          },
+          {
+            "text": "No, I've changed my mind.",
+            "steps": [
+              {
+                "player": "No, I've changed my mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-her-before-after-offering-yourself-as-a-sacrifice-but-before-killing-zulrah": [
+      {
+        "npc": "You left the shrine. Did Zulrah reject your sacrifice?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've been there, but I left.",
+            "steps": [
+              {
+                "player": "I've been there, but I left."
+              },
+              {
+                "npc": "Well, board the boat and let me take you there again quickly, before Zulrah becomes impatient!"
+              },
+              {
+                "type": "choice",
+                "prompt": "Return to Zulrah's shrine?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": []
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me how this ritual works.",
+            "steps": [
+              {
+                "npc": "Once I have brought you to the shrine, I will leave you there as an offering to Zulrah. You cannot use the boat to return."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "z6aLTD"
+              }
+            ]
+          },
+          {
+            "text": "I'm off.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "AIQJn-"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-death-retrieval-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player does not have anything to claim:",
+        "steps": [
+          {
+            "npc": "I'm afraid I don't have anything for you to collect. If I had any of your items, but you died before collecting them from me, I'd lose them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "sKcX5V"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items to claim:",
+        "steps": [
+          {
+            "npc": "You left some stuff at Zulrah's shrine when you left earlier. I've returned it to you now."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6UmSu0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items to claim, but not enough inventory space:",
+        "steps": [
+          {
+            "npc": "You left some stuff at Zulrah's shrine when you left earlier. Clear some more inventory space and I'll give you the rest."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bQV6TF"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items to claim, but no inventory space at all:",
+        "steps": [
+          {
+            "npc": "You left some stuff at Zulrah's shrine when you left earlier. Clear some inventory space and I'll give it back."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ni5-jK"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items to claim and attempts to board the boat again:",
+        "steps": [
+          {
+            "npc": "You left some stuff at Zulrah's shrine when you left earlier. You'd better deal with it before returning."
+          }
+        ],
+        "id": "QWfbuR"
+      }
+    ]
+  }
+}

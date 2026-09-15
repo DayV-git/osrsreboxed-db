@@ -1,0 +1,417 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings [player name]. Welcome you are in the test of combat."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do I do here?",
+            "steps": [
+              {
+                "player": "What do I do here?"
+              },
+              {
+                "npc": "A spare suit of plate armour need you will. Full helm, plate leggings and platebody yes? Placing it in the centre of the magical machines you will be doing. KA- POOF! The armour, it attacks most furiously as if"
+              },
+              {
+                "npc": "alive! Kill it you must, yes."
+              },
+              {
+                "player": "So I use a full set of plate armour on the centre plate of the machines and it will animate it? Then I have to kill my own armour... how bizarre!"
+              },
+              {
+                "npc": "Yes. It is as you are saying. For this earn tokens you will. Also gain experience in combat you will. Trained long and hard here have I."
+              },
+              {
+                "player": "You're not from around here are you...?"
+              },
+              {
+                "npc": "It is as you say."
+              },
+              {
+                "player": "So will I lose my armour?"
+              },
+              {
+                "npc": "Lose armour you will if damaged too much it becomes. Rare this is, but still possible. If kill you the armour does, also lose armour you will."
+              },
+              {
+                "player": "So, occasionally I might lose a bit because it's being bashed about and I'll obviously lose it if I die... that it?"
+              },
+              {
+                "npc": "It is as you say."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "J4PhaG"
+              }
+            ]
+          },
+          {
+            "text": "Where do the machines come from?",
+            "steps": [
+              {
+                "player": "Where do the machines come from?"
+              },
+              {
+                "npc": "Make them I did, with magics."
+              },
+              {
+                "player": "Magic, in the Warrior's Guild?"
+              },
+              {
+                "npc": "A skilled warrior also am I. Harrallak mistakes does not make. Potential in my invention he sees and opportunity grasps."
+              },
+              {
+                "player": "I see, so you made the magical machines and Harrallak saw how they could be used in the guild to train warrior's combat... interesting. Harrallak certainly is an intelligent guy."
+              },
+              {
+                "npc": "It is as you say."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "WzL4vx"
+              }
+            ]
+          },
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "player": "May I claim my tokens please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has earned Warrior guild tokens, but has no inventory space:",
+                "steps": [
+                  {
+                    "npc": "No space you have carry them for."
+                  },
+                  {
+                    "player": "Right, I need space in my pack for them. I'll be back!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "hSoSUb"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has earned Warrior guild tokens:",
+                "steps": [
+                  {
+                    "npc": "Yes yes! Earned you have [number] token[s]!"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Warrior guild tokens",
+                    "id": "eVJhx_"
+                  },
+                  {
+                    "player": "Thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "iCPTpx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not earned Warrior guild tokens:",
+                "steps": [
+                  {
+                    "npc": "No tokens earned have you. In training activities participate you must."
+                  },
+                  {
+                    "player": "Okay, I'll go see what I can find to do around here to earn some tokens."
+                  }
+                ],
+                "id": "2EZ97m"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "Health be with you travelling."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-animated-armour-despawns-after-5-minutes-of-not-being-killed": [
+      {
+        "npc": "Greetings [player name]. Welcome you are in the test of combat."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "My armour disappeared!",
+            "steps": [
+              {
+                "player": "My armour disappeared!"
+              },
+              {
+                "npc": "Correct you are. Not killed it was. Collected your armour I did."
+              },
+              {
+                "player": "Excellent, may I have it so I can try the machine again?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have inventory space:",
+                "steps": [
+                  {
+                    "npc": "Space you will need in your pack."
+                  },
+                  {
+                    "player": "Okay, I'll go make some room in my inventory and come back."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "v_KKjS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has inventory space:",
+                "steps": [
+                  {
+                    "npc": "It is as you say."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "the set of lost armour",
+                    "id": "6YZ7Ga"
+                  },
+                  {
+                    "player": "Thanks!"
+                  }
+                ],
+                "id": "dHxCcL"
+              }
+            ]
+          },
+          {
+            "text": "What do I do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "lUBNxu"
+              }
+            ]
+          },
+          {
+            "text": "Where do the machines come from?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ejCp3z"
+              }
+            ]
+          },
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ve5ltF"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "BwEPt3"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "claim-tokens-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "kg5lM3"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-any-item-that-isn-t-a-standard-metal-full-helm-platebody-or-platelegs-on-the-animator": [
+      {
+        "npc": "Plain full plate armour in those machines only you may use, of appropriate materials. When other items used, bad things happen, yes!"
+      },
+      {
+        "player": "Okay, so I can only use plain full plate armour of appropriate materials, no trimmed armour or unusual kit?"
+      },
+      {
+        "npc": "It is as you say."
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "action",
+        "text": "The dialogue is said in the following order every 15 ticks, and starts back from the beginning once the end is reached:",
+        "id": "r2hK6T"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 1",
+        "steps": [
+          {
+            "npc": "Think not dishonestly."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Alryp7"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 2",
+        "steps": [
+          {
+            "npc": "The Way in training is."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Gl76Cg"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 3",
+        "steps": [
+          {
+            "npc": "Acquainted with every art become."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zKoJZn"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 4",
+        "steps": [
+          {
+            "npc": "Ways of all professions know you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ZdfvEY"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 5",
+        "steps": [
+          {
+            "npc": "Gain and loss between you must distinguish."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "PfLQ3O"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 6",
+        "steps": [
+          {
+            "npc": "Judgment and understanding for everything develop you must."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "CjayC3"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 7",
+        "steps": [
+          {
+            "npc": "Those things which cannot be seen, perceive them."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "_4kUti"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 8",
+        "steps": [
+          {
+            "npc": "Trifles pay attention even to."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "rbt0Yg"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 9",
+        "steps": [
+          {
+            "npc": "Do nothing which is of no use."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "qaIdGV"
+      },
+      {
+        "type": "condition",
+        "text": "Dialogue 10",
+        "steps": [
+          {
+            "npc": "Way of the Warrior this is."
+          }
+        ],
+        "id": "HmV2eb"
+      }
+    ]
+  }
+}

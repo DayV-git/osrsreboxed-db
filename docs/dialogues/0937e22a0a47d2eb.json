@@ -1,0 +1,131 @@
+{
+  "branches": {
+    "1cWe40": [
+      {
+        "player": "Actually... I don't think I've got any crystal seeds to trade, right now."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "player": "Hello."
+    },
+    {
+      "npc": "Hello! What can I do for ya' today?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What can I grow here?",
+          "steps": [
+            {
+              "player": "What can I grow here?"
+            },
+            {
+              "npc": "Well, you can grow a crystal tree, if you've got the right kind of seed. Great for getting a few shards out of."
+            },
+            {
+              "player": "And where do you get the right kind of seed?"
+            },
+            {
+              "npc": "They're pretty hard to come by... But I might be able to exchange some, for any other kinds of crystal seed you might have."
+            },
+            {
+              "npc": "What do you say?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Sure.",
+                  "steps": [
+                    {
+                      "player": "Sure. Let's see..."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have a suitable crystal seed in their inventory",
+                      "steps": [
+                        {
+                          "type": "call",
+                          "branch": "1cWe40"
+                        }
+                      ],
+                      "id": "ALgg5h"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has a suitable crystal seed in their inventory",
+                      "steps": [
+                        {
+                          "type": "missing",
+                          "id": "-N8YQe"
+                        }
+                      ],
+                      "id": "seWDU3"
+                    }
+                  ]
+                },
+                {
+                  "text": "No thanks.",
+                  "steps": [
+                    {
+                      "player": "No thanks. Maybe another time."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Can I trade you for some crystal acorns?",
+          "condition": "After the player has asked what can grow here",
+          "steps": [
+            {
+              "player": "Can I trade you for some crystal acorns?"
+            },
+            {
+              "npc": "What kind of crystal seeds do you have to offer?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a suitable crystal seed in their inventory",
+              "steps": [
+                {
+                  "type": "call",
+                  "branch": "1cWe40"
+                }
+              ],
+              "id": "-X_0_Y"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a suitable crystal seed in their inventory",
+              "steps": [
+                {
+                  "type": "missing",
+                  "id": "jmiq6v"
+                }
+              ],
+              "id": "Yg10Dx"
+            }
+          ],
+          "id": "VzdDIW"
+        },
+        {
+          "text": "Nothing.",
+          "steps": [
+            {
+              "player": "Nothing. Just passing by."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1353 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "before-buying-a-house": [
+      {
+        "npc": "Hello. Welcome to the Gielinor Housing Agency! What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How can I get a house?",
+            "steps": [
+              {
+                "player": "How can I get a house?"
+              },
+              {
+                "npc": "I can sell you a starting house in Rimmington for 1000 coins. As you increase your construction skill you will be able to have your house moved to other areas and redecorated in other styles."
+              },
+              {
+                "npc": "Do you want to buy a starter house?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please!",
+                    "steps": [
+                      {
+                        "player": "Yes please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough coins:",
+                        "steps": [
+                          {
+                            "player": "I haven't got 1,000 coins on me."
+                          },
+                          {
+                            "npc": "Well come back when you have it then."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "beBsUs"
+                      },
+                      {
+                        "npc": "Thank you. Go through the Rimmington house portal and you will find your house ready for you to start building in it."
+                      },
+                      {
+                        "npc": "This book will help you to start building your house."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a Construction guide",
+                        "id": "Y-AyGw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      },
+                      {
+                        "npc": "Well enjoy your player-owned cardboard box or wherever you're going to sleep tonight!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about houses!",
+            "steps": [
+              {
+                "npc": "It all came out of the wizards' experiments. They found a way to fold space, so that they could pack many acres of land into an area only a foot across."
+              },
+              {
+                "npc": "They created several folded-space regions across Gielinor. Each one contains hundreds of small plots where people can build houses."
+              },
+              {
+                "player": "Ah, so that's how everyone can have a house without them cluttering up the world!"
+              },
+              {
+                "npc": "Quite. The wizards didn't want to get bogged down in the business side of things so they hired me to sell the houses."
+              },
+              {
+                "npc": "There are various other people across Gielinor who can help you furnish your house."
+              },
+              {
+                "npc": "You should start by buying planks from a sawmill operator. Sawmills are located in north-east Varrock, the Woodcutting Guild located in south-west Hosidius and north-east Prifddinas."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "npc": "Hello. Welcome to the Gielinor Housing Agency! What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you move my house please?",
+            "steps": [
+              {
+                "player": "Can you move my house please?"
+              },
+              {
+                "npc": "Where would you like it moved to?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "House relocation",
+                "id": "bWnhm7"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Rimmington",
+                    "steps": [
+                      {
+                        "player": "To Rimmington please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Rimmington:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qqnNjw"
+                          }
+                        ],
+                        "id": "tW0Sh2"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Come back when you have 5,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "p13-8q"
+                      },
+                      {
+                        "npc": "Your house has been moved to Rimmington."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Taverley",
+                    "steps": [
+                      {
+                        "player": "To Taverley please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 10."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "_OspA9"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Taverley:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qqnNjw"
+                          }
+                        ],
+                        "id": "Aa2vY4"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Come back when you have 5,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "M3Nu4J"
+                      },
+                      {
+                        "npc": "Your house has been moved to Taverley."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Pollnivneach",
+                    "steps": [
+                      {
+                        "player": "To Pollnivneach please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 20."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "cjiP36"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Pollnivneach:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qqnNjw"
+                          }
+                        ],
+                        "id": "lfuZno"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Come back when you have 7,500 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "21jZVc"
+                      },
+                      {
+                        "npc": "Your house has been moved to Pollnivneach."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hosidius",
+                    "steps": [
+                      {
+                        "player": "To Hosidius please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 25."
+                          }
+                        ],
+                        "id": "c9-c53"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Hosidius:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qqnNjw"
+                          }
+                        ],
+                        "id": "Eitxfr"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Come back when you have 8,750 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "meMo6c"
+                      },
+                      {
+                        "npc": "Your house has been moved to Hosidius."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Rellekka",
+                    "steps": [
+                      {
+                        "player": "To Rellekka please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 30."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "Qv2yUS"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Rellekka:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qqnNjw"
+                          }
+                        ],
+                        "id": "0qi4nI"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Come back when you have 10,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "ZEOxnx"
+                      },
+                      {
+                        "npc": "Your house has been moved to Rellekka."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Brimhaven",
+                    "steps": [
+                      {
+                        "player": "To Brimhaven please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 40."
+                          }
+                        ],
+                        "id": "I-xfFv"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Brimhaven:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qqnNjw"
+                          }
+                        ],
+                        "id": "wOpu1c"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Come back when you have 15,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "1AZpQ7"
+                      },
+                      {
+                        "npc": "Your house has been moved to Brimhaven."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yanille",
+                    "steps": [
+                      {
+                        "player": "To Yanille please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 50."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "dJg6jm"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Yanille:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qqnNjw"
+                          }
+                        ],
+                        "id": "rU1TuV"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Come back when you have 25,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "DWRTS_"
+                      },
+                      {
+                        "npc": "Your house has been moved to Yanille."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Prifddinas",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If player hasn't completed Song of the Elves quest:",
+                        "steps": [
+                          {
+                            "player": "To Prifddinas please!"
+                          },
+                          {
+                            "npc": "Where? Never heard of it."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "dN_DjS"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player lacks the required Construction level:",
+                        "steps": [
+                          {
+                            "npc": "I'm afraid you don't have a high enough Construction level to move there. You need to have level 70."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "GFVk9I"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player's house is currently located in Prifddinas:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "qqnNjw"
+                          }
+                        ],
+                        "id": "0yqs0x"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If player doesn't have enough gold:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Come back when you have 50,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "sCwZae"
+                      },
+                      {
+                        "npc": "Your house has been moved to Prifddinas."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you redecorate my house please?",
+            "steps": [
+              {
+                "player": "Can you redecorate my house please?"
+              },
+              {
+                "npc": "Certainly. My magic can rebuild the house in a completely new style! What style would you like?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "House style",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Basic wood"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If player's house is already decorated in that style:",
+                    "steps": [
+                      {
+                        "npc": "Your house is already in that style!"
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "House style",
+                        "id": "qFhvcE"
+                      }
+                    ],
+                    "id": "J9jV0h"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If player doesn't have enough gold:",
+                    "steps": [
+                      {
+                        "npc": "Hmph. Come back when you have 5,000 coins."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "House style",
+                        "id": "IaCidQ"
+                      }
+                    ],
+                    "id": "Oi2pY8"
+                  },
+                  {
+                    "npc": "Your house has been redecorated."
+                  },
+                  {
+                    "type": "end"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Basic stone",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "KUyFX8"
+                              }
+                            ],
+                            "id": "dXq8CY"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "npc": "Hmph. Come back when you have 5,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "MBN-Bx"
+                              }
+                            ],
+                            "id": "OaNohq"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Whitewashed stone",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "db561v"
+                              }
+                            ],
+                            "id": "KZXAqh"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "npc": "Hmph. Come back when you have 7,500 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "y71Y_A"
+                              }
+                            ],
+                            "id": "MOwgDS"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Fremennik-style wood",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "QHNh6E"
+                              }
+                            ],
+                            "id": "_3bLRy"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "npc": "Hmph. Come back when you have 10,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "ucsXfq"
+                              }
+                            ],
+                            "id": "YUQ5iO"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Tropical wood",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "3Cuz-6"
+                              }
+                            ],
+                            "id": "-UEz3k"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "npc": "Hmph. Come back when you have 15,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "eyr_-W"
+                              }
+                            ],
+                            "id": "mmJdhS"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Fancy stone",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "brXhPZ"
+                              }
+                            ],
+                            "id": "6wq-bR"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "npc": "Hmph. Come back when you have 25,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "ZNlG_l"
+                              }
+                            ],
+                            "id": "ECUUnl"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Deathly mansion",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player hasn't completed a Halloween event in-game before:",
+                            "steps": [
+                              {
+                                "npc": "I'm afraid you haven't unlocked that style."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "07StnF"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "ofj_Fg"
+                              }
+                            ],
+                            "id": "0OW3Iw"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "npc": "Hmph. Come back when you have 35,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "xSdSqT"
+                              }
+                            ],
+                            "id": "G9-SrS"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Twisted theme",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have the Twisted blueprints in their inventory:",
+                            "steps": [
+                              {
+                                "npc": "I'm afraid I'd need some blueprints for that."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "XSsZ1z"
+                              }
+                            ],
+                            "id": "Xsac9J"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "i_46z7"
+                              }
+                            ],
+                            "id": "VwsF7-"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Hosidius house",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player hasn't given Hosidius blueprints to the Estate agent:",
+                            "steps": [
+                              {
+                                "npc": "I'm afraid I'd need some blueprints for that. Maybe you can buy some by working for the contractors."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "4Q10Zc"
+                              }
+                            ],
+                            "id": "W-blzT"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "0xnpN0"
+                              }
+                            ],
+                            "id": "CF8Vzs"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If this is the first time the house is being redecorated:",
+                            "steps": [
+                              {
+                                "npc": "Absolutely. Hand me your blueprints and I'll make it happen! I'll keep the blueprints, so you'll always be able to switch back to this style in future, for a small fee."
+                              },
+                              {
+                                "type": "choice",
+                                "prompt": "Hand in your blueprints for the Hosidius theme?",
+                                "options": [
+                                  {
+                                    "text": "Yes",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "continue",
+                                        "id": "Q9oCAF"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "No",
+                                    "steps": [
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "id": "jz_83_"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "npc": "Hmph. Come back when you have 5,000 coins."
+                              }
+                            ],
+                            "id": "ZuyM68"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cosy cabin",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If player hasn't completed a Christmas event in-game before:",
+                            "steps": [
+                              {
+                                "npc": "I'm afraid you haven't unlocked that style."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "8o4nee"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player's house is already decorated in that style:",
+                            "steps": [
+                              {
+                                "npc": "Your house is already in that style!"
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "zUjl51"
+                              }
+                            ],
+                            "id": "bjJDkl"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player doesn't have enough gold:",
+                            "steps": [
+                              {
+                                "npc": "Hmph. Come back when you have 35,000 coins."
+                              },
+                              {
+                                "type": "action",
+                                "action": "open_interface",
+                                "target": "House style",
+                                "id": "aXZV_A"
+                              }
+                            ],
+                            "id": "HbAnnO"
+                          },
+                          {
+                            "npc": "Your house has been redecorated."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "gjBDUN"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Canifis",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "AgoRZi"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Civitas",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "56CqSF"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Wilderness theme",
+                        "steps": [
+                          {
+                            "npc": "Absolutely, let me take your blueprints and I'll make it happen!"
+                          },
+                          {
+                            "type": "choice",
+                            "prompt": "Hand in your blueprints for the Wilderness theme?",
+                            "options": [
+                              {
+                                "text": "Yes",
+                                "steps": [
+                                  {
+                                    "npc": "If you'd like, you can build a new exit portal with these blueprints. Talk to Nigel if you need more."
+                                  },
+                                  {
+                                    "npc": "Your house has been redecorated."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No",
+                                "steps": [
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "7Kytj5"
+              }
+            ]
+          },
+          {
+            "text": "Could I have a Construction guide book?",
+            "steps": [
+              {
+                "player": "Could I have a Construction guide book?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a guide book in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You've already got one!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "4DAs-V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "Not until you free up some inventory space."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "QK6Byh"
+              },
+              {
+                "npc": "Certainly."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a Construction guide",
+                "id": "Ix7U1q"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about houses!",
+            "steps": [
+              {
+                "player": "Tell me about houses!"
+              },
+              {
+                "npc": "It all came out of the wizards' experiments. They found a way to fold space, so that they could pack many acres of land into an area only a foot across."
+              },
+              {
+                "npc": "They created several folded-space regions across Gielinor. Each one contains hundreds of small plots where people can build houses."
+              },
+              {
+                "player": "Ah, so that's how everyone can have a house without them cluttering up the world!"
+              },
+              {
+                "npc": "Quite. The wizards didn't want to get bogged down in the business side of things so they hired me to sell the houses."
+              },
+              {
+                "npc": "There are various other people across Gielinor who can help you furnish your house."
+              },
+              {
+                "npc": "You should start by buying planks from a sawmill operator. Sawmills are located in north-east Varrock, the Woodcutting Guild located in south-west Hosidius and north-east Prifddinas."
+              }
+            ]
+          },
+          {
+            "text": "Tell me about that skillcape you're wearing.",
+            "condition": "If player doesn't have level 99 Construction:",
+            "steps": [
+              {
+                "player": "Tell me about that skillcape you're wearing."
+              },
+              {
+                "npc": "As you may know, skillcapes are only available to masters in a skill. I have spent my entire life building houses and now I spend my time selling them! As a sign of my abilities I wear this Skillcape of Construction."
+              },
+              {
+                "npc": "If you ever have enough skill to build a demonic throne, come and talk to me and I'll sell you a skillcape like mine."
+              },
+              {
+                "npc": "The Cape of Construction also provides you with as many teleports as you like to any of the house portals or even directly inside!"
+              }
+            ],
+            "id": "nvYiEX"
+          },
+          {
+            "text": "Can you sell me a Skillcape of Construction?",
+            "condition": "If player has level 99 Construction:",
+            "steps": [
+              {
+                "player": "Can you sell me a Skillcape of Construction?"
+              },
+              {
+                "npc": "Alright, that'll be 99000 coins, please. A small price to pay for such an illustrious cape that can teleport you to any of the house portals or even directly inside your house!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'm not paying that!",
+                    "steps": [
+                      {
+                        "player": "I'm not paying that!"
+                      },
+                      {
+                        "npc": "Suit yourself. There are many other heroes who would love the opportunity to purchase one. You can find me here if you change your mind."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Certainly, that sounds fair.",
+                    "steps": [
+                      {
+                        "player": "Certainly, that sounds fair.",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have at least 99,000 coins:",
+                            "steps": [
+                              {
+                                "player": "But, unfortunately, I don't have enough money with me."
+                              },
+                              {
+                                "npc": "Well, come back and see me when you do."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "Q2gaQx"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                            "steps": [
+                              {
+                                "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "XXNVc_"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 99,000 coins and enough inventory space:",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "a Construction cape and hood",
+                                "id": "ldUwoK"
+                              },
+                              {
+                                "npc": "Excellent! Wear that cape with pride my friend."
+                              }
+                            ],
+                            "id": "TNlEvy"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "99RzLq"
+          }
+        ]
+      }
+    ],
+    "attempting-to-relocate-to-yanille-in-deadman-mode": [
+      {
+        "npc": "I'm sorry but it's impossible to move your house to Yanille with all those guards around."
+      }
+    ],
+    "leagues-varlamore": [
+      {
+        "npc": "Hello. Welcome to the Gielinor Housing Agency! What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How can I get a house?",
+            "steps": [
+              {
+                "player": "How can I get a house?"
+              },
+              {
+                "npc": "I can sell you a starting house in Aldarin for 1000 coins."
+              },
+              {
+                "npc": "Do you want to buy a starter house?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please!",
+                    "steps": [
+                      {
+                        "player": "Yes please!"
+                      },
+                      {
+                        "npc": "Thank you. Go through the Aldarin house portal and you will find your house ready for you to start building in it."
+                      },
+                      {
+                        "npc": "This book will help you to start building your house."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks",
+                    "steps": [
+                      {
+                        "type": "missing",
+                        "id": "mldg8N"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about houses!",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "s8M7nz"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "qqnNjw": [
+      {
+        "npc": "Your house is already there!"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

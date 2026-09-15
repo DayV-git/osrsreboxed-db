@@ -1,0 +1,114 @@
+{
+  "steps": [
+    {
+      "npc": "Hello there. How can I help you, brave adventurer?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What are you selling?",
+          "steps": [
+            {
+              "player": "What are you selling?"
+            },
+            {
+              "npc": "I sell rune stones. I've got some good stuff, some really powerful little rocks. Take a look."
+            },
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Lundail's Arena-side Rune Shop.",
+              "id": "C1SMQQ"
+            }
+          ]
+        },
+        {
+          "text": "What's that big old building above us?",
+          "steps": [
+            {
+              "player": "What's that big old building above us?"
+            },
+            {
+              "npc": "That, my friend, is the mage battle arena. Top mages come from all over Gielinor to compete in the arena."
+            },
+            {
+              "player": "Wow."
+            },
+            {
+              "npc": "Few return, most get fried, hence the smell."
+            },
+            {
+              "player": "Hmmm.. I did notice."
+            }
+          ]
+        },
+        {
+          "text": "Claim free runes.",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "If the player hasn't completed the Easy Wilderness Diary:",
+              "steps": [
+                {
+                  "npc": "You'll need to have completed the Easy Wilderness Achievement Diary to qualify for free runes."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "aAPpII"
+            },
+            {
+              "type": "condition",
+              "text": "If the player's inventory is full:",
+              "steps": [
+                {
+                  "npc": "You need more free space before you can claim your free runes."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "icjtVW"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has completed the Easy Wilderness Diary:",
+              "steps": [
+                {
+                  "npc": "There you go. Come back tomorrow for some more!"
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "runes",
+                  "id": "lL7RXi"
+                },
+                {
+                  "type": "message",
+                  "text": "Lundail hands you [amount] free [type] runes.",
+                  "id": "r8etG_"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "gSO4FO"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has already claimed runes today:",
+              "steps": [
+                {
+                  "npc": "You've already claimed your free runes today. Come back tomorrow for some more."
+                }
+              ],
+              "id": "FUSCA-"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

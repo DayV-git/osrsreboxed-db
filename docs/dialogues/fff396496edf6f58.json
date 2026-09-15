@@ -1,0 +1,638 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed the Wilderness Hard Diary:",
+        "steps": [
+          {
+            "npc": "Hello!"
+          }
+        ],
+        "id": "R1VamS"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed the Wilderness Hard Diary:",
+        "steps": [
+          {
+            "npc": "Hello again! Would you like to talk about the Wilderness Achievement Diary? Or would you like to sell me ecumenical keys?"
+          }
+        ],
+        "id": "obLA2B"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I have another sword?",
+            "steps": [
+              {
+                "player": "Can I have another sword?"
+              },
+              {
+                "type": "message",
+                "text": "Jeffery gives you another sword.",
+                "id": "qCS3Ty"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "lzUgok"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "condition": "If the player has not completed the Wilderness Hard Diary:",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I'm Jeffery, the taskmaster for the Wilderness Achievement Diary."
+              },
+              {
+                "player": "What is the Achievement Diary?"
+              },
+              {
+                "npc": "It's a diary that helps you keep track of particular achievements. In the Wilderness it can help you discover some quite useful things. Eventually, with enough exploration, the inhabitants will reward you."
+              },
+              {
+                "npc": "You can see the list of tasks on the side-panel."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "dM9zsQ"
+              }
+            ],
+            "id": "6Kk3JF"
+          },
+          {
+            "text": "I'd like to sell ecumenical keys.",
+            "condition": "If the player has completed the Wilderness Hard Diary:",
+            "steps": [
+              {
+                "player": "I'd like to sell ecumenical keys."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any ecumenical keys in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You should bring them to me, if so. I'm not buying something I can't see you carrying."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "53Bd71"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has one ecumenical key in their inventory:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Sell your ecumenical key for 61,500 coins?",
+                    "options": [
+                      {
+                        "text": "Confirm",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You sell the key to the Fanatic.",
+                            "id": "7w_Ekg"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "Rw6tK4"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "I9vwVj"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "99V9ts"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has multiple ecumenical keys in their inventory:",
+                "steps": [
+                  {
+                    "type": "input",
+                    "text": "Sell ecumenical keys for 61,500 coins?",
+                    "id": "r_i5HT"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You sell [#] keys to the Fanatic.",
+                    "id": "NFj8sY"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "ucDguL"
+                  }
+                ],
+                "id": "VFUBMi"
+              }
+            ],
+            "id": "hTAuQX"
+          },
+          {
+            "text": "I have a question about my Achievement Diary.",
+            "steps": [
+              {
+                "player": "I have a question about my Achievement diary."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What is the Achievement Diary?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "j_443L"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What are the rewards?",
+                    "steps": [
+                      {
+                        "npc": "Well, there are four different Wilderness Swords, which match up with the four levels of difficulty. Each has the same rewards as the previous level and some additional benefits too... which tier of rewards would you like to"
+                      },
+                      {
+                        "npc": "know more about?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Easy Rewards.",
+                            "steps": [
+                              {
+                                "player": "Tell me more about the Easy rewards please!"
+                              },
+                              {
+                                "npc": "If you complete all of the easy tasks in the Wilderness, you can speak to Lundail at the Mage Arena every day to receive 40 free runes and you can teleport to either Edgeville or Ardougne from the Wilderness lever."
+                              },
+                              {
+                                "player": "Thanks!"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Medium Rewards.",
+                            "steps": [
+                              {
+                                "player": "Tell me more about the Medium rewards please!"
+                              },
+                              {
+                                "npc": "In addition to the easy rewards, Mandrith will give you a 20% discount off entry to the Resource Area, you'll cut Ents faster, you can access a shortcut in the deep Wilderness dungeon. You can also own 4 ecumenical"
+                              },
+                              {
+                                "npc": "keys at once and receive 80 runes a day from Lundail, and you can find loot in the chests at the Rogues' Castle. Finally, you can access the lairs of Callisto, Venenatis and Vet'ion, three fearsome Wilderness"
+                              },
+                              {
+                                "npc": "bosses."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Hard Rewards.",
+                            "steps": [
+                              {
+                                "player": "Tell me more about the Hard rewards please!"
+                              },
+                              {
+                                "npc": "In addition to the easy and medium benefits, the sword can teleport you to the Fountain of Rune once per day, you'll get 50% more lava shards when grinding scales and even cheaper access to the Resource Area."
+                              },
+                              {
+                                "npc": "You can own 5 ecumenical keys, Lundail will give you 120 free runes each day, and you'll get increased loot from the chests at the Rogues' Castle. You can also telegrab Wine of Zamorak from spawns in the"
+                              },
+                              {
+                                "npc": "Wilderness in banknote form, and control which Obelisk you want to travel to. Also, I'll be willing to buy ecumenical keys off you for 61,500 coins each. Finally, you can access the lairs of Artio, Spindel and Calvar'ion,"
+                              },
+                              {
+                                "npc": "three fearsome Wilderness bosses."
+                              },
+                              {
+                                "player": "Thanks!"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Elite Rewards.",
+                            "steps": [
+                              {
+                                "player": "Tell me more about the Elite rewards please!"
+                              },
+                              {
+                                "npc": "In addition to the previous tiers of rewards, access to the Resource Area is free and the sword will now give you unlimited teleports to the Fountain of Rune. All dragon bone drops in the Wilderness become noted and"
+                              },
+                              {
+                                "npc": "Lundail will give you 200 free runes per day and the rate at which you catch Dark Crabs is increased."
+                              },
+                              {
+                                "player": "Thanks!"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do I claim the rewards?",
+                    "steps": [
+                      {
+                        "player": "How do I claim the rewards?"
+                      },
+                      {
+                        "npc": "Just complete the tasks in the Wilderness so they're ticked off, then come and speak to me for your rewards."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "ORbrD0"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Bye!",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "GYY9hk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "About the noted lava dragon bones I receive...",
+            "condition": "If the player has completed the Wilderness Elite Diary, and noted lava dragon bones is enabled:",
+            "steps": [
+              {
+                "player": "About the noted lava dragon bones I receive..."
+              },
+              {
+                "npc": "Ah, you would like to be able to bury them on the spot? Would you like to receive bones in their proper form, rather than as banknotes?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd prefer proper bones rather than banknotes.",
+                    "steps": [
+                      {
+                        "player": "I'd prefer proper bones rather than banknotes."
+                      },
+                      {
+                        "npc": "Very well, I have done that for you. Speak with me again if you change your mind."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "OjAdVb"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm happy getting the bones as banknotes.",
+                    "steps": [
+                      {
+                        "player": "I'm happy getting the bones as banknotes."
+                      },
+                      {
+                        "npc": "Very well. Speak with me again if you change your mind."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "qoh8kw"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "OWy0Od"
+          },
+          {
+            "text": "About the noted lava dragon bones I could receive...",
+            "condition": "If the player has completed the Wilderness Elite Diary, and noted lava dragon bones is disabled:",
+            "steps": [
+              {
+                "player": "About the noted lava dragon bones I could receive..."
+              },
+              {
+                "npc": "Ah, you would like to be able to carry lots of them? Banknotes are very convenient for that. Do you want to receive noted lava dragon bones?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to receive noted lava dragon bones!",
+                    "steps": [
+                      {
+                        "player": "I'd like to receive noted lava dragon bones! Not big and bulky proper bones!"
+                      },
+                      {
+                        "npc": "Very well, I have done that for you. Speak with me again if you change your mind."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "6Vwy8o"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm happy getting proper bones rather than banknotes.",
+                    "steps": [
+                      {
+                        "player": "I'm happy getting proper bones rather than banknotes."
+                      },
+                      {
+                        "npc": "Very well. Speak with me again if you change your mind."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "wwLPsk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "wZPgFa"
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "npc": "See you later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "easy-tasks-completed": [
+      {
+        "player": "I've completed all of the easy tasks in my Wilderness Achievement Diary!"
+      },
+      {
+        "npc": "I can see that, well done! You'll be wanting your reward then!"
+      },
+      {
+        "player": "Yes please!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have 2 inventory spaces:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "pmUsWS"
+          }
+        ],
+        "id": "bnBqfI"
+      },
+      {
+        "npc": "This sword is a symbol of your exploration of the Wilderness. Speak to Lundail at the Mage Arena every day to receive 40 free runes and you can teleport to either Edgeville or Ardougne from the Wilderness lever."
+      },
+      {
+        "player": "Wow, thanks!"
+      },
+      {
+        "npc": "If you ever lose your sword, come back to me to reclaim it."
+      },
+      {
+        "type": "jump",
+        "reference": "initial",
+        "id": "qVFuPI"
+      }
+    ],
+    "medium-tasks-completed": [
+      {
+        "player": "I've completed all of the medium tasks in my Wilderness Achievement Diary!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't completed all the previous tasks:",
+        "steps": [
+          {
+            "npc": "You need to complete all of the easy tasks too before I can reward you for the more difficult sets."
+          },
+          {
+            "type": "jump",
+            "reference": "initial",
+            "id": "9SKkWg"
+          }
+        ],
+        "id": "s1TSKI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed all the previous tasks:",
+        "steps": [
+          {
+            "npc": "I can see that, well done! You'll be wanting your reward then!"
+          },
+          {
+            "player": "Yes please!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player doesn't have 2 inventory spaces:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pmUsWS"
+              }
+            ],
+            "id": "6AhkLx"
+          },
+          {
+            "npc": "I've upgraded your Wilderness Sword for you. Mandrith will give you a 20% discount off entry to the Resource Area, you'll cut Ents faster, you can access a shortcut in the deep Wilderness dungeon. You'll also"
+          },
+          {
+            "npc": "receive increase rewards from the chests in Rogues' Castle, and you can also now own 4 ecumenical keys and receive 80 runes a day from Lundail."
+          },
+          {
+            "player": "Wow, thanks!"
+          },
+          {
+            "type": "jump",
+            "reference": "initial",
+            "id": "vgOKDR"
+          }
+        ],
+        "id": "Fmy169"
+      }
+    ],
+    "hard-tasks-completed": [
+      {
+        "player": "I've completed all of the hard tasks in my Wilderness Achievement Diary!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't completed all the previous tasks:",
+        "steps": [
+          {
+            "npc": "You need to complete all of the easy and medium tasks too before I can reward you for the more difficult sets."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "SPKea9"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed all the previous tasks:",
+        "steps": [
+          {
+            "npc": "I can see that, well done! You'll be wanting your reward then!"
+          },
+          {
+            "player": "Yes please!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player doesn't have 2 inventory spaces:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pmUsWS"
+              }
+            ],
+            "id": "r-g25F"
+          },
+          {
+            "npc": "I've upgraded your Wilderness Sword for you. It can now teleport you to the Fountain of Rune once per day."
+          },
+          {
+            "npc": "You'll also get 50% more lava shards when grinding scales and even cheaper access to the Resource Area."
+          },
+          {
+            "npc": "You can now own 5 ecumenical keys, and Lundail will give you 120 free runes each day."
+          },
+          {
+            "npc": "You can also telegrab Wine of Zamorak from spanws in the Wilderness in banknote for, and control which Obelisk you want to travel to."
+          },
+          {
+            "npc": "You'll also receive further increased rewards from the chests in Rogues' Castle. Finally, I'll be willing to buy ecumenical keys off you for 61,500 coins each."
+          },
+          {
+            "npc": "Finally, you can now access the lairs of Artio, Spindel and Calvar'ion, three fearsome Wilderness bosses, without requiring a Slayer assignment."
+          },
+          {
+            "player": "Wow, thanks!"
+          },
+          {
+            "npc": "Now, would you like to talk about the Wilderness Achievement Diary? Or would you like to sell me ecumenical keys?"
+          },
+          {
+            "type": "jump",
+            "reference": "initial",
+            "id": "8RcaqK"
+          }
+        ],
+        "id": "UO1iYk"
+      }
+    ],
+    "elite-tasks-completed": [
+      {
+        "player": "I've completed all of the elite tasks in my Wilderness achievement diary!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't completed all the previous tasks:",
+        "steps": [
+          {
+            "npc": "You need to complete all of the easy, medium and hard tasks too before I can reward you for the elite task set."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Ezps84"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed all the previous tasks:",
+        "steps": [
+          {
+            "npc": "I can see that, well done! You've completed all of the tasks in the Wilderness! Here's your reward!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player doesn't have 2 inventory spaces:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "pmUsWS"
+              }
+            ],
+            "id": "GXf43w"
+          },
+          {
+            "npc": "I've upgraded your Wilderness Sword for you. Access to the Resource Area is now free and the sword will now give you unlimited teleports to the Fountain of Rune. All dragon bone drops in the Wilderness are now"
+          },
+          {
+            "npc": "noted and Lundail will give you 200 free runes per day and the rate at which you catch Dark Crabs has been increased."
+          },
+          {
+            "player": "Wow, thanks!"
+          },
+          {
+            "npc": "Now, would you like to talk about the Wilderness Achievement Diary? Or would you like to sell me ecumenical keys?"
+          },
+          {
+            "type": "jump",
+            "reference": "initial",
+            "id": "ycJkXV"
+          }
+        ],
+        "id": "ZRapNO"
+      }
+    ]
+  },
+  "branches": {
+    "pmUsWS": [
+      {
+        "npc": "You need at least two inventory spaces, make some space and come back."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

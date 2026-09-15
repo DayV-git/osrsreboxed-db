@@ -1,0 +1,133 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Ah, you come back! What you want from Arnold, heh?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you open my bank account, please?",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Bank",
+                "id": "QNZxHw"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to check my Bank PIN settings.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Bank PIN",
+                "id": "-u9rJV"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to collect items.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Collection Box interface opens.)",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Collection Box",
+                "id": "kBEu5L"
+              }
+            ]
+          },
+          {
+            "text": "Would you like to trade?",
+            "steps": [
+              {
+                "player": "Would you like to trade?"
+              },
+              {
+                "npc": "Ja, I have wide range of stock..."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Arnold's Eclectic Supplies.",
+                "id": "9bInbN"
+              }
+            ]
+          },
+          {
+            "text": "Nothing, I just came to chat.",
+            "steps": [
+              {
+                "player": "Nothing, I just came to chat."
+              },
+              {
+                "npc": "Ah, that is nice - always I like to chat, but Herr Caranos tell me to get back to work! Here, you been nice, so have a present:"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a cabbage",
+                "id": "_sNVIa"
+              },
+              {
+                "player": "A cabbage?"
+              },
+              {
+                "npc": "Ja, cabbage is good for you!"
+              },
+              {
+                "player": "Um... thanks!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "59r8I9"
+      },
+      {
+        "npc": "Please solve this for me. I have other things to be thinking about."
+      },
+      {
+        "type": "message",
+        "text": "Arnold Lydspor has given you a puzzle box!",
+        "id": "sUzZ-i"
+      }
+    ],
+    "treasure-trails-hard-talking-again-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "Sorry but you haven't solved the puzzle yet."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "9Cr5Fz"
+      },
+      {
+        "npc": "Thanks [player name]!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "[another clue scroll/a casket]",
+        "id": "Plw90C"
+      }
+    ]
+  }
+}

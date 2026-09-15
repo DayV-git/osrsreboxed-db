@@ -1,0 +1,406 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "I am the Apothecary. I brew potions. Do you need anything specific?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is carrying a Combat path voucher and hasn't received all possible rewards yet:",
+        "steps": [
+          {
+            "player": "I have this voucher for completing the combat Adventure Path, it says to come talk to you about claiming my Adventure Path reward."
+          },
+          {
+            "type": "condition",
+            "text": "If the player hasn't claimed their rewards yet and is on a free-to-play world:",
+            "steps": [
+              {
+                "npc": "Why yes, here are some energy potions."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "5 energy potions",
+                "id": "j5VrPQ"
+              },
+              {
+                "npc": "I do have more rewards for you, but you need to be on a members world for me to give you the reward. Maybe there is something else I can help you with."
+              },
+              {
+                "type": "action",
+                "text": "Shows options as if the player weren't carrying a Combat path voucher",
+                "id": "1Uvq66"
+              }
+            ],
+            "id": "F76n8v"
+          },
+          {
+            "type": "condition",
+            "text": "If the player hasn't claimed their member rewards yet and is on a free-to-play world:",
+            "steps": [
+              {
+                "npc": "I do have more rewards for you, but you need to be on a members world for me to give you the reward. Maybe there is something else I can help you with."
+              },
+              {
+                "type": "action",
+                "text": "Shows options as if the player weren't carrying a Combat path voucher",
+                "id": "hAhZZF"
+              }
+            ],
+            "id": "RLrasQ"
+          }
+        ],
+        "id": "HSJbYP"
+      },
+      {
+        "type": "condition",
+        "text": "If the player isn't carrying a Combat path voucher or is carrying a Combat path voucher and has received all possible rewards already:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Can you make potions for me?",
+                "steps": [
+                  {
+                    "player": "Can you make potions for me?"
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Apothecary's Potions",
+                    "id": "bc12Bc"
+                  }
+                ]
+              },
+              {
+                "text": "Talk about A Tail of Two Cats.",
+                "condition": "If the player has lost the hat used in A Tail of Two Cats:",
+                "steps": [
+                  {
+                    "player": "Hello Apothecary, I've lost that hat you gave me."
+                  },
+                  {
+                    "npc": "No problem, I get plenty of these from Gielinor Hospital Supplies."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Choose a hat:",
+                    "options": [
+                      {
+                        "text": "Nurse's Hat",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "the Nurse's Hat",
+                            "id": "eI2tqU"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The Apothecary has given you a Nurse's Hat.",
+                            "id": "02CkCw"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Doctor's Hat",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "the Doctor's Hat",
+                            "id": "UW5iDU"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The Apothecary has given you a Doctor's Hat.",
+                            "id": "Xgot9z"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "l2g7zf"
+              },
+              {
+                "text": "Talk about something else.",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Talk about the Ratcatchers Quest.",
+                        "condition": "After the Ratcatchers quest:",
+                        "steps": [
+                          {
+                            "player": "You wouldn't be able to make any other cat potions, would you?"
+                          },
+                          {
+                            "npc": "I have no plans to branch out into cat potions at the moment, but if there was sufficient demand for them I might change my mind."
+                          }
+                        ],
+                        "id": "t1XORf"
+                      },
+                      {
+                        "text": "Talk about Romeo & Juliet.",
+                        "condition": "If the player has started the Romeo & Juliet quest and talked to Father Lawrence:",
+                        "steps": [
+                          {
+                            "type": "reference",
+                            "target": "Transcript:Apothecary",
+                            "section": "Romeo & Juliet",
+                            "text": "(Quest dialogue shows)",
+                            "id": "pmniE2",
+                            "resolved": false,
+                            "page_available": true
+                          }
+                        ],
+                        "id": "VLEiRD"
+                      },
+                      {
+                        "text": "Have you got any decent gossip to share?",
+                        "steps": [
+                          {
+                            "player": "Have you got any decent gossip to share?"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If player has not started Romeo & Juliet:",
+                            "steps": [
+                              {
+                                "npc": "Well I hear young Romeo's having a little woman trouble but other than that all's quiet on the eastern front. Can I do something for you?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "OaTWAr"
+                              }
+                            ],
+                            "id": "jYy11c"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has completed Romeo & Juliet:",
+                            "steps": [
+                              {
+                                "npc": "Sad about that affair with young Romeo and Juliet..."
+                              },
+                              {
+                                "npc": "I hear every time Romeo sees Juliet now he runs away screaming something about ghosts and Juliet's cousin?"
+                              },
+                              {
+                                "npc": "Always did think he was a bit of a strange one..."
+                              },
+                              {
+                                "npc": "Anyway! Life goes on and so does business! Can I do something for you?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "x76V5W"
+                              }
+                            ],
+                            "id": "G78MmP"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Do you know a potion to make hair fall out?",
+                        "steps": [
+                          {
+                            "player": "Do you know a potion to make hair fall out?"
+                          },
+                          {
+                            "npc": "I do indeed. I gave it to my mother. That's why I now live alone."
+                          },
+                          {
+                            "npc": "But can I do something for you?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "_FM3_a"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Have you got any good potions to give away?",
+                        "steps": [
+                          {
+                            "player": "Have you got any good potions to give away?"
+                          },
+                          {
+                            "npc": "Sorry, charity is not my strong point. Do you need anything else?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "D-uQYF"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "player": "No thanks."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "d3QJXA"
+      }
+    ],
+    "giving-him-the-diary-shades-of-mort-ton": [
+      {
+        "type": "message",
+        "text": "You show the Serum book to the Apothecary.",
+        "id": "R8p2z6"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not traded the book to the Apothecary yet:",
+        "steps": [
+          {
+            "npc": "Do you want to trade the diary yet? I'd like to pass the information on to the scientific community in Varrock."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, I'll trade it for herblore training.",
+                "steps": [
+                  {
+                    "player": "Yes, I'll trade it for herblore training."
+                  },
+                  {
+                    "npc": "Great..."
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "w9jvvD"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player loses Diary from inventory and receives herblore experience.",
+                    "id": "1JN9QJ"
+                  },
+                  {
+                    "npc": "Ok, that's all I can teach you. Many thanks for the diary."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks, I want to keep hold if it a bit longer.",
+                "steps": [
+                  {
+                    "player": "No thanks, I want to keep hold if it a bit longer."
+                  },
+                  {
+                    "npc": "Oh, that's a shame... Come back if you change your mind."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "XfLSjR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has traded the book to the Apothecary previously:",
+        "steps": [
+          {
+            "npc": "Hmm, this is an interesting tome... But you've already sold me one, thanks!"
+          }
+        ],
+        "id": "lWe-3C"
+      }
+    ],
+    "using-cadava-berries-on-him-after-romeo-and-juliet": [
+      {
+        "npc": "I don't need those any more."
+      }
+    ],
+    "treasure-trails-beginner": [
+      {
+        "npc": "Well done."
+      },
+      {
+        "type": "condition",
+        "text": "If reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've found a new clue!",
+            "id": "W1mN6w"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gJ2xv1"
+      },
+      {
+        "type": "condition",
+        "text": "If reward is a casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "9te6IJ"
+          }
+        ],
+        "id": "n37M7B"
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Very well done. This is for you."
+      },
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "ZiQ-Ld"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "xaNKy2"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "-4sq3B"
+          }
+        ],
+        "id": "ghsqak"
+      }
+    ]
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "default": "standard-dialogue-subsequent-dialogue",
+  "variants": {
+    "standard-dialogue-initial-dialogue": [
+      {
+        "npc": "I'm busy here. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Please tell me about what you're doing.",
+            "steps": [
+              {
+                "player": "Please tell me about what you're doing."
+              },
+              {
+                "npc": "Gangs. It's the gangs from the slums in the east. Those ruffians are always hatching schemes, whether it's smuggling or extortion or even plain street violence."
+              },
+              {
+                "npc": "I'm in charge of the investigations unit. Sometimes an informant will let us know when a gang is meeting. Then we can send in the troops and get them."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I help?",
+                    "steps": [
+                      {
+                        "player": "Can I help?"
+                      },
+                      {
+                        "npc": "That would be very welcome. Information about gang meetings is written on the notice board when it's received. When you see a meeting announced there, go and deal with 'em."
+                      },
+                      {
+                        "npc": "If they drop any documents, bring them to me for an extra reward."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Do you know of any meetings now?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "JzKhKm"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'll be off.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "Pctbzi"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You sound busy. I'll be off.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "8oWVym"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You sound busy. I'll be off.",
+            "steps": [
+              {
+                "player": "You sound busy. I'll be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-subsequent-dialogue": [
+      {
+        "npc": "Hello again. Thanks for offering to help deal with the criminal gangs."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you know of any meetings now?",
+            "steps": [
+              {
+                "player": "Do you know of any meetings now?"
+              },
+              {
+                "type": "condition",
+                "text": "If there are no gang meetings active:",
+                "steps": [
+                  {
+                    "npc": "No, not at the moment. Keep checking the notice board - information is written there when we receive it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "FaqHJB"
+              },
+              {
+                "type": "condition",
+                "text": "If there are are gang meetings active:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(See here for the locations.)",
+                    "id": "daWYF1"
+                  },
+                  {
+                    "npc": "We've received reports of a gang [in location]! They're meeting [in location]."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the meeting is in progress:",
+                    "steps": [
+                      {
+                        "npc": "We believe the meeting is in progress now."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "ZyZuiE"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the meeting is about to start:",
+                    "steps": [
+                      {
+                        "npc": "We believe the meeting is about to start imminently."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "BlvYGK"
+                  },
+                  {
+                    "npc": "We believe the meeting will start in about [number] minutes."
+                  }
+                ],
+                "id": "YuvDB5"
+              }
+            ]
+          },
+          {
+            "text": "Remind me, what do I do for this?",
+            "steps": [
+              {
+                "player": "Remind me, what do I do for this?"
+              },
+              {
+                "npc": "Gang meeting information is written on the notice board when it's received from the informants. When you see a meeting announced there, go and deal with 'em."
+              },
+              {
+                "npc": "If they drop any documents, bring them to me for an extra reward."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you know of any meetings now?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "aMM88a"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll be off.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Od5PRk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "player": "I'll be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-holding-intelligence": [
+      {
+        "type": "reference",
+        "target": "Transcript:Captain Ginea",
+        "section": "Delivering intelligence",
+        "text": "(Same as below)",
+        "id": "tVWaeQ",
+        "variant": "delivering-intelligence",
+        "resolved": true,
+        "page_available": true
+      }
+    ],
+    "checking-the-information-board-before-talking-to-her": [
+      {
+        "npc": "Come over here and talk to me before you mess around with that."
+      }
+    ],
+    "using-items-on-her-intelligence": [
+      {
+        "type": "reference",
+        "target": "Transcript:Captain Ginea",
+        "section": "Delivering intelligence",
+        "text": "(Same as below)",
+        "id": "2msv-N",
+        "variant": "delivering-intelligence",
+        "resolved": true,
+        "page_available": true
+      }
+    ],
+    "using-items-on-her-any-other-item": [
+      {
+        "npc": "No thanks, I don't need that."
+      }
+    ],
+    "delivering-intelligence": [
+      {
+        "type": "message",
+        "text": "Captain Ginea exchanges your [x] intelligence documents for training manuals.",
+        "id": "Vefpv_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has talked to Captain Ginea about organised crime:",
+        "steps": [
+          {
+            "npc": "Thank you. This will help us track down more gang meetings in future."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Ur38zI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not talked to Captain Ginea about organised crime:",
+        "steps": [
+          {
+            "npc": "I don't remember asking you to help, but... okay, thank you, whoever you are."
+          }
+        ],
+        "id": "U8rTDT"
+      }
+    ],
+    "historical-dialogue-if-the-player-does-not-have-enough-favour": [
+      {
+        "npc": "Please leave. There is confidential information in here, and you are not authorised to view it."
+      },
+      {
+        "type": "action",
+        "text": "You do not have enough Shayzien favour. Current favour: [current favour in %] - Required: 40.0%",
+        "id": "sIYZW2"
+      }
+    ]
+  }
+}

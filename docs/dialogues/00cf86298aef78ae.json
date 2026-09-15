@@ -1,0 +1,170 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-fremennik-isles": [
+      {
+        "npc": "Thank you for leading the Burgher's militia against the Troll King."
+      },
+      {
+        "npc": "Now that the trolls are leaderless I have repaired the bridge to the central isle for you as best I can."
+      },
+      {
+        "player": "Thanks Thakkrad. Does that mean I have access to the runite ores on that island?"
+      },
+      {
+        "npc": "Yes, you should be able to mine runite there if you wish."
+      }
+    ],
+    "speaking-to-thakkrad-about-curing-hides": [
+      {
+        "type": "choice",
+        "prompt": "What can I help you with?",
+        "options": [
+          {
+            "text": "Cure my yak-hide, please.",
+            "steps": [
+              {
+                "player": "Cure my yak-hide, please."
+              },
+              {
+                "npc": "I will cure yak-hide for a fee of 5 gp per hide."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no yak-hides:",
+                "steps": [
+                  {
+                    "npc": "You have no yak-hide to cure."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "83Kt6e"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least five coins per yak-hide:",
+                "steps": [
+                  {
+                    "npc": "You don't have enough gold to pay me!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "z3yOfa"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has yak-hides and at least five coins per yak-hide:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "How many hides do you want cured?",
+                    "options": [
+                      {
+                        "text": "Cure all my hides.",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "all their yak-hides and coins equal to five times the number of yak-hides",
+                            "id": "CZGA06"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "one cured yak-hide per yak-hide given",
+                            "id": "NccJfO"
+                          },
+                          {
+                            "npc": "There you go."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cure one hide.",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "one yak-hide and five coins",
+                            "id": "iCMAZX"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "one cured yak-hide",
+                            "id": "qk36tk"
+                          },
+                          {
+                            "npc": "There you go."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cure no hide.",
+                        "steps": [
+                          {
+                            "npc": "Bye."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Can you cure any other type of leather?",
+                        "steps": [
+                          {
+                            "player": "Can you cure any other type of leather?"
+                          },
+                          {
+                            "npc": "Other types of leather? Why would you need any other type of leather?"
+                          },
+                          {
+                            "player": "I'll take that as a no then."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "yyk6t2"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Nothing, thanks.",
+                    "steps": [
+                      {
+                        "player": "Nothing, thanks."
+                      },
+                      {
+                        "npc": "See you later."
+                      },
+                      {
+                        "npc": "You won't find anyone else who can cure yak-hide."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

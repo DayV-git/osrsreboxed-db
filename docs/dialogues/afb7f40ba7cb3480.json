@@ -1,0 +1,133 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome traveller, can I get you a drink or some food?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I'd like a beer please.",
+          "steps": [
+            {
+              "player": "I'd like a beer please."
+            },
+            {
+              "npc": "That'll be 2 gold coins."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Pay.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "If the player has at least 2 coins on them:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "Beer",
+                          "id": "Nh6rd3"
+                        },
+                        {
+                          "npc": "Thanks for your custom."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "lOu2aG"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have at least 2 coins on them:",
+                      "steps": [
+                        {
+                          "player": "Sorry, I don't have 2 coins on me."
+                        }
+                      ],
+                      "id": "dM71eA"
+                    }
+                  ]
+                },
+                {
+                  "text": "Don't pay.",
+                  "steps": [
+                    {
+                      "player": "Sorry, I changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "I'd like some food please.",
+          "steps": [
+            {
+              "player": "I'd like some food please."
+            },
+            {
+              "npc": "I can make you a stew for 20 gold coins."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Pay.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "If the player has at least 20 coins on them:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "Stew",
+                          "id": "Z8Lt7i"
+                        },
+                        {
+                          "npc": "Thanks for your custom."
+                        }
+                      ],
+                      "id": "4Ho6yQ"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have at least 20 coins on them:",
+                      "steps": [
+                        {
+                          "player": "Sorry, I don't have 20 coins on me."
+                        }
+                      ],
+                      "id": "WxPt3K"
+                    }
+                  ]
+                },
+                {
+                  "text": "Don't pay.",
+                  "steps": [
+                    {
+                      "player": "Sorry, I changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "I have to go",
+          "steps": [
+            {
+              "player": "I have to go."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

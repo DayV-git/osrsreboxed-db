@@ -1,0 +1,200 @@
+{
+  "steps": [
+    {
+      "npc": "Good morning, what would you like?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What do you have?",
+          "steps": [
+            {
+              "player": "What do you have?"
+            },
+            {
+              "npc": "Well we have beer, or if you want some food, we have our home made stew and meat pies."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Beer please.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "5fiK5N"
+                    }
+                  ]
+                },
+                {
+                  "text": "I'll try the meat pie.",
+                  "steps": [
+                    {
+                      "player": "I'll try the meat pie."
+                    },
+                    {
+                      "npc": "Ok, that'll be 16 coins."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has at least 16 coins:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "give",
+                          "text": "16 coins",
+                          "id": "V1d7Na"
+                        },
+                        {
+                          "type": "message",
+                          "text": "You buy a nice hot meat pie.",
+                          "id": "cHtSo9"
+                        },
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "a meat pie",
+                          "id": "Y4aArb"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "HUOFEu"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have least 16 coins:",
+                      "steps": [
+                        {
+                          "player": "Oh dear. I don't seem to have enough money."
+                        }
+                      ],
+                      "id": "VmG-kx"
+                    }
+                  ]
+                },
+                {
+                  "text": "Could I have some stew please?",
+                  "steps": [
+                    {
+                      "player": "Could I have some stew please?"
+                    },
+                    {
+                      "npc": "A bowl of stew, that'll be 20 coins please."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has at least 20 coins:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "give",
+                          "text": "20 coins",
+                          "id": "vK7RXN"
+                        },
+                        {
+                          "type": "message",
+                          "text": "You buy a bowl of home made stew.",
+                          "id": "uGlt2E"
+                        },
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "a stew",
+                          "id": "EKnotq"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "qw_xA-"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have at least 20 coins:",
+                      "steps": [
+                        {
+                          "player": "Oh dear. I don't seem to have enough money."
+                        }
+                      ],
+                      "id": "-HcWfn"
+                    }
+                  ]
+                },
+                {
+                  "text": "I don't really want anything thanks.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "li0T7z"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Beer please.",
+          "steps": [
+            {
+              "player": "Beer please."
+            },
+            {
+              "npc": "One beer coming up. Ok, that'll be two coins."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has at least 2 coins:",
+              "steps": [
+                {
+                  "type": "action",
+                  "action": "give",
+                  "text": "2 coins",
+                  "id": "jEvkgA"
+                },
+                {
+                  "type": "message",
+                  "text": "You buy a pint of beer.",
+                  "id": "h2xsuB"
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "a beer",
+                  "id": "4KV5Yt"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "1yO7Fm"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have at least 2 coins:",
+              "steps": [
+                {
+                  "player": "Oh dear. I don't seem to have enough money."
+                }
+              ],
+              "id": "90CAxu"
+            }
+          ]
+        },
+        {
+          "text": "I don't really want anything thanks.",
+          "steps": [
+            {
+              "player": "I don't really want anything thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

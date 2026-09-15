@@ -1,0 +1,259 @@
+{
+  "steps": [
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What can you do to help a bold adventurer like myself?",
+          "steps": [
+            {
+              "player": "What can you do to help a bold adventurer like myself?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have 99 Prayer:",
+              "steps": [
+                {
+                  "npc": "I can tell you about holy symbols or the Skillcape of Prayer."
+                },
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "Tell me about holy symbols.",
+                      "steps": [
+                        {
+                          "player": "Tell me about holy symbols."
+                        },
+                        {
+                          "npc": "If you have a silver star, which is the holy symbol of Saradomin, then I can bless it. Then if you are wearing it, it will help you when you are praying."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Tell me about the Skillcape of Prayer.",
+                      "steps": [
+                        {
+                          "player": "Tell me about the Skillcape of Prayer."
+                        },
+                        {
+                          "npc": "The Skillcape of Prayer is the hardest of all the skillcapes to get; it requires much devotion to acquire but also imbues the wearer with the ability to briefly fly!"
+                        },
+                        {
+                          "npc": "The Cape of Prayer also increases the amount of Prayer points restored from drinking potions when it is equipped. Is there something else I can do for you?"
+                        },
+                        {
+                          "type": "choice",
+                          "options": [
+                            {
+                              "text": "Yes, what else can you do for a bold adventurer like myself?",
+                              "steps": [
+                                {
+                                  "player": "What can you do to help a bold adventurer like myself?"
+                                },
+                                {
+                                  "type": "jump",
+                                  "reference": "above",
+                                  "id": "2Uq65b"
+                                }
+                              ]
+                            },
+                            {
+                              "text": "No, thank you.",
+                              "steps": [
+                                {
+                                  "player": "No thank you."
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "VjD3XF"
+            },
+            {
+              "type": "condition",
+              "text": "If the player is carrying an unblessed symbol:",
+              "steps": [
+                {
+                  "npc": "Well I can bless that star of Saradomin you have, or I could tell you about the Skillcape of Prayer!"
+                },
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "Bless star, please.",
+                      "steps": [
+                        {
+                          "player": "Yes please."
+                        },
+                        {
+                          "type": "unavailable",
+                          "id": "4VbQ5b"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Tell me about the Skillcape of Prayer.",
+                      "steps": [
+                        {
+                          "player": "Tell me about the Skillcape of Prayer."
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "above",
+                          "id": "oZUg6C"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "None of those, thanks.",
+                      "steps": [
+                        {
+                          "player": "No thank you."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "cTJutw"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has 99 Prayer:",
+              "steps": [
+                {
+                  "npc": "Well, seeing as you are so devout in praising the gods, I could sell you a Skillcape of Prayer, which increases the amount of Prayer points restored when drinking potions."
+                },
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "Yes, please. So few people have Skillcapes of Prayer!",
+                      "steps": [
+                        {
+                          "player": "Yes, please. So few people have Skillcapes of Prayer!"
+                        },
+                        {
+                          "npc": "One as pious as you has certainly earned the right to wear one, but the monastery requires a donation of 99000 coins for the privilege."
+                        },
+                        {
+                          "type": "choice",
+                          "options": [
+                            {
+                              "text": "I'm afraid I can't afford that.",
+                              "steps": [
+                                {
+                                  "player": "No thanks, I can't afford one of those."
+                                },
+                                {
+                                  "npc": "I am sorry to hear that. If you should find yourself in wealthier times come back and see me."
+                                }
+                              ]
+                            },
+                            {
+                              "text": "I am always happy to contribute towards the monastery's upkeep.",
+                              "steps": [
+                                {
+                                  "player": "I am always happy to contribute towards the monastery's upkeep."
+                                },
+                                {
+                                  "type": "condition",
+                                  "text": "If the player does not have at least 99,000 coins:",
+                                  "steps": [
+                                    {
+                                      "player": "But, unfortunately, I don't have enough money with me."
+                                    },
+                                    {
+                                      "npc": "Well, come back and see me when you do."
+                                    },
+                                    {
+                                      "type": "end"
+                                    }
+                                  ],
+                                  "id": "QILyPM"
+                                },
+                                {
+                                  "type": "condition",
+                                  "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                                  "steps": [
+                                    {
+                                      "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                                    },
+                                    {
+                                      "type": "end"
+                                    }
+                                  ],
+                                  "id": "Lp8lkP"
+                                },
+                                {
+                                  "type": "condition",
+                                  "text": "If the player has at least 99,000 coins and enough inventory space:",
+                                  "steps": [
+                                    {
+                                      "type": "action",
+                                      "action": "receive",
+                                      "text": "a Prayer cape and hood",
+                                      "id": "QUJl3s"
+                                    },
+                                    {
+                                      "npc": "Excellent! Wear that cape with pride my friend."
+                                    }
+                                  ],
+                                  "id": "Zdsntl"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No thanks, I can't afford one of those.",
+                      "steps": [
+                        {
+                          "type": "jump",
+                          "reference": "above",
+                          "id": "yStbYj"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "pkGsBZ"
+            }
+          ]
+        },
+        {
+          "text": "Praise be to Saradomin!",
+          "steps": [
+            {
+              "player": "Praise be to Saradomin!"
+            },
+            {
+              "npc": "Yes! Praise he who brings life to this world."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

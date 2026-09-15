@@ -1,0 +1,129 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "If you're looking for dynamite, you've come to the right place, human."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "The name's Thirus Urkar. The Urkars have supplied the blast mines with the finest dynamite since they opened many ages ago."
+              },
+              {
+                "npc": "Now, can I help you today?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "g2q1bj"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to buy some dynamite.",
+            "steps": [
+              {
+                "player": "I'd like to buy some dynamite."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required amount of Lovakengj favour:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Thirus Urkar's Fine Dynamite Store",
+                    "id": "msmqbo"
+                  }
+                ],
+                "id": "SVno_a"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required amount of Lovakengj favour:",
+                "steps": [
+                  {
+                    "npc": "Sorry, human, I'm afraid you need more of a reputation in Lovakengj before I can sell you anything."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You do not have enough Lovakengj favour. Current favour: [0.0-14.9]% - Required: 15.0%",
+                    "id": "akzTxA"
+                  }
+                ],
+                "id": "Hz0zGG"
+              }
+            ]
+          },
+          {
+            "text": "No, I'm fine.",
+            "steps": [
+              {
+                "player": "No, I'm fine."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-trade": [
+      {
+        "type": "condition",
+        "text": "If the player has the required amount of Lovakengj favour:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "G4rn7v"
+          }
+        ],
+        "id": "ksIfhg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the required amount of Lovakengj favour:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "ZHRIcq"
+          }
+        ],
+        "id": "Uu2x_O"
+      }
+    ],
+    "claiming-dynamite": [
+      {
+        "type": "condition",
+        "text": "If the player has not claimed their free dynamite for the day:",
+        "steps": [
+          {
+            "npc": "There you go, [20/40/80] free dynamite. Return tomorrow for some more."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Ux3jqv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has already claimed their free dynamite for the day:",
+        "steps": [
+          {
+            "npc": "I've already given you your free allowance for today. Come back to me tomorrow for some more."
+          }
+        ],
+        "id": "9wV5o7"
+      }
+    ]
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "default": "standard-dialogue-before-the-grand-tree",
+  "variants": {
+    "standard-dialogue-before-the-grand-tree": [
+      {
+        "npc": "Welcome to Gnome Air!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's Gnome Air?",
+            "steps": [
+              {
+                "player": "What's Gnome Air?"
+              },
+              {
+                "npc": "Gnome Air is the finest airline in Gielinor!"
+              },
+              {
+                "npc": "Well...it's the only real airline in Gielinor."
+              },
+              {
+                "npc": "Ha!"
+              },
+              {
+                "player": "What do you mean by real airline?"
+              },
+              {
+                "npc": "Well there's a dodgy magic carpet operation in the desert, I doubt it will ever take off... Ha!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "DXGghS"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "player": "Where can you take me?"
+              },
+              {
+                "npc": "Glough has ordered that I only take gnomes on Gnome Air."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "cTzuFc"
+              }
+            ]
+          },
+          {
+            "text": "How much for one-way to Varrock?",
+            "steps": [
+              {
+                "player": "How much for one-way to Varrock?"
+              },
+              {
+                "npc": "I can't take you anywhere."
+              },
+              {
+                "player": "How come?"
+              },
+              {
+                "npc": "I would, but Glough has told me not to take humans on Gnome Air."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "98fgaf"
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you to it.",
+            "steps": [
+              {
+                "player": "I'll leave you to it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-tree-gnome-stronghold": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you take me on the glider?",
+            "steps": [
+              {
+                "player": "Can you take me on the glider?"
+              },
+              {
+                "npc": "Of course!"
+              },
+              {
+                "type": "action",
+                "text": "Glider transport interface opens.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Glider transport",
+                "id": "3AxNgH"
+              }
+            ]
+          },
+          {
+            "text": "Why are gliders better than other transport?",
+            "steps": [
+              {
+                "player": "Why are gliders better than other transport?"
+              },
+              {
+                "npc": "Oh we have a whole network! It's wonderful for getting to hard to reach places."
+              },
+              {
+                "npc": "There are so many places where your teleports cannot reach!"
+              },
+              {
+                "player": "How did you all manage to build such an established network?"
+              },
+              {
+                "npc": "I think you'll find that is a gnome trade secret!"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I don't want anything now.",
+            "steps": [
+              {
+                "player": "Sorry, I don't want anything now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-karamja": [
+      {
+        "npc": "I don't think I can fix this. Looks like I'll be heading back by foot."
+      }
+    ],
+    "standard-dialogue-east-of-varrock": [
+      {
+        "npc": "Ah, how embarrassing."
+      },
+      {
+        "player": "What happened?"
+      },
+      {
+        "npc": "A bit of a technical hitch with the landing gear. I won't be able to fly you anywhere, sorry."
+      }
+    ],
+    "gnome-restaurant": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "Drda0o"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VHWmqs"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "Fe8dkP"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "N0TI9Y"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Captain Errdo",
+            "id": "b9SSSR"
+          },
+          {
+            "npc": "An excellent delivery. Thank you."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "wKmHmU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "ZovSaJ"
+                  }
+                ],
+                "id": "iCNiqU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "cWDYok"
+              }
+            ],
+            "id": "c4Rzsx"
+          }
+        ],
+        "id": "loBPDn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "bAX3uE"
+          }
+        ],
+        "id": "pJ7Ad0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Private [player name], atten-SHUN! You've been recommended for my corps. Do you think you can be the best?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sir, yes sir!",
+            "steps": [
+              {
+                "player": "Sir, yes sir!"
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported to the Drill Demon training area.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "llQmQh"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "wQTsNv"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'm not interested.",
+            "steps": [
+              {
+                "player": "No thanks, I'm not interested."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-the-drill-demon-training-area-after-being-teleported": [
+      {
+        "npc": "Move yourself, Private! Follow my orders and you may, just may, leave here in a fit state for my corps!"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "Gw5bnX"
+      }
+    ],
+    "at-the-drill-demon-training-area-trying-to-use-an-exercise-mat-before-an-instruction": [
+      {
+        "npc": "I haven't given you the order yet, worm!"
+      },
+      {
+        "type": "unavailable",
+        "id": "OLyYsw"
+      }
+    ],
+    "at-the-drill-demon-training-area-after-performing-the-correct-exercise-or-starting-the-random-event": [
+      {
+        "type": "condition",
+        "text": "If the player is not finished with the event:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "I want to see you on that mat doing star jumps, private!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Go on this mat and do some star jumps!",
+                    "id": "rXV-vQ"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay.",
+                        "steps": [
+                          {
+                            "player": "Okay."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I want to leave.",
+                        "steps": [
+                          {
+                            "player": "I want to leave."
+                          },
+                          {
+                            "npc": "Pathetic. Get out of here then."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "Drop and give me push ups on that mat, private!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Go to this mat and do some push ups!",
+                    "id": "gkkMYF"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "PB3MTk"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "Get yourself over there and jog on that mat, private!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Go to this mat and jog on the spot!",
+                    "id": "Y0Qnmt"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "tE2osq"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "npc": "Get on that mat and give me sit ups, private!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Go to this mat and do some sit ups!",
+                    "id": "C3fbZC"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "60mugK"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "xj_5Eg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is finished with the event:",
+        "steps": [
+          {
+            "npc": "Well I'll be, you actually did it, Private. Now take this and get out of my sight."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "one of the possible rewards from the Drill Demon random event",
+            "id": "1VlThU"
+          },
+          {
+            "type": "action",
+            "text": "The player is teleported back to their original position.",
+            "action": "teleport",
+            "action_source": "text",
+            "id": "Jwd7HG"
+          }
+        ],
+        "id": "axetPV"
+      }
+    ],
+    "at-the-drill-demon-training-area-after-performing-the-incorrect-exercise": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Wrong exercise, worm! Drop and give me push ups on that mat, private!"
+              },
+              {
+                "type": "message",
+                "text": "Go to this mat and do some push ups!",
+                "id": "8T0oMW"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay.",
+                    "steps": [
+                      {
+                        "player": "Okay."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I want to leave.",
+                    "steps": [
+                      {
+                        "player": "I want to leave."
+                      },
+                      {
+                        "npc": "Pathetic. Get out of here then."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Wrong exercise, worm! I want to see you on that mat doing star jumps, private!"
+              },
+              {
+                "type": "message",
+                "text": "Go to this mat and do some star jumps!",
+                "id": "DTBo6X"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ZtoMHA"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Wrong exercise, worm! Get on that mat and give me sit ups, private!"
+              },
+              {
+                "type": "message",
+                "text": "Go to this mat and do some sit ups!",
+                "id": "PpzhB0"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "kFqE7-"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Wrong exercise, worm! Get yourself over there and jog on that mat, private!"
+              },
+              {
+                "type": "message",
+                "text": "Go to this mat and jog on the spot!",
+                "id": "6C7373"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "8ZkYmS"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-player-completed-the-event-or-is-in-a-zone-where-the-random-event-isn-t-allowed": [
+      {
+        "npc": "As you were, soldier."
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "Upon spawning in for the player:",
+        "steps": [
+          {
+            "npc": "Private [player name], atten-SHUN!"
+          }
+        ],
+        "id": "0V_aIE"
+      },
+      {
+        "type": "condition",
+        "text": "While waiting for a response by the player:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "Private [player name], atten-SHUN!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "Stop day-dreaming, Private [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "Get your rear in gear, Private [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "npc": "I want you for my corps, Private [player name]!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "vU8gqS"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not respond in time:",
+        "steps": [
+          {
+            "npc": "Maybe later."
+          }
+        ],
+        "id": "lTFCh9"
+      }
+    ]
+  }
+}

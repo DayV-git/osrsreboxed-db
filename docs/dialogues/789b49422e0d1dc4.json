@@ -1,0 +1,454 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Greetings. Can I help you at all?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any quests I could do?",
+            "steps": [
+              {
+                "player": "Do you have any quests I could do?"
+              },
+              {
+                "npc": "A quest? What a strange notion. Do you normally go around asking complete strangers for quests?"
+              },
+              {
+                "player": "Er, yes, now you come to mention it."
+              },
+              {
+                "npc": "Oh, ok then. Well, no, I don't; sorry."
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "A good question; straight and to the point."
+              },
+              {
+                "npc": "My name is Matthias, I am a falconer, and this is where I train my birds."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have any quests I could do?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "yRx6dP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That sounds like fun; could I have a go?",
+                    "steps": [
+                      {
+                        "player": "That sounds like fun; could I have a go?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Without 43 Hunter:",
+                        "steps": [
+                          {
+                            "npc": "I'm sorry, but training falcons is a lot of work and I doubt you're up to the task."
+                          },
+                          {
+                            "npc": "I might occasionally lend some of my better trained birds to professionals to hunt with, that being what the birds are trained for after all, but I can't really lend them to anyone else."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "mQgT9J"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player hasn't invested in the Falconry area yet:",
+                        "steps": [
+                          {
+                            "npc": "Training falcons is a lot of work and I doubt you're up to the task. However, I suppose I could let you try hunting with one."
+                          },
+                          {
+                            "npc": "I have some tamer birds that I occasionally lend to rich noblemen who consider it a sufficiently refined sport for their tastes, and you look like the kind who might appreciate a good hunt."
+                          },
+                          {
+                            "npc": "I'd have to request a small fee, mind you; how does 500 gold pieces sound?"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have enough coins in their inventory",
+                            "steps": [
+                              {
+                                "player": "I'm afraid I don't have that much with me."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "_8QOTy"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 500 coins in their inventory",
+                            "steps": [
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Ok, that seems reasonable.",
+                                    "steps": [
+                                      {
+                                        "player": "Ok, that seems reasonable."
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player has gear equipped in their hands or glove slots",
+                                        "steps": [
+                                          {
+                                            "npc": "Good, however you really need both hands free. I'd suggest that you put away your weapons and gloves before we start."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "ubAh_o"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player has other gear equipped that covers their hands",
+                                        "steps": [
+                                          {
+                                            "npc": "Good, however you really need both hands free. I'd suggest that you take off some of that kit you're wearing before we start."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "Boa0_i"
+                                      },
+                                      {
+                                        "type": "condition",
+                                        "text": "If the player has both their hands and glove slots free",
+                                        "steps": [
+                                          {
+                                            "type": "action",
+                                            "action": "receive",
+                                            "text": "Falconer's glove",
+                                            "id": "5S5HLd"
+                                          },
+                                          {
+                                            "type": "message",
+                                            "text": "The falconer gives you a large leather glove and brings one of the smaller birds over to land on it.",
+                                            "id": "WeL4C0"
+                                          },
+                                          {
+                                            "npc": "Don't worry; I'll keep an eye on you to make sure you don't upset it too much."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ],
+                                        "id": "UT06YE"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'm not interested then, thanks.",
+                                    "steps": [
+                                      {
+                                        "player": "I'm not interested then, thanks."
+                                      },
+                                      {
+                                        "npc": "Well, you're welcome to come back if you change your mind."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "id": "tJqpCo"
+                          }
+                        ],
+                        "id": "2Q8pLZ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has invested in the Falconry area:",
+                        "steps": [
+                          {
+                            "npc": "Absolutely, are you ready?"
+                          },
+                          {
+                            "player": "I am!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The falconer gives you a large leather glove and brings one of the smaller birds over to land on it.",
+                            "id": "BuQW8e"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "wtKM8E"
+                          }
+                        ],
+                        "id": "NG8NHz"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "That doesn't sound like my sort of thing.",
+                    "steps": [
+                      {
+                        "player": "That doesn't sound like my sort of thing."
+                      },
+                      {
+                        "npc": "Fair enough; it does require a great deal of patience and skill, so I can understand if you might feel intimidated."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What's this falconry thing all about then?",
+                    "steps": [
+                      {
+                        "player": "What's this falconry thing all about then?"
+                      },
+                      {
+                        "npc": "Well, some people see it as a sport, although such a term does not really convey the amount of patience and dedication required to be proficient at the task."
+                      },
+                      {
+                        "npc": "Putting it simply, it is the training and use of birds of prey in hunting quarry."
+                      },
+                      {
+                        "player": "So it's like keeping a pet then?"
+                      },
+                      {
+                        "npc": "Not exactly, no. Such a bird can never really be considered tame in the same way that a dog can."
+                      },
+                      {
+                        "npc": "They can be trained to associate people or places with food though, and, as such, a good falconer can get a trained bird to do as he wishes."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "IqLAQD"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could I have a go with your bird?",
+            "steps": [
+              {
+                "player": "Could I have a go with your bird?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "hN1Hjt"
+              }
+            ]
+          },
+          {
+            "text": "Could I invest in your setup here?",
+            "steps": [
+              {
+                "player": "Could I invest in your setup here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player hasn't invested in the Falconry area:",
+                "steps": [
+                  {
+                    "npc": "If you'd like to put money forward for training more falcons, be my guest!"
+                  },
+                  {
+                    "player": "Would I get any benefit from this?"
+                  },
+                  {
+                    "npc": "I suppose I could let you use my falcons for free if you stump up enough cash. How does 500,000 coins sound?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have 500,000 coins in their inventory:",
+                    "steps": [
+                      {
+                        "player": "Ah, I don't have that much on me right now."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "iuDtHd"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has 500,000 coins in their inventory:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "prompt": "Unlock permanent access for 500,000 coins?",
+                        "options": [
+                          {
+                            "text": "Yes",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "action": "give",
+                                "text": "500,000 coins",
+                                "id": "_q4osw"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No",
+                            "steps": [
+                              {
+                                "player": "Hmm, that seems a little steep. I'll think on it."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "9BOvtV"
+                  }
+                ],
+                "id": "tE3hf8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has invested in the Falconry area already:",
+                "steps": [
+                  {
+                    "npc": "I appreciate that you want to invest more, but I really don't need it right now!"
+                  }
+                ],
+                "id": "G1e5fY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-falconer-s-glove-is-equipped": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Ah, you're back. How are you getting along with [him/her/them] then?"
+      },
+      {
+        "player": "It's certainly harder than it looks."
+      },
+      {
+        "npc": "Sorry, but I was talking to the falcon, not you. But yes it is; have you had enough yet?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Actually, I'd like to keep trying a little longer.",
+            "steps": [
+              {
+                "player": "Actually, I'd like to keep trying a little longer."
+              },
+              {
+                "player": "Ok then, just come talk to me when you're done."
+              }
+            ]
+          },
+          {
+            "text": "I think I'll leave it for now.",
+            "steps": [
+              {
+                "player": "I think I'll leave it for now."
+              },
+              {
+                "type": "message",
+                "text": "You give the falcon and glove back to Matthias.",
+                "id": "Ga4D0W"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-player-lost-the-falcon": [
+      {
+        "player": "Hi, er, your falcon ran away."
+      },
+      {
+        "npc": "Falcons aren't domesticated you know. You can't expect them to just automatically return to you. Fortunately for you, they can learn to associate areas with food. He'll probably be back on his post."
+      },
+      {
+        "npc": "Do you want me to fetch him for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please.",
+            "steps": [
+              {
+                "player": "Yes, please."
+              },
+              {
+                "type": "message",
+                "text": "The falconer brings a bird over to land on your glove.",
+                "id": "nDf2pq"
+              },
+              {
+                "npc": "Right, try to be a bit more careful this time; these birds take a long time to raise. I'd rather not lose one."
+              }
+            ]
+          },
+          {
+            "text": "Actually, I think I'll leave it for now.",
+            "steps": [
+              {
+                "player": "Actually, I think I'll leave it for now."
+              },
+              {
+                "type": "message",
+                "text": "You give the falcon glove back to Matthias.",
+                "id": "iyXbN6"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-falcon-is-holding-a-kebbit": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Hmm, well it looks like you've got the hang of setting falcons on creatures. However, I suggest you keep track of it; left to its own devices it'll be more than happy to fly off on its own to find food."
+      }
+    ]
+  }
+}

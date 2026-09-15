@@ -1,0 +1,123 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "message",
+        "text": "This gnome lady appears to be singing ... to her toads.",
+        "id": "IzTZHY"
+      },
+      {
+        "npc": "La La La, toadies in their holeys! .. Oh hello, I didn't notice you."
+      },
+      {
+        "player": "Hello, What do you do here?"
+      },
+      {
+        "npc": "I look after the toads and worms. They are very useful in gnome cooking, don't you know."
+      },
+      {
+        "player": "Does singing to the toads help them grow?"
+      },
+      {
+        "npc": "Don't be silly, I just sing to pass the time while looking after them!"
+      },
+      {
+        "player": "Of course..."
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "tj6aXh"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "0sOOpa"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "AaCG6j"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1ZyUID"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Sarble",
+            "id": "Y9Sq_O"
+          },
+          {
+            "npc": "Thank you kindly, you might want to grab some toads and worms while you are here."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "BI3H9s"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "VLcoNU"
+                  }
+                ],
+                "id": "OiXs_c"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "6doGt5"
+              }
+            ],
+            "id": "-pC3sz"
+          }
+        ],
+        "id": "VyaWdj"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "z5M3CC"
+          }
+        ],
+        "id": "eNhpQD"
+      }
+    ]
+  }
+}

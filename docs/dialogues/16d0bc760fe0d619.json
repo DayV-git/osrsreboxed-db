@@ -1,0 +1,140 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there youngster."
+      },
+      {
+        "player": "Who are you calling youngster??"
+      },
+      {
+        "npc": "Why you. Unless you have seen the small village of Falador grow into a heaving city like I have of course!"
+      },
+      {
+        "player": "Err... no..."
+      },
+      {
+        "npc": "Well then! Enjoy your stay in our mountain home."
+      }
+    ],
+    "after-the-recipe-for-disaster-subquest": [
+      {
+        "npc": "Hello again, youngster."
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "About your son...",
+            "steps": [
+              {
+                "player": "How's your son getting on, now that I've rescued him from the time bubble and the culinaromancer?"
+              },
+              {
+                "npc": "My son's fine. I'm not so sure about you, though. Maybe you should lay down in a dark room until the babbling stops."
+              }
+            ]
+          },
+          {
+            "text": "Can I have another rock cake?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has a rock cake in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You're already carrying one."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "What would you like to say?",
+                    "options": [
+                      {
+                        "text": "Yes, but I want another one.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "zGSZZ9"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Forget it.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "9LEXSe"
+              },
+              {
+                "npc": "Aye, I've still got enough ingredients from before, but I'll want 100 coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 100 coins:",
+                "steps": [
+                  {
+                    "player": "Maybe later."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "RCICmB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 100 coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "What would you like to say?",
+                    "options": [
+                      {
+                        "text": "Okay, 100 coins will be fine.",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "100 coins",
+                            "id": "XpQQHh"
+                          },
+                          {
+                            "type": "action",
+                            "text": "(Rohak cooks the cake then places it on the table)",
+                            "id": "90AKbB"
+                          },
+                          {
+                            "type": "unavailable",
+                            "id": "CqeGNV"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "npc": "I'm not doing it for less, even for a mate."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "BY_3gG"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

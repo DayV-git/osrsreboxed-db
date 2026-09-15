@@ -1,0 +1,122 @@
+{
+  "default": "standard-dialogue-before-starting-fairytale-i-growing-pains",
+  "variants": {
+    "standard-dialogue-before-starting-fairytale-i-growing-pains": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do crops and such survive down here?",
+            "steps": [
+              {
+                "player": "How do crops and such survive down here? Surely they need a bit of sunlight?"
+              },
+              {
+                "npc": "Clearly you come from a plane dependent on sunlight. Down here, the plants grow in the aura of faerie."
+              }
+            ]
+          },
+          {
+            "text": "What's so good about this place?",
+            "steps": [
+              {
+                "player": "What's so good about this place?"
+              },
+              {
+                "npc": "Zanaris is a meeting point of cultures. Those from many worlds converge here to exchange knowledge and goods."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-finishing-fairytale-ii-cure-a-queen": [
+      {
+        "player": "Have you managed to work out a plan yet?"
+      },
+      {
+        "npc": "Not yet, [player name], but it looks like we'll need to ask you for your help again, I'm afraid. I'll be able to tell you more once we have finished making our battle plans."
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Please solve this for me. I have other things to be thinking about."
+      },
+      {
+        "type": "message",
+        "text": "The Fairy Queen has given you a puzzle box!",
+        "id": "PeWf02"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "peADED"
+      }
+    ],
+    "treasure-trails-hard-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "Sorry but you haven't solved the puzzle yet."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "FDt3yz"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Thanks [player name]!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The Fairy Queen has given you another clue scroll!",
+                "id": "MGTGAA"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "cPfLBb"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "ELuXXA"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "vXJUB7"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "uTrb_J"
+              }
+            ],
+            "id": "nrZZ4T"
+          }
+        ],
+        "id": "1lKjIl"
+      }
+    ]
+  }
+}

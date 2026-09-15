@@ -1,0 +1,643 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Ahoy!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Welcome to the Brimhaven Agility Arena!"
+              },
+              {
+                "npc": "If ye want to know more talk to Cap'n Izzy, he found it!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "6Yf1uZ"
+              }
+            ]
+          },
+          {
+            "text": "What do you do?",
+            "steps": [
+              {
+                "player": "What do you do?"
+              },
+              {
+                "npc": "I be the Jack o' Tickets. I exchange the tickets ye collect in the Agility Arena for more stuff. Ye can obtain more agility experience or some items ye won't find anywhere else!"
+              },
+              {
+                "player": "Sounds good!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "Qc2011"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to trade in my tickets, please.",
+            "steps": [
+              {
+                "player": "I'd like to trade in my tickets, please."
+              },
+              {
+                "npc": "Aye, ye be on the right tack."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has both old and new tickets:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "You have both old and new tickets, which shop do you want to open?",
+                    "options": [
+                      {
+                        "text": "New Shop",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "open_shop",
+                            "target": "Agility Arena Store",
+                            "id": "q7s30m"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Old Shop",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "open_shop",
+                            "target": "Brimhaven Agility Arena Ticket Exchange",
+                            "id": "tTyutx"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Ql8SYr"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Agility Arena Store",
+                    "id": "GUCzp8"
+                  }
+                ],
+                "id": "EKqasr"
+              }
+            ]
+          },
+          {
+            "text": "I have a question about my Achievement Diary.",
+            "steps": [
+              {
+                "player": "I have a question about my Achievement Diary."
+              },
+              {
+                "type": "condition",
+                "text": "After completing easy tier:",
+                "steps": [
+                  {
+                    "player": "I've done all the easy tasks in my Karamja Achievement Diary."
+                  },
+                  {
+                    "npc": "Arr, ye have that, I see yer list. I s'pose ye'll be wantin' yer reward then!"
+                  },
+                  {
+                    "player": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player's inventory does not have at least 2 free inventory spaces:",
+                        "steps": [
+                          {
+                            "npc": "Arrr, ye'll 'ave ta come back when ye has more space in yer pack."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "Gq1MzE"
+                      }
+                    ]
+                  },
+                  {
+                    "npc": "These 'ere Karamja gloves be a symbol of yer explorin' on the island. I'll 'ave a word with some of the seafarin' folk who sail to Port Sarim and Ardougne, so they'll take ye on board half price if ye be wearin' them."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "Ku9sOm"
+                  }
+                ],
+                "id": "3TwaWo"
+              },
+              {
+                "type": "condition",
+                "text": "After completing medium tier:",
+                "steps": [
+                  {
+                    "player": "I've done all the medium tasks in my Karamja Achievement Diary."
+                  },
+                  {
+                    "npc": "Arr, so ye have. I s'pose ye'll be wantin' yer reward upgraded then!"
+                  },
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "npc": "The enchantment on these 'ere Karamja gloves be a symbol of yer further explorin' on the island. They'll take ye to an underground mine in Shilo, Cap'n Izzy's arranged it so ye gets a little extra benefit in our"
+                  },
+                  {
+                    "npc": "Agility Arena. Ye can have this lamp too."
+                  },
+                  {
+                    "player": "Wow, thanks!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "Ixc699"
+                  }
+                ],
+                "id": "F5mS3x"
+              },
+              {
+                "type": "condition",
+                "text": "After completing hard tier:",
+                "steps": [
+                  {
+                    "player": "I've done all the hard tasks in my Karamja Achievement Diary."
+                  },
+                  {
+                    "npc": "Arr, so ye have. I s'pose ye'll be wantin' yer reward upgraded again!"
+                  },
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "npc": "The enchantment on these 'ere Karamja gloves be a symbol of yer exhaustive explorin'. They'll take ye to a mine under Shilo Village now infinitely, an' all the merchants will give ye discounts. Ye can have this lamp"
+                  },
+                  {
+                    "npc": "too."
+                  },
+                  {
+                    "player": "Wow, thanks!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "kU9vhb"
+                  }
+                ],
+                "id": "viV2pC"
+              },
+              {
+                "type": "condition",
+                "text": "After completing elite tier:",
+                "steps": [
+                  {
+                    "player": "I've done all the elite tasks in my Karamja Achievement Diary."
+                  },
+                  {
+                    "npc": "Arr, that be an incredible achievement, so it be! I suppose ye'll be wanting yer reward upgraded again."
+                  },
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "npc": "The enchantment on these 'ere Karamja gloves be the ultimate symbol of yer exhaustive explorin'. Ye'll now get double TokKul from the Fight Cave, Inferno an' TzHaar-Ket-Rak's Challenges."
+                  },
+                  {
+                    "npc": "Ye'll have a chance for double tickets in our Agility Arena 'ere. Ye can resurrect in the Fight Cave once per day, an' even enter some places fer free."
+                  },
+                  {
+                    "npc": "I can make the metal dragons under Brimhaven give ye bars as banknotes too, if ye likes."
+                  },
+                  {
+                    "npc": "Ye can have that lamp too."
+                  },
+                  {
+                    "player": "Wow, thanks!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "sPE5jo"
+                  }
+                ],
+                "id": "yzJhkt"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What is the Achievement Diary?",
+                    "steps": [
+                      {
+                        "player": "What is the Achievement Diary?"
+                      },
+                      {
+                        "npc": "Arrr, it be a diary that tracks yer achievements on Karamja. Once ye've explored enough, I give ye some enchanted gloves, an' the people of Karamja reward ye for yer hard work."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "dMXr8J"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What are the rewards?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "kR5MBX"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "See you later.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "i_xlgI"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I have another set of Karamja gloves?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "9JhwDF"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What are the rewards?",
+                    "steps": [
+                      {
+                        "player": "What are the rewards?"
+                      },
+                      {
+                        "npc": "Arrr, that depends what tier ye wants to know about."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Easy rewards",
+                            "steps": [
+                              {
+                                "npc": "Ye gets a pair of special Karamja gloves. The seafarin' folk who sail to Port Sarim and Ardougne will take ye on board half price if ye be wearin' them."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "6mhaFm"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Medium rewards",
+                            "steps": [
+                              {
+                                "npc": "Arrr, I upgrade the Karamja gloves so ye gets a little extra benefit in our Agility Arena with 'em on, and now they'll take ye to the special mine under Shilo Village, an ye still gets the easy rewards too."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "wuCuXa"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Hard rewards",
+                            "steps": [
+                              {
+                                "npc": "Arrr, I upgrade the Karamja gloves so they can take ye to a special mine under Shilo Village infinitely. Ye still gets the easy and medium rewards too."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "XPLu06"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Elite rewards",
+                            "steps": [
+                              {
+                                "npc": "Arrr, ye can get double TokKul from the Fight Cave, Inferno an' TzHaar-Ket-Rak's Challenges, an' have a chance for double tickets in our Agility Arena 'ere."
+                              },
+                              {
+                                "npc": "Ye can resurrect in the Fight Cave once per day, an' even enter some places fer free."
+                              },
+                              {
+                                "npc": "I can make the metal dragons under Brimhaven give ye bars as banknotes too, if ye likes. Ye still gets the easy, medium an' hard rewards too."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "YZTB4A"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Cancel",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous2",
+                                "id": "UlIjCk"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already claimed a Karamja diary reward:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Can I have another set of Karamja gloves?",
+                        "steps": [
+                          {
+                            "player": "Can I have another set of Karamja gloves?"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Pirate Jackie gives you another pair of gloves.",
+                            "id": "JVHm-k"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "M7mDOU"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Can I change the metal dragons' bar drops?",
+                        "steps": [
+                          {
+                            "player": "Can I change the metal dragons' bar drops?",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "If the bars are dropped as items:",
+                                "steps": [
+                                  {
+                                    "type": "choice",
+                                    "prompt": "Bars are dropped as items.",
+                                    "options": [
+                                      {
+                                        "text": "Drop bars as banknotes instead.",
+                                        "steps": [
+                                          {
+                                            "npc": "Arrr, those metal dragons under Brimhaven will drop their bars as banknotes for ye."
+                                          },
+                                          {
+                                            "type": "jump",
+                                            "reference": "previous2",
+                                            "id": "SlwNYf"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Okay.",
+                                        "steps": [
+                                          {
+                                            "npc": "Arrr, those metal dragons under Brimhaven will drop their bars as normal items for ye."
+                                          },
+                                          {
+                                            "type": "jump",
+                                            "reference": "previous2",
+                                            "id": "m1f59p"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "RQxpxA"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the bars are dropped as items:",
+                                "steps": [
+                                  {
+                                    "type": "choice",
+                                    "prompt": "Bars are dropped as banknotes.",
+                                    "options": [
+                                      {
+                                        "text": "Drop bars as items instead.",
+                                        "steps": [
+                                          {
+                                            "npc": "Arrr, those metal dragons under Brimhaven will drop their bars as normal items for ye."
+                                          },
+                                          {
+                                            "type": "jump",
+                                            "reference": "previous2",
+                                            "id": "U1lpAJ"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Okay.",
+                                        "steps": [
+                                          {
+                                            "npc": "Arrr, those metal dragons under Brimhaven will drop their bars as banknotes for ye."
+                                          },
+                                          {
+                                            "type": "jump",
+                                            "reference": "previous2",
+                                            "id": "6c9VRz"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "cpyENy"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "yiYl71"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "See you later.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "kepV6W"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "MORE",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What potions do these new herbs make?",
+                    "steps": [
+                      {
+                        "player": "What potions do these new herbs make?"
+                      },
+                      {
+                        "npc": "I be no herbalist but I were given the recipes to go with these herbs..."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Toadflax + toad legs &equals; Agility potion.",
+                        "id": "fwbXQI"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Snapdragon + red spiders' eggs &equals; Super restore potion.",
+                        "id": "r2k7SF"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous2",
+                        "id": "baxjw6"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "See you later.",
+                    "steps": [
+                      {
+                        "player": "See you later."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "BACK",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "sJp_y6"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-a-discontinued-agility-arena-ticket-on-pirate-jackie-the-fruit": [
+      {
+        "npc": "Ahoy! Yer want to swap these old tickets for some vouchers?"
+      },
+      {
+        "type": "choice",
+        "options": []
+      },
+      {
+        "type": "unavailable",
+        "steps": [
+          {
+            "type": "unavailable",
+            "id": "peB-On"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "f4KLWv"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Don't convert.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-agility-arena-graceful-outfit-pieces-on-her": [
+      {
+        "npc": "Do ye want the colour removing off that? Ye won't get yer tickets back, mind you."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, remove the colours.",
+            "steps": [
+              {
+                "player": "Yes, remove the colours."
+              },
+              {
+                "type": "message",
+                "text": "Pirate Jackie reverts the kit to its original colour.",
+                "id": "PWdp-n"
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "plEr7_"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

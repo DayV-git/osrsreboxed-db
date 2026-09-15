@@ -1,0 +1,214 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Respect the souls, traveller."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are all these souls here?",
+            "steps": [
+              {
+                "player": "Why are all these souls here?"
+              },
+              {
+                "npc": "A corporeal body is a mere flesh-temple in which the soul dwells. As the body fails, the soul loses its home. Without guidance, it would drift into oblivion."
+              },
+              {
+                "npc": "However, the Soul Altar provides a beacon, drawing the souls to this place where they may join the River."
+              },
+              {
+                "npc": "The River leads the souls through unchartable realms, transcending the plane of the world as you see it, but the three-headed Guardian keeps them safe."
+              },
+              {
+                "npc": "The souls are the dead of Kourend - ensure you respect the souls."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "mBH5uz"
+              }
+            ]
+          },
+          {
+            "text": "Why are you here?",
+            "steps": [
+              {
+                "player": "Why are you here?"
+              },
+              {
+                "npc": "I am here to salute the dead of Kourend whose souls are joining the River. Ensure you respect the souls."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "HOrrhX"
+              }
+            ]
+          },
+          {
+            "text": "I've been reading your book...",
+            "condition": "If the player has not yet found the Soul bearer:",
+            "steps": [
+              {
+                "player": "I've been reading your book: 'The Journey of Souls'"
+              },
+              {
+                "npc": "Let me guess, traveller... did you come to ask me where the soul bearer was buried? Every mortal who reads my book seems to want to get their hands on it."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "npc": "Mortals are so predictable. This is the kind of thinking that led that adventurer to break into the Guardian's cave and damage the soul bearer in the first place."
+                      },
+                      {
+                        "npc": "It occurs to me, though, that even if you dig it up, the artefact is damaged. Although the Elders of Arceuus never had the knowledge to repair it, there is one who may be able to help."
+                      },
+                      {
+                        "npc": "I speak of the Key Master, he who watches over the cave of the three-headed Guardian of the River. He has been there for countless years, and will have absorbed power from the River in that time."
+                      },
+                      {
+                        "npc": "Now, we buried the artefact in the crypt of the Arceuus church. As I have revealed this secret to you, you will no longer be affected by the spells that prevent unwary explorers from stumbling across it."
+                      },
+                      {
+                        "player": "Thanks! I'll be off now."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, I don't want your smelly soul bearer.",
+                    "steps": [
+                      {
+                        "player": "No, I don't want your smelly soul bearer."
+                      },
+                      {
+                        "npc": "Hmmph! So what do you want? I trust you will respect the souls while you are in this hallowed place."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "t_V_K5"
+          },
+          {
+            "text": "About the soul bearer again...",
+            "condition": "If the player has started/completed the Bear Your Soul miniquest:",
+            "steps": [
+              {
+                "player": "About the soul bearer again... I got it repaired by the Key Master. Thanks for your help."
+              },
+              {
+                "npc": "Use it carefully, traveller, and respect the souls."
+              }
+            ],
+            "id": "Vgfm0F"
+          },
+          {
+            "text": "Okay, I'm respecting the souls.",
+            "steps": [
+              {
+                "player": "Okay, I'm respecting the souls."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "uKnh-8"
+      },
+      {
+        "type": "message",
+        "text": "Aretha has given you a challenge scroll!",
+        "id": "H5GbT6"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "input",
+        "text": "Enter amount:",
+        "id": "9KB2af"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "0btsNi"
+      },
+      {
+        "type": "condition",
+        "text": "If the player gives the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "aW3Mrv"
+              },
+              {
+                "type": "message",
+                "text": "Aretha has given you another clue scroll!",
+                "id": "Bfl-5A"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "3DDJMg"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a medium reward casket",
+                "id": "Vf2J_0"
+              },
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "i0CDC_"
+              }
+            ],
+            "id": "81Y-or"
+          }
+        ],
+        "id": "fRiAXf"
+      }
+    ]
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, Bwana, what can I do for you today?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me a bit about this place?",
+            "steps": [
+              {
+                "player": "Can you tell me a bit about this place?"
+              },
+              {
+                "npc": "Of course, Bwana. You look like a traveler!"
+              },
+              {
+                "player": "Yes, I am actually!"
+              },
+              {
+                "npc": "Well, I am a traveller myself, and I have set up this hostel for adventurers and travellers who are weary from their journey."
+              },
+              {
+                "npc": "There is a dormitory upstairs if you are tired. It costs 35 coins, which covers the costs of laundry and cleaning."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Have you anything for sale?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "-JCBt_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm fine, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "vG1M_s"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you anything for sale?",
+            "steps": [
+              {
+                "player": "Have you anything for sale?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Buy some wine: 1 coin",
+                    "condition": "If the player has 1 coin:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You buy a jug of wine for 1 coin.",
+                        "id": "xtNKaV"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Player receives a jug of wine for 1 coin.",
+                        "action": "receive",
+                        "action_source": "text",
+                        "id": "2gLQXa"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "QjUHk4"
+                      }
+                    ],
+                    "id": "LnZgcy"
+                  },
+                  {
+                    "text": "Buy some beer: 2 coins",
+                    "condition": "If the player has 2 coins:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You purchase a frothy glass of beer for 2 coins.",
+                        "id": "qm7HaA"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Player receives 2 glasses of beer for 2 coins.",
+                        "action": "receive",
+                        "action_source": "text",
+                        "id": "3cklpM"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "Umsh9w"
+                      }
+                    ],
+                    "id": "Sc7hvw"
+                  },
+                  {
+                    "text": "Buy a night's rest: 35 coins",
+                    "condition": "If the player has 35 coins:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You purchase a ticket to access the dormitory for 35 coins.",
+                        "id": "67RI_i"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Player receives a Paramaya ticket for 35 coins.",
+                        "action": "receive",
+                        "action_source": "text",
+                        "id": "T8GBSb"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "kl4DVZ"
+                      }
+                    ],
+                    "id": "Nimksb"
+                  },
+                  {
+                    "text": "Buy a pack of 5 dorm tickets: 175 coins",
+                    "condition": "If the player has 175 coins:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You purchase five tickets to access the dormitory for 175 coins.",
+                        "id": "g2RMkS"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Player receives 5 Paramaya tickets for 175 coins.",
+                        "action": "receive",
+                        "action_source": "text",
+                        "id": "-ftKwK"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "NvXp4_"
+                      }
+                    ],
+                    "id": "Ou8Hs9"
+                  },
+                  {
+                    "text": "Buy some wine: 1 coin",
+                    "condition": "If the player does not have 1 coin:",
+                    "steps": [
+                      {
+                        "npc": "I'm afraid you do not have enough money for that, Bwana."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "g8aa13"
+                      }
+                    ],
+                    "id": "lXXWQ3"
+                  },
+                  {
+                    "text": "Buy some beer: 2 coins",
+                    "condition": "If the player does not have 2 coins:",
+                    "steps": [
+                      {
+                        "npc": "I'm afraid you do not have enough money for that, Bwana."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "tKDERr"
+                      }
+                    ],
+                    "id": "tu3udN"
+                  },
+                  {
+                    "text": "Buy a night's rest: 35 coins",
+                    "condition": "If the player does not have 35 coins:",
+                    "steps": [
+                      {
+                        "npc": "I'm afraid you do not have enough money for that, Bwana."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "LtG0mp"
+                      }
+                    ],
+                    "id": "WzTTZO"
+                  },
+                  {
+                    "text": "Buy a pack of 5 dorm tickets: 175 coins",
+                    "condition": "If the player does not have 175 coins:",
+                    "steps": [
+                      {
+                        "npc": "I'm afraid you do not have enough money for that, Bwana."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "VneBP2"
+                      }
+                    ],
+                    "id": "k0YOG4"
+                  },
+                  {
+                    "text": "Cancel",
+                    "steps": [
+                      {
+                        "player": "I'm fine, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have a question about my Achievement Diary.",
+            "steps": [
+              {
+                "player": "I have a question about my Achievement Diary."
+              },
+              {
+                "npc": "Sorry, Bwana, I don't do that kind of thing anymore. You should go and talk to Pirate Jackie in Brimhaven instead. Can I help with anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "LqikrT"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-kaleb-paramaya-before-completing-shilo-village": [
+      {
+        "type": "line",
+        "speaker": "Note",
+        "text": "This is not typically possible, because accessing Kaleb Paramaya requires completion of Shilo Village."
+      },
+      {
+        "npc": "I'm getting out of here Bwana, the place is infested with zombies."
+      },
+      {
+        "type": "action",
+        "text": "(Continues with standard dialogue.)",
+        "id": "P79WOa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello. Interested in honing your skills?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "text": "Combat Training interface opens. Here you can select a skill to train (Attack, Strength, Defence, Hitpoints, Magic, Ranged) or cancel.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Combat Training",
+                "id": "P2tord"
+              },
+              {
+                "type": "condition",
+                "text": "If the player selected a skill:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Receive 25,000 XP in (selected skill)?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "unavailable",
+                            "id": "bpkvFu"
+                          },
+                          {
+                            "type": "unavailable",
+                            "id": "tRsOTH"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If this has been done four times:",
+                            "steps": [
+                              {
+                                "npc": "That's all the training I can give you. I hope you find it useful."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "4HD47q"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If this has not been done four times:",
+                            "steps": [
+                              {
+                                "type": "unavailable",
+                                "id": "4YSFgz"
+                              }
+                            ],
+                            "id": "qXIUWS"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "npc": "I'll be here if you change your mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "fnwZd9"
+              },
+              {
+                "type": "condition",
+                "text": "If the player selected Cancel:",
+                "steps": [
+                  {
+                    "npc": "I'll be here if you change your mind."
+                  }
+                ],
+                "id": "F0yigI"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "I'll be here if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-claiming-experience-rewards": [
+      {
+        "npc": "Hello again. I'm afraid I've given you all the training I can."
+      }
+    ]
+  }
+}

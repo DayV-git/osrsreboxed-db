@@ -1,0 +1,120 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there! I sell plate mail bodies, are you interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm interested.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Zenesha's Plate Mail Body Shop.",
+                "id": "yzT0_d"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I'm not interested.",
+            "steps": [
+              {
+                "player": "Sorry, I'm not interested."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "during-song-of-the-elves": [
+      {
+        "npc": "Hello there! I sell plate mail bodies, are you interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm interested.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "0-nASw"
+              }
+            ]
+          },
+          {
+            "text": "I'm here to tell you about some new taxes.",
+            "steps": [
+              {
+                "player": "I'm here to tell you about some new taxes."
+              },
+              {
+                "npc": "I'm already paying my taxes though?"
+              },
+              {
+                "player": "These are new ones. They are to help pay for the king's upcoming visit to Great Kourend."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing Ardougne knight armour:",
+                "steps": [
+                  {
+                    "npc": "Well I don't see why I have to pay for that! If the king can't afford the trip, then maybe he shouldn't be going!"
+                  },
+                  {
+                    "player": "It's an important diplomatic trip I'm afraid so it has to go ahead. The first payment will be collected soon."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Am3oQg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing mourner gear:",
+                "steps": [
+                  {
+                    "npc": "And he's getting a mourner to tell me this? Nice try."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ypriSO"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not wearing mourner gear or Ardougne knight armour:",
+                "steps": [
+                  {
+                    "npc": "And he's getting a citizen to tell me this? Nice try."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "rbGowN"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I'm not interested.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "kkdmTJ"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

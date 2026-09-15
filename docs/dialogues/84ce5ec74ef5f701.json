@@ -1,0 +1,263 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there!"
+      },
+      {
+        "npc": "Greetings Bwana! My name is Yanni and I buy and sell antiques."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about this antiques business.",
+            "steps": [
+              {
+                "player": "Tell me about this antiques business."
+              },
+              {
+                "npc": "I buy antiques and other interesting items. If you have any interesting items that you might want to sell me, please let me see them and I'll offer you a fair price."
+              },
+              {
+                "npc": "Would you like me to have a look at your items and give you a quote?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please!",
+                    "steps": [
+                      {
+                        "player": "Yes please!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have an item Yanni can buy:",
+                        "steps": [
+                          {
+                            "npc": "Sorry Bwana, you have nothing I am interested in."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "hHOybR"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the Bone key in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "I'll give you 100 coins for the Bone Key..."
+                          }
+                        ],
+                        "id": "73U1d_"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the Stone-plaque in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "I'll give you 100 coins for the Stone Plaque..."
+                          }
+                        ],
+                        "id": "xekFPG"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the Tattered scroll in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "I'll give you 100 coins for the tattered scroll..."
+                          }
+                        ],
+                        "id": "CnadV_"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the Crumpled scroll in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "I'll give you 100 coins for the crumpled scroll..."
+                          }
+                        ],
+                        "id": "WFhacQ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the Locating crystal in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "I'll give you 500 coins for your locating crystal..."
+                          }
+                        ],
+                        "id": "zHHExT"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the Beads of the Dead in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "I'll give you 1000 coins for your 'Beads of the Dead'..."
+                          }
+                        ],
+                        "id": "zoG-tn"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has only one of the above items:",
+                        "steps": [
+                          {
+                            "npc": "And that's the only item I am interested in. If you want to sell me that item, simply show it to me."
+                          }
+                        ],
+                        "id": "K0H8nv"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has more than one of the above items:",
+                        "steps": [
+                          {
+                            "npc": "Those are the items I am interested in Bwana. If you want to sell me those items, simply show them to me."
+                          }
+                        ],
+                        "id": "UcM_b6"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Maybe some other time?",
+                    "steps": [
+                      {
+                        "player": "Maybe some other time?"
+                      },
+                      {
+                        "npc": "Sure thing. Have a nice day Bwana."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you have any interesting items for sale?",
+            "steps": [
+              {
+                "player": "Do you have any interesting items for sale?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has the Beads of the Dead in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "Sorry, [Sir/Madam], I have nothing that you need."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "kSiXKD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the Beads of the Dead:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "Mamylg"
+                  }
+                ],
+                "id": "3vmwZH"
+              }
+            ]
+          },
+          {
+            "text": "Hmm, sorry, not interested.",
+            "steps": [
+              {
+                "player": "Hmm, sorry, not interested."
+              },
+              {
+                "npc": "Fair enough, come back if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-antiques-on-yanni-bone-key": [
+      {
+        "npc": "That's a great bone key. Here's 100 coins for it."
+      }
+    ],
+    "using-antiques-on-yanni-crumpled-scroll": [
+      {
+        "npc": "That's a great crumpled scroll. Here's 100 coins for it."
+      }
+    ],
+    "using-antiques-on-yanni-tattered-scroll": [
+      {
+        "npc": "That's a great tattered scroll. Here's 100 coins for it."
+      }
+    ],
+    "using-antiques-on-yanni-bervirius-notes": [
+      {
+        "npc": "That's a great copy of Bervirius notes. Here's 100 coins for it."
+      }
+    ],
+    "using-antiques-on-yanni-locating-crystal": [
+      {
+        "npc": "That's a great Locating Crystal. Here's 500 coins for it."
+      }
+    ],
+    "using-antiques-on-yanni-stone-plaque": [
+      {
+        "npc": "That's a great stone-plaque. Here's 100 coins for it."
+      }
+    ],
+    "using-antiques-on-yanni-beads-of-the-dead": [
+      {
+        "npc": "Impressive necklace there, here's 1000 coins for it."
+      }
+    ],
+    "using-antiques-on-yanni-black-prism": [
+      {
+        "npc": "Ah you'd like to sell this to me would you? I can offer you 5000 coins!"
+      },
+      {
+        "type": "choice",
+        "prompt": "Sell the prism for 5000 coins?",
+        "options": [
+          {
+            "text": "Yes, I'll sell it for 5000",
+            "steps": [
+              {
+                "player": "Yes, I'll sell it for 5000 coins."
+              },
+              {
+                "npc": "Very well my friend, let me count out your reward."
+              },
+              {
+                "npc": "Thanks!"
+              }
+            ]
+          },
+          {
+            "text": "No, I think I'll hold on it a while longer yet.",
+            "steps": [
+              {
+                "player": "No, I think I'll hold on it a while longer yet."
+              },
+              {
+                "npc": "Very well my friend, come back if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

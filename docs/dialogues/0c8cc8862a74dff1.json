@@ -1,0 +1,151 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings, stranger. How can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "It's a cave filled with araxytes, a rare form of arachnid. I've been here researching them for some time."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Monkey Madness II:",
+                "steps": [
+                  {
+                    "npc": "My niece, Nieve, is one of those Slayer Masters. You know, they tell people what to go kill. I also look after this cave for people on assignments like that."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "OW7TIx"
+                  }
+                ],
+                "id": "Q5WlgJ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Monkey Madness II:",
+                "steps": [
+                  {
+                    "npc": "My nephew, Steve, is one of those Slayer Masters. You know, they tell people what to go kill. I also look after this cave for people on assignments like that."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "J2G877"
+                  }
+                ],
+                "id": "cKRv7Z"
+              }
+            ]
+          },
+          {
+            "text": "Discovered anything interesting?",
+            "steps": [
+              {
+                "player": "Discovered anything interesting?"
+              },
+              {
+                "npc": "Hmm... Not really."
+              },
+              {
+                "npc": "However, the araxytes here are rather venomous... and when I say venomous, I mean venomous."
+              },
+              {
+                "player": "Is that really noteworthy?"
+              },
+              {
+                "npc": "Well, I didn't think so by itself, but lots of other people seem to find it very interesting."
+              },
+              {
+                "npc": "For example, there were some particularly pale wanderers doing their own research in here. They didn't bother me though."
+              },
+              {
+                "player": "Hmm..."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "79Pbry"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "Bye bye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-a-jar-of-venom-on-her": [
+      {
+        "type": "condition",
+        "text": "If the player is using it on her for the first time:",
+        "steps": [
+          {
+            "player": "I found this Jar, I think it's full of venom."
+          },
+          {
+            "npc": "Oh wow, can I see it?."
+          },
+          {
+            "type": "message",
+            "text": "You show Weave the Jar of Venom.",
+            "id": "X2HEpv"
+          },
+          {
+            "npc": "That is really fascinating. Thank you for sharing that with me."
+          },
+          {
+            "npc": "Next I'll need to find something a little more potent to progress my research..."
+          },
+          {
+            "player": "I'll keep my eyes open!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "45_J3y"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is using it on her again:",
+        "steps": [
+          {
+            "player": "Did you want to see the Jar again?"
+          },
+          {
+            "npc": "No that's quite alright, I've nothing else to learn from that particular sample. I need to find something else to progress my research..."
+          },
+          {
+            "player": "No problem."
+          }
+        ],
+        "id": "P3YFhX"
+      }
+    ],
+    "when-attempting-to-kill-monsters-that-aren-t-part-of-a-player-s-slayer-task": [
+      {
+        "npc": "Bad! Don't touch these unless you have a Slayer task to kill them."
+      }
+    ]
+  }
+}

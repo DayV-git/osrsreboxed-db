@@ -1,0 +1,316 @@
+{
+  "default": "standard-dialogue-subsequent-dialogue",
+  "variants": {
+    "standard-dialogue-initial-dialogue": [
+      {
+        "npc": "Hey I'm Amy, how may I help you?"
+      },
+      {
+        "player": "What do you do here?"
+      },
+      {
+        "npc": "I'm the founder of Mahogany Homes, Gielinor's first Construction company!"
+      },
+      {
+        "npc": "We've currently got branches in Falador, Varrock, Hosidius and Ardougne."
+      },
+      {
+        "player": "So people contact you for help with their homes?"
+      },
+      {
+        "npc": "Yep! They'll get in contact if they want assistance, whether it's fixing parts of their house or requesting nicer furniture, and then we will go and help them out."
+      },
+      {
+        "player": "That sounds quite enjoyable and satisfying to do, are you hiring at all?"
+      },
+      {
+        "npc": "If you have the supplies, I can tell you where one of our clients is that needs some work doing."
+      },
+      {
+        "npc": "I'll keep track of the work you do as well and give you some points for our company reward shop."
+      },
+      {
+        "npc": "Also there are assistants in Varrock, Ardougne, and Hosidius that can give you work, if Falador is inconvienent for you."
+      },
+      {
+        "npc": "The clients that I would offer you to go help could be in any of those cities, it might be a bit of a journey to get there!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like a construction contract.",
+            "steps": [
+              {
+                "player": "I'd like a construction contract."
+              },
+              {
+                "npc": "What kind of contract would you like?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Beginner Contract",
+                    "steps": [
+                      {
+                        "player": "Could I have a beginner contract please?"
+                      },
+                      {
+                        "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Go see [client] [area] [city], [location description]",
+                        "id": "7ETr0K"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Novice Contract (Requires 20 Construction)",
+                    "steps": [
+                      {
+                        "player": "Could I have a novice contract please?"
+                      },
+                      {
+                        "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Go see [client] [area] [city], [location description]",
+                        "id": "QGj35K"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Adept Contract (Requires 50 Construction)",
+                    "steps": [
+                      {
+                        "player": "Could I have an adept contract please?"
+                      },
+                      {
+                        "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Go see [client] [area] [city], [location description]",
+                        "id": "t8FJdM"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Expert Contract (Requires 70 Construction)",
+                    "steps": [
+                      {
+                        "player": "Could I have an expert contract please?"
+                      },
+                      {
+                        "npc": "Please could you go see [client] [area] [city], [location description] for us? You can get another job once you have furnished [his/her] home."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Go see [client] [area] [city], [location description]",
+                        "id": "vX4ZvP"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll pass actually.",
+                    "steps": [
+                      {
+                        "player": "I'll pass actually."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Thanks for the information.",
+            "steps": [
+              {
+                "player": "Thanks for the information."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-subsequent-dialogue": [
+      {
+        "npc": "Hey I'm Amy, how may I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's my current contract?",
+            "condition": "If the player currently has a construction contract:",
+            "steps": [
+              {
+                "player": "What's my current construction contract?"
+              },
+              {
+                "npc": "Go see [client] [area] [city], [location description]. You can get another job once you have furnished [his/her] home."
+              }
+            ],
+            "id": "hWDOdc"
+          },
+          {
+            "text": "I'd like a construction contract.",
+            "condition": "If the player does not currently have a construction contract:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "oDZpz_"
+              }
+            ],
+            "id": "2zrus-"
+          },
+          {
+            "text": "Could I see the reward shop?",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Mahogany Homes Reward Shop",
+                "id": "qjqEaP"
+              }
+            ]
+          },
+          {
+            "text": "How is the company doing?",
+            "steps": [
+              {
+                "player": "How is the company doing?"
+              },
+              {
+                "npc": "Pretty good, we've only opened up recently and already have 12 clients!"
+              },
+              {
+                "npc": "These clients are quite indecisive about what they want their houses to look like though, I'm not complaining."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed at least one contract:",
+                "steps": [
+                  {
+                    "player": "Yeah I've noticed that they seem to keep breaking hatstands all the time too, I'm not sure how easy it is to break a hatstand..."
+                  },
+                  {
+                    "npc": "Very bizarre."
+                  }
+                ],
+                "id": "EWoPiX"
+              },
+              {
+                "player": "I'm glad you're doing well!"
+              },
+              {
+                "npc": "Thanks."
+              }
+            ]
+          },
+          {
+            "text": "Why don't you have a construction cape?",
+            "condition": "If the player is wearing a construction cape:",
+            "steps": [
+              {
+                "player": "Why don't you have a construction cape if you're a master builder?"
+              },
+              {
+                "npc": "Well why do you have one?"
+              },
+              {
+                "player": "The teleports on it are really handy."
+              },
+              {
+                "npc": "Why would a cape for construction use magic? That seems a bit illogical doesn't it?"
+              },
+              {
+                "npc": "We are people of hard work, not ones that rely on wizardry!"
+              },
+              {
+                "player": "I suppose you're right."
+              }
+            ],
+            "id": "lM7mFH"
+          },
+          {
+            "text": "Nothing, never mind.",
+            "steps": [
+              {
+                "player": "Nothing, never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-selecting-contract-from-her-right-click-menu": [
+      {
+        "type": "condition",
+        "text": "If the player currently has a construction contract:",
+        "steps": [
+          {
+            "player": "What's my current construction contract?"
+          },
+          {
+            "npc": "Go see [client] [area] [city], [location description]. You can get another job once you have furnished [his/her] home."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "cFiisz"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not currently have a construction contract:",
+        "steps": [
+          {
+            "npc": "What kind of contract would you like?"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "DkMJdY"
+          }
+        ],
+        "id": "X3BjHV"
+      }
+    ],
+    "standard-dialogue-during-trailblazer-league": [
+      {
+        "npc": "Sorry, Mahogany Homes aren't giving out any contracts during this league."
+      }
+    ],
+    "using-items-on-amy-mahogany-teak-oak-or-regular-planks": [
+      {
+        "npc": "That's a plank, you'll need a lot of those."
+      }
+    ],
+    "using-items-on-amy-saw": [
+      {
+        "npc": "That's a saw It's pretty useful."
+      }
+    ],
+    "using-items-on-amy-crystal-saw": [
+      {
+        "npc": "That's a fascinating looking saw, it looks like it would break though."
+      }
+    ],
+    "using-items-on-amy-amy-s-saw": [
+      {
+        "npc": "Oh you have have one of my saws, I hope you enjoy it!"
+      }
+    ],
+    "using-items-on-amy-hammer": [
+      {
+        "npc": "That's a hammer. It's pretty useful."
+      }
+    ]
+  }
+}

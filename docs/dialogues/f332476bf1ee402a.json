@@ -1,0 +1,293 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings, traveller."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the Nightmare.",
+            "steps": [
+              {
+                "player": "Tell me about the Nightmare."
+              },
+              {
+                "npc": "You're better off speaking with the Siren, that is her area of expertise. All I know is that the beast poses a huge risk to Mother."
+              },
+              {
+                "npc": "At least for the moment, Mother is not in any direct danger. I fear it is only a matter of time before the beast enters her mind again though."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "YvGgqf"
+              }
+            ]
+          },
+          {
+            "text": "What's with the mask?",
+            "steps": [
+              {
+                "player": "What's with the mask?"
+              },
+              {
+                "npc": "These are the masks of the Sisterhood. While symbolic, they also have practical uses."
+              },
+              {
+                "player": "Oh really? What like?"
+              },
+              {
+                "npc": "Herbs can be stored within the beak, masking the smell of death and preventing us from becoming infected."
+              },
+              {
+                "player": "That sounds handy. Can I have one?"
+              },
+              {
+                "npc": "No. To wear a mask of the Sisterhood, you need to join the Sisterhood."
+              },
+              {
+                "player": "Well sign me up!"
+              },
+              {
+                "npc": "I'm afraid you lack the qualities we're currently looking for. Perhaps another time."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "aGl05N"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any of my items?",
+            "steps": [
+              {
+                "player": "Do you have any of my items?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no items in Sister Senga's collection:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "rI1GXA"
+                  }
+                ],
+                "id": "0QItZy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has items in Sister Senga's collection:",
+                "steps": [
+                  {
+                    "npc": "I do, traveller. You should be more cautious with them."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Sister Senga's Item Retrieval Service",
+                    "id": "Z6zOAh"
+                  }
+                ],
+                "id": "znNrLC"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              },
+              {
+                "npc": "Be safe, traveller."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-trying-to-interact-with-the-pool-of-nightmares-before-talking-to-her-for-the-first-time": [
+      {
+        "npc": "I would advise against doing that, traveller. You do not yet know what you are up against."
+      },
+      {
+        "type": "jump",
+        "reference": "continues",
+        "id": "MxmsFI"
+      }
+    ],
+    "standard-dialogue-first-time-talking-to-her": [
+      {
+        "player": "What are you doing up here?"
+      },
+      {
+        "npc": "Keeping an eye on Mother."
+      },
+      {
+        "player": "Mother?"
+      },
+      {
+        "npc": "Phosani, the founder of our sect and creator of this sanctuary. She is our mother, and always will be."
+      },
+      {
+        "player": "I see... So where is she?"
+      },
+      {
+        "npc": "She lies in this coffin."
+      },
+      {
+        "player": "Oh... So she's dead?"
+      },
+      {
+        "npc": "Dead? No. She sleeps the everlasting slumber."
+      },
+      {
+        "player": "Right. The coffin looks pretty secure to me. Why do you need to keep an eye on her."
+      },
+      {
+        "npc": "The creature down there, the one that Siren calls the Nightmare. It has been invading Mother's mind, feeding on her."
+      },
+      {
+        "npc": "Mother is strong, but not strong enough to fight it off alone. She needs help."
+      },
+      {
+        "player": "Needs help does she? Maybe I could be of assistance?"
+      },
+      {
+        "type": "jump",
+        "reference": "continues",
+        "id": "6ex_h2"
+      }
+    ],
+    "standard-dialogue-first-time-talking-to-her-before-phosani-s-nightmare-update": [
+      {
+        "npc": "The offer is appreciated. Luckily for us though, the Nightmare is not present in Mother's mind at the moment."
+      },
+      {
+        "player": "Fair enough. If that changes, I'm more than willing to help."
+      },
+      {
+        "npc": "Be safe, traveller."
+      }
+    ],
+    "standard-dialogue-first-time-talking-to-her-after-phosani-s-nightmare-update": [
+      {
+        "type": "condition",
+        "text": "If the player does not have at least one normal Nightmare kill:",
+        "steps": [
+          {
+            "npc": "The offer is appreciated. I fear you do not have the abilities to take on that sort of challenge though."
+          },
+          {
+            "player": "What abilities do I need?"
+          },
+          {
+            "npc": "The horror that has manifested itself in Mother's mind is far stronger than the one fought in the Nightmare's dream."
+          },
+          {
+            "npc": "If you hope to have a chance, you'll want to take on the weaker form first. That Siren down there can help you."
+          },
+          {
+            "player": "Fair enough. I'll be back once I have more experience."
+          },
+          {
+            "type": "choice",
+            "prompt": "Would you like to attempt the fight anyway?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "npc": "That would be appreciated, traveller. You can use the pool here to enter Mother's mind and take on the Nightmare within."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "EXzRC2"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "npc": "Be safe, traveller."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "v-1fgu"
+      },
+      {
+        "type": "condition",
+        "text": "If the player have at least one normal Nightmare kill:",
+        "steps": [
+          {
+            "npc": "That would be appreciated, traveller. You can use the pool here to enter Mother's mind and take on the Nightmare within."
+          },
+          {
+            "npc": "Be warned though. If you enter, you enter alone. No one else can help you with this one."
+          },
+          {
+            "player": "I see. I'll have to be careful then."
+          },
+          {
+            "npc": "Indeed. Good luck, traveller."
+          }
+        ],
+        "id": "UDx4m8"
+      }
+    ],
+    "standard-dialogue-right-click-collect": [
+      {
+        "type": "condition",
+        "text": "If the player has no items in Sister Senga's collection:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "rI1GXA"
+          }
+        ],
+        "id": "uvRqA7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items in Sister Senga's collection:",
+        "steps": [
+          {
+            "player": "I see. I'll have to be careful then."
+          },
+          {
+            "npc": "I do, traveller. You should be more cautious with them."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Sister Senga's Item Retrieval Service",
+            "id": "T_sMPv"
+          }
+        ],
+        "id": "5OqxvD"
+      }
+    ]
+  },
+  "branches": {
+    "rI1GXA": [
+      {
+        "npc": "Sorry, but I don't have anything for you. If I did have any of your items, but you died before collecting them, they'll now be lost."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

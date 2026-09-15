@@ -1,0 +1,362 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "You need help JalYt-[TzHaar caste]-[player name]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why can't I go past here?",
+            "steps": [
+              {
+                "player": "Why can't I go past here?"
+              },
+              {
+                "npc": "This area closed to JalYt."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Why's that?",
+                    "steps": [
+                      {
+                        "player": "Why's that?"
+                      },
+                      {
+                        "npc": "JalYt are not trusted. Nor are capable of withstanding the heat. The features of the city are a secret."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "That's a shame.",
+                            "steps": [
+                              {
+                                "player": "That's a shame."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "What if I could prove I am capable?",
+                            "steps": [
+                              {
+                                "player": "What if I could prove that I am capable?"
+                              },
+                              {
+                                "npc": "[TzHaar caste]-[player name], I suppose that is perfectly acceptable, but it would take lots to convince."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "How about a large stack of gold?",
+                                    "steps": [
+                                      {
+                                        "player": "How about a large stack of coins."
+                                      },
+                                      {
+                                        "npc": "Gold is bad currency, I have no use for JalYt coins."
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I managed to defeat TzTok-Jad and obtain this firecape.",
+                                    "condition": "If the player has a firecape with them:",
+                                    "steps": [
+                                      {
+                                        "player": "I managed to defeat TzTok-Jad and obtain this firecape."
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "You hold out your fire cape and show it to TzHaar-Ket.",
+                                        "id": "2-PLAV"
+                                      },
+                                      {
+                                        "npc": "That is most impressive [TzHaar caste]-[player name]."
+                                      },
+                                      {
+                                        "player": "Surely this proves I am capable? Can I pleeease come through now?"
+                                      },
+                                      {
+                                        "npc": "I suppose so, I'll grant you access to Mor Ul Rek. The guards will open the gates for you, you are the first JalYt to pass these gates!"
+                                      }
+                                    ],
+                                    "id": "qovHJi"
+                                  },
+                                  {
+                                    "text": "Sorry, I don't think I am capable.",
+                                    "steps": [
+                                      {
+                                        "player": "Sorry, I don't think I am capable."
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I'm a hardened adventurer, nothing can stop me!",
+                            "steps": [
+                              {
+                                "player": "I'm a hardened adventurer, nothing can stop me!"
+                              },
+                              {
+                                "npc": "Back off JalYt-[TzHaar caste]-[player name], trust me when I say our obsidian bodies are harder."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What are you guarding?",
+                    "steps": [
+                      {
+                        "player": "What are you guarding?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has access to Mor Ul Rek:",
+                        "steps": [
+                          {
+                            "npc": "Ah, trusted and most capable JalYt, this is the city of Mor Ul Rek. It has grand central inferno, our birthing pool. Go! See for yourself [TzHaar caste]-[player name]"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "H2iWhj"
+                          }
+                        ],
+                        "id": "b16WQ0"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have access to Mor Ul Rek:",
+                        "steps": [
+                          {
+                            "npc": "[TzHaar caste]-[player name], you are not trusted, this is secret area. Less questions! I will say that it's the inner core of the city though."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Oh well, Goodbye.",
+                                "steps": [
+                                  {
+                                    "player": "Oh well, goodbye."
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Oh well, [TzHaar caste]-[player name] over and out.",
+                                "steps": [
+                                  {
+                                    "player": "Oh well, [TzHaar caste]-[player name] over and out."
+                                  },
+                                  {
+                                    "npc": "Haha funny JalYt try to speak language, why do you put that accent on when attempting it?"
+                                  },
+                                  {
+                                    "player": "maybe it helps you to understand what I'm saying. See you around."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "4bzfEp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Fair enough.",
+                    "steps": [
+                      {
+                        "player": "Fair enough."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What are you guarding?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "LNIaug"
+              }
+            ]
+          },
+          {
+            "text": "What did you call me?",
+            "steps": [
+              {
+                "npc": "Are you not [TzHaar caste]-[player name]?"
+              },
+              {
+                "player": "What's a '[TzHaar caste]'?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's caste is JalYt-Ket:",
+                "steps": [
+                  {
+                    "npc": "That what you are... you tough and strong no?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "PRO52-"
+                  }
+                ],
+                "id": "g8_8ZN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's caste is JalYt-Mej:",
+                "steps": [
+                  {
+                    "npc": "That what you are... you user of mystic powers, no?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "JXtJdh"
+                  }
+                ],
+                "id": "op4WLt"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's caste is JalYt-Xil:",
+                "steps": [
+                  {
+                    "npc": "That what you are... you agile and quick no?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "tt-C20"
+                  }
+                ],
+                "id": "f7Q9is"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's caste is JalYt-Hur:",
+                "steps": [
+                  {
+                    "npc": "That what you are... you skilled at making things no?"
+                  },
+                  {
+                    "player": "Well yes I suppose I am..."
+                  },
+                  {
+                    "npc": "Then you [TzHaar caste]!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "What are you then?",
+                        "steps": [
+                          {
+                            "player": "What are you then?"
+                          },
+                          {
+                            "npc": "Silly JalYt, I am TzHaar-Ket, one of the guardians of our city."
+                          },
+                          {
+                            "npc": "There are the wise TzHaar-Mej who guide us, the swift TzHaar-Xil who hunt for our food, and the skilled TzHaar-Hur who craft our homes and tools."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Thanks for explaining it.",
+                        "steps": [
+                          {
+                            "player": "Thanks for explaining it."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I guess so...",
+                        "steps": [
+                          {
+                            "player": "I guess so..."
+                          },
+                          {
+                            "npc": "Well then, no problems."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No I'm not!",
+                        "steps": [
+                          {
+                            "player": "No I'm not!"
+                          },
+                          {
+                            "npc": "What ever you say, crazy JalYt!"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "WJwwRQ"
+              }
+            ]
+          },
+          {
+            "text": "No I'm fine thanks.",
+            "steps": [
+              {
+                "player": "No I'm fine thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "inside-mor-ul-rek": [
+      {
+        "npc": "Hello JalYt-[TzHaar caste]-[player name]."
+      },
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "You need help little JalYt?"
+      },
+      {
+        "player": "Not unless you can help me in the Inferno."
+      },
+      {
+        "npc": "It is not for us to help. You must fight alone."
+      },
+      {
+        "player": "Oh... Worth a try I suppose."
+      }
+    ],
+    "overhead-dialogue-attacking-a-nearby-tzhaar-hur": [
+      {
+        "npc": "Kot e TzHaar-Hur!"
+      }
+    ],
+    "overhead-dialogue-catching-players-attempting-to-steal-from-stalls-in-mor-ul-rek": [
+      {
+        "npc": "Oi JalYt!"
+      }
+    ]
+  }
+}

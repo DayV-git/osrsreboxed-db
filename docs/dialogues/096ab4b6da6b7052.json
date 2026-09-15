@@ -1,0 +1,87 @@
+{
+  "steps": [
+    {
+      "npc": "Hey, are you wanting to try some of my fine wines and spirits? All brewed locally on Karamja island."
+    },
+    {
+      "type": "message",
+      "text": "",
+      "id": "3XaP1Q"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes please.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Karamja Wines, Spirits, and Beers.",
+              "id": "ODkcoQ"
+            }
+          ]
+        },
+        {
+          "text": "No, thank you.",
+          "steps": [
+            {
+              "player": "No, thank you."
+            }
+          ]
+        },
+        {
+          "text": "I'm doing Alfred Grimhand's barcrawl.",
+          "condition": "During Alfred Grimhand's Barcrawl:",
+          "steps": [
+            {
+              "player": "I'm doing Alfred Grimhand's Barcrawl."
+            },
+            {
+              "npc": "Ah, you'll be wanting some Ape Bite Liqueur then. It's got a lovely banana taste, and it'll only cost you 7 coins."
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have 7 coins:",
+              "steps": [
+                {
+                  "player": "I don't have 7 coins right now."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "kwaMWs"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has 7 coins:",
+              "steps": [
+                {
+                  "type": "message",
+                  "text": "You buy some Ape Bite Liqueur.",
+                  "id": "syZi5D"
+                },
+                {
+                  "type": "message",
+                  "text": "You swirl it around and swallow it.",
+                  "id": "G9qcqL"
+                },
+                {
+                  "type": "message",
+                  "text": "Zembo signs your card.",
+                  "id": "dNMGRf"
+                },
+                {
+                  "player": "Mmmmm, dat was luverly..."
+                }
+              ],
+              "id": "ZCjngf"
+            }
+          ],
+          "id": "W1IIFH"
+        }
+      ]
+    }
+  ]
+}

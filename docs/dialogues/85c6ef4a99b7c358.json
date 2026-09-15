@@ -1,0 +1,113 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello. Do you wish me to exchange banknotes for you? I charge only 5 coins for each banknote."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "npc": "Hand me the banknotes you wish me to exchange."
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I am Aisles. I can exchange banknotes for real items. Do you want any banknotes converted?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "E4q-Va"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "4xpyy8"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-an-item-on-aisles-using-something-that-isn-t-a-banknote": [
+      {
+        "npc": "I exchange banknotes for real items. That's not a banknote."
+      }
+    ],
+    "using-an-item-on-aisles-if-the-player-does-not-have-enough-money": [
+      {
+        "npc": "I charge 5 coins for exchanging each banknote."
+      }
+    ],
+    "using-an-item-on-aisles-if-the-player-has-enough-money": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Exchange [item name]: 5 coins",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "[item] in exchange for [item] banknote and 5 coins",
+                "id": "TuDmCq"
+              }
+            ]
+          },
+          {
+            "text": "Exchange All: [number of banknotes x 5] coins",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "[items] in exchange for [item] banknotes and [number of banknotes x 5] coins",
+                "id": "dfvRqp"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Got any spare change, mate?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has coins:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "What would you like to say?",
+            "options": [
+              {
+                "text": "Yes, I can spare a little money.",
+                "steps": [
+                  {
+                    "player": "Yes, I can spare a little money."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player gives the tramp 1 coin.",
+                    "id": "YcvhmA"
+                  },
+                  {
+                    "npc": "Thanks, mate!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Sorry, you'll have to earn it yourself, just like I did.",
+                "steps": [
+                  {
+                    "player": "Sorry, you'll have to earn it yourself, just like I did."
+                  },
+                  {
+                    "npc": "Please yourself."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "eC-QW0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no coins:",
+        "steps": [
+          {
+            "player": "I haven't got any."
+          },
+          {
+            "npc": "Yeah, right, they all say that."
+          }
+        ],
+        "id": "oNd1jQ"
+      }
+    ],
+    "standard-dialogue-talking-again-after-refusing-to-give-coins": [
+      {
+        "npc": "I know I've asked you before, but have you any spare change this time?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has coins:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, I can spare a little money.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "utZOvp"
+                  }
+                ]
+              },
+              {
+                "text": "Sorry, you'll have to earn it yourself, just like I did.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "W1tjgK"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "3v7pEl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no coins:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "Yn7MAh"
+          }
+        ],
+        "id": "MpgnE2"
+      }
+    ],
+    "overhead-dialogue-if-the-player-refuses-to-give-coins": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "I hate [player name]!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "[player name] is mean!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Don't ask [player name] for anything - [he's/she's/they're] stingy!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

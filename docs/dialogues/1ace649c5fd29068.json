@@ -1,0 +1,234 @@
+{
+  "default": null,
+  "variants": {
+    "while-possessed": [
+      {
+        "npc": "It's mine. You can't have it, we found it!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What have you found?",
+            "steps": [
+              {
+                "player": "What have you found?"
+              },
+              {
+                "npc": "Not dragonstones. I like dragonstones, that's why I came here. However, I found a valuable coin instead, it speaks to me... but you can't have it! It's precious to me!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "m6R3me"
+              }
+            ]
+          },
+          {
+            "text": "I don't want it, I have something better.",
+            "steps": [
+              {
+                "player": "I don't want it, I have something better."
+              },
+              {
+                "npc": "What is it? Is it dragonstones? I like dragonstones!"
+              },
+              {
+                "type": "line",
+                "speaker": "Olbertus (possessed)",
+                "text": "Ask it for five! It looks rich!"
+              },
+              {
+                "npc": "Five? Will it give us five?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than five dragonstones:",
+                "steps": [
+                  {
+                    "player": "No. I don't have five dragonstones."
+                  },
+                  {
+                    "npc": "Well then we are not interested!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "7A3HvO"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has five dragonstones:",
+                "steps": [
+                  {
+                    "player": "Yes. I have five dragonstones, tell you what, I'll trade you them for that coin you found."
+                  },
+                  {
+                    "npc": "Yes! Yes! We'll trade it for the dragonstones."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Olbertus (possessed)",
+                    "text": "No we will not! It is too precious!"
+                  },
+                  {
+                    "npc": "But why? I like dragonstones..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Olbertus (possessed)",
+                    "text": "It is trying to trick us! Evil, nasty creature it is. Do not listen to it!"
+                  },
+                  {
+                    "npc": "But it seems nice enough..."
+                  },
+                  {
+                    "player": "I am standing right here, you know? You really are crazy. Yes, I'll give you five! Do we have a deal or not?"
+                  },
+                  {
+                    "npc": "Yes! Yes!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, give him your dragonstones.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You give Olbertus a dragonstone and receive a very worn coin in return.",
+                            "id": "9dgsbg"
+                          },
+                          {
+                            "npc": "Thanks for helping me, I'm not sure what would have happened if I had continued to listen to the voices in my head."
+                          },
+                          {
+                            "npc": "I took that coin from the Stone Relief in the Crypt of the Moon and trapped my friend Eodan in a secret room behind the relief. Could you return the coin to the relief and set him free?"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, don't give him your dragonstones.",
+                        "steps": [
+                          {
+                            "player": "On second thoughts, I'll keep it for myself."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "SO_Zh9"
+              }
+            ]
+          },
+          {
+            "text": "Since it's valuable, I think I'll just just kill you for it.",
+            "steps": [
+              {
+                "player": "Since it's valuable, I think I'll just just kill you for it."
+              },
+              {
+                "npc": "Please! No!"
+              },
+              {
+                "type": "message",
+                "text": "This is a dangerous fight, you will lose your items on death.",
+                "id": "0HD6Kt"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Attack Olbertus.",
+                    "steps": [
+                      {
+                        "npc": "Foolish decision!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Olbertus transforms into a Shaeded Beast, and curses the Altar, rendering it unusable.",
+                        "id": "0MYysu"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Shaeded Beast",
+                        "text": "I require this one alive human!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Just kidding.",
+                    "steps": [
+                      {
+                        "player": "Just kidding!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You're crazy!",
+            "steps": [
+              {
+                "player": "You're crazy!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-being-freed-from-possession-if-the-player-traded-for-the-coin": [
+      {
+        "npc": "Thanks for helping me, I'm not sure what would have happened if I had continued to listen to the voices in my head."
+      },
+      {
+        "npc": "I took that coin from the Stone Relief in the Crypt of the Moon and trapped my friend Eodan in a secret room behind the relief. Could you return the coin to the relief and set him free?"
+      }
+    ],
+    "after-being-freed-from-possession-if-the-player-chose-to-fight-shaeded-beast": [
+      {
+        "npc": "Thanks for killing that creature."
+      },
+      {
+        "npc": "It appears that when I stole the coin, the creature possessed me."
+      },
+      {
+        "npc": "I took that coin from the Stone Relief in the Crypt of the Moon and trapped my friend Eodan in a secret room behind the relief. Could you return the coin to the relief and set him free?"
+      }
+    ],
+    "reclaiming-the-coin-if-the-player-traded-for-the-coin": [
+      {
+        "npc": "I'm glad I no longer have that coin. I'm not sure what would have happened if I had continued to listen to the voices in my head."
+      },
+      {
+        "npc": "For some reason the coin returned to me. Here, take it before it corrupts me again!"
+      },
+      {
+        "npc": "I took that coin from the Stone Relief in the Crypt of the Moon and trapped my friend Eodan in a secret room behind the relief. Could you return the coin to the relief and set him free?"
+      }
+    ],
+    "reclaiming-the-coin-if-the-player-chose-to-fight-shaeded-beast": [
+      {
+        "npc": "Thanks for killing that creature."
+      },
+      {
+        "npc": "It appears that when I stole the coin, the creature possessed me."
+      },
+      {
+        "npc": "For some reason the coin returned to me. Here, take it before it corrupts me again!"
+      },
+      {
+        "npc": "I took that coin from the Stone Relief in the Crypt of the Moon and trapped my friend Eodan in a secret room behind the relief. Could you return the coin to the relief and set him free?"
+      }
+    ],
+    "after-speaking-to-eodan": [
+      {
+        "npc": "I'm glad I no longer have that coin. I'm not sure what would have happened if I had continued to listen the voices in my head."
+      }
+    ]
+  }
+}

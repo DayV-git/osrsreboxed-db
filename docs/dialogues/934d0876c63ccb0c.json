@@ -1,0 +1,179 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Grand job, what an obnoxious tree, spreading rumours 'bout other trees and sucking up all the water."
+      },
+      {
+        "npc": "As a reward, I'll let ye use me full banking services!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Open deposit box",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Bank Deposit Box",
+                "id": "A7E0Sx"
+              }
+            ]
+          },
+          {
+            "text": "Deposit all",
+            "steps": [
+              {
+                "type": "action",
+                "text": "The player's logs are deposited.",
+                "id": "rGJzaY"
+              }
+            ]
+          },
+          {
+            "text": "Say nothing",
+            "steps": [
+              {
+                "player": "..."
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "..."
+              },
+              {
+                "npc": "Okay then."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-players-were-not-actively-cutting-trees-nearby": [
+      {
+        "npc": "What an obnoxious tree, spreading rumours 'bout other trees and sucking up all the water."
+      },
+      {
+        "npc": "Since you're here, I'll let you use me restricted banking services."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Deposit all woodcutting resources",
+            "steps": [
+              {
+                "type": "action",
+                "text": "The player's logs are deposited.",
+                "id": "IoH8Hk"
+              }
+            ]
+          },
+          {
+            "text": "Say nothing",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nTS9qg"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-deposit": [
+      {
+        "type": "choice",
+        "prompt": "Bank all the items in your inventory?",
+        "options": [
+          {
+            "text": "Yes, bank it all",
+            "steps": [
+              {
+                "type": "action",
+                "text": "The player's entire inventory is deposited.",
+                "id": "kjWzFk"
+              }
+            ]
+          },
+          {
+            "text": "Only bank woodcutting resources",
+            "steps": [
+              {
+                "type": "action",
+                "text": "The player's logs are deposited.",
+                "id": "I56FUq"
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has non-Woodcutting resources in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your items cannot be stored in the bank from here.",
+                    "id": "a4PrCJ"
+                  }
+                ],
+                "id": "HgPTd9"
+              }
+            ]
+          },
+          {
+            "text": "No, don't bank anything",
+            "steps": []
+          },
+          {
+            "text": "Open my bank deposit box",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Bank Deposit Box",
+                "id": "s9eYoR"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "Upon spawning in:",
+        "steps": [
+          {
+            "npc": "It be yer lucky day, Foresters!"
+          }
+        ],
+        "id": "nH94jN"
+      },
+      {
+        "type": "condition",
+        "text": "Before the last end of rainbow spawns:",
+        "steps": [
+          {
+            "npc": "I'll have to go shortly..."
+          }
+        ],
+        "id": "ctxzBa"
+      },
+      {
+        "type": "condition",
+        "text": "Upon leaving:",
+        "steps": [
+          {
+            "npc": "Well, I must be getting on now."
+          }
+        ],
+        "id": "YHKV66"
+      }
+    ]
+  }
+}
