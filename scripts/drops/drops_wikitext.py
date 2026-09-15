@@ -964,29 +964,34 @@ def _parse_id_list(raw: str) -> List[int]:
     return [int(part.strip()) for part in raw.split(",") if part.strip().isdigit()]
 
 
-def parse_npc_ids_by_drop_table(wikitext: str) -> Dict[str, List[int]]:
-    """Map wiki drop-table section names (e.g. ``Drop table 1``) to npc ids.
+def parse_npc_ids_by_drop_table(
+    wikitext: str, include_versions: bool = False
+) -> Dict[str, List[int]]:
+    """Map infobox drop versions to IDs, keeping each infobox's indices local.
 
-    :param wikitext: Raw wikitext of the page.
-    :return: Dictionary of drop version name to npc ids.
+    Qualified headings may use the display version or combat level instead of
+    dropversion (e.g. Giant rat's "Level 3" is dropversion "Regular").
     """
-    versions = {
-        int(match.group(1)): match.group(2).strip()
-        for match in DROP_VERSION_FIELD.finditer(wikitext)
-    }
-    if not versions:
-        return {}
-
-    ids_by_index = {
-        int(match.group(1)): _parse_id_list(match.group(2))
-        for match in VERSIONED_ID_FIELD.finditer(wikitext)
-    }
-
     grouped: Dict[str, List[int]] = {}
-    for index, table_name in versions.items():
-        if index not in ids_by_index:
+    for template in mwparserfromhell.parse(
+        _npc_infobox_source(wikitext)
+    ).filter_templates():
+        if str(template.name).strip().lower() not in ("infobox monster", "infobox npc"):
             continue
-        grouped.setdefault(table_name, []).extend(ids_by_index[index])
+        params = template_params(template)
+        for key, value in params.items():
+            if not re.fullmatch(r"id\d*", key):
+                continue
+            index = key[2:]
+            names = [params.get("dropversion" + index, params.get("dropversion", ""))]
+            if include_versions:
+                names.append(params.get("version" + index, params.get("version", "")))
+                combat = params.get("combat" + index, params.get("combat", ""))
+                if combat.isdigit():
+                    names.append("Level " + combat)
+            for name in names:
+                if name:
+                    grouped.setdefault(name, []).extend(_parse_id_list(value))
     return {name: sorted(set(ids)) for name, ids in grouped.items()}
 
 
@@ -1098,7 +1103,10 @@ def is_standard_drop_subsection(heading: str) -> bool:
 def _heading_matches_drop_version(heading: str, version: str) -> bool:
     heading = heading.lower()
     version = version.lower()
-    return heading == version or version in heading or heading in version
+    return bool(
+        re.search(r"(?<!\w)" + re.escape(version) + r"(?!\w)", heading)
+        or re.search(r"(?<!\w)" + re.escape(heading) + r"(?!\w)", version)
+    )
 
 
 def _matches_drop_version_variant(heading: str, drop_versions: List[str]) -> bool:
@@ -1165,22 +1173,51 @@ def npc_ids_for_drop_variant(
     :param fallback_npc_ids: Ids to use when the heading matches no drop version.
     :return: Sorted npc ids.
     """
-    versions_to_ids = parse_npc_ids_by_drop_table(wikitext)
+    versions_to_ids = parse_npc_ids_by_drop_table(wikitext, include_versions=True)
     if not versions_to_ids:
         return fallback_npc_ids
 
+    # Match numeric lists/ranges as levels, not as substrings of other levels.
+    levels = re.search(r"\blevels?\s+([\d,\s–-]+(?:and\s+\d+)?)", variant_name, re.I)
+    if levels:
+        selected = set()
+        for first, last in re.findall(r"(\d+)(?:\s*[-–]\s*(\d+))?", levels.group(1)):
+            selected.update(range(int(first), int(last or first) + 1))
+        matched = [
+            npc_id
+            for level in selected
+            for npc_id in versions_to_ids.get(f"Level {level}", [])
+        ]
+        if matched:
+            return sorted(set(matched))
+
+    heading = re.sub(r"\bdrops\b|[()]", " ", variant_name, flags=re.I)
+    heading = re.sub(r"\bwithout\b", "no", heading, flags=re.I)
+    heading = " ".join(heading.lower().split())
     tokens = [
-        token.strip()
-        for part in re.split(r"\s+and\s+", variant_name, flags=re.I)
-        for token in part.split(",")
-        if token.strip()
+        token.strip() for token in re.split(r"\s+and\s+|,", heading) if token.strip()
     ]
 
-    matched = []
-    for version_name, ids in versions_to_ids.items():
-        if any(_heading_matches_drop_version(token, version_name) for token in tokens):
-            matched.extend(ids)
-    return sorted(set(matched)) or fallback_npc_ids
+    # A declared dropversion is more precise than a generic display version
+    # (e.g. Hobgoblin's "Armed" versus the display name "Hobgoblin").
+    for versions in (parse_npc_ids_by_drop_table(wikitext), versions_to_ids):
+        exact = [
+            npc_id
+            for name, ids in versions.items()
+            if name.lower() == heading
+            for npc_id in ids
+        ]
+        if exact:
+            return sorted(set(exact))
+        matched = [
+            npc_id
+            for name, ids in versions.items()
+            if any(_heading_matches_drop_version(token, name) for token in tokens)
+            for npc_id in ids
+        ]
+        if matched:
+            return sorted(set(matched))
+    return fallback_npc_ids
 
 
 # ---------------------------------------------------------------------------
@@ -1467,12 +1504,11 @@ def parse_all_drop_tables(wikitext: str) -> List[ParsedDropTable]:
                 )
             elif table_name in npc_ids_by_table:
                 npc_ids = npc_ids_by_table[table_name]
-            elif len(sections) == 1 and len(variants) == 1:
-                npc_ids = fallback_npc_ids
             elif not strict_headings:
-                # Qualified headings ("Members' worlds drops", "Level 146
-                # drops") describe the same npcs under different conditions,
-                # so every table on the page belongs to all of them.
+                npc_ids = npc_ids_for_drop_variant(
+                    wikitext, table_name, fallback_npc_ids
+                )
+            elif len(sections) == 1 and len(variants) == 1:
                 npc_ids = fallback_npc_ids
             else:
                 npc_ids = []
@@ -1490,6 +1526,23 @@ def parse_all_drop_tables(wikitext: str) -> List[ParsedDropTable]:
                     npc_ids=npc_ids,
                 )
             )
+    if not strict_headings:
+        named_ids = set()
+        for table in tables:
+            if not re.search(r"\blevels?\s+\d", table.table_name, re.I):
+                named_ids.update(
+                    npc_ids_for_drop_variant(wikitext, table.table_name, [])
+                )
+        for table in tables:
+            if re.search(
+                r"\blevels?\s+\d", table.table_name, re.I
+            ) or not npc_ids_for_drop_variant(wikitext, table.table_name, []):
+                # A named exception such as Wilderness Slayer Cave owns its IDs,
+                # even when it shares a combat level with the ordinary variant.
+                table.npc_ids = [
+                    npc_id for npc_id in table.npc_ids if npc_id not in named_ids
+                ]
+
     return tables
 
 
@@ -1499,6 +1552,11 @@ def _resolve_drop_rarity(drop: ParsedDrop, page_vars: Dict[str, str]) -> ParsedD
     if resolved is None:
         return drop
     text, assumed = resolved
+    # A section heading must not turn an explicitly rare/variable row into a
+    # guaranteed drop (Buffalo lists its variable-rate token under "100%").
+    rate = parse_tertiary_rarity(text)
+    if drop.section == SECTION_GUARANTEED and rate and rate[0] < rate[1]:
+        drop.section = SECTION_TERTIARY
     if text == drop.rarity and not assumed:
         return drop
     drop.rarity = text

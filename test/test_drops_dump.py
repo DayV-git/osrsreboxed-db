@@ -166,3 +166,97 @@ def test_shared_table_accesses_are_not_double_counted():
         drops_tables.build_table_spec("Test_monster", table, ITEMS)
     )
     assert [e.get("shared_table") for e in exported["entries"]] == ["seed"]
+
+
+def test_cached_variant_pages_keep_npc_ids_separate():
+    import json
+    from pathlib import Path
+
+    pages = json.loads(
+        (
+            Path(__file__).parents[1] / "data/monsters/monsters-wiki-page-text.json"
+        ).read_text()
+    )
+    expected = {
+        "Rogue": {"Level 15 drops": {526}, "Level 135 drops": {6603}},
+        "Giant rat": {
+            "Level 3 and 6 drops": set(range(2856, 2865)),
+            "Level 26 drops": {2510, 2511, 2512},
+        },
+        "Skeleton": {
+            "Drops (Plain)": {
+                71,
+                72,
+                73,
+                75,
+                76,
+                78,
+                79,
+                80,
+                81,
+                83,
+                14426,
+                14427,
+                14428,
+            },
+            "Drops (Unarmed)": {70, 74},
+            "Drops (Armed)": {77, 82},
+        },
+        "Rat": {
+            "Drops (Regular)": {2854, 2855},
+            "Drops (Stronghold of Security)": {2492, 2513},
+        },
+    }
+    for page, mappings in expected.items():
+        actual = {
+            table.table_name: set(table.npc_ids)
+            for table in drops_wikitext.parse_all_drop_tables(pages[page])
+        }
+        assert actual == mappings, page
+
+
+def test_variant_matching_uses_whole_words_and_numbers():
+    assert not drops_wikitext._heading_matches_drop_version("Unarmed", "Armed")
+    assert not drops_wikitext._heading_matches_drop_version("Level 135", "Level 13")
+
+
+def test_non_guaranteed_rarity_under_guaranteed_heading():
+    source = WIKITEXT.replace("rarity=Always", "rarity=Varies")
+    table = drops_wikitext.parse_all_drop_tables(source)[0]
+    result = drops_tables.build_table_json(
+        drops_tables.build_table_spec("Test", table, ITEMS)
+    )
+    assert not any(entry.get("item_id") == 526 for entry in result["entries"])
+    bones = next(entry for entry in result["tertiary"] if entry["item_id"] == 526)
+    assert bones["out_of"] == 128
+    assert not bones.get("always")
+
+
+def test_named_exceptions_and_level_ranges():
+    import json
+    from pathlib import Path
+
+    pages = json.loads(
+        (
+            Path(__file__).parents[1] / "data/monsters/monsters-wiki-page-text.json"
+        ).read_text()
+    )
+    for page in (
+        "Highwayman",
+        "Hobgoblin",
+        "Tortoise",
+        "Possessed pickaxe",
+        "Lesser demon",
+        "Zombie (Tarn's Lair)",
+    ):
+        tables = drops_wikitext.parse_all_drop_tables(pages[page])
+        seen = set()
+        for table in tables:
+            assert table.npc_ids, (page, table.table_name)
+            assert not seen.intersection(table.npc_ids), page
+            seen.update(table.npc_ids)
+    lesser = drops_wikitext.parse_all_drop_tables(pages["Lesser demon"])
+    assert set(lesser[1].npc_ids) == {7865, 7866, 7867}
+    zombies = drops_wikitext.parse_all_drop_tables(pages["Zombie (Tarn's Lair)"])
+    assert zombies[0].npc_ids == list(range(6449, 6454))
+    assert zombies[1].npc_ids == list(range(6454, 6460))
