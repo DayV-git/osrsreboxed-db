@@ -22,6 +22,8 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
 - **Shops** data is maintained via **`scripts/shops/`** and **`data/shops/`** (not a `builders/shops` package). `shop_owners.py` resolves each
   shop's NPC owner and must run before `shops_items.process`, which merges the `owners` array into the export and writes the NPC-keyed
   `docs/shops-by-npc.json`. A null option carries `option_source` (`dialogue` vs `unknown`) so consumers cannot read it as "option 1". The
+  page text cache (`data/shops/shops-wiki-page-text.json`) is written a page at a time and is pruned to the category listing, so a
+  wiki rename cannot leave the old title behind as a second copy of the same shop; `shops_properties.process` skips stale titles too. The
   shop-opening option is resolved **per NPC ID**, not per owner — an owner's IDs are per-location variants that do not always share a menu
   layout, so copying one variant's option across the rest silently mislabels them.
 - **Drops** are likewise a `scripts/` domain (**`scripts/drops/`**, output in **`docs/drops-json/`**), not a builder.

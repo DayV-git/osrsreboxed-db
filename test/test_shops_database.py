@@ -208,3 +208,24 @@ def test_shops_by_npc_agrees_with_shops_by_shop():
         for npc_id in owner["npc_ids"]
     }
     assert owners_with_ids == {int(npc_id) for npc_id in by_npc}
+
+
+def test_every_shop_traces_to_a_current_category_page():
+    """The page text cache is append-only; a renamed page must not linger as a
+    second copy of the same shop."""
+    with open(
+        Path(config.DOCS_PATH / "shops-items-by-shop.json"), encoding="utf-8"
+    ) as f:
+        shops = json.load(f)
+    with open(
+        Path(config.DATA_SHOPS_PATH / "shops-wiki-page-titles.json"), encoding="utf-8"
+    ) as f:
+        titles = set(json.load(f))
+
+    # A tabber shop is exported once per section as "<page title> (<section>)".
+    stale = [
+        shop
+        for shop in shops
+        if shop not in titles and shop.rsplit(" (", 1)[0] not in titles
+    ]
+    assert not stale, f"shops no longer in the wiki category: {stale}"
