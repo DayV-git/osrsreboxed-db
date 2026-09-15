@@ -1,31 +1,29 @@
 
 # Fork-of-Fork Changes
 
-This fork of osrsreboxed-db only updates the JSON files, and is not linked to the other APIs which are now outdated. A new `elemental_weakness_type` monster property (1 = Air, 2 = Water, 3 = Earth, 4 = Fire) has been added, with corresponding `elemental_weakness_percent`, as well as updated range defense types - `defence_ranged_light`, `defence_ranged_standard` and `defence_ranged_heavy`. Monster drops are depracated and have been removed. The JSON files are available here, see [Static JSON API Files](https://github.com/DayV-git/osrsreboxed-db/tree/master#static-json-api-files) for more informstion:
+This fork updates the JSON data only. The other APIs in the upstream project are outdated and are not maintained here.
 
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/items-complete.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/items-complete.json)
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/monsters-complete.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/monsters-complete.json)
+**Changed from upstream**
 
-A new feature for this fork is NPC drop tables, rebuilt from the OSRS Wiki and keyed by NPC ID, available here:
+-   Monsters gain `elemental_weakness_type` (1 = Air, 2 = Water, 3 = Earth, 4 = Fire) and `elemental_weakness_percent`.
+-   Ranged defence is split into `defence_ranged_light`, `defence_ranged_standard` and `defence_ranged_heavy`.
+-   The per-monster `drops` array is deprecated and removed; drops live in their own export (below).
 
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/npc-drops.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/npc-drops.json)
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/subtables.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/subtables.json)
+**Added by this fork**
 
-These replace the deprecated per-monster `drops` array. Regenerate them with `python -m scripts.drops.update`.
+| Data | File | Regenerate with |
+| --- | --- | --- |
+| NPC drop tables, keyed by NPC ID | [`docs/drops-json/npc-drops.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/npc-drops.json), [`subtables.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/drops-json/subtables.json) | `python -m scripts.drops.update` |
+| NPC right-click options and their menu slots | [`docs/npcs-interactions.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npcs-interactions.json) | `python -m scripts.npcs.update` |
+| Shop stock and prices, with the NPC that runs each shop | [`docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json), [`shops-by-npc.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-by-npc.json) | `python -m scripts.shops.update` |
+| NPC dialogue transcripts, with gameplay steps slugged | [`docs/npcs-dialogues.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npcs-dialogues.json) | `python -m scripts.dialogues.update` |
 
-NPC click options (the right-click menu, which says what an NPC does and in which menu slot) are available here:
+The upstream files are unchanged and still published:
 
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npcs-interactions.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/npcs-interactions.json)
+-   [`docs/items-complete.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/items-complete.json)
+-   [`docs/monsters-complete.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/monsters-complete.json)
 
-Regenerate with `python -m scripts.npcs.update`, which reads a plain-text cache NPC dump from `data/cache/dump.npc`.
-
-A new feature for this fork is information on shop stock and prices — including the `owners` array naming the NPC that runs each shop, with its
-NPC IDs resolved from the shopkeeper's own wiki page — available here:
-
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json)
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-by-npc.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-by-npc.json)
-
-The remainder of the README is unchanged. 
+See [Static JSON API Files](https://github.com/DayV-git/osrsreboxed-db/tree/master#static-json-api-files) for the full list. `scripts.npcs.update` reads a plain-text cache NPC dump from `data/cache/dump.npc`. The remainder of this README is upstream's, unchanged.
 
 # osrsreboxed-db - A (mostly) updated fork of [osrsbox](https://github.com/osrsbox/osrsbox-db)
 
@@ -212,8 +210,7 @@ repository. This folder contains the publicly available database. Every file ins
     to fetch data for a single monster where you already know the item ID number.
 -   `shops-items-by-shop.json`: Every shop, keyed by its wiki page name, with `shop_info` pricing, the `owners` that open it, and the `items` it
     stocks. An item row carries only `id`, `stock` and `restock_time`; the item's name comes from the items database by ID, and `currency` appears on a
-    row only when it differs from `shop_info.currency`. A `shop_info` percentage the wiki does not state is absent rather than null. There is no
-    item-keyed export; an item's shops are found by scanning this file.
+    row only when it differs from `shop_info.currency`. A `shop_info` percentage the wiki does not state is absent rather than null.
 -   `shops-by-npc.json`: The shops each shopkeeper opens, keyed by NPC ID, with the click option and 1-based menu slot that opens them. This is the
     index to use when handling an NPC click: a server already holds the NPC ID and the option slot, so it can resolve the shop with one lookup.
     `option_source` says how the shop is opened: `click` (use `option_slot`), `dialogue` (the NPC's menu has no shop option, so the shop is reached by
