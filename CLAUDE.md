@@ -25,6 +25,9 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
   sells in coins however its prose reads. A null option carries `option_source` (`dialogue` vs `unknown`) so consumers cannot read it as "option 1". The
   page text cache (`data/shops/shops-wiki-page-text.json`) is written a page at a time and is pruned to the category listing, so a
   wiki rename cannot leave the old title behind as a second copy of the same shop; `shops_properties.process` skips stale titles too. The
+  exports carry no field a consumer can derive: item rows are `id`/`stock`/`restock_time` (plus `currency` only as an override of
+  `shop_info.currency`, which nothing currently triggers), null `shop_info` percentages are omitted, and `shops-by-npc.json` does not repeat
+  its NPC-ID key. There is no item-keyed shop export; an item's shops are found by scanning `shops-items-by-shop.json`. The
   shop-opening option is resolved **per NPC ID**, not per owner — an owner's IDs are per-location variants that do not always share a menu
   layout, so copying one variant's option across the rest silently mislabels them.
 - **Drops** are likewise a `scripts/` domain (**`scripts/drops/`**, output in **`docs/drops-json/`**), not a builder.

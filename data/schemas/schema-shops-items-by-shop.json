@@ -6,24 +6,24 @@
     "nullable": false,
     "schema": {
       "sells_at": {
-        "description": "The percentage at which the shop sells items (e.g., 1000 = 100%).",
+        "description": "The percentage at which the shop sells items (e.g., 1000 = 100%). Absent when the wiki infobox does not state it.",
         "type": "integer",
-        "required": true,
-        "nullable": true,
+        "required": false,
+        "nullable": false,
         "min": 0
       },
       "buys_at": {
-        "description": "The percentage at which the shop buys items (e.g., 500 = 50%).",
+        "description": "The percentage at which the shop buys items (e.g., 500 = 50%). Absent when the wiki infobox does not state it.",
         "type": "integer",
-        "required": true,
-        "nullable": true,
+        "required": false,
+        "nullable": false,
         "min": 0
       },
       "change_per": {
-        "description": "The percentage change per item stocked/sold.",
+        "description": "The percentage change per item stocked/sold. Absent when the wiki infobox does not state it.",
         "type": "integer",
-        "required": true,
-        "nullable": true,
+        "required": false,
+        "nullable": false,
         "min": 0
       },
       "currency": {
@@ -100,33 +100,12 @@
     "schema": {
       "type": "dict",
       "schema": {
-        "type": {
-          "description": "The type of item (e.g., 'item').",
-          "type": "string",
-          "required": true,
-          "nullable": false,
-          "allowed": [
-            "item"
-          ]
-        },
         "id": {
           "description": "Unique OSRS item ID.",
           "type": "integer",
           "required": true,
           "nullable": false,
           "min": 0
-        },
-        "name": {
-          "description": "The name of the item.",
-          "type": "string",
-          "required": true,
-          "nullable": false
-        },
-        "shop_name": {
-          "description": "The name of the shop.",
-          "type": "string",
-          "required": true,
-          "nullable": false
         },
         "stock": {
           "description": "The amount of items in stock (integer or 'infinite' string).",
@@ -147,9 +126,9 @@
           "nullable": true
         },
         "currency": {
-          "description": "The currency type for this item.",
+          "description": "Currency for this row, present only when it differs from shop_info.currency.",
           "type": "string",
-          "required": true,
+          "required": false,
           "nullable": false
         }
       }

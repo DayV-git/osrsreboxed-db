@@ -24,7 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import re
 import json
 from pathlib import Path
-from collections import defaultdict
 import logging
 
 import config
@@ -540,10 +539,8 @@ def process() -> None:
 
     # Structure the data - maintain new format with shop info
     shops_by_shop = {}
-    shops_by_item = defaultdict(list)
     shops_by_npc = {}
 
-    total_items = 0
     shops_with_info = 0
 
     for shop_name, shop_data in raw_shop_data.items():
@@ -561,10 +558,31 @@ def process() -> None:
             or []
         ]
 
+        # Exported items carry only what cannot be read off the shop: type is always
+        # "item" once filtered, shop_name repeats the key, and currency is the shop's
+        # unless the row overrides it.
+        shop_currency = shop_info.get("currency")
+        items_export = [
+            {
+                "id": item["id"],
+                "stock": item.get("stock"),
+                "restock_time": item.get("restock_time"),
+                **(
+                    {"currency": item["currency"]}
+                    if item.get("currency") != shop_currency
+                    else {}
+                ),
+            }
+            for item in filtered_items
+        ]
+
         shops_by_shop[shop_name] = {
-            "shop_info": shop_info,
+            # A null percentage is an absent one; do not export the key.
+            "shop_info": {
+                key: value for key, value in shop_info.items() if value is not None
+            },
             "owners": owners,
-            "items": filtered_items,
+            "items": items_export,
         }
 
         # Index by NPC ID, so a server handling an NPC click can look up the
@@ -573,9 +591,10 @@ def process() -> None:
         # variants, and they do not always share a menu layout.
         for owner in owners:
             for npc_id in owner["npc_ids"]:
+                # npc_id is the export key; carrying it in the value too says nothing.
                 entry = shops_by_npc.setdefault(
                     npc_id,
-                    {"npc_id": npc_id, "name": owner["name"], "shops": []},
+                    {"name": owner["name"], "shops": []},
                 )
                 entry["shops"].append(
                     {
@@ -588,31 +607,18 @@ def process() -> None:
         if any(shop_info.values()):
             shops_with_info += 1
 
-        # Build items-by-item index
-        for item in filtered_items:
-            if "id" in item:
-                shops_by_item[item["id"]].append(
-                    {
-                        "shop_name": shop_name,
-                        "stock": item.get("stock"),
-                        "restock_time": item.get("restock_time"),
-                        "currency": item.get("currency", "coins"),
-                    }
-                )
-                total_items += 1
-
+    total_items = sum(len(shop["items"]) for shop in shops_by_shop.values())
+    unique_items = {
+        item["id"] for shop in shops_by_shop.values() for item in shop["items"]
+    }
     logger.info(
-        f"Processed {len(raw_shop_data)} shops: {total_items} total items, {len(shops_by_item)} unique items"
+        f"Processed {len(raw_shop_data)} shops: {total_items} total items, {len(unique_items)} unique items"
     )
 
     # Export shop JSON into docs for static API access
     docs_shop_file = Path(config.DOCS_PATH / "shops-items-by-shop.json")
     with open(docs_shop_file, "w") as f:
         json.dump(shops_by_shop, f, indent=4)
-
-    docs_item_file = Path(config.DOCS_PATH / "shops-items-by-item.json")
-    with open(docs_item_file, "w") as f:
-        json.dump(dict(shops_by_item), f, indent=4)
 
     docs_npc_file = Path(config.DOCS_PATH / "shops-by-npc.json")
     with open(docs_npc_file, "w") as f:
@@ -629,10 +635,6 @@ def process() -> None:
     package_shop_file = Path(package_docs_path / "shops-items-by-shop.json")
     with open(package_shop_file, "w") as f:
         json.dump(shops_by_shop, f, indent=4)
-
-    package_item_file = Path(package_docs_path / "shops-items-by-item.json")
-    with open(package_item_file, "w") as f:
-        json.dump(dict(shops_by_item), f, indent=4)
 
     logger.info(f"Exported processed shop data.")
 

@@ -23,7 +23,6 @@ A new feature for this fork is information on shop stock and prices — includin
 NPC IDs resolved from the shopkeeper's own wiki page — available here:
 
 -   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-shop.json)
--   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-item.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-items-by-item.json)
 -   [`https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-by-npc.json`](https://raw.githubusercontent.com/DayV-git/osrsreboxed-db/master/docs/shops-by-npc.json)
 
 The remainder of the README is unchanged. 
@@ -211,6 +210,10 @@ repository. This folder contains the publicly available database. Every file ins
 -   `monsters-json`: Collection of JSON files (2.5K+) of extensive monster metadata for every monster in OSRS. This folder contains the entire
     osrsbox-db monster database where each monster has an individual JSON file, named using the unique monster ID number. This is useful when you want
     to fetch data for a single monster where you already know the item ID number.
+-   `shops-items-by-shop.json`: Every shop, keyed by its wiki page name, with `shop_info` pricing, the `owners` that open it, and the `items` it
+    stocks. An item row carries only `id`, `stock` and `restock_time`; the item's name comes from the items database by ID, and `currency` appears on a
+    row only when it differs from `shop_info.currency`. A `shop_info` percentage the wiki does not state is absent rather than null. There is no
+    item-keyed export; an item's shops are found by scanning this file.
 -   `shops-by-npc.json`: The shops each shopkeeper opens, keyed by NPC ID, with the click option and 1-based menu slot that opens them. This is the
     index to use when handling an NPC click: a server already holds the NPC ID and the option slot, so it can resolve the shop with one lookup.
     `option_source` says how the shop is opened: `click` (use `option_slot`), `dialogue` (the NPC's menu has no shop option, so the shop is reached by
