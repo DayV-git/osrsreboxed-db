@@ -1,0 +1,209 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's through those broken bars?",
+            "steps": [
+              {
+                "player": "What's through those broken bars?"
+              },
+              {
+                "npc": "Well, my intrepid friend, through those broken bars lies a most remarkable discovery! I named it Scurrius, The Rat King!"
+              },
+              {
+                "npc": "This is no ordinary rat. It is a magnificent creature of evolution, forged by the unwitting contributions of adventurers who entered its cave."
+              },
+              {
+                "npc": "It absorbed their combat abilities, transforming itself into an obscene monster. Nature's response to intrusion, you might say! How utterly fascinating!"
+              },
+              {
+                "npc": "Ahem, anyway you'll be absolutely fine, of course! Your victory awaits, I'm sure. I shall observe your progress with interest... for science, you know."
+              },
+              {
+                "npc": "Oh, and if you happen to come across Scurrius' spine, please bring it to me."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "aplJ1j"
+              }
+            ]
+          },
+          {
+            "text": "Can you tell me about Scurrius' spine?",
+            "steps": [
+              {
+                "player": "Excuse me, can you tell me about Scurrius' spine?"
+              },
+              {
+                "npc": "Of course! Scurrius spines are invaluable for my research."
+              },
+              {
+                "npc": "I can use them to craft a potent bone weapon which will aid you when battling the Rat King."
+              },
+              {
+                "npc": "Although you can create the weapons yourself, provided you have the required expertise and appropriate materials."
+              },
+              {
+                "npc": "If you don't want a bone weapon, I can also trade you a lamp I found during my research expedition - one for every Scurrius spine you bring to me."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "vdYNtZ"
+              }
+            ]
+          },
+          {
+            "text": "Can you make a bone weapon for me please?",
+            "steps": [
+              {
+                "player": "Can you make a bone weapon for me please?"
+              },
+              {
+                "npc": "You'll need to bring a Scurrius spine and either a Rune mace, a Yew shortbow, or a Battlestaff. An additional 1000 chaos runes are needed if you want to create a Bone staff."
+              },
+              {
+                "npc": "I'll also charge 50,000 coins to craft the weapon."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the materials in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Come back when you have all the necessary materials."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "RfeQLO"
+                  }
+                ],
+                "id": "Igpdxp"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does have the materials in their inventory:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Which bone weapon do you want?",
+                    "options": []
+                  }
+                ],
+                "id": "NW0qzi"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-scurrius-spine-on-historian-aldo": [
+      {
+        "npc": "Ah, a Scurrius spine! A captivating subject indeed. I'll eagerly take them off your hands, and rest assured, you will be well rewarded."
+      },
+      {
+        "type": "jump",
+        "reference": "below",
+        "id": "UPrMO_"
+      }
+    ],
+    "right-click-trade-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have Scurrius' spine:",
+        "steps": [
+          {
+            "npc": "Ah, I'll need one of Scurrius' spines to do that. Perhaps you could fetch me one?"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YSgk6f"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has Scurrius' spine:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Trade Scurrius' spine for a combat lamp?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Aldo gives you an Antique lamp for Scurrius' spine.",
+                    "id": "RuceQk"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "D8xt_E"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has Scurrius' spine and the materials to make a bone weapon:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Trade your Scurrius spines for a bone weapon or combat lamp?",
+            "options": [
+              {
+                "text": "Weapon.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "w5h-Mi"
+                  }
+                ]
+              },
+              {
+                "text": "Combat lamp.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "_ZEDPy"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "HKTmuO"
+      }
+    ]
+  }
+}

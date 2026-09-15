@@ -1,0 +1,690 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "What are you doing on my land? You're not the one who keeps leaving all my gates open and letting out all my sheep, are you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm looking for a quest.",
+            "steps": [
+              {
+                "player": "I'm looking for a quest."
+              },
+              {
+                "type": "condition",
+                "text": "On quest speedrunning worlds:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "You're after a quest, you say? Well I don't have any here."
+                  },
+                  {
+                    "type": "message",
+                    "text": "This quest is not available on Speedrunning Worlds.",
+                    "id": "p5vu0z"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "br3A1e"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "You're after a quest, you say? Actually, I could do with a bit of help."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "My sheep are getting mighty woolly. I'd be much obliged if you could shear them. And while you're at it, spin the wool for me too."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Yes, that's it. Bring me 20 balls of wool. And I'm sure I could sort out some sort of payment. Of course, there's the small matter of The Thing."
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has 20 balls of wool in their inventory:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "player": "In fact Fred, funnily enough, I actually have 20 balls of wool already on me."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Have you been shearing my sheep without permission!?"
+                  },
+                  {
+                    "player": "No! Well, maybe... They just looked a little wooly! Surely you like a shave once in a while, too?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "It's rude to shave another person without permission - don't be coming at me with them shears!"
+                  },
+                  {
+                    "player": "I'm sorry, I'll ask permission next time."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "I guess no real 'arm was done. Hand the balls over and we can put this whole thing behind us."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Quest complete!",
+                    "id": "MW-4c0"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JlC38d"
+              },
+              {
+                "player": "What do you mean, The Thing?"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Well now, no one has ever seen The Thing. That's why we call it The Thing, 'cos we don't know what it is."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Some say it's a black hearted shapeshifter, hungering for the souls of hard working decent folk like me. Others say it's just a sheep."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Well I don't have all day to stand around and gossip. Are you going to shear my sheep or what!"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Sheep Shearer quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Yes, okay. I can do that."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Good! Now one more thing, do you actually know how to shear a sheep?"
+                      },
+                      {
+                        "player": "Err. No, I don't know actually."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have shears:",
+                        "id": "HK3p0J"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Well, first things first, you need a pair of shears. I've got some here you can use."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Fred gives you a set of sharp shears.",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Fred the Farmer",
+                            "text": "You just need to go and use them on the sheep out in my field."
+                          },
+                          {
+                            "player": "Sounds easy!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Fred the Farmer",
+                            "text": "That's what they all say!"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Fred the Farmer",
+                            "text": "Some of the sheep don't like it too much... Persistence is the key."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Fred the Farmer",
+                            "text": "Once you've collected some wool you can spin it into balls."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "SSI1JE"
+                          }
+                        ],
+                        "id": "H9GkGT"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has shears already:",
+                        "steps": [
+                          {
+                            "type": "line",
+                            "speaker": "Fred the Farmer",
+                            "text": "Well, you're half way there already! You have a set of shears in your inventory. Just use those on a Sheep to shear it."
+                          },
+                          {
+                            "player": "That's all I have to do?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Fred the Farmer",
+                            "text": "Well once you've collected some wool you'll need to spin it into balls."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "zSnezd"
+                          }
+                        ],
+                        "id": "4-ne12"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Do you know how to spin wool?"
+                      },
+                      {
+                        "player": "I don't know how to spin wool, sorry."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Don't worry, it's quite simple!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "The nearest Spinning Wheel can be found on the first floor of Lumbridge Castle."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "To get to Lumbridge Castle just follow the road east."
+                      },
+                      {
+                        "type": "message",
+                        "text": "This icon denotes a Spinning Wheel on the world map.",
+                        "id": "xlDu6G"
+                      },
+                      {
+                        "player": "Thank you!"
+                      }
+                    ],
+                    "hook": "quest:sheep-shearer:start",
+                    "quest": "Sheep Shearer"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No, I'll give it a miss."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Suit yourself."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'm looking for something to kill."
+          },
+          {
+            "text": "I'm lost."
+          }
+        ]
+      }
+    ],
+    "starting-off-before-delivering-any-balls-of-wool": [
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "What are you doing on my land?"
+      },
+      {
+        "player": "I need to talk to you about shearing these sheep!"
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "Oh. How are you doing getting those balls of wool?"
+      },
+      {
+        "player": "How many more do I need to give you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "You need to collect 20 more balls of wool."
+      },
+      {
+        "player": "I haven't got any at the moment."
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "Ah well at least you haven't been eaten. You know what you're doing, right?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do I shear sheep, again?",
+            "steps": [
+              {
+                "player": "How do I shear sheep, again?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has shears:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Well, you're half way there already! You have a set of shears in your inventory. Just use those on a Sheep to shear it."
+                  },
+                  {
+                    "player": "That's all I have to do?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Well once you've collected some wool you'll need to spin it into balls."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "tgs-FC"
+                  }
+                ],
+                "id": "MKY9UA"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have shears:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Well, first things first, you need a pair of shears. I've got some here you can use."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "You just need to go and use them on the sheep out in my field."
+                  },
+                  {
+                    "player": "Sounds easy!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "That's what they all say!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Some of the sheep don't like it too much... Persistence is the key."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Fred the Farmer",
+                    "text": "Once you've collected some wool you can spin it into balls."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "6ntRwd"
+                  }
+                ],
+                "id": "nCewYx"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Do you know how to spin wool?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, I know how to spin wool.",
+                    "steps": [
+                      {
+                        "player": "Yes, I know how to spin wool."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Fred the Farmer",
+                        "text": "Great!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't know how to spin wool, sorry.",
+                    "steps": [
+                      {
+                        "player": "I don't know how to spin wool, sorry."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "hzPgtO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Remind me how to spin wool.",
+            "steps": [
+              {
+                "player": "Remind me how to spin wool."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "The nearest Spinning Wheel can be found on the first floor of Lumbridge Castle."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "To get to Lumbridge Castle just follow the road east."
+              },
+              {
+                "type": "message",
+                "text": "This icon denotes a Spinning Wheel on the world map.",
+                "id": "ooEaXS"
+              },
+              {
+                "player": "Thank you!"
+              }
+            ]
+          },
+          {
+            "text": "Yeah, I think so.",
+            "steps": [
+              {
+                "player": "Yeah, I think so."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "You can get to it, then!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-with-regular-wool": [
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "What are you doing on my land?"
+      },
+      {
+        "player": "I need to talk to you about shearing these sheep!"
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "Oh. How are you doing getting those balls of wool?"
+      },
+      {
+        "player": "How many more do I need to give you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "You need to collect 20 more balls of wool."
+      },
+      {
+        "player": "I've got some wool. I've not managed to make it into a ball though."
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "Well go find a spinning wheel then. You can find one on the first floor of Lumbridge Castle, just walk east on the road outside my house and you'll find Lumbridge."
+      }
+    ],
+    "attempting-to-shear-the-thing": [
+      {
+        "type": "message",
+        "text": "The... whatever it is... manages to get away from you!",
+        "id": "9mjsYm"
+      }
+    ],
+    "handing-in-any-balls-of-wool": [
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "What are you doing on my land?"
+      },
+      {
+        "player": "I need to talk to you about shearing these sheep!"
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "Oh. How are you doing getting those balls of wool?"
+      },
+      {
+        "player": "I have some."
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "Give 'em here then."
+      },
+      {
+        "type": "message",
+        "text": "You give Fred [1-19] [ball/balls] of wool.",
+        "id": "XaM2d6"
+      },
+      {
+        "player": "That's all I've got so far."
+      },
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "I need [1-19] more before I can pay you."
+      },
+      {
+        "player": "Ok I'll work on it."
+      }
+    ],
+    "after-interacting-with-the-the-thing": [
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "What are you doing on my land?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need to talk to you about shearing these sheep!",
+            "steps": [
+              {
+                "player": "I need to talk to you about shearing these sheep!"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Oh. How are you doing getting those balls of wool?"
+              },
+              {
+                "player": "I have some."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Give 'em here then."
+              },
+              {
+                "type": "message",
+                "text": "You give Fred [1-19] [ball/balls] of wool.",
+                "id": "0OkI2g"
+              },
+              {
+                "player": "That's all I've got so far."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "I need [#] more before I can pay you."
+              },
+              {
+                "player": "Ok I'll work on it."
+              }
+            ]
+          },
+          {
+            "text": "Fred! Fred! I've seen The Thing!",
+            "steps": [
+              {
+                "player": "Fred! Fred! I've seen The Thing!"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "You ... you actually saw it?"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Run for the hills! [player name] grab as many chickens as you can! We have to ..."
+              },
+              {
+                "player": "Fred!"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "... flee! Oh, woe is me! The shapeshifter is coming! We're all ..."
+              },
+              {
+                "player": "FRED!"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "... doomed. What!"
+              },
+              {
+                "player": "It's not a shapeshifter or any other kind of monster!"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Well then what is it?"
+              },
+              {
+                "player": "Well ... it's just two Penguins; Penguins disguised as a sheep."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "..."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Have you been out in the sun too long?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "finishing-up": [
+      {
+        "type": "line",
+        "speaker": "Fred the Farmer",
+        "text": "What are you doing on my land?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need to talk to you about shearing these sheep!",
+            "steps": [
+              {
+                "player": "I need to talk to you about shearing these sheep!"
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Oh. How are you doing getting those balls of wool?"
+              },
+              {
+                "player": "I have some."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "Give 'em here then."
+              },
+              {
+                "player": "That's the last of them."
+              },
+              {
+                "type": "line",
+                "speaker": "Fred the Farmer",
+                "text": "I guess I'd better pay you then."
+              },
+              {
+                "type": "action",
+                "text": "Congratulations! Quest complete!",
+                "id": "l--V3R"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Fred! Fred! I've seen The Thing!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ALlHau"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "Vv242P"
+      }
+    ]
+  }
+}

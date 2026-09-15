@@ -1,0 +1,385 @@
+{
+  "default": "standard-dialogue-subsequent-dialogue",
+  "variants": {
+    "standard-dialogue-if-the-player-has-not-yet-asked-about-the-crew": [
+      {
+        "player": "Hello! What brings you here?"
+      },
+      {
+        "npc": "I'm here to guard this ship from any scurvy dogs darin' to loot her cargo."
+      },
+      {
+        "player": "How did your ship end up here?"
+      },
+      {
+        "npc": "Arr, 'tis a woeful tale."
+      },
+      {
+        "npc": "Me hearties and I were enjoying a bit o' grog when we espied a group of landlubbers fightin' on the shore. 'Twas such an exciting battle that our navigator forgot to watch for the rocks."
+      },
+      {
+        "npc": "Now we've run aground, as ye can see."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where's the rest of your crew?",
+            "steps": [
+              {
+                "player": "Where's the rest of your crew?"
+              },
+              {
+                "npc": "They're searchin' for booty at that temple to the west."
+              },
+              {
+                "player": "Will they return to the ship?"
+              },
+              {
+                "npc": "They best do! That scurvy lot keep fillin' their lockers with loot and sneakin' off without swappin' places!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you really want to go to the temple?",
+                    "steps": [
+                      {
+                        "player": "Do you really want to go to the temple? I've heard the mages there have some really annoying spells."
+                      },
+                      {
+                        "npc": "Nothin' we can't handle! We've a way of stoppin' their tricksy teleports."
+                      },
+                      {
+                        "player": "How can a group of mindless zombies invent a counter to magic?"
+                      },
+                      {
+                        "npc": "What we lack in brains, we make up for in gold! We found us a landlubber willin' to share their knowledge... for a price."
+                      },
+                      {
+                        "npc": "They wrote us down a spell on some magic scrolls. All we 'ave to do is read one, and then we're properly anchored! Those mages can't teleport us anywhere!"
+                      },
+                      {
+                        "player": "Wow, I'm actually impressed. Do you think your friends at the temple will lend me one?"
+                      },
+                      {
+                        "npc": "Naw, they're too busy fightin' to talk to the likes of ye. Besides, we stash all our spare scrolls in these lockers for safekeepin'."
+                      },
+                      {
+                        "player": "Can I take a scroll from a locker, then?"
+                      },
+                      {
+                        "npc": "Ye'll need a key for that, matey! One of the crew should 'ave one."
+                      },
+                      {
+                        "npc": "And when ye see 'em, tell 'em it's their turn to keep watch!"
+                      },
+                      {
+                        "npc": "There be plenty o' loot in them lockers, matey. Don't expect to find a scroll right away."
+                      },
+                      {
+                        "player": "Thanks. I'd say 'see you around', but I sort of hope I don't."
+                      },
+                      {
+                        "npc": "Aye, the feelin's mutual."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "player": "Goodbye, I hope your crew comes back soon."
+                      },
+                      {
+                        "npc": "Arr, me too matey."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "Bye, matey."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-has-learnt-about-the-crew-but-not-yet-asked-about-the-temple": [
+      {
+        "player": "Do you really want to go to the temple? I've heard the mages there have some really annoying spells."
+      },
+      {
+        "npc": "Nothin' we can't handle! We've a way of stoppin' their tricksy teleports."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "c6SM4Z"
+      }
+    ],
+    "standard-dialogue-subsequent-dialogue": [
+      {
+        "npc": "Arr, I've still not seen any of my crew."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Oh dear, how strange.",
+            "steps": [
+              {
+                "player": "Oh dear, how strange."
+              }
+            ]
+          },
+          {
+            "text": "Can you tell if I've used the Teleport anchoring scroll?",
+            "steps": [
+              {
+                "player": "Can you tell if I've used the Teleport anchoring scroll?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not used the teleport anchoring scroll:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "gCeOog"
+                  }
+                ],
+                "id": "i24IOa"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has used the teleport anchoring scroll:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "akmnH-"
+                  }
+                ],
+                "id": "uudRoD"
+              }
+            ]
+          },
+          {
+            "text": "How many times have I opened your lockers?",
+            "steps": [
+              {
+                "player": "How many times have I opened your lockers?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has never opened the Zombie Pirate's Locker:",
+                "steps": [
+                  {
+                    "npc": "Ye've never done it even once!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "bDLYmO"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has opened the Zombie Pirate's Locker once only:",
+                "steps": [
+                  {
+                    "npc": "Ye've done it once, and once only."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Txi2I0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has opened the Zombie Pirate's Locker more than once:",
+                "steps": [
+                  {
+                    "npc": "Ye've done it [#] times."
+                  }
+                ],
+                "id": "yj7tAF"
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you to wait for your crew.",
+            "steps": [
+              {
+                "player": "I'll leave you to wait for your crew."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "check-option": [
+      {
+        "type": "condition",
+        "text": "If the player has not used the teleport anchoring scroll and has never opened the Zombie Pirate's Locker:",
+        "steps": [
+          {
+            "npc": "I can tell by the cut of your jib that ye haven't yet read the Teleport anchoring scroll, and ye've never opened our lockers."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3jKqOK"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not used the teleport anchoring scroll and has opened the Zombie Pirate's Locker once only:",
+        "steps": [
+          {
+            "npc": "I can tell by the cut of your jib that ye haven't yet read the Teleport anchoring scroll, and ye've opened our lockers once, and once only."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "G8OoQx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not used the teleport anchoring scroll and has opened the Zombie Pirate's Locker more than once:",
+        "steps": [
+          {
+            "npc": "I can tell by the cut of your jib that ye haven't yet read the Teleport anchoring scroll, though ye've opened our lockers [#] times."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eAUbvz"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has used the teleport anchoring scroll and has never opened the Zombie Pirate's Locker:",
+        "steps": [
+          {
+            "npc": "I can tell by the cut of your jib that you've read the Teleport anchoring scroll, but ye've never opened our lockers."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "sDruC6"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has used the teleport anchoring scroll and has opened the Zombie Pirate's Locker once only:",
+        "steps": [
+          {
+            "npc": "I can tell by the cut of your jib that you've read the Teleport anchoring scroll, and ye've opened our lockers once, and once only."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "_IiTvL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has used the teleport anchoring scroll and has opened the Zombie Pirate's Locker more than once:",
+        "steps": [
+          {
+            "npc": "I can tell by the cut of your jib that you've read the Teleport anchoring scroll, and ye've opened our lockers [#] times."
+          }
+        ],
+        "id": "LqCOYC"
+      }
+    ],
+    "historical-dialogue-subsequent-dialogue": [
+      {
+        "player": "Still here?"
+      },
+      {
+        "npc": "I've not seen any of my crew yet."
+      },
+      {
+        "player": "I wonder why."
+      }
+    ],
+    "historical-dialogue-check-option": [
+      {
+        "type": "condition",
+        "text": "If the player has not yet asked about the crew:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "IEsGh9"
+          }
+        ],
+        "id": "7vMHjR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has asked about the crew but not yet asked about the temple:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "fpDY9N"
+          }
+        ],
+        "id": "E-0qvo"
+      },
+      {
+        "player": "Can you tell if I've used the Teleport anchoring scroll?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not used the teleport anchoring scroll:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "gCeOog"
+          }
+        ],
+        "id": "rfSiF9"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has used the teleport anchoring scroll:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "akmnH-"
+          }
+        ],
+        "id": "rTvPjI"
+      }
+    ]
+  },
+  "branches": {
+    "gCeOog": [
+      {
+        "npc": "Aye, I can tell by the cut of your jib that ye haven't yet read the Teleport anchoring scroll."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "akmnH-": [
+      {
+        "npc": "Aye, I can tell by the cut of your jib that you've read the Teleport anchoring scroll."
+      }
+    ]
+  }
+}

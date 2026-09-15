@@ -1,0 +1,215 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue": [
+      {
+        "npc": "Hmph!"
+      },
+      {
+        "player": "Oh, hello. Who are you?"
+      },
+      {
+        "npc": "Olga."
+      },
+      {
+        "player": "What brings you out here?"
+      },
+      {
+        "npc": "Werewolf? No werewolves here, pup."
+      },
+      {
+        "player": "Okay... I never mentioned werewolves though..."
+      },
+      {
+        "npc": "Oh... Well, I was hoping to join a new crew, but I had no luck at Phasmatys. The ghosts there didn't seem to like me much... I thought maybe someone here would have a boat instead, but it seems not."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed Pandemonium:",
+        "steps": [
+          {
+            "player": "Well, I suppose it's not much of a bustling port. Still, I hope you find a crew soon."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "HXS8Vg"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 40 Sailing:",
+        "steps": [
+          {
+            "player": "Well, at some point I hope to hire a crew to sail with myself. I don't think I'm ready for that kind of thing yet though."
+          },
+          {
+            "npc": "Right... Not very helpful to me then, are you?"
+          },
+          {
+            "type": "message",
+            "text": "You need a Sailing level of 40 to manage a crew.",
+            "id": "TxKWl-"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Viw7qz"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Maybe you'd like to join my crew?",
+            "steps": [
+              {
+                "player": "Maybe you'd like to join my crew?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 65 Sailing or has not completed In Aid of the Myreque:",
+                "steps": [
+                  {
+                    "npc": "I don't think so. You're not fit to lead a pack."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You require the following to recruit this crew member: Level 65 Sailing. Gained access to Burgh de Rott.",
+                    "id": "e0dj1A"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZryCrv"
+              },
+              {
+                "npc": "Hmm... Okay, I'll join your pack, but don't make me regret it."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an open crew slot:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You recruit Oarswoman Olga as a crew member. She heads off in search of your boat.",
+                    "id": "4mpmv3"
+                  }
+                ],
+                "id": "J_LDNF"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have an open crew slot:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You recruit Oarswoman Olga as a crew member. She departs for the Pandemonium.",
+                    "id": "KjP2xN"
+                  }
+                ],
+                "id": "jTZFFv"
+              },
+              {
+                "type": "message",
+                "text": "You have recruited Oarswoman Olga as a crew member.",
+                "id": "ihcDSC"
+              }
+            ]
+          },
+          {
+            "text": "Well, I hope you find a new crew soon.",
+            "steps": [
+              {
+                "player": "Well, I hope you find a new crew soon."
+              },
+              {
+                "npc": "Hmph!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Hmph!"
+      },
+      {
+        "player": "Oh, hello. Still here then?"
+      },
+      {
+        "npc": "Yes, still trying to find a new crew."
+      },
+      {
+        "type": "unavailable",
+        "steps": [
+          {
+            "player": "Well, at some point I hope to hire a crew to sail with myself. I don't think I'm ready for that kind of thing yet though."
+          },
+          {
+            "npc": "Right... Not very helpful to me then, are you?"
+          },
+          {
+            "type": "message",
+            "text": "You need a Sailing level of 40 to manage a crew.",
+            "id": "YsmvCO"
+          }
+        ],
+        "id": "80QUI8"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Maybe you'd like to join my crew?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "3ftr4Y"
+              }
+            ]
+          },
+          {
+            "text": "Well, I hope you find a new crew soon.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "SakUtu"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-at-the-pandemonium": [
+      {
+        "npc": "Hmph!"
+      },
+      {
+        "player": "Hey there. How are you doing?"
+      },
+      {
+        "npc": "Fine."
+      },
+      {
+        "player": "You sure you're not feeling any stronger than that?"
+      },
+      {
+        "npc": "No."
+      },
+      {
+        "player": "Fair enough."
+      }
+    ],
+    "while-at-sea": [
+      {
+        "type": "missing",
+        "id": "5TRavY"
+      }
+    ]
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "type": "line",
+        "speaker": "Morgan",
+        "text": "Please please help us, bold adventurer!"
+      },
+      {
+        "player": "What's the problem?"
+      },
+      {
+        "type": "line",
+        "speaker": "Morgan",
+        "text": "Our little village has been dreadfully ravaged by an evil vampyre! He lives in the basement of the manor to the north, we need someone to get rid of him once and for all!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a combat level less than 20:",
+        "steps": [
+          {
+            "type": "unavailable",
+            "id": "Odt421"
+          }
+        ],
+        "id": "LivvDH"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Vampyre Slayer quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Okay, I'm up for an adventure."
+              },
+              {
+                "type": "line",
+                "speaker": "Morgan",
+                "text": "I think first you should seek help. I have a friend who is a retired vampyre hunter, his name is Dr. Harlow. He may be able to give you some tips. He can normally be found in the Blue Moon Inn in Varrock, he's a bit"
+              },
+              {
+                "type": "line",
+                "speaker": "Morgan",
+                "text": "of an old soak these days. Mention his old friend Morgan, I'm sure he wouldn't want me killed by a vampyre."
+              },
+              {
+                "player": "I'll look him up then."
+              }
+            ],
+            "hook": "quest:vampyre-slayer:start",
+            "quest": "Vampyre Slayer"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "No, vampyres are scary!"
+              },
+              {
+                "type": "line",
+                "speaker": "Morgan",
+                "text": "I don't blame you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-morgan-again": [
+      {
+        "type": "line",
+        "speaker": "Morgan",
+        "text": "How are you doing with the quest?"
+      },
+      {
+        "player": "I'm still working on it."
+      },
+      {
+        "type": "line",
+        "speaker": "Morgan",
+        "text": "Please hurry! Every day we live in fear that we will be the vampyre's next victim!"
+      }
+    ],
+    "dr-harlow": [
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Buy me a drrink pleassh..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, you've had enough.",
+            "steps": [
+              {
+                "player": "No, you've had enough."
+              }
+            ]
+          },
+          {
+            "text": "Morgan needs your help!",
+            "steps": [
+              {
+                "player": "Morgan needs your help!"
+              },
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Morgan you shhay..?"
+              },
+              {
+                "player": "His village is being terrorised by a vampyre! He told me to ask you about how I can stop it."
+              },
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Buy me a beer... then I'll teash you what you need to know..."
+              },
+              {
+                "player": "But this is your friend Morgan we're talking about!"
+              },
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Buy ush a drink anyway..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dr-harlow-talking-to-him-again": [
+      {
+        "type": "line",
+        "speaker": "Dr Harlow",
+        "text": "Buy me a drrink pleassh..."
+      },
+      {
+        "type": "condition",
+        "text": "If the player isn't carrying a beer:",
+        "steps": [
+          {
+            "player": "I'll just go and buy one."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "IReDHV"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is carrying a beer:",
+        "steps": [
+          {
+            "player": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You give a beer to Dr Harlow.",
+            "id": "oU9R19"
+          },
+          {
+            "type": "line",
+            "speaker": "Dr Harlow",
+            "text": "Cheersh matey..."
+          },
+          {
+            "player": "So tell me how to kill vampyres then."
+          },
+          {
+            "type": "line",
+            "speaker": "Dr Harlow",
+            "text": "Yesh Yesh vampyres, I was very good at killing em once..."
+          },
+          {
+            "type": "message",
+            "text": "Dr Harlow appears to sober up slightly.",
+            "id": "DT-Nqy"
+          },
+          {
+            "type": "condition",
+            "text": "If the stake is in the player's inventory:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Don't forget to take your stake with you, otherwise he'll just regenerate. Yes, you must have a stake to finish it off... I'd give you a stake but you've got one in your inventory."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "Q4ebAY"
+              }
+            ],
+            "id": "39va9A"
+          },
+          {
+            "type": "condition",
+            "text": "If the stake is in the player's bank:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Don't forget to take your stake with you, otherwise he'll just regenerate. Yes, you must have a stake to finish it off... I'd give you a stake but you've already got one stored somewhere."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "a0qKH1"
+              }
+            ],
+            "id": "Hw3Vf4"
+          },
+          {
+            "type": "condition",
+            "text": "If the player doesn't have a stake:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Dr Harlow",
+                "text": "Well, you're going to need a stake, otherwise he'll just regenerate. Yes, you must have a stake to finish it off... I just happen to have one with me."
+              },
+              {
+                "type": "message",
+                "text": "Dr Harlow hands you a stake.",
+                "id": "t1VqdM"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "JpbVF_"
+              }
+            ],
+            "id": "l1nbVZ"
+          },
+          {
+            "type": "line",
+            "speaker": "Dr Harlow",
+            "text": "You'll need a hammer as well, to drive it in properly, your everyday general store hammer will do. One last thing... It's wise to carry garlic with you, vampyres are somewhat weakened if they can smell garlic. Morgan"
+          },
+          {
+            "type": "line",
+            "speaker": "Dr Harlow",
+            "text": "always liked garlic, you should try his house. But remember, a vampyre is still a dangerous foe!"
+          },
+          {
+            "player": "Thank you very much!"
+          }
+        ],
+        "id": "gDgtXL"
+      }
+    ],
+    "attacking-count-draynor-with-garlic-in-the-inventory": [
+      {
+        "type": "message",
+        "text": "The vampyre seems to weaken.",
+        "id": "vOxrTE"
+      }
+    ],
+    "attempting-to-kill-count-draynor-without-a-stake-in-the-inventory": [
+      {
+        "type": "message",
+        "text": "The vampyre seems to regenerate!",
+        "id": "-bM_S9"
+      }
+    ],
+    "attempting-to-kill-count-draynor-with-a-stake-but-no-hammer-in-the-inventory": [
+      {
+        "type": "message",
+        "text": "You're unable to push the stake far enough in!",
+        "id": "oHPc4f"
+      },
+      {
+        "type": "message",
+        "text": "The vampyre seems to regenerate!",
+        "id": "UDh7si"
+      }
+    ],
+    "upon-killing-count-draynor": [
+      {
+        "type": "message",
+        "text": "You hammer the stake into the vampyre's chest!",
+        "id": "pR4eKK"
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "UtVs4s"
+      },
+      {
+        "type": "unavailable",
+        "id": "kOPGtQ"
+      }
+    ]
+  }
+}

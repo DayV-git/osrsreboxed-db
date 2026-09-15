@@ -1,0 +1,95 @@
+{
+  "steps": [
+    {
+      "npc": "Do you want me to make some planks for you? I can make planks from wood, oak, teak and mahogany logs. Or would you like to buy some other housing supplies?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes, please make me some planks.",
+          "steps": [
+            {
+              "player": "Yes, please make me some planks."
+            },
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Plank-making",
+              "id": "WH_mjG"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have the chosen log in their inventory:",
+              "steps": [
+                {
+                  "type": "line",
+                  "speaker": "Sawmill operator",
+                  "text": "You'll need to bring me some more logs."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "Oz0P-V"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have enough coins:",
+              "steps": [
+                {
+                  "type": "line",
+                  "speaker": "Sawmill operator",
+                  "text": "Those planks cost [X] coins. You don't have enough money for all of them."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "r6tK45"
+            },
+            {
+              "type": "action",
+              "action": "receive",
+              "text": "chosen planks",
+              "id": "2c-NPw"
+            }
+          ]
+        },
+        {
+          "text": "What kind of planks can you make?",
+          "steps": [
+            {
+              "npc": "I can make planks from wood, oak, teak and mahogany. I don't make planks from other woods as they're no good for making furniture."
+            },
+            {
+              "npc": "Wood and oak are all over the place, but teak and mahogany can only be found in a few places like Karamja and Etceteria."
+            }
+          ]
+        },
+        {
+          "text": "Can I buy some housing supplies?",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Construction supplies",
+              "id": "5iaCGT"
+            }
+          ]
+        },
+        {
+          "text": "Nothing, thanks",
+          "steps": [
+            {
+              "player": "Nothing, thanks."
+            },
+            {
+              "npc": "Well come back when you want some. You can't get good quality planks anywhere but here!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

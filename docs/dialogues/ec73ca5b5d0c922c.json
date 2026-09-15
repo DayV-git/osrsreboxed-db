@@ -1,0 +1,246 @@
+{
+  "default": "standard-dialogue-before-the-great-brain-robbery-without-quest-requirements",
+  "variants": {
+    "standard-dialogue-before-the-great-brain-robbery-without-quest-requirements": [
+      {
+        "npc": "Excuse me..."
+      },
+      {
+        "player": "Yes? Can I help you?"
+      },
+      {
+        "npc": "Sorry to have bothered you; I'm looking for a more experienced adventurer."
+      }
+    ],
+    "standard-dialogue-after-completing-the-great-brain-robbery": [
+      {
+        "player": "How's your head feeling?"
+      },
+      {
+        "npc": "A lot better, thanks. Can I help you with anything?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a barrelchest anchor in their inventory or bank:",
+        "steps": [
+          {
+            "npc": "This washed up on the beach earlier. I thought you could get it fixed by Smithing Smith in Mos Le'Harmless. It could be valuable."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "the barrelchest anchor",
+            "id": "md-l9X"
+          },
+          {
+            "player": "Thanks."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "2e-Zoq"
+          }
+        ],
+        "id": "bu9ECc"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a barrelchest anchor in their inventory or bank:",
+        "steps": [
+          {
+            "player": "Not really. I was just popping by to see how you were all getting on and possibly help cull some of the zombies."
+          },
+          {
+            "npc": "Your concern is most gratifying. Saradomin be with you."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "N0aJ3C"
+          }
+        ],
+        "id": "-zDncY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on Mos Le'Harmless:",
+        "steps": [
+          {
+            "npc": "Would you like me to take you to Harmony?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please.",
+                "steps": [
+                  {
+                    "player": "Yes, please."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player is teleported to Harmony Island.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "96RpnS"
+                  }
+                ]
+              },
+              {
+                "text": "Not at the moment, thanks.",
+                "steps": [
+                  {
+                    "player": "Not at the moment, thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ow-LOf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on Harmony Island:",
+        "steps": [
+          {
+            "npc": "Do you want me to take you back to Mos Le'Harmless?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please.",
+                "steps": [
+                  {
+                    "player": "Yes, please."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player is teleported to Mos Le'Harmless.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "OV66nA"
+                  }
+                ]
+              },
+              {
+                "text": "Not at the moment, thanks.",
+                "steps": [
+                  {
+                    "player": "Not at the moment, thanks."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Y8euZI"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Ah! Here you go!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to answer this for me."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "E42Xl0"
+      },
+      {
+        "type": "message",
+        "text": "Brother Tranquility has given you a challenge scroll!",
+        "id": "7JMz-e"
+      }
+    ],
+    "treasure-trails-hard-speaking-to-him-again-with-the-challenge-scroll-in-the-inventory": [
+      {
+        "type": "condition",
+        "text": "If the player did not answer the challenge scroll already:",
+        "steps": [
+          {
+            "npc": "Please enter the answer to the question."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "lsdder"
+          }
+        ],
+        "id": "YZhEvG"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "How can that be? Go check again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Tx-sRe"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Spot on!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Brother Tranquility has given you a another clue scroll!",
+                "id": "6XTLZN"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll (hard)",
+                "id": "HapCfv"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "RDUpkN"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "U8RVHV"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket (hard)",
+                "id": "cLVjw9"
+              }
+            ],
+            "id": "NXOJGD"
+          }
+        ],
+        "id": "I-vcNy"
+      }
+    ]
+  }
+}

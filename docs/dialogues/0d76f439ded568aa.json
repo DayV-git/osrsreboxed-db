@@ -1,0 +1,142 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Hello traveller. Have a look at my latest range of gnome fashion. Rometti is the ultimate label in gnome high society."
+      },
+      {
+        "player": "Really."
+      },
+      {
+        "npc": "Pastels are all the rage this season."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've no time for fashion.",
+            "steps": [
+              {
+                "player": "I've no time for fashion."
+              },
+              {
+                "npc": "Hmm... I did wonder."
+              }
+            ]
+          },
+          {
+            "text": "OK then, let's have a look.",
+            "steps": [
+              {
+                "player": "OK then, let's have a look."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Fine Fashions",
+                "id": "x_-o8Z"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "gnome-restaurant": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "-knL_8"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "8NnBeF"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "H3YV2a"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "uqeANM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Rometti",
+            "id": "fgOtJg"
+          },
+          {
+            "npc": "Ooh, Thank you darling."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "2vBQ1m"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "2CIEpE"
+                  }
+                ],
+                "id": "3K_Nwr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "xCokOX"
+              }
+            ],
+            "id": "JPquS2"
+          }
+        ],
+        "id": "4PifAr"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "jfKc0q"
+          }
+        ],
+        "id": "l9AnzX"
+      }
+    ]
+  }
+}

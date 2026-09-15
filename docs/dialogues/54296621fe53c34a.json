@@ -1,0 +1,113 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings friend. I am a manufacturer of leather."
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "Can I buy some leather then?",
+            "steps": [
+              {
+                "player": "Can I buy some leather then?"
+              },
+              {
+                "npc": "I make leather from animal hides. Bring me some cowhides and one gold coin per hide, and I'll tan them into soft leather for you."
+              }
+            ]
+          },
+          {
+            "text": "Leather is rather weak stuff.",
+            "steps": [
+              {
+                "player": "Leather is rather weak stuff."
+              },
+              {
+                "npc": "Normal leather may be quite weak, but it's very cheap - I make it from cowhides for only 1 gp per hide - and it's so easy to craft that anyone can work with it."
+              },
+              {
+                "npc": "Alternatively you could try hard leather. It's not so easy to craft, but I only charge 3 gp per cowhide to prepare it, and it makes much sturdier armour."
+              },
+              {
+                "npc": "I can also tan snake hides and dragonhides, suitable for crafting into the highest quality armour for rangers."
+              },
+              {
+                "player": "Thanks, I'll bear it in mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "with-one-or-more-hides-in-the-inventory": [
+      {
+        "npc": "Greetings friend. I am a manufacturer of leather."
+      },
+      {
+        "type": "condition",
+        "text": "If one hide in the inventory:",
+        "steps": [
+          {
+            "npc": "I see you have brought me a hide. Would you like me to tan it for you?"
+          }
+        ],
+        "id": "25VnmT"
+      },
+      {
+        "type": "condition",
+        "text": "If more than one hide in the inventory:",
+        "steps": [
+          {
+            "npc": "I see you have brought me some hides. Would you like me to tan them for you?"
+          }
+        ],
+        "id": "Lp023b"
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Tanner",
+                "id": "6nPLWb"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Very well, [sir/madam], as you wish."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-an-un-tannable-item-on-tanner": [
+      {
+        "npc": "Er... Thanks, but no thanks!"
+      }
+    ],
+    "using-any-type-of-leather-on-tanner": [
+      {
+        "npc": "Er... I have no use for that, I make the stuff!"
+      }
+    ]
+  }
+}

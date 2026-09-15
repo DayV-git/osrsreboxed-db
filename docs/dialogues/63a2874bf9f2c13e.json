@@ -1,0 +1,240 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Who goes there? This is no place for a human. You need to leave."
+      },
+      {
+        "player": "You're starting to scare me man..."
+      },
+      {
+        "npc": "I am no man! They changed me and cursed me to remain here..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you mean they changed you?",
+            "steps": [
+              {
+                "player": "What do you mean they changed you?"
+              },
+              {
+                "npc": "I was once a free man, powerful and wealthy. I owned several apothecaries across Kourend and sold the tastiest potions in the land."
+              },
+              {
+                "player": "What happened?"
+              },
+              {
+                "npc": "One of my greatest inventions, it was going so well. I spent days finding the right herbs, I travelled across all of Kourend to find the most exotic weeds. Once I had gathered them all, I put them in a potion and mixed in"
+              },
+              {
+                "npc": "the final ingredient."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not travelled to Great Kourend:",
+                "steps": [
+                  {
+                    "player": "Kourend? Interesting..."
+                  }
+                ],
+                "id": "nXLCtQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has travelled to Great Kourend:",
+                "steps": [
+                  {
+                    "player": "Kourend? Oh yeah, I've been there."
+                  }
+                ],
+                "id": "uJ_uAV"
+              },
+              {
+                "npc": "Yes, yes... The potion tasted delicious but it was missing a tiny something so I added Magic roots to the potion. It started to pulsate and glow! I took a sip and I felt like a million gold! A few seconds later my eye sight"
+              },
+              {
+                "npc": "began to blur, my brain was throbbing. I fell and hit my head on my worktop, then it all went black."
+              },
+              {
+                "player": "Ouch! But, you still haven't said who changed you?"
+              },
+              {
+                "npc": "Will you let me finish?"
+              },
+              {
+                "npc": "I woke up screaming in pain. Blue foam streaming out of my mouth, my eye sight worse than before, the only things I could make out were 3 tall figures with green banners - they were of the Arceuus Elders. They"
+              },
+              {
+                "npc": "muttered to each other in Archaic Language after trying to get up several times. I lost hope and stared at the sky. I had given up when the tallest of the figures bent over and brought his face right to mine and spoke"
+              },
+              {
+                "npc": "very softly 'We can save you, but it will come at a cost'."
+              },
+              {
+                "player": "So they saved you?"
+              },
+              {
+                "npc": "Yes of course they saved me but look at the cost! I have horns coming out of my head and I'm still blind and stuck here... forever alone."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "0fh6BH"
+              }
+            ]
+          },
+          {
+            "text": "What was the curse?",
+            "steps": [
+              {
+                "player": "What was the curse?"
+              },
+              {
+                "npc": "I have been charged to stay here to prevent the Monstrosity from escaping. Those gates and the winches that operate them are the only thing that stops it breaking free."
+              },
+              {
+                "player": "What monstrosity? What's behind those gates?"
+              },
+              {
+                "npc": "You really do not want to know. Leave this place human."
+              },
+              {
+                "player": "Hey now, I'm no wimp. What's to stop me from just turning the winch to open the gate and going in?"
+              },
+              {
+                "npc": "Me. And of course your quick demise at the mercy of Cerberus, guardian of the river of souls."
+              },
+              {
+                "player": "But I can do it!"
+              },
+              {
+                "npc": "You are obviously passionate at trying. But only those with great skill at slaying these types of beast may enter."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have hellhounds or Cerberus herself as a slayer task:",
+                "steps": [
+                  {
+                    "npc": "THE VOICES! AAAHHHHH! Leave this place human!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "NrZYmZ"
+                  }
+                ],
+                "id": "eLHU2R"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has hellhounds or Cerberus herself as a slayer task:",
+                "steps": [
+                  {
+                    "player": "I have been charged by the slayer masters to eliminate this type of threat."
+                  },
+                  {
+                    "npc": "Then you may pass... may your soul not end up consumed and forever condemned to the-"
+                  },
+                  {
+                    "npc": "THE VOICES! AAAHHHHH! Leave this place human!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "nCeX3N"
+                  }
+                ],
+                "id": "2429x7"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "during-bear-your-soul": [
+      {
+        "player": "Aretha said you might be able to repair the soul bearer for me."
+      },
+      {
+        "npc": "The soul bearer! You have the soul bearer! The voices speak of it often. It is from this place, yet it is not of this place."
+      },
+      {
+        "player": "Will you repair it?"
+      },
+      {
+        "npc": "The voices tell me I can. They speak to me!"
+      },
+      {
+        "type": "message",
+        "text": "The Key Master repairs your soul bearer.",
+        "id": "VKnY1K"
+      },
+      {
+        "npc": "The voices say you must use it wisely."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What voices?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "HPKWIS"
+              }
+            ]
+          },
+          {
+            "text": "Thanks, I will.",
+            "steps": [
+              {
+                "player": "Thanks, I will."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "condition",
+        "text": "With a full inventory:",
+        "steps": [
+          {
+            "npc": "Hey, I have something for you but you don't have any space for it!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "AhK3DJ"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a torn part of a clue scroll",
+        "id": "qhqyHZ"
+      },
+      {
+        "npc": "Here you go."
+      },
+      {
+        "type": "message",
+        "text": "You are handed a torn part of a clue scroll.",
+        "id": "b9JJl-"
+      }
+    ]
+  }
+}

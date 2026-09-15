@@ -1,0 +1,535 @@
+{
+  "default": "standard-dialogue-before-completing-the-forsaken-tower",
+  "variants": {
+    "standard-dialogue-before-completing-the-forsaken-tower": [
+      {
+        "npc": "Can I help you today?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I go for a ride?",
+            "steps": [
+              {
+                "player": "Can I go for a ride?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 20 coins in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Minecart rides are 20 coins."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "GBQrEc"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 20 coins in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Of course."
+                  },
+                  {
+                    "type": "action",
+                    "text": "(Lovakengj Minecart Network interface opens.)",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "Lovakengj Minecart Network",
+                    "id": "h0XQj0"
+                  }
+                ],
+                "id": "GYdZ36"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-the-forsaken-tower": [
+      {
+        "npc": "Can I help you today?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I go for a ride?",
+            "steps": [
+              {
+                "player": "Can I go for a ride?"
+              },
+              {
+                "npc": "Of course."
+              },
+              {
+                "type": "action",
+                "text": "(Lovakengj Minecart Network interface opens.)",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Lovakengj Minecart Network",
+                "id": "mOMPhM"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-unlimited-ride-fee-refund": [
+      {
+        "npc": "As a loyal customer of the Lovakengj Minecart Network, you're entitled to this."
+      },
+      {
+        "type": "message",
+        "text": "Miriam gives you 100,000 coins.",
+        "id": "8NGHeh"
+      },
+      {
+        "npc": "Now, can I help you today?"
+      }
+    ],
+    "standard-dialogue-attempting-to-travel-to-lovakengj-while-already-there": [
+      {
+        "npc": "You're already here, human."
+      }
+    ],
+    "historical-dialogue-before-setting-up-the-lovakengj-minecart-network": [
+      {
+        "npc": "Hello, human. Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is the principal station of the Lovakengj Minecart Network. Once it's running, our people will be able to travel rapidly all across the city."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "l4pR0A"
+              }
+            ]
+          },
+          {
+            "text": "Can I ride your minecart?",
+            "steps": [
+              {
+                "player": "Can I ride your minecart?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a full inventory:",
+                "steps": [
+                  {
+                    "npc": "The network is for the citizens of Lovakengj only, though I'll let you use it if you help me first. Free up some inventory space if you're interested."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ireoT8"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "The network is for the citizens of Lovakengj only, though I'll let you use it if you help me first."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Alright, what do you need me to do?",
+                        "steps": [
+                          {
+                            "player": "Alright, what do you need me to do?"
+                          },
+                          {
+                            "npc": "The workers at the other stations got incorrect versions of the control scrolls, so they can't operate the minecarts. Please take these updated scrolls to them."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Miriam gives you some control scrolls.",
+                            "id": "r1-Oit"
+                          },
+                          {
+                            "npc": "That's one scroll each for the Arceuus station, the Shayzien station, the Hosidius station, the Piscarilius station and the Quidamortem station."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Where do I need to go?",
+                                "steps": [
+                                  {
+                                    "player": "Where do I need to go?"
+                                  },
+                                  {
+                                    "npc": "The Arceuus station is just next to the Arceuus Library, in the north of the city."
+                                  },
+                                  {
+                                    "npc": "The Shayzien station is east of the Shayzien Encampment."
+                                  },
+                                  {
+                                    "npc": "The Hosidius station is north of the Woodcutting Guild."
+                                  },
+                                  {
+                                    "npc": "The Piscarilius station is south of the city, next to a small mine."
+                                  },
+                                  {
+                                    "npc": "The Quidamortem station is at the peak of the mountain, deep in the Kebos Lowlands."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "other",
+                                    "id": "YRFA87"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Can I go for a ride now?",
+                                "steps": [
+                                  {
+                                    "player": "Can I go for a ride now?"
+                                  },
+                                  {
+                                    "npc": "No, you haven't unlocked any of the other stations yet."
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Do I have to pay every time I use the carts?",
+                                "steps": [
+                                  {
+                                    "player": "Do I have to pay every time I use the carts?"
+                                  },
+                                  {
+                                    "npc": "Hmmm... We normally charge 50 coins per ride. For 100,000 coins, you'll never have to pay again."
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "100,000 coins is a rip-off!",
+                                        "steps": [
+                                          {
+                                            "player": "100,000 coins is a rip-off!"
+                                          },
+                                          {
+                                            "npc": "Take it or leave it, human! You may enjoy being about to ride our carts without having to carry coins every time."
+                                          },
+                                          {
+                                            "type": "jump",
+                                            "reference": "other",
+                                            "id": "9XgbR7"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Okay, I'll pay.",
+                                        "steps": [
+                                          {
+                                            "type": "missing",
+                                            "id": "nmEGp7"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "I'd rather not, thanks.",
+                                        "steps": [
+                                          {
+                                            "player": "I'd rather not, thanks."
+                                          },
+                                          {
+                                            "npc": "Can I do anything else for you, human?"
+                                          },
+                                          {
+                                            "type": "jump",
+                                            "reference": "previous",
+                                            "id": "ugAh6U"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "I'll get on with it.",
+                                "steps": [
+                                  {
+                                    "player": "I'll get on with it."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I'm not interested.",
+                        "steps": [
+                          {
+                            "player": "I'm not interested."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2uZUXC"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-while-setting-up-the-lovakengj-minecart-network": [
+      {
+        "npc": "Some of my stations still require control scrolls."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Have you got any more scrolls?",
+            "condition": "Player has lost one or more control scrolls",
+            "steps": [
+              {
+                "player": "Have you got any more scrolls?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a full inventory:",
+                "steps": [
+                  {
+                    "npc": "Yes, but you don't have room in your inventory."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "xVjp88"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "id": "1RxI7G"
+              },
+              {
+                "npc": "Here you go, human."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "U2JVVb"
+              }
+            ],
+            "id": "6aJrED"
+          },
+          {
+            "text": "Where do I need to go?",
+            "steps": [
+              {
+                "player": "Where do I need to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not delivered a scroll to the Arceuus station:",
+                "steps": [
+                  {
+                    "npc": "The Arceuus station is just next to the Arceuus Library, in the north of the city."
+                  }
+                ],
+                "id": "J_q3m2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not delivered a scroll to the Shayzien station:",
+                "steps": [
+                  {
+                    "npc": "The Shayzien station is east of the Shayzien Encampment."
+                  }
+                ],
+                "id": "XQMF3K"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not delivered a scroll to the Hosidius station:",
+                "steps": [
+                  {
+                    "npc": "The Hosidius station is north of the Woodcutting Guild."
+                  }
+                ],
+                "id": "wrFbty"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not delivered a scroll to the Piscarilius station:",
+                "steps": [
+                  {
+                    "npc": "The Piscarilius station is south of the city, next to a small mine."
+                  }
+                ],
+                "id": "kJitfb"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not delivered a scroll to the Quidamortem station:",
+                "steps": [
+                  {
+                    "npc": "The Quidamortem station is at the peak of the mountain, deep in the Kebos Lowlands."
+                  }
+                ],
+                "id": "e4YzCI"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "cC7lLW"
+              }
+            ]
+          },
+          {
+            "text": "Can I go for a ride now?",
+            "steps": [
+              {
+                "player": "Can I go for a ride now?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player hasn't delivered any scrolls yet:",
+                "steps": [
+                  {
+                    "npc": "No, you haven't unlocked any of the other stations yet."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "xSZt2C"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Lovakengj Minecart Network interface opens",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "Lovakengj Minecart Network",
+                    "id": "Kz-ZMw"
+                  }
+                ],
+                "id": "n7Lwcq"
+              }
+            ]
+          },
+          {
+            "text": "Do I have to pay every time I use the carts?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "bM1vG_"
+              }
+            ]
+          },
+          {
+            "text": "I'll get on with it.",
+            "steps": [
+              {
+                "player": "I'll get on with it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-while-setting-up-the-lovakengj-minecart-network-using-a-minecart-control-scroll-on-her": [
+      {
+        "npc": "No thanks, I don't want it back."
+      }
+    ],
+    "historical-dialogue-after-setting-up-the-lovakengj-minecart-network": [
+      {
+        "npc": "Thanks for delivering those control scrolls, human. What can I do for you today?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I go for a ride now?",
+            "steps": [
+              {
+                "player": "Can I go for a ride now?"
+              },
+              {
+                "type": "action",
+                "text": "Lovakengj Minecart Network interface opens",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Lovakengj Minecart Network",
+                "id": "EZxPKU"
+              }
+            ]
+          },
+          {
+            "text": "Do I have to pay every time I use the carts?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ti6uCG"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

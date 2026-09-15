@@ -1,0 +1,171 @@
+{
+  "default": null,
+  "variants": {
+    "before-death-plateau": [
+      {
+        "type": "message",
+        "text": "You knock on the door.",
+        "id": "1hFM6z"
+      },
+      {
+        "npc": "No milk today! Thank you!"
+      }
+    ],
+    "after-death-plateau": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I buy some Climbing boots?",
+            "steps": [
+              {
+                "player": "Can I buy some Climbing boots?"
+              },
+              {
+                "npc": "Sure, I'll sell you some in your size for 12 gold."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "OK, sounds good.",
+                    "steps": [
+                      {
+                        "player": "OK, sounds good."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough coins in their inventory:",
+                        "steps": [
+                          {
+                            "player": "I don't have the money on me."
+                          },
+                          {
+                            "npc": "Was there anything else?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "GCFp0e"
+                          }
+                        ],
+                        "id": "Qmeg2a"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has enough coins in their inventory:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Tenzing has given you some Climbing boots.",
+                            "id": "FgkYXO"
+                          },
+                          {
+                            "npc": "Was there anything else?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "-UedPR"
+                          }
+                        ],
+                        "id": "fRHXZO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thanks.",
+                    "steps": [
+                      {
+                        "player": "No, thanks."
+                      },
+                      {
+                        "npc": "Was there anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "d8tmXN"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What does a Sherpa do?",
+            "steps": [
+              {
+                "player": "What does a Sherpa do?"
+              },
+              {
+                "npc": "We are expert guides that take adventurers, such as yourself, on mountaineering expeditions."
+              },
+              {
+                "npc": "Was there anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "dRs4hH"
+              }
+            ]
+          },
+          {
+            "text": "How did you find out about the secret way?",
+            "steps": [
+              {
+                "player": "How did you find out about the secret way?"
+              },
+              {
+                "npc": "I used to take adventurers up Death Plateau and further north before the trolls came. I know these mountains well."
+              },
+              {
+                "npc": "Was there anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "JjnedR"
+              }
+            ]
+          },
+          {
+            "text": "Nice place you have here.",
+            "steps": [
+              {
+                "player": "Nice place you have here."
+              },
+              {
+                "npc": "Thanks, I built it myself! I'm usually self sufficient but I can't earn any money with the trolls camped on Death Plateau."
+              },
+              {
+                "player": "Now that the Imperial Guard know about the secret way they will be able to destroy the trolls!"
+              },
+              {
+                "npc": "Let us hope so traveller!"
+              },
+              {
+                "npc": "Was there anything else?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "GxdxLC"
+              }
+            ]
+          },
+          {
+            "text": "Nothing, thanks!",
+            "steps": [
+              {
+                "player": "Nothing, thanks!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

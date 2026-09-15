@@ -1,0 +1,123 @@
+{
+  "steps": [
+    {
+      "npc": "Hey there, what can I do for ya?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Tell me about yourself.",
+          "steps": [
+            {
+              "npc": "My name is Drew and I man this here grinding machine. I call her Sandstorm!"
+            },
+            {
+              "npc": "I can also look after any buckets ya want me to."
+            },
+            {
+              "npc": "Me and Sandstorm go way back, we started off back in the desert mining camp, I was a slave and I had the honour of looking after Sandstorm."
+            },
+            {
+              "player": "How did you and Sandstorm get out of the mining camp?"
+            },
+            {
+              "npc": "Well, because I was in charge of looking after Sandstorm, I was able to look at the inner workings."
+            },
+            {
+              "npc": "While the guards weren't looking, I would take apart Sandstorm piece by piece and place the pieces in boxes and barrels, when Sandstorms inners were all gutted, I tricked the cart driver by telling him cart jokes."
+            },
+            {
+              "npc": "So, he didn't bother to check his cargo and I was able to board as he was driving off."
+            },
+            {
+              "npc": "Anyway, that's all in the past. Can I help ya with anything else?"
+            },
+            {
+              "type": "jump",
+              "reference": "initial",
+              "id": "0kfmi8"
+            }
+          ]
+        },
+        {
+          "text": "Deposit buckets.",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "If the player does not have any buckets:",
+              "steps": [
+                {
+                  "npc": "You haven't got any buckets for me to hold."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "qafhUM"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has empty buckets:",
+              "steps": [
+                {
+                  "type": "missing",
+                  "id": "ZDfuTb"
+                }
+              ],
+              "id": "N4w-cY"
+            }
+          ]
+        },
+        {
+          "text": "Withdraw buckets of sand.",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "If the player does not have any buckets of sand stored:",
+              "steps": [
+                {
+                  "npc": "Ya don't have any buckets of sand to withdraw. Ya need to give me empty buckets, and grind sandstone in my grinder, then I'll sell ya buckets of sand."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "Am_kVr"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has buckets of sand stored:",
+              "steps": [
+                {
+                  "type": "missing",
+                  "id": "3wH8FD"
+                }
+              ],
+              "id": "9k4wjV"
+            }
+          ]
+        },
+        {
+          "text": "Check my buckets and sand.",
+          "steps": [
+            {
+              "npc": "I have [number] of your buckets and you've ground enough sandstone for [number] buckets of sand."
+            }
+          ]
+        },
+        {
+          "text": "Nothing.",
+          "steps": [
+            {
+              "player": "Nothing sorry. I have to be going now."
+            },
+            {
+              "npc": "Oh, bye then."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "It's your lucky day, [player name]! You've got a chance to win big prizes in my quiz show. Would you like to play?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please, I'm so excited!",
+            "steps": [
+              {
+                "player": "Yes please, I'm so excited!"
+              },
+              {
+                "npc": "WELCOME to the GREATEST QUIZ SHOW in the entire of Gielinor!"
+              },
+              {
+                "npc": "O D D ! O N E ! O U T !"
+              },
+              {
+                "npc": "Please welcome our newest contestant: [player name]! Four questions right, and then you win! You know the rules, so let's begin!"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "1-RC6k"
+              }
+            ]
+          },
+          {
+            "text": "Quiz shows are stupid. Go away.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-event-is-not-yours": [
+      {
+        "npc": "Sorry, it's [player name] that's having the lucky day."
+      }
+    ],
+    "standard-dialogue-getting-a-question-wrong": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "WRONG! That's just WRONG! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "BZZZZZZZ! WRONG! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "No, you're WRONG! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "No, sorry. Try harder! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Better luck next time! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "Nope, that's not it. Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "npc": "Huh...? Didn't you know that one? Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 8",
+            "steps": [
+              {
+                "npc": "No, no, no... That's completely WRONG! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 9",
+            "steps": [
+              {
+                "npc": "WRONG WRONG WRONG! Okay, next question!"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "action",
+        "text": "(Another question is asked.)",
+        "id": "6bkOqd"
+      }
+    ],
+    "standard-dialogue-getting-a-question-correct": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "DING DING DING! That's RIGHT! Good for you! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Absolutely RIGHT! Keep going for the win! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "COR-RECT! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Hey, you're good at this! CORRECT! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Wow, you're a smart one! You're absolutely RIGHT! Okay, next question!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "YES! You're RIGHT! Okay, next question!"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "action",
+        "text": "(Another question is asked.)",
+        "id": "tW04ku"
+      }
+    ],
+    "standard-dialogue-getting-a-fourth-question-correct": [
+      {
+        "npc": "CONGRATULATIONS! You are a WINNER! Please choose your PRIZE!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "1000 Coins",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "1000 coins",
+                "id": "zd2HFM"
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported back to where they came from.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "HgcbN8"
+              }
+            ]
+          },
+          {
+            "text": "Mystery Box",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "Mystery Box",
+                "id": "8TlQWa"
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported back to where they came from.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "xRUyDm"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "condition",
+        "text": "Upon spawning in for the player:",
+        "steps": [
+          {
+            "npc": "Hey [player name]! It's your lucky day!"
+          }
+        ],
+        "id": "aTOVvy"
+      },
+      {
+        "type": "condition",
+        "text": "While waiting for a response by the player:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "Wakey-wakey, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "You're in for a treat, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "Come along with me, [player name]!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "npc": "Hey [player name]! It's your lucky day!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "UmXKPE"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not respond in time:",
+        "steps": [
+          {
+            "npc": "Maybe later."
+          }
+        ],
+        "id": "0jUTvC"
+      }
+    ]
+  }
+}

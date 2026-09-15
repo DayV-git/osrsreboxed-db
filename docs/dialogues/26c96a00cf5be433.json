@@ -1,0 +1,192 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "It's all very bright round here, isn't it?"
+      },
+      {
+        "player": "Well, it is the White Knights' Castle."
+      },
+      {
+        "npc": "I think it would all look better in a nice dark green. At least then I wouldn't be squinting all the time."
+      },
+      {
+        "player": "Yes, but then they'd have to become the Dark Green Knights. Doesn't really have the same ring to it."
+      },
+      {
+        "npc": "Bah, humans have no sense of style..."
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "mKUrvc"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zHxPvc"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "P2vCiE"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NeRiYq"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Ambassador Spanfipple",
+            "id": "OkChwp"
+          },
+          {
+            "npc": "Thank you kindly. I haven't got used to this human food and drink yet."
+          },
+          {
+            "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+          },
+          {
+            "type": "action",
+            "text": "You are given [a/some] [reward item(s)] as a tip.",
+            "action": "receive",
+            "action_source": "text",
+            "id": "dAtKEF"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You are not eligible to get gnome food delivered to you yet.",
+                "id": "CYXxJt"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "pXejQT"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "FAgtBt"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "9otihN"
+                  }
+                ],
+                "id": "oZuMvK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "q4S2Y4"
+              }
+            ],
+            "id": "Tq2TRj"
+          }
+        ],
+        "id": "FiGHHM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "taceB6"
+          }
+        ],
+        "id": "rntZRG"
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've been given another clue!",
+            "id": "yjgtEO"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "7debG0"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "06B6XQ"
+          }
+        ],
+        "id": "iFHek1"
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "It's all very white round here, isn't it?"
+      },
+      {
+        "player": "Well, it is the White Knights' Castle."
+      },
+      {
+        "npc": "I think it would all look better in pink. At least then I wouldn't be squinting all the time."
+      },
+      {
+        "player": "Yes, but then they'd have to become the Pink Knights. I think they'd have problems recruiting then."
+      },
+      {
+        "npc": "You're probably right. Maybe brown, then."
+      },
+      {
+        "player": "I think that may be worse..."
+      },
+      {
+        "npc": "Bah, humans have no sense of style..."
+      }
+    ]
+  }
+}

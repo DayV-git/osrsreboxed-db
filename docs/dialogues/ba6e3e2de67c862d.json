@@ -1,0 +1,423 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?",
+            "steps": [
+              {
+                "player": "Yes, who are you?"
+              },
+              {
+                "npc": "Why, I'm Trader Stan, owner and operator of the largest fleet of trading ships and chartered vessels to ever sail the seas!"
+              },
+              {
+                "npc": "If you want to get to a port in a hurry, then you can charter one of my ships to take you there, if the price is right..."
+              },
+              {
+                "player": "So, where exactly can I go with your ships?"
+              },
+              {
+                "npc": "We run ships all over the place. Port Sarim, Catherby, Brimhaven, Musa Point and Port Khazard are just a few of our many destinations!"
+              },
+              {
+                "player": "If you visit a lot of ports, I take it you have some exotic stuff to trade?"
+              },
+              {
+                "npc": "We certainly do! My crew and I have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, let's see what you're trading.",
+                    "steps": [
+                      {
+                        "player": "Yes, let's see what you're trading."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Trader Stan's Trading Post",
+                        "id": "6CvgvV"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like to charter a ship.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "abTMT2"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "PWQwgC"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "npc": "[Certainly, sir/Certainly, madam/Certainly]. Where would you like to go?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Karamjan rum in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Sorry, we can't take you anywhere if you are trying to smuggle that rum."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "7oluVQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Sorry, but we aren't a laundry ship. You'll need to leave those dirty bedsheets behind."
+                  },
+                  {
+                    "player": "Would you let me bring it if I told you it was a security blanket?"
+                  },
+                  {
+                    "npc": "No, then we would just mock you."
+                  },
+                  {
+                    "player": "Ah, I see."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "RK5H3a"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an ectoplasm-covered bedsheet in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Is that your bedsheet covered in filthy slime?"
+                  },
+                  {
+                    "player": "I can say in all honesty that it is not."
+                  },
+                  {
+                    "npc": "Well, whoever it belongs to, it's not coming on this ship!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "3zp3Ea"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a bedsheet or Karamjan rum:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player chooses from :File:Trade charter map.png",
+                    "id": "YNVF6c"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player has chosen the port they are already at:",
+                            "steps": [
+                              {
+                                "npc": "Why do you want to travel to a port you are already at? Do you want to travel somewhere else?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Yes, choose a new destination.",
+                                    "steps": [
+                                      {
+                                        "type": "action",
+                                        "text": "The player chooses from :File:Trade charter map.png again.",
+                                        "id": "UR7yvH"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "No, stay at this port.",
+                                    "steps": [
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "id": "ftq4aS"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player chooses Crandor during Dragon Slayer I:",
+                            "steps": [
+                              {
+                                "npc": "Crandor? Are you crazy? No charter ship would take you to that island. You'd need to use your own ship, but even then, you'd need a miracle to find a safe route there!"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "bcoHSs"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has enough money and chosen a port they are not already at:",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "text": "Travelling.",
+                                "id": "M3-7Dp"
+                              }
+                            ],
+                            "id": "1wIpAE"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Choose again",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "The player chooses from :File:Trade charter map.png again.",
+                            "id": "0aPCxE"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Cancel",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "W3Myo6"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any paints for sale?",
+            "steps": [
+              {
+                "player": "Do you have any paints for sale?"
+              },
+              {
+                "npc": "Paint? I suppose I could part with some of my amazing gold Merchant's paint for the right price..."
+              },
+              {
+                "npc": "I tell you what, if you bring me 5 different tradeable paints, I'll trade them for a bucket of my Merchant's paint."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the five tradeable paints:",
+                "steps": [
+                  {
+                    "player": "I don't have 5 tradeable paints on me right now."
+                  },
+                  {
+                    "npc": "Then I suggest you get trading. And don't bother bringing me any paints you can't trade yourself, I can't trade them either!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "kBJYjq"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade 5 tradeable paints for one Merchant's paint?",
+                "options": [
+                  {
+                    "text": "Yes!",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You trade in your paints for a bucket of Merchant's paint.",
+                        "id": "AuvMcp"
+                      },
+                      {
+                        "npc": "Pleasure doing business with you!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Not right now, thanks."
+                      },
+                      {
+                        "npc": "Suit yourself. I'll be here if you change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-sailing-alpha-standard-dialogue": [
+      {
+        "npc": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?"
+          }
+        ]
+      },
+      {
+        "player": "Yes, who are you?",
+        "steps": [
+          {
+            "npc": "Why, I'm Trader Stan, owner and operator of the largest fleet of trading ships and chartered vessels to ever sail the seas!"
+          },
+          {
+            "npc": "If you want to get to a port in a hurry then you can charter one of my ships to take you there - if the price is right..."
+          },
+          {
+            "player": "So, where exactly can I go with your ships?"
+          },
+          {
+            "npc": "We run ships from Port Phasmatys over to Port Tyras, stopping at Port Sarim, Catherby, Brimhaven, Musa Point, Port Khazard and more besides!"
+          },
+          {
+            "npc": "We might dock at Mos Le'Harmless once in a while, as well, if you catch my meaning..."
+          },
+          {
+            "player": "Wow, that's a lot of ports. I take it you have some exotic stuff to trade?"
+          },
+          {
+            "npc": "We certainly do! I and my crewmen have access to items bought and sold from around the world. Would you like to take a look? Or would you like to charter a ship?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, let's see what you're trading.",
+                "steps": [
+                  {
+                    "player": "Yes, let's see what you're trading."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Trader Stan's Trading Post",
+                    "id": "zGml4K"
+                  }
+                ]
+              },
+              {
+                "text": "Yes, I would like to charter a ship.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "nnkYZU"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks."
+              }
+            ]
+          },
+          {
+            "type": "jump",
+            "reference": "below",
+            "id": "X38A34"
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I would like to charter a ship.",
+            "steps": [
+              {
+                "player": "Yes, I would like to charter a ship."
+              },
+              {
+                "npc": "Certainly [sir/madam]. Where would you like to go?"
+              },
+              {
+                "npc": "This is a Sailing Alpha, find out how to get there yourself!"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-sailing-alpha-trade": [
+      {
+        "type": "action",
+        "action": "open_shop",
+        "target": "Trader Stan's Trading Post",
+        "id": "23sbXM"
+      }
+    ],
+    "historical-dialogue-sailing-alpha-charter": [
+      {
+        "npc": "This is a Sailing Alpha, find out how to get there yourself!"
+      }
+    ]
+  }
+}

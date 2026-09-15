@@ -1,0 +1,482 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "The first time talking to Shantay:",
+        "steps": [
+          {
+            "npc": "Hello effendi, I am Shantay."
+          },
+          {
+            "npc": "I see you're new. Please read the billboard poster before going into the desert. It'll give yer details on the dangers you can face."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not completed The Tourist Trap:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "yZyv0a"
+              }
+            ],
+            "id": "P_v0Cy"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "RBOJMU"
+          }
+        ],
+        "id": "_DJZku"
+      },
+      {
+        "type": "condition",
+        "text": "Subsequent times talking to Shantay:",
+        "steps": [
+          {
+            "npc": "Hello again friend. Please read the billboard poster before going into the desert. It'll give yer details on the dangers you can face."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not started The Tourist Trap:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "yZyv0a"
+              }
+            ],
+            "id": "2TsgmH"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not completed The Tourist Trap:",
+            "steps": [
+              {
+                "npc": "Hope the quest is going well friend. Irena told me you were looking for Ana. Very brave of you!"
+              }
+            ],
+            "id": "LITVbq"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "bFp5Pr"
+          }
+        ],
+        "id": "vd-eWq"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is not in trouble with Shantay:",
+                "steps": [
+                  {
+                    "player": "What is this place?"
+                  },
+                  {
+                    "npc": "This is the pass of Shantay. I guard this area with my men. I am responsible for keeping this pass open and repaired."
+                  },
+                  {
+                    "npc": "My men and I prevent outlaws from getting out of the desert. And we stop the inexperienced from a dry death in the sands. Which would you say you were?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I am definitely an outlaw, prepare to die!",
+                        "steps": [
+                          {
+                            "player": "I am definitely an outlaw, prepare to die!"
+                          },
+                          {
+                            "npc": "Ha, very funny....."
+                          },
+                          {
+                            "npc": "Guards arrest [him/her]!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The guards arrest you and place you in the jail.",
+                            "id": "vybl3m"
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player is put in the Shantay Pass jail.",
+                            "id": "yQqAfY"
+                          },
+                          {
+                            "npc": "You'll have to stay in there until you pay the fine of five gold pieces. Do you want to pay now?"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I am a little inexperienced.",
+                        "steps": [
+                          {
+                            "player": "I am a little inexperienced."
+                          },
+                          {
+                            "npc": "Can I recommend that you purchase a full waterskin and a knife! These items will no doubt save your life. A waterskin will keep water from evaporating in the desert."
+                          },
+                          {
+                            "npc": "And a keen woodsman with a knife can extract the juice from a cactus. Before you go into the desert, it's advisable to wear desert clothes. It's very hot in the desert and you'll surely cook if you wear armour."
+                          },
+                          {
+                            "npc": "To keep the pass bandit free, we charge a small toll of five gold pieces. You can buy a desert pass from me, just ask me to open the shop. You can also use our free banking services by clicking on the chest."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Can I see what you have to sell please?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "H-rZeN"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "I must be going.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "HNLnZM"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Why do I have to pay to go into the desert?",
+                                "steps": [
+                                  {
+                                    "player": "Why do I have to pay to go into the desert?"
+                                  },
+                                  {
+                                    "npc": "Effendi, you insult me! I am not interested in making a profit from you! I merely seek to cover my expenses in keeping this pass open."
+                                  },
+                                  {
+                                    "npc": "There is repair work to carry out and also the men's wages to consider. For the paltry sum of 5 Gold pieces, I think we offer a great service."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "initial",
+                                    "id": "VlY0wn"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Er, neither, I'm an adventurer.",
+                        "steps": [
+                          {
+                            "player": "Er, neither, I'm an adventurer."
+                          },
+                          {
+                            "npc": "Great, I have just the thing for the desert adventurer. I sell desert clothes which will keep you cool in the heat of the desert. I also sell waterskins so that you won't die in the desert."
+                          },
+                          {
+                            "npc": "A waterskin and a knife help you survive from the juice of a cactus. Use the chest to store your items, we'll take them to the bank. It's hot in the desert, you'll bake in all that armour."
+                          },
+                          {
+                            "npc": "To keep the pass open we ask for 5 gold pieces. And we give you a Shantay Pass, just ask to see what I sell to buy one."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Can I see what you have to sell please?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "D35F1F"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "I must be going.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "below",
+                                    "id": "SwEI0L"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Why do I have to pay to go into the desert?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "Zl-07H"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "l13Hkb"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has escaped from the \"Maximum security prison\" or from the Shantay Pass jail:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "nCA98O"
+                  }
+                ],
+                "id": "NnvRWO"
+              }
+            ]
+          },
+          {
+            "text": "Can I see what you have to sell please?",
+            "steps": [
+              {
+                "player": "Can I see what you have to sell please?"
+              },
+              {
+                "npc": "Absolutely Effendi!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Shantay Pass Shop",
+                "id": "cEILVv"
+              }
+            ]
+          },
+          {
+            "text": "I must be going.",
+            "steps": [
+              {
+                "player": "I must be going."
+              },
+              {
+                "npc": "So long..."
+              }
+            ]
+          },
+          {
+            "text": "I want to buy a Shantay pass for 5 gold coins.",
+            "steps": [
+              {
+                "player": "I want to buy a Shantay pass for 5 gold coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a Free-to-play world:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "6e5psV"
+                  }
+                ],
+                "id": "N8rIcr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 5 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "vWUwdV"
+                  }
+                ],
+                "id": "S4OwpQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have inventory space:",
+                "steps": [
+                  {
+                    "npc": "Sorry friend, you'll need more inventory space to buy a pass."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5xtiuG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not on a Free-to-play world, has 5 coins and has inventory space:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You purchase a Shantay Pass.",
+                    "id": "x6wg89"
+                  }
+                ],
+                "id": "J2cYQs"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "interacting-with-the-prison-door-while-locked-in-the-shantay-pass-jail": [
+      {
+        "type": "message",
+        "text": "The door is locked.",
+        "id": "2ogbJX"
+      },
+      {
+        "type": "message",
+        "text": "Shantay saunters over to talk with you.",
+        "id": "8Xm_D-"
+      },
+      {
+        "npc": "If you want to be let out, you have to pay a fine of five gold. Do you want to pay now?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, okay.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "vEKZyr"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, you're not having my money.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Dv9KIM"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "interacting-with-the-prison-door-after-escaping-out-of-the-maximum-security-prison-or-the-shantay-pass-jail": [
+      {
+        "type": "call",
+        "branch": "nCA98O"
+      }
+    ],
+    "buy-pass-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player is on a Free-to-play world:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "6e5psV"
+          }
+        ],
+        "id": "hf6RSh"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have 5 coins:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "vWUwdV"
+          }
+        ],
+        "id": "VxCDBG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have inventory space:",
+        "steps": [
+          {
+            "npc": "Sorry friend, you'll need more inventory space to buy a pass."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "SKVOya"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not on a Free-to-play world, has 5 coins and has inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You purchase a Shantay Pass.",
+            "id": "crT5RR"
+          }
+        ],
+        "id": "H2ngJn"
+      }
+    ],
+    "treasure-trails-beginner": [
+      {
+        "npc": "Well done."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [new clue/casket]",
+        "id": "JHLLwr"
+      },
+      {
+        "type": "message",
+        "text": "You've [found a new clue/obtained a casket]!",
+        "id": "32cLf0"
+      }
+    ]
+  },
+  "branches": {
+    "yZyv0a": [
+      {
+        "npc": "There is a heartbroken mother just past the gates and in the desert. Her name is Irena and she mourns her lost daughter. Such a shame."
+      }
+    ],
+    "nCA98O": [
+      {
+        "npc": "You should be in jail! Well, no doubt the authorities in Port Sarim know what they're doing. But if you get into any more trouble, you'll be stuck back in jail."
+      }
+    ],
+    "6e5psV": [
+      {
+        "npc": "Sorry effendi, I can't offer this service right now."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ],
+    "vWUwdV": [
+      {
+        "npc": "Sorry friend, the Shantay Pass is 5 gold coins. You don't seem to have enough money!"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

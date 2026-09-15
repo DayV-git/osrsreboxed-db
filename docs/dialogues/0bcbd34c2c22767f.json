@@ -1,0 +1,281 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome, traveller. Are you looking to represent one of the houses of Great Kourend?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me more.",
+            "steps": [
+              {
+                "player": "Tell me more."
+              },
+              {
+                "npc": "As you are probably aware, Great Kourend is a vast kingdom. Many adventurers choose to wear special clothing which allows them to explore swiftly and with elegance."
+              },
+              {
+                "npc": "As official tailor for Kourend, I can recolour this clothing, allowing adventurers to represent the city to which they are most loyal."
+              },
+              {
+                "npc": "If you are interested, I would be more than happy to offer my tailoring services in exchange for Marks of Grace."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to recolour my graceful clothing.",
+                    "steps": [
+                      {
+                        "player": "I'd like to recolour my graceful clothing."
+                      },
+                      {
+                        "npc": "Fantastic, simply pass me the items of clothing you would like recoloured, and we can get started."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Not right now.",
+                    "steps": [
+                      {
+                        "player": "Not right now."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Actually, I just wanted to buy some clothes.",
+            "steps": [
+              {
+                "player": "Actually, I just wanted to buy some clothes."
+              },
+              {
+                "npc": "Oh, certainly. My assistant over there, Robyn, will be happy to help you."
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": [
+              {
+                "player": "Not right now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-uncoloured-graceful-outfit-pieces-on-osten": [
+      {
+        "npc": "Are you sure you want to recolour that piece of graful clothing? It will cost 15 marks of grace."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That seems reasonable.",
+            "steps": [
+              {
+                "player": "That seems reasonable."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 15 Marks of Grace",
+                "steps": [
+                  {
+                    "npc": "Which city would you like to represent?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "[Name of Zeah house].",
+                        "steps": [
+                          {
+                            "player": "[Name of Zeah house]."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I want the colours you're wearing.",
+                        "steps": [
+                          {
+                            "player": "I want the colours you're wearing."
+                          },
+                          {
+                            "type": "unavailable",
+                            "id": "8n0Ydi"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, forget it."
+                      }
+                    ]
+                  },
+                  {
+                    "player": "Actually, forget it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "d5SovR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 15 Marks of Grace:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "gUMPxw"
+                  }
+                ],
+                "id": "yiVuf5"
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": [
+              {
+                "player": "Not right now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-already-coloured-graceful-outfit-pieces-on-osten": [
+      {
+        "npc": "I can remove that item's colours free of charge. Alternatively I can recolour it to represent a city of Kourend for a fee of 15 Marks of Grace."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to remove the colours.",
+            "steps": [
+              {
+                "player": "I'd like to remove the colours."
+              },
+              {
+                "npc": "Are you sure you want to revert that piece of clothing? You'll have to pay again if you want it recoloured."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, I'm sure.",
+                    "steps": [
+                      {
+                        "player": "Yes, I'm sure."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Not right now.",
+                    "steps": [
+                      {
+                        "player": "Not right now."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd like to represent a different city.",
+            "steps": [
+              {
+                "player": "I'd like to represent a different city."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 15 Marks of Grace",
+                "steps": [
+                  {
+                    "npc": "Which city would you like to represent?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "[Name of Zeah house].",
+                        "steps": [
+                          {
+                            "player": "[Name of Zeah house]."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I want the colours you're wearing.",
+                        "steps": [
+                          {
+                            "player": "I want the colours you're wearing."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Not right now."
+                      }
+                    ]
+                  },
+                  {
+                    "player": "Not right now."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "nfKkXL"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 15 Marks of Grace",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "gUMPxw"
+                  }
+                ],
+                "id": "izsoCK"
+              }
+            ]
+          },
+          {
+            "text": "Not right now.",
+            "steps": [
+              {
+                "player": "Not right now."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "gUMPxw": [
+      {
+        "npc": "Sorry, you don't appear to have enough Marks of Grace. I charge 15 for my services."
+      }
+    ]
+  }
+}

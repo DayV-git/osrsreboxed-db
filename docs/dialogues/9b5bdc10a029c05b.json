@@ -1,0 +1,1388 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-first-time-speaking-to-murphy": [
+      {
+        "player": "Good day to you Sir."
+      },
+      {
+        "npc": "Well hello my brave adventurer."
+      },
+      {
+        "player": "What are you up to?"
+      },
+      {
+        "npc": "Getting ready to go fishing of course. There's no time to waste!"
+      },
+      {
+        "npc": "I've got all the supplies I need from the shop at the end of the pier. They sell good rope, hammers and axes although their bailing buckets aren't too effective."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What fish do you catch?",
+            "steps": [
+              {
+                "player": "What fish do you catch?"
+              },
+              {
+                "npc": "I get all sorts, anything that lies on the sea bed, you never know what you're going to get until you pull up the net!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "eanvLb"
+              }
+            ]
+          },
+          {
+            "text": "Your boat doesn't look too safe.",
+            "steps": [
+              {
+                "player": "Your boat doesn't look too safe."
+              },
+              {
+                "npc": "That's because it's not, the darn thing's full of holes."
+              },
+              {
+                "player": "Oh, so I suppose you can't go out for a while?"
+              },
+              {
+                "npc": "Oh no, I don't let a few holes stop an experienced sailor like me. I could sail these seas in a barrel, I'll be going out soon enough."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "9MQGTo"
+              }
+            ]
+          },
+          {
+            "text": "Could I help?",
+            "steps": [
+              {
+                "player": "Could I help?"
+              },
+              {
+                "npc": "Well of course you can! I'll warn you though, the seas are merciless and without fishing experience you won't catch much."
+              },
+              {
+                "npc": "You need a fishing level of 15 or above to catch any fish on the trawler."
+              },
+              {
+                "npc": "On occasions the net rips, so you'll need some rope to repair it."
+              },
+              {
+                "npc": "Repairing the net is difficult in the harsh conditions so you'll find it easier with a higher crafting level."
+              },
+              {
+                "player": "Right...ok."
+              },
+              {
+                "npc": "There's also a slight problem with leaks."
+              },
+              {
+                "player": "Leaks?!"
+              },
+              {
+                "npc": "Nothing some swamp paste won't fix..."
+              },
+              {
+                "player": "Swamp paste?"
+              },
+              {
+                "npc": "Also, there's the small matter of the Kraken."
+              },
+              {
+                "player": "You have got to be kidding me?"
+              },
+              {
+                "npc": "Occupational hazard. I usually whack it with an axe a few time and fix the damage with hammer once it's gone."
+              },
+              {
+                "npc": "Oh, and one more thing... I hope you're a good swimmer?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Actually, I think I'll leave it.",
+                    "steps": [
+                      {
+                        "player": "Actually, I think I'll leave it."
+                      },
+                      {
+                        "npc": "Bloomin' land lovers!!!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll be fine, let's go.",
+                    "steps": [
+                      {
+                        "player": "I'll be fine, let's go."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the trawler is in port:",
+                        "steps": [
+                          {
+                            "npc": "Aye aye! Meet me on board the trawler. I just need to get a few things together."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "7OMDwL"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the trawler is at sea:",
+                        "steps": [
+                          {
+                            "npc": "Aye aye! Meet me on board the trawler."
+                          },
+                          {
+                            "npc": "Oh hang on. I'm already on a fishing trip with someone. You'll have to try back in a few minutes."
+                          },
+                          {
+                            "player": "How can you be here and on board the boat?!"
+                          },
+                          {
+                            "npc": "That's Game Magic, [lass/son]."
+                          },
+                          {
+                            "player": "What?!"
+                          },
+                          {
+                            "npc": "Never mind. Just try back later OK?"
+                          }
+                        ],
+                        "id": "ShP14f"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What's swamp paste?",
+                    "steps": [
+                      {
+                        "player": "What's swamp paste?"
+                      },
+                      {
+                        "npc": "Swamp tar mixed with flour which is then heated over a fire."
+                      },
+                      {
+                        "player": "Where can I find swamp tar?"
+                      },
+                      {
+                        "npc": "Unfortunately the only supply of swamp tar is in the swamps below Lumbridge."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-subsequent-conversations": [
+      {
+        "type": "condition",
+        "text": "If does not have a sextant:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Murphy has given you a sextant.",
+            "id": "WQCxcH"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a sextant",
+            "id": "D4hOUj"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "5T1fJB"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a sextant:",
+        "steps": [
+          {
+            "player": "Hello again Murphy."
+          },
+          {
+            "npc": "Good day to you land lover. Fancy hitting the high seas again?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "No thanks, I still feel ill from last time.",
+                "steps": [
+                  {
+                    "player": "No thanks, I still feel ill from last time."
+                  },
+                  {
+                    "npc": "Hah! ...Softy."
+                  }
+                ]
+              },
+              {
+                "text": "We keep sinking! Can you give me some advice?",
+                "steps": [
+                  {
+                    "player": "We keep sinking! Can you give me some advice?"
+                  },
+                  {
+                    "npc": "Aye aye matey! We'll soon get you ship shape!"
+                  },
+                  {
+                    "npc": "You need a fishing level of 15 or above to catch any fish on the trawler."
+                  },
+                  {
+                    "npc": "On occasions the net rips, so you'll need some rope to repair it."
+                  },
+                  {
+                    "npc": "Repairing the net is difficult in the harsh conditions so you'll find it easier with a higher crafting level."
+                  },
+                  {
+                    "player": "Ah yes, got it."
+                  },
+                  {
+                    "npc": "There's also a slight problem with leaks."
+                  },
+                  {
+                    "player": "Don't say!"
+                  },
+                  {
+                    "npc": "Nothing some swamp paste won't fix..."
+                  },
+                  {
+                    "npc": "Also, bring a good axe and a hammer in case of Kraken attacks."
+                  },
+                  {
+                    "player": "I thought I'd heard it all!"
+                  },
+                  {
+                    "player": "Right so I need lots of swamp paste and plenty of rope, an axe and a hammer. Thanks Murphy!"
+                  },
+                  {
+                    "npc": "If all else fails use a bailing bucket or three!"
+                  }
+                ]
+              },
+              {
+                "text": "Could you teach me to how to trawl for myself?",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "Player owns a boat:",
+                    "steps": [
+                      {
+                        "npc": "I'm afraid my setup is a bit dated these days. That said, I've heard there's a retired netmaster over in Port Roberts who's more than happy to share his trawling secrets. Kellan I think his name was."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Player has talked to Netmaster Kellan:",
+                        "steps": [
+                          {
+                            "player": "Ah yes, I think I've met him. I'll have to go and have another word with him about it."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "7VD8os"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Player has not talked to Kellan:",
+                        "steps": [
+                          {
+                            "player": "Interesting... I might have to sail over there and introduce myself."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "rrJccn"
+                      }
+                    ],
+                    "id": "y6ywgX"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "Player does not own a boat:",
+                    "steps": [
+                      {
+                        "npc": "You won't be able to trawl without a boat of your own. Perhaps someone over at Port Sarim could help you with that."
+                      }
+                    ],
+                    "id": "eu7qnK"
+                  }
+                ]
+              },
+              {
+                "text": "Yes, let's do it!",
+                "steps": [
+                  {
+                    "player": "Yes, let's do it!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "2XtRPh"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "m-SEEQ"
+      }
+    ],
+    "standard-dialogue-after-freeing-pirate-pete": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Go Diving.",
+            "steps": [
+              {
+                "npc": "Ahoy there! All set for a dive?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, Let's go diving.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a fishbowl helmet:",
+                        "steps": [
+                          {
+                            "player": "Murphy, can I get another diving helmet?"
+                          },
+                          {
+                            "npc": "Sure, here you go. Try not to lose this one, I'm not a very good glassblower."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a fishbowl helmet",
+                            "id": "m7SpcG"
+                          },
+                          {
+                            "player": "What do you mean?"
+                          },
+                          {
+                            "npc": "Well, the bowls I make tend to shatter under pressure into razor-sharp shards of lethal, face shredding shrapnel."
+                          },
+                          {
+                            "npc": "Don't let it bother you, I think I know what I'm doing wrong now."
+                          },
+                          {
+                            "player": "O...k..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "DlnNJL"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a diving apparatus:",
+                        "steps": [
+                          {
+                            "player": "Hello Murphy. Do you have a spare diving backpack?"
+                          },
+                          {
+                            "npc": "Sure, I have plenty after the...little incident."
+                          },
+                          {
+                            "player": "What 'little incident'?"
+                          },
+                          {
+                            "npc": "Nothing to worry yourself about."
+                          },
+                          {
+                            "npc": "Here, have this one. Only dropped once!"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a diving apparatus",
+                            "id": "3md4pf"
+                          },
+                          {
+                            "player": "Is that blood?"
+                          },
+                          {
+                            "npc": "No, no."
+                          },
+                          {
+                            "npc": "Well, yes."
+                          },
+                          {
+                            "npc": "But seriously, what are the chances of getting a jellyfish jammed in there again?"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "KhpK92"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a weapon or shield equipped:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "Well let's be..."
+                          },
+                          {
+                            "npc": "Err, how do you plan on swimming with your hands full?"
+                          },
+                          {
+                            "player": "What do you mean?"
+                          },
+                          {
+                            "npc": "Well, when you hit the water you will start swimming. If you can't free up your hands by putting everything away then you will sink like a stone."
+                          },
+                          {
+                            "npc": "All you have to do is have 2 spaces to store the items and you are good to go."
+                          },
+                          {
+                            "npc": "Even if you aren't carrying a shield or weapon it's always handy to have some free space for an emergency."
+                          },
+                          {
+                            "npc": "See you then!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "5Ts24v"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a gnomeball in their inventory:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "Now, do you have a gomeball on you?"
+                          },
+                          {
+                            "player": "Yes, I do, why do you ask?"
+                          },
+                          {
+                            "npc": "Well you will need to leave them on the surface. They are so full of air that they will stop you diving properly."
+                          },
+                          {
+                            "player": "Right, I'll go put it in the bank."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "G3_GIp"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has an handegg in their inventory:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "Now, do you have a hand egg on you?"
+                          },
+                          {
+                            "player": "Yes, I do, why do you ask?"
+                          },
+                          {
+                            "npc": "Well you will need to leave them on the surface. They are so full of air that they will stop you diving properly."
+                          },
+                          {
+                            "player": "Right, I'll go put it in the bank."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "K72gRq"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a cat following them:",
+                        "steps": [
+                          {
+                            "npc": "You want that cat of yours to drown or something?"
+                          },
+                          {
+                            "player": "You mean you can't make them an adorable set of tiny diving gear?"
+                          },
+                          {
+                            "npc": "No. Just...no."
+                          },
+                          {
+                            "npc": "I'm not taking you out for a dive with that cat following you."
+                          },
+                          {
+                            "npc": "I'm not a cat person, and it'd have to stay on the ship while you were down."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "t4VN_K"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a cat in their inventory:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "You know, I can see your cat right there."
+                          },
+                          {
+                            "player": "What do you mean?"
+                          },
+                          {
+                            "npc": "I'm looking right at it. See, it's just there in your bag!"
+                          },
+                          {
+                            "npc": "I'm not taking you out with that cat. I'm not some sort of cat-sitter, so go and put it somewhere safe, then come back."
+                          },
+                          {
+                            "player": "O'kay..."
+                          },
+                          {
+                            "player": "I still think I should get some cat-sized diving gear..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "1Wte-p"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is followed by a different pet:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "I'm not taking you out for a dive with that pet following you. It'll get wet."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "xZFF93"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a pet in their inventory:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "I'm not taking you out for a dive with that pet in your bag. It'll get wet."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "0VjOHs"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a fishbowl helmet and diving apparatus equipped:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "Well I can't take you out until you are properly geared up."
+                          },
+                          {
+                            "npc": "We lost three diving parties that way!"
+                          },
+                          {
+                            "player": "Ok, well I'll just put my diving helmet and diving backpack on."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "psil0Y"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player is carrying 27kg of equipment or more:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "Well that's the sort of spirit I like to see. However you are far too heavy to go diving right now."
+                          },
+                          {
+                            "player": "What do you mean?"
+                          },
+                          {
+                            "npc": "Well, I can't take you diving if you are carrying more than 27kg worth of equipment."
+                          },
+                          {
+                            "npc": "We arrived at that number through trial and error, and the errors were not pretty let me assure you."
+                          },
+                          {
+                            "player": "So what can I do?"
+                          },
+                          {
+                            "npc": "Well, if you pop over to a bank and leave all your heavy equipment behind then I'll take you out."
+                          },
+                          {
+                            "npc": "See you then!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "LcLaG9"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If none of the previous conditions apply:",
+                        "steps": [
+                          {
+                            "player": "Yes, Let's go diving."
+                          },
+                          {
+                            "npc": "Ok, let's be off then."
+                          },
+                          {
+                            "type": "action",
+                            "text": "A brief cutscene plays of Murphy and the player standing on the trawler's deck at sea.",
+                            "id": "iTql9S"
+                          },
+                          {
+                            "player": "Ok, see you soon Murphy!"
+                          },
+                          {
+                            "npc": "Good luck, I'll weigh anchor. Climb up the chain to get aboard."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player dives down to the Mogre Camp.",
+                            "id": "dGojpx"
+                          }
+                        ],
+                        "id": "sP7tj5"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Not just yet.",
+                    "steps": [
+                      {
+                        "player": "Not just yet."
+                      },
+                      {
+                        "npc": "Ok, well I'll be here if you change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "player": "Hello again Murphy."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "-kvJW_"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-climbing-back-up-the-anchor": [
+      {
+        "npc": "How did it go?"
+      },
+      {
+        "player": "Not too bad."
+      },
+      {
+        "npc": "Great, I'll take us back in."
+      },
+      {
+        "type": "action",
+        "text": "The player is transported back to Port Khazard.",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "1YBz_i"
+      }
+    ],
+    "standard-dialogue-when-on-the-trawler-s-deck": [
+      {
+        "type": "condition",
+        "text": "If the trawler is in port:",
+        "steps": [
+          {
+            "npc": "The ship's ready to depart."
+          },
+          {
+            "type": "condition",
+            "text": "If this is the first time speaking to Murphy on deck:",
+            "steps": [
+              {
+                "npc": "By the way, would you like me to remind you how the trawler works once the trip starts?"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "aMmDPc"
+              }
+            ],
+            "id": "tTpygh"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has talked to Murphy on deck before:",
+            "steps": [
+              {
+                "npc": "By the way, would you like me to keep reminding you how the trawler works once the trip starts?"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "IBQEr4"
+              }
+            ],
+            "id": "kMCssV"
+          },
+          {
+            "type": "choice",
+            "prompt": "Info interface on?",
+            "options": [
+              {
+                "text": "Yes",
+                "steps": [
+                  {
+                    "npc": "You've got it!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No",
+                "steps": [
+                  {
+                    "npc": "No worries! Let me know if you change your mind!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ukU9co"
+      },
+      {
+        "type": "condition",
+        "text": "If a trawler is currently at sea:",
+        "steps": [
+          {
+            "npc": "The ship's at sea at the moment. This is some kind of paradox."
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "MmI2pV"
+          }
+        ],
+        "id": "vGPNUr"
+      }
+    ],
+    "standard-dialogue-when-at-sea": [
+      {
+        "npc": "Whoooahh sailor!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've had enough, take me back.",
+            "steps": [
+              {
+                "player": "I've had enough, take me back."
+              },
+              {
+                "npc": "Hah! .. the soft land lovers lost their sea legs have they?"
+              },
+              {
+                "player": "...Something like that."
+              },
+              {
+                "npc": "We're too far out now, It'd be dangerous."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I insist Murphy, take me back.",
+                    "steps": [
+                      {
+                        "player": "I insist Murphy, take me back."
+                      },
+                      {
+                        "npc": "Ok, ok, I'll try, but don't say I didn't warn you..."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Murphy attempts to sharply turn the large ship.",
+                        "id": "qBJhRe"
+                      },
+                      {
+                        "npc": "Save yourself! We're going down!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "The fishing trawler is wrecked at sea.",
+                        "id": "nqzBKN"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay then Murphy, just keep us afloat.",
+                    "steps": [
+                      {
+                        "player": "Okay then Murphy, just keep us afloat."
+                      },
+                      {
+                        "npc": "That's the attitude sailor...Aaaaar!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How you doing Murphy?",
+            "steps": [
+              {
+                "player": "How you doing Murphy?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Get those fishies!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "I think i'm feeling a bit sea sick!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "It's a fierce sea today traveller, you best hold on tight."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-first-time-obtaining-the-sextant": [
+      {
+        "player": "Ahoy there!"
+      },
+      {
+        "npc": "Ahoy!"
+      },
+      {
+        "player": "I'm trying to learn how to be a navigator."
+      },
+      {
+        "npc": "Well, you've come to the right place, m'hearty! What do you need to know?"
+      },
+      {
+        "player": "The professor said that I need to have a sextant. Do you know where I can get one?"
+      },
+      {
+        "npc": "Hmm. I used to use a sextant when I was a young fella."
+      },
+      {
+        "player": "Do you still have it?"
+      },
+      {
+        "npc": "Aye."
+      },
+      {
+        "player": "Could I have it?"
+      },
+      {
+        "npc": "Aye."
+      },
+      {
+        "type": "message",
+        "text": "Murphy has given you his old sextant.",
+        "id": "DSSeCY"
+      },
+      {
+        "player": "Don't you still need it?"
+      },
+      {
+        "npc": "I can tell from the taste of the sea spray where I am, m'hearty!"
+      },
+      {
+        "player": "Wow!"
+      }
+    ],
+    "via-astral-contact": [
+      {
+        "player": "Hello there"
+      },
+      {
+        "npc": "What the...?"
+      },
+      {
+        "player": "Don't worry, Murphy. My name's [player name] and I'm using magic to contact you!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is near Murphy:",
+        "steps": [
+          {
+            "npc": "That's so rude when you may as well just speak to me in person!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "dozQ_R"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is elsewhere:",
+        "steps": [
+          {
+            "npc": "Well I never! Technology these days. Beyond me. So how might I help you?"
+          },
+          {
+            "player": "I was just wondering if there is anyone down there helping you out on the trawler?"
+          },
+          {
+            "type": "condition",
+            "text": "If a fishing trawler trip is currently underway:",
+            "steps": [
+              {
+                "npc": "The boat has just left actually! Perhaps when it comes back you can join them in another run?"
+              },
+              {
+                "player": "Sounds like a plan."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "Z7Bpz6"
+          },
+          {
+            "type": "condition",
+            "text": "If people are waiting for the next trawler to depart:",
+            "steps": [
+              {
+                "npc": "There seems to be someone on-board."
+              },
+              {
+                "player": "Just one person?"
+              },
+              {
+                "type": "condition",
+                "text": "If it is just one person:",
+                "steps": [
+                  {
+                    "npc": "Yep, just one."
+                  },
+                  {
+                    "player": "Ok, maybe I'll join them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "8KiVdE"
+              },
+              {
+                "type": "condition",
+                "text": "If there are more people waiting:",
+                "steps": [
+                  {
+                    "npc": "No, there are [number] at the moment."
+                  },
+                  {
+                    "player": "Ok, maybe I'll join them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "XUhgGU"
+              }
+            ],
+            "id": "sWxbBA"
+          },
+          {
+            "type": "condition",
+            "text": "If there are no people waiting or at sea:",
+            "steps": [
+              {
+                "npc": "The boat is just sitting waiting for someone to join. How about it?"
+              },
+              {
+                "player": "Maybe I'll come have a look. I'll catch you later!"
+              },
+              {
+                "npc": "Ok mate, bye!"
+              }
+            ],
+            "id": "AvARop"
+          }
+        ],
+        "id": "UU4DVI"
+      }
+    ],
+    "overhead-dialogue-when-at-port": [
+      {
+        "type": "condition",
+        "text": "When waiting for the trawler to depart:",
+        "steps": [
+          {
+            "npc": "The ship is back in port!"
+          },
+          {
+            "npc": "The ship will leave in 1 minute!"
+          },
+          {
+            "npc": "The ship will leave in [50/40/30/20/10] seconds!"
+          }
+        ],
+        "id": "ejnzv6"
+      },
+      {
+        "type": "condition",
+        "text": "When the trawler is out at sea:",
+        "steps": [
+          {
+            "npc": "The ship has just left port!"
+          },
+          {
+            "npc": "The ship will be back in [5/4/3/2/1] minute[s]!"
+          },
+          {
+            "npc": "The ship will be back in under 1 minute!"
+          }
+        ],
+        "id": "0nbfTA"
+      },
+      {
+        "type": "condition",
+        "text": "When crossing the gangplank back on the docks as the only person waiting on board:",
+        "steps": [
+          {
+            "npc": "Looks like the ship's not going after all!"
+          }
+        ],
+        "id": "lxvoHV"
+      },
+      {
+        "type": "condition",
+        "text": "When the trawler is wrecked at sea:",
+        "steps": [
+          {
+            "npc": "The ship has sunk! I'll get another one."
+          }
+        ],
+        "id": "UHNqwO"
+      }
+    ],
+    "overhead-dialogue-when-on-deck": [
+      {
+        "type": "condition",
+        "text": "While waiting for the trawler to depart:",
+        "steps": [
+          {
+            "npc": "The ship will leave in 1 minute!"
+          },
+          {
+            "npc": "The ship will leave in [50/40/30/20/10] seconds!"
+          }
+        ],
+        "id": "XrEMFb"
+      }
+    ],
+    "overhead-dialogue-when-at-sea": [
+      {
+        "type": "condition",
+        "text": "When first arriving at open sea:",
+        "steps": [
+          {
+            "npc": "Let's get this net full with fishies!"
+          }
+        ],
+        "id": "fMVkNA"
+      },
+      {
+        "type": "condition",
+        "text": "When the net has been torn:",
+        "steps": [
+          {
+            "npc": "Arrh! Check that net!"
+          }
+        ],
+        "id": "fdKGkq"
+      },
+      {
+        "type": "condition",
+        "text": "When under assault of the Kraken:",
+        "steps": [
+          {
+            "npc": "Doom! The Kraken is attacking!"
+          }
+        ],
+        "id": "W7ayA8"
+      },
+      {
+        "type": "condition",
+        "text": "When the Kraken has been fought back:",
+        "steps": [
+          {
+            "npc": "Hurrah! The Kraken is no more!"
+          }
+        ],
+        "id": "u3hEEt"
+      },
+      {
+        "type": "condition",
+        "text": "When the lower deck is about to become water-filled:",
+        "steps": [
+          {
+            "npc": "You'll need to start bailing soon!"
+          }
+        ],
+        "id": "JRYeMo"
+      },
+      {
+        "type": "condition",
+        "text": "When the ship is seaworthy:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "Blistering barnacles!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "The water is coming in matey!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "2XN0cn"
+      },
+      {
+        "type": "condition",
+        "text": "When the lower deck is water-filled:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "We'll all end up in a watery grave!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "Land lubbers!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "It's a fierce sea today traveller."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "My mother could bail better than that!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "VYsGox"
+      },
+      {
+        "type": "condition",
+        "text": "When the trawler is about to sink:",
+        "steps": [
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "Noooooo!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "We're going under!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 3",
+                "steps": [
+                  {
+                    "npc": "We're all doomed!"
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 4",
+                "steps": [
+                  {
+                    "npc": "Mummy!"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "VkPXPQ"
+      }
+    ],
+    "overhead-dialogue-when-shipwrecked": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "You'll need all your strength!"
+              },
+              {
+                "npc": "To make it back to shore."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "No fishies for you today!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Arrrgh! We've sunk!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Keep your head above water shipmate."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "You'll be joining Davey Jones!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

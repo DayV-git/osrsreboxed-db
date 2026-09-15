@@ -1,0 +1,336 @@
+{
+  "default": "standard-dialogue-before-rune-mysteries",
+  "variants": {
+    "standard-dialogue-before-rune-mysteries": [
+      {
+        "npc": "Welcome adventurer, to the world renowned Wizards' Tower, home to the Order of Wizards. How may I help you?"
+      },
+      {
+        "player": "I'm just looking around."
+      },
+      {
+        "npc": "Well, take care adventurer. You stand on the ruins of the old destroyed Wizards' Tower. Strange and powerful magicks lurk here."
+      }
+    ],
+    "standard-dialogue-after-rune-mysteries": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Hello again, [player name]. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you teleport me to the Rune Essence Mine?",
+            "steps": [
+              {
+                "player": "Can you teleport me to the Rune Essence Mine?"
+              },
+              {
+                "npc": "Senventior disthine molenko!"
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported to the rune essence mine.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "SvUvek"
+              }
+            ]
+          },
+          {
+            "text": "I have news on Persten.",
+            "condition": "If the player has completed Desert Treasure II - The Fallen Empire but not yet informed Sedridor about Persten:",
+            "steps": [
+              {
+                "player": "I have news on Persten."
+              },
+              {
+                "npc": "Yes?"
+              },
+              {
+                "player": "I'm sorry, but she's gone."
+              },
+              {
+                "npc": "I see. It was always unlikely that she'd survive the Abyss."
+              },
+              {
+                "player": "It wasn't the Abyss. I think she might have been dead long before then. The Persten we spoke to was an imposter."
+              },
+              {
+                "npc": "An imposter? What do you mean?"
+              },
+              {
+                "player": "A Mahjarrat called Sliske was disguised as her."
+              },
+              {
+                "npc": "I can't believe it. Persten and I had our differences, but this..."
+              },
+              {
+                "npc": "I'd better share this news with the others. Thank you for bringing it to me."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "1UGKXI"
+              }
+            ],
+            "id": "0iov2K"
+          },
+          {
+            "text": "How are things at the Temple of the Eye?",
+            "condition": "If the player has completed Temple of the Eye:",
+            "steps": [
+              {
+                "player": "How are things at the Temple of the Eye?"
+              },
+              {
+                "npc": "Between the Guardians of the Rift and ourselves, we are managing to keep the Abyss at bay."
+              },
+              {
+                "npc": "However, despite all our research, we are no closer to working out how to close the rift permanently."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not previously informed Sedridor of the Stone of Jas following Desert Treasure II - The Fallen Empire:",
+                "steps": [
+                  {
+                    "npc": "Gaining a better understanding of the artefact that was once there is key, but we have found little mention of this 'Eye'."
+                  },
+                  {
+                    "npc": "I'm sure the wizards of the first tower had plenty of research on it. After all, they knew enough about it to use its symbol as the symbol for our order."
+                  },
+                  {
+                    "npc": "All that knowledge lost because of those accursed Zamorakians!"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has completed Desert Treasure II - The Fallen Empire:",
+                    "steps": [
+                      {
+                        "player": "I don't know if it will be much help, but I found out its real name. It's called the Stone of Jas."
+                      },
+                      {
+                        "npc": "Hmm... That could be useful. I'll have a dig around and see if we can find any mention of it."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "ohz6TZ"
+                      }
+                    ],
+                    "id": "4IugD5"
+                  },
+                  {
+                    "npc": "Anyway, if you wish to help defend the temple, just head through the portal."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "Ip6RTO"
+                  }
+                ],
+                "id": "2oLMvI"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has informed Sedridor of the Stone of Jas:",
+                "steps": [
+                  {
+                    "player": "Were you able to find any information on the Stone of Jas?"
+                  },
+                  {
+                    "npc": "Not yet. So far we've still only been able to find a few small mentions of it, but they all call it the Eye."
+                  },
+                  {
+                    "npc": "I'm sure the wizards of the first tower had plenty of research that could have helped. All that knowledge lost because of those accursed Zamorakians!"
+                  },
+                  {
+                    "npc": "Anyway, if you wish to help defend the temple, just head through the portal."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "c3AhhF"
+                  }
+                ],
+                "id": "97Aqro"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you teleport me to the Rune Essence Mine?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "JG9_kI"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me about the old Wizards' Tower?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "MvU_lH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I might do that, thanks.",
+                    "steps": [
+                      {
+                        "player": "I might do that, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "_hblvR"
+          },
+          {
+            "text": "Who else knows the teleport to the Rune Essence Mine?",
+            "steps": [
+              {
+                "player": "Who else knows the teleport to the Rune Essence Mine?"
+              },
+              {
+                "npc": "Apart from myself, there's also Aubury in Varrock, Wizard Cromperty in East Ardougne, Brimstail in the Tree Gnome Stronghold and Wizard Distentor in Yanille's Wizards' Guild."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you teleport me to the Rune Essence Mine?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "HEJGBR"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me about the old Wizards' Tower?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "PBBz_A"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks for the information.",
+                    "steps": [
+                      {
+                        "player": "Thanks for the information."
+                      },
+                      {
+                        "npc": "My pleasure."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the old Wizards' Tower?",
+            "steps": [
+              {
+                "player": "Could you tell me about the old Wizards' Tower?"
+              },
+              {
+                "npc": "Of course. The first Wizards' Tower was built at the same time the Order of Wizards was founded. It was at the dawn of the Fifth Age, when the secrets of runecrafting were rediscovered."
+              },
+              {
+                "npc": "For years, the tower was a hub of magical research. Wizards of all races and religions were welcomed into our order."
+              },
+              {
+                "npc": "Alas, that openness is what ultimately led to disaster. The wizards who served Zamorak, the evil god of chaos, tried to claim our magical discoveries in his name."
+              },
+              {
+                "npc": "They failed, but in retaliation, they burnt the entire tower to the ground. Years of work was destroyed."
+              },
+              {
+                "npc": "The tower was soon rebuilt of course, but even now we are still trying to regain knowledge that was lost."
+              },
+              {
+                "npc": "That's why I spend my time down here, in fact. This basement is all that is left of the old tower, and I believe there are still some secrets to discover here."
+              },
+              {
+                "npc": "Of course, one secret I am no longer looking for is the teleportation incantation to the Rune Essence Mine. We have you to thank for that."
+              },
+              {
+                "type": "condition",
+                "text": "If the player did not speak to the Mage of Zamorak about the abyssal incantation post-quest:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "TZzviH"
+                  }
+                ],
+                "id": "fhNh4z"
+              },
+              {
+                "type": "condition",
+                "text": "If the player spoke to the Mage of Zamorak about the Z.M.I. post-quest:",
+                "steps": [
+                  {
+                    "player": "I've heard a different take on how the tower burnt down. Something about a ritual gone wrong?"
+                  },
+                  {
+                    "npc": "Nothing more than Zamorakian hearsay! They burnt the tower down and are now too cowardly to even admit it!"
+                  },
+                  {
+                    "player": "Fair enough."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "eoAI9B"
+                  }
+                ],
+                "id": "df82K2"
+              }
+            ]
+          },
+          {
+            "text": "Nothing thanks, I'm just looking around.",
+            "steps": [
+              {
+                "player": "Nothing thanks, I'm just looking around."
+              },
+              {
+                "npc": "Well, take care. You stand on the ruins of the old destroyed Wizards' Tower. Strange and powerful magicks lurk here."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-beginner": [
+      {
+        "npc": "Well done."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [new clue/casket]",
+        "id": "TC51Xv"
+      },
+      {
+        "type": "unavailable",
+        "id": "DINY8t"
+      }
+    ]
+  }
+}

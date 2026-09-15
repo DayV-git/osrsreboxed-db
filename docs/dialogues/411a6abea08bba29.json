@@ -1,0 +1,134 @@
+{
+  "steps": [
+    {
+      "npc": "Do you want to use the balloon? Just so you know, some locations require special logs and high Firemaking skills."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Balloon transport system",
+              "id": "T8_wzX"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have the required logs",
+              "steps": [
+                {
+                  "type": "action",
+                  "text": "You need 1 [type] logs to make this trip.",
+                  "id": "mS6n-r"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "FudPKy"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has not yet flown from Entrana to Taverley",
+              "steps": [
+                {
+                  "type": "missing",
+                  "id": "0V1UZP"
+                }
+              ],
+              "id": "ijXBBG"
+            },
+            {
+              "type": "condition",
+              "text": "If the player attempts to fly to Entrana:",
+              "steps": [
+                {
+                  "npc": "Weapons are not allowed on Entrana. I must search you first."
+                },
+                {
+                  "type": "message",
+                  "text": "You are quickly searched.",
+                  "id": "fXc3rh"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player has weapons or amour on them:",
+                  "steps": [
+                    {
+                      "npc": "I'm sorry, no weapons or armour may be worn to Entrana. Come back when you have laid them down."
+                    },
+                    {
+                      "type": "end"
+                    }
+                  ],
+                  "id": "UrJkvS"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player does not have weapons or armour on them:",
+                  "steps": [
+                    {
+                      "type": "action",
+                      "text": "The player rides the balloon to Entrana.",
+                      "id": "BbM-8o"
+                    }
+                  ],
+                  "id": "YJ5uH2"
+                }
+              ],
+              "id": "lehVLM"
+            }
+          ]
+        },
+        {
+          "text": "No.",
+          "steps": [
+            {
+              "player": "No."
+            }
+          ]
+        },
+        {
+          "text": "Who are you?",
+          "steps": [
+            {
+              "player": "Who are you?"
+            },
+            {
+              "npc": "I am Assistant Marrow. I'm working here part time while I study to be a doctor."
+            },
+            {
+              "npc": "Do you want to use the balloon?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "above",
+                      "id": "awaQ85"
+                    }
+                  ]
+                },
+                {
+                  "text": "No.",
+                  "steps": [
+                    {
+                      "player": "No."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

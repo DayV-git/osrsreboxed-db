@@ -1,0 +1,542 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If this is the first time talking to Mortimer:",
+        "steps": [
+          {
+            "npc": "Well, well, well. You're back again."
+          },
+          {
+            "player": "I am. So you're a Slayer Master?"
+          },
+          {
+            "npc": "Indeed. Perhaps you'd be up for one of my special slayer assignments?"
+          },
+          {
+            "player": "Maybe... What's so special about these assignments?"
+          },
+          {
+            "npc": "Well, back in my day there was a lot more freedom and less bureaucracy about what adventurers were assigned to slay... as long as it was in need of slaying."
+          },
+          {
+            "npc": "If you slay for me, I will give you the choice of two different creatures to be assigned. If you continue to prove your worth to me, I could be convinced to offer three choices instead of two."
+          },
+          {
+            "player": "What's the catch?"
+          },
+          {
+            "npc": "I'll only assign you options from creatures which have superior variants, regardless of whether you have that perk unlocked. My tasks also won't naturally offer any slayer points."
+          },
+          {
+            "npc": "This is purely slaying for the love of slaying."
+          },
+          {
+            "npc": "As an added bonus, some of my assignments include creatures which are more lucrative than they normally would be. I'll point this out when offering your assignments, so keep your eyes peeled."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "JD4Zlb"
+          }
+        ],
+        "id": "vVXRhr"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has talked to Mortimer before:",
+        "steps": [
+          {
+            "npc": "Well, well, well. Back for more slaying?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "lhX8Tt"
+          }
+        ],
+        "id": "n7-jaX"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "player": "I need another assignment."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an assignment yet:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Slayer Task Choice",
+                    "id": "HixcVe"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the task selected has a quantity modifier:",
+                    "steps": [
+                      {
+                        "npc": "Your new task is to kill [amount] [task monster]."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "7ex_jj"
+                      }
+                    ],
+                    "id": "xPEYQM"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the task selected has a Slayer Point modifier:",
+                    "steps": [
+                      {
+                        "npc": "Your new task is to kill [amount] [task monster]. Completing this task will award [number] bonus Slayer Points."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "t90fiY"
+                      }
+                    ],
+                    "id": "tBYyJ2"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the task selected has a clue scroll modifier:",
+                    "steps": [
+                      {
+                        "npc": "Your new task is to kill [amount] [task monster]. Creatures on this task will have an increased chance to award clue scrolls."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "oXAc_6"
+                      }
+                    ],
+                    "id": "lIW7ri"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the task selected has a superior unique chance modifier:",
+                    "steps": [
+                      {
+                        "npc": "Your new task is to kill [amount] [task monster]. Superior creatures on this task will have a higher chance of awarding their unique loot."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "ZZJt4a"
+                      }
+                    ],
+                    "id": "n-wLhD"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the task selected has a Slayer experience modifier:",
+                    "steps": [
+                      {
+                        "type": "missing",
+                        "id": "gG-7Z-"
+                      }
+                    ],
+                    "id": "FgeoRA"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Got any tips for me?",
+                        "steps": [
+                          {
+                            "player": "Got any tips for me?"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Mortimer provides the corresponding Slayer task tip.",
+                            "id": "_jZ32P"
+                          },
+                          {
+                            "player": "Great, thanks!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Can I cancel that task? (100 Points)",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "bp3m7p"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, great!",
+                        "steps": [
+                          {
+                            "player": "Okay, great!"
+                          },
+                          {
+                            "npc": "Good luck! Don't forget to come back when you need a new assignment."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "2qCF4z"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster]; you have [amount] to go. Come back when you've finished your task."
+                  }
+                ],
+                "id": "n16SZG"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me, or anything to trade?"
+              },
+              {
+                "npc": "I have quite a few rewards you can earn, and a wide variety of Slayer equipment for sale."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Look at rewards.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Rewards",
+                        "id": "nUSl5Z"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look at shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Equipment (shop)",
+                        "id": "Uupd6K"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has disabled combat checking:",
+                "steps": [
+                  {
+                    "player": "Let's talk about the difficulty of my assignments."
+                  },
+                  {
+                    "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I can handle any task.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I can handle any task."
+                          },
+                          {
+                            "npc": "That's the spirit."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "In future, please don't give anything too tough.",
+                        "steps": [
+                          {
+                            "player": "In future, please don't give anything too tough."
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "73IH_0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enabled combat checking:",
+                "steps": [
+                  {
+                    "player": "Let's talk about the difficulty of my assignments."
+                  },
+                  {
+                    "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I don't want anything too tough.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I don't want anything too tough."
+                          },
+                          {
+                            "npc": "Okay, we'll keep checking your combat level."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Stop checking my combat level - I can take anything!",
+                        "steps": [
+                          {
+                            "player": "Stop checking my combat level - I can take anything!"
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "TK0nPO"
+              }
+            ]
+          },
+          {
+            "text": "More options...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What kind of modifiers can I expect if I slay for you?",
+                    "steps": [
+                      {
+                        "player": "What kind of modifiers can I expect if I slay for you?"
+                      },
+                      {
+                        "npc": "Modifiers? You mean mortifiers! Coined that term myself a few centuries ago."
+                      },
+                      {
+                        "player": "Okay... so what mortifiers can your tasks have?"
+                      },
+                      {
+                        "npc": "For most adventurers, I'll assign tasks which either have increased or decreased assignment lengths, or I'll give you some Slayer Points for your troubles."
+                      },
+                      {
+                        "npc": "If you prove yourself to me and complete, say... 15 of my assignments, I'll start offering you tasks against creatures which have an increased chance to drop clue scrolls."
+                      },
+                      {
+                        "npc": "At 25 assignments, any superior creatures you slay will become more likely to drop their special loot."
+                      },
+                      {
+                        "npc": "As long as you're up for the challenge of fighting them of course!"
+                      },
+                      {
+                        "npc": "Then at 40 assignments, I'll offer tasks against creatures which are more educational to fight against, to help advance your slayer training at an expedited rate."
+                      },
+                      {
+                        "npc": "And finally, if you complete 50 of my assignments, I'll give you three different tasks to choose from instead of my normal two!"
+                      },
+                      {
+                        "player": "So, how many of your tasks have I completed so far?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Less than 25 tasks completed:",
+                        "steps": [
+                          {
+                            "npc": "By my records, I count [X]. You've got a ways to go. Better get slayin'!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "qPX7QE"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "25-39 tasks completed:",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "h_YS9_"
+                          }
+                        ],
+                        "id": "r2fWZT"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "40-49 tasks completed:",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "VBKqzu"
+                          }
+                        ],
+                        "id": "SDcTxY"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "50+ tasks completed:",
+                        "steps": [
+                          {
+                            "npc": "By my records, I count [X], so you've already proven yourself more than capable of handling all my mortifiers!"
+                          }
+                        ],
+                        "id": "2xBL7y"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How are your tasks modified?",
+                    "steps": [
+                      {
+                        "player": "How are your tasks modified?"
+                      },
+                      {
+                        "npc": "What do you mean?"
+                      },
+                      {
+                        "player": "Well, I don't understand how a Slayer Master would even have the power to affect creatures in the way you do."
+                      },
+                      {
+                        "npc": "Shhh! Keep it down. Are you trying to undermine my position here? If word gets out that I'm not the one responsible, then my whole niche as a Slayer Master becomes undermined!"
+                      },
+                      {
+                        "player": "Okay... so how is it done? If you tell me, I'll keep this between us."
+                      },
+                      {
+                        "npc": "Well, the truth is, I feel it in me bones."
+                      },
+                      {
+                        "player": "Feel it in your bones? You're pulling my leg!"
+                      },
+                      {
+                        "npc": "I'm being deadly serious. When my big left toe gets cold, I know there are more treasure trails about. When my right knee starts quivering, it's a tell that a creature will provide more slayer insights."
+                      },
+                      {
+                        "npc": "And when I get phantom pains in my right arm, you can bet your gilded socks that there's a superior creature right around the corner."
+                      },
+                      {
+                        "player": "I see... so there's no real secret to it. It's all just a hunch?"
+                      },
+                      {
+                        "npc": "Well, I haven't been wrong yet, have I? And as long as that's true, I'll be in the business of slayin' for years to come!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Er... Nothing...",
+                    "steps": [
+                      {
+                        "player": "Er... Nothing..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Previous options...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "ESfTdq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "via-the-astral-contact-spell": [
+      {
+        "npc": "Well, well, well. Up for some more slaying?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "33mwEX"
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "sagJKZ"
+              }
+            ]
+          },
+          {
+            "text": "Er... Nothing...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "svPLzm"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "via-the-astral-contact-spell-if-the-player-is-near-mortimer": [
+      {
+        "npc": "I may be a skeleton, but I still have feelings! Come talk to me face to... face."
+      }
+    ]
+  }
+}

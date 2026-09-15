@@ -1,0 +1,592 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "First time after completing Jungle Potion:",
+        "steps": [
+          {
+            "npc": "Hello there...thanks for helping out Trufitus commune with the gods Bwana. We've been able to return to the village thanks to your help."
+          }
+        ],
+        "id": "egXPM_"
+      },
+      {
+        "type": "condition",
+        "text": "First time after hacking away at jungle if the fence hasn't been repaired yet:",
+        "steps": [
+          {
+            "npc": "I see that you've been hacking away at the jungle...good, now if you have some thatching spars you can go and fix the fence. It's just to the south near the jungle, again, you'll need a machete for this."
+          }
+        ],
+        "id": "IZDI6Y"
+      },
+      {
+        "type": "condition",
+        "text": "First time after repairing the fence:",
+        "steps": [
+          {
+            "npc": "Great, I saw you were fixing the fence earlier, it looks like you've got the hang of this now! Let me give you something for your effort!"
+          },
+          {
+            "type": "message",
+            "text": "You get [amount] trading sticks. You are left with [percentage] favour.",
+            "id": "zc2tyR"
+          }
+        ],
+        "id": "SHwPSV"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "Well, I tend the hardwood grove nearby, you can enter if you like and harvest some of the very fine hardwood that grows within."
+              },
+              {
+                "npc": "Apart from that I'm a simple Tai Bwo Wannai villager...I like to try and find out what's going on in the mainland and the rest of the known world."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "IHoMsx"
+              }
+            ]
+          },
+          {
+            "text": "Is there anything interesting to do here?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't hacked away at jungle:",
+                "steps": [
+                  {
+                    "npc": "Well Bwana, if you're stuck for something to do, you could always do a bit of handymanship about the village and cut away the jungle that lies here about."
+                  },
+                  {
+                    "npc": "If you's is good with da machete Bwana, you's can get's some thatching spars and put them to use repairing the run-down village fence."
+                  },
+                  {
+                    "type": "action",
+                    "text": "(Show options below.)",
+                    "id": "nxvNjN"
+                  }
+                ],
+                "id": "ugChBx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has hacked away at jungle:",
+                "steps": [
+                  {
+                    "npc": "Apart from cutting back the jungle and repairing the fence, I think we've got most things covered now Bwana."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Ask about cutting back the jungle.",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "(Show options below.)",
+                            "id": "miXzH2"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Ok, thanks.",
+                        "steps": [
+                          {
+                            "player": "Ok, thanks."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "yp4e86"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do I get anything for doing this?",
+                    "steps": [
+                      {
+                        "player": "Do I get anything for doing this?"
+                      },
+                      {
+                        "npc": "Yes Bwana, you gain experience in woodcutting. In addition many members of the community will reward you with trading sticks, our local currency, for your efforts."
+                      },
+                      {
+                        "player": "Trading sticks?"
+                      },
+                      {
+                        "npc": "Correct Bwana, trading sticks! It's our form of local currency! Everything you do to help out in the village will give you some favour, but there's a maximum limit!"
+                      },
+                      {
+                        "npc": "When you've reached one hundred percent, you cannot gain any more favour, you need to cash in your favour for trading sticks before you can increase your favour again."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Who do I get trading sticks from?",
+                            "steps": [
+                              {
+                                "player": "Who do I get trading sticks from?"
+                              },
+                              {
+                                "npc": "Well Bwana, there's a good ten villagers I know of who would show their appreciation for your effort. Who do you want to ask about?"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Sharimika.",
+                                    "steps": [
+                                      {
+                                        "npc": "Sharimika is married to Mamma Bufetta, Bwana. They live in the houses just in front of the tribal statue."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "IjpksN"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Mamma Bufetta.",
+                                    "steps": [
+                                      {
+                                        "npc": "Mamma Bufetta lives with her family in the building that faces the stone statue, she lives there with her husband Sharimika and her daughter Layleen."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "PvCRYa"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Layleen.",
+                                    "steps": [
+                                      {
+                                        "npc": "Layleen is a young girl, the daughter of Mamma Bufetta and Sharimika, she lives with her parents."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "hNeQUA"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Karaday.",
+                                    "steps": [
+                                      {
+                                        "npc": "Karaday is a young man and his chosen profession is fishing, he follows after his father Safta Doc in that respect. You can find him usually around the center of the village, that is when he's not off fishing."
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "TxpNok"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "-- Villager Menu 2 --",
+                                    "steps": [
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Safta Doc.",
+                                            "steps": [
+                                              {
+                                                "npc": "Safta Doc used to be a fisherman, but he's just about retired now. He has an interesting profession which you might like to talk to him about. You'll find him usually near the building with the anvil in it."
+                                              },
+                                              {
+                                                "npc": "It's just slightly north of the village statue."
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "5jHOcK"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Gabooty.",
+                                            "steps": [
+                                              {
+                                                "npc": "Gabooty is a bit of a mystery, no one's sure where he came from! He's quite helpful though, you can find him in the middle of the village enclosure, to the south of Sharimika's house."
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "FckjGG"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Fanellaman.",
+                                            "steps": [
+                                              {
+                                                "npc": "Fanellaman was a fisherman, he's retired now, but he'll try and regale you with tales of his salty sea dog days. He's often walking up and down the western beach."
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "O8Lsp1"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Jagbakoba.",
+                                            "steps": [
+                                              {
+                                                "npc": "Jagbakoba is a wild hunter. He can be a bit aggressive but he'll reward anyone who helps to keep the village in good order. You'll find him to the south of the enclosure, near the fires."
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "a8BhCh"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "-- Villager Menu 3 --",
+                                            "steps": [
+                                              {
+                                                "type": "choice",
+                                                "options": [
+                                                  {
+                                                    "text": "Rionasta.",
+                                                    "steps": [
+                                                      {
+                                                        "npc": "Ah Rionasta! He's an enterprising man! Had a very good idea and is now much in demand, you'll find him between the blacksmith's and Timfraku's hut."
+                                                      },
+                                                      {
+                                                        "type": "jump",
+                                                        "reference": "previous",
+                                                        "id": "tFeae_"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "Murcaily.",
+                                                    "steps": [
+                                                      {
+                                                        "npc": "Murcaily! That's me! Well, what do you want to know?! I look after the teak and mahogany trees and make sure that we get payment of anyone who uses the facility. And I'm usually standing just about here!"
+                                                      },
+                                                      {
+                                                        "type": "jump",
+                                                        "reference": "previous",
+                                                        "id": "GORQZK"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "Back to original questions *",
+                                                    "steps": [
+                                                      {
+                                                        "type": "jump",
+                                                        "reference": "above",
+                                                        "id": "JIbsH4"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "Ask another question *",
+                                                    "steps": [
+                                                      {
+                                                        "type": "condition",
+                                                        "text": "If he doesn't want to give you trading sticks:",
+                                                        "steps": [
+                                                          {
+                                                            "type": "jump",
+                                                            "reference": "initial",
+                                                            "id": "t_oQ7T"
+                                                          }
+                                                        ],
+                                                        "id": "vRb7sU"
+                                                      },
+                                                      {
+                                                        "type": "condition",
+                                                        "text": "If he wants to give you trading sticks:",
+                                                        "steps": [
+                                                          {
+                                                            "npc": "Hey, I've seen you working around the village. You've been doing a lot of good work around here for us. Let me give you something for your trouble."
+                                                          },
+                                                          {
+                                                            "type": "message",
+                                                            "text": "You get [amount] trading sticks. You are left with [percentage] favour.",
+                                                            "id": "GWV9NS"
+                                                          }
+                                                        ],
+                                                        "id": "XptU7a"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "text": "-- Villager Menu 1 --",
+                                                    "steps": [
+                                                      {
+                                                        "type": "jump",
+                                                        "reference": "above",
+                                                        "id": "-XeakK"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where can I get a machete from?",
+                    "steps": [
+                      {
+                        "player": "Where can I get a machete from?"
+                      },
+                      {
+                        "npc": "You can purchase a standard machete from Jiminua's store. Gabooty has a selection of local items which you may like to purchase, including better machetes. Also, you may like to chat to Safta Doc, he may have a deal you'll find interesting."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "om0XHh"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where is this jungle?",
+                    "steps": [
+                      {
+                        "player": "Where is this jungle?"
+                      },
+                      {
+                        "npc": "You'll find much of it to the southern end of Tai Bwo Wannai, outside of the village. Some is tougher than others so you may have difficulties cutting it back."
+                      },
+                      {
+                        "npc": "Beware though Bwana, those bushes can conceal a great many dangers or trophies, it could be the death... or the making of you!"
+                      },
+                      {
+                        "player": "What do you mean by that?"
+                      },
+                      {
+                        "npc": "It means that you may find something you wish you hadn't but then discover something you never thought you could! If you find me too vague, go and have a chat with Sharimika about it!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "S3YRRB"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Where is the fence that needs to be repaired?",
+                    "steps": [
+                      {
+                        "player": "Where is the fence that needs to be repaired?"
+                      },
+                      {
+                        "npc": "This is to the South Bwana, you should see that there are sections which are rotten, but some other passers-by sometimes help out repairing it."
+                      },
+                      {
+                        "npc": "You'll need some thatching spars and a machete in order to repair the fence though Bwana."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "fDIoqE"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok, thanks.",
+                    "steps": [
+                      {
+                        "player": "Ok, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've been doing some work around the village.",
+            "condition": "If the player has repaired the fence at least once:",
+            "steps": [
+              {
+                "player": "I've been doing some work around the village."
+              },
+              {
+                "type": "condition",
+                "text": "If Murcaily wants to give the player some trading sticks:",
+                "steps": [
+                  {
+                    "npc": "Hey, I've seen you working around the village. You've been doing a lot of good work around here for us. Let me give you something for your trouble."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You get [amount] trading sticks. You are left with [percentage] favour.",
+                    "id": "YlDwdP"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "4GEwJH"
+              },
+              {
+                "type": "condition",
+                "text": "If Murcaily already gave some trading sticks recently:",
+                "steps": [
+                  {
+                    "npc": "I've already given you some trading sticks and I don't have any more on me at the moment. Why not go and talk to some of the other villagers and get some contributions?"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MzNq_Q"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no Tai Bwo Wannai favour:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "afxOjA"
+                  }
+                ],
+                "id": "Fj5GCO"
+              }
+            ],
+            "id": "qv9ARE"
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "opening-hardwood-grove-doors-with-elite-karamja-diary": [
+      {
+        "npc": "Hey there, you wanna go in there to chop da special wood, for you my friend, it's free!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'll enter for free.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "The player enters the Hardwood Grove.",
+                "id": "wl-xhL"
+              }
+            ]
+          },
+          {
+            "text": "Nah thanks, I'll give it a miss at the moment I think.",
+            "steps": [
+              {
+                "player": "Nah thanks, I'll give it a miss at the moment I think."
+              },
+              {
+                "npc": "Fair enough, pop back if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-player-is-wearing-a-tribal-mask": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh - Get away from me you beast!"
+              },
+              {
+                "player": "What's the problem....oh, I'm wearing this big scary mask! I'd better take it off before I start talking to the natives."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Waahhhhh! - It's da evil broodoo beast come ta eat my very soul!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "DfVg_G"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh - It's a monster!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "U37wB5"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh!!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "BMmxQy"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

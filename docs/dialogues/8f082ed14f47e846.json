@@ -1,0 +1,128 @@
+{
+  "default": "before-completing-troubled-tortugans",
+  "variants": {
+    "before-completing-troubled-tortugans": [
+      {
+        "npc": "Hello, human. Please be careful around the coral nurseries."
+      }
+    ],
+    "before-completing-troubled-tortugans-trying-to-use-the-coral-nurseries": [
+      {
+        "npc": "Leave the coral nurseries alone please."
+      }
+    ],
+    "after-completing-troubled-tortugans-initial-dialogue": [
+      {
+        "npc": "Human. Apparently you helped out with a gryphon problem or something. Reggle says you're now trusted enough to use the coral nurseries."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you look after my coral for me?",
+            "steps": [
+              {
+                "player": "Would you look after my coral for me?"
+              },
+              {
+                "npc": "I suppose. Which nursery were you thinking of?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "The eastern nursery.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "Zlhi7G"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The western nursery.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "Zlhi7G"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?",
+            "steps": [
+              {
+                "player": "Can you sell me something?"
+              },
+              {
+                "npc": "That depends on whether I have it to sell. What is it that you're looking for?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Farming Supplies",
+                "id": "jzUhBk"
+              }
+            ]
+          },
+          {
+            "text": "I'll come back another time.",
+            "steps": [
+              {
+                "player": "I'll come back another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-troubled-tortugans-subsequent-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you look after my coral for me?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eXt-pR"
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nP5u-k"
+              }
+            ]
+          },
+          {
+            "text": "I'll come back another time.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "HMy4zm"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "Zlhi7G": [
+      {
+        "npc": "You haven't put any frags in that nursery yet. Do so and I might agree to look after it for you."
+      }
+    ]
+  }
+}

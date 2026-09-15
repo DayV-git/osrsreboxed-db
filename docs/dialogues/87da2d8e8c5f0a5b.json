@@ -1,0 +1,161 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Human."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "npc": "This passage leads to the lair of what your kind call the Alchemical Hydra. It is an ancient beast, the only one of its kind."
+              },
+              {
+                "npc": "I am here to protect it. For protecting it will protect the balance. I make sure that only those who have permission can fight it."
+              },
+              {
+                "player": "How do I get permission?"
+              },
+              {
+                "npc": "Only Konar quo Maten can grant permission to fight the Alchemical Hydra. She will rarely grant this permission when the beast needs calming."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have any of my items?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "w9S4VZ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks for the information.",
+                    "steps": [
+                      {
+                        "player": "Thanks for the information."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do you have any of my items?",
+            "steps": [
+              {
+                "player": "Do you have any of my items?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no items in Orrvor quo Maten's collection:",
+                "steps": [
+                  {
+                    "npc": "I do not. If I did have any of your items, but you died before collecting them, they'll now be lost."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "VQIsnv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has items in Orrvor quo Maten's collection:",
+                "steps": [
+                  {
+                    "npc": "I do. I suppose you want them back."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Orrvor quo Maten's Item Retrieval Service",
+                    "id": "Dz64CA"
+                  }
+                ],
+                "id": "at-lZt"
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "player": "I have to go."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-collect-option": [
+      {
+        "type": "condition",
+        "text": "If the player has no items in Orrvor quo Maten's Item Retrieval Service:",
+        "steps": [
+          {
+            "npc": "I don't have anything for you human. If I did have any of your items, but you died before collecting them, they'll now be lost."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Bm9gIc"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items in Orrvor quo Maten's Item Retrieval Service:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Orrvor quo Maten's Item Retrieval Service",
+            "id": "Acg2T5"
+          }
+        ],
+        "id": "LzP8J6"
+      }
+    ],
+    "attempting-to-kill-the-alchemical-hydra-outside-of-a-slayer-task": [
+      {
+        "npc": "Human! To attack that creature would be a threat to the balance. Only those with permission may fight it!"
+      }
+    ],
+    "attempting-to-enter-the-alchemical-hydra-s-lair-with-items-in-orrvor-quo-maten-s-item-retrieval-service": [
+      {
+        "npc": "I have some items of yours here human. I'd recommend you collect them before returning to the lair."
+      },
+      {
+        "type": "choice",
+        "prompt": "Do you wish to proceed?",
+        "options": [
+          {
+            "text": "Enter the lair and risk losing those items.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "The player enters the Alchemical Hydra's lair.",
+                "id": "8Aq_uO"
+              }
+            ]
+          },
+          {
+            "text": "No - stay out.",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

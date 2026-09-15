@@ -1,0 +1,116 @@
+{
+  "steps": [
+    {
+      "player": "Hi!"
+    },
+    {
+      "npc": "Hi. How can I help?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Can you heal me?",
+          "steps": [
+            {
+              "player": "Can you heal me?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player is on a PvP world:",
+              "steps": [
+                {
+                  "npc": "Sorry, I'm not on duty."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "J82tsL"
+            },
+            {
+              "type": "condition",
+              "text": "If the player is on a Deadman world:",
+              "steps": [
+                {
+                  "npc": "PLEASE DON'T KILL ME!"
+                },
+                {
+                  "player": "I was... looking to be healed."
+                },
+                {
+                  "npc": "No way, I'm out of here just as soon as I've packed up my stuff!"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "PJ2EXE"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has full Hitpoints:",
+              "steps": [
+                {
+                  "npc": "You look healthy to me!"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "mgLzt9"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have full Hitpoints:",
+              "steps": [
+                {
+                  "npc": "Of course!"
+                },
+                {
+                  "type": "action",
+                  "text": "A'abla heals you for 21 Hitpoints.",
+                  "action": "heal",
+                  "action_source": "text",
+                  "id": "VyunGl"
+                }
+              ],
+              "id": "BUfmVg"
+            }
+          ]
+        },
+        {
+          "text": "Do you see a lot of injured fighters?",
+          "steps": [
+            {
+              "player": "Do you see a lot of injured fighters?"
+            },
+            {
+              "npc": "Yes I do. Thankfully we can cope with almost anything. Jaraah really is a wonderful surgeon, his methods are a little unorthodox but he gets the job done."
+            },
+            {
+              "npc": "I shouldn't tell you this but his nickname is 'The Butcher'."
+            },
+            {
+              "player": "That's reassuring."
+            }
+          ]
+        },
+        {
+          "text": "Do you come here often?",
+          "steps": [
+            {
+              "player": "Do you come here often?"
+            },
+            {
+              "npc": "I work here, so yes!"
+            },
+            {
+              "npc": "You're silly!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

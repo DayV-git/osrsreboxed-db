@@ -1,0 +1,275 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "'ello sail her!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I glamorous weather girl. I get weather numbers to learn how weather work."
+              },
+              {
+                "player": "An unusual aspiration for a troll."
+              },
+              {
+                "npc": "I like weather since I got my name. My first food gave me shiny weather number getter."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "psmjBg"
+              }
+            ]
+          },
+          {
+            "text": "Can I help you with collecting weather data?",
+            "steps": [
+              {
+                "player": "Can I help you with collecting weather data?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not meet the level requirement:",
+                "steps": [
+                  {
+                    "npc": "You no good sail her. Windys topple you."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need a Sailing level of X to chart the weather here.",
+                    "id": "EOzQUy"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "XA5ZfR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player meets the level requirement:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If data has already been collected:",
+                    "steps": [
+                      {
+                        "npc": "You already get me weather number here. Was very tasty!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "1U76QX"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player already has the troll's portable weather station:",
+                    "steps": [
+                      {
+                        "npc": "You already have number getter. Go find where windys stop!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "1AZjFx"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player already has a different portable weather station:",
+                    "steps": [
+                      {
+                        "npc": "You already have another number getter. Go find where windys stop!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "sMft3E"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If data has been collected, but the player is at the wrong location:",
+                    "steps": [
+                      {
+                        "npc": "Number getter not for here. Dis one go over there."
+                      },
+                      {
+                        "type": "message",
+                        "text": "The troll vaguely gestures in two directions at once. You manage to work out that you should try using the weather station in the following sea: [sea name].",
+                        "id": "XPw4-s"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "1oZSdZ"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If data has not been collected:",
+                    "steps": [
+                      {
+                        "player": "Can I help you with collecting weather data?"
+                      },
+                      {
+                        "npc": "Yer, I like weather number!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "The troll hands you a portable weather station.",
+                        "id": "ZMTW6D"
+                      },
+                      {
+                        "npc": "You take my number getter! Find where windy no do the blowing, and it get numbers. Bring numbers back to me! I try myself, but I just follow wind round in circles. Make sure you no do that!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "GOYX-9"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If data has been collected:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand over the troll's weather station and she promptly consumes the log book full of data.",
+                        "id": "f-X3V4"
+                      },
+                      {
+                        "npc": "Numbers so tasty. Weather here must be really good!"
+                      },
+                      {
+                        "player": "Troll scientists really do operate on a higher level don't they?"
+                      },
+                      {
+                        "npc": "Soon I be smart enough to speak to rocks!"
+                      }
+                    ],
+                    "id": "9HWYwC"
+                  }
+                ],
+                "id": "-Qtnxa"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye!",
+            "steps": [
+              {
+                "player": "Goodbye!"
+              },
+              {
+                "npc": "Bye sail her!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-before-sailing-release": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "'ello sail her! I busy now. You come back later."
+      },
+      {
+        "type": "message",
+        "text": "The Sailing skill will release on the 19th November.",
+        "id": "XmarnP"
+      }
+    ],
+    "standard-dialogue-before-completing-pandemonium": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "'ello sail her! I busy now. You come back later."
+      },
+      {
+        "type": "message",
+        "text": "You need to complete the Pandemonium quest to fully access the Sailing skill.",
+        "id": "lEKzpS"
+      }
+    ],
+    "standard-dialogue-on-worlds-where-sailing-is-unavailable": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "'ello sail her! I busy now. You come back later."
+      },
+      {
+        "type": "message",
+        "text": "The Sailing skill is not currently available.",
+        "id": "mNQ18S"
+      }
+    ],
+    "march-2025-sailing-alpha": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "'ello sail her!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?"
+          },
+          {
+            "text": "Can I help you with collecting weather data?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If data has not been collected:",
+                "steps": [
+                  {
+                    "npc": "I have number getter, but is brown and sad."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The troll shows you a rusty looking weather station.",
+                    "id": "tbxrO_"
+                  },
+                  {
+                    "player": "I actually have something for that!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The troll hands you a portable weather station and you use your anti-rust tonic to fix it.",
+                    "id": "qfeERV"
+                  },
+                  {
+                    "npc": "Number getter good now! You take it and find where windy no do the blowing. You get the numbers and bring back to me! I try myself, but I just follow wind round in circles. Make sure you no do that!"
+                  }
+                ],
+                "id": "0WXzy1"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye!"
+          }
+        ]
+      }
+    ]
+  }
+}

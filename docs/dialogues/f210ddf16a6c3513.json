@@ -1,0 +1,120 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Give me a quest!",
+            "steps": [
+              {
+                "player": "Give me a quest!"
+              },
+              {
+                "npc": "Get yer own!"
+              }
+            ]
+          },
+          {
+            "text": "Have you anything to sell?",
+            "steps": [
+              {
+                "player": "Have you anything to sell?"
+              },
+              {
+                "npc": "Yes! I buy and sell axes! Take your pick (or axe)!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Bob's Brilliant Axes.",
+                "id": "3DmK0I"
+              }
+            ]
+          },
+          {
+            "text": "Can you repair my items for me?",
+            "steps": [
+              {
+                "player": "Can you repair my items for me?"
+              },
+              {
+                "npc": "Of course I'll repair it, though the materials may cost you. Just hand me the item and I'll have a look."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-right-click-repair-option": [
+      {
+        "type": "condition",
+        "text": "If the player has no repairable equipment:",
+        "steps": [
+          {
+            "npc": "You don't have anything I can repair."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "CQm6Qd"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has repairable equipment:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "What would you like to do?",
+            "options": [
+              {
+                "text": "Repair that item: [x] coins.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The item is repaired.",
+                    "id": "OEIWr9"
+                  },
+                  {
+                    "npc": "There you go, happy doing business with you!"
+                  }
+                ]
+              },
+              {
+                "text": "Cancel.",
+                "steps": []
+              }
+            ]
+          }
+        ],
+        "id": "Efqbmf"
+      }
+    ],
+    "standard-dialogue-left-click-use-item-on-bob": [
+      {
+        "type": "condition",
+        "text": "If the item is repairable:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "What would you like to do?",
+            "options": []
+          }
+        ],
+        "id": "u4wpzD"
+      },
+      {
+        "type": "condition",
+        "text": "If the item is not repairable:",
+        "steps": [
+          {
+            "npc": "Sorry friend, but I can't do anything with that."
+          }
+        ],
+        "id": "YiKMGY"
+      }
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello, what are you doing here, so far from home?"
+      },
+      {
+        "npc": "I'm enjoyn' the local hoschpitalieee. hee hee."
+      },
+      {
+        "player": "Looks like you've enjoyed more than your fair share of hospitality."
+      },
+      {
+        "npc": "tee hee, I probblie schoodn' 'av anuva drinkie right now. But dis dwarven beer ish kind of moreish after the fiff pint."
+      },
+      {
+        "player": "I'd go easy on the dwarven stout if I were you."
+      },
+      {
+        "npc": "I yousht to be a tesht pilot yoo know. I reeel hero."
+      },
+      {
+        "npc": "But I loscht my bottle. Scho I now ffind scholiss in the bottle."
+      },
+      {
+        "player": "What happened? Did you have a glider crash or get attacked by huge flying birds or something?"
+      },
+      {
+        "npc": "Naaah, I realished I woz scared ov heightsh."
+      },
+      {
+        "player": "Ah, I can see that would be a problem ... You should keep an eye on your drinking, though."
+      },
+      {
+        "npc": "I'll try. Bofe eyez..."
+      }
+    ],
+    "gnome-restaurant": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "1GUFm3"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "T2h4bY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "M6Qira"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "pe6w7v"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food item] to Captain Ninto.",
+            "id": "scrI4p"
+          },
+          {
+            "npc": "Aaa shomefing ter go wiv my beer. Thish dwarf beerz quite shtrong you know..."
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a gnome scarf:",
+            "steps": [
+              {
+                "npc": "Here you go, have a dashing pilot's scarf."
+              },
+              {
+                "type": "message",
+                "text": "You are given a gnome pilot's scarf as a tip.",
+                "id": "8EM9nC"
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "pM6knJ"
+              }
+            ],
+            "id": "9V_nmX"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a pair of gnome goggles:",
+            "steps": [
+              {
+                "npc": "I have some spare goggles, you might as well have them."
+              },
+              {
+                "type": "message",
+                "text": "You are given a pair of pilot's goggles as a tip.",
+                "id": "TOBUbH"
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "S2DOdC"
+              }
+            ],
+            "id": "iUNEdC"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is anything else:",
+            "steps": [
+              {
+                "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+              },
+              {
+                "type": "message",
+                "text": "You are given [a/some] [reward item(s)] as a tip.",
+                "id": "0DXPh_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a reward token available:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You have [number] credits towards your free delivery token. You are not eligible to get gnome food delivered to you yet.",
+                    "id": "nIdTW5"
+                  }
+                ],
+                "id": "YrjBpy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does have a reward token available:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                    "id": "XdKoh-"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has an unclaimed reward token:",
+                    "id": "xZr4i8"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "_IV9xl"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has claimed their reward token:",
+                    "steps": [],
+                    "id": "m71pzO"
+                  }
+                ],
+                "id": "xnmb-m"
+              }
+            ],
+            "id": "V9uKLr"
+          }
+        ],
+        "id": "0Ihl_W"
+      }
+    ]
+  }
+}

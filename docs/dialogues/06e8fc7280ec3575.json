@@ -1,0 +1,280 @@
+{
+  "default": "standard-dialogue-before-starting-family-crest",
+  "variants": {
+    "standard-dialogue-before-starting-family-crest": [
+      {
+        "npc": "Who are you? What are you after?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Nothing, I will be on my way.",
+            "steps": [
+              {
+                "player": "Nothing, I will be on my way."
+              }
+            ]
+          },
+          {
+            "text": "I see you are a chef, will you cook me anything?",
+            "steps": [
+              {
+                "player": "I see you are a chef... Could you cook me something?"
+              },
+              {
+                "npc": "I would, but I am very busy. I am trying to increase my reknown as one of the worlds' leading chefs by preparing a special and unique fish salad."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-family-crest": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Family Pest",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is speaking to Caleb about the quest for the first time:",
+                "steps": [
+                  {
+                    "player": "Caleb! As an adventurer, I am ready to help you with whatever you need... again! What can I help you with?"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You daydream briefly of what the rich family could offer you this time as a reward.",
+                    "id": "_GU1ly"
+                  },
+                  {
+                    "npc": "... and that's when I found the broken lamping stick. Maybe you could help me investigate?"
+                  },
+                  {
+                    "player": "Sorry, I didn't quite catch that, my mind was erm... elsewhere."
+                  },
+                  {
+                    "npc": "Well if you aren't going to listen to the problem, it's fine, don't worry about it. Nothing an experienced chef can't solve himself!"
+                  },
+                  {
+                    "player": "I'm sorry! Please let me help."
+                  },
+                  {
+                    "npc": "No! Not every problem in my life needs an adventurer to come solve it for me anyway. I'm happy and there's nothing else either!"
+                  },
+                  {
+                    "player": "Very well, I'll go and see if your other brothers need anything..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The sweet smell of the great rewards that may come fades slightly.",
+                    "id": "6I1nJH"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "eNsGeI"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already talked to Caleb:",
+                "steps": [
+                  {
+                    "player": "Are you sure there's nothing I can do, a chef can always do with help in their kitchen right?"
+                  },
+                  {
+                    "npc": "I'm a very competent cook! I do not need your assistance [player name]. Please leave me be."
+                  }
+                ],
+                "id": "6N5bLn"
+              }
+            ]
+          },
+          {
+            "text": "Gauntlets",
+            "steps": [
+              {
+                "npc": "I hear you have brought the completed crest to my father. I must say, that was awfully impressive work."
+              },
+              {
+                "player": "It was easy really."
+              },
+              {
+                "npc": "Yes well... Is there anything I can help you with?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you change my gauntlets for me?",
+                    "steps": [
+                      {
+                        "player": "Can you change my gauntlets for me?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player already has a pair of cooking gauntlets:",
+                        "steps": [
+                          {
+                            "npc": "Your gauntlets have already been treated with my potions."
+                          }
+                        ],
+                        "id": "Ck5PG7"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have any other gauntlets on them:",
+                        "steps": [
+                          {
+                            "npc": "You don't have any gauntlets I can imbue."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "rtpooW"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has another set of gauntlets on them:",
+                        "steps": [
+                          {
+                            "npc": "Yes certainly, though it will cost you 25,000 coins."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have enough coins:",
+                            "steps": [
+                              {
+                                "player": "Oh, right."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "q5UCcC"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Great thanks!",
+                                "steps": [
+                                  {
+                                    "player": "Great thanks!"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "Caleb takes the gauntlets from you, pours some herbs and seasonings on them, bakes them on his range for a short time, then hands them back to you.",
+                                    "id": "Ajs0NX"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No that's okay thanks.",
+                                "steps": [
+                                  {
+                                    "player": "No that's okay thanks."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "2mXsC4"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-family-pest": [
+      {
+        "npc": "I have received word from my father that you assisted us again! I get the feeling you weren't going to stop trying until you did though."
+      },
+      {
+        "type": "condition",
+        "text": "If this is the first time the player has talked to Caleb after completing Family Pest:",
+        "steps": [
+          {
+            "npc": "As thanks, I'll provide you with as many pairs of Cooking gauntlets as you wish."
+          },
+          {
+            "type": "message",
+            "text": "Caleb hands you a pair of Cooking gauntlets.",
+            "id": "Jsoiaj"
+          },
+          {
+            "npc": "You will find the rate you burn certain foods is much reduced whilst wearing these gauntlets."
+          },
+          {
+            "player": "Thank you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "cvwKXs"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has already talked to Caleb at least once after completing Family Pest:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Could I have some more cooking gauntlets, please?",
+                "steps": [
+                  {
+                    "player": "Could I have some more cooking gauntlets, please?"
+                  },
+                  {
+                    "type": "input",
+                    "text": "How many would you like to take?",
+                    "id": "jTJ19x"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Caleb hands you some cooking gauntlets.",
+                    "id": "OjHbG7"
+                  },
+                  {
+                    "npc": "You will find the rate you burn certain foods is much reduced whilst wearing these gauntlets."
+                  },
+                  {
+                    "player": "Thank you."
+                  }
+                ]
+              },
+              {
+                "text": "You're welcome.",
+                "steps": [
+                  {
+                    "player": "You're welcome."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "v9r_EX"
+      }
+    ]
+  }
+}

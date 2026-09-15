@@ -1,0 +1,638 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Yes, JalYt-[caste]-Xo-[player name]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the Inferno.",
+            "steps": [
+              {
+                "player": "Tell me about the Inferno."
+              },
+              {
+                "npc": "TzHaar are born from eggs incubated in lava pools. When hatched, we retain memories. Memories and knowledge passed on from ancestors who returned to the lava."
+              },
+              {
+                "npc": "When TzHaar hatch, some memories are lost. Those about earliest ancestors are not retained. We experiment."
+              },
+              {
+                "npc": "This here was once our largest birthing pool. We use it for experiment. We increased the depth at which eggs are incubated. Over time, newly hatched TzHaar had more memories of lost history!"
+              },
+              {
+                "npc": "But we kept pushing. We wanted answers, but we went too deep."
+              },
+              {
+                "npc": "Eventually the pool collapsed into a sinkhole. At the bottom we found some sort of ancient incubation chamber, from before earliest memories. We now call it the Inferno."
+              },
+              {
+                "npc": "We decide to experiment more. We take eggs from creatures in Fight Cave and incubate them down there."
+              },
+              {
+                "npc": "When eggs hatched, we see that it was not good decision. They were bigger and stronger, and fought each other for dominance."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has sacrificed a fire cape:",
+                "steps": [
+                  {
+                    "npc": "Instead of knowledge, we now have chamber of dangerous creatures, and they're not alone. Another being lives in the Inferno, one more powerful than any TzHaar."
+                  },
+                  {
+                    "npc": "We do not know where he came from. All we know is that TzKal-Zuk is hungry. Hungry for memories, memories beyond the Inferno."
+                  },
+                  {
+                    "npc": "We think his goal is the city itself. Lots of TzHaar memories here for him. Luckily, he is trapped in prison down there, and we are keeping him at bay by offering sacrifices."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has not yet beaten the Inferno:",
+                    "steps": [
+                      {
+                        "npc": "We fear he can't be defeated, but maybe we can hold back his creatures and keep city safe."
+                      }
+                    ],
+                    "id": "SzrfdZ"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has beaten the Inferno:",
+                    "steps": [
+                      {
+                        "npc": "You, a mere JalYt, showed us he can be stopped though. Thanks to you, we still have hope."
+                      }
+                    ],
+                    "id": "eCb-9o"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "uxPbnT"
+                  }
+                ],
+                "id": "k4uxFC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not yet sacrificed a fire cape:",
+                "steps": [
+                  {
+                    "npc": "Instead of knowledge, we now have chamber of dangerous creatures. It gets worse, but I don't know if I can trust JalYt-[caste]-Xo-[player name] with this knowledge."
+                  },
+                  {
+                    "player": "I like to think I'm pretty trustworthy. If you tell me, maybe I can help in some way."
+                  },
+                  {
+                    "npc": "I have one idea. If you sacrifice your fire cape to me, I can take your word."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has a fire cape in their inventory:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "prompt": "Fire cape: Sacrifice it?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "player": "Okay, I'd like to sacrifice my fire cape."
+                              },
+                              {
+                                "npc": "Very well, just hand it over."
+                              },
+                              {
+                                "type": "choice",
+                                "prompt": "Fire cape: Really sacrifice it?",
+                                "options": [
+                                  {
+                                    "text": "No.",
+                                    "steps": [
+                                      {
+                                        "player": "Sorry, I want to keep it for now."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Yes.",
+                                    "steps": [
+                                      {
+                                        "type": "message",
+                                        "text": "You hand over your cape to TzHaar-Ket-Keh.",
+                                        "id": "9TOkei"
+                                      },
+                                      {
+                                        "npc": "Thank you, JalYt-[caste]-Xo-[player name]. You can enter Inferno now."
+                                      },
+                                      {
+                                        "player": "What should I do down there?"
+                                      },
+                                      {
+                                        "npc": "The creatures down there are dangerous. If you can kill some of them, it would be very helpful to TzHaar."
+                                      },
+                                      {
+                                        "npc": "But now you can be trusted, I must also give warning. Another being lives in the Inferno, one more powerful than any TzHaar."
+                                      },
+                                      {
+                                        "npc": "We do not know where he came from. All we know is that TzKal-Zuk is hungry. Hungry for memories, memories beyond the Inferno."
+                                      },
+                                      {
+                                        "npc": "We think his goal is the city itself. Lots of TzHaar memories here for him. Luckily, he is trapped in prison down there, and we are keeping him at bay by offering sacrifices."
+                                      },
+                                      {
+                                        "npc": "We fear he can't be defeated, but maybe we can hold back his creatures and keep city safe."
+                                      },
+                                      {
+                                        "player": "Well I definitely think I can help with that."
+                                      },
+                                      {
+                                        "npc": "Thank you, JalYt-[caste]-Xo-[player name]."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "sCA5h0"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has a fire cape equipped:",
+                    "steps": [
+                      {
+                        "player": "I'll need to take it off first."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "4ZM3Fq"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have a fire cape:",
+                    "steps": [
+                      {
+                        "player": "I don't have a fire cape on me unfortunately."
+                      }
+                    ],
+                    "id": "g2t_FQ"
+                  }
+                ],
+                "id": "Dw_Cwp"
+              }
+            ]
+          },
+          {
+            "text": "Can I help here in some way?",
+            "steps": [
+              {
+                "player": "Can I help here in some way?"
+              },
+              {
+                "npc": "I think maybe you can, but first you need to prove I can trust you."
+              },
+              {
+                "npc": "If you sacrifice your fire cape to me, I can take your word."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a fire cape in their inventory:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "yoquJ8"
+                  }
+                ],
+                "id": "yXDyjP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a fire cape equipped:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "iwXTm4"
+                  }
+                ],
+                "id": "mMLBM2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a fire cape:",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "UALhJj"
+                  }
+                ],
+                "id": "mh7E23"
+              }
+            ]
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "Never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-exchange-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not own Jal-Nib-Rek:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "xaqeBy"
+          }
+        ],
+        "id": "WqIXfY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player owns Jal-Nib-Rek:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Tzhaar-Ket-Keh",
+            "text": "Sorry JalYt, you already have Jal-Nib-Rek."
+          }
+        ],
+        "id": "pzbVnl"
+      }
+    ],
+    "the-inferno-upon-reaching-wave-69": [
+      {
+        "type": "action",
+        "text": "A cutscene shows the Ancestral Glyph breaking, freeing TzKal-Zuk from his prison.",
+        "id": "hD7gEZ"
+      },
+      {
+        "type": "message",
+        "text": "A great power is starting to shake the cavern...",
+        "id": "rZnSt3"
+      },
+      {
+        "type": "line",
+        "speaker": "Tzhaar-Ket-Keh",
+        "text": "No! TzKal-Zuk's prison is breaking down. There's nothing I can do for you now, JalYt!"
+      }
+    ],
+    "the-inferno-upon-defeating-tzkal-zuk": [
+      {
+        "npc": "You are very impressive for a JalYt. You managed to defeat TzKal-Zuk, for now..."
+      },
+      {
+        "npc": "Please accept this cape as a token of appreciation."
+      },
+      {
+        "type": "message",
+        "text": "TzHaar-Ket-Keh hands you an Infernal cape and [16440/32880] TokKul.",
+        "id": "HV9yQp"
+      }
+    ],
+    "upon-using-a-tzkal-slayer-helmet-on-him": [
+      {
+        "npc": "Impressive JalYt, but why do you show me this?"
+      },
+      {
+        "player": "I have conquered the most difficult challenges across Gielinor. But I wish to challenge myself further."
+      },
+      {
+        "npc": "You wish for more?"
+      },
+      {
+        "player": "I wish to challenge the Inferno on my own terms, without the endorsement of a slayer master."
+      },
+      {
+        "npc": "Hmm. You ask for much, JalYt. But if anybody has proven themselves worthy it is you."
+      },
+      {
+        "npc": "Very well. I shall be the one to endorse your attempts to reach even greater heights."
+      },
+      {
+        "player": "Thank you TzHaar-Ket-Keh. You won't regret it."
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "player": "Wow what has happened here? That doesn't look good!"
+      },
+      {
+        "npc": "We pushed it too far! JalYt would not understand. The memories, we needed them. Now big Inferno."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is our birthing pool. TzHaar are born from eggs incubated in this large pool here."
+              },
+              {
+                "npc": "When hatched, we retain memories. Memories and knowledge passed on from ancestors who returned to the lava."
+              },
+              {
+                "player": "Something doesn't seem right... There's a large opening."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "W27cVu"
+              }
+            ]
+          },
+          {
+            "text": "What happened here?",
+            "steps": [
+              {
+                "player": "What happened here?"
+              },
+              {
+                "npc": "We went too far... way too far, we need the memories. JalYt would not understand."
+              },
+              {
+                "player": "Please help me to understand then."
+              },
+              {
+                "npc": "We TzHaar have special ability. When incubated in lava, a hatched TzHaar retains knowledge and memories of ancestors who returned to the lava."
+              },
+              {
+                "npc": "Not all memories though, those about earliest ancestors were not being retained. We experiment."
+              },
+              {
+                "npc": "We increased the depth at which the eggs are incubated. Over time this worked, newly hatched TzHaar had more memories of lost history!"
+              },
+              {
+                "player": "That sounds fantastic though, uncovering the past to determine where your species originated?"
+              },
+              {
+                "npc": "Yes, but you JalYt do not understand, we kept pushing it. We wanted answers, but too deep we went."
+              },
+              {
+                "npc": "Eventually the pool collapsed into a sink hole, huge Inferno there. This was big ancient incubation chamber."
+              },
+              {
+                "npc": "We decide to experiment. We take eggs from creatures in Fight Cave and incubate them."
+              },
+              {
+                "npc": "We hatched eggs in there and it was not a good decision. They were so different, bigger, stronger and fought each other for dominance."
+              },
+              {
+                "type": "condition",
+                "text": "If player has not yet sacrificed a fire cape:",
+                "steps": [
+                  {
+                    "npc": "Instead of knowledge, we now have a prison of dangerous TzHaar creatures - it gets worse but I cannot trust JalYt with this knowledge yet."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "jsHGx2"
+                  }
+                ],
+                "id": "tGzJY7"
+              },
+              {
+                "type": "condition",
+                "text": "If player has sacrificed a fire cape:",
+                "steps": [
+                  {
+                    "npc": "Instead of knowledge, we now have a prison of dangerous creatures... and they're not under our control."
+                  },
+                  {
+                    "npc": "One grew incredibly strong, powerful. He controls those creatures in the prison. TzKal-Zuk, as we call him...is hungry."
+                  },
+                  {
+                    "npc": "Hungry for memories, memories beyond the Inferno, which only TzHaar in the city can provide."
+                  },
+                  {
+                    "player": "Do you know what he's planning? What are you doing?"
+                  },
+                  {
+                    "npc": "We can only guess one day he will want to scale up into the city himself. We are keeping him at bay by offering sacrifices for him to feast on."
+                  },
+                  {
+                    "player": "Is there no way to take him out?"
+                  },
+                  {
+                    "npc": "We fear not. But we hoped you, with your fancy JalYt weaponry, would be able to help hold back his creatures. You proved your commitment by sacrificing your fire cape."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "XEsOay"
+                  }
+                ],
+                "id": "WoFu_L"
+              }
+            ]
+          },
+          {
+            "text": "Can I go down there?",
+            "steps": [
+              {
+                "player": "Can I go down there?"
+              },
+              {
+                "type": "condition",
+                "text": "If player has not yet sacrificed a fire cape:",
+                "steps": [
+                  {
+                    "npc": "JalYt, we need help, but this is extremely dangerous. TzHaar not strong enough to take control back."
+                  },
+                  {
+                    "npc": "We are worried about trusting JalYt to take on this task for us."
+                  },
+                  {
+                    "player": "Let me prove it."
+                  },
+                  {
+                    "npc": "I have one idea, if you could sacrifice your fire cape to me, I can take your word."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If player has one in their inventory:",
+                    "steps": [
+                      {
+                        "player": "Okay, I'd like to sacrifice my fire cape."
+                      },
+                      {
+                        "npc": "Very well, just hand it over."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Really sacrifice your Fire cape?",
+                        "options": [
+                          {
+                            "text": "No, I'd like to keep it.",
+                            "steps": [
+                              {
+                                "player": "Sorry, I want to keep it for now."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Yes, I'd like to sacrifice it.",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You hand over your cape to TzHaar-Ket-Keh.",
+                                "id": "smeqmL"
+                              },
+                              {
+                                "npc": "Give it your best shot JalYt-[caste]-Xo-[player name]."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "uEJEof"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If player has one equipped:",
+                    "steps": [
+                      {
+                        "player": "Let me just take it off first."
+                      }
+                    ],
+                    "id": "ZQHfht"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If player doesn't have one:",
+                    "steps": [
+                      {
+                        "player": "I don't have a fire cape on me unfortunately."
+                      }
+                    ],
+                    "id": "FkGQa6"
+                  }
+                ],
+                "id": "-esb5R"
+              },
+              {
+                "type": "condition",
+                "text": "If player has sacrificed a fire cape:",
+                "steps": [
+                  {
+                    "npc": "You can head into The Inferno anytime. We trust you to help us JalYt-[caste]-Xo-[player name]."
+                  },
+                  {
+                    "player": "I'll do my best."
+                  }
+                ],
+                "id": "dXlgTt"
+              }
+            ]
+          },
+          {
+            "text": "I have a spare infernal cape.",
+            "condition": "If the player has an infernal cape in their inventory:",
+            "steps": [
+              {
+                "player": "I have a spare infernal cape, perhaps I could offer it back to you for a littlun to take with me?"
+              },
+              {
+                "npc": "Maybe. Hand it over and if you make lucky TokKul toss, it can be yours JalYt."
+              },
+              {
+                "npc": "But do know, you do not get cape back."
+              },
+              {
+                "type": "choice",
+                "prompt": "Sacrifice infernal cape for a chance at Jal-Nib-Rek?",
+                "options": [
+                  {
+                    "text": "Yes, I accept that I won't get my cape back.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player receives the pet:",
+                        "steps": [
+                          {
+                            "npc": "Luck be a TzHaar tonight. Jal-Nib-Rek is yours."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "Nl1UrI"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not receive the pet:",
+                        "steps": [
+                          {
+                            "npc": "No Jal-Nib-Rek for you."
+                          }
+                        ],
+                        "id": "9NLiKz"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, I want to keep my cape.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "Wm81Mu"
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "Nevermind."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

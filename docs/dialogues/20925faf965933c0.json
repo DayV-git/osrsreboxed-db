@@ -1,0 +1,384 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I lost my weapon fighting the Blue Moon. Could I have it back?",
+            "condition": "If the player lost their weapon during the Blue Moon fight:",
+            "steps": [
+              {
+                "player": "I lost my weapon fighting the Blue Moon. Could I have it back?"
+              },
+              {
+                "npc": "Here you go, iknil."
+              },
+              {
+                "type": "message",
+                "text": "Eyatalli returns your lost weapon to you.",
+                "id": "EIYU0n"
+              }
+            ],
+            "id": "jzytSS"
+          },
+          {
+            "text": "I found some essence whilst fighting the lesser nagua.",
+            "condition": "If the player has sulphurous essence in their inventory:",
+            "steps": [
+              {
+                "player": "I found some essence whilst fighting the lesser nagua."
+              },
+              {
+                "type": "action",
+                "action": "give",
+                "text": "all sulphurous essence",
+                "id": "VPx5uy"
+              },
+              {
+                "npc": "Thank you, iknil. I shall use it to reinforce the seal."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "nQZdwQ"
+              }
+            ],
+            "id": "j4seOI"
+          },
+          {
+            "text": "I wanted to ask you about your masters.",
+            "condition": "If the player has completed The Final Dawn",
+            "steps": [
+              {
+                "player": "I wanted to ask you about your masters."
+              },
+              {
+                "npc": "What do you wish to know?"
+              },
+              {
+                "player": "I guess anything really. I still know so little about them."
+              },
+              {
+                "npc": "If your hope is that I can tell you about a whole race, then I am likely to disappoint you, iknil. The masters were secretive individuals. They rarely divulged information that I did not require."
+              },
+              {
+                "npc": "All I can tell you about are the three individuals that I knew personally."
+              },
+              {
+                "player": "That's still something. What were they like?"
+              },
+              {
+                "npc": "They were kind, but filled with sadness. As you know, they summoned me after another of their kind unleashed the Moons of Peril."
+              },
+              {
+                "npc": "It was a dark time. Their people had suffered great calamity years earlier and their extinction was inevitable."
+              },
+              {
+                "npc": "It seems that many, such as the shaman who summoned the Moons, felt that the only salvation left was destruction."
+              },
+              {
+                "npc": "My masters, however, felt differently. They fought for a world that was no longer their own. They believed in preserving these lands for those who would inhabit them afterwards."
+              },
+              {
+                "player": "Us?"
+              },
+              {
+                "npc": "Yes. Humans and dwarves were recent arrivals here, but the masters saw you as inheritors. I believe in some ways, you offered them hope in a time filled with pain."
+              },
+              {
+                "player": "I see. Than you for sharing that with me."
+              },
+              {
+                "npc": "It is not a problem, iknil."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "pp8irz"
+              }
+            ],
+            "id": "ku62bR"
+          },
+          {
+            "text": "Do you ever get tired of guarding this place?",
+            "steps": [
+              {
+                "player": "Do you ever get tired of guarding this place?"
+              },
+              {
+                "npc": "No."
+              },
+              {
+                "player": "Care to explain further?"
+              },
+              {
+                "npc": "Does the stream tire of eroding the earth? Does the earth tire of forming the mountain?"
+              },
+              {
+                "player": "Not that I can tell."
+              },
+              {
+                "npc": "I have more in common with them than I do with most of your kind, iknil. Think of me as you do them."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "1CZCvw"
+              }
+            ]
+          },
+          {
+            "text": "This place is beautiful. I thought it was supposed to be a prison?",
+            "steps": [
+              {
+                "player": "This place is beautiful. I thought it was supposed to be a prison?"
+              },
+              {
+                "npc": "It is a prison. Everything around us serves that purpose."
+              },
+              {
+                "player": "Even the plants and the streams?"
+              },
+              {
+                "npc": "I am a nagua of earth and stream. Being close to both empowers me to do my task."
+              },
+              {
+                "npc": "Just as being far from moonlight weakens the Moons of Peril."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "x02byZ"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-using-a-unique-equipment-reward-from-the-lunar-chest-on-her": [
+      {
+        "npc": "Congratulations on your reward, iknil. That is a treasure from ages past."
+      },
+      {
+        "player": "Yeah, about that... I don't really like this one. Could I have a different one?"
+      },
+      {
+        "npc": "..."
+      },
+      {
+        "player": "Was that rude?"
+      },
+      {
+        "npc": "I was just... Processing. I suppose I could allow you another chance to obtain a piece of equipment, but it won't be guaranteed."
+      },
+      {
+        "type": "choice",
+        "prompt": "Sacrifice this equipment for another chance at a different piece?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Yes, that sounds good."
+              },
+              {
+                "npc": "You're certain, Iknil? You could end up with nothing."
+              },
+              {
+                "type": "choice",
+                "prompt": "Give up this equipment for possibly nothing in return?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "npc": "Very well."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't get anything:",
+                        "steps": [
+                          {
+                            "npc": "No luck this time, iknil."
+                          },
+                          {
+                            "player": "Oh... Can I have it back?"
+                          },
+                          {
+                            "npc": "No."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "IkPGwg"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player gets a new item:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Eyatalli hands you a new [item given].",
+                            "id": "rwpzFe"
+                          },
+                          {
+                            "npc": "Congratulations, iknil. Enjoy your new equipment."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "CVK_OG"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player gets a new item, identical to the one that was originally given:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Eyatalli hands you a new [item given].",
+                            "id": "p6G7xs"
+                          },
+                          {
+                            "npc": "Congratulations, ik-"
+                          },
+                          {
+                            "player": "This is the same thing I just gave you!"
+                          },
+                          {
+                            "npc": "So it seems. You're welcome to try again."
+                          }
+                        ],
+                        "id": "CuHDaA"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "22FOSH"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Actually, I don't dislike it that much. I think I'll keep it."
+              },
+              {
+                "npc": "Very well."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fighting-the-moons-of-peril-after-defeating-the-eclipse-moon": [
+      {
+        "type": "message",
+        "text": "Eyatlalli's voice echoes through the surrounding earth...",
+        "id": "H3kidm"
+      },
+      {
+        "type": "message",
+        "text": "Eyatlalli: Thank you, iknil. The Eclipse Moon of Peril is sufficiently distracted. You should now proceed on to the next one.",
+        "id": "JRhlGO"
+      }
+    ],
+    "fighting-the-moons-of-peril-after-defeating-the-blue-moon": [
+      {
+        "type": "message",
+        "text": "Eyatlalli's voice echoes through the surrounding earth...",
+        "id": "ceKINh"
+      },
+      {
+        "type": "message",
+        "text": "Eyatlalli: Thank you, iknil. The Blue Moon of Peril is sufficiently distracted. You should now proceed on to the next one.",
+        "id": "CccaU6"
+      }
+    ],
+    "fighting-the-moons-of-peril-after-defeating-the-blood-moon": [
+      {
+        "type": "message",
+        "text": "Eyatlalli's voice echoes through the surrounding earth...",
+        "id": "3qcoky"
+      },
+      {
+        "type": "message",
+        "text": "Eyatlalli: Thank you, iknil. The Blood Moon of Peril is sufficiently distracted. You should now proceed on to the next one.",
+        "id": "llO7uq"
+      }
+    ],
+    "fighting-the-moons-of-peril-after-defeating-all-three-moons": [
+      {
+        "type": "message",
+        "text": "Eyatlalli's voice echoes through the surrounding earth...",
+        "id": "CpDnRo"
+      },
+      {
+        "type": "message",
+        "text": "Eyatlalli: Thank you, iknil. The Moons are sufficiently distracted. Return to me for your reward.",
+        "id": "pzXMEQ"
+      }
+    ],
+    "historical-dialogue-after-defeating-the-eclipse-moon": [
+      {
+        "type": "message",
+        "text": "Eyatlalli's voice echoes through the surrounding earth.",
+        "id": "AWB-lZ"
+      },
+      {
+        "npc": "Thank you, iknil. The Eclipse Moon of Peril is sufficiently distracted. You should now proceed on to the next one."
+      }
+    ],
+    "historical-dialogue-after-defeating-the-blue-moon": [
+      {
+        "type": "message",
+        "text": "Eyatlalli's voice echoes through the surrounding earth.",
+        "id": "SkyRO4"
+      },
+      {
+        "npc": "Thank you, iknil. The Blue Moon of Peril is sufficiently distracted. You should now proceed on to the next one."
+      }
+    ],
+    "historical-dialogue-after-defeating-the-blood-moon": [
+      {
+        "type": "message",
+        "text": "Eyatlalli's voice echoes through the surrounding earth.",
+        "id": "WZXEn2"
+      },
+      {
+        "npc": "Thank you, iknil. The Blood Moon of Peril is sufficiently distracted. You should now proceed on to the next one."
+      }
+    ],
+    "historical-dialogue-after-defeating-all-three-moons": [
+      {
+        "type": "message",
+        "text": "Eyatlalli's voice echoes through the surrounding earth.",
+        "id": "WmsolG"
+      },
+      {
+        "npc": "Thank you, iknil. The Moons are sufficiently distracted. Return to me for your reward."
+      }
+    ]
+  }
+}

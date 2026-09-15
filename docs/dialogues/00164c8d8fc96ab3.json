@@ -1,0 +1,131 @@
+{
+  "steps": [
+    {
+      "type": "condition",
+      "text": "First time dialogue:",
+      "steps": [
+        {
+          "npc": "Hi there. Do you need anything? I can clean herbs for a fee of 200 coins per herb. I can clean all of your herbs at once, or I can do individual herbs if you show them to me."
+        },
+        {
+          "npc": "I can also decant your potion vials to into different doses. That service is free so long as you have the empty vials needed. If not, it's just a few coins."
+        },
+        {
+          "type": "jump",
+          "reference": "continues",
+          "id": "u5moS2"
+        }
+      ],
+      "id": "QrZNu3"
+    },
+    {
+      "type": "condition",
+      "text": "Subsequent times:",
+      "steps": [
+        {
+          "npc": "Hello again. Do you need anything?"
+        },
+        {
+          "type": "jump",
+          "reference": "continues",
+          "id": "WMufes"
+        }
+      ],
+      "id": "eHgdEA"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Please clean all my herbs.",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "Without any grimy herbs:",
+              "steps": [
+                {
+                  "npc": "I didn't find anything that I could clean."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "s8gK2J"
+            },
+            {
+              "type": "condition",
+              "text": "If the only grimy herbs in the player's inventory are grimy ardrigal, grimy rogue's purse, grimy sito foil, grimy snake weed or grimy volencia moss:",
+              "steps": [
+                {
+                  "npc": "I didn't find anything that I could clean. Unfortunately I'm not very good at cleaning jungle herbs."
+                }
+              ],
+              "id": "Okb49q"
+            }
+          ]
+        },
+        {
+          "text": "Please decant my potions.",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "Without any potions to decant:",
+              "steps": [
+                {
+                  "npc": "I don't think you've got anything that I can decant."
+                }
+              ],
+              "id": "rpjNpO"
+            }
+          ]
+        },
+        {
+          "text": "Why would I pay for you to clean herbs?",
+          "steps": [
+            {
+              "player": "Why would I pay for you to clean herbs?"
+            },
+            {
+              "npc": "Many of my customers wish to sell the herbs which they can't clean to other adventurers. They might hope for a better price by doing this."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "EDxenG"
+            }
+          ]
+        },
+        {
+          "text": "Who's that kid outside your shop?",
+          "steps": [
+            {
+              "player": "Who's that kid outside your shop?"
+            },
+            {
+              "npc": "I do not know where he came from. He came to Nardah recently, and said his business might help my customers, so I let him have some space out there."
+            },
+            {
+              "npc": "He seems very lost in the world, but I hope his work will be a success for him."
+            },
+            {
+              "npc": "Now, would you like me to clean your herbs or combine your potions?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "B5ifBF"
+            }
+          ]
+        },
+        {
+          "text": "Maybe another time.",
+          "steps": [
+            {
+              "player": "Maybe another time."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

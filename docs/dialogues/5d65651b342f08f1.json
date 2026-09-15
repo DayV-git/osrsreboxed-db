@@ -1,0 +1,840 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello mortal. Have you come to retrieve something you lost when you died?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How does that work?",
+            "steps": [
+              {
+                "player": "How does that work?"
+              },
+              {
+                "npc": "When you die, you often drop things you were carrying. In most cases, a gravestone appears near where you died, and your items can be retrieved there."
+              },
+              {
+                "npc": "However, gravestones do not last for long. When your gravestone collapses, your items come here, to me. I can return them to you - though I charge a fee for my services."
+              },
+              {
+                "npc": "Aside from that, if you bring me your unwanted possessions, and sacrifice them into my Coffer here, I'll count their value against any future fees I charge you."
+              },
+              {
+                "npc": "I don't accept just any junk, but I'll try to give you a good price for anything decent."
+              },
+              {
+                "npc": "So do you need to retrieve something you lost when you died?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "IJbG8I"
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "As you should be able to see, I am Death. The Grim Reaper. The Inexorable One. The Inescapable Grasp of Mortal Destiny. And this is my little office. Nice, isn't it?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "It's lovely.",
+                    "steps": [
+                      {
+                        "player": "It's lovely."
+                      },
+                      {
+                        "npc": "Thank you. I feel the colour scheme suits my style. Now, can I help you retrieve something you lost when you died?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Your decorations leave a bit to be desired.",
+                    "steps": [
+                      {
+                        "player": "Your decorations leave a bit to be desired."
+                      },
+                      {
+                        "npc": "Sometimes it's hard to care for beauty when one's very existence is just seen as a curse upon the world. Now, do you actually want to retrieve something from me?"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yes, have you got anything for me?",
+            "steps": [
+              {
+                "player": "Yes, have you got anything for me?"
+              },
+              {
+                "type": "action",
+                "text": "Death's Office Item Retrieval interface opens.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Death's Office Item Retrieval",
+                "id": "g_xxIy"
+              }
+            ]
+          },
+          {
+            "text": "More options...",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can I choose a different-looking gravestone?",
+                    "steps": [
+                      {
+                        "player": "Can I choose a different-looking gravestone?"
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player is then given a choice between the basic or angel gravestone, which are free and 200k coins respectively.",
+                        "id": "hOk-F3"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player chooses the angel gravestone without 200,000 coins:",
+                        "steps": [
+                          {
+                            "npc": "You haven't got 200,000 coins to pay for that. I can take coins from your inventory, or from my Coffer."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Can I choose a different-looking gravestone?",
+                                "steps": [
+                                  {
+                                    "player": "Can I choose a different-looking gravestone?"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "W6jKMo"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, never mind.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, never mind."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "oCxPCy"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player chooses the angel gravestone with 200,000 coins:",
+                        "steps": [
+                          {
+                            "npc": "Most people won't see your grave, by the way. It appears to you, but it aims to be invisible to everyone else. Are you sure you want to buy a cosmetic override for it?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes, I understand other people won't often see it.",
+                                "steps": [
+                                  {
+                                    "player": "Yes, I understand other people won't often see it."
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "Your gravestone is now the Angel of Death.",
+                                    "id": "tLNzDt"
+                                  },
+                                  {
+                                    "npc": "It is not for me to judge how people spend their money."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks, it's not worth it.",
+                                "steps": [
+                                  {
+                                    "player": "No thanks, it's not worth it."
+                                  },
+                                  {
+                                    "npc": "It is not for me to judge how people spend their money."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "Tr05oV"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player chooses the basic gravestone while already having the angel gravestone:",
+                        "steps": [
+                          {
+                            "npc": "Do you really want to switch to the basic gravestone? I'm not offering to give back the fee you paid earlier."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes, I want the basic gravestone.",
+                                "steps": [
+                                  {
+                                    "player": "Yes, I want the basic gravestone."
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "Your gravestone is now the basic type.",
+                                    "id": "j4sZjU"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, never mind.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, never mind."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "zsGGFs"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player chooses the basic gravestone while already having the basic gravestone:",
+                        "steps": [
+                          {
+                            "npc": "You've already got the basic gravestone."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Can I choose a different-looking gravestone?",
+                                "steps": [
+                                  {
+                                    "player": "Can I choose a different-looking gravestone?"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "2OiLI1"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, never mind.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, never mind."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "joozOo"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I change how I die?",
+                    "steps": [
+                      {
+                        "npc": "Er... I suppose so."
+                      },
+                      {
+                        "npc": "How would you like to... die?"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Death Animations interface opens.",
+                        "action": "open_interface",
+                        "action_source": "text",
+                        "target": "Death Animations",
+                        "id": "HHgfi8"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Not just now, thanks.",
+                    "steps": [
+                      {
+                        "player": "Not just now, thanks."
+                      },
+                      {
+                        "npc": "Really? There isn't much else for you to do here. But you know your business."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Previous options...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "18AeWW"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ultimate-ironman-dialogue": [
+      {
+        "npc": "Hello mortal. If you're looking for something you lost when you died, I'm afraid I don't cater to Ultimate Ironmen. Your items would have fallen on the ground where you died."
+      },
+      {
+        "player": "Can I change how I die?"
+      },
+      {
+        "npc": "Er... I suppose so."
+      },
+      {
+        "npc": "How would you like to... die?"
+      },
+      {
+        "type": "action",
+        "text": "Death Animations interface opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Death Animations",
+        "id": "bAczuc"
+      }
+    ],
+    "upon-losing-any-items-while-dying-for-the-first-time": [
+      {
+        "npc": "So, mortal... you have died, as all mortals do. As you have suffered the loss of some items on this occasion, I have brought you here to explain for you how that works."
+      },
+      {
+        "player": "I lost items? Can I get them back?"
+      },
+      {
+        "npc": "Let me explain... Across most of the land of Gielinor, when you die, some of the items you're carrying are dropped."
+      },
+      {
+        "type": "message",
+        "text": "A gravestone appears on the ground near where you died. You can go there and retrieve your items by clicking on it.",
+        "id": "NRFcs5"
+      },
+      {
+        "type": "message",
+        "text": "Your gravestone would be marked with an arrow to help to spot it. A grave icon appears on the world map too, if your grave is in a mapped area.",
+        "id": "X8gCVM"
+      },
+      {
+        "type": "message",
+        "text": "Gravestones charge a small fee to return especially valuable items, but most things are returned free of charge. Conveniently, a gravestone can take its fee straight from your bank.",
+        "id": "x4yQmj"
+      },
+      {
+        "type": "message",
+        "text": "A gravestone does not last forever. After about 15 minutes, a gravestone will collapse. Anything in it will be sent here, to me.",
+        "id": "TSqApg"
+      },
+      {
+        "npc": "I will look after such items, without a time limit. However, I do charge more for my services. It would be cheaper to retrieve them from the gravestone directly, if you can reach it in time."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about gravestones again.",
+            "steps": [
+              {
+                "player": "Tell me about gravestones again."
+              },
+              {
+                "npc": "Gladly... Across most of the land of Gielinor, when you die, some of the items you're carrying are dropped."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eyXKbd"
+              }
+            ]
+          },
+          {
+            "text": "How do I pay a gravestone fee?",
+            "condition": "If the player has not gone through with this dialogue option:",
+            "steps": [
+              {
+                "player": "How do I pay a gravestone fee?"
+              },
+              {
+                "npc": "Cash is always acceptable. Also, a gravestone can take it directly from you bank, in case you didn't have enough with you."
+              },
+              {
+                "npc": "Besides that, take a look at my Coffer here. You can bring your unwanted possessions, and sacrifice them into my Coffer. I'll count their value against any future gravestone fees you're charged."
+              },
+              {
+                "type": "message",
+                "text": "Death's Coffer won't accept items worth less than 10,000 coins per item - Death doesn't want cheap junk! But more valuable items can be sacrificed to pay down future reclamation fees.",
+                "id": "VdldkS"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "nI5YNN"
+              }
+            ],
+            "id": "kjyPpI"
+          },
+          {
+            "text": "How do I pay a gravestone fee?",
+            "condition": "If the player has completed this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "fRN7Dy"
+              }
+            ],
+            "id": "5auQYO"
+          },
+          {
+            "text": "How long do I have to return to my gravestone?",
+            "condition": "If the player has not gone through with this dialogue option:",
+            "steps": [
+              {
+                "player": "How long do I have to return to my gravestone?"
+              },
+              {
+                "type": "message",
+                "text": "A gravestone lasts for at least 15 minutes before it collapses. However, that timer pauses if you become inactive, in case you have lost your connection to the world.",
+                "id": "hmHuQI"
+              },
+              {
+                "type": "message",
+                "text": "A timer on your head-up display shows the remaining time before your gravestone will collapse.",
+                "id": "5z5784"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "akqVvX"
+              }
+            ],
+            "id": "pkKPQU"
+          },
+          {
+            "text": "How long do I have to return to my gravestone?",
+            "condition": "If the player has completed this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "aFSjGW"
+              }
+            ],
+            "id": "B02Pt_"
+          },
+          {
+            "text": "How do I know what will happen to my items when I die?",
+            "condition": "If the player has not gone through with this dialogue option:",
+            "steps": [
+              {
+                "player": "How do I know what will happen to my items when I die?"
+              },
+              {
+                "npc": "There is a menu to predict these things for you. Take a look at your Worn Items side-panel..."
+              },
+              {
+                "type": "action",
+                "text": "The worn equipment tab opens.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "The worn equipment tab",
+                "id": "_nd7XK"
+              },
+              {
+                "type": "message",
+                "text": "The Items Kept on Death menu tells you roughly what your items will do when you next die, including estimating gravestone fees.",
+                "id": "Y8gslM"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "N0flkK"
+              }
+            ],
+            "id": "GHJ9mW"
+          },
+          {
+            "text": "How do I know what will happen to my items when I die?",
+            "condition": "If player has completed this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "mn4pbY"
+              }
+            ],
+            "id": "UoA-6h"
+          },
+          {
+            "text": "I think I'm done here.",
+            "steps": [
+              {
+                "player": "I think I'm done here."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not gone through all of the other dialogue options:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid we have more topics to cover before you leave. Speak to me when you are ready to continue."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "QqqMVy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed all of the other dialogue options",
+                "steps": [
+                  {
+                    "npc": "Very well. Once you pass through my portal, you will have 15 minutes to reach your gravestone."
+                  }
+                ],
+                "id": "pj34Vt"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "upon-losing-any-items-while-dying-for-the-first-time-talking-to-death-again-after-reaching-the-dialogue-options-for-the-first-time-but-before-completeing-the-tutorial": [
+      {
+        "npc": "I believe I was explaining gravestones to you. We still have some more topics to cover."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about gravestones again.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "iVPZcs"
+              }
+            ]
+          },
+          {
+            "text": "How do I pay a gravestone fee?",
+            "condition": "If the player has not gone through with this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "p0ghG2"
+              }
+            ],
+            "id": "Kgqjkn"
+          },
+          {
+            "text": "How do I pay a gravestone fee?",
+            "condition": "If the player has completed this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "gyqDXx"
+              }
+            ],
+            "id": "ojfUuz"
+          },
+          {
+            "text": "How long do I have to return to my gravestone?",
+            "condition": "If the player has not gone through with this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "7otwE_"
+              }
+            ],
+            "id": "i08pWw"
+          },
+          {
+            "text": "How long do I have to return to my gravestone?",
+            "condition": "If the player has completed this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "TFMat5"
+              }
+            ],
+            "id": "ZAZBi8"
+          },
+          {
+            "text": "How do I know what will happen to my items when I die?",
+            "condition": "If the player has not gone through with this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "S_QKdg"
+              }
+            ],
+            "id": "FJspYS"
+          },
+          {
+            "text": "How do I know what will happen to my items when I die?",
+            "condition": "If player has completed this dialogue option:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yE5X6H"
+              }
+            ],
+            "id": "F6nXdg"
+          },
+          {
+            "text": "I think I'm done here.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "S7CcA1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "upon-losing-any-items-while-dying-for-the-first-time-attempting-to-leave-before-finishing-the-tutorial": [
+      {
+        "npc": "I haven't finished talking to you yet, [player name]. Please don't worry about your gravestone - it will wait until you leave this place."
+      }
+    ],
+    "upon-losing-any-items-while-dying-for-the-first-time-talking-to-death-after-completing-the-tutorial-but-before-leaving-death-s-office": [
+      {
+        "npc": "Would you like me to remind you about gravestones?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about gravestones again.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "DDAIri"
+              }
+            ]
+          },
+          {
+            "text": "How do I pay a gravestone fee?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "AkgCfM"
+              }
+            ]
+          },
+          {
+            "text": "How long do I have to return to my gravestone?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "z2k1QA"
+              }
+            ]
+          },
+          {
+            "text": "How do I know what will happen to my items when I die?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "4AiSpI"
+              }
+            ]
+          },
+          {
+            "text": "I think I'm done here.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "hKmrRz"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-choosing-how-you-would-like-to-die": [
+      {
+        "npc": "How would you like to... die?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Animation to use for death.",
+        "options": [
+          {
+            "text": "Leagues IV: Trailblazer Reloaded.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has not unlocked the Trailblazer Reloaded death animation:",
+                "steps": [
+                  {
+                    "npc": "You haven't unlocked that. You can do so by reading a Trailblazer reloaded death scroll."
+                  },
+                  {
+                    "npc": "Have you come to retrieve something you lost from a previous gravestone?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "2Bpyz8"
+                  }
+                ],
+                "id": "EV3P5m"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has unlocked the Trailblazer Reloaded death animation, and is not currently using it:",
+                "steps": [
+                  {
+                    "npc": "You will now die like a Trailblazer."
+                  },
+                  {
+                    "npc": "Have you come to retrieve something you lost from a previous gravestone?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "EvfSHU"
+                  }
+                ],
+                "id": "oidPcB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is already using the Trailblazer Reloaded death animation:",
+                "steps": [
+                  {
+                    "npc": "You are already using that."
+                  },
+                  {
+                    "npc": "Have you come to retrieve something you lost from a previous gravestone?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "P51hRg"
+                  }
+                ],
+                "id": "jyRSxF"
+              }
+            ]
+          },
+          {
+            "text": "Default.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is already using the default death animation:",
+                "steps": [
+                  {
+                    "npc": "You are already using that."
+                  },
+                  {
+                    "npc": "Have you come to retrieve something you lost from a previous gravestone?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "D-e6Mq"
+                  }
+                ],
+                "id": "O9GeGg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not using the default death animation:",
+                "steps": [
+                  {
+                    "npc": "You will now perish like most others in Gielinor."
+                  },
+                  {
+                    "npc": "Have you come to retrieve something you lost from a previous gravestone?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "ErvROi"
+                  }
+                ],
+                "id": "vWkURR"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-ultimate-ironman-dialogue": [
+      {
+        "npc": "Hello mortal. If you're looking for something you lost when you died, I'm afraid I don't cater to Ultimate Iron [Men/Women]. Your items would have fallen on the ground where you died."
+      },
+      {
+        "player": "So what can I do here?"
+      },
+      {
+        "npc": "Nothing, really. Please leave when you are ready."
+      }
+    ]
+  }
+}

@@ -1,0 +1,865 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Eyup. They call me Skully. I run this Wilderness Loot Chest. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How does the chest work?",
+            "steps": [
+              {
+                "npc": "Well, you know how when you kill someone all of their stuff just ends up in a pile on the floor and it's really hard to pick it all up quickly?"
+              },
+              {
+                "type": "condition",
+                "text": "With no player kills in the wilderness:",
+                "steps": [
+                  {
+                    "player": "Actually, I've never killed anyone else."
+                  },
+                  {
+                    "npc": "...Oh. Well, when you do, all of their stuff just ends up in a pile on the floor and it's really hard to pick it all up quickly."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "Xnn7Wt"
+                  }
+                ],
+                "id": "uLAIqf"
+              },
+              {
+                "type": "condition",
+                "text": "With at least one player kill in the wilderness:",
+                "steps": [
+                  {
+                    "player": "Yeah?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "sDXFw6"
+                  }
+                ],
+                "id": "yGzBh4"
+              },
+              {
+                "npc": "So, I made an enchantment that teleports the loot to another dimension instead!"
+              },
+              {
+                "player": "How does that help?"
+              },
+              {
+                "npc": "Well, instead of getting a pile of rubbish, you get a single key. You just take the key to this chest and BAM! There's your loot!"
+              },
+              {
+                "player": "So the loot is safe in this other dimension?"
+              },
+              {
+                "npc": "Eh, seems like it. As long as they've had the key, I've never had anyone unable to get the stuff back out. Though if you lose the key, you can't get the stuff out."
+              },
+              {
+                "npc": "Oh, and be careful running about with too many keys on you. Other people will know you've got them, and I'm not gonna stop them opening the chest!"
+              },
+              {
+                "player": "So if I kill someone and take their keys, I can use them myself?"
+              },
+              {
+                "npc": "...Eh, if you wanna think about it that way, sure."
+              },
+              {
+                "npc": "I got nothing better to do, so I'll keep track of the value of the stuff you unlock."
+              },
+              {
+                "npc": "And anything you don't want, you can have the chest destroy it."
+              },
+              {
+                "npc": "Except the food. I'll eat that instead."
+              },
+              {
+                "npc": "Now, if you want your own keys instead of relying on the misfortune of others, I can put the enchantment on you as well, but it's gonna cost ya."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "pTglFm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not bought loot keys access yet:",
+        "id": "-eJKDU"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I have access to the chest?",
+            "steps": [
+              {
+                "player": "Can I have access to the chest?"
+              },
+              {
+                "npc": "So, if you have keys from someone else, you're more than welcome to put them in the chest and see what comes out."
+              },
+              {
+                "npc": "If you want the enchantment that makes the keys, I'm afraid it's gonna cost you 1 million coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sure, I'll pay for that.",
+                    "steps": [
+                      {
+                        "player": "Sure, I'll pay for that."
+                      },
+                      {
+                        "npc": "Are you sure? 1 million is a lot of coins, and you won't get them back!"
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Pay 1 million coins to unlock Loot Keys?",
+                        "options": [
+                          {
+                            "text": "Yes, pay 1 million coins!",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "Without 1 million coins in the inventory:",
+                                "steps": [
+                                  {
+                                    "npc": "Hmm... I don't think you have enough money on you there, mate."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "H-TvfR"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "With 1 million coins in the inventory:",
+                                "steps": [
+                                  {
+                                    "type": "action",
+                                    "action": "give",
+                                    "text": "1 million coins",
+                                    "id": "Cf7Z84"
+                                  },
+                                  {
+                                    "npc": "Ok, let me just... and a bit of... and we're done! You'll now get loot keys whenever you kill someone in the Wilderness. Talk to me again if you have any questions."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "KWna2o"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, I've changed my mind!",
+                            "steps": [
+                              {
+                                "npc": "Fair enough mate, talk to me again if you change your mind."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Not right now, thanks.",
+                    "steps": [
+                      {
+                        "player": "Not right now, thanks."
+                      },
+                      {
+                        "npc": "Fair enough mate, want to talk about something else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "VQtmX_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How much?!",
+                    "steps": [
+                      {
+                        "player": "How much?!"
+                      },
+                      {
+                        "npc": "1 million coins."
+                      },
+                      {
+                        "player": "Why do you charge so much?!"
+                      },
+                      {
+                        "npc": "Runes. People don't wanna deliver across the Wilderness, and I'm in no shape to go to them, so I have to pay through the nose."
+                      },
+                      {
+                        "npc": "I make maybe a couple hundred coins of profit, which at least lets me buy a few beers."
+                      },
+                      {
+                        "player": "Why is the beer so cheap if it's so expensive to get deliveries out here?"
+                      },
+                      {
+                        "npc": "The barman makes it himself with whatever scraps he can get his hands on."
+                      },
+                      {
+                        "npc": "You'd think it'd turn out horrible, but compared to every other 2 coin beer out there, it's not half bad."
+                      },
+                      {
+                        "npc": "But enough about beer. If you want access to the loot keys, it's gonna cost you 1 million coins."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "JeJqmZ"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If the player has bought loot keys access:",
+        "id": "8v9NRK"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I change how these loot keys work?",
+            "steps": [
+              {
+                "player": "Can I change how these loot keys work?"
+              },
+              {
+                "npc": "Well, I can turn the enchantment that creates the loot keys on and off for you. Won't cost you anything to turn it back on again, either."
+              },
+              {
+                "npc": "If you'd like it so stuff like food and potions stay out of the keys so you can use them yourself, I can do that too."
+              },
+              {
+                "npc": "And if you like the feeling of picking up valuables, I can make it so that anything above a certain value hits the floor as well."
+              },
+              {
+                "type": "choice",
+                "options": []
+              },
+              {
+                "type": "condition",
+                "text": "If loot keys are turned on:",
+                "id": "Jff6GL"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Turn loot keys off",
+                    "steps": [
+                      {
+                        "npc": "Ok, whenever you kill someone else now, their items will go to the floor like normal. Just remember, they could have loot keys on them, and they'll still go to your inventory!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "P2oRNb"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If loot keys are turned off:",
+                "id": "fKJfn3"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Turn loot keys on",
+                    "steps": [
+                      {
+                        "npc": "Ok, you'll now get loot keys when you kill another person in the Wilderness."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "Pv_y7H"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If food were set to be sent to loot keys:",
+                "id": "QiWwfp"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Drop food to floor",
+                    "steps": [
+                      {
+                        "npc": "Ok, food and potions will now be dropped to the floor instead of stored in a loot key."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "3D3i2N"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If food were set to be dropped on the floor:",
+                "id": "FOt3uc"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Send food to loot key",
+                    "steps": [
+                      {
+                        "npc": "Ok, food and potions will now be sent to your loot keys."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "7Q5JaF"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If valuables were set to be sent to loot keys:",
+                "id": "yKNiPA"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Drop valuables to floor",
+                    "steps": [
+                      {
+                        "npc": "Ok, valuable items will now be dropped to the floor instead of stored in a loot key."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "bF3Wpc"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If valuables were set to be dropped on the floor:",
+                "id": "7dCwge"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Send valuables to loot key",
+                    "steps": [
+                      {
+                        "npc": "Ok, valuable items will now be sent to your loot keys."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "LRt-Pr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Change valuable item threshold",
+                    "steps": [
+                      {
+                        "npc": "Currently, if you were to have valuable items drop to the floor, they'd need to be worth at least [number]gp. What do you want to change that value to?"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Enter amount:",
+                        "id": "T8i8zU"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the amount is the same as the one set before:",
+                        "steps": [
+                          {
+                            "npc": "Hmph. Yeah, real funny, wise guy."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "yTNe7q"
+                          }
+                        ],
+                        "id": "09xC-G"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the amount is not the same as the one set before:",
+                        "steps": [
+                          {
+                            "npc": "Ok, now items worth at least [entered amount]gp will drop to the floor."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "previous",
+                            "id": "-PyNb3"
+                          }
+                        ],
+                        "id": "JX0XL0"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How much loot have I claimed?",
+            "steps": [
+              {
+                "player": "How much loot have I claimed?"
+              },
+              {
+                "type": "condition",
+                "text": "If no loot keys have been claimed:",
+                "steps": [
+                  {
+                    "npc": "Well, seeing as you haven't claimed a key yet, I reckon you've claimed a total of 0gp worth of loot."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "8OYmrE"
+                  }
+                ],
+                "id": "PN1pAJ"
+              },
+              {
+                "type": "condition",
+                "text": "If one loot key has been claimed and nothing has been destroyed:",
+                "steps": [
+                  {
+                    "npc": "You've claimed 1 key, containing loot worth about [number]gp. I haven't seen you destroy anything of value yet, though."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "yVLy0H"
+                  }
+                ],
+                "id": "0F06PH"
+              },
+              {
+                "type": "condition",
+                "text": "If one loot key has been claimed and everything has been destroyed:",
+                "steps": [
+                  {
+                    "npc": "You've claimed 1 key, containing loot worth about [number]gp, and you destroyed everything of value."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "80dUcw"
+                  }
+                ],
+                "id": "z0K393"
+              },
+              {
+                "type": "condition",
+                "text": "If more than one loot key has been claimed and nothing has been destroyed:",
+                "steps": [
+                  {
+                    "npc": "You've claimed [number] keys, containing loot worth about [number]gp. I haven't seen you destroy anything of value yet, though."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "xrA4hr"
+                  }
+                ],
+                "id": "jDkgkN"
+              },
+              {
+                "type": "condition",
+                "text": "If more than one loot key has been claimed and some of it has been destroyed:",
+                "steps": [
+                  {
+                    "npc": "You've claimed [number] keys, containing loot worth about [number]gp. You've destroyed [number]gp worth of it."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "lgttj8"
+                  }
+                ],
+                "id": "7Qu0Xg"
+              },
+              {
+                "type": "condition",
+                "text": "If more than one loot key has been claimed and everything has been destroyed:",
+                "steps": [
+                  {
+                    "npc": "You've claimed [number] keys, containing loot worth about [number]gp, and you destroyed everything of value."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "KyNe35"
+                  }
+                ],
+                "id": "pqoOJB"
+              }
+            ]
+          },
+          {
+            "text": "Who are you, exactly?",
+            "steps": [
+              {
+                "player": "Who are you, exactly?"
+              },
+              {
+                "npc": "Ah, used to be an adventurer like you, I guess. Used to roam the world, killing monsters for a living. 'Cept then, I discovered the Wilderness."
+              },
+              {
+                "npc": "Used to take on anyone and everyone who stood in me way, and made myself a small fortune doing it too."
+              },
+              {
+                "npc": "It's how I got the name, used to go anywhere and everywhere with a skull over my head!"
+              },
+              {
+                "player": "So how'd you end up like... this?"
+              },
+              {
+                "npc": "Ah, you live a life feeding on others, eventually something higher up the food chain finds you."
+              },
+              {
+                "npc": "I used to have a hidden outpost out near the Bone Yard, somewhere to keep my stuff in an emergency. One day all I come back to is a smouldering pile of rubble."
+              },
+              {
+                "npc": "Next thing I know, someone's snuck up behind me and has put a spear through my back."
+              },
+              {
+                "player": "And you survived?!"
+              },
+              {
+                "npc": "Always carry a ring of life, friend! Never know when you'll need it."
+              },
+              {
+                "npc": "Still, the damage was done. Everything I ever owned up in smoke, and even though the wound's fully healed, I can still feel that spear in my back to this day."
+              },
+              {
+                "npc": "Thankfully, Ferox was kind enough to take me in, and I managed to repurpose some of my old storage magic for adventurers like you."
+              },
+              {
+                "player": "But why come back to the Wilderness?"
+              },
+              {
+                "npc": "What, go life a normal life behind a shop counter so I can pedal swamp paste for a living instead? I'll pass!"
+              },
+              {
+                "npc": "Anyhow, enough about me. What can I do for you?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "lKlVuy"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "I'll be here if you need anything."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-settings-option-without-loot-keys-access": [
+      {
+        "npc": "Don't waste my time trying to change settings on a thing you haven't bought yet!"
+      }
+    ],
+    "standard-dialogue-using-settings-option-with-loot-keys-access": [
+      {
+        "type": "choice",
+        "options": []
+      },
+      {
+        "type": "condition",
+        "text": "If loot keys are turned on:",
+        "id": "ULGCVh"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Turn loot keys off",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "-VJ9b3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If loot keys are turned off:",
+        "id": "kAaIAP"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Turn loot keys on",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "7NCKvF"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If food were set to be sent to loot keys:",
+        "id": "RnXndq"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Drop food to floor",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nLkiLG"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If food were set to be dropped on the floor:",
+        "id": "g3l_e0"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Send food to loot key",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Sr-k0a"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If valuables were set to be sent to loot keys:",
+        "id": "nQU7gb"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Drop valuables to floor",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "9fiM2x"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If valuables were set to be dropped on the floor:",
+        "id": "hRdhNh"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Send valuables to loot key",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "U-FfLO"
+              }
+            ]
+          },
+          {
+            "text": "Change valuable item threshold",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "gPtst8"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ironman-dialogue": [
+      {
+        "npc": "Eyup. They call me Skully. I run this Wilderness Loot Chest. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How does the chest work?",
+            "steps": [
+              {
+                "npc": "Well, you know how when you kill someone all of their stuff just ends up in a pile on the floor and it's really hard to pick it all up quickly?"
+              },
+              {
+                "player": "Yeah?"
+              },
+              {
+                "npc": "So, I made an enchantment that teleports the loot to another dimension instead!"
+              },
+              {
+                "player": "How does that help?"
+              },
+              {
+                "npc": "Well, instead of getting a pile of rubbish, you get a single key. You just take the key to this chest and BAM! There's your loot!"
+              },
+              {
+                "player": "So the loot is safe in this other dimension?"
+              },
+              {
+                "npc": "Eh, seems like it. As long as they've had the key, I've never had anyone unable to get the stuff back out. Though if you lose the key, you can't get the stuff out."
+              },
+              {
+                "npc": "Oh, and be careful running about with too many keys on you. Other people will know you've got them, and I'm not gonna stop them opening the chest!"
+              },
+              {
+                "player": "So if I kill someone and take their keys, I can use them myself?"
+              },
+              {
+                "npc": "...Eh, if you wanna think about it that way, sure."
+              },
+              {
+                "npc": "I know you Iron people are weird about taking other people's stuff, so if you just wanna have the chest destroy it all, that's fine by me."
+              },
+              {
+                "npc": "Except the food. I'm eating that instead."
+              },
+              {
+                "npc": "Now, if you want your own keys instead of relying on the misfortune of others, I can put the enchantment on you as well, but it's gonna cost ya."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "QoKhoc"
+              }
+            ]
+          },
+          {
+            "text": "Can I have access to the chest?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "otroRP"
+              }
+            ]
+          },
+          {
+            "text": "How much loot have I claimed?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "pgR5Du"
+              }
+            ]
+          },
+          {
+            "text": "Who are you, exactly?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "e7H3zY"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "m4L8nw"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "interacting-with-skully-in-deadman-mode": [
+      {
+        "npc": "Sorry mate, can't run the Loot Chest on a Deadman World."
+      }
+    ]
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Have ye come for an outfit like mine? Or else whatcha want?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "Don't ye recognise the greatest angler in all the land? Never mind Grandpa Jack an' Big Dave, or that jack-of-all-trades Mac - I'm Gita Prymes!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Have you won the Hemenster Fishing Competition?",
+                    "steps": [
+                      {
+                        "player": "Have you won the Hemenster Fishing Competition?"
+                      },
+                      {
+                        "npc": "Um..."
+                      },
+                      {
+                        "npc": "Keep yer triflin' talk of poxy contests - Gita Prymes has bigger fish to catch! And I am Gita Prymes."
+                      },
+                      {
+                        "player": "Okay, you're Gita Prymes."
+                      },
+                      {
+                        "npc": "That I be! Now, are ye here for an outfit like mine?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "XVqx8E"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, you're Gita Prymes.",
+                    "steps": [
+                      {
+                        "player": "Okay, you're Gita Prymes."
+                      },
+                      {
+                        "npc": "That I be! Now, are ye here for an outfit like mine?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "Zbroff"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about outfits.",
+            "steps": [
+              {
+                "player": "Let's talk about outfits."
+              },
+              {
+                "npc": "Aye. See, a lot of anglers wear ugly green stuff. It 'elps them wi' the fishing, to be sure, but they look so rotten in it. So Gita Prymes invented something better- looking."
+              },
+              {
+                "type": "message",
+                "text": "The Spirit Angler outfit gives the same Fishing XP bonus as the standard Angler kit.",
+                "id": "XVkgAH"
+              },
+              {
+                "npc": "It'll cost ye some spirit flakes but Gita Prymes can change yer Spirit Angler back to normal Angler for free if ye want it. Which ever suits ye."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Ask about the Spirit Angler outfit.",
+                    "steps": [
+                      {
+                        "player": "Can you turn my Angler outfit into the Spirit Angler outfit?"
+                      },
+                      {
+                        "npc": "Sure, hand me a piece of the regular Angler kit. I'll want 1,200 spirit flakes for a hat, the top for 1,200 spirit flakes, the leggings for 1,200 spirit flakes and the footwear for 1,200 spirit flakes."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have any pieces of the angler kit:",
+                        "steps": [
+                          {
+                            "player": "Actually, I don't have any Angler kit on me at the moment, sorry."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "CZCdRy"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a piece of the angler kit and is upgrading it for the first time:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Gita Prymes wants 1,200 spirit flakes to upgrade your [outfit piece]. Spirit Angler kit gives the same Fishing XP bonus as the regular Angler kit. If you change it back later, you will not get your spirit flakes back.",
+                            "id": "biLPTa"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Cancel",
+                                "steps": [
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Proceed",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "Gita Prymes exchanges your [outfit piece] for Spirit Angler kit.",
+                                    "id": "3sMFrS"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "ggPR5n"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a piece of the angler kit and has already upgraded it:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Gita Prymes will upgrade your [outfit piece] for free, as you have already paid the conversion fee. Spirit Angler kit gives the same Fishing XP bonus as the regular Angler kit.",
+                            "id": "y9-UMa"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Cancel",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "vTRyx2"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Proceed",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "NAdPOO"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "Kfgwfn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ask about the regular Angler outfit.",
+                    "steps": [
+                      {
+                        "player": "Can you turn my Spirit Angler outfit back into the regular Angler outfit?"
+                      },
+                      {
+                        "npc": "Sure, hand me a piece of the Spirit Angler kit an' I'll convert it back for free."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have any pieces of the spirit angler kit:",
+                        "steps": [
+                          {
+                            "player": "Actually, I don't have any Spirit Angler kit on me at the moment, sorry."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "rJlxih"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a piece of the spirit angler kit:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Gita Prymes can exchange your Spirit Angler kit for regular Angler kit, but will not return your spirit flakes. You can convert it back to the Spirit Angler version for free.",
+                            "id": "3jVjCF"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Cancel",
+                                "steps": []
+                              },
+                              {
+                                "text": "Proceed",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "Gita Prymes exchanges your Spirit Angler kit for regular Angler kit.",
+                                    "id": "eGmd8N"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "fkkvI0"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I don't think I need anything from you.",
+            "steps": [
+              {
+                "player": "I don't think I need anything from you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-given-anything-that-isn-t-an-angler-s-outfit-piece": [
+      {
+        "npc": "Nay, Gita Prymes won't take that."
+      }
+    ]
+  }
+}

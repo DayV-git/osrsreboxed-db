@@ -1,0 +1,475 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask the camel about its dung.",
+            "steps": [
+              {
+                "player": "I'm sorry to bother you, but could you spare me a little dung?"
+              },
+              {
+                "type": "unavailable",
+                "id": "wNgfwe"
+              }
+            ]
+          },
+          {
+            "text": "Say something unpleasant.",
+            "steps": [
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "player": "If I go near that camel, it'll probably bite my hand off."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "player": "Mmm... looks like that camel would make a nice kebab."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "player": "I wonder if that camel has fleas..."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Neither - I'm a polite person.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "dialogue-whilst-wearing-a-camulet-first-time-speaking-to-al": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask the camel about its dung.",
+            "steps": [
+              {
+                "player": "I'm sorry to bother you, but could you spare me a little dung?"
+              },
+              {
+                "npc": "Are you serious?"
+              },
+              {
+                "player": "Oh yes. If you'd be so kind..."
+              },
+              {
+                "type": "condition",
+                "text": "If Al has recently provided his dung:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The camel ponders for a moment...",
+                    "id": "VGRr6B"
+                  },
+                  {
+                    "npc": "I'm sorry, but I can't really help you right now. Perhaps you should ask me again later, or try a different camel."
+                  },
+                  {
+                    "player": "Fair enough."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "uuyn-R"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "Well, just you close your eyes first. I'm not doing it while you're watching me!"
+                  },
+                  {
+                    "npc": "I hope that's what you wanted!"
+                  },
+                  {
+                    "player": "Ohhh yes. Lovely."
+                  }
+                ],
+                "id": "jQtKiI"
+              }
+            ]
+          },
+          {
+            "text": "Say something unpleasant.",
+            "steps": [
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "player": "If I go near that camel, it'll probably bite my hand off."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "urCFDj"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "player": "Mmm... looks like that camel would make a nice kebab."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "0Plghc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "player": "I wonder if that camel has fleas..."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "b7uWiG"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "npc": "Sorry, were you saying something to me?"
+              },
+              {
+                "player": "No, er, nothing important."
+              },
+              {
+                "npc": "Never mind, it is unimportant when I have such important matters weighing on my soul."
+              },
+              {
+                "player": "How important can a camel's problems be?"
+              },
+              {
+                "npc": "Well, you see, there is a camel called Elly. A beautiful, wondrous camel, with hide like spun gold and teeth that shine like an oasis."
+              },
+              {
+                "player": "...I see."
+              },
+              {
+                "npc": "I've written many poems describing her beauty. Would you like to hear one?"
+              },
+              {
+                "player": "It's all right, I'm..."
+              },
+              {
+                "npc": "Shall I compare thee to a desert's day? Thou art drier and more rough-skinned."
+              },
+              {
+                "npc": "Rough sandstorms shake the cactuses away And summer's heat defers to autumn wind."
+              },
+              {
+                "player": "Look, I don't really have the time to..."
+              },
+              {
+                "npc": "Sometimes too hot the eye of heaven shines, With Guthix' gold complexion often dimmed;"
+              },
+              {
+                "npc": "And every fair from fair sometime declines, By chance or desert's changing course untrimmed..."
+              },
+              {
+                "player": "Please, stop."
+              },
+              {
+                "npc": "But I've only got six lines left!"
+              },
+              {
+                "player": "That's six too many. If I really want to hear your poetry, I'll tell you, okay?"
+              },
+              {
+                "npc": "Very well. Come back and talk to me if you want to hear more."
+              }
+            ]
+          },
+          {
+            "text": "Neither - I'm a polite person.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "dialogue-whilst-wearing-a-camulet-subsequent-conversations-with-al": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask the camel about its dung.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "F5JPzd"
+              }
+            ]
+          },
+          {
+            "text": "Say something unpleasant.",
+            "steps": [
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "player": "If I go near that camel, it'll probably bite my hand off."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "h4Ljas"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "player": "Mmm... looks like that camel would make a nice kebab."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "GgwYeY"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "player": "I wonder if that camel has fleas..."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "0O-buX"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "npc": "Oh, it's you again. Have you come back to listen to my poems?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd love to!",
+                    "steps": [
+                      {
+                        "player": "I'd love to!"
+                      },
+                      {
+                        "npc": "That's so kind of you. Which one would you like to hear?"
+                      },
+                      {
+                        "npc": "'Shall I compare thee to a desert's day' is my finest yet, but I've also composed others."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Listen to 'Shall I compare thee to a desert's day'.",
+                            "steps": [
+                              {
+                                "npc": "That's my favourite poem. Ahem..."
+                              },
+                              {
+                                "npc": "Shall I compare thee to a desert's day? Thou art drier and more rough-skinned."
+                              },
+                              {
+                                "npc": "Rough sandstorms shake the cactuses away And summer's heat defers to autumn wind."
+                              },
+                              {
+                                "npc": "Sometimes too hot the eye of heaven shines, With Guthix' gold complexion often dimmed;"
+                              },
+                              {
+                                "npc": "And every fair from fair sometime declines, By chance or desert's changing course untrimmed..."
+                              },
+                              {
+                                "npc": "But thine eternal desert shall not fade Nor lose possession of that sand thou owest;"
+                              },
+                              {
+                                "npc": "Nor Zamorak brag thou art in his shades, When in eternal lines to sand thou growest,"
+                              },
+                              {
+                                "npc": "So long as camels breathe or eyes can see, So long lives this, and this gives life to thee."
+                              },
+                              {
+                                "npc": "Ah, Elly, how beautiful you are."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If this is the first time speaking to Al again:",
+                                "steps": [
+                                  {
+                                    "player": "What does Elly think of your poems?"
+                                  },
+                                  {
+                                    "npc": "She's never heard them."
+                                  },
+                                  {
+                                    "player": "Why not?"
+                                  },
+                                  {
+                                    "npc": "I suspect she loves another - Ollie, another camel who roams with her to the north."
+                                  },
+                                  {
+                                    "npc": "So I shall stay here and compose poems for her."
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "options": [
+                                      {
+                                        "text": "Why not tell her how you feel?",
+                                        "steps": [
+                                          {
+                                            "player": "Why not tell her how you feel?"
+                                          },
+                                          {
+                                            "npc": "She seems happy enough as she is, and I have my poems to comfort me."
+                                          },
+                                          {
+                                            "player": "Well, best of luck with that."
+                                          },
+                                          {
+                                            "npc": "If you want to hear my poems once more, please come back again."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "Well, best of luck with that.",
+                                        "steps": [
+                                          {
+                                            "player": "Well, best of luck with that."
+                                          },
+                                          {
+                                            "npc": "If you want to hear my poems once more, please come back again."
+                                          },
+                                          {
+                                            "type": "end"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "id": "d4B-DM"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "On subsequent visits:",
+                                "steps": [],
+                                "id": "a7fVXu"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Listen to 'This Is Just To Say'.",
+                            "steps": [
+                              {
+                                "npc": "I wrote this poem when I went to the oasis to nibble at a tree, then discovered I'd left nothing for Elly to nibble. I was distraught."
+                              },
+                              {
+                                "npc": "This Is Just To Say"
+                              },
+                              {
+                                "npc": "I have nibbled the cacti that were by the oasis,"
+                              },
+                              {
+                                "npc": "and which you were probably saving for lunch."
+                              },
+                              {
+                                "npc": "Forgive me, they were delicious, so crunchy and so cold."
+                              },
+                              {
+                                "npc": "I wonder if she's forgiven me for eating her snack."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If this is the first time speaking to Al again:",
+                                "steps": [
+                                  {
+                                    "player": "What does Elly think of your poems?"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "MY4YvS"
+                                  }
+                                ],
+                                "id": "vDCHoJ"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "On subsequent visits:",
+                                "steps": [],
+                                "id": "bT7U7j"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thank you.",
+                    "steps": [
+                      {
+                        "player": "No, thank you."
+                      },
+                      {
+                        "npc": "Ah, well. I shall return to writing poems to Elly's beauty."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Neither - I'm a polite person.",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

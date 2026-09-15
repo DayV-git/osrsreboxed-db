@@ -1,0 +1,79 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Can I help you?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not yet visited Varlamore:",
+        "steps": [
+          {
+            "player": "Just wondering what brings you out here?"
+          },
+          {
+            "npc": "This is the only land border into the Kingdom of Varlamore. We're here to make sure no one enters without permission."
+          },
+          {
+            "player": "I see. Would I be able to enter?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not completed Children of the Sun:",
+            "steps": [
+              {
+                "npc": "No. The Queen is currently making arrangements to allow outsiders like yourself to enter Varlamore without needing to obtain permission first. However, until then, you must remain on this side of the border."
+              },
+              {
+                "player": "Fair enough."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "1SZRup"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has completed Children of the Sun, but has not travelled to Varlamore with Regulus Cento:",
+            "steps": [
+              {
+                "npc": "Well, arrangements have now been made to allow outsiders like yourself to enter Varlamore. However, this is an inhospitable route into the kingdom. I'd suggest you find an alternate way to travel."
+              },
+              {
+                "player": "Fair enough."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "fTkdGJ"
+          }
+        ],
+        "id": "245jPs"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Children of the Sun, and visited Varlamore:",
+        "steps": [
+          {
+            "player": "Just passing through."
+          },
+          {
+            "npc": "Fair enough."
+          }
+        ],
+        "id": "xMRdGU"
+      }
+    ],
+    "standard-dialogue-attempting-to-enter-the-nearby-cave-before-completing-children-of-the-sun": [
+      {
+        "npc": "Sorry, traveller, but you don't have permission to enter the Kingdom of Varlamore."
+      }
+    ]
+  }
+}

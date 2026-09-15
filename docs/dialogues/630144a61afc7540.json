@@ -1,0 +1,129 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "cough* whatcha want? hack*"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Smoke dungeon. wheeze* Got smoke devils in it. For killing. splutter*"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Monkey Madness II:",
+                "steps": [
+                  {
+                    "npc": "My niece Nieve hack hack* is one of those Slayer Masters. You know, they tell people what to go kill. cough* I look after this cave for people on assignments like that."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "jWycIq"
+                  }
+                ],
+                "id": "MIPLZ0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Monkey Madness II:",
+                "steps": [
+                  {
+                    "npc": "My nephew Steve hack hack* is one of those Slayer Masters. You know, they tell people what to go kill. cough* I look after this cave for people on assignments like that."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "c-tYIO"
+                  }
+                ],
+                "id": "uY89Ln"
+              }
+            ]
+          },
+          {
+            "text": "Are you alright?",
+            "steps": [
+              {
+                "player": "Are you alright?"
+              },
+              {
+                "npc": "Of course I'm wheeze* alright. I'm fed up with you young folk asking cough cough* if I'm alright just because I like a bit of smoke splutter* in my tubes."
+              },
+              {
+                "npc": "Don't you come lecturing me on cough* air quality, young man - I've breathed smoke all my life, man and boy and euuurgh* and there's no ghhuk* scientific evidence that it's harmful."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Are you alright?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "e0MLNt"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I think I'll leave you alone.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "blz9Ut"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I think I'll leave you alone.",
+            "steps": [
+              {
+                "player": "I think I'll leave you alone."
+              },
+              {
+                "npc": "cough cough cough ghhuk*"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-attempting-to-enter-the-smoky-cave-without-protection": [
+      {
+        "npc": "Hey, you don't cough* wanna go in there without cough* some kind of protection from the smoke. Your lungs aren't as tough as wheeze* mine."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Enter anyway.",
+            "steps": []
+          },
+          {
+            "text": "Stay outside.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "when-attempting-to-kill-monsters-that-aren-t-part-of-a-player-s-slayer-task": [
+      {
+        "npc": "cough* that isn't your assignment wheeze*"
+      }
+    ]
+  }
+}

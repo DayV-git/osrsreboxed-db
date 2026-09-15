@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NPC and quest dialogue records",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/$defs/record"
+  },
+  "$defs": {
+    "step": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{6}$"
+        },
+        "npc": {
+          "type": "string"
+        },
+        "player": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "speaker": {
+          "type": "string"
+        },
+        "prompt": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "action_source": {
+          "enum": [
+            "text"
+          ]
+        },
+        "hook": {
+          "type": "string",
+          "pattern": "^quest:.+:start$"
+        },
+        "quest": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "section": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "resolved": {
+          "type": "boolean"
+        },
+        "page_available": {
+          "type": "boolean"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/step"
+          }
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/step"
+          }
+        },
+        "branch": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{6}$"
+        },
+        "variant": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "anyOf": [
+              {
+                "required": [
+                  "condition"
+                ]
+              },
+              {
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "type": {
+                    "not": {
+                      "enum": [
+                        "line",
+                        "end",
+                        "call",
+                        "choice",
+                        "random"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "then": {
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "const": "call"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "branch"
+            ]
+          }
+        }
+      ]
+    },
+    "record": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variants": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/step"
+            }
+          }
+        },
+        "branches": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/step"
+            }
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/step"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "default",
+            "variants"
+          ],
+          "not": {
+            "required": [
+              "steps"
+            ]
+          }
+        },
+        {
+          "required": [
+            "steps"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "default"
+                ]
+              },
+              {
+                "required": [
+                  "variants"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

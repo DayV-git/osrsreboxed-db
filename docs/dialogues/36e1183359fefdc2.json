@@ -1,0 +1,186 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there. What do you need?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This is one of the lairs of those foul Lizardmen. We've managed to corner these ones so they can't escape."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "CsXyhk"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "Cleive. Captain Cleive. Captain in the Shayzien Guard and renowned slayer."
+              },
+              {
+                "player": "Renowned?"
+              },
+              {
+                "npc": "Absolutely. I'm part of a great family of slayers. You've probably met a few of them over on the mainland."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "2RkkYS"
+              }
+            ]
+          },
+          {
+            "text": "Why are you here?",
+            "steps": [
+              {
+                "player": "Why are you here?"
+              },
+              {
+                "npc": "We learnt of a group of Lizardman Shamans causing trouble on the surface. I led a taskforce out to drive them back into their lair."
+              },
+              {
+                "npc": "We suffered many losses but we've now managed to trap them in this cave."
+              },
+              {
+                "npc": "We've lost too many men to be able to finish them off but I'm happy for someone else to do it if I feel they're worthy of the challenge."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "ntAAha"
+              }
+            ]
+          },
+          {
+            "text": "Can I fight these Lizardmen?",
+            "steps": [
+              {
+                "player": "Can I fight these Lizardmen?"
+              },
+              {
+                "npc": "Perhaps. I've lost too many men to be able to kill them myself but I'm happy for someone else to do it if I feel they're worthy of the challenge."
+              },
+              {
+                "player": "What do you define as worthy?"
+              },
+              {
+                "npc": "You'll need to be favoured by the people of Shayzien. You'll also need to be on a Lizardman Slayer task."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "ZefIWo"
+              }
+            ]
+          },
+          {
+            "text": "Can I use my Slayer helm instead of a Shayzien helm?",
+            "steps": [
+              {
+                "player": "Can I use my slayer helm instead of a Shayzien helm?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not yet learned the technique:",
+                "steps": [
+                  {
+                    "npc": "Yes that is possible, however I only show the required technique to those who have proved themselves a friend to Kourend."
+                  },
+                  {
+                    "player": "How do I prove that I am a friend to Kourend?"
+                  },
+                  {
+                    "npc": "You'll need to complete the Hard tier of the Kourend & Kebos Achievement Diary and have earned the tier five Shayzien helm."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has not completed the Hard Kourend & Kebos Diary:",
+                    "steps": [
+                      {
+                        "player": "I don't meet those requirements. I'll be back when I do though."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "p-4luy"
+                      }
+                    ],
+                    "id": "35_pf5"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player completed the Hard Kourend & Kebos Diary and acquired a Shayzien helm (5):",
+                    "steps": [
+                      {
+                        "player": "I have that completed! Can you show me the special technique now?"
+                      },
+                      {
+                        "npc": "Of course!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Captain Clieve teaches you the secret technique. Any slayer helm will now offer the same protection against lizardman as a shayzien helm (5).",
+                        "id": "jGVSyZ"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "wpfmut"
+                      }
+                    ],
+                    "id": "IkxOhf"
+                  }
+                ],
+                "id": "lhmOZU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already learned the technique:",
+                "steps": [
+                  {
+                    "npc": "I have already shown you that secret technique."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "h86e_4"
+                  }
+                ],
+                "id": "Saxap8"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-attempting-to-kill-lizardman-shamans-outside-of-a-slayer-task": [
+      {
+        "type": "line",
+        "speaker": "Captain Clieve",
+        "text": "Hey! These lizardmen aren't just for anyone. Come back when you have the right Slayer task!"
+      },
+      {
+        "type": "message",
+        "text": "Captain Clieve wants you to stick to your Slayer assignments.",
+        "id": "4kWYC2"
+      }
+    ]
+  }
+}

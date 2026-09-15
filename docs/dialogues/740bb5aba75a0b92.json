@@ -1,0 +1,196 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome to the vinery. Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do I farm here?",
+            "steps": [
+              {
+                "player": "How do I farm here?"
+              },
+              {
+                "npc": "Let's see... First, you'll need to treat the soil with saltpetre. Dig it into the patch with a trowel. The minerals are good for the fruit."
+              },
+              {
+                "npc": "Then plant a grape seed, and just let it grow. I'll look after it, so it won't get diseased."
+              },
+              {
+                "npc": "When your grapes are ready, pick them and clear the patch so you can grow a new vine."
+              },
+              {
+                "npc": "Does that seem clear, or would you like help with something else?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Hf82QK"
+              }
+            ]
+          },
+          {
+            "text": "What do you do?",
+            "steps": [
+              {
+                "player": "What do you do?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed A Kingdom Divided:",
+                "steps": [
+                  {
+                    "npc": "I'm the vintner. I helped Lord Hosidius to develop this land as a vinery, and now it's complete he's put me in charge of production while he works on a new project."
+                  },
+                  {
+                    "npc": "His son, young Pandur, works here too. Pandur checks the wine I produce. But if you've got any questions about the farming, don't ask Pandur. Ask me instead. He checks the wine too much."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Ik7iWt"
+                  }
+                ],
+                "id": "MRhHHG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed A Kingdom Divided:",
+                "steps": [
+                  {
+                    "npc": "I'm the vintner. I helped the late Lord Hosidius develop this land as a vinery. He put me in charge of production once it was completed."
+                  },
+                  {
+                    "npc": "The new Lord Hosidius used to work here as well. He has new duties of course, but that hasn't stopped him coming down to check the wine I produce."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "gPeZcM"
+                  }
+                ],
+                "id": "bOUSdw"
+              },
+              {
+                "npc": "So can I help you with anything?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "B1qO-H"
+              }
+            ]
+          },
+          {
+            "text": "Why are you called Gallow?",
+            "steps": [
+              {
+                "player": "Why are you called Gallow?"
+              },
+              {
+                "npc": "It's short for 'Gallows'. When I was young, a boy made some improper suggestions to me, so I grabbed him by his neck and held him in the air until he learnt some manners."
+              },
+              {
+                "npc": "Now, dear, do you need help with the vinery? I'm enjoying the chat, but I have work to do."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "8aUYdM"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "I3B652"
+      },
+      {
+        "type": "message",
+        "text": "Gallow has given you a challenge scroll!",
+        "id": "JvKpCY"
+      }
+    ],
+    "treasure-trails-talking-to-her-with-the-challenge-scroll": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "If the answer is incorrect:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "sWTtYr"
+      },
+      {
+        "type": "condition",
+        "text": "If the answer is correct:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a medium clue scroll or medium reward casket",
+            "id": "ftnb62"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Gallow has given you another clue scroll!",
+                "id": "hFzszD"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "p95IyS"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "sG7JRL"
+              }
+            ],
+            "id": "BB7EYJ"
+          }
+        ],
+        "id": "Nw5Tlu"
+      }
+    ]
+  }
+}

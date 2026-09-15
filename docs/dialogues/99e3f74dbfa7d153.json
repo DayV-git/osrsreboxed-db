@@ -1,0 +1,342 @@
+{
+  "default": "standard-dialogue-before-completing-the-grand-tree",
+  "variants": {
+    "standard-dialogue-before-completing-the-grand-tree": [
+      {
+        "npc": "Welcome to Gnome Air!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's Gnome Air?",
+            "steps": [
+              {
+                "player": "What's Gnome Air?"
+              },
+              {
+                "npc": "Gnome Air is the finest airline in Gielinor!"
+              },
+              {
+                "npc": "Well...it's the only real airline in Gielinor."
+              },
+              {
+                "npc": "Ha!"
+              },
+              {
+                "player": "What do you mean by real airline?"
+              },
+              {
+                "npc": "Well there's a dodgy magic carpet operation in the desert, I doubt it will ever take off... Ha!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "9TZa4X"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "player": "Where can you take me?"
+              },
+              {
+                "npc": "Glough has ordered that I only take gnomes on Gnome Air."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "qrkuoS"
+              }
+            ]
+          },
+          {
+            "text": "How much for one-way to Varrock?",
+            "steps": [
+              {
+                "player": "How much for one-way to Varrock?"
+              },
+              {
+                "npc": "I can't take you anywhere."
+              },
+              {
+                "player": "How come?"
+              },
+              {
+                "npc": "I would, but Glough has told me not to take humans on Gnome Air."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "TyMnDo"
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you to it.",
+            "steps": [
+              {
+                "player": "I'll leave you to it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-the-grand-tree": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you take me on the glider?",
+            "steps": [
+              {
+                "player": "Can you take me on the glider?"
+              },
+              {
+                "npc": "Of course!"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Gnome glider map",
+                "id": "e3-iJv"
+              }
+            ]
+          },
+          {
+            "text": "Why are gliders better than other transport?",
+            "steps": [
+              {
+                "player": "Why are gliders better than other transport?"
+              },
+              {
+                "npc": "Oh we have a whole network! It's wonderful for getting to hard to reach places."
+              },
+              {
+                "npc": "There are so many places where your teleports cannot reach!"
+              },
+              {
+                "player": "How did you all manage to build such an established network?"
+              },
+              {
+                "npc": "I think you'll find that is a gnome trade secret!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "xfa1FJ"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I don't want anything now.",
+            "steps": [
+              {
+                "player": "Sorry, I don't want anything now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "AEi9W1"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WoTesu"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "kWvkaP"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1uyvHL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [item] to Captain Bleemadge",
+            "id": "cerv__"
+          },
+          {
+            "npc": "Aahh, the smell of home, there's nothing like it. Thanks."
+          },
+          {
+            "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+          },
+          {
+            "type": "action",
+            "text": "You are given [a/some] [reward item(s)] as a tip.",
+            "action": "receive",
+            "action_source": "text",
+            "id": "YfCyQU"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You are not eligible to get gnome food delivered to you yet.",
+                "id": "l1-Jzj"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "QZNoju"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "LwyVxT"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "id": "m-O9xv"
+              },
+              {
+                "type": "message",
+                "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                "id": "QLRt6x"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "PCtEMe"
+              }
+            ],
+            "id": "ESgBV4"
+          }
+        ],
+        "id": "mcqoXm"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "3jSDAE"
+          }
+        ],
+        "id": "lei2Z-"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "You must complete this!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "EFttVD"
+      },
+      {
+        "type": "message",
+        "text": "The pilot has given you a puzzle box!",
+        "id": "yEkY5h"
+      }
+    ],
+    "treasure-trails-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "Please finish the puzzle for me!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "IRRTOm"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Well done!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The pilot has given you another clue scroll!",
+                "id": "9jnk0S"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll (hard)",
+                "id": "H73A64"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "let-mI"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "kY-ZL5"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket (hard)",
+                "id": "AztwY0"
+              }
+            ],
+            "id": "3DeV_d"
+          }
+        ],
+        "id": "AxciwB"
+      }
+    ]
+  }
+}

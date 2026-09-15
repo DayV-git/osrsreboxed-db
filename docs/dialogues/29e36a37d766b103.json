@@ -1,0 +1,278 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "[Yes, sir/Yes, madam/Yes]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have a new job for you.",
+            "steps": [
+              {
+                "player": "I have a new job for you."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has unclaimed resources:",
+                "steps": [
+                  {
+                    "npc": "[Apologies, sir,/Apologies, madam,/Apologies,] but you will need to collect the resources I have already procured before I commence work on anything new."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Opens \"The Fruits of Your Butler's Labour\" interface",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "The Fruits of Your Butler's Labour",
+                    "id": "kNWETh"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "GcGh2g"
+              },
+              {
+                "type": "condition",
+                "text": "If the player selects logs:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Process the Logs into Planks?",
+                    "options": [
+                      {
+                        "text": "Yes, process them. (5/Minute)",
+                        "steps": [
+                          {
+                            "npc": "Certainly. I'll start right away."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, just give me the raw materials. (10/Minute)",
+                        "steps": [
+                          {
+                            "npc": "Certainly. I'll start right away."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "dTtv9s"
+              },
+              {
+                "type": "condition",
+                "text": "If the player selects ore:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Process the Ore into Bars?",
+                    "options": [
+                      {
+                        "text": "Yes, process them. (4/Minute)",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "K4Sbos"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, just give me the raw materials. (8/Minute)",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "CMBJTl"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "qTS0Kr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player selects fish:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Process the Fish into Cooked fish?",
+                    "options": [
+                      {
+                        "text": "Yes, process them. (7/Minute)",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "_8dc7o"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, just give me the raw materials. (14/Minute)",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "PcxVDM"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "WyqDox"
+              },
+              {
+                "type": "condition",
+                "text": "If the player selects herbs:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Process the Herbs into Unfinished potions?",
+                    "options": [
+                      {
+                        "text": "Yes, process them. (5/Minute)",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "jkVs3v"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, just give me the raw materials. (10/Minute)",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "paK-Pg"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zAqCbD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player selects flax:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Process the Flax into Bowstrings?",
+                    "options": [
+                      {
+                        "text": "Yes, process them. (25/Minute)",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "hldVYm"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, just give me the raw materials. (50/Minute)",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "NBhY7I"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "IBw8Yy"
+              }
+            ]
+          },
+          {
+            "text": "Show me what you've collected so far.",
+            "condition": "If the player has unclaimed resources:",
+            "steps": [
+              {
+                "player": "Show me what you've collected so far."
+              },
+              {
+                "type": "action",
+                "text": "Opens \"The Fruits of Your Butler's Labour\" interface",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "The Fruits of Your Butler's Labour",
+                "id": "QI6eu-"
+              }
+            ],
+            "id": "QRINdr"
+          },
+          {
+            "text": "Nothing.",
+            "steps": [
+              {
+                "player": "Nothing. As you were."
+              },
+              {
+                "npc": "[Excellent choice, sir/Excellent choice, madam/Excellent choice]."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ringing-bell-while-butler-is-nearby": [
+      {
+        "npc": "[Sorry, sir,/Sorry, madam,/Sorry,] but may  find it easier to communicate verbally, instead of using the bell."
+      }
+    ],
+    "collecting": [
+      {
+        "player": "Show me what you've collected so far."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has claimable resources:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "Opens \"The Fruits of Your Butler's Labour\" interface",
+            "action": "open_interface",
+            "action_source": "text",
+            "target": "The Fruits of Your Butler's Labour",
+            "id": "9zk5qg"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "oBeQzW"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no claimable resources:",
+        "steps": [
+          {
+            "npc": "I am afraid I have not managed to collect anything new [just yet, sir/just yet, madam/just yet]."
+          }
+        ],
+        "id": "fFiECQ"
+      }
+    ]
+  }
+}

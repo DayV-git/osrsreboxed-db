@@ -1,0 +1,136 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello. Who are you?"
+      },
+      {
+        "npc": "The name's Gordon. Good day to you."
+      },
+      {
+        "player": "It's a nice farm you've got here."
+      },
+      {
+        "npc": "Thank you. We built it ourselves."
+      },
+      {
+        "player": "Really? So you haven't been here long?"
+      },
+      {
+        "npc": "Nope. Not too long ago you couldn't safely travel around these parts. Too many lizardmen. But then some Hosidius explorers discovered how fertile this land was."
+      },
+      {
+        "npc": "Lord Hosidius made a deal with Lord Shayzien and the lizardmen were cleared out to make room for the Farming Guild."
+      },
+      {
+        "npc": "When we heard, we decided to come up here and start up our own farm."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Need a hand with anything?",
+            "steps": [
+              {
+                "player": "Need a hand with anything?"
+              },
+              {
+                "type": "reference",
+                "target": "Transcript:Getting Ahead",
+                "section": "",
+                "text": "Continues with Transcript:Getting Ahead",
+                "id": "U_38nU",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          },
+          {
+            "text": "Very nice. Well I hope it goes well for you.",
+            "steps": [
+              {
+                "player": "Very nice. Well I hope it goes well for you."
+              },
+              {
+                "npc": "Thank you friend. See you later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-has-received-gordon-s-initial-greeting-already": [
+      {
+        "player": "Hello again. How are things?"
+      },
+      {
+        "npc": "Hello there. Not too bad, thanks."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Need a hand with anything?",
+            "steps": [
+              {
+                "player": "Need a hand with anything?"
+              },
+              {
+                "type": "reference",
+                "target": "Transcript:Getting Ahead",
+                "section": "",
+                "text": "Continues with Transcript:Getting Ahead",
+                "id": "AK27Da",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          },
+          {
+            "text": "Great to hear. All the best.",
+            "steps": [
+              {
+                "player": "Great to hear. All the best."
+              },
+              {
+                "npc": "Thank you friend. See you later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-getting-ahead": [
+      {
+        "type": "condition",
+        "text": "If the player received a 3,000 coins reward from the quest:",
+        "steps": [
+          {
+            "npc": "Hello again. Thank you for dealing with that beast."
+          }
+        ],
+        "id": "Ve-vo0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player didn't receive a 3,000 coins reward from the quest:",
+        "steps": [
+          {
+            "npc": "Hello again. Thank you for dealing with that beast. As promised, here's your reward."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "3,000 coins",
+            "id": "eJJth4"
+          }
+        ],
+        "id": "ybriIj"
+      },
+      {
+        "player": "It's my pleasure."
+      }
+    ]
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "steps": [
+    {
+      "type": "random",
+      "options": [
+        {
+          "text": "Dialogue 1",
+          "steps": [
+            {
+              "npc": "Welcome to the Sophanem Bank! Anything I can help you with?"
+            },
+            {
+              "type": "jump",
+              "reference": "continue",
+              "id": "lvDcCB"
+            }
+          ]
+        },
+        {
+          "text": "Dialogue 2",
+          "steps": [
+            {
+              "npc": "And what can the Sophanem Bank do for you today?"
+            },
+            {
+              "type": "jump",
+              "reference": "continue",
+              "id": "3kc4pO"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Are you with the Bank of Gielinor?",
+          "steps": [
+            {
+              "player": "Are you with the Bank of Gielinor?"
+            },
+            {
+              "npc": "We have an agreement with them, yes. It took some time to work out."
+            },
+            {
+              "npc": "As you may have noticed, the desert adds complications to all matters of trade and finance."
+            },
+            {
+              "npc": "Was there something else you wanted?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "KqTqLB"
+            }
+          ]
+        },
+        {
+          "text": "How is business?",
+          "steps": [
+            {
+              "player": "How is business?"
+            },
+            {
+              "npc": "It could be better. The businesses here are still recovering from recent events. Personal banking like yours makes up the majority of our trade."
+            },
+            {
+              "npc": "Was there anything else with which I can help you?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "loqYk_"
+            }
+          ]
+        },
+        {
+          "text": "I'd like to access my bank account, please.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Bank",
+              "id": "Pxsjn1"
+            }
+          ]
+        },
+        {
+          "text": "I'd like to check my PIN settings.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Bank PIN",
+              "id": "wRATCQ"
+            }
+          ]
+        },
+        {
+          "text": "I'd like to collect items, please.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Grand Exchange collection box",
+              "id": "y6EYfX"
+            }
+          ]
+        },
+        {
+          "text": "I'd like to buy more bank slots.",
+          "steps": [
+            {
+              "player": "I'd like to buy more bank slots."
+            },
+            {
+              "type": "condition",
+              "text": "If the player is an Ultimate Ironman:",
+              "steps": [
+                {
+                  "npc": "Why? You don't use the bank."
+                },
+                {
+                  "player": "Oh yeah... Never mind then."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "zP8SOT"
+            },
+            {
+              "npc": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+            },
+            {
+              "type": "action",
+              "text": "(Bank space purchase interface opens.)",
+              "action": "open_interface",
+              "action_source": "text",
+              "target": "Bank space purchase",
+              "id": "TJsGFw"
+            },
+            {
+              "player": "[number] slots please."
+            },
+            {
+              "npc": "Buying [number] additional bank slots will cost [number] coins. Be warned, this purchase is not reversible. Are you happy to proceed?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes.",
+                  "steps": [
+                    {
+                      "player": "Yes, I'm happy with that."
+                    },
+                    {
+                      "npc": "Your additional bank slots have been added."
+                    }
+                  ]
+                },
+                {
+                  "text": "No.",
+                  "steps": [
+                    {
+                      "player": "Actually, I've changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

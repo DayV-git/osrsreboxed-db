@@ -1,0 +1,244 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Do you want a lit candle for 1000 gold?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 1000 coins:",
+                "steps": [
+                  {
+                    "player": "But I don't have that kind of money on me."
+                  },
+                  {
+                    "npc": "Well then, no candle for you!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "i0s0_3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 1000 coins:",
+                "steps": [
+                  {
+                    "npc": "Here you go then."
+                  },
+                  {
+                    "npc": "I should warn you, though, it can be dangerous to take a naked flame down there. You'd be better off making a lantern."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "What's so dangerous about a naked flame?",
+                        "steps": [
+                          {
+                            "player": "What's so dangerous about a naked flame?"
+                          },
+                          {
+                            "npc": "Heh heh... You'll find out."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "How do you make lanterns?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "8IMBFn"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Thanks, bye.",
+                        "steps": [
+                          {
+                            "player": "Thanks, bye."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "jVncUE"
+              }
+            ]
+          },
+          {
+            "text": "One thousand gold?!",
+            "steps": [
+              {
+                "player": "One thousand gold?!"
+              },
+              {
+                "npc": "Look, you're not going to be able to survive down that hole without a light source."
+              },
+              {
+                "npc": "So you could go off to the candle shop to buy one more cheaply. You could even make your own lantern, which is a lot better."
+              },
+              {
+                "npc": "But I bet you want to find out what's down there right now, don't you? And you can pay me 1000 gold for the privilege!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "All right, you win, I'll buy a candle.",
+                    "steps": [
+                      {
+                        "player": "All right, you win, I'll buy a candle."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "GYtX2n"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No way.",
+                    "steps": [
+                      {
+                        "player": "No way."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do you make lanterns?",
+                    "steps": [
+                      {
+                        "player": "How do you make lanterns?"
+                      },
+                      {
+                        "npc": "Out of glass.  The more advanced lanterns have a metal component as well."
+                      },
+                      {
+                        "npc": "Firstly you can make a simple candle lantern out of glass.  It's just like a candle, but the flame isn't exposed, so it's safer."
+                      },
+                      {
+                        "npc": "Then you can make an oil lamp, which is brighter but has an exposed flame.  But if you make an iron frame for it you can turn it into an oil lantern."
+                      },
+                      {
+                        "npc": "Finally there's the bullseye lantern.  You'll need to make a frame out of steel and add a glass lens."
+                      },
+                      {
+                        "npc": "Once you've made your lamp or lantern, you'll need to make lamp oil for it.  The chemist near Rimmington has a machine for that."
+                      },
+                      {
+                        "npc": "For any light source, you'll need a tinderbox to light it. Keep your tinderbox handy in case it goes out!"
+                      },
+                      {
+                        "npc": "But if all that's too complicated, you can buy a candle right here for 1000 gold!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "All right, you win, I'll buy a candle.",
+                            "steps": [
+                              {
+                                "player": "All right, you win, I'll buy a candle."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "S1_vSb"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks, I'd rather curse the darkness.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "ZENGz1"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'd rather curse the darkness.",
+            "steps": [
+              {
+                "player": "No thanks, I'd rather curse the darkness."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-learning-about-lanterns-from-the-candle-seller": [
+      {
+        "npc": "Do you want a lit candle for 1000 gold?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "qJWMW1"
+              }
+            ]
+          },
+          {
+            "text": "One thousand gold?!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "rx2iFz"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'd rather curse the darkness.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "4AmrDF"
+              }
+            ]
+          },
+          {
+            "text": "How do you make lanterns?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "MJKHnO"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

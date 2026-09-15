@@ -1,0 +1,122 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Sorry [madam/mister], you'll have to make it quick - I'm busy hunting these wriggly buggers!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Is there anything I can do to help?",
+            "steps": [
+              {
+                "player": "Is there anything I can do to help?"
+              },
+              {
+                "npc": "You'll have to speak to Tynan about that, [m'lady/sir], you can find him in the fishing store just south of here."
+              },
+              {
+                "player": "Thanks. I'll let you get back to work."
+              }
+            ]
+          },
+          {
+            "text": "I'll let you get back to work.",
+            "steps": [
+              {
+                "player": "I'll let you get back to work."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "QCbQg6"
+      },
+      {
+        "type": "message",
+        "text": "Nicholas has given you a challenge scroll!",
+        "id": "mKMcSN"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "tVmNX1"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "[another clue scroll/a casket]",
+            "id": "kONIdg"
+          },
+          {
+            "type": "unavailable",
+            "id": "rWjX4-"
+          }
+        ],
+        "id": "rl-fY0"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "I know you're down there!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Dig dig dig!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Grubblies!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

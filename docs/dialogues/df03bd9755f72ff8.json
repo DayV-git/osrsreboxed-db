@@ -1,0 +1,396 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "I'm the head gardener around here. If you're looking for woad leaves, or if you need help with owt, I'm yer man."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please, I need woad leaves.",
+            "steps": [
+              {
+                "player": "Yes please, I need woad leaves."
+              },
+              {
+                "npc": "How much are you willing to pay?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How about 5 coins?",
+                    "steps": [
+                      {
+                        "player": "How about 5 coins?"
+                      },
+                      {
+                        "npc": "No no, that's far too little. Woad leaves are hard to get. I used to have plenty but someone kept stealing them off me."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How about 10 coins?",
+                    "steps": [
+                      {
+                        "player": "How about 10 coins?"
+                      },
+                      {
+                        "npc": "No no, that's far too little. Woad leaves are hard to get. I used to have plenty but someone kept stealing them off me."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How about 15 coins?",
+                    "steps": [
+                      {
+                        "player": "How about 15 coins?"
+                      },
+                      {
+                        "npc": "Mmmm... okay, that sounds fair."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have 15 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "xdDS1A"
+                          }
+                        ],
+                        "id": "HeH6yX"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 15 coins:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "one woad leaf",
+                            "id": "bywQsQ"
+                          },
+                          {
+                            "player": "Thanks."
+                          },
+                          {
+                            "npc": "I'll be around if you have any more gardening needs."
+                          }
+                        ],
+                        "id": "j8I8So"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How about 20 coins?",
+                    "steps": [
+                      {
+                        "player": "How about 20 coins?"
+                      },
+                      {
+                        "npc": "Okay, that's more than fair."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have 20 coins:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "xdDS1A"
+                          }
+                        ],
+                        "id": "bddTbW"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 20 coins:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "two woad leaves",
+                            "id": "F6m-S9"
+                          },
+                          {
+                            "npc": "Here, have two, you're a generous person."
+                          },
+                          {
+                            "player": "Thanks."
+                          }
+                        ],
+                        "id": "CgN3Et"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How about ME helping YOU instead?",
+            "steps": [
+              {
+                "player": "How about ME helping YOU instead?"
+              },
+              {
+                "npc": "That's a nice thing to say. I do need a hand, now you mention it. You see, there's some stupid mole digging up my lovely garden."
+              },
+              {
+                "player": "A mole? Surely you've dealt with moles in the past?"
+              },
+              {
+                "npc": "Ah, well this is no ordinary mole! He's a big'un for sure. Ya see... I'm always relied upon to make the most of this 'ere garden - the faster and bigger I can grow plants the better!"
+              },
+              {
+                "npc": "In my quest for perfection I looked into 'Malignius-Mortifer's-Super-Ultra-Flora-Growth-Potion'. It worked well on my plants, no doubt about it! But it had the same effect on a nearby mole. Ya can imagine the"
+              },
+              {
+                "npc": "havoc he causes to my patches of sunflowers! Why, if any of the other gardeners knew about this mole, I'd be looking for a new job in no time!"
+              },
+              {
+                "player": "I see. What do you need me to do?"
+              },
+              {
+                "npc": "If ya are willing maybe yer wouldn't mind killing it for me? Take a spade and use it to shake up them mole hills. Be careful though, he really is big!"
+              },
+              {
+                "player": "Is there anything in this for me?"
+              },
+              {
+                "npc": "Well, if yer gets any mole skin or mole claws off 'un, I'd trade 'em for bird nests if ye brings 'em here to me."
+              },
+              {
+                "player": "Right, I'll bear it in mind."
+              }
+            ]
+          },
+          {
+            "text": "Sorry, but I'm not interested.",
+            "steps": [
+              {
+                "player": "Sorry, but I'm not interested."
+              },
+              {
+                "npc": "Fair enough."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-wyson-with-mole-parts-in-inventory": [
+      {
+        "npc": "If I'm not mistaken, you've got some body parts from a big mole there! I'll trade it for bird nests if ye likes. Or was ye wantin' some woad leaves instead?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, I will trade the mole parts.",
+            "steps": [
+              {
+                "player": "Okay, I will trade the mole parts."
+              },
+              {
+                "type": "action",
+                "text": "Wyson exchanges mole parts for nests/nest boxes.",
+                "id": "T0rsOq"
+              }
+            ]
+          },
+          {
+            "text": "Yes please, I need woad leaves.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "vZajtt"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, but I'm not interested.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "6pmdSo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-wyson-with-immaculate-mole-skin-in-inventory": [
+      {
+        "npc": "If I'm not mistaken, you've got some body parts from a big mole there! I'll trade it for bird nests if ye likes. Or was ye wantin' some woad leaves instead?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, I will trade the mole parts.",
+            "steps": [
+              {
+                "player": "Okay, I will trade the mole parts."
+              },
+              {
+                "npc": "I see you also have an immaculate mole skin with you, I will give you extra birds nests for those."
+              },
+              {
+                "type": "action",
+                "text": "Wyson exchanges mole parts for nests/nest boxes.",
+                "id": "XwNH58"
+              }
+            ]
+          },
+          {
+            "text": "Yes please, I need woad leaves.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "sEIi-O"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, but I'm not interested.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "BrFQJm"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "creating-holy-moleys-without-mole-slippers": [
+      {
+        "player": "Do you know much about these shoes?"
+      },
+      {
+        "npc": "Those look like my friend Tiffy's armour."
+      },
+      {
+        "npc": "If you had mole slippers, I reckon I could combine 'em."
+      }
+    ],
+    "creating-holy-moleys-without-holy-sandals": [
+      {
+        "player": "Do you know much about these shoes?"
+      },
+      {
+        "npc": "Well, those look like very unusual moles indeed. Little 'uns."
+      },
+      {
+        "npc": "If you had holy sandals, I reckon I could combine 'em."
+      }
+    ],
+    "creating-holy-moleys-with-both-boots": [
+      {
+        "type": "choice",
+        "prompt": "Combine the boots with Wyson's help?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Normally:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You successfully combine the Mole slippers and Holy sandals to create Holy moleys.",
+                    "id": "usbF97"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "y1qMRX"
+              },
+              {
+                "type": "condition",
+                "text": "When temporarily disabled:",
+                "steps": [
+                  {
+                    "npc": "Woops I can't do this right now. Come back in an hour."
+                  }
+                ],
+                "id": "mol50S"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "treasure-trails-elite": [
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "XRElII"
+          },
+          {
+            "type": "message",
+            "text": "You've been given a new clue!",
+            "id": "eGf_eY"
+          },
+          {
+            "npc": "Here, have this."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "AEX-V2"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an elite reward casket",
+            "id": "vERST2"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "pm-rIs"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "vgy-je"
+          }
+        ],
+        "id": "YJL0f8"
+      }
+    ]
+  },
+  "branches": {
+    "xdDS1A": [
+      {
+        "player": "I don't have enough coins to buy the leaves. I'll come back later."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

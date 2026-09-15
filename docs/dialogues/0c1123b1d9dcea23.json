@@ -1,0 +1,174 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about the Skillcape of Farming.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 99 farming:",
+                "steps": [
+                  {
+                    "player": "What is that cape you're wearing?"
+                  },
+                  {
+                    "npc": "This is a Skillcape of Farming, isn't it incredible? It's a symbol of my ability as the finest farmer in the land and wearing it increases my herb yield!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "AikGry"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Skillcape",
+                    "steps": [
+                      {
+                        "player": "Can I buy a Skillcape of Farming from you?"
+                      },
+                      {
+                        "npc": "Of course, fellow farmer. If you wear this cape you'll receive increased yields from your herbs. That'll be 99000 coins."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "I'm not paying that!",
+                            "steps": [
+                              {
+                                "player": "I'm not paying that."
+                              },
+                              {
+                                "npc": "No skin off my teeth, but if you change your mind, the price will still be the same."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Sure, not many people own one.",
+                            "steps": [
+                              {
+                                "player": "Sure, not many people own one."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 99,000 coins in their inventory:",
+                                "steps": [
+                                  {
+                                    "player": "But, unfortunately, I don't have enough money with me."
+                                  },
+                                  {
+                                    "npc": "Well, come back and see me when you do."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "mNtBb1"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "QLZuk9"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 99,000 coins and enough inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "That's true; us Master Farmers are a unique breed."
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "Player receives a Farming cape and Farming hood and pays 99,000 coins.",
+                                    "action": "receive",
+                                    "action_source": "text",
+                                    "id": "ef-LZs"
+                                  }
+                                ],
+                                "id": "fzV-7o"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hood",
+                    "steps": [
+                      {
+                        "player": "May I have another hood for my cape, please?"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Martin hands you another hood for your skillcape.",
+                        "id": "9yiixu"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Player receives a Farming hood.",
+                        "action": "receive",
+                        "action_source": "text",
+                        "id": "iBagyY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Ask about the quest.",
+            "steps": [
+              {
+                "player": "Okay, this time I've really solved your problems! I've woken up the Fairy Queen!"
+              },
+              {
+                "npc": "Hmm, right. You'll forgive me if I reserve judgement on this until I actually have some crops grow."
+              },
+              {
+                "player": "Of course. The problem was the Godfather, he wanted to take control of Zanaris himself, so he didn't give Fairy Nuff the Queen's secateurs!"
+              },
+              {
+                "npc": "Godfather...Fairy Nuff...the Queen, I don't know what you're talking about and I don't care. I just want my crops to start growing again. Come back and claim your reward once they've had a chance to grow."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-failed-pickpocket-attempt": [
+      {
+        "npc": "Cor blimey mate, what are ye doing in me pockets?"
+      },
+      {
+        "type": "action",
+        "text": "Hits the player for 3 damage for each failed pickpocket",
+        "id": "ibUNJQ"
+      }
+    ],
+    "overhead-dialogue-talking-to-him-after-successfully-pickpocketing-him-recently": [
+      {
+        "npc": "You're the thief who stole from me!"
+      },
+      {
+        "npc": "Guards, guards!"
+      }
+    ]
+  }
+}

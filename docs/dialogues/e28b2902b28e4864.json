@@ -1,0 +1,364 @@
+{
+  "default": null,
+  "variants": {
+    "dialogue-without-99-strength": [
+      {
+        "npc": "Ahhh, hello there, [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me a bit about skillcapes?",
+            "steps": [
+              {
+                "player": "Can you tell me a bit about skillcapes?"
+              },
+              {
+                "npc": "Sure. You can buy a skillcape when you reach level 99 in a skill. Apart from boosting your statistics in that skill, they can also be used to perform some pretty amazing emotes!"
+              },
+              {
+                "npc": "The Cape of Strength also provides you with unlimited teleports to our guild. Is there anything else you would like to know?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "lTe3Hl"
+              }
+            ]
+          },
+          {
+            "text": "What can I do here?",
+            "steps": [
+              {
+                "player": "What can I do here?"
+              },
+              {
+                "npc": "Ahh, the shot put is a great test of strength and can be quite rewarding. Mind you do it properly though, you might want to dust your hands with some powdery substance first. It'll give better grip."
+              },
+              {
+                "player": "I'll remember that. What should I use?"
+              },
+              {
+                "npc": "I personally prefer ground ashes, it makes a nice fine powder and gives some really good grip."
+              },
+              {
+                "player": "Ok, what else?"
+              },
+              {
+                "npc": "Basically you'll need to go in there, make sure you've got nothing cluttering up your hands, pick up a shot and throw it.... depending upon your technique, you can get quite long throws."
+              },
+              {
+                "player": "What was your best?"
+              },
+              {
+                "npc": "Ahh that would be telling..."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "q-qfuy"
+              }
+            ]
+          },
+          {
+            "text": "That's a big axe!",
+            "steps": [
+              {
+                "player": "That's a big axe!"
+              },
+              {
+                "npc": "Yes indeed it is. Have to be mighty strong to wield it too."
+              },
+              {
+                "player": "But you don't look that strong!"
+              },
+              {
+                "npc": "Maybe, maybe not, but I still had to beat a Barbarian to get it. Mind you, usually they don't part with them. This was an unusual circumstance."
+              },
+              {
+                "player": "Oh?"
+              },
+              {
+                "npc": "I bet him he couldn't catch a squirrel whilst still holding his axe but that I could... and that if I won I'd get his axe."
+              },
+              {
+                "player": "What happened?"
+              },
+              {
+                "npc": "He went running after the squirrel... nearly caught it too... it shot up a tree and he tried to climb up it, only got a bit tangled up with his axe cause he couldn't hang on to it at the same time... he fell out of the tree and it"
+              },
+              {
+                "npc": "was my turn...."
+              },
+              {
+                "npc": "I simply went and chopped the tree down with this big old axe, still holding it. The squirrel was so petrified it simply jumped straight out of the tree onto me, I won the axe and let the poor creature go!"
+              },
+              {
+                "player": "I sense a moral in there somewhere."
+              },
+              {
+                "npc": "Aye indeed. Brawn isn't all you need to wield a big axe, brains are required too!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "azeSk5"
+              }
+            ]
+          },
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "player": "May I claim my tokens please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no tokens to claim:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you have not earned any tokens yet. Try some of the activities around the guild to earn some."
+                  },
+                  {
+                    "player": "Ok, I'll go see what I can find."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "FTkIcH"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "npc": "You don't have space to carry them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "mvZVKA"
+              },
+              {
+                "npc": "Of course! Here you go, you've earned [amount] tokens!"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "[amount] Warrior guild tokens",
+                "id": "XVN5uC"
+              },
+              {
+                "player": "Thanks!"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "player": "Bye!"
+              },
+              {
+                "type": "action",
+                "text": "(Sloane bows.)",
+                "action": "emote",
+                "action_source": "text",
+                "id": "q9J9-a"
+              },
+              {
+                "npc": "Be well, warrior [player name]."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dialogue-with-99-strength": [
+      {
+        "npc": "Ahhh, hello there, [player name]."
+      },
+      {
+        "npc": "Ah, but I can see you are already as strong as is possible! Perhaps you have come to me to purchase a Cape of Strength, and thus join the elite few who have mastered this exacting skill?"
+      },
+      {
+        "npc": "As an additional recognition of your achievement, the Cape of Strength can teleport you to our guild."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "May I buy a Skillcape of Strength, please?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has already bought a skillcape before:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Skillcape",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "1FkDr4"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Hood",
+                        "steps": [
+                          {
+                            "player": "May I have another hood for my cape, please?"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has no inventory space:",
+                            "steps": [
+                              {
+                                "npc": "You don't appear to have enough space in your inventory, come back and see me when you do."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "2a7_Ph"
+                          },
+                          {
+                            "npc": "Most certainly, and free of charge!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Sloane hands you another hood for your skillcape.",
+                            "id": "QN5Hvw"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "UfBHyp"
+              },
+              {
+                "player": "May I buy a Skillcape of Strength, please?"
+              },
+              {
+                "npc": "Hmm, yes, you certainly look strong enough. That'll be 99000 gold coins, please."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sorry, that's just too much to pay.",
+                    "steps": [
+                      {
+                        "player": "Sorry, that's just too much to pay."
+                      },
+                      {
+                        "npc": "Not at all; there are many other adventurers who would love the opportunity to purchase such a prestigious item! You can find me here if you change your mind."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sure.",
+                    "steps": [
+                      {
+                        "player": "Sure."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 99,000 coins:",
+                        "steps": [
+                          {
+                            "player": "But, unfortunately, I don't have enough money with me."
+                          },
+                          {
+                            "npc": "Well, come back and see me when you do."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "1zW2km"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough inventory space:",
+                        "steps": [
+                          {
+                            "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "bNKqwX"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a Strength cape and hood",
+                        "id": "fgktDq"
+                      },
+                      {
+                        "npc": "Excellent! Wear that cape with pride my friend."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What can I do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "tnRZt_"
+              }
+            ]
+          },
+          {
+            "text": "That's a big axe!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "z2WD41"
+              }
+            ]
+          },
+          {
+            "text": "May I claim my tokens please?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "mhD5k9"
+              }
+            ]
+          },
+          {
+            "text": "Bye!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "qzNfTQ"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

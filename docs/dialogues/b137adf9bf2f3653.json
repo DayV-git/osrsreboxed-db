@@ -1,0 +1,191 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "Oh, I'm a fisherman by trade and I sometimes help out my father, Safta Doc."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "8gbARx"
+              }
+            ]
+          },
+          {
+            "text": "Is there anything interesting to do here?",
+            "steps": [
+              {
+                "player": "Is there anything interesting to do around here?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Bwana, if anyone else asks me that question today, I'll explode! Go and ask someone else!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Not that I'm aware of, just sit back and enjoy the sunshine bwana!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "Sorry Bwana, I'm already busy, why not go and talk to Murcaily! He's around the village somewhere."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "Well, I think that there's some work to be done...perhaps Murcaily can help you. He usually tends to the hardwood grove to the east of Trufitus's hut."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "steps": [
+                      {
+                        "npc": "It's just village life as normal around here Bwana, always something interesting to find to occupy your time if you look hard enough."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've been doing some work around the village.",
+            "steps": [
+              {
+                "player": "I've been doing some work around the village."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is due to receive trading sticks:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "XlUgxz"
+                  }
+                ],
+                "id": "0DoXQv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already received trading sticks:",
+                "steps": [
+                  {
+                    "npc": "I've already given you some trading sticks and I don't have any more on me at the moment. Why not go and talk to some of the other villagers and get some contributions?"
+                  }
+                ],
+                "id": "spStNW"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "receiving-trading-sticks": [
+      {
+        "npc": "Hey, I've seen you working around the village. You've been doing a lot of good work around here for us. Let me give you something for your trouble."
+      },
+      {
+        "type": "message",
+        "text": "You get [some amount] trading sticks. You are left with [some percentage]% favour.",
+        "id": "y0kgsN"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "trading sticks",
+        "id": "K8Kw4K"
+      }
+    ],
+    "if-the-player-is-wearing-a-tribal-mask": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh - Get away from me you beast!"
+              },
+              {
+                "player": "What's the problem....oh, I'm wearing this big scary mask! I'd better take it off before I start talking to the natives."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Waahhhhh! - It's da evil broodoo beast come ta eat my very soul!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "SCJN2Q"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh - It's a monster!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "HGChQb"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh!!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "wR8F1K"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

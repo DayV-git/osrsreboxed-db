@@ -1,0 +1,248 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-free-to-play-worlds": [
+      {
+        "npc": "Would you like to buy or sell some staffs?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please!",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Zaff's Superior Staffs!",
+                "id": "kKU2uc"
+              }
+            ]
+          },
+          {
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "player": "No, thank you."
+              },
+              {
+                "npc": "Well, 'stick' your head in again if you change your mind."
+              },
+              {
+                "player": "Huh, terrible pun! You just can't get the 'staff' these days!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-members-worlds": [
+      {
+        "npc": "Would you like to buy or sell some staffs? Or is there something else you need?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ofM6R-"
+              }
+            ]
+          },
+          {
+            "text": "No, thank you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "wVQoHz"
+              }
+            ]
+          },
+          {
+            "text": "Have you any extra stock of battlestaffs I can buy?",
+            "condition": "If the player has completed any of the Varrock diaries:",
+            "steps": [
+              {
+                "player": "Have you any extra stock of battlestaffs I can buy?"
+              },
+              {
+                "npc": "For you, my friend, maybe. Take a look in the barrel in the corner."
+              }
+            ],
+            "id": "RlSrwI"
+          },
+          {
+            "text": "Can I have another ring?",
+            "condition": "If the player has completed What Lies Below:",
+            "steps": [
+              {
+                "player": "Can I have another ring?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a beacon ring in their inventory:",
+                "steps": [
+                  {
+                    "npc": "There's still one in your inventory, [player name]!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "hPduM1"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a beacon ring in their bank:",
+                "steps": [
+                  {
+                    "npc": "Go and get the one that's in your bank, [player name]!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "S2p6HZ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "npc": "I would be happy to give you another ring, but I'm afraid you don't have enough inventory space for it!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "xgclJB"
+              },
+              {
+                "npc": "Yes, of course, [player name]. Here you are. Please bear in mind that this ring has no charges left with which to summon me, however."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "beacon ring",
+                "id": "-qkbDJ"
+              }
+            ],
+            "id": "6dobRs"
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-bryophyta-s-essence-in-inventory": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you make me a staff?",
+            "steps": [
+              {
+                "player": "Can you make me a staff?"
+              },
+              {
+                "npc": "Make you a staff? With what?"
+              },
+              {
+                "player": "I found this magical essence when I was out on my adventures. I'd like to attach it to a battlestaff, but I'm not sure how to do that myself."
+              },
+              {
+                "npc": "Let me see this essence."
+              },
+              {
+                "type": "message",
+                "text": "You show Zaff Bryophyta's essence.",
+                "id": "D6QBzn"
+              },
+              {
+                "npc": "Interesting, very interesting. This would indeed make a very nice staff."
+              },
+              {
+                "npc": "You could make it yourself if you wanted. Just attach the essence to a battlestaff."
+              },
+              {
+                "npc": "Nevertheless, I'm happy to do it for you if you like."
+              },
+              {
+                "npc": "I'll attach it to a battlestaff for you if you are willing to pay me 50,000 coins. How does that sound?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Allow Zaff to create Bryophyta's staff for you?",
+                "options": [
+                  {
+                    "text": "Yes, please. (Costs 50,000 coins and Bryophyta's essence)",
+                    "steps": [
+                      {
+                        "player": "Yes, please."
+                      },
+                      {
+                        "type": "unavailable",
+                        "id": "hqkzqF"
+                      },
+                      {
+                        "npc": "Thank you, here you go. I'm not sure what it does, but it feels pretty magical."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Zaff hands you the new staff.",
+                        "id": "sRofB9"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "end",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have 50,000 coins",
+                            "id": "r5FRTX"
+                          },
+                          {
+                            "player": "Oh, I don't have enough coins. I'll come back later."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thanks.",
+                    "steps": [
+                      {
+                        "player": "No, thanks."
+                      },
+                      {
+                        "npc": "I'll be here if you change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "DRKVNY"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,455 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Yeah?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Granddad's fruit farm. It's a right dump. This whole corner of the city is a dump."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So why are you here if it's a dump?",
+                    "steps": [
+                      {
+                        "player": "So why are you here if it's a dump?"
+                      },
+                      {
+                        "npc": "My cow of a sister kicked me out of her bar. Said I was getting the place a bad name. So I'm staying here until I'm old enough to get my own place."
+                      },
+                      {
+                        "npc": "I want to move to Arceuus. It's properly awesome up there. I'll do bartending or something until I can learn to be a necromancer."
+                      },
+                      {
+                        "npc": "Anyway, why are you here? Do you want something?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Tell me about yourself.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "bziYIf"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Never mind.",
+                            "steps": [
+                              {
+                                "player": "Never mind."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, thanks for the info.",
+                    "steps": [
+                      {
+                        "player": "Okay, thanks for the info."
+                      },
+                      {
+                        "npc": "Yeah, you're in the biggest dumpster of Dumpsterville. Now you know. Anyway, do you want something?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Tell me about yourself.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "eHRBKA"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Never mind.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "YCxLkO"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "npc": "Yeah, alright..."
+              },
+              {
+                "npc": "I am Bologa Gricoller, seeker of forbidden wisdom, wanderer of the dark pathways, thinker of the unthinkable. I can do bartending too."
+              },
+              {
+                "npc": "I used to work at The Golden Field. That's my sister's bar. It's mostly farmhands drinking there, but you get some interesting people as well."
+              },
+              {
+                "npc": "See, most Hosidius people are Saradominists. My sister, she's always listening to Father Jean at the church with his goodie-goodie sermons."
+              },
+              {
+                "npc": "But some of us in the bar thought we'd give Zamorak a try. Like, you gotta be open-minded, right? What did Saradomin ever do for us anyway?"
+              },
+              {
+                "npc": "So we'd meet in the bar, sharing books that the Piscarilius smugglers would bring us, learning what the Saradominists don't want us to know."
+              },
+              {
+                "npc": "Anyway, my sister - she's a right cow, by the way - she fired me and kicked me out. Said I was bringing bad sorts to her bar."
+              },
+              {
+                "npc": "Bad sorts, she said! Like, morality is totally subjective, right? So who's she to call us bad sorts just 'cos we're not afraid to think differently?"
+              },
+              {
+                "npc": "Anyway, I've learnt all this cool stuff about Zamorak, and being stuck in a fruit farm doesn't stop me being his loyal servant, right?"
+              },
+              {
+                "npc": "In fact I've invented a Zamorakian blessing that works on fruit! You can use it to make Zamorak's wine out of grapes from the Vinery."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you help me to make Zamorak's wine?",
+                    "steps": [
+                      {
+                        "player": "Can you help me to make Zamorak's wine?"
+                      },
+                      {
+                        "npc": "I'll let you have access to the Zamorakian blessing I invented, so you can invoke Zamorak's unholy power upon the grapes... if I think you're up to it."
+                      },
+                      {
+                        "npc": "I'll want 75,000 coins too."
+                      },
+                      {
+                        "player": "And do you think I'm up to it?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has less than level 50 Prayer:",
+                        "steps": [
+                          {
+                            "npc": "Nah, I bet you couldn't even bless an unholy symbol - you're not going to get very far with my grape blessing."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You need a Prayer level of 50 to use Bologa's blessing.",
+                            "id": "6s-bAY"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "Z6Z5M8"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least level 50 Prayer while wearing other god items:",
+                        "steps": [
+                          {
+                            "npc": "Not likely - I can see from your kit that you're supporting other gods. Dress Zamorakian if you want to impress me. And I'll still want 75,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "5HpKYf"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least level 50 Prayer without wearing a Zamorakian item:",
+                        "steps": [
+                          {
+                            "npc": "You don't look much like a Zamorakian to me. Dress Zamorakian if you want my help. And I'll still want 75,000 coins."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "NGYNL7"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least level 50 Prayer while wearing a Zamorakian item but does not have 75,000 coins:",
+                        "steps": [
+                          {
+                            "npc": "Yeah, I guess you'll do. But I want 75,000 coins. One day I'll need to buy my own house, y'know!"
+                          },
+                          {
+                            "player": "Maybe another time."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "_cqP-M"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least level 50 Prayer while wearing a Zamorakian item and having 75,000 coins:",
+                        "steps": [
+                          {
+                            "npc": "Yeah, I guess you'll do. But I want 75,000 coins. One day I'll need to buy my own house, y'know!"
+                          },
+                          {
+                            "npc": "Here's how it works... I'll write the blessing on scrolls. You need to carry some of the scrolls when you're harvesting grapes."
+                          },
+                          {
+                            "npc": "As each fruit is severed from its stem, it begins to die. That's the moment of vulnerability when Zamorak's unholy power can infest it."
+                          },
+                          {
+                            "npc": "The power consumes the scroll on which the blessing is written, so you'll need one for each grape. I suggest you take a stack of blessings with you."
+                          },
+                          {
+                            "npc": "By the way, Lord Zamorak's chaotic power is quite volatile. You'll likely get a smaller harvest from your vine if you're using these blessings."
+                          },
+                          {
+                            "npc": "I'll give the scrolls to Granddad downstairs. You can get them off him as a reward if you work on his farm. Hey, it's a dump, but he's family. So, do you accept?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Pay 75,000 coins to access Bologa's blessings.",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "You pay Bologa 75,000 coins. You can now claim her blessings from Farmer Gricoller as a reward for working on his farm.",
+                                    "id": "Qzpm65"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Decline.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, no thanks."
+                                  },
+                                  {
+                                    "npc": "Meh."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "izQUfs"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll leave you to it.",
+                    "steps": [
+                      {
+                        "player": "I'll leave you to it."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "Never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-again-before-being-able-to-purchase-bologa-s-blessings": [
+      {
+        "npc": "Hello again."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You said you can make Zamorak's wine from grapes.",
+            "steps": [
+              {
+                "player": "You said you can make Zamorak's wine from grapes."
+              },
+              {
+                "npc": "Yeah, I've invented a blessing that invokes Zamorak's unholy power upon the grapes, so Zamorak's wine can be made from them."
+              },
+              {
+                "npc": "But I won't let you use it unless I think you're up to it. Also, I want 75,000 coins."
+              },
+              {
+                "player": "And do you think I'm up to it?"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "xctgVw"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about yourself again.",
+            "steps": [
+              {
+                "player": "Tell me about yourself again."
+              },
+              {
+                "npc": "It's really nice of you to take an interest..."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Qspm2S"
+              }
+            ]
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "Never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-again-after-being-able-to-purchase-bologa-s-blessings": [
+      {
+        "npc": "Hello again, [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do those blessings work again?",
+            "steps": [
+              {
+                "player": "How do those blessings work again?"
+              },
+              {
+                "npc": "My blessing is written on scrolls. You need to carry some of the scrolls when you're harvesting grapes."
+              },
+              {
+                "npc": "As each fruit is severed from its stem, it begins to die. That's the moment of vulnerability when Zamorak's unholy power can infest it."
+              },
+              {
+                "npc": "The power consumes the scroll on which the blessing is written, so you'll need one for each grape. I suggest you take a stack of blessings with you."
+              },
+              {
+                "npc": "By the way, Lord Zamorak's chaotic power is quite volatile. You'll likely get a smaller harvest from your vine if you're using these blessings."
+              },
+              {
+                "npc": "I've given the scrolls to Granddad downstairs. You can get them off him as a reward for working on his farm. The place may be a dump, but he's family."
+              },
+              {
+                "player": "Thanks."
+              }
+            ]
+          },
+          {
+            "text": "Tell me the story about yourself again.",
+            "steps": [
+              {
+                "player": "Tell me the story about yourself again."
+              },
+              {
+                "npc": "Yeah, okay. It's nice of you to ask..."
+              },
+              {
+                "npc": "I am Bologa Gricoller, seeker of forbidden wisdom, wanderer of the dark pathways, thinker of the unthinkable. I can do bartending too."
+              },
+              {
+                "npc": "I used to work at The Golden Field. That's my sister's bar. It's mostly farmhands drinking there, but you get some interesting people as well."
+              },
+              {
+                "npc": "See, most Hosidius people are Saradominists. My sister, she's always listening to Father Jean at the church with his goodie-goodie sermons."
+              },
+              {
+                "npc": "But some of us in the bar thought we'd give Zamorak a try. Like, you gotta be open-minded, right? What did Saradomin ever do for us anyway?"
+              },
+              {
+                "npc": "So we'd meet in the bar, sharing books that the Piscarilius smugglers would bring us, learning what the Saradominists don't want us to know."
+              },
+              {
+                "npc": "Anyway, my sister - she's a right cow, by the way - she fired me and kicked me out. Said I was bringing bad sorts to her bar."
+              },
+              {
+                "npc": "Bad sorts, she said! Like, morality is totally subjective, right? So who's she to call us bad sorts just 'cos we're not afraid to think differently?"
+              },
+              {
+                "npc": "Anyway, I've learnt all this cool stuff about Zamorak, and being stuck in a fruit farm doesn't stop me being his loyal servant, right?"
+              },
+              {
+                "npc": "So that's how I came to invent that Zamorakian blessing for making Zamorak's wine out of grapes from the Vinery."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How do those blessings work again?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "OfsIgf"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll leave you to it.",
+                    "steps": [
+                      {
+                        "player": "I'll leave you to it."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "Never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

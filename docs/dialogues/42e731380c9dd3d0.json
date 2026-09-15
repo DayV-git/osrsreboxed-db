@@ -1,0 +1,528 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-talking-without-the-cormorant-s-glove-equipped": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "What brings you to these parts, stranger?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "I suppose it is a little different to the places your type are used to..."
+              },
+              {
+                "npc": "This is my humble little hideaway! Plenty of fish around to sustain a man like me, with the help of my trusty cormorant."
+              },
+              {
+                "player": "A bird helps you to fish?"
+              },
+              {
+                "npc": "Sure she does! I haven't used a rod in years, just send her out to the waters and she takes care of it for me!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could I have a go with your bird?",
+                    "steps": [
+                      {
+                        "player": "Could I have a go with your bird?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "Without the skill requirements:",
+                        "steps": [
+                          {
+                            "npc": "These birds can be a lot of work... I'm not sure you could handle them, let alone to catch a fish!"
+                          },
+                          {
+                            "type": "message",
+                            "text": "You need 43 Fishing and 35 Hunter to go aerial fishing.",
+                            "id": "aOuIdz"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "9fa0wH"
+                      },
+                      {
+                        "npc": "I don't know, I doubt that your type's up to the task..."
+                      },
+                      {
+                        "npc": "But it would be quite the amusing sight. Go on!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have anything equipped in gloves or weapon slot.",
+                        "steps": [
+                          {
+                            "npc": "I'll keep an eye on you and make sure you don't have too much trouble with her!"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Alry equips the player with the Cormorant's glove.",
+                            "id": "3zWJ5z"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "lSRV0P"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has something equipped in gloves or weapon slot:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "AaKrS1"
+                          }
+                        ],
+                        "id": "95A_QS"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't think that's for me.",
+                    "steps": [
+                      {
+                        "player": "I don't think that's for me... I'll leave that to you."
+                      },
+                      {
+                        "npc": "No surprises there! Your type never have been cut out for it."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could I have a go with your bird?",
+            "steps": [
+              {
+                "player": "Could I have a go with your bird?"
+              },
+              {
+                "npc": "I don't know, I doubt that your type's up to the task..."
+              },
+              {
+                "npc": "But it would be quite the amusing sight. Go on!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have anything equipped in gloves or weapon slot.",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "Alry equips the player with the Cormorant's glove.",
+                    "id": "_rMGaU"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WWBY6K"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has something equipped in gloves or weapon slot:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "AaKrS1"
+                  }
+                ],
+                "id": "faUQxt"
+              }
+            ]
+          },
+          {
+            "text": "What's in the sack?",
+            "steps": [
+              {
+                "player": "What's in the sack?"
+              },
+              {
+                "npc": "Oh, this? This is my trusty old fish sack!"
+              },
+              {
+                "player": "Fish sack?"
+              },
+              {
+                "npc": "Yeah, fish sack! I might sell you one if you've found any of those pearls around here."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's take a look.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "text": "Alry the Angler's Angling Accessories store opens.",
+                        "action": "open_interface",
+                        "action_source": "text",
+                        "target": "Alry the Angler's Angling Accessories store",
+                        "id": "LHXHUx"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I found this big fish...",
+            "condition": "If the player has a golden tench in their inventory:",
+            "steps": [
+              {
+                "player": "I found this big fish..."
+              },
+              {
+                "npc": "Now that is a biggun! How she managed to wrangle one like that I'll never know."
+              },
+              {
+                "npc": "If you don't want it, I could take it off your hands for a few of those pearls!"
+              },
+              {
+                "player": "I'm interested... How many pearls are we talking?"
+              },
+              {
+                "npc": "I'll give you a hundred pearls for it. What do you say?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade in your golden tench for 100 molch pearls?",
+                "options": [
+                  {
+                    "text": "It's a deal.",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "prompt": "Are you REALLY sure?",
+                        "options": [
+                          {
+                            "text": "No, keep the tench.",
+                            "steps": [
+                              {
+                                "player": "On seconds thoughts, I'd rather keep it."
+                              },
+                              {
+                                "npc": "As you wish."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Yes, exchange the golden tench.",
+                            "steps": [
+                              {
+                                "player": "It's a deal."
+                              },
+                              {
+                                "npc": "Pleasure doing business with you!"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      },
+                      {
+                        "npc": "Well, let me know if you change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "yYpJNS"
+          },
+          {
+            "text": "About feeding the bird...",
+            "steps": [
+              {
+                "player": "About feeding the bird... Do I have to cut up the fish for it?"
+              },
+              {
+                "npc": "Yes, she likes her food chopped up."
+              },
+              {
+                "player": "But she could eat them whole in a pinch?"
+              },
+              {
+                "npc": "I suppose, but you wouldn't want me to catch you feeding her that way."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 20 Molch pearls in their inventory:",
+                "steps": [
+                  {
+                    "player": "Of course, I'd never do such a thing."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You could bargain better if you had some pearls.",
+                    "id": "GKUX9o"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Iv1Wa_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 20 Molch pearls in their inventory:",
+                "steps": [
+                  {
+                    "player": "What if I were to... Sweeten the deal."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You flash a handful of pearls.",
+                    "id": "Rlh4L4"
+                  },
+                  {
+                    "npc": "I do like pearls..."
+                  },
+                  {
+                    "npc": "I'll do it for 20 of them."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay 20 pearls?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "steps": [
+                          {
+                            "player": "Here you go."
+                          },
+                          {
+                            "type": "choice",
+                            "prompt": "Feed the cormorant whole fish?",
+                            "options": [
+                              {
+                                "text": "Yes",
+                                "steps": []
+                              },
+                              {
+                                "text": "No",
+                                "steps": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "player": "I'm afraid that's a little too steep for me."
+                          },
+                          {
+                            "npc": "Then get out of my sight!"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "hsp3kq"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-without-the-cormorant-s-glove-equipped-if-a-singular-fish-sack-was-purchased-prior-to-19th-august-2026": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Ah, it's you. Listen... There's something I need to tell you."
+      },
+      {
+        "player": "Go on..."
+      },
+      {
+        "npc": "I overcharged you for the fish sack. I set that price for your type because I've found most of you arrogant."
+      },
+      {
+        "player": "My type?"
+      },
+      {
+        "npc": "Adventurers! But as I was saying, you've proved to have a real passion for the craft. I was wrong."
+      },
+      {
+        "player": "Oh, right. Well, thanks for coming clean."
+      },
+      {
+        "npc": "I'd like to make things right. Here you go."
+      },
+      {
+        "type": "message",
+        "text": "Alry hands you 500 pearls.",
+        "id": "-LIfJT"
+      },
+      {
+        "player": "Thank you."
+      },
+      {
+        "npc": "You're very welcome!"
+      }
+    ],
+    "standard-dialogue-talking-without-the-cormorant-s-glove-equipped-if-multiple-fish-sacks-were-purchased-prior-to-19th-august-2026": [
+      {
+        "type": "missing",
+        "id": "9XNzlw"
+      }
+    ],
+    "standard-dialogue-talking-with-the-cormorant-s-glove-equipped": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Ah, it's you. How are you finding things?"
+      },
+      {
+        "player": "It certainly is a challenge..."
+      },
+      {
+        "npc": "Yes, your type do often seem to underestimate it! Are you finished?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Not yet. I think I'll keep trying.",
+            "steps": [
+              {
+                "player": "Not yet. I think I'll keep trying."
+              },
+              {
+                "npc": "Just come back and let me know when you get tired!"
+              }
+            ]
+          },
+          {
+            "text": "Yeah, I'll try again another time.",
+            "steps": [
+              {
+                "player": "I'll try again another time."
+              },
+              {
+                "type": "action",
+                "text": "Alry takes back the Cormorant's glove",
+                "id": "OjevQJ"
+              }
+            ]
+          },
+          {
+            "text": "I found this big fish...",
+            "condition": "If the player has a golden tench in their inventory:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "fLpXMJ"
+              }
+            ],
+            "id": "bHrNRT"
+          }
+        ]
+      }
+    ],
+    "get-bird": [
+      {
+        "player": "Could I have a go with your bird?"
+      },
+      {
+        "type": "condition",
+        "text": "Without the skill requirements:",
+        "steps": [
+          {
+            "npc": "These birds can be a lot of work... I'm not sure you could handle them, let alone to catch a fish!"
+          },
+          {
+            "type": "message",
+            "text": "You need 43 Fishing and 35 Hunter to go aerial fishing.",
+            "id": "kxnppa"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "u-O_bc"
+      },
+      {
+        "npc": "I don't know, I doubt that your type's up to the task..."
+      },
+      {
+        "npc": "But it would be quite the amusing sight. Go on!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have anything equipped in the gloves or weapon slot:",
+        "steps": [
+          {
+            "npc": "I'll keep an eye on you and make sure you don't have too much trouble with her!"
+          },
+          {
+            "type": "action",
+            "text": "Alry equips the player with the Cormorant's glove.",
+            "id": "ehOzHG"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "TbEqlx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has something equipped in the gloves or weapon slot:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "AaKrS1"
+          }
+        ],
+        "id": "aRflIC"
+      }
+    ]
+  },
+  "branches": {
+    "AaKrS1": [
+      {
+        "npc": "You're going to need to free up your hands first, though. Nothing in or on your hands."
+      }
+    ]
+  }
+}

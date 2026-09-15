@@ -1,0 +1,332 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-priest-in-peril": [
+      {
+        "type": "condition",
+        "text": "If the player has lost their wolfbane dagger:",
+        "steps": [
+          {
+            "player": "I've lost my wolfbane dagger."
+          },
+          {
+            "type": "condition",
+            "text": "If the player's inventory is full:",
+            "steps": [
+              {
+                "npc": "Yes I know, but you have no space for a it at the moment so I can't return it to you."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "efh3DR"
+          },
+          {
+            "type": "condition",
+            "text": "If the player's inventory isn't full:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "wolfbane dagger",
+                "id": "cb-Z4u"
+              },
+              {
+                "player": "I've lost my wolfbane dagger."
+              },
+              {
+                "npc": "Yes I know! Luckily for you it washed up on the banks of the Salve earlier! Here, take it again, but please try and be more careful this time. It's a family heirloom after all!"
+              },
+              {
+                "player": "Thanks for that!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "O9U0uS"
+          }
+        ],
+        "id": "pepn_m"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has lost their temple library key:",
+        "steps": [
+          {
+            "player": "I've lost my library key."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "temple library key",
+            "id": "7Z6IoI"
+          },
+          {
+            "npc": "Ok, here's another one for you."
+          },
+          {
+            "player": "Thanks for that!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "P91CrU"
+      },
+      {
+        "type": "condition",
+        "text": "Before Nature Spirit:",
+        "steps": [
+          {
+            "player": "Hello again, Drezel. Is there anything that I can help you out with around here?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not meet the requirements for Nature Spirit:",
+            "steps": [
+              {
+                "npc": "Well... I don't think so. There's not much to do in that place."
+              },
+              {
+                "type": "message",
+                "text": "You do not meet all of the requirements to start the Nature Spirit quest.",
+                "id": "UhGLTw"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "VqCaJV"
+          },
+          {
+            "type": "condition",
+            "text": "If the player meets the requirements for Nature Spirit:",
+            "steps": [
+              {
+                "npc": "Well... there is something you could do for me if you're interested. Though it is quite dangerous."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Well, what is it, I may be able to help?"
+                  }
+                ]
+              },
+              {
+                "player": "Well, what is it, I may be able to help?"
+              },
+              {
+                "npc": "There's a man called Filliman who lives in Mort Myre. He comes by the temple from time to time but I haven't seen him recently. I was wondering if you could check in on him?"
+              },
+              {
+                "npc": "I must warn you, it could be dangerous. Mort Myre is filled with ghasts!",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Start Nature Spirit quest?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "type": "reference",
+                            "target": "Transcript:Nature Spirit",
+                            "section": "",
+                            "text": "Continues in Transcript:Nature Spirit",
+                            "id": "4RlfMg",
+                            "resolved": false,
+                            "page_available": true
+                          }
+                        ],
+                        "hook": "quest:nature-spirit:start",
+                        "quest": "Nature Spirit"
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "player": "Sorry, I don't think I can help."
+                          },
+                          {
+                            "npc": "That's fine, I'm sure someone else will be along shortly who can. Now, if you will excuse me, I do have some things to be getting on with."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sorry, not interested.",
+                    "steps": [
+                      {
+                        "player": "Sorry, not interested."
+                      },
+                      {
+                        "npc": "Of course. I understand."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "n4aprr"
+          }
+        ],
+        "id": "YMQKie"
+      }
+    ],
+    "standard-dialogue-after-priest-in-peril-after-nature-spirit": [
+      {
+        "player": "Hi there! Filliman says I've completed the quest!"
+      },
+      {
+        "npc": "That's fantastic, well done!"
+      }
+    ],
+    "standard-dialogue-after-priest-in-peril-after-darkness-of-hallowvale": [
+      {
+        "npc": "Hello, [player name]. How are things in Morytania?"
+      },
+      {
+        "player": "Not as well as I'd hope, Drezel. I'm still working with the Myreque. I just hope that we can find a way to defeat those Drakans."
+      },
+      {
+        "npc": "You can be sure that a great many people hope for exactly the same thing, [player name]. Good luck to you, and Myreque prevail!"
+      },
+      {
+        "player": "Myreque prevail, Drezel."
+      }
+    ],
+    "standard-dialogue-after-priest-in-peril-after-a-taste-of-hope": [
+      {
+        "npc": "How's everything going, [player name]?"
+      },
+      {
+        "player": "We've managed to create a new weapon to fight the vampyres with. I used it to kill Ranis Drakan!"
+      },
+      {
+        "npc": "This is amazing news, [player name]. Myreque prevail!"
+      },
+      {
+        "player": "Myreque prevail, Drezel."
+      }
+    ],
+    "standard-dialogue-after-priest-in-peril-after-sins-of-the-father": [
+      {
+        "npc": "[player name]. How are things?"
+      },
+      {
+        "player": "As well as they could be, everything considered. We lost everything, Drezel."
+      },
+      {
+        "npc": "Not everything. There's still you, me and Ivan. Veliaf is out there somewhere as well. It's not much, but it's something to be thankful for."
+      },
+      {
+        "player": "I suppose."
+      },
+      {
+        "npc": "Morytania has never been darker. Trust in Saradomin, friend. There is still a chance we will live through this darkness."
+      }
+    ],
+    "standard-dialogue-after-priest-in-peril-after-the-blood-moon-rises": [
+      {
+        "npc": "[player name]. How are things?"
+      },
+      {
+        "player": "Not too bad, Drezel. How about here?"
+      },
+      {
+        "npc": "Well, it's nice to not have to worry as much about the vampyres, but I must admit, I'm still not overly comfortable about the fact that we're now all trying to be friends."
+      },
+      {
+        "player": "It was that or we try to kill them all, and I'm not totally sure wiping out a whole race would have been the best of ideas either... not that we'd have ever likely been able to."
+      },
+      {
+        "npc": "You make a good point. And I suppose the King is behind it, even if that advisor of his isn't... Even still, I'm glad we have the Salve to stop them if they do try anything."
+      },
+      {
+        "npc": "In happier news, Ivan is now able to properly focus on his studying... though he does still sneak off for the odd adventure from time to time."
+      },
+      {
+        "player": "Well, I suppose you can't be too picky."
+      },
+      {
+        "npc": "Indeed. The important part is that he will be a worthy successor. Of that, I can be confident."
+      },
+      {
+        "player": "I couldn't agree more. Until next time, Drezel."
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "Ah! Here you go!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to help me with this."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "UNvp_N"
+      },
+      {
+        "type": "message",
+        "text": "Drezel has given you a challenge scroll!",
+        "id": "7t79fV"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please give me your answer!"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "Nope, not correct!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Zo9ZcB"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll/a casket",
+            "id": "cvhQF_"
+          },
+          {
+            "type": "message",
+            "text": "Drezel has given you another clue scroll!",
+            "id": "B9HDI5"
+          }
+        ],
+        "id": "66dj14"
+      }
+    ]
+  }
+}

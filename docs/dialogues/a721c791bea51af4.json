@@ -1,0 +1,151 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Are you a cook? I need more staff."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's going on here?",
+            "steps": [
+              {
+                "player": "What's going on here?"
+              },
+              {
+                "npc": "This is the Hosidius Mess. It was set up to help feed the soldiers from the Shayzien Encampment. Much better than anything they can cook over there."
+              },
+              {
+                "player": "How come it's so far from Hosidius?"
+              },
+              {
+                "npc": "The solders do enough hard work, so it seemed only right not to make them walk all the way across Kourend for a bit of food."
+              },
+              {
+                "npc": "Anyway, enough chatting. Are you a cook?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "ZOqxk6"
+              }
+            ]
+          },
+          {
+            "text": "Yeah, I can do some cooking.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "With less than 20 Cooking:",
+                "steps": [
+                  {
+                    "player": "Yeah, I can do some cooking. Well, my level's [number<20], anyway."
+                  },
+                  {
+                    "npc": "Hah! You'll need a level of 20 to cook anything for these soldiers. They're picky about what they eat."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "883-V3"
+              },
+              {
+                "type": "condition",
+                "text": "With at least 20 Cooking:",
+                "steps": [
+                  {
+                    "player": "Yeah, I can do some cooking."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have enough Hosidius Favour:",
+                    "steps": [
+                      {
+                        "npc": "Good. When you've got more Hosidius favour, come back and I'll have plenty for you to do."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "qrg3ON"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has enough Hosidius Favour:",
+                    "steps": [
+                      {
+                        "npc": "Good. The soldiers like stew, meat pies and pineapple pizza. You'll find ingredients in the cupboards."
+                      },
+                      {
+                        "npc": "When you've made something, put it on the buffet tables, and you'll gain experience based on how much the soldiers appreciate them."
+                      }
+                    ],
+                    "id": "7EWX6d"
+                  }
+                ],
+                "id": "PLZzjW"
+              }
+            ]
+          },
+          {
+            "text": "No, I'm off.",
+            "steps": [
+              {
+                "player": "No, I'm off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attempting-to-serve-food-or-take-servery-ingredients-without-20-hosidius-favour": [
+      {
+        "npc": "You're not authorised to work in my kitchen."
+      }
+    ],
+    "attempting-to-serve-servery-ingredients": [
+      {
+        "npc": "They're not going to eat anything you've got there. Make them meat pies, stew or pineapple pizza."
+      }
+    ],
+    "attempting-to-eat-servery-food-or-servery-ingredients": [
+      {
+        "npc": "Hey, that's not for you!"
+      }
+    ],
+    "serving-meat-pie-pineapple-pizza-or-stew": [
+      {
+        "npc": "They're not going to eat that. Use the ingredients provided here."
+      }
+    ],
+    "serving-meat-pie-pineapple-pizza-or-stew-serving-anything-other-type-of-food": [
+      {
+        "npc": "They're not going to eat that. Make them meat pies, stew or pineapple pizza."
+      }
+    ],
+    "treasure-trails-master-with-inventory-space-available": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a torn clue scroll",
+        "id": "RMhwz5"
+      },
+      {
+        "npc": "Here you go."
+      },
+      {
+        "type": "message",
+        "text": "You are handed a torn part of a clue scroll.",
+        "id": "ZRoVxx"
+      }
+    ],
+    "treasure-trails-master-with-no-inventory-space": [
+      {
+        "npc": "Hey, I have something for you but you don't have any space for it!"
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hey there, what's with all the shouting."
+      },
+      {
+        "npc": "Our all-powerful Lord Zamorak is looking for the strongest of champions, you hardly look like you fit that criteria."
+      },
+      {
+        "player": "I am big and strong, what does he need new champions for?"
+      },
+      {
+        "npc": "The glorious battlefield of Castle Wars, where we can smite down the weak followers of Saradomin needs new blood."
+      },
+      {
+        "type": "choice",
+        "prompt": "Join Castle Wars?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "That sounds neat, I'll be a champion for Zamorak."
+              },
+              {
+                "npc": "Bring death to Saradomin in his great name."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has non-combat items in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Some items are stopping you from entering the Castle Wars waiting area. See the chat for details.",
+                    "id": "uzBhSq"
+                  },
+                  {
+                    "type": "action",
+                    "text": "You can't take non-combat items into the arena.",
+                    "id": "hOopkI"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "_TawmV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has anything equipped in the head or cape slot:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Some items are stopping you from entering the Castle Wars waiting area. See the chat for details.",
+                    "id": "f8Ft03"
+                  },
+                  {
+                    "type": "action",
+                    "text": "You can't wear hats, capes, or helms in the arena.",
+                    "id": "CP3uZz"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "uowg2q"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any prohibited items:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player is teleported to the current world's Zamorak Castle Wars lobby.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "V5RjvK"
+                  }
+                ],
+                "id": "LKgS8k"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "He can find a champion somewhere else, I'll pass."
+              },
+              {
+                "npc": "Fool, you'll regret this one day."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "on-seasonal-or-permanent-deadman-mode-worlds": [
+      {
+        "type": "message",
+        "text": "Sorry, you can't play Castle Wars on this world. Try world 334 for the official world.",
+        "id": "x3omTP"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "action",
+        "text": "Every 40-60 ticks:",
+        "id": "vRu7yH"
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Fight for Zamorak today!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Join the fight now."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Saradomin is weak, use your strength where it's respected!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Your Lord Zamorak needs your help!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "steps": [
+    {
+      "npc": "Hello, and welcome to the Grand Exchange! How can I help you?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Ask for a starter pack.",
+          "condition": "In Deadman: Annihilation:",
+          "steps": [
+            {
+              "player": "Could I have a starter pack?"
+            },
+            {
+              "npc": "Here you go. One starter pack. Enjoy."
+            },
+            {
+              "type": "end"
+            }
+          ],
+          "id": "nj39-u"
+        },
+        {
+          "text": "What is this place?",
+          "steps": [
+            {
+              "player": "What is this place?"
+            },
+            {
+              "npc": "This is the Grand Exchange, the best trading spot in the land! People come from all across the country to buy and sell every item under the sun."
+            },
+            {
+              "npc": "When you want to buy or sell an item, talk to the clerks in the middle. They'll tell you how to set up a trade offer."
+            },
+            {
+              "npc": "Now, is there something I can do for you?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "OYjQdU"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "condition",
+      "text": "If the player is on a Deadman Mode world:",
+      "steps": [
+        {
+          "type": "choice",
+          "options": [
+            {
+              "text": "Let's talk about where I respawn when I die.",
+              "steps": [
+                {
+                  "player": "Let's talk about where I respawn when I die."
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player's respawn location is not at the Grand Exchange:",
+                  "steps": [
+                    {
+                      "npc": "You're currently due to respawn somewhere else. Would you rather respawn here, at the Grand Exchange, instead."
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "Yes, I'd like to respawn at the Grand Exchange.",
+                          "steps": [
+                            {
+                              "player": "Yes, I'd like to respawn at the Grand Exchange."
+                            },
+                            {
+                              "npc": "Okay, you can respawn here when you die. Let me know if you change your mind."
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "No thanks, leave me alone.",
+                          "steps": [
+                            {
+                              "player": "No thanks, leave me alone."
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "9sbF_i"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player's respawn location is at the Grand Exchange:",
+                  "steps": [
+                    {
+                      "npc": "You're currently due to respawn here, at the Grand Exchange."
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "I'd rather respawn in Lumbridge.",
+                          "steps": [
+                            {
+                              "player": "I'd rather respawn in Lumbridge."
+                            },
+                            {
+                              "npc": "Please yourself. You will now respawn in Lumbridge when you die. Let me know if you change your mind."
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Okay, respawning here sounds great.",
+                          "steps": [
+                            {
+                              "player": "Okay, respawning here sounds great."
+                            },
+                            {
+                              "type": "end"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "eKDWRT"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "id": "l_rAR3"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Can you tell me the price of an item?",
+          "steps": [
+            {
+              "player": "Can you tell me the price of an item?"
+            },
+            {
+              "npc": "What had you in mind?"
+            },
+            {
+              "type": "action",
+              "text": "(Brugsen's price checker interface opens.)",
+              "action": "open_interface",
+              "action_source": "text",
+              "target": "Brugsen's price checker",
+              "id": "i9ubyb"
+            },
+            {
+              "player": "Thank you."
+            }
+          ]
+        },
+        {
+          "text": "I'm fine, thanks.",
+          "steps": [
+            {
+              "player": "I'm fine, thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

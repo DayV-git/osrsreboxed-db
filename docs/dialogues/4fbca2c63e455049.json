@@ -1,0 +1,262 @@
+{
+  "steps": [
+    {
+      "player": "Hi!"
+    },
+    {
+      "npc": "Hi. How can I help?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Can you heal me?",
+          "steps": [
+            {
+              "player": "Can you heal me?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player is on a PvP world:",
+              "steps": [
+                {
+                  "npc": "Sorry, I'm not on duty."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "iCdJpu"
+            },
+            {
+              "type": "condition",
+              "text": "If the player is on a Deadman world:",
+              "steps": [
+                {
+                  "npc": "PLEASE DON'T KILL ME!"
+                },
+                {
+                  "player": "I was... looking to be healed."
+                },
+                {
+                  "npc": "No way, I'm out of here just as soon as I've packed up my stuff!"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "e1wPuH"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has full Hitpoints:",
+              "steps": [
+                {
+                  "npc": "You look healthy to me!"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "2XIyvL"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have full Hitpoints:",
+              "steps": [
+                {
+                  "npc": "Of course!"
+                },
+                {
+                  "type": "message",
+                  "text": "Surgeon General Tafani heals you for 21 Hitpoints.",
+                  "id": "Mpl0KA"
+                }
+              ],
+              "id": "A0jQ0C"
+            }
+          ]
+        },
+        {
+          "text": "Do you see a lot of injured fighters?",
+          "steps": [
+            {
+              "player": "Do you see a lot of injured fighters?"
+            },
+            {
+              "npc": "Yes I do. Thankfully we can cope with almost anything. Jaraah really is a wonderful surgeon, his methods are a little unorthodox but he gets the job done."
+            },
+            {
+              "npc": "I shouldn't tell you this but his nickname is 'The Butcher'."
+            },
+            {
+              "player": "That's reassuring."
+            }
+          ]
+        },
+        {
+          "text": "Do you come here often?",
+          "steps": [
+            {
+              "player": "Do you come here often?"
+            },
+            {
+              "npc": "I work here, so yes!"
+            },
+            {
+              "npc": "You're silly!"
+            }
+          ]
+        },
+        {
+          "text": "Can you tell me about your cape?",
+          "condition": "If the player does not have 99 Hitpoints:",
+          "steps": [
+            {
+              "player": "Can you tell me about your cape?"
+            },
+            {
+              "npc": "Certainly! Skillcapes are a symbol of achievement. Only people who have mastered a skill and reached level 99 can get their hands on them and gain the benefits they carry."
+            },
+            {
+              "npc": "The Cape of Hitpoints doubles the speed of your hitpoints replenishing when worn. Is there anything else I can help you with?"
+            }
+          ],
+          "id": "dq6XBo"
+        },
+        {
+          "text": "Can I buy a Skillcape of Hitpoints from you?",
+          "condition": "If the player has 99 Hitpoints:",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "If the player is on a PvP Arena world:",
+              "steps": [
+                {
+                  "player": "Can I buy a Skillcape of Hitpoints from you?"
+                },
+                {
+                  "npc": "Sorry, I'm under orders to not sell capes right now."
+                },
+                {
+                  "type": "message",
+                  "text": "You cannot do that on this game world.",
+                  "id": "RUiHDN"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "5dSal6"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Skillcape",
+                  "steps": [
+                    {
+                      "player": "Can I buy a Skillcape of Hitpoints from you?"
+                    },
+                    {
+                      "npc": "Why, certainly my friend. However, owning such an item makes you part of an elite group and wearing it will double the speed of your hitpoints replenishing."
+                    },
+                    {
+                      "npc": "Such a privilege will cost you 99,000 coins."
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "Sorry, that's much too pricey.",
+                          "steps": [
+                            {
+                              "player": "Sorry, that's much too pricey."
+                            },
+                            {
+                              "npc": "I'm sorry you feel that way. Still if you change your mind..."
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Sure, that's not too expensive for such a magnificent cape.",
+                          "steps": [
+                            {
+                              "player": "Sure, that's not too expensive for such a magnificent cape."
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player does not have at least 99,000 coins:",
+                              "steps": [
+                                {
+                                  "player": "But, unfortunately, I don't have enough money with me."
+                                },
+                                {
+                                  "npc": "Well come back and see me when you do."
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "ixuqiL"
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                              "steps": [
+                                {
+                                  "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                                },
+                                {
+                                  "type": "end"
+                                }
+                              ],
+                              "id": "nXXnjH"
+                            },
+                            {
+                              "type": "condition",
+                              "text": "If the player has at least 99,000 coins and enough inventory space:",
+                              "steps": [
+                                {
+                                  "type": "action",
+                                  "action": "receive",
+                                  "text": "a Hitpoints cape and hood",
+                                  "id": "IlCat5"
+                                },
+                                {
+                                  "npc": "Wear this cape in good health, my friend."
+                                }
+                              ],
+                              "id": "KBZUnF"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": "Hood",
+                  "steps": [
+                    {
+                      "player": "May I have another hood for my cape, please?"
+                    },
+                    {
+                      "npc": "Most certainly, and free of charge!"
+                    },
+                    {
+                      "type": "message",
+                      "text": "Tafani hands you another hood for your skillcape.",
+                      "id": "ump_VH"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "s2BKZa"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome to my court. I am King Arthur of the Knights of the Round Table."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I want to become a Knight of the Round Table!",
+            "steps": [
+              {
+                "player": "I want to become a Knight of the Round Table!"
+              },
+              {
+                "npc": "Really? Well then you will need to go on a quest to prove yourself worthy. My knights all appreciate a good quest."
+              },
+              {
+                "npc": "Unfortunately, our current quest is to rescue Merlin. He recently got himself trapped in some sort of magical crystal. We've moved him from the cave we found him in and now he's upstairs in his tower."
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Merlin's Crystal quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "I will see what I can do then."
+                      },
+                      {
+                        "npc": "Talk to my knights if you need any help."
+                      }
+                    ],
+                    "hook": "quest:merlin-s-crystal:start",
+                    "quest": "Merlin's Crystal"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ZxEk3_"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "So what are you doing in Gielinor?",
+            "steps": [
+              {
+                "player": "So what are you doing in Gielinor?"
+              },
+              {
+                "npc": "Well legend says we will return to Britain in its time of greatest need. But that's not for quite a while yet."
+              },
+              {
+                "npc": "So we've moved the whole outfit here for now."
+              },
+              {
+                "npc": "We're passing the time in Gielinor!"
+              }
+            ]
+          },
+          {
+            "text": "Thank you very much.",
+            "steps": [
+              {
+                "player": "Thank you very much."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-merlin-s-crystal": [
+      {
+        "player": "Now I am a knight of the round table, do you have any more quests for me?"
+      },
+      {
+        "npc": "Aha! I'm glad you are here! I am sending out various knights on an important quest. I was wondering if you too would like to take up this quest?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me of this quest.",
+            "steps": [
+              {
+                "player": "Tell me of this quest."
+              },
+              {
+                "npc": "Well, we recently found out that the Holy Grail has passed into Gielinor."
+              },
+              {
+                "npc": "This is most fortuitous!"
+              },
+              {
+                "npc": "None of my knights ever did return with it last time. Now we have the opportunity to give it another go, maybe this time we will have more luck!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's combat level is less than 50:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 50.",
+                    "id": "YDb27D"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "dICiz9"
+                  }
+                ],
+                "id": "QrFU1B"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's combat level is more than 50:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Start the Holy Grail quest?",
+                    "options": []
+                  }
+                ],
+                "id": "eLottl"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "I'd enjoy trying that."
+                      },
+                      {
+                        "npc": "Go speak to Merlin. He may be able to give a better clue as to where it is now you have freed him from that crystal."
+                      },
+                      {
+                        "npc": "He has set up his workshop in the room next to the library."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ZxEk3_"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I am weary of questing for the time being...",
+            "steps": [
+              {
+                "player": "I am weary of questing for the time being..."
+              },
+              {
+                "npc": "Maybe later then?"
+              },
+              {
+                "player": "Maybe so."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-holy-grail": [
+      {
+        "npc": "Thank you for retrieving the Grail! You shall be long remembered as one of the greatest heroes amongst the Knights of the Round Table!"
+      }
+    ],
+    "standard-dialogue-after-completing-king-s-ransom": [
+      {
+        "npc": "Welcome, brave knight. I am always happy to see you back at my court. Please feel free to roam the castle and make use of the training grounds."
+      }
+    ]
+  },
+  "branches": {
+    "ZxEk3_": [
+      {
+        "player": "I may come back and try that later."
+      },
+      {
+        "npc": "Be sure that you come speak to me soon then."
+      }
+    ]
+  }
+}

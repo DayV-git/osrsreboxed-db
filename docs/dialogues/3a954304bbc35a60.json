@@ -1,0 +1,142 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "The High Priestess says you're to be the sacrifice instead of me. I was so looking forward to meeting Zulrah."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Don't you understand that I've saved your life?",
+            "steps": [
+              {
+                "player": "Don't you understand that I've saved your life?"
+              },
+              {
+                "npc": "In death, the nutrients of my lowly body were destined to nourish the mighty Zulrah. I would have become one with my god."
+              },
+              {
+                "npc": "Still, it is nice to live a little longer. Thank you for what you have done."
+              }
+            ]
+          },
+          {
+            "text": "I'm sorry.",
+            "steps": [
+              {
+                "player": "I'm sorry."
+              },
+              {
+                "npc": "While I am saddened that my destiny has not been fulfilled, it is nice to live a little longer. Thank you for what you have done."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-to-him-before-offering-yourself-as-a-sacrifice": [
+      {
+        "npc": "I am the chosen one. Soon I shall meet Zulrah face-to- face, and my sacrifice shall fulfil the sacred contract that protects our tribe."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Don't you care that you're going to die?",
+            "steps": [
+              {
+                "player": "Don't you care that you're going to die?"
+              },
+              {
+                "npc": "In death, the nutrients of my lowly body shall nourish the mighty Zulrah. I shall become one with my god."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "2EvcuQ"
+              }
+            ]
+          },
+          {
+            "text": "Can I go and confront Zulrah myself?",
+            "steps": [
+              {
+                "player": "Can I go and confront Zulrah myself?"
+              },
+              {
+                "npc": "The High Priestess has chosen me. I don't know how she decides these things, but perhaps you should ask her."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "h705N2"
+              }
+            ]
+          },
+          {
+            "text": "I'm off.",
+            "steps": [
+              {
+                "player": "I'm off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails": [
+      {
+        "npc": "Here, solve this."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [light/puzzle] box",
+        "id": "UkjKlm"
+      },
+      {
+        "type": "message",
+        "text": "Sacrifice hands you a [light puzzle box/puzzlebox]!",
+        "id": "WZ8swX"
+      }
+    ],
+    "treasure-trails-talking-again": [
+      {
+        "type": "condition",
+        "text": "If the puzzle is not solved:",
+        "steps": [
+          {
+            "npc": "That doesn't look solved to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "BrQVQF"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle is solved:",
+        "steps": [
+          {
+            "npc": "Well done [player name]. Here you go."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a [new clue/casket]",
+            "id": "kTvAGU"
+          },
+          {
+            "type": "message",
+            "text": "You've been given [a casket/a new clue]!",
+            "id": "e-RhKT"
+          }
+        ],
+        "id": "iBrq_s"
+      }
+    ]
+  }
+}

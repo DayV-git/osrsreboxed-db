@@ -1,0 +1,111 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Good day."
+      },
+      {
+        "player": "Hey there. What brings you here?"
+      },
+      {
+        "npc": "This is the dense essence mine. The essence we gather here is used across Arceuus, and indeed all of Kourend. If you wish, you are welcome to mine some yourself."
+      },
+      {
+        "player": "I might do that. Thanks."
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "HnhENl"
+      },
+      {
+        "type": "message",
+        "text": "Clerris has given you a challenge scroll!",
+        "id": "2guYM8"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "nqtbYX"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll/a casket",
+            "id": "LUkVxr"
+          },
+          {
+            "type": "message",
+            "text": "[Clerris has given you another clue scroll!/You've obtained a casket!]",
+            "id": "IUBjdt"
+          }
+        ],
+        "id": "dydUuG"
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "The mages of Arceuus seek dense essence for their experiments. I see you have [amount] blocks; we require [amount]. Donations will be marked with gratitude."
+      },
+      {
+        "type": "choice",
+        "prompt": "Donate your dense essence?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Dense essence is taken and favour is given.",
+                "id": "QblMmA"
+              },
+              {
+                "npc": "Your donation has been gratefully recieved."
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "player": "No, sorry, they can't have it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-if-the-player-has-maximum-arceuus-favour": [
+      {
+        "npc": "We do not require any dense essence from you at present. Thank you for your support."
+      }
+    ]
+  }
+}

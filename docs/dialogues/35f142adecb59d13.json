@@ -1,0 +1,420 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-north-ferryman": [
+      {
+        "npc": "Want to cross the river? It's just 2 gold pieces!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The dwarf ferries you across the river.",
+                    "id": "dvraEN"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "5O4XPs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 2 coins:",
+                "steps": [
+                  {
+                    "npc": "You don't even have 2 gold coins, human!"
+                  },
+                  {
+                    "npc": "Come back later."
+                  },
+                  {
+                    "player": "But... that means I'm stuck here."
+                  },
+                  {
+                    "npc": "Hmm. I suppose I could make an exception for you this time."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has exactly 1 coin:",
+                    "steps": [
+                      {
+                        "npc": "Here, let me just relieve you of that one coin you have there and I'll take you across."
+                      }
+                    ],
+                    "id": "m_r0aM"
+                  },
+                  {
+                    "player": "Thanks a lot!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The dwarf ferries you across the river.",
+                    "id": "jnuiI_"
+                  }
+                ],
+                "id": "gDExkU"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          },
+          {
+            "text": "[Charm] I don't have any money on me.",
+            "condition": "If the player has the Ring of Charos equipped:",
+            "steps": [
+              {
+                "player": "I don't have any money on me, now I'm stuck here forever!"
+              },
+              {
+                "npc": "Oh, we wouldn't want that to happen. Come along, you can go for free this time."
+              },
+              {
+                "type": "message",
+                "text": "The dwarf ferries you across the river.",
+                "id": "d9TbkS"
+              }
+            ],
+            "id": "Q09_BP"
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-south-ferryman": [
+      {
+        "npc": "Want to cross the river? It's just 2 gold pieces!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The dwarf ferries you across the river.",
+                    "id": "sOW370"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "T181L6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "NLc7YU"
+                  }
+                ],
+                "id": "vKv8C_"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          },
+          {
+            "text": "[Charm] I don't have any money on me.",
+            "condition": "If the player has the Ring of Charos equipped:",
+            "steps": [
+              {
+                "player": "I don't have any money on me, is that alright?"
+              },
+              {
+                "npc": "I... guess."
+              },
+              {
+                "type": "message",
+                "text": "The dwarf ferries you across the river.",
+                "id": "PJ6RxL"
+              }
+            ],
+            "id": "vP_Pt5"
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-south-ferryman-standard-dialogue": [
+      {
+        "npc": "Hello there, want a ride?"
+      },
+      {
+        "player": "A ride, where to?"
+      },
+      {
+        "npc": "Across the river, across the river! It's just a short ride!"
+      },
+      {
+        "player": "How much will that cost me?"
+      },
+      {
+        "npc": "Haha, you understand us dwarves well, human!"
+      },
+      {
+        "npc": "It's just 2 gold pieces! Want to go?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to go further downstream.",
+            "steps": [
+              {
+                "player": "I'd like to go further downstream."
+              },
+              {
+                "npc": "You mean to the city of Keldagrim?"
+              },
+              {
+                "player": "Ehm, yes, I think so."
+              },
+              {
+                "npc": "Sorry, I'm just a simple ferryman, I only go across."
+              },
+              {
+                "npc": "But talk to my friend here, he sometimes goes to the city in his ship."
+              },
+              {
+                "player": "Thanks."
+              }
+            ]
+          },
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Player is transported across the river",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "xhXxH2"
+                  }
+                ],
+                "id": "Kd2UVl"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has fewer than 2 coins:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "NLc7YU"
+                  }
+                ],
+                "id": "BPDQPc"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-south-ferryman-using-the-travel-option": [
+      {
+        "type": "condition",
+        "text": "If the player has 2 coins:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "Player is transported across the river",
+            "action": "teleport",
+            "action_source": "text",
+            "id": "0Xzgzb"
+          }
+        ],
+        "id": "b6pQVV"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has fewer than 2 coins:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "NLc7YU"
+          }
+        ],
+        "id": "x7MA8D"
+      }
+    ],
+    "historical-dialogue-north-ferryman-standard-dialogue": [
+      {
+        "npc": "Hello there, want a ride?"
+      },
+      {
+        "player": "A ride, where to?"
+      },
+      {
+        "npc": "Across the river, across the river! It's just a short ride!"
+      },
+      {
+        "player": "How much will that cost me?"
+      },
+      {
+        "npc": "Haha, you understand us dwarves well, human!"
+      },
+      {
+        "npc": "It's just 2 gold pieces! Want to go?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Player is transported across the river",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "ArlJCB"
+                  }
+                ],
+                "id": "_QqRt4"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has fewer than 2 coins:",
+                "steps": [
+                  {
+                    "npc": "You don't even have 2 gold coins, human!"
+                  },
+                  {
+                    "npc": "Come back later."
+                  },
+                  {
+                    "player": "But... that means I'm stuck here."
+                  },
+                  {
+                    "npc": "Hmm. I suppose I could make an exception for you this time."
+                  },
+                  {
+                    "player": "Thanks a lot!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player is transported across the river",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "oxjnew"
+                  }
+                ],
+                "id": "pokPpj"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-north-ferryman-using-the-travel-option": [
+      {
+        "type": "condition",
+        "text": "If the player has 2 coins:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "Player is transported across the river",
+            "action": "teleport",
+            "action_source": "text",
+            "id": "Gk2t7C"
+          }
+        ],
+        "id": "IBRV76"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has fewer than 2 coins:",
+        "steps": [
+          {
+            "npc": "You don't even have 2 gold coins, human!"
+          },
+          {
+            "npc": "Come back later."
+          },
+          {
+            "player": "But... that means I'm stuck here."
+          },
+          {
+            "npc": "Hmm. I suppose I could make an exception for you this time."
+          },
+          {
+            "player": "Thanks a lot!"
+          },
+          {
+            "type": "action",
+            "text": "Player is transported across the river",
+            "action": "teleport",
+            "action_source": "text",
+            "id": "t1TMG_"
+          }
+        ],
+        "id": "63qYRo"
+      }
+    ]
+  },
+  "branches": {
+    "NLc7YU": [
+      {
+        "npc": "You don't even have 2 gold coins, humans!"
+      },
+      {
+        "npc": "Come back later."
+      }
+    ]
+  }
+}

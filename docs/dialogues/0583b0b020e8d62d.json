@@ -1,0 +1,814 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there adventurer, I am the Magic combat tutor. Would you like to learn about magic combat, or perhaps how to make runes?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about magic combat please.",
+            "steps": [
+              {
+                "player": "Tell me about magic combat please."
+              },
+              {
+                "type": "condition",
+                "text": "Before level [#] Magic:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The spellbook panel is opened.",
+                    "id": "H-lhnm"
+                  },
+                  {
+                    "npc": "This is your spell book, this contains all the spells you can cast. To cast a spell, you will need to have the required magic level and have the right amount of the runes used to cast the spell."
+                  },
+                  {
+                    "npc": "To check the level and runes required to cast a spell, hover your mouse cursor over the spell."
+                  },
+                  {
+                    "npc": "If you have the right amount of runes and the magic level the spell will light up, meaning you will be able to cast it."
+                  },
+                  {
+                    "npc": "When you have a combat spell available, click on it once, then select your target. A good target would be a monster that is below your combat level."
+                  },
+                  {
+                    "npc": "Try rats in the castle or, if you're feeling brave, the goblins to the west have been causing a nuisance of themselves."
+                  },
+                  {
+                    "npc": "Nemarti, the Ranged Combat tutor and I both give out items every 30 minutes, however you must choose whether you want runes or ranged equipment."
+                  },
+                  {
+                    "npc": "To claim runes, right-click on me and choose Claim, to claim ranged equipment right-click on the Ranged Combat tutor and select Claim."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has Adventure Paths:",
+                    "steps": [
+                      {
+                        "npc": "If you need some more advice, you should talk to Adventurer Jon about Adventure paths. He may even have a handy starter kit you can use."
+                      },
+                      {
+                        "npc": "Is there anything else you would like to know?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "g5Nx9r"
+                      }
+                    ],
+                    "id": "RXt0gQ"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have Adventure Paths:",
+                    "steps": [
+                      {
+                        "npc": "Is there anything else you would like to know?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "LwkWqi"
+                      }
+                    ],
+                    "id": "2PYXXS"
+                  }
+                ],
+                "id": "g2UXCG"
+              },
+              {
+                "type": "condition",
+                "text": "After level [#] Magic:",
+                "steps": [
+                  {
+                    "npc": "Of course [player name]! As a rule of thumb, if you cast the highest spell of which you're capable, you'll get the best experience possible."
+                  },
+                  {
+                    "npc": "Wearing metal armour and ranged armour can seriously impair your magical abilities. Make sure you wear some robes to maximise your capabilities.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "After level 42{{fact|Confirm that this is not shown at 41}} Magic:",
+                        "steps": [
+                          {
+                            "npc": "Superheat Item and the Alchemy spells are good ways to level magic if you are not interested in the combat aspect of magic."
+                          },
+                          {
+                            "npc": "There's always the Magic Training Arena. You can find it north of the Emir's Arena, north-east of Al Kharid. You will be able to earn some special rewards there by practicing your magic there."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If Mage Arena I is not completed:",
+                            "steps": [
+                              {
+                                "npc": "If you want a challenge, Kolodion, the master of battle magic, has set up an arena deep in the Wilderness. There you will have the chance to learn some extremely powerful spells."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If Desert Treasure is not completed:",
+                                "steps": [
+                                  {
+                                    "npc": "You should investigate the treasure in the desert, you may find great benefit to your magic."
+                                  },
+                                  {
+                                    "npc": "Speak to the Archaeologist in the Bedabin Camp, south- west of the Shantay Pass. But be careful, this quest is not for the faint of heart and can be very dangerous."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "other",
+                                    "id": "rEU94I"
+                                  }
+                                ],
+                                "id": "_WJ_YU"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If Desert Treasure is completed:",
+                                "steps": [
+                                  {
+                                    "npc": "I see you already have access to the ancient magicks. Well done, these will aid you greatly."
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "other",
+                                    "id": "RY6Pbq"
+                                  }
+                                ],
+                                "id": "DjW3qA"
+                              }
+                            ],
+                            "id": "SpEmIv"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If Mage Arena I is completed:",
+                            "steps": [
+                              {
+                                "npc": "I see you have already met Kolodion, you should keep practicing those spells. Maybe you will be able to use them outside the arena after practicing them enough times."
+                              },
+                              {
+                                "npc": "Is there anything else you would like to know?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "h5pEVe"
+                              }
+                            ],
+                            "id": "QeVvOa"
+                          }
+                        ],
+                        "id": "ok1G6L"
+                      }
+                    ]
+                  }
+                ],
+                "id": "neOSO5"
+              }
+            ]
+          },
+          {
+            "text": "How do I make runes?",
+            "steps": [
+              {
+                "player": "How do I make runes?"
+              },
+              {
+                "npc": "There are a couple of things you will need to make runes, rune essence and a talisman to enter the temple ruins."
+              },
+              {
+                "type": "condition",
+                "text": "Before completing Rune Mysteries:",
+                "steps": [
+                  {
+                    "npc": "To get rune essence you will need to gather them somehow. You should talk to the Duke of Lumbridge, he may be able to help you with that. Alternatively, other players may sell you the essence."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "Before level [#] Runecraft:",
+                    "steps": [
+                      {
+                        "npc": "As you're fairly new to runecrafting you should start with air runes and mind runes."
+                      },
+                      {
+                        "npc": "You will need a talisman for the rune you would like to create. You can right-click on it and select the Locate option. This will tell you the rough location of the altar."
+                      },
+                      {
+                        "npc": "When you find the ruined altar, use the talisman on it to be transported to a temple where you can craft your runes."
+                      },
+                      {
+                        "npc": "Clicking on the temple's altar will imbue your rune essence with the altar's magical property."
+                      },
+                      {
+                        "npc": "If you want to save yourself an inventory space, you could always try binding the talisman to a tiara."
+                      },
+                      {
+                        "npc": "To make one, take a tiara and talisman to the ruins and use the tiara on the temple altar. This will bind the talisman to your tiara."
+                      },
+                      {
+                        "npc": "Is there anything else you would like to know?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "io6njY"
+                      }
+                    ],
+                    "id": "h-CywK"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "After level [#] Runecraft:",
+                    "steps": [
+                      {
+                        "npc": "I see you have some experience already in Runecrafting. Perhaps you should try crafting some runes which you can then use in magic."
+                      },
+                      {
+                        "npc": "Check the skill guide to see which runes you can craft."
+                      },
+                      {
+                        "type": "action",
+                        "text": "The skills panel is opened.",
+                        "id": "pD59M8"
+                      },
+                      {
+                        "npc": "You will need a talisman for the rune you would like to create. You can right-click on it and select the Locate option. This will tell you the rough location of the altar."
+                      },
+                      {
+                        "npc": "When you find the ruined altar, use the talisman on it to be transported to a temple where you can craft your runes."
+                      },
+                      {
+                        "npc": "Clicking on the temple's altar will imbue your rune essence with the altar's magical property."
+                      },
+                      {
+                        "npc": "If you want to save yourself an inventory space, you could always try binding the talisman to a tiara."
+                      },
+                      {
+                        "npc": "To make one, take a tiara and talisman to the ruins and use the tiara on the temple altar. This will bind the talisman to your tiara."
+                      },
+                      {
+                        "npc": "Is there anything else you would like to know?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "iXmQK7"
+                      }
+                    ],
+                    "id": "H8sFKS"
+                  }
+                ],
+                "id": "HD63Gn"
+              },
+              {
+                "type": "condition",
+                "text": "After completing Rune Mysteries:",
+                "steps": [
+                  {
+                    "npc": "To get rune essence you will need to gather them in the essence mine. You can get to the mine by talking to Aubury who owns the runes shop in south east Varrock."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "Before level [#] Runecraft:",
+                    "steps": [
+                      {
+                        "npc": "As you're fairly new to runecrafting you should start with air runes and mind runes."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "2b8eI4"
+                      }
+                    ],
+                    "id": "ieEQmS"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "After level [#] Runecraft:",
+                    "steps": [
+                      {
+                        "npc": "I see you have some experience already in Runecrafting. Perhaps you should try crafting some runes which you can then use in magic."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "vlbytq"
+                      }
+                    ],
+                    "id": "gjdThT"
+                  }
+                ],
+                "id": "y2u5N_"
+              }
+            ]
+          },
+          {
+            "text": "Let's discuss how my runes act when I pick them up.",
+            "steps": [
+              {
+                "player": "Let's discuss how my runes act when I pick them up."
+              },
+              {
+                "npc": "When you pick up runes from the ground, if you're carrying a rune pouch that contains matching runes, I can make the runes you've picked up go straight into the pouch, provided there's space."
+              },
+              {
+                "npc": "Alternatively, you can let them go into your inventory like normal."
+              },
+              {
+                "type": "choice",
+                "prompt": "How do you want to handle picking up runes?",
+                "options": [
+                  {
+                    "text": "Automatically send to rune pouch.",
+                    "steps": [
+                      {
+                        "npc": "Certainly! Runes will go straight to your rune pouch when you pick them up, if it contains matching runes."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "PQXD9P"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Place them in my inventory.",
+                    "steps": [
+                      {
+                        "npc": "Certainly! Runes will go to your inventory when you pick them up, rather than going into a rune pouch."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "VnLLza"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "message",
+                "text": "You can also control this option via the Settings menu, rather than having to return to this Tutor in future.",
+                "id": "tMsBUX"
+              },
+              {
+                "npc": "Is there anything else I can do for you?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "ebxW2y"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-unknown-condition": [
+      {
+        "player": "Can you teach me the basics please?"
+      },
+      {
+        "npc": "Why certainly! You already know a little about creating runes I see."
+      },
+      {
+        "npc": "You can cast different spells according to what runes you have in your inventory. To begin, you'll need mind runes and air runes. These will allow you to cast Wind Strike like you did in the tutorial."
+      },
+      {
+        "npc": "Check the spellbook side-panel to see which spells you can cast. If you have the correct runes for a spell, it will light up."
+      },
+      {
+        "npc": "Nemarti, the Ranged Combat tutor and I both give out items every 30 minutes, however you must choose whether you want runes or ranged equipment. To claim runes, right-click on me and choose Claim, to claim"
+      },
+      {
+        "npc": "ranged equipment right-click on the Ranged Combat tutor and select Claim."
+      },
+      {
+        "npc": "When you have a combat spell available, click on it once, then select your target. A good target would be a monster that is below your combat level."
+      },
+      {
+        "npc": "Try rats in the castle or, if you're feeling brave, the goblins to the west have been causing a nuisance of themselves."
+      }
+    ],
+    "standard-dialogue-unknown-condition-2": [
+      {
+        "player": "Teach me about making runes."
+      },
+      {
+        "npc": "I see that you've already found out about the Rune Essence mines from my friend Aubury in Varrock. So you need to turn that essence into runes, eh?"
+      },
+      {
+        "npc": "As you're fairly new to runecrafting you should start with air runes and mind runes."
+      },
+      {
+        "npc": "You'll need a mind or air talisman before you can begin. This will enable you to find and use the ruins of the altars."
+      },
+      {
+        "npc": "I heard that goblins occasionally drop air talismans when they die - they must be stealing them from somewhere!"
+      },
+      {
+        "npc": "Mind talismans can occasionally be found on imps, if you can kill such a fast-moving creature."
+      },
+      {
+        "npc": "When you have your talisman, right-click on it and select the Locate option. It will point you in the direction of the ruined altar."
+      },
+      {
+        "npc": "You'll need some Rune Essence with you before you go looking. When you find the ruined altar, use the talisman on it to be transported to a temple where you can craft your runes."
+      },
+      {
+        "npc": "Clicking on the temple's altar will imbue your rune essence with the altar's magical property."
+      }
+    ],
+    "claim-dialogue-with-at-least-one-mind-rune-in-the-bank": [
+      {
+        "npc": "You have some mind runes in your bank."
+      },
+      {
+        "type": "condition",
+        "text": "If there is at least one air rune in the bank:",
+        "steps": [
+          {
+            "npc": "You have some air runes in your bank."
+          },
+          {
+            "type": "message",
+            "text": "You have some runes in your bank. Climb the stairs in Lumbridge Castle until you see this icon on your minimap. There you will find a bank.",
+            "id": "ERt0e3"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6hdVdF"
+      },
+      {
+        "type": "condition",
+        "text": "If there are no air runes in the bank but at least 1 in the player's inventory:",
+        "steps": [
+          {
+            "npc": "You already have some air runes."
+          },
+          {
+            "type": "message",
+            "text": "You have some runes in your bank. Climb the stairs in Lumbridge Castle until you see this icon on your minimap. There you will find a bank.",
+            "id": "laXi_Q"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KfsbVU"
+      },
+      {
+        "type": "condition",
+        "text": "If there is no space in the inventory to receive air runes:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "1BEVw9"
+          }
+        ],
+        "id": "6jhZ2R"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no air runes in the bank or inventory and has inventory space:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "30 air runes",
+            "id": "bhTAif"
+          },
+          {
+            "type": "message",
+            "text": "Mikasi gives you 30 air runes.",
+            "id": "CI9vW0"
+          }
+        ],
+        "id": "P4MW5C"
+      }
+    ],
+    "claim-dialogue-with-no-mind-runes-in-the-bank-and-at-least-one-in-the-inventory": [
+      {
+        "npc": "You already have some mind runes."
+      },
+      {
+        "type": "condition",
+        "text": "If there is at least one air rune in the bank:",
+        "steps": [
+          {
+            "npc": "You have some air runes in your bank."
+          },
+          {
+            "type": "message",
+            "text": "You have some runes in your bank. Climb the stairs in Lumbridge Castle until you see this icon on your minimap. There you will find a bank.",
+            "id": "38t156"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1NKIbB"
+      },
+      {
+        "type": "condition",
+        "text": "If there are no air runes in the bank but at least 1 in the player's inventory:",
+        "steps": [
+          {
+            "npc": "You already have some air runes."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eM397c"
+      },
+      {
+        "type": "condition",
+        "text": "If there is no space in the inventory to receive air runes:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "1BEVw9"
+          }
+        ],
+        "id": "7n45ra"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no air runes in the bank or inventory and has inventory space:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "30 air runes",
+            "id": "76qKNy"
+          },
+          {
+            "type": "message",
+            "text": "Mikasi gives you 30 air runes.",
+            "id": "WNt0Mq"
+          }
+        ],
+        "id": "fKez_Z"
+      }
+    ],
+    "claim-dialogue-with-no-mind-runes-in-the-bank-or-inventory-but-no-inventory-space": [
+      {
+        "npc": "If you had enough space in your inventory I'd give you some mind runes, come back when you do."
+      },
+      {
+        "type": "condition",
+        "text": "If there is at least one air rune in the bank:",
+        "steps": [
+          {
+            "npc": "You have some air runes in your bank."
+          },
+          {
+            "type": "message",
+            "text": "You have some runes in your bank. Climb the stairs in Lumbridge Castle until you see this icon on your minimap. There you will find a bank.",
+            "id": "gmFp-e"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KcP6oH"
+      },
+      {
+        "type": "condition",
+        "text": "If there are no air runes in the bank but at least 1 in the player's inventory:",
+        "steps": [
+          {
+            "npc": "You already have some air runes."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Ro09UX"
+      },
+      {
+        "type": "condition",
+        "text": "If there is no space in the inventory to receive air runes:",
+        "steps": [
+          {
+            "npc": "If you had enough space in your inventory I'd give you some air runes, come back when you do."
+          }
+        ],
+        "id": "3QuRaW"
+      }
+    ],
+    "claim-dialogue-with-no-mind-runes-in-the-bank-or-inventory-with-an-open-inventory-space-if-there-is-at-least-one-air-rune-in-the-bank": [
+      {
+        "npc": "You have some air runes in your bank."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "30 mind runes",
+        "id": "yZGtbA"
+      },
+      {
+        "type": "message",
+        "text": "Mikasi gives you 30 mind runes.",
+        "id": "pePkw2"
+      },
+      {
+        "type": "message",
+        "text": "You have some runes in your bank. Climb the stairs in Lumbridge Castle until you see this icon on your minimap. There you will find a bank.",
+        "id": "YyJ75q"
+      }
+    ],
+    "claim-dialogue-with-no-mind-runes-in-the-bank-or-inventory-with-an-open-inventory-space-if-there-are-no-air-runes-in-the-bank-but-at-least-1-in-the-player-s-inventory": [
+      {
+        "npc": "You already have some air runes."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "30 mind runes",
+        "id": "aKJVTd"
+      },
+      {
+        "type": "message",
+        "text": "Mikasi gives you 30 mind runes.",
+        "id": "BKWSRe"
+      }
+    ],
+    "claim-dialogue-with-no-mind-runes-in-the-bank-or-inventory-with-an-open-inventory-space-with-only-one-inventory-space-open-for-mind-runes": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "30 mind runes",
+        "id": "czeeI2"
+      },
+      {
+        "npc": "If you had enough space in your inventory I'd give you some air runes, come back when you do."
+      },
+      {
+        "type": "message",
+        "text": "Mikasi gives you 30 mind runes.",
+        "id": "gKCpG1"
+      }
+    ],
+    "claim-dialogue-with-no-open-inventory-spaces-and-no-mind-or-air-runes-in-the-bank-or-inventory": [
+      {
+        "npc": "If you had enough space in your inventory I'd give you some mind runes, come back when you do."
+      },
+      {
+        "npc": "If you had enough space in your inventory I'd give you some air runes, come back when you do."
+      }
+    ],
+    "claim-dialogue-during-the-30-minute-cooldown": [
+      {
+        "npc": "I work with the Ranged Combat tutor to give out consumable items that you may need for combat such as arrows and runes. However we have had some cheeky people try to take both!"
+      },
+      {
+        "npc": "So, every half an hour, you may come back and claim either arrows OR runes, but not both. Come back in a while for runes, or simply make your own."
+      }
+    ],
+    "deadman-mode": [
+      {
+        "npc": "Hello there adventurer, I am the Magic combat tutor. Would you like to learn about magic combat, or perhaps how to make runes?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask for a starter pack.",
+            "steps": [
+              {
+                "player": "Could I have a starter pack?"
+              },
+              {
+                "npc": "Here you go. One starter pack. Enjoy."
+              }
+            ]
+          },
+          {
+            "text": "Could you stop me receiving a starter pack after respawn?",
+            "steps": [
+              {
+                "player": "Could you stop me receiving a starter pack after respawn?"
+              },
+              {
+                "npc": "Yes, I can help with that."
+              },
+              {
+                "type": "choice",
+                "prompt": "Disable receiving a starter pack after respawn?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "npc": "You'll no longer receive a starter pack after respawn. Talk to me again if you change your mind."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Do I have any quest items or quest lamps to collect?",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "EXGCmi"
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about melee combat.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "QkB0lw"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about different weapon types I can use.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "a0Li3N"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about skillcapes.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "WlBD3Z"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like a training sword and shield.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "eBJX_q"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "xzi5WJ"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "1BEVw9": [
+      {
+        "npc": "If you had enough space in your inventory I'd give you some air runes, come back when you do."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "So can I guard the treasure room please?",
+            "steps": [
+              {
+                "player": "So can I guard the treasure room please?"
+              },
+              {
+                "npc": "Well, I might post you outside it sometimes. I prefer to be the only one allowed inside however."
+              },
+              {
+                "npc": "There's some pretty valuable artefacts in there! Those keys stay ONLY with the head guard and Scarface Pete."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "ZJZloS"
+              }
+            ]
+          },
+          {
+            "text": "So what do my duties involve?",
+            "steps": [
+              {
+                "npc": "You'll have various guard related duties on various shifts. I'll assign specific duties as they are required as and when they become necessary. Just so you know, if anything happens to me"
+              },
+              {
+                "npc": "you'll need to take over as head guard here. You'll find important keys to the treasure room and Pete's quarters inside my jacket - although I doubt anything bad's going to happen to"
+              },
+              {
+                "npc": "me anytime soon!"
+              },
+              {
+                "type": "unavailable",
+                "id": "SPE2oi"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "So can I guard the treasure room please?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "Cy2oO_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Well, I'd better sort my new room out.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "fAh__v"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Anything I can do now?",
+                    "steps": [
+                      {
+                        "player": "Anything I can do now?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a miscellaneous key yet:",
+                        "steps": [
+                          {
+                            "npc": "Hmm. Well, you could find out what this key opens for me. Apparently it's for something in this building, but for the life of me I can't find what."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a miscellaneous key",
+                            "id": "pGJq5N"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "kwjgKt"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a miscellaneous key already:",
+                        "steps": [
+                          {
+                            "npc": "Can't think of anything right now."
+                          }
+                        ],
+                        "id": "Tac6ar"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well, I'd better sort my new room out.",
+            "steps": [
+              {
+                "player": "Well, I'd better sort my new room out."
+              },
+              {
+                "npc": "Yeah, I'll give you time to settle in. Better get a good nights sleep, I expect you to report for duty at oh five hundred hours tomorrow on the dot!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-trying-to-attack-grip": [
+      {
+        "player": "I can't attack the head guard here! There are too many witnesses around to see me do it! I'd have the whole of Brimhaven after me! Besides, if he dies I want the promotion!"
+      },
+      {
+        "type": "unavailable",
+        "id": "_YKssx"
+      }
+    ],
+    "when-searching-through-his-drinks-cabinet": [
+      {
+        "npc": "Stay out of my drinks cabinet!"
+      }
+    ]
+  }
+}

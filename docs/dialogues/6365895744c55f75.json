@@ -1,0 +1,152 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "first-time-dialogue": [
+      {
+        "npc": "Hello! Looking to buy?"
+      },
+      {
+        "player": "What are you selling?"
+      },
+      {
+        "npc": "A selection of items for those who partake in variety! That said, be aware that I have little interest in coins..."
+      },
+      {
+        "player": "Right..."
+      },
+      {
+        "type": "message",
+        "text": "You can only purchase items from the Events Rewards Shop using Event Points. Event Points can only be earned within limited-time Events on separate worlds.",
+        "id": "tRHDAK"
+      },
+      {
+        "npc": "So, looking to buy?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Events Reward Shop",
+                "id": "KbFHH0"
+              }
+            ]
+          },
+          {
+            "text": "I'll pass.",
+            "steps": [
+              {
+                "player": "I'll pass."
+              },
+              {
+                "npc": "Fair enough."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Hello! Looking to buy?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "n66u_O"
+              }
+            ]
+          },
+          {
+            "text": "What are you selling?",
+            "steps": [
+              {
+                "player": "What are you selling?"
+              },
+              {
+                "npc": "A selection of items for those who partake in variety! That said, be aware that I have little interest in coins..."
+              },
+              {
+                "player": "Right..."
+              },
+              {
+                "type": "message",
+                "text": "You can only purchase items from the Events Rewards Shop using Event Points. Event Points can only be earned within limited-time Events on separate worlds.",
+                "id": "_pO5tg"
+              },
+              {
+                "npc": "So, looking to buy?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "iUIHBF"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll pass.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ymMy_y"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll pass.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "WMbWe3"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-f2p-worlds": [
+      {
+        "npc": "Hey there! Sorry, I'd love to talk, but I'm very busy right now."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ],
+    "on-grid-master-and-deadman-worlds": [
+      {
+        "npc": "Hey there. I'm afraid I don't have anything for sale at the moment. Maybe another time?"
+      },
+      {
+        "type": "unavailable",
+        "id": "F6ny_J"
+      }
+    ]
+  }
+}

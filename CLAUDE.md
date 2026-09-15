@@ -21,7 +21,13 @@ A **Python** data pipeline and **`osrsreboxed`** package that produces **OSRS** 
 - Monsters use **`elemental_weakness_*`** and split ranged defence: **`defence_ranged_light`**, **`defence_ranged_standard`**, **`defence_ranged_heavy`**.
 - **Shops** data is maintained via **`scripts/shops/`** and **`data/shops/`** (not a `builders/shops` package). `shop_owners.py` resolves each
   shop's NPC owner and must run before `shops_items.process`, which merges the `owners` array into the export and writes the NPC-keyed
-  `docs/shops-by-npc.json`. A null option carries `option_source` (`dialogue` vs `unknown`) so consumers cannot read it as "option 1". The
+  `docs/shops-by-npc.json`. `parse_shop_info` is the only reader of a shop's currency: a page whose `StoreTableHead` declares none
+  sells in coins however its prose reads. A null option carries `option_source` (`dialogue` vs `unknown`) so consumers cannot read it as "option 1". The
+  page text cache (`data/shops/shops-wiki-page-text.json`) is written a page at a time and is pruned to the category listing, so a
+  wiki rename cannot leave the old title behind as a second copy of the same shop; `shops_properties.process` skips stale titles too. The
+  exports carry no field a consumer can derive: item rows are `id`/`stock`/`restock_time` (plus `currency` only as an override of
+  `shop_info.currency`, which nothing currently triggers), null `shop_info` percentages are omitted, and `shops-by-npc.json` does not repeat
+  its NPC-ID key. There is no item-keyed shop export; an item's shops are found by scanning `shops-items-by-shop.json`. The
   shop-opening option is resolved **per NPC ID**, not per owner — an owner's IDs are per-location variants that do not always share a menu
   layout, so copying one variant's option across the rest silently mislabels them.
 - **Drops** are likewise a `scripts/` domain (**`scripts/drops/`**, output in **`docs/drops-json/`**), not a builder.

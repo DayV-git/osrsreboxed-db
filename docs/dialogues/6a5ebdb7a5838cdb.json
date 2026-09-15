@@ -1,0 +1,326 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello [player name], what can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are Adventure Paths?",
+            "steps": [
+              {
+                "player": "What are Adventure Paths?"
+              },
+              {
+                "npc": "A long time ago, I was a newbie just like you who didn't know what to do and I would be more than happy to pass on my experience."
+              },
+              {
+                "npc": "I've created some Adventure Paths which I recommend you to start off with. An Adventure Path is a list of tasks which you can complete in any order."
+              },
+              {
+                "npc": "To help you get started on your Adventure Path, I'll also give you a starter kit with some useful items."
+              },
+              {
+                "npc": "Once you've completed an Adventure Path task, come back to me and I'll give you a reward."
+              }
+            ]
+          },
+          {
+            "text": "Do you have any Adventure Path starter kits for me?",
+            "steps": [
+              {
+                "player": "Do you have any Adventure Path starter kits for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player hasn't claimed their starter kit yet:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Adventurer Jon gives you a Combat path starter kit",
+                    "id": "U-XPcH"
+                  },
+                  {
+                    "npc": "Here are all of the starter kits you have left to claim."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "1PP1tb"
+                  }
+                ],
+                "id": "SsdAPh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already claimed their starter kit:",
+                "steps": [
+                  {
+                    "npc": "You seem to have already claimed all of your starter kits."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "sJyGtW"
+                  }
+                ],
+                "id": "-nyoFj"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to claim my Adventure Path rewards.",
+            "steps": [
+              {
+                "player": "I'd like to claim my Adventure Path rewards."
+              },
+              {
+                "type": "condition",
+                "text": "If the player hasn't completed a task or has already received their rewards:",
+                "steps": [
+                  {
+                    "npc": "I have no rewards to give you at the moment."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "KNTnpz"
+                  }
+                ],
+                "id": "BX6wjN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player only has members rewards left to claim, while on a free-to-play world:",
+                "steps": [
+                  {
+                    "npc": "I have no rewards to give you at the moment. But I do have some members rewards left to give you, visit me on a members world to receive them."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "e3Ol9a"
+                  }
+                ],
+                "id": "DJ-npz"
+              },
+              {
+                "type": "condition",
+                "text": "If the player can claim rewards, but does not have enough inventory space:",
+                "steps": [
+                  {
+                    "npc": "You should make sure you have space before asking for rewards."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KiGM5Q"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed one or more tasks on a Free-to-play world, with some unclaimed Members rewards:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player receives available free-to-play rewards",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "b0NcE7"
+                  },
+                  {
+                    "npc": "That is the last of the rewards you have currently earned. But I do have some members rewards left to give you, visit me on a members world to receive them."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "gvi9eT"
+                  }
+                ],
+                "id": "3COeBv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed one or more tasks and can claim all remaining rewards:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player receives available rewards",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "LzQDZR"
+                  },
+                  {
+                    "npc": "That is the last of your rewards which you have earned."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "previous",
+                    "id": "G9BA7U"
+                  }
+                ],
+                "id": "huQk_V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed one or more tasks, with free inventory slots, but not enough inventory slots to claim all remaining rewards:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player receives available rewards",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "kYd_t5"
+                  },
+                  {
+                    "npc": "I can't give you any more rewards until you come back with more inventory space."
+                  }
+                ],
+                "id": "o_vBh6"
+              }
+            ]
+          },
+          {
+            "text": "Can you show me some Adventure Paths?",
+            "steps": [
+              {
+                "player": "Can you show me some Adventure Paths?"
+              },
+              {
+                "npc": "Of course, here you go."
+              }
+            ]
+          },
+          {
+            "text": "Disable Adventure Paths.",
+            "steps": [
+              {
+                "type": "unavailable",
+                "id": "hPtBlS"
+              },
+              {
+                "type": "choice",
+                "prompt": "Opt out of Adventure Paths?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You have now opted out of Adventure Paths.",
+                        "id": "h9kLyj"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-has-opted-out-of-adventure-paths": [
+      {
+        "npc": "You are currently not participating in Adventure Paths. Would you like to join back in?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "message",
+                "text": "Opting into Adventure Paths will allow you to see the interface and you will be able to receive task and path notifications. You can talk to Adventurer Jon to opt back out of Adventure Paths",
+                "id": "ACqYny"
+              },
+              {
+                "type": "choice",
+                "prompt": "Opt into Adventure Paths?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "steps": [
+                      {
+                        "type": "unavailable",
+                        "id": "9XrrAG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-is-not-eligible-for-adventure-paths": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "I am simply an adventurer like yourself taking a break on my journey."
+      },
+      {
+        "player": "I wish you luck on your next adventure."
+      },
+      {
+        "npc": "And I to you."
+      }
+    ],
+    "after-leaving-tutorial-island": [
+      {
+        "npc": "Hey [player name]! Come over here."
+      },
+      {
+        "npc": "You look new around here, welcome to the world of Gielinor!"
+      },
+      {
+        "player": "Thanks, it's my first time here and I'm not sure where to start."
+      },
+      {
+        "npc": "Well, lucky for you, that is exactly why I am here."
+      },
+      {
+        "player": "What are Adventure Paths?"
+      },
+      {
+        "npc": "A long time ago, I was a newbie just like you who didn't know what to do and I would be more than happy to pass on my experience."
+      },
+      {
+        "npc": "I've created some Adventure Paths which I recommend you to start off with. An Adventure Path is a list of tasks which you can complete in any order."
+      },
+      {
+        "npc": "To help you get started on your Adventure Path, I'll also give you a starter kit with some useful items."
+      },
+      {
+        "npc": "Once you've completed an Adventure Path task, come back to me and I'll give you a reward."
+      },
+      {
+        "npc": "Start by opening your quest panel and then selecting the flashing yellow star."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Haha welcome to my obstacle course. Have fun, but remember this isn't a child's playground. People have died here."
+      },
+      {
+        "npc": "The best way to train, is to go round the course in a clockwise direction."
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "d43gou"
+      },
+      {
+        "npc": "Please solve this for me. I have other things to be thinking about."
+      },
+      {
+        "type": "unavailable",
+        "id": "WbStEv"
+      }
+    ],
+    "treasure-trails-hard-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle is not solved:",
+        "steps": [
+          {
+            "npc": "Sorry but you haven't solved the puzzle yet."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "vyRJRY"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle is not in the inventory but the clue is:",
+        "steps": [
+          {
+            "player": "I don't have the puzzle box with me."
+          },
+          {
+            "npc": "That's not much use is it, go and fetch it!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "52zNm7"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle is solved and in the inventory:",
+        "steps": [
+          {
+            "npc": "Thanks [player name]!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Gunnjorn has given you another clue scroll!",
+                "id": "lpcUCp"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll (hard)",
+                "id": "EfRJvQ"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "9LS5ss"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "LDb3Ed"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket (hard)",
+                "id": "6lNttL"
+              }
+            ],
+            "id": "280hjo"
+          }
+        ],
+        "id": "9IedPp"
+      }
+    ]
+  }
+}

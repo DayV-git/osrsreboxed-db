@@ -1,0 +1,319 @@
+{
+  "default": "standard-dialogue-before-starting-death-plateau",
+  "variants": {
+    "standard-dialogue-before-starting-death-plateau": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "Hello citizen, how can I help?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any quests for me?",
+            "steps": [
+              {
+                "player": "Do you have any quests for me?"
+              },
+              {
+                "npc": "I don't know if you can help us!"
+              },
+              {
+                "npc": "The trolls have taken up camp on Death Plateau! They are using it to launch raids at night on the village. We have tried to attack the camp but the main path is heavily guarded!"
+              },
+              {
+                "player": "Perhaps there is a way you can sneak up at night?"
+              },
+              {
+                "npc": "If there is another way I do not know of it."
+              },
+              {
+                "npc": "Do you know of such a path?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start Death Plateau?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "No but perhaps I could try and find one?"
+                      },
+                      {
+                        "npc": "Citizen you would be well rewarded!"
+                      },
+                      {
+                        "npc": "If you go up to Death Plateau be very careful as the trolls will attack you on sight!"
+                      },
+                      {
+                        "player": "I'll be careful."
+                      },
+                      {
+                        "npc": "One other thing."
+                      },
+                      {
+                        "player": "What's that?"
+                      },
+                      {
+                        "npc": "All of our equipment is kept in the castle on the hill."
+                      },
+                      {
+                        "npc": "The stupid guard that was on duty last night lost the combination to the lock! I told the Prince that the Imperial Guard should've been in charge of security!"
+                      },
+                      {
+                        "player": "No problem, what does the combination look like?"
+                      },
+                      {
+                        "npc": "The equipment room is unlocked when the stone balls are placed in the correct order on the stone mechanism outside it. The right order is written on a piece of paper the guard had."
+                      },
+                      {
+                        "player": "A stone what...?!"
+                      },
+                      {
+                        "npc": "Well citizen, the Prince is fond of puzzles. Why he couldn't just have a key is beyond me!"
+                      },
+                      {
+                        "player": "I'll get on it right away!"
+                      }
+                    ],
+                    "hook": "quest:death-plateau:start",
+                    "quest": "Death Plateau"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No, sorry."
+                      },
+                      {
+                        "npc": "Never mind citizen."
+                      },
+                      {
+                        "npc": "Can I assist you with anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "QGtpHb"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Welcome to Principality of Burthorpe!"
+              },
+              {
+                "npc": "We are the Imperial Guard for his Royal Highness Prince Anlaf of Burthorpe."
+              },
+              {
+                "npc": "Can I assist you with anything else?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Do you have any quests for me?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "CDfHhH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What is this place?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "YNxlQo"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You can't, thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "rPt4Jv"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You can't, thanks.",
+            "steps": [
+              {
+                "player": "You can't, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-death-plateau": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "Welcome back friend!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How goes your fight with the trolls?",
+            "steps": [
+              {
+                "player": "How goes your fight with the trolls?"
+              },
+              {
+                "npc": "I'm afraid I have bad news. We made our attack as planned, but we met unexpected resistance."
+              },
+              {
+                "player": "What happened?"
+              },
+              {
+                "npc": "We were ambushed by trolls coming from the north. They captured Dunstan's son, Godric, who we enlisted at your request, we tried to follow but we were repelled at the foot of their stronghold."
+              },
+              {
+                "type": "choice",
+                "prompt": "Start Troll Stronghold Quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Is there anything I can do to help?"
+                      },
+                      {
+                        "npc": "The way tto the stronghold is treacherous, friend. Even if you manage to climb your way up, there will be many trolls defending the stronghold."
+                      },
+                      {
+                        "player": "I'll get Godric back!"
+                      },
+                      {
+                        "npc": "God speed friend! I would send some of my me with you, but none of them are brave enough to follow."
+                      }
+                    ],
+                    "hook": "quest:troll-stronghold:start",
+                    "quest": "Troll Stronghold"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "I'm sorry to hear that."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I thought the White Knights controlled Asgarnia?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uDkubJ"
+              }
+            ]
+          },
+          {
+            "text": "See you about Denulth!",
+            "steps": [
+              {
+                "player": "See you about Denulth!"
+              },
+              {
+                "npc": "God speed friend!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-troll-stronghold": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "Welcome back friend!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How goes your fight with the trolls?",
+            "steps": [
+              {
+                "player": "How goes your fight with the trolls?"
+              },
+              {
+                "npc": "We are busy preparing for an attack by night. Godric knows of a secret entrance to the stronghold. Once we destroy the stronghold Burthorpe will be safe! Friend, we are indebted to you!"
+              },
+              {
+                "player": "Good luck!"
+              }
+            ]
+          },
+          {
+            "text": "I thought the White Knights controlled Asgarnia?",
+            "steps": [
+              {
+                "player": "I thought the White Knights controlled Asgarnia?"
+              },
+              {
+                "npc": "You are right citizen. The White Knights have taken advantage of the old and weak king, they control most of Asgarnia, including Falador. However they do not control Burthorpe!"
+              },
+              {
+                "npc": "We are the prince's elite troops! We keep Burthorpe secure!"
+              },
+              {
+                "npc": "The White Knights have overlooked us, until now! They are pouring money into their war against the Black Knights, they are looking for an excuse to stop our funding and I'm afraid they may have found it!"
+              },
+              {
+                "npc": "If we can not destroy the troll camp on Death Plateau then the Imperial Guard will be disbanded and Burthorpe will come under control of the White Knights. We can not let this happen!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "tg8P9Q"
+              }
+            ]
+          },
+          {
+            "text": "See you about Denulth!",
+            "steps": [
+              {
+                "player": "See you about Denulth!"
+              },
+              {
+                "npc": "God speed friend!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

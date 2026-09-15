@@ -1,0 +1,326 @@
+{
+  "steps": [
+    {
+      "npc": "What can I do for you, traveller?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I'll have a pint.",
+          "steps": [
+            {
+              "player": "I'll have a pint."
+            },
+            {
+              "npc": "That'll be 4 gold pieces."
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have 4 coins:",
+              "steps": [
+                {
+                  "player": "I don't have enough coin."
+                },
+                {
+                  "npc": "I can't just be handing out free beers..."
+                },
+                {
+                  "player": "Couldn't I just take one off those tables?"
+                },
+                {
+                  "npc": "...I suppose, if that's the kind of person you are."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "4ErOXp"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has 4 coins:",
+              "steps": [
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "Beer",
+                  "id": "F_Q-yb"
+                },
+                {
+                  "player": "Thanks, Bast."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "qKrnvL"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have enough inventory space:",
+              "steps": [
+                {
+                  "npc": "Sorry, you don't seem to have room to hold it."
+                },
+                {
+                  "player": "Oops!"
+                }
+              ],
+              "id": "NDmAIr"
+            }
+          ]
+        },
+        {
+          "text": "What is this place?",
+          "steps": [
+            {
+              "player": "What is this place?"
+            },
+            {
+              "npc": "My pub's called The Legless Faun. It's where all the newcomers find themselves after the long voyage from the east. A good drink takes the edge off, y'know? So, fancy a pint?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Sure, I'll have a pint.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "above",
+                      "id": "pwBP5Y"
+                    }
+                  ]
+                },
+                {
+                  "text": "I'm afraid not.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "lM2npk"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Have you heard any rumours here?",
+          "steps": [
+            {
+              "player": "Have you heard any rumours here?"
+            },
+            {
+              "type": "condition",
+              "text": "If Client of Kourend has not been started:",
+              "steps": [
+                {
+                  "npc": "Apparently Veos is looking for some help with something. He hangs around the docks of Port Piscarilius."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "0D819K"
+            },
+            {
+              "type": "condition",
+              "text": "If The Queen of Thieves has not been started:",
+              "steps": [
+                {
+                  "npc": "They say there's trouble in Port Piscarilius. Something about gangs uniting. Might be worth looking into."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "KJas7Q"
+            },
+            {
+              "type": "condition",
+              "text": "If The Depths of Despair has not been started:",
+              "steps": [
+                {
+                  "npc": "I hear that Lord Hosidius has misplaced one of his sons. The Hosidius family might pay a lot to see him returned safely."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "4rweay"
+            },
+            {
+              "type": "condition",
+              "text": "If Tale of the Righteous has not been started:",
+              "steps": [
+                {
+                  "npc": "Phileas Rimor has supposedly been looking for some assistance with something in Shayzien. Maybe worth investigating."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "_egi8e"
+            },
+            {
+              "type": "condition",
+              "text": "If The Forsaken Tower has not been started:",
+              "steps": [
+                {
+                  "npc": "I hear that the rulers of Lovakengj have some work available. You'll find them in the Lovakengj Assembly."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "VRfKYg"
+            },
+            {
+              "type": "condition",
+              "text": "If The Ascent of Arceuus has not been started:",
+              "steps": [
+                {
+                  "npc": "Apparently there's been some commotion in the middle of Arceuus. Might be worth checking out."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "Otbqnd"
+            },
+            {
+              "type": "condition",
+              "text": "If A Kingdom Divided has not been started:",
+              "steps": [
+                {
+                  "npc": "That protest outside Kourend Castle is starting to attract some attention. Could be worth taking a look."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "VoGxnZ"
+            },
+            {
+              "type": "condition",
+              "text": "If all quests above have been completed:",
+              "steps": [
+                {
+                  "npc": "No, it hasn't been very busy lately."
+                }
+              ],
+              "id": "LNOh6G"
+            }
+          ]
+        },
+        {
+          "text": "Could I get something to eat?",
+          "condition": "During Trailblazer Reloaded League:",
+          "steps": [
+            {
+              "player": "Could I get something to eat?"
+            },
+            {
+              "npc": "Sure, we sell stew made at The Golden Field pub for 25 gold pieces."
+            },
+            {
+              "npc": "Would you like a bowl?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes please, sounds great.",
+                  "steps": [
+                    {
+                      "player": "Yes please, sounds great."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have enough money:",
+                      "steps": [
+                        {
+                          "npc": "Are you sure you have enough money?"
+                        },
+                        {
+                          "player": "Oh... You're right, I don't have enough money."
+                        },
+                        {
+                          "npc": "That's ok, come back when you have enough money."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "9mIN28"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has enough money:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "Stew",
+                          "id": "eIJ8hA"
+                        },
+                        {
+                          "type": "message",
+                          "text": "Bast gives you a bowl of stew.",
+                          "id": "_6NyHO"
+                        },
+                        {
+                          "player": "Thanks, Bast."
+                        }
+                      ],
+                      "id": "7R-Lcz"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have enough inventory space:",
+                      "steps": [
+                        {
+                          "npc": "Sorry, you don't seem to have room to hold it."
+                        },
+                        {
+                          "player": "Oops!"
+                        }
+                      ],
+                      "id": "CGOCcG"
+                    }
+                  ]
+                },
+                {
+                  "text": "No thanks.",
+                  "steps": [
+                    {
+                      "player": "No thanks."
+                    },
+                    {
+                      "npc": "Suit yourself. More delicious stew for everyone else."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "2TNYNd"
+        },
+        {
+          "text": "I'm afraid not.",
+          "steps": [
+            {
+              "player": "I'm afraid not as I've something to attend to."
+            },
+            {
+              "npc": "A wise man once told me to never fear a drink... But perhaps I'm a little bias."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

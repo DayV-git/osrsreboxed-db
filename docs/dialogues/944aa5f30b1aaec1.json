@@ -1,0 +1,138 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Good day, traveller."
+      },
+      {
+        "player": "Hey there. What brings you here?"
+      },
+      {
+        "npc": "I am researching the Dark Altar. Many of our forefathers spent their lives studying it, though much knowledge was lost over the generations."
+      },
+      {
+        "npc": "I believe some of their writings would have been stored in this Library, though the Librarian seems unable to help me locate any."
+      },
+      {
+        "player": "Well good luck in your search."
+      }
+    ],
+    "historical-dialogue-before-20-favour": [
+      {
+        "npc": "Excuse me, I do not believe we have any business."
+      },
+      {
+        "type": "message",
+        "text": "You do not have enough Arceuus favour. Current favour: [0.0% - 19.9%]  - Required: 20.0%",
+        "id": "biGgxj"
+      }
+    ],
+    "historical-dialogue-after-20-favour-initial-dialogue": [
+      {
+        "npc": "I wonder, traveller... Could you assist me?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you need?",
+            "steps": [
+              {
+                "player": "What do you need?"
+              },
+              {
+                "npc": "I am researching the Dark Altar. Many of our forefathers spent their lives studying it, though much knowledge was lost over the generations."
+              },
+              {
+                "npc": "I believe many of their writings would have been stored in this Library, though the Librarian seems unable to help me locate any."
+              },
+              {
+                "npc": "In your exploration of the Library, if you should happen to find any manuscripts of this nature, please bring them to me, and you will gain my gratitude."
+              },
+              {
+                "player": "Understood."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, no.",
+            "steps": [
+              {
+                "player": "Sorry, no."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-after-20-favour-talking-to-horphis-after-asking-to-help": [
+      {
+        "type": "condition",
+        "text": "If the player does not have any Dark manuscripts in their inventory:",
+        "steps": [
+          {
+            "npc": "Do you have any dark manuscripts for me, traveller?"
+          },
+          {
+            "player": "Not at the moment."
+          },
+          {
+            "npc": "Our forefathers studied the Dark Altar for generations. I am sure their knowledge is stored in this Library somewhere. It is a shame that the Librarian seems unable to help me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "-1ryAn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has Dark manuscripts in their inventory:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player has only one Dark manuscript in their inventory:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You hand over the dark manuscript and receive a book in return.",
+                "id": "dKJhgD"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "TMKt0O"
+              }
+            ],
+            "id": "b6ke-A"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has multiple Dark manuscripts in their inventory:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You hand over the dark manuscripts and receive some books in return.",
+                "id": "R0DCwR"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "c4dL8v"
+              }
+            ],
+            "id": "9QcRX2"
+          },
+          {
+            "npc": "Thank you very much. In return, I have given you some knowledge that you may perhaps appreciate."
+          }
+        ],
+        "id": "C2VF1Y"
+      }
+    ]
+  }
+}

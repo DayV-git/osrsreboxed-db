@@ -1,0 +1,524 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-before-starting-the-fremennik-trials-without-a-skeletal-piece": [
+      {
+        "npc": "I have no interest in talking to you just now outerlander."
+      }
+    ],
+    "standard-dialogue-before-starting-the-fremennik-trials-with-a-skeletal-piece": [
+      {
+        "type": "choice",
+        "prompt": "What would you like to ask about?",
+        "options": [
+          {
+            "text": "Wallasalki Bone Armour",
+            "steps": [
+              {
+                "player": "Hello there. I have some wallasalki bone fragments, and I understand you may be able to use them to make some armour for me...?"
+              },
+              {
+                "npc": "I see great things in your future outerlander, but I will not go against the wishes of the tribe, and will not make armour for an outerlander."
+              },
+              {
+                "npc": "You may try and gain a dispensation from Chieftain Brundt, but I suspect you will be unsuccessful..."
+              }
+            ]
+          },
+          {
+            "text": "The Fremennik Trials",
+            "steps": [
+              {
+                "npc": "I have no interest in talking to you just now outerlander."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-before-starting-the-fremennik-trials-when-attempting-to-open-the-front-door-of-peer-s-house": [
+      {
+        "npc": "Hey! Outerlander! That is my house! Who do you think you are to just barge into my home without asking?"
+      },
+      {
+        "player": "Um... My name is [player name]."
+      },
+      {
+        "npc": "It was a rhetorical question, outerlander. Now get lost. I do not appreciate intruders in my home."
+      }
+    ],
+    "standard-dialogue-after-the-fremennik-trials-without-a-skeletal-piece": [
+      {
+        "player": "Hello Peer."
+      },
+      {
+        "npc": "Greetings to you [brother/sister] [Fremennik name]! What brings you to see me again?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell my future?",
+            "steps": [
+              {
+                "player": "I was wondering if you could give me a reading on my future...?"
+              },
+              {
+                "npc": "Ah, you would like a prediction? I do not see that that would be so difficult... wait a moment..."
+              },
+              {
+                "type": "action",
+                "text": "Dialogue box disappears for a few seconds",
+                "id": "PtsAHR"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Here is your prediction: The enemy called [fire giant/ghost/goblin/green dragon/hobgoblin/lesser demon/moss giant/ogre/skeleton/zombie] is your lucky totem this day."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Here is your prediction: The stars tell me that you should use a [battleaxe/crossbow/dagger/javelin/long sword/mace/scimitar/short sword/spear/warhammer] in combat today."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "Here is your prediction: The place called [Al Kharid/Ardougne/Burthorpe/Canifis/Falador/Karamja/Varrock/The Wilderness/Yanille] will be worth your time to visit."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "Here is your prediction: You would be wise to train the skill [Agility/Cooking/Crafting/Fishing/Fletching/Herblore/Mining/Runecrafting/Smithing/Thieving] today."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "steps": [
+                      {
+                        "npc": "Here is your prediction: The colour [black/blue/brown/cyan/green/pink/purple/red/white/yellow] will bring you luck this day."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 6",
+                    "steps": [
+                      {
+                        "npc": "Here is your prediction: You will find luck today with the number [one/two/three/four/five/six/seven/eight/nine/ten]."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you bank my stuff?",
+            "steps": [
+              {
+                "player": "Can you bank my stuff?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "The Bank of Gielinor - Deposit Box",
+                "id": "HBJ1rp"
+              }
+            ]
+          },
+          {
+            "text": "Nothing really.",
+            "steps": [
+              {
+                "player": "Nothing really, I just stopped by to say hello."
+              },
+              {
+                "npc": "Well, hello to you too!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-the-fremennik-trials-with-a-skeletal-piece": [
+      {
+        "type": "choice",
+        "prompt": "What would you like to ask about?",
+        "options": [
+          {
+            "text": "Wallasalki Bone Armour",
+            "steps": [
+              {
+                "player": "Hello there. I have some wallasalki bone fragments, and I understand you may be able to use them to make some armour for me...?"
+              },
+              {
+                "npc": "As you wish, [Fremennik name]. What kind of armour were you thinking of exactly?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "A fine helm",
+                    "steps": [
+                      {
+                        "npc": "I am afraid it will cost you 5,000 coins to make that for you... Is that okay?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "YES"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the requisite materials:",
+                        "steps": [
+                          {
+                            "npc": "Ah, a helm to make any seer proud! Did you want me to make you another while I am at it?"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a skeletal helm",
+                            "id": "hjVeOg"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "YES",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "RJCgfj"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "NO",
+                                "steps": [
+                                  {
+                                    "npc": "As you wish, [Fremennik name]. What kind of armour were you thinking of exactly?"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous3",
+                                    "id": "qRcCkt"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "VkpRVW"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have the requisite materials:",
+                        "steps": [
+                          {
+                            "npc": "My apologies [Fremennik name], but I will need you to bring me 1 piece of dark dagger-mouth hide, 1 skull piece and 5,000 coins before I can make this helm for you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "yEpyYG"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "NO",
+                            "steps": [
+                              {
+                                "npc": "As you wish, [Fremennik name]. What kind of armour were you thinking of exactly?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous2",
+                                "id": "Ct8KiQ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sturdy bodyarmour",
+                    "steps": [
+                      {
+                        "npc": "I am afraid it will cost you 10,000 coins to make that for you... Is that okay?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "YES"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the requisite materials:",
+                        "steps": [
+                          {
+                            "npc": "The seers of legend all wore just such armour! Did you want me to craft you another piece?"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a skeletal top",
+                            "id": "_MGoLq"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "YES",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "Gyvis1"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "NO",
+                                "steps": [
+                                  {
+                                    "npc": "As you wish, [Fremennik name]. What kind of armour were you thinking of exactly?"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous3",
+                                    "id": "Wy2b5b"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "BL_mjU"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have the requisite materials:",
+                        "steps": [
+                          {
+                            "npc": "I am sorry [Fremennik name], but I need 3 pieces of dark dagger-mouth hide, 1 ribcage piece and 10,000 coins to make you this armour..."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "2ySISo"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "NO",
+                            "steps": [
+                              {
+                                "npc": "As you wish, [Fremennik name]. What kind of armour were you thinking of exactly?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous2",
+                                "id": "cCiinm"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Powerful leg armour",
+                    "steps": [
+                      {
+                        "npc": "I am afraid it will cost you 7,500 coins to make that for you... Is that okay?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "YES"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has the requisite materials:",
+                        "steps": [
+                          {
+                            "npc": "Ah, I used to wear just such a piece of armour to battle in my youth... Do you want me to make you another pair of legs while I am doing it anyway?"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a skeletal bottoms",
+                            "id": "4Ct04Q"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "YES",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "7Azha0"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "NO",
+                                "steps": [
+                                  {
+                                    "npc": "As you wish, [Fremennik name]. What kind of armour were you thinking of exactly?"
+                                  },
+                                  {
+                                    "type": "jump",
+                                    "reference": "previous3",
+                                    "id": "Ur_lQR"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "_tYnaT"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have the requisite materials:",
+                        "steps": [
+                          {
+                            "npc": "I am very sorry [Fremennik name], but I will require 2 pieces of dark dagger-mouth hide, 1 fibula piece and 7,500 coins to make this type of leg armour."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "ZXS88_"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "NO",
+                            "steps": [
+                              {
+                                "npc": "As you wish, [Fremennik name]. What kind of armour were you thinking of exactly?"
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous2",
+                                "id": "lx-63a"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nothing",
+                    "steps": [
+                      {
+                        "player": "Actually, I don't want anything."
+                      },
+                      {
+                        "npc": "AS you wish."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "The Fremennik Trials",
+            "steps": [
+              {
+                "player": "Hello Peer."
+              },
+              {
+                "npc": "Greetings to you [brother/sister] [Fremennik name]! What brings you to see me again?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you tell my future?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "Y1dOOd"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you bank my stuff?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "JNDoP5"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nothing really.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "vVbZ4V"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-a-ring-icon": [
+      {
+        "type": "choice",
+        "prompt": "What would you like to ask about?",
+        "options": []
+      }
+    ],
+    "standard-dialogue-when-using-the-right-click-deposit-items-option-before-completing-the-easy-fremennik-diary": [
+      {
+        "npc": "I cannot do that for you until you have completed the easy tier of the Fremennik achievement diary."
+      }
+    ]
+  }
+}

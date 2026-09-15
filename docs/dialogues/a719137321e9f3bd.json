@@ -1,0 +1,144 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "I can't believe that I've been made to wait so long."
+      },
+      {
+        "player": "What are you waiting for?"
+      },
+      {
+        "npc": "I have been waiting for an audience with the King for days!"
+      },
+      {
+        "player": "Well, he's clearly a busy man."
+      },
+      {
+        "npc": "Bah! I think he's just trying to insult the gnome nation, by making me wait. The cheek of these humans. Just because they're vertically challenged they think they can ignore us."
+      },
+      {
+        "player": "I'm not ignoring you."
+      },
+      {
+        "npc": "Hmm. I should be thankful for small mercies, I suppose."
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "xltJSS"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6yPTnf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "TnpQfC"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "8SKaUE"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [item] to Ambassador Gimblewap",
+            "id": "4iK_qn"
+          },
+          {
+            "npc": "Many thanks. This will help wile away the time whilst I'm waiting for an audience."
+          },
+          {
+            "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+          },
+          {
+            "type": "action",
+            "text": "You are given [a/some] [reward item(s)] as a tip.",
+            "action": "receive",
+            "action_source": "text",
+            "id": "VONj_0"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You are not eligible to get gnome food delivered to you yet.",
+                "id": "m4o3H3"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "mlH0ir"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "Ts-Rdj"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "id": "AKBdmF"
+              },
+              {
+                "type": "message",
+                "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                "id": "2nJDhQ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "3evKmn"
+              }
+            ],
+            "id": "UYdyH_"
+          }
+        ],
+        "id": "0I6wXM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "H_c6rf"
+          }
+        ],
+        "id": "nokLzU"
+      }
+    ]
+  }
+}

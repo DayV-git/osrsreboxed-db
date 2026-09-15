@@ -1,0 +1,416 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Trick or treat!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Trick!",
+            "steps": [
+              {
+                "player": "Hey kid, wanna see something scary?"
+              },
+              {
+                "npc": "Yeah!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the zombie head:",
+                "steps": [
+                  {
+                    "npc": "Aaaaaagh!"
+                  },
+                  {
+                    "npc": "Aaaaaagh!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "The child flees, dropping sweets.",
+                    "id": "gyhRr6"
+                  }
+                ],
+                "id": "1kCMva"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have the zombie head:",
+                "steps": [
+                  {
+                    "player": "Raaaaaaar!"
+                  },
+                  {
+                    "npc": "That wasn't scary at all!"
+                  },
+                  {
+                    "npc": "That wasn't scary at all!"
+                  }
+                ],
+                "id": "7G-zd-"
+              }
+            ]
+          },
+          {
+            "text": "Treat!",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has sweets and coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Give Coins",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "tgOwlQ"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Give Sweets",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "9PzFa8"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "jGqTqU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has only sweets:",
+                "steps": [
+                  {
+                    "player": "There you go kid, try not to eat too much!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Continues below with success dialogue",
+                    "id": "17H9Zm"
+                  }
+                ],
+                "id": "jVqrNS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has only coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "How many coins would you like to give?",
+                    "options": []
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player inputted 0, or more coins than they had:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "text": "Continues below with failure dialogue",
+                        "id": "9DI-_R"
+                      }
+                    ],
+                    "id": "m2hGpq"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player inputted a valid amount of coins:",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the amount of coins offered was above 100:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Sadly the child's pockets are only big enough to accept 100 coins.",
+                            "id": "ItCgdF"
+                          }
+                        ],
+                        "id": "p_bhKK"
+                      },
+                      {
+                        "player": "Here you go kid, don't spend it all at once!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Continues below with success dialogue",
+                        "id": "zAzCxr"
+                      }
+                    ],
+                    "id": "oKba7f"
+                  }
+                ],
+                "id": "V-3sHx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have sweets or coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "Continues below with failure dialogue",
+                    "id": "-cd_2o"
+                  }
+                ],
+                "id": "CA6yDV"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-success-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Yay! You're so awesome [player name]!"
+              },
+              {
+                "npc": "Yay! You're so awesome [player name]!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "[player name] is the best!"
+              },
+              {
+                "npc": "[player name] is the best!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Thank you [player name], you are soooo cool!"
+              },
+              {
+                "npc": "Thank you [player name], you are soooo cool!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "[player name] is so great, they should make [him/her/them] [king/queen/ruler] of Gielinor!"
+              },
+              {
+                "npc": "[player name] is so great, they should make [him/her/them] [king/queen/ruler] of Gielinor!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "[player name] is the bestest adventurer EVER!"
+              },
+              {
+                "npc": "[player name] is the bestest adventurer EVER!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "I think [player name] should be the [king/queen/ruler] of Halloween!"
+              },
+              {
+                "npc": "I think [player name] should be the [king/queen/ruler] of Halloween!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "npc": "[player name] is my favourite hero!"
+              },
+              {
+                "npc": "[player name] is my favourite hero!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-failure-dialogue": [
+      {
+        "player": "Here kid, have some..."
+      },
+      {
+        "player": "Oh...Sorry, but I don't have any sweets or coins for you this year."
+      },
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "[player name] is sooooo mean!"
+              },
+              {
+                "npc": "[player name] is sooooo mean!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "[player name] won't give me sweets!"
+              },
+              {
+                "npc": "[player name] won't give me sweets!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Awwwww, please gimme some sweets [player name]!"
+              },
+              {
+                "npc": "Awwwww, please gimme some sweets [player name]!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "All I wanted was sweets, but [player name] won't give me any!"
+              },
+              {
+                "npc": "All I wanted was sweets, but [player name] won't give me any!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Sob...worst Halloween EVER!"
+              },
+              {
+                "npc": "Sob...worst Halloween EVER!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "I'll cry and cry if you won't give me sweets!"
+              },
+              {
+                "npc": "I'll cry and cry if you won't give me sweets!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "npc": "I hope you get eaten by the KBD, [player name]!"
+              },
+              {
+                "npc": "I hope you get eaten by the KBD, [player name]!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Hey!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Trick or Treat!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Hey, stop!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Sweeeeeets!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Happy Halloween!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "Treats! Treats!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "npc": "Boo!"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "huSVZM"
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "default": "standard-dialogue-before-completion-of-the-spirits-of-the-elid",
+  "variants": {
+    "standard-dialogue-before-completion-of-the-spirits-of-the-elid": [
+      {
+        "npc": "Water, water get your fresh water here, 1000 coins a waterskin, a bargain in these difficult times."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That's extortionate! Why so much?",
+            "steps": [
+              {
+                "player": "That's extortionate! Why so much?"
+              },
+              {
+                "npc": "Well it's the cheapest water you'll find in this town."
+              }
+            ]
+          },
+          {
+            "text": "Ok, I'll buy some!",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have 1000 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You don't have 1000 coins to buy the water with.",
+                    "id": "m8--ej"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "o1rVHS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 1000 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You buy a full waterskin for 1000 coins!",
+                    "id": "UfEXu0"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Waterskin(4)",
+                    "id": "kGpPkf"
+                  }
+                ],
+                "id": "Qj1d5D"
+              }
+            ]
+          },
+          {
+            "text": "I think I'll give it a miss.",
+            "steps": [
+              {
+                "player": "I think I'll give it a miss."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completion-of-the-spirits-of-the-elid": [
+      {
+        "player": "You look glum."
+      },
+      {
+        "npc": "Business here really seems to have dried up. I had a good thing going here and you spoiled it."
+      },
+      {
+        "player": "Well it serves you right really. Taking advantage of people like that."
+      },
+      {
+        "npc": "So want to buy some water?"
+      },
+      {
+        "player": "How much?"
+      },
+      {
+        "npc": "To you 1000 coins for a waterskin!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ok, I feel sorry for you.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have 1000 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You don't have 1000 coins to buy the water with.",
+                    "id": "xbKZxF"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "r84rDf"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 1000 coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You buy a full waterskin for 1000 coins!",
+                    "id": "ywwcof"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Waterskin(4)",
+                    "id": "EdAE2z"
+                  }
+                ],
+                "id": "aNQWuM"
+              }
+            ]
+          },
+          {
+            "text": "I think I'll give it a miss.",
+            "steps": [
+              {
+                "player": "I think I'll give it a miss."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-using-any-item-on-ali-s-water-cart-or-water-barrel": [
+      {
+        "npc": "If you want water you need to buy it off me."
+      }
+    ]
+  }
+}

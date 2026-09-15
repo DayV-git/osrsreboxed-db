@@ -1,0 +1,241 @@
+{
+  "default": "before-one-small-favour",
+  "variants": {
+    "before-one-small-favour": [
+      {
+        "npc": "Hello! Don't get in the way around here, we've got a lot of work to do!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hello there, what are you working on?",
+            "steps": [
+              {
+                "player": "Hello there, what are you working on?"
+              },
+              {
+                "npc": "Well, it's quite exciting... we're extending the glider network to include the Feldip Hills so that people can come and look at these curious ogres."
+              },
+              {
+                "npc": "They are impressive creatures aren't they - quite mystified they are by the technology we gnomes have invented."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "xDLUD3"
+              }
+            ]
+          },
+          {
+            "text": "What are you working on?",
+            "steps": [
+              {
+                "player": "What are you working on?"
+              },
+              {
+                "npc": "Well, people will be able to visit this area, once construction has finished, by using the most advanced network of glider routes in the whole of Gielinor... in fact, the only network of glider routes!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "heMrJW"
+              }
+            ]
+          },
+          {
+            "text": "Is there anything I can do?",
+            "steps": [
+              {
+                "player": "Is there anything I can do?"
+              },
+              {
+                "npc": "Not really, I'm afraid, it's probably all far too technical for someone like you."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "zzVT0G"
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "player": "Okay, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-one-small-favour": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hello, how's the work going?",
+            "steps": [
+              {
+                "player": "Hello, how's the work going?"
+              },
+              {
+                "npc": "Getting there now, thanks to your help!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "sUpw81"
+              }
+            ]
+          },
+          {
+            "text": "Can I take a flight in the glider?",
+            "steps": [
+              {
+                "player": "Can I take a flight in the glider?"
+              },
+              {
+                "npc": "Sure, go ahead."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Glider",
+                "id": "MGABOH"
+              }
+            ]
+          },
+          {
+            "text": "Have a nice day.",
+            "steps": [
+              {
+                "player": "Have a nice day."
+              },
+              {
+                "npc": "You too, human."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "MnpcWG"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "4nZL33"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "qPOwb0"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "mkD2Cl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [item] to Gnormadium Avlafrim",
+            "id": "uE8a2c"
+          },
+          {
+            "npc": "Oh my! I've had nothing to eat or drink but chompy birds and smelly water for days. Thank you."
+          },
+          {
+            "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+          },
+          {
+            "type": "action",
+            "text": "You are given [a/some] [reward item(s)] as a tip.",
+            "action": "receive",
+            "action_source": "text",
+            "id": "38IROi"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You are not eligible to get gnome food delivered to you yet.",
+                "id": "EeX78L"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "DQuca1"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "hkpDaV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "id": "f-f3IE"
+              },
+              {
+                "type": "message",
+                "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                "id": "-o28lD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "WzAKNf"
+              }
+            ],
+            "id": "IGo5Jn"
+          }
+        ],
+        "id": "5s6fQR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "KeDcAy"
+          }
+        ],
+        "id": "ZqrLsu"
+      }
+    ]
+  }
+}

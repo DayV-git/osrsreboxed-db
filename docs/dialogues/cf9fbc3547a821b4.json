@@ -1,0 +1,499 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-during-regicide-talking-to-ilfeen-at-the-earliest-opportunity-after-starting-regicide": [
+      {
+        "npc": "Good day, what are you doing all the way out here?"
+      },
+      {
+        "player": "I'm just wandering, it's a lovely day for a walk in the woods."
+      },
+      {
+        "npc": "It is that."
+      },
+      {
+        "player": "Well I shouldn't keep you, see you later."
+      },
+      {
+        "npc": "Bye."
+      }
+    ],
+    "standard-dialogue-after-completing-the-eyes-of-glouphrie-before-starting-roving-elves": [
+      {
+        "player": "Do you remember Oaknock? He was a gnome inventor."
+      },
+      {
+        "npc": "Of course! How is the young gnome? I rather liked him he was rather loud, but he had a good soul, and was very interested in elven magic."
+      },
+      {
+        "player": "I think Oaknock died of old age some time ago. He must have visited you a few hundred years ago though..."
+      },
+      {
+        "npc": "I keep forgetting, a hundred years is a long time for you. He was very interested in illusion magic, and how to prevent it. I gave him some advice and a few bits of equipment to help him."
+      },
+      {
+        "player": "A seed?"
+      },
+      {
+        "npc": "Of course. It grew into an axe. I hope he found it useful."
+      },
+      {
+        "player": "I think he did! Thanks."
+      },
+      {
+        "type": "message",
+        "text": "Ilfeen smiles serenely.",
+        "id": "YRuKmj"
+      }
+    ],
+    "standard-dialogue-during-roving-elves": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Hey, how's it going?"
+      },
+      {
+        "player": "Not bad, I'm trying to help an elf named Islwyn consecrate his grandmother's resting place. Do you know of anything that could help me?"
+      },
+      {
+        "npc": "Sorry, I know nothing of the consecration process. Eluned will know though, she travels with Islwyn."
+      },
+      {
+        "player": "Alright, thanks."
+      },
+      {
+        "npc": "No problem."
+      },
+      {
+        "type": "condition",
+        "text": "After completing The Eyes of Glouphrie:",
+        "steps": [
+          {
+            "player": "Also, while I'm here, I have a question for you."
+          },
+          {
+            "npc": "Well ask away."
+          },
+          {
+            "player": "Do you remember Oaknock? He was a gnome inventor."
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "rcP0-F"
+          }
+        ],
+        "id": "n9Rpt5"
+      }
+    ],
+    "after-roving-elves-first-time-after-the-quest": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Hey, you're the human that helped my friend Islwyn, aren't you? He told me that he'd given you some crystal equipment."
+      },
+      {
+        "player": "That's right, why?"
+      },
+      {
+        "npc": "When it reverts to seed, bring it to me and I'll chant it for you."
+      },
+      {
+        "type": "action",
+        "text": "(Continues with the other conditional dialogue.)",
+        "id": "bpB_hz"
+      }
+    ],
+    "after-roving-elves-after-the-first-time": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Hey."
+      },
+      {
+        "player": "Are you still offering to chant seeds?"
+      },
+      {
+        "npc": "I am, but you'll need to supply the seed."
+      },
+      {
+        "type": "condition",
+        "text": "After completing The Eyes of Glouphrie:",
+        "steps": [
+          {
+            "player": "While I'm here, I have a question for you."
+          },
+          {
+            "npc": "Well ask away."
+          },
+          {
+            "player": "Do you remember Oaknock? He was a gnome inventor."
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "FLlM82"
+          }
+        ],
+        "id": "uHExGz"
+      },
+      {
+        "type": "condition",
+        "text": "Without Crystal singing for beginners:",
+        "steps": [
+          {
+            "npc": "If it helps I have a book here that will tell you about crystal chanting."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "That sounds great.",
+                "steps": [
+                  {
+                    "player": "That sounds great."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You're handed a book.",
+                    "id": "2hC8tB"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Crystal singing for beginners",
+                    "id": "yhKgj3"
+                  },
+                  {
+                    "player": "Thanks, I'll read all about it."
+                  },
+                  {
+                    "npc": "Well, good luck."
+                  },
+                  {
+                    "player": "See you later."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "I don't need it, thanks.",
+                "steps": [
+                  {
+                    "player": "I don't need it, thanks."
+                  },
+                  {
+                    "npc": "Well, good luck."
+                  },
+                  {
+                    "player": "See you later."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ZKyN4D"
+      },
+      {
+        "type": "condition",
+        "text": "With a crystal seed:",
+        "steps": [
+          {
+            "player": "It just happens I have a seed here, what can you do with it?"
+          },
+          {
+            "npc": "I can only make shields and bows. I've been trying halberds but so far only Islwyn has succeeded."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "How much for a shield?",
+                "steps": [
+                  {
+                    "player": "How much for a shield?"
+                  },
+                  {
+                    "npc": "As this is the first one I've made for you it will be 750,000 coins. The cost should get cheaper as I get to know your resonance."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I'll take it.",
+                        "steps": [
+                          {
+                            "player": "I'll take it."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Ilfeen hands you a crystal shield.",
+                            "id": "ZOi9-g"
+                          },
+                          {
+                            "player": "Thanks."
+                          },
+                          {
+                            "npc": "If it helps I have a book here that will tell you about crystal chanting."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I can't afford that.",
+                        "steps": [
+                          {
+                            "player": "I can't afford that."
+                          },
+                          {
+                            "type": "missing",
+                            "id": "2EZqho"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "How much is the bow?",
+                "steps": [
+                  {
+                    "player": "How much is the bow?"
+                  },
+                  {
+                    "npc": "As this is the first one I've made for you it will be 900,000 coins. The cost should get cheaper as I get to know your resonance."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I'll take it.",
+                        "steps": [
+                          {
+                            "player": "I'll take it."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Ilfeen hands you a crystal bow.",
+                            "id": "znTePM"
+                          },
+                          {
+                            "player": "Thanks."
+                          },
+                          {
+                            "npc": "If it helps I have a book here that will tell you about crystal chanting."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "I can't afford that.",
+                        "steps": [
+                          {
+                            "player": "I can't afford that."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "7WXIcB"
+      }
+    ],
+    "after-roving-elves-using-a-crystal-weapon-seed-on-ilfeen-without-her-knowing-full-resonance": [
+      {
+        "npc": "I don't know your resonance well enough for that."
+      }
+    ],
+    "after-song-of-the-elves": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "Hey."
+      },
+      {
+        "player": "Are you still offering to chant seeds?"
+      },
+      {
+        "npc": "I am, but you'll need to supply the seed."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has crystal seeds in their inventory:",
+        "steps": [
+          {
+            "player": "It just happens I have a seed here, what can you do with it?"
+          },
+          {
+            "type": "condition",
+            "text": "If the player had crystal weaponry before the release of Song of the Elves:",
+            "steps": [
+              {
+                "npc": "I see we have removed some defunct crystal equipment from you recently. I would be happy to replace them for you, unless you want to buy them of course."
+              },
+              {
+                "npc": "I can replace for you [amount] crystal bow(s), [amount] crystal shield(s) and [amount] crystal halberd(s)."
+              },
+              {
+                "npc": "Which crystal item would you like?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Crystal bow.",
+                    "steps": [
+                      {
+                        "player": "Siphon the ether into a Crystal bow please."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a crystal bow",
+                        "id": "a2g9K5"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Crystal halberd.",
+                    "steps": [
+                      {
+                        "player": "Siphon the ether into a Crystal halberd please."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a crystal halberd",
+                        "id": "5GYJ3-"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Crystal shield.",
+                    "steps": [
+                      {
+                        "player": "Siphon the ether into a Crystal shield please."
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a crystal shield",
+                        "id": "ojWIaT"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nothing.",
+                    "steps": [
+                      {
+                        "player": "None of them, I would like to purchase one with gold instead."
+                      },
+                      {
+                        "npc": "I can make shields, bows and halberds."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "How much for a shield?",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "MMEO_a"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "How much is the bow?",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "1RGRFV"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "How much is a halberd?",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "2uHfxu"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks.",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "dDF5z6"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "VknEu6"
+          }
+        ],
+        "id": "EDryFL"
+      },
+      {
+        "type": "condition",
+        "text": "After completing The Eyes of Glouphrie:",
+        "steps": [
+          {
+            "player": "While I'm here, I have a question for you."
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "I7qV8p"
+          }
+        ],
+        "id": "sUGWP0"
+      },
+      {
+        "type": "condition",
+        "text": "Without Crystal singing for beginners:",
+        "steps": [
+          {
+            "npc": "If it helps I have a book here that will tell you about crystal chanting."
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "GLOjqm"
+          }
+        ],
+        "id": "VWBkT0"
+      }
+    ]
+  }
+}

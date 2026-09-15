@@ -1,0 +1,305 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has not started Romeo & Juliet:",
+        "steps": [
+          {
+            "npc": "Hello adventurer, do you seek a quest?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I am always looking for a quest.",
+                "steps": [
+                  {
+                    "player": "I am always looking for a quest."
+                  },
+                  {
+                    "npc": "Well, I see poor Romeo wandering around the square. I think he may need help."
+                  },
+                  {
+                    "npc": "I was helping him and Juliet to meet, but it became impossible."
+                  },
+                  {
+                    "npc": "I am sure he can use some help."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "sKiZT_"
+                  }
+                ]
+              },
+              {
+                "text": "No, I prefer just to kill things.",
+                "steps": [
+                  {
+                    "player": "No, I prefer just to kill things."
+                  },
+                  {
+                    "npc": "That's a fine career in these lands. There is more that needs killing every day."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "p4-lyH"
+                  }
+                ]
+              },
+              {
+                "text": "Can you recommend a good bar?",
+                "steps": [
+                  {
+                    "player": "Can you recommend a good bar?"
+                  },
+                  {
+                    "npc": "Drinking will be the death of you."
+                  },
+                  {
+                    "npc": "But the Blue Moon in the city is cheap enough."
+                  },
+                  {
+                    "npc": "And providing you buy one drink an hour they let you stay all night."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "8LMao2"
+                  }
+                ]
+              },
+              {
+                "text": "Ok, thanks",
+                "steps": [
+                  {
+                    "player": "Ok, thanks"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "5DF5_6"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has started Romeo & Juliet and talked to Juliet:",
+        "steps": [
+          {
+            "type": "reference",
+            "target": "Transcript:Father Lawrence",
+            "section": "Romeo & Juliet",
+            "text": "(Quest dialogue shows)",
+            "id": "K9GSha",
+            "resolved": false,
+            "page_available": true
+          }
+        ],
+        "id": "Xv5i9l"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has given a Cadava potion to Juliet:",
+        "steps": [
+          {
+            "npc": "Oh to be a father in the times of whiskey."
+          },
+          {
+            "npc": "I sing and I drink and I wake up in gutters."
+          },
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "Dialogue 1",
+                "steps": [
+                  {
+                    "npc": "Top of the morning to you."
+                  }
+                ]
+              },
+              {
+                "text": "Dialogue 2",
+                "steps": [
+                  {
+                    "npc": "To err is human, to forgive, quite difficult."
+                  },
+                  {
+                    "npc": "I need a think I drink."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "VhqHHb"
+      }
+    ],
+    "delivering-a-letter-from-the-wise-old-man": [
+      {
+        "player": "The Wise Old Man of Draynor Village sent you this message about your drinking habits!"
+      },
+      {
+        "npc": "mssge? wha messsge?"
+      },
+      {
+        "npc": "oh, msesesge for me."
+      },
+      {
+        "type": "message",
+        "text": "Oh dear, he doesn't look like he's going to be able to read the message!",
+        "id": "ROnACs"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have enough inventory space for a reward:",
+        "steps": [
+          {
+            "npc": "I'd give you a reward, but you don't seem to have any space for it. Come back when you do."
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "Upk31X"
+          }
+        ],
+        "id": "QGesVV"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enough space for a reward:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player receives Prayer experience:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Faether Lawrence blesses you. You gain some Prayer xp.",
+                "id": "ctgxeC"
+              },
+              {
+                "npc": "in nomine saradomini, blah blah blah..."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "IZsktR"
+              }
+            ],
+            "id": "vpIrCH"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is rewarded runes:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "an assortment of runes",
+                "id": "Y5x9sa"
+              },
+              {
+                "type": "message",
+                "text": "Faether Lawrence gives you some runes.",
+                "id": "7ajjVP"
+              },
+              {
+                "npc": "Whee! Mmmgic power, kazamm..."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "xwaB1E"
+              }
+            ],
+            "id": "YbvWAk"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is rewarded coins:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the amount is less than 1000 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "some coins",
+                    "id": "9WCB_c"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Faether Lawrence gives you some coins.",
+                    "id": "i-Kysi"
+                  },
+                  {
+                    "npc": "here, hve som munny."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "bjboWY"
+                  }
+                ],
+                "id": "evTUfJ"
+              },
+              {
+                "type": "condition",
+                "text": "If the amount is more than 1000 coins:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "some coins",
+                    "id": "HkNM_c"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Faether Lawrence gives you some coins.",
+                    "id": "Q2bY-N"
+                  },
+                  {
+                    "npc": "here, hve som munny."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "uJqg0x"
+                  }
+                ],
+                "id": "-tp4y_"
+              }
+            ],
+            "id": "Ib41pC"
+          },
+          {
+            "type": "condition",
+            "text": "If the player is rewarded herbs:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "DtqlnB"
+              },
+              {
+                "type": "missing",
+                "id": "V3WTzG"
+              }
+            ],
+            "id": "nuIHnP"
+          }
+        ],
+        "id": "HSv1lK"
+      }
+    ]
+  }
+}

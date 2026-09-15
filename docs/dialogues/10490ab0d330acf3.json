@@ -1,0 +1,567 @@
+{
+  "default": null,
+  "variants": {
+    "big-mo-s-may-initial-dialogue": [
+      {
+        "npc": "Why, hello there!"
+      },
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "The name is Big Mo. I'm a travelling salesman and businessman from overseas."
+      },
+      {
+        "npc": "I drop by these parts every so often to see what wares I can get my hands on."
+      },
+      {
+        "player": "What do you mean by 'overseas'? Karamja?"
+      },
+      {
+        "npc": "Ha! It seems you've got a lot of the world left to explore. hey, maybe I could help you with that."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Exploration? I'm listening...",
+            "steps": [
+              {
+                "player": "Exploration? I'm listening..."
+              },
+              {
+                "npc": "When I buy stock, I buy almost everything I can get my hands on. I always end up finding clue scrolls mixed in with my stock."
+              },
+              {
+                "npc": "Usually my little brother would follow up on them, often coming back with a big pile of loot."
+              },
+              {
+                "npc": "Unfortunately, my brother got wrapped up in some nasty dealings with some faulty dragon claws so we had to part ways."
+              },
+              {
+                "npc": "Since you seem interested in an adventure, you seem like the perfect [man/woman] for the job!"
+              },
+              {
+                "player": "So... You would give me a clue scroll and we would split the loot once I find it?"
+              },
+              {
+                "npc": "Not quite. I'm sure you're a lovely chap and all, but I can't trust a stranger!"
+              },
+              {
+                "npc": "I'd be more than happy to cut you a deal. I can sell you any clue scrolls I come across for 50gp."
+              },
+              {
+                "npc": "I'm sure you'd make a killing on any loot you find."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Why don't you do the clue scrolls yourself?",
+                    "steps": [
+                      {
+                        "player": "Why don't you do the clue scrolls yourself? Wouldn't you make more money?"
+                      },
+                      {
+                        "npc": "HA! Sure, the guy in the 50,000,000 coin suit is going to run around all day digging holes. Come on! Now, do you want to buy one?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "I3zOMK"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Sounds good to me.",
+                    "steps": [
+                      {
+                        "player": "Sounds good to me."
+                      },
+                      {
+                        "npc": "Okay, they're 50 coins each. How much of a challenge would you like? I'll take a look and see if I have a clue fitting for your experience."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "The easier the better.",
+                            "steps": [
+                              {
+                                "player": "The easier the better."
+                              },
+                              {
+                                "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                              },
+                              {
+                                "type": "action",
+                                "text": "Player receives an easy clue scroll.",
+                                "action": "receive",
+                                "action_source": "text",
+                                "id": "gqyE7A"
+                              },
+                              {
+                                "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Not too easy, not too hard.",
+                            "steps": [
+                              {
+                                "player": "Not too easy, not too hard."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player receives the tier of clue they asked for:",
+                                "steps": [
+                                  {
+                                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "Player receives an medium clue scroll.",
+                                    "action": "receive",
+                                    "action_source": "text",
+                                    "id": "Y4Jomg"
+                                  },
+                                  {
+                                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "Km5ZYv"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "Otherwise:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "Player receives a easy clue scroll.",
+                                    "action": "receive",
+                                    "action_source": "text",
+                                    "id": "8Myb5o"
+                                  },
+                                  {
+                                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                                  }
+                                ],
+                                "id": "ICvrGC"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I like a challenge. Give me one to wrinkle my brain.",
+                            "steps": [
+                              {
+                                "player": "I like a challenge. Give me one to wrinkle my brain."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player receives the tier of clue they asked for:",
+                                "steps": [
+                                  {
+                                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "Player receives an hard clue scroll.",
+                                    "action": "receive",
+                                    "action_source": "text",
+                                    "id": "EgdsYB"
+                                  },
+                                  {
+                                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "uMQeny"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "Otherwise:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "Player receives a medium clue scroll.",
+                                    "action": "receive",
+                                    "action_source": "text",
+                                    "id": "bmIqwY"
+                                  },
+                                  {
+                                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                                  }
+                                ],
+                                "id": "E08Bn4"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Give me the hardest clue you can get your hands on.",
+                            "steps": [
+                              {
+                                "player": "Give me the hardest clue you can get your hands on."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player receives the tier of clue they asked for:",
+                                "steps": [
+                                  {
+                                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "Player receives an elite clue scroll.",
+                                    "action": "receive",
+                                    "action_source": "text",
+                                    "id": "Sc56lX"
+                                  },
+                                  {
+                                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "qRP8gz"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "Otherwise:",
+                                "steps": [
+                                  {
+                                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                                  },
+                                  {
+                                    "type": "action",
+                                    "text": "Player receives a hard clue scroll.",
+                                    "action": "receive",
+                                    "action_source": "text",
+                                    "id": "OqOPRE"
+                                  },
+                                  {
+                                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                                  }
+                                ],
+                                "id": "vZrxgO"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Forget it, I changed my mind.",
+                            "steps": [
+                              {
+                                "player": "Forget it, I changed my mind."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Exploration? Sounds exhausting. I'm off.",
+            "steps": [
+              {
+                "player": "Exploration? Sounds exhausting. I'm off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "big-mo-s-may-repeat-dialogue": [
+      {
+        "npc": "Why, hello there! Want to buy another clue scroll?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why don't you do the clue scrolls yourself?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "4ZeB-T"
+              }
+            ]
+          },
+          {
+            "text": "Sounds good to me.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "lH83Tf"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nB3AIZ"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "big-mo-s-may-right-click-trade": [
+      {
+        "type": "choice",
+        "prompt": "Clue scrolls cost 50 coins.",
+        "options": [
+          {
+            "text": "Buy an easy clue.",
+            "steps": [
+              {
+                "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+              },
+              {
+                "type": "action",
+                "text": "Player receives an easy clue scroll.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "biFg-z"
+              },
+              {
+                "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+              }
+            ]
+          },
+          {
+            "text": "Buy a medium clue.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player receives the tier of clue they asked for:",
+                "steps": [
+                  {
+                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives an medium clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "WwhvOL"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "wEWZw8"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives a easy clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "Xag4j1"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  }
+                ],
+                "id": "4mZ-tT"
+              }
+            ]
+          },
+          {
+            "text": "Buy a hard clue.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player receives the tier of clue they asked for:",
+                "steps": [
+                  {
+                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives an hard clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "pFmYVU"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "uRkv9v"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives a medium clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "68zrL8"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  }
+                ],
+                "id": "YpxGFA"
+              }
+            ]
+          },
+          {
+            "text": "Buy an elite clue.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player receives the tier of clue they asked for:",
+                "steps": [
+                  {
+                    "npc": "Perfect! I've got just the clue right here. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives an elite clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "G1-3sV"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Um0mDe"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid this is the best I can do right now. Pleasure doing business with you!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player receives a hard clue scroll.",
+                    "action": "receive",
+                    "action_source": "text",
+                    "id": "F-l_X9"
+                  },
+                  {
+                    "npc": "If you can track me down again another day I will do my best to have the perfect clue for you. Good luck."
+                  }
+                ],
+                "id": "LAs-Sx"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "realm-of-memories": [
+      {
+        "npc": "Why, hello there!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "npc": "The name is Big Mo. I was a travelling salesman and businessman, passing through the towns to see what wares I could get my hands on."
+              },
+              {
+                "npc": "I turned up a few years ago, selling clue scrolls to encourage people to explore. I'd only sell each person one clue scroll per day, of course."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "1geWIQ"
+              }
+            ]
+          },
+          {
+            "text": "Where were you from originally?",
+            "steps": [
+              {
+                "player": "Where were you from originally?"
+              },
+              {
+                "npc": "HA HA HA! I deliberately didn't tell people where I was from. Mostly they assumed me to be from Zeah."
+              },
+              {
+                "npc": "That may or may not be true, though - no-one else in Zeah looks much like me. I'll leave it as a mystery..."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "t8kjcg"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "steps": [
+    {
+      "npc": "Good day, hunter."
+    },
+    {
+      "player": "Good day."
+    },
+    {
+      "npc": "What's brought you in here today?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Just looking for something to do.",
+          "steps": [
+            {
+              "player": "Just looking for something to do."
+            },
+            {
+              "npc": "Ah, that's the same thing that brought me here."
+            },
+            {
+              "player": "Are you not a hunter by trade?"
+            },
+            {
+              "npc": "Only by interest at the moment, although the gang here are trying their best to train me."
+            },
+            {
+              "player": "Are you enjoying it?"
+            },
+            {
+              "npc": "Well it's less boring than what I've done before, so I can't complain!"
+            },
+            {
+              "player": "What were you doing before this then?"
+            },
+            {
+              "npc": "Well, my parents wanted me to go into the whole wine growing business, but farming was a bit too slow-paced for me."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Can I get a rumour?",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "H4GSGb"
+                    }
+                  ]
+                },
+                {
+                  "text": "See you later.",
+                  "steps": [
+                    {
+                      "player": "See you later."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Can I get a rumour?",
+          "steps": [
+            {
+              "player": "Can I get a rumour?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has not talked to Verity:",
+              "steps": [
+                {
+                  "npc": "You're new here, aren't you? You might want to talk to Verity before you get started."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "Mau7Aa"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a rumour:",
+              "steps": [
+                {
+                  "type": "random",
+                  "options": [
+                    {
+                      "text": "Dialogue 1",
+                      "steps": [
+                        {
+                          "npc": "Could you check out the validity of this report for me? Someone thinks they've seen a [creature]. Once you find it, bring back one of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 2",
+                      "steps": [
+                        {
+                          "npc": "There's been rumours of a rare [creature] coming in. Once you find it, bring back one of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 3",
+                      "steps": [
+                        {
+                          "npc": "We've got reports of a slightly different [creature] in the local population. Once you find it, bring back one of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 4",
+                      "steps": [
+                        {
+                          "npc": "Looks like we need some information on a unique specimen amongst the local [creature] population. Once you find it, bring back some of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 5",
+                      "steps": [
+                        {
+                          "npc": "I've heard rumours of a strange [creature] that you could check out for me. Once you find it, bring back one of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "KtEFKo"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has completed a rumour:",
+              "steps": [
+                {
+                  "type": "condition",
+                  "text": "If the player used the Talk option:",
+                  "steps": [
+                    {
+                      "npc": "Excellent! Thanks for getting that done. Here's your reward."
+                    },
+                    {
+                      "npc": "Are you interested in taking on another one for me?"
+                    },
+                    {
+                      "type": "jump",
+                      "reference": "continue",
+                      "id": "hUkIAi"
+                    }
+                  ],
+                  "id": "GgAPSz"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player used the Quick-Rumour option:",
+                  "steps": [
+                    {
+                      "npc": "Thanks for that. I'll mark off that report for you. Would you like another rumour?"
+                    },
+                    {
+                      "type": "jump",
+                      "reference": "continue",
+                      "id": "g7fsnS"
+                    }
+                  ],
+                  "id": "EecDQS"
+                },
+                {
+                  "type": "choice",
+                  "prompt": "Get another rumour?",
+                  "options": [
+                    {
+                      "text": "Yes.",
+                      "steps": [
+                        {
+                          "type": "jump",
+                          "reference": "above",
+                          "id": "lIiTyc"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No.",
+                      "steps": [
+                        {
+                          "type": "jump",
+                          "reference": "initial",
+                          "id": "0VogqO"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "CVIXrC"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a rumour:",
+              "steps": [
+                {
+                  "npc": "You're hunting for me at the moment. This rumour was about a [creature]. You'll need to bring back some of its [rare parts]."
+                }
+              ],
+              "id": "OROa3t"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a rumour with a different Guild Hunter:",
+              "steps": [
+                {
+                  "npc": "I hear you're hunting for [Guild Hunter]. Aren't you looking for a [creature] at the moment? You'll need to bring back some of its [rare parts]."
+                },
+                {
+                  "npc": "Unless you fancy hunting for me instead?"
+                },
+                {
+                  "type": "choice",
+                  "prompt": "Switch to Guild Hunter Cervus (Adept)'s rumour?",
+                  "options": [
+                    {
+                      "text": "Yes.",
+                      "steps": [
+                        {
+                          "type": "condition",
+                          "text": "If the player previously had an unfinished rumour with this Guild Hunter:",
+                          "steps": [
+                            {
+                              "npc": "Ah, yes. I asked you to hunt a [creature] and bring back some of its [rare parts]. Hope it's not too boring for you!"
+                            }
+                          ],
+                          "id": "qZvOdQ"
+                        },
+                        {
+                          "type": "condition",
+                          "text": "If the player can receive a new rumour with this Guild Hunter:",
+                          "steps": [
+                            {
+                              "type": "jump",
+                              "reference": "above",
+                              "id": "towhHl"
+                            }
+                          ],
+                          "id": "MDomMf"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No.",
+                      "steps": [
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "GCQWGU"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has asked Huntmaster Gilman for a brand new rumour:",
+              "steps": [
+                {
+                  "type": "random",
+                  "options": [
+                    {
+                      "text": "Dialogue 1",
+                      "steps": [
+                        {
+                          "npc": "Heard we're having an intel reshuffle. You should probably focus on your current task for now."
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 2",
+                      "steps": [
+                        {
+                          "npc": "Gilman said that you're doing some work for him right now. I won't interfere with that."
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 3",
+                      "steps": [
+                        {
+                          "npc": "We're all having a rest, but don't you have something to be getting on with?"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "3kI3Ix"
+            }
+          ]
+        },
+        {
+          "text": "Never mind.",
+          "steps": [
+            {
+              "player": "Never mind."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

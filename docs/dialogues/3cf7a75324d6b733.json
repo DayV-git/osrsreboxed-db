@@ -1,0 +1,81 @@
+{
+  "steps": [
+    {
+      "player": "Hello."
+    },
+    {
+      "npc": "Good day to you, brave adventurer. Can I get you a refreshing beer?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes please!",
+          "steps": [
+            {
+              "player": "Yes please!"
+            },
+            {
+              "npc": "Ok then, that's two gold coins please."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has enough coins:",
+              "steps": [
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "a Beer",
+                  "id": "4ksfKE"
+                },
+                {
+                  "npc": "Cheers!"
+                },
+                {
+                  "player": "Cheers!"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "We4Ri_"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have enough coins:",
+              "steps": [],
+              "id": "W3DWmp"
+            }
+          ]
+        },
+        {
+          "text": "No thanks.",
+          "steps": [
+            {
+              "player": "No thanks."
+            },
+            {
+              "npc": "Let me know if you change your mind."
+            }
+          ]
+        },
+        {
+          "text": "How much?",
+          "steps": [
+            {
+              "player": "How much?"
+            },
+            {
+              "npc": "Two gold pieces a pint. So, what do you say?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "PAHBKU"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

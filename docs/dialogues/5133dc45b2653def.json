@@ -1,0 +1,97 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Good day [Sir/Madame]. Would you like some nice freshly baked bread? Or perhaps a nice piece of cake?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player is talking to one of the Bakers in Ardougne:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Ardougne Baker's Stall.",
+                    "id": "10lyz6"
+                  }
+                ],
+                "id": "thk8ML"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is talking to the baker in Great Kourend:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Kourend Castle Baker's Stall.",
+                    "id": "buzTS5"
+                  }
+                ],
+                "id": "GkwltX"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-catching-the-player-trying-to-steal-from-a-bakery-stall": [
+      {
+        "npc": "Hey! Get your hands off there!"
+      }
+    ],
+    "overhead-dialogue-interacting-with-him-after-stealing-from-a-bakery-stall-recently": [
+      {
+        "npc": "You're the one who stole something from me!"
+      },
+      {
+        "npc": "Guards guards!"
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "Good day, Monsieur. Would you like ze nice freshly-baked bread? Or perhaps a nice piece of cake?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "7btfuj"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "pl_DI7"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

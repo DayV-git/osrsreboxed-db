@@ -1,0 +1,320 @@
+{
+  "default": null,
+  "variants": {
+    "members-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I'm an employee of Keldagrim Carts. I make sure the carts in this area run on time and that people pay their fares."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "zRbt1H"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "player": "Where can you take me?"
+              },
+              {
+                "type": "condition",
+                "text": "Before starting The Giant Dwarf:",
+                "steps": [
+                  {
+                    "npc": "I don't think I'm allowed to take you into the city of Keldagrim, human. Perhaps when you find another way into the city and talk to someone of importance there you will be allowed to."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "a1rBNx"
+                  }
+                ],
+                "id": "x8Dbe2"
+              },
+              {
+                "type": "condition",
+                "text": "After starting The Giant Dwarf:",
+                "steps": [
+                  {
+                    "npc": "This track leads right up to Keldagrim. Only stop."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "3RA5Kx"
+                  }
+                ],
+                "id": "nteEGw"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to buy a ticket.",
+            "steps": [
+              {
+                "player": "I'd like to buy a ticket."
+              },
+              {
+                "npc": "One ticket to Keldagrim, that's 150 coins then."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Buy.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough money:",
+                        "steps": [
+                          {
+                            "player": "I'm sorry, I've run out of money."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "I0MJvM"
+                          }
+                        ],
+                        "id": "BxPv9T"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has no inventory space:",
+                        "steps": [
+                          {
+                            "npc": "I'm sorry, sir, but I don't believe you can hold the ticket."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "qZall5"
+                          }
+                        ],
+                        "id": "TcZIfd"
+                      },
+                      {
+                        "npc": "Thanks for your custom!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't buy.",
+                    "steps": [
+                      {
+                        "player": "No thanks, I changed my mind."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "YdeXom"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[Charm] Only pay half.",
+                    "condition": "If the player is wearing the Ring of Charos(a):",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough money:",
+                        "steps": [
+                          {
+                            "player": "I'm sorry, I've run out of money."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "UccsDp"
+                          }
+                        ],
+                        "id": "PWManO"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have inventory space:",
+                        "steps": [
+                          {
+                            "npc": "I'm sorry, sir, but I don't believe you can hold the ticket."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "initial",
+                            "id": "4Op3j-"
+                          }
+                        ],
+                        "id": "EKhAzg"
+                      },
+                      {
+                        "npc": "This is only 75 coins, I can't let you have a ticket for that."
+                      },
+                      {
+                        "player": "Oh, don't worry. I'll pay you another 75 coins for the next ticket I buy, alright?"
+                      },
+                      {
+                        "npc": "Well... I suppose so."
+                      }
+                    ],
+                    "id": "gcmGz8"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "player": "I have to go."
+              },
+              {
+                "npc": "Just remember, wherever you go, you go there faster through Keldagrim Carts."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "members-dialogue-tickets-option": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Keldagrim (150 coins)",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money:",
+                "steps": [
+                  {
+                    "player": "I'm sorry, I've run out of money."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2T6wXI"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no inventory space:",
+                "steps": [
+                  {
+                    "npc": "I'm sorry, sir, but I don't believe you can hold the ticket."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "UsLgyY"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "members-dialogue-tickets-option-ring-of-charos-a-equipped": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Keldagrim (75 coins)",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(Same as 150 coins option above.)",
+                "id": "tdlQqD"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "free-to-play-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Y00EDI"
+              }
+            ]
+          },
+          {
+            "text": "Where can you take me?",
+            "steps": [
+              {
+                "player": "Where can you take me?"
+              },
+              {
+                "npc": "I can't take you anywhere at the moment."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "SnrV3w"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to buy a ticket.",
+            "steps": [
+              {
+                "player": "I'd like to buy a ticket."
+              },
+              {
+                "npc": "I can't sell any more tickets right now, I'm afraid."
+              },
+              {
+                "type": "end",
+                "reason": "members"
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "-kdhiv"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "free-to-play-dialogue-tickets-option": [
+      {
+        "npc": "I can't sell any more tickets right now, I'm afraid."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ]
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "Before finishing the Hard Western Provinces Diary:",
+        "steps": [
+          {
+            "npc": "I'm afraid I cannot offer to upgrade any Void Knight armour for you. You do not satisfy the order's requirements."
+          },
+          {
+            "type": "message",
+            "text": "You must complete the Hard Tier tasks on the Western Provinces Achievement Diary before the knight will upgrade your Void armour.",
+            "id": "DmH4rh"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "_bUqg2"
+      },
+      {
+        "type": "condition",
+        "text": "After finishing the Hard Western Provinces Diary:",
+        "steps": [
+          {
+            "npc": "Do you wish me to upgrade any Void Knight armour for you?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "What does that do?",
+                "steps": [
+                  {
+                    "player": "What does that do?"
+                  },
+                  {
+                    "npc": "The top and robes can be upgraded, separately, to give each piece a +3 prayer bonus. It costs 200 Commendation points to upgrade each item."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "pE74Sp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "mUE_4W"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Yes please.",
+                "steps": [
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "npc": "Very well. Hand me the top or robe you wish me to upgrade. It costs 200 Commendation points to upgrade each item."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "lQWVHk"
+      },
+      {
+        "type": "condition",
+        "text": "After finishing the Hard Western Provinces Diary and exchanging void orb for guthixian paint:",
+        "steps": [
+          {
+            "npc": "Do you wish me to upgrade any Void Knight armour for you?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "What does that do?",
+                "steps": [
+                  {
+                    "player": "What does that do?"
+                  },
+                  {
+                    "npc": "The top and robes can be upgraded, separately, to give each piece a +3 prayer bonus. It costs 200 Commendation points to upgrade each item."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes please.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "6_SLNB"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "5kVW3s"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Yes please.",
+                "steps": [
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "npc": "Very well. Hand me the top or robe you wish me to upgrade. It costs 200 Commendation points to upgrade each item."
+                  }
+                ]
+              },
+              {
+                "text": "Do you have any more paint?",
+                "steps": [
+                  {
+                    "player": "Do you have any more paint?"
+                  },
+                  {
+                    "npc": "Certainly. How much do you want?"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Opens quantity selection screen.",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "quantity selection",
+                    "id": "9DuzIZ"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The Elite Void Knight hands you over some paint.",
+                    "id": "fNLILH"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "WIQsD9"
+      }
+    ],
+    "using-items-on-the-elite-void-knight-using-the-void-knight-top": [
+      {
+        "type": "choice",
+        "prompt": "Pay 200 Commendation points to upgrade it?",
+        "options": [
+          {
+            "text": "Okay",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The Elite Void Knight upgrades your armour. Commendation points remaining: [number]",
+                "id": "UjckMU"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-the-elite-void-knight-using-the-void-knight-robe": [
+      {
+        "type": "choice",
+        "prompt": "Pay 200 Commendation points to upgrade it?",
+        "options": [
+          {
+            "text": "Okay",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The Elite Void Knight upgrades your armour. Commendation points remaining: [number]",
+                "id": "VI-1el"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-the-elite-void-knight-using-ornamented-void-items-elite-void-top-or-elite-void-bottom": [
+      {
+        "npc": "I'm afraid that cannot be upgraded."
+      }
+    ],
+    "using-items-on-the-elite-void-knight-using-void-orb": [
+      {
+        "player": "Hey, I have something you might be interested in..."
+      },
+      {
+        "type": "message",
+        "text": "You  show the orb to the Elite Void Knight",
+        "id": "jsKXsi"
+      },
+      {
+        "npc": "What a peculiar orb. It doesn't seem useful, but it does seem rather interesting still..."
+      },
+      {
+        "npc": "I can offer you something in return. Somebody donated us a large quantity of green paint, but it doesn't exactly work with our existing palette."
+      },
+      {
+        "type": "message",
+        "text": "The Elite Void Knight swaps the void orb for a bucket of paint.",
+        "id": "7bSFhn"
+      },
+      {
+        "npc": "If you would like more of that paint, just ask. We have... too much of it."
+      }
+    ],
+    "using-items-on-the-elite-void-knight-using-any-other-item": [
+      {
+        "npc": "No thank you."
+      }
+    ]
+  }
+}

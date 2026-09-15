@@ -1,0 +1,144 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Uh... What are you doing?",
+            "steps": [
+              {
+                "player": "Uh... What are you doing?"
+              },
+              {
+                "npc": "Oh sorry, I was somewhere else entirely!"
+              },
+              {
+                "npc": "I'm just watching the debris wash up at the shore here."
+              },
+              {
+                "npc": "It's sort of mesmerising..."
+              },
+              {
+                "player": "Does anything useful wash up?"
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "npc": "Oh, yes! All sorts of things get washed up by the storms. Aside from the usual materials, I've seen some interesting trinkets including odd looking books and fish preservation barrels."
+              },
+              {
+                "npc": "If you help in the fight against Tempoross, the Captain's said you can help yourself to anything that washes up."
+              },
+              {
+                "player": "I'll keep an eye out, thank you!"
+              },
+              {
+                "npc": "Any time..."
+              },
+              {
+                "type": "message",
+                "text": "His voice trails off as he stares back out to sea.",
+                "id": "q4qWk8"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "UTIq_k"
+              }
+            ]
+          },
+          {
+            "text": "Do you have a spare fishing net I could have?",
+            "steps": [
+              {
+                "player": "Do you have a spare fishing net I could have?"
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a fishing net:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Without turning his head, the man holds up a fishing net.",
+                    "id": "XrJQZ5"
+                  },
+                  {
+                    "player": "Thanks..."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "oZtJFd"
+                  }
+                ],
+                "id": "rsN4E3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a fishing net:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Without turning his head, the man shakes his finger at you. Maybe because you already have a net.",
+                    "id": "7ypE8t"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "5GvLs1"
+                  }
+                ],
+                "id": "35gT3J"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any of those useful trinkets you mentioned?",
+            "steps": [
+              {
+                "player": "Do you have any of those useful trinkets you mentioned?"
+              },
+              {
+                "npc": "I might do... But it's going to cost you a hefty amount of spirit flakes, here take a look."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Flakes 'n' Flotsam",
+                "id": "_hytqT"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attempting-to-net-a-reward-pool-with-no-fishing-net": [
+      {
+        "npc": "A net may be of use to you. Speak to me if you need one."
+      }
+    ]
+  }
+}

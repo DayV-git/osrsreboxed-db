@@ -1,0 +1,234 @@
+{
+  "default": "before-zogre-flesh-eaters",
+  "variants": {
+    "before-zogre-flesh-eaters": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hey, what's going on here?",
+            "steps": [
+              {
+                "player": "Hey, what's going on here?"
+              },
+              {
+                "npc": "Dem's dead ogre's come out of da ground...dey's makin' da rest of us into sick-uns ...and dead-uns."
+              },
+              {
+                "player": "That doesn't sound good!"
+              },
+              {
+                "npc": "Grish want's da person go down der - see what's what!"
+              }
+            ]
+          },
+          {
+            "text": "What are you selling?",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "M3u0As"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "before-zogre-flesh-eaters-trade-option": [
+      {
+        "type": "call",
+        "branch": "M3u0As"
+      }
+    ],
+    "after-zogre-flesh-eaters": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Hello again.",
+            "steps": [
+              {
+                "player": "Hello again."
+              },
+              {
+                "npc": "Hey yous creature...yous did good fings gedin that glug-glugs for da sickies! All is ogries pepels are not gettin dead cos of you."
+              }
+            ]
+          },
+          {
+            "text": "What are you selling?",
+            "steps": [
+              {
+                "player": "What are you selling?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not unlocked the shop:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "Me's not got no glug-glugs to sell, yous bring me da sickies glug-glug den me's open da stufsies for ya."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "SGJgIE"
+              },
+              {
+                "npc": "Me's showin' you da stufsies for yous creatures!"
+              },
+              {
+                "type": "action",
+                "text": "~ Uglug's stuffsies ~ opens.",
+                "id": "p4JLdN"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unlocking-the-shop": [
+      {
+        "type": "message",
+        "text": "You show the potion to Uglug Nar.",
+        "id": "GEgdcz"
+      },
+      {
+        "player": "Hey, here you go! I brought you some of the potion which should cure the disease. You said that you would buy some from me."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has already unlocked the shop:",
+        "steps": [
+          {
+            "npc": "Yous creatures is da funny ones...yous already solds me's ones now..and us can now sell un to yous!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "QXfa9K"
+      },
+      {
+        "npc": "Yous creatures done da good fing...yous get many bright pretties for dis...!"
+      },
+      {
+        "type": "message",
+        "text": "You sell the potion and get [amount] coins in return.",
+        "id": "Z16Ixg"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I's gots a thinky number puzzley for yous!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "NZiMv-"
+      },
+      {
+        "type": "message",
+        "text": "Uglug Nar has given you a challenge scroll!",
+        "id": "cUngT6"
+      }
+    ],
+    "treasure-trails-medium-when-spoken-to-again": [
+      {
+        "npc": "Yous gots da numbers?"
+      },
+      {
+        "type": "input",
+        "text": "Enter amount:",
+        "id": "Oz3tdQ"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "I's thinks yous needs to thinks again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VlGeZs"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Dats da right answer!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "6_Q0Zv"
+              },
+              {
+                "type": "message",
+                "text": "Uglug Nar has given you another clue scroll!",
+                "id": "ZIJHSG"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "9whZRz"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a medium reward casket",
+                "id": "nWupfq"
+              },
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "T60Gww"
+              }
+            ],
+            "id": "QrI22a"
+          }
+        ],
+        "id": "gK9zrA"
+      }
+    ]
+  },
+  "branches": {
+    "M3u0As": [
+      {
+        "npc": "Me's not got no glug-glugs to sell, yous bring me da sickies glug-glug den me's open da stufsies for ya."
+      }
+    ]
+  }
+}

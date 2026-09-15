@@ -1,0 +1,121 @@
+{
+  "steps": [
+    {
+      "npc": "What can I do for you?"
+    },
+    {
+      "type": "choice",
+      "prompt": "What would you like to say?",
+      "options": [
+        {
+          "text": "I don't know. What can you do for me?",
+          "steps": [
+            {
+              "player": "I don't know. What can you do for me?"
+            },
+            {
+              "npc": "A good question indeed! I'm selling special clothing for Agility enthusiasts."
+            },
+            {
+              "npc": "Sometimes, when you're exploring the hidden rooftops of our cities, you'll find one of my Marks."
+            },
+            {
+              "npc": "Once you've got enough Marks, I'll exchange them for my Graceful clothing. So, does that interest you?"
+            },
+            {
+              "type": "choice",
+              "prompt": "What would you like to say?",
+              "options": [
+                {
+                  "text": "Can I see what you're selling?",
+                  "steps": [
+                    {
+                      "player": "Can I see what you're selling?"
+                    },
+                    {
+                      "type": "action",
+                      "action": "open_shop",
+                      "target": "Grace's Graceful Clothing",
+                      "id": "1TQzqv"
+                    }
+                  ]
+                },
+                {
+                  "text": "I'm alright, thanks.",
+                  "steps": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Can I see what you're selling?",
+          "steps": [
+            {
+              "player": "Can I see what you're selling?"
+            },
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Grace's Graceful Clothing",
+              "id": "wnGPlR"
+            }
+          ]
+        },
+        {
+          "text": "Can I see how many laps I've completed?",
+          "steps": [
+            {
+              "player": "Can I see how many laps I've completed?"
+            },
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Agility course counter",
+              "id": "gpdKpM"
+            }
+          ]
+        },
+        {
+          "text": "Can I toggle my lap counter?",
+          "steps": [
+            {
+              "player": "Can I toggle my lap counter?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player's lap counter is on",
+              "steps": [
+                {
+                  "npc": "Sure, I've disabled your lap counter messages, if you want to turn it back on, so you can see your total laps after you finish one, speak to me again."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "41FLHl"
+            },
+            {
+              "type": "condition",
+              "text": "If the player's lap counter is off",
+              "steps": [
+                {
+                  "npc": "Sure, I've turned on your lap counter, you'll get a message when you complete a lap on a rooftop course. To help you keep track."
+                }
+              ],
+              "id": "ew2FPv"
+            }
+          ]
+        },
+        {
+          "text": "I'm alright, thanks.",
+          "steps": [
+            {
+              "player": "I'm alright, thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

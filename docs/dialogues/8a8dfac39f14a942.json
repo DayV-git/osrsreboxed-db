@@ -1,0 +1,81 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Would you like to buy some crafting equipment?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thanks; I've got all the Crafting equipment I need.",
+            "steps": [
+              {
+                "player": "No thanks; I've got all the Crafting equipment I need."
+              },
+              {
+                "npc": "Okay. Fare well on your travels."
+              }
+            ]
+          },
+          {
+            "text": "Let's see what you've got, then.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Dommik's Crafting Store.",
+                "id": "KA5aSG"
+              }
+            ]
+          },
+          {
+            "text": "What do you know about Ali Morrisane?",
+            "condition": "After Rogue Trader:",
+            "steps": [
+              {
+                "player": "What do you know about Ali Morrisane?"
+              },
+              {
+                "npc": "I know that one of his thugs has threatened to ruin my store if I don't cooperate with them!"
+              },
+              {
+                "npc": "He said he was a tailor, but those scissors looked more like a weapon than something used for Crafting."
+              },
+              {
+                "player": "What are you going to do, then?"
+              },
+              {
+                "npc": "As long as I have my store, I'll keep selling my Crafting equipment! Would you like to buy any?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "bFUXfl"
+              }
+            ],
+            "id": "8PGj0X"
+          }
+        ]
+      }
+    ],
+    "using-an-al-kharid-flyer-on-dommik": [
+      {
+        "player": "Hi! I have this money-off voucher!"
+      },
+      {
+        "npc": "So I see! Unfortunately, it seems to have expired yesterday! Nevermind."
+      },
+      {
+        "player": "But I only just got it!"
+      },
+      {
+        "npc": "I'm sorry, there's nothing I can do."
+      },
+      {
+        "npc": "Goodbye."
+      }
+    ]
+  }
+}

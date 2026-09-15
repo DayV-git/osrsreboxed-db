@@ -1,0 +1,261 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome, human, to the Quality Weapons Shop! Can I interest you in a purchase?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I'm looking for some weapons.",
+            "steps": [
+              {
+                "player": "Yes, I'm looking for some weapons."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Quality Weapons Shop",
+                "id": "rTwc29"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-an-item-on-his-fireplace": [
+      {
+        "npc": "Excuse me, do you mind? That's my fireplace."
+      }
+    ],
+    "keldagrim-tasks-getting-a-weapon-item-request": [
+      {
+        "npc": "Good day to you, human. I have a little task for you, are you interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's the task?",
+            "steps": [
+              {
+                "player": "What's the task?"
+              },
+              {
+                "npc": "Oh, it's nothing too major. But I need [3/4/5] [item] in the next [15/20/25] minutes."
+              },
+              {
+                "player": "Sure, got it. That's [3/4/5] [item] in the next [15/20/25] minutes, I'll get right on it."
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I'm a little busy.",
+            "steps": [
+              {
+                "player": "Sorry, I'm a little busy."
+              },
+              {
+                "npc": "No problem, I'll find someone else to do it!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-getting-a-bar-or-ore-item-request": [
+      {
+        "npc": "Good day to you, human. I have a little task for you, are you interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's the task?",
+            "steps": [
+              {
+                "player": "What's the task?"
+              },
+              {
+                "npc": "Well, I'm running a bit low on raw supplies. Can you get me [X] [item]? Within [X] minutes?"
+              },
+              {
+                "player": "Sure, got it. That's [X] [item] in the next [X] minutes, I'll get right on it."
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I'm a little busy.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "aCWmkq"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-talking-to-him-before-acquiring-the-item-request": [
+      {
+        "npc": "Did you get me 5 iron pickaxes yet, perchance?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, I've given up on that.",
+            "steps": [
+              {
+                "player": "No, I've given up on that."
+              },
+              {
+                "npc": "That's very unfortunate to hear. I suppose I will need to find someone else now."
+              }
+            ]
+          },
+          {
+            "text": "No, I'm still looking for them.",
+            "steps": [
+              {
+                "player": "No, I'm still looking for them."
+              },
+              {
+                "npc": "Keep it up, I'm sure you'll succeed."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-talking-to-him-after-failing-to-bring-the-request-in-time": [
+      {
+        "npc": "You're too late, I'm afraid, the [X] minutes are up. I got someone else to get me [X] [item]."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the items:",
+        "steps": [
+          {
+            "player": "Yeah, uhm, sorry about that..."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "GubVrI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the items:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "Xi8bou"
+          }
+        ],
+        "id": "a97Y6l"
+      }
+    ],
+    "keldagrim-tasks-bringing-him-the-item-request": [
+      {
+        "player": "Look, I've got you your [X] [item]!"
+      },
+      {
+        "npc": "That's wonderful, thanks a lot [player name]!"
+      },
+      {
+        "type": "condition",
+        "text": "Weapon item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or do you wish me teach you how to attack with these?"
+          }
+        ],
+        "id": "bffx4I"
+      },
+      {
+        "type": "condition",
+        "text": "Ore item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you prefer me to teach you a bit about how you can mine more efficiently?"
+          }
+        ],
+        "id": "vbrrD7"
+      },
+      {
+        "type": "condition",
+        "text": "Bar item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you like me to show you some smithing tricks?"
+          }
+        ],
+        "id": "4_H0Az"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like the gold.",
+            "steps": [
+              {
+                "player": "I'd like the gold."
+              }
+            ]
+          },
+          {
+            "text": "Please teach me that.",
+            "steps": [
+              {
+                "player": "Please teach me that."
+              },
+              {
+                "type": "message",
+                "text": "You feel more experienced.",
+                "id": "No7Tf8"
+              }
+            ]
+          },
+          {
+            "text": "Show me the gold!",
+            "condition": "Alternative to the other gold option:",
+            "steps": [
+              {
+                "player": "Show me the gold!"
+              }
+            ],
+            "id": "T7EvxG"
+          },
+          {
+            "text": "Enlighten me.",
+            "condition": "Alternative to the other xp option:",
+            "steps": [
+              {
+                "player": "Enlighten me."
+              },
+              {
+                "type": "message",
+                "text": "You feel more experienced.",
+                "id": "hl9HeU"
+              }
+            ],
+            "id": "cfccNC"
+          }
+        ]
+      }
+    ]
+  }
+}

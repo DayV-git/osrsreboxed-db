@@ -1,0 +1,138 @@
+{
+  "default": "before-completing-prince-ali-rescue-quest",
+  "variants": {
+    "before-completing-prince-ali-rescue-quest": [
+      {
+        "player": "Can I come through this gate?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "You must pay a toll of 10 gold coins to pass."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thank you, I'll walk around.",
+            "steps": [
+              {
+                "player": "No, thank you. I'll walk around."
+              },
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "Ok suit yourself."
+              }
+            ]
+          },
+          {
+            "text": "Who does my money go to?",
+            "steps": [
+              {
+                "player": "Who does my money go to?"
+              },
+              {
+                "type": "line",
+                "speaker": "Guard",
+                "text": "The money goes to the city of Al-Kharid."
+              }
+            ]
+          },
+          {
+            "text": "Yes, ok.",
+            "steps": [
+              {
+                "player": "Yes, ok."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 10gp:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You pay the guard.",
+                    "id": "i1IVZF"
+                  },
+                  {
+                    "type": "action",
+                    "text": "(The player goes through the gate and 10gp are subtracted from their inventory)",
+                    "id": "hyXjU_"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "wMjNoh"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 10gp:",
+                "steps": [
+                  {
+                    "player": "Oh dear, I don't actually seem to have enough money."
+                  }
+                ],
+                "id": "qM8c19"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-prince-ali-rescue-quest": [
+      {
+        "player": "Can I come through this gate?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "You may pass for free, you are a friend of Al-Kharid."
+      },
+      {
+        "type": "action",
+        "text": "(The player goes through the gate, but no money is subtracted from their inventory)",
+        "id": "jt5lUt"
+      }
+    ],
+    "during-death-to-the-dorgeshuun-with-prince-ali-rescue-completed": [
+      {
+        "player": "Can we come through this gate?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "You may pass for free, for you are a friend of Al-Kharid, but your goblin friend must stay on this side."
+      },
+      {
+        "player": "Why?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Why do you think this gate is here, if not to keep the goblins out of Al Kharid?"
+      },
+      {
+        "player": "But Zanik isn't like the other goblins!"
+      },
+      {
+        "type": "line",
+        "speaker": "Zanik",
+        "text": "Nevermind, player name. I don't think we need to go to Al Kharid anyway!"
+      }
+    ],
+    "during-leagues-without-having-the-required-areas-unlocked": [
+      {
+        "player": "Can I come through this gate?"
+      },
+      {
+        "npc": "You cannot pass as you haven't unlocked access to both the Misthalin and Kharidian Desert areas in this League."
+      },
+      {
+        "type": "message",
+        "text": "You cannot pass as you haven't unlocked access to both the Misthalin and Kharidian Desert areas in this League.",
+        "id": "JF9j82"
+      }
+    ]
+  }
+}

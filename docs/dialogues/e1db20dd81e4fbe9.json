@@ -1,0 +1,660 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, I'm Laidee. Welcome to the Warriors' Guild."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing out here?",
+            "steps": [
+              {
+                "player": "What are you doing out here?"
+              },
+              {
+                "npc": "I'm here to guard the Warrior's Guild and determine who's qualified to enter."
+              },
+              {
+                "player": "So you're Ghommal's replacement?"
+              },
+              {
+                "npc": "That I am. Ghommal and I used to adventure together before we joined the Guild. It felt only right that I take over from him. It is... strange not having him around."
+              },
+              {
+                "player": "I'm sorry for your loss. He was a great warrior."
+              },
+              {
+                "npc": "And an even greater friend."
+              }
+            ]
+          },
+          {
+            "text": "I'm here to talk about Combat Achievements.",
+            "steps": [
+              {
+                "player": "I'm here to talk about Combat Achievements."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could you explain what they are?",
+                    "steps": [
+                      {
+                        "player": "Could you explain what they are?"
+                      },
+                      {
+                        "npc": "Combat Achievements are a set of tasks for all adventurers to try and accomplish. They range from simple missions to kill various creatures, to challenges that will push you to your limits."
+                      },
+                      {
+                        "npc": "The purpose of these tasks is for you to grow and improve, experience all that Gielinor has to offer, and become stronger in the process."
+                      },
+                      {
+                        "npc": "Is this something that sounds interesting to you?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, tell me about Combat Achievements.",
+                            "steps": [
+                              {
+                                "player": "Yes, tell me about Combat Achievements."
+                              },
+                              {
+                                "npc": "Combat Achievements are broken down into six tiers: Easy, Medium, Hard, Elite, Master and Grandmaster."
+                              },
+                              {
+                                "npc": "As you complete tasks, you'll earn points. Tasks in higher tiers give more points than easier tasks. Your rank depends on how many points you've earned."
+                              },
+                              {
+                                "npc": "Whenever new tasks are added to the list, there are more points available to earn, so the threshold needed for each rank will increase. Keep completing tasks to maintain your rank!"
+                              },
+                              {
+                                "type": "message",
+                                "text": "This is the icon for the summary panel. Within it there is a section for Combat Achievements.",
+                                "id": "H6mt-C"
+                              },
+                              {
+                                "type": "message",
+                                "text": "Clicking on the section will open the Combat Achievements interface, where you can browse tasks, bosses and rewards.",
+                                "id": "qVje_A"
+                              },
+                              {
+                                "type": "message",
+                                "text": "Some tasks will require numerous criteria to be completed, so make sure you read them carefully.",
+                                "id": "r-kHxD"
+                              },
+                              {
+                                "npc": "I'd recommend you go kill some monsters. Come back to me when you've completed a tier or two. I'll reward you for your efforts."
+                              },
+                              {
+                                "player": "Thanks a lot, I'll get going."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Not at the moment, no.",
+                            "steps": [
+                              {
+                                "player": "Not at the moment, no."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I think I've completed a combat tier!",
+                    "condition": "If the player has unclaimed rewards:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "rs-1Bi"
+                      }
+                    ],
+                    "id": "JicjbH"
+                  },
+                  {
+                    "text": "Could I reclaim some rewards?",
+                    "condition": "If the player has claimed the rewards for any combat tier:",
+                    "steps": [
+                      {
+                        "player": "Could I reclaim some rewards?"
+                      },
+                      {
+                        "npc": "Of course."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "Ghommal's hilt reclaim interface",
+                        "id": "PBp6m7"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "selected hilt(s)",
+                        "id": "Yger93"
+                      },
+                      {
+                        "npc": "Here you go."
+                      },
+                      {
+                        "player": "Thanks."
+                      }
+                    ],
+                    "id": "T34-B4"
+                  },
+                  {
+                    "text": "I'd like you to customize my Slayer helmet.",
+                    "condition": "If the player has claimed the elite, master, or grandmaster rewards:",
+                    "steps": [
+                      {
+                        "player": "I'd like you to customize my Slayer helmet."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "TzTok-Jad",
+                            "steps": [
+                              {
+                                "type": "condition",
+                                "text": "Without a Slayer helmet:",
+                                "steps": [
+                                  {
+                                    "npc": "You don't appear to have any regular Slayer Helmets in your inventory."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "T8Rwwt"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "With a Slayer helmet:",
+                                "steps": [
+                                  {
+                                    "npc": "There you go."
+                                  },
+                                  {
+                                    "type": "action",
+                                    "action": "receive",
+                                    "text": "selected Slayer helmet",
+                                    "id": "E5W-9o"
+                                  }
+                                ],
+                                "id": "SWdLct"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Verzik Vitur",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "V9Gqna"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "TzKal-Zuk",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "yIz2VG"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I have to go.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "34cWEO"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "Qi9QRa"
+                  },
+                  {
+                    "text": "I have to go.",
+                    "steps": [
+                      {
+                        "player": "I have to go."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "combat-achievement-rewards": [
+      {
+        "npc": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm here to talk about Combat Achievements.",
+            "steps": [
+              {
+                "player": "I'm here to talk about Combat Achievements."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I think I've completed a combat tier!",
+                    "steps": [
+                      {
+                        "player": "I think I've completed a combat tier!"
+                      },
+                      {
+                        "npc": "Oh, how have you been getting on?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the easy Combat Achievements:",
+                        "steps": [
+                          {
+                            "player": "I've completed some more Combat Achievement tasks!"
+                          },
+                          {
+                            "npc": "I can see that. Nice job. You'll be expecting your easy rewards?"
+                          },
+                          {
+                            "player": "Yes please!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have 2 inventory spaces:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "rWhQLE"
+                              }
+                            ],
+                            "id": "kfxnuG"
+                          },
+                          {
+                            "npc": "There you go. I've provided you with the most basic of our ancient sword hilts. You'll also have an easier time obtaining easy clues, increased max quantities offered when given boss Slayer tasks, bonus tokens from the"
+                          },
+                          {
+                            "npc": "Warrior guild and an extra commendation point from each Pest Control game."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "zwDE8o"
+                          }
+                        ],
+                        "id": "WIxeHq"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the medium Combat Achievements:",
+                        "steps": [
+                          {
+                            "player": "I've completed some more Combat Achievement tasks!"
+                          },
+                          {
+                            "npc": "I can see that. Nice job. You'll be expecting your medium rewards?"
+                          },
+                          {
+                            "player": "Yes please!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have 2 inventory spaces:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "rWhQLE"
+                              }
+                            ],
+                            "id": "4vBOXJ"
+                          },
+                          {
+                            "npc": "There you go. I've provided you with one of our more modest ancient sword hilts. You'll also have an easier time obtaining medium clues, increased max quantities offered when given boss Slayer tasks, bonus tokens"
+                          },
+                          {
+                            "npc": "from the Warrior guild and two extra commendation points from each Pest Control game. Additionally, equipping one of my sword hilts at the Barrows will prevent your prayer points from being drained and"
+                          },
+                          {
+                            "npc": "your Dwarf multicannon can hold five extra cannonballs."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "nYBm9O"
+                          }
+                        ],
+                        "id": "TkcCQc"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the hard Combat Achievements:",
+                        "steps": [
+                          {
+                            "player": "I've completed some more Combat Achievement tasks!"
+                          },
+                          {
+                            "npc": "I can see that. Nice job. You'll be expecting your hard rewards?"
+                          },
+                          {
+                            "player": "Yes please!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have 2 inventory spaces:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "rWhQLE"
+                              }
+                            ],
+                            "id": "2emStO"
+                          },
+                          {
+                            "npc": "There you go. I've provided you with one of our sturdier ancient sword hilts. You'll also have an easier time obtaining hard clues and have increased max quantities offered when given boss Slayer tasks. You will"
+                          },
+                          {
+                            "npc": "also have to kill fewer God Wars minions to access the generals, get more common ecumenical keys, gain access to our most expensive private God Wars rooms, receive a 50% discount on imbue rewards from the"
+                          },
+                          {
+                            "npc": "Nightmare Zone and Soul Wars, and gain three extra commendation points from each Pest Control game. Lastly, your Dwarf multicannon can hold 15 extra cannonballs."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "ZJo819"
+                          }
+                        ],
+                        "id": "AF3F-X"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the elite Combat Achievements:",
+                        "steps": [
+                          {
+                            "player": "I've completed some more Combat Achievement tasks!"
+                          },
+                          {
+                            "npc": "I can see that. Nice job. You'll be expecting your elite rewards?"
+                          },
+                          {
+                            "player": "Yes please!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have 2 inventory spaces:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "rWhQLE"
+                              }
+                            ],
+                            "id": "gepQVZ"
+                          },
+                          {
+                            "npc": "There you go. I've provided you with one of our fancier ancient sword hilts. You'll also have an easier time obtaining elite clues, have increased max quantities offered when given boss Slayer tasks and have a higher"
+                          },
+                          {
+                            "npc": "chance of superior slayer creatures appearing. Plus, you'll have to kill even fewer God Wars minions to access the generals, receive even more common ecumenical keys and access to cheaper private God"
+                          },
+                          {
+                            "npc": "Wars rooms. Furthermore, your Dwarf multicannon can hold 30 extra cannonballs and your Bracelets of slaughter or Expeditious bracelets will have a chance to fully recharge instead of breaking! I can also customize"
+                          },
+                          {
+                            "npc": "your Slayer helmet for you."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "kBsG7P"
+                          }
+                        ],
+                        "id": "KvMnSM"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the master Combat Achievements:",
+                        "steps": [
+                          {
+                            "player": "I've completed some more Combat Achievement tasks!"
+                          },
+                          {
+                            "npc": "I can see that. You are clearly a very experienced adventurer. You'll be expecting your master rewards?"
+                          },
+                          {
+                            "player": "Yes please!"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have 2 inventory spaces:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "rWhQLE"
+                              }
+                            ],
+                            "id": "c_o2Vr"
+                          },
+                          {
+                            "npc": "There you go. I've provided you with one of our most prestigious ancient sword hilts, along with Ghommal's cherished lucky penny! You'll also have increased max quantities offered when given boss Slayer tasks,"
+                          },
+                          {
+                            "npc": "including the deadly TzHaar creatures, and have to kill even fewer God Wars minions to access the generals. Again, you'll get even more common ecumenical keys and access to even cheaper private God Wars rooms."
+                          },
+                          {
+                            "npc": "Furthermore, any Thralls you resurrect will last 100% longer. I can also customize your Slayer helmet even more."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "kGCdeX"
+                          }
+                        ],
+                        "id": "iDZv3E"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has completed the grandmaster Combat Achievements:",
+                        "steps": [
+                          {
+                            "player": "I've completed all the Combat Achievement tasks!"
+                          },
+                          {
+                            "npc": "Wait, really?"
+                          },
+                          {
+                            "player": "Yes! It took quite a long time. Some of those tasks were extremely challenging, but I persevered and finished them all!"
+                          },
+                          {
+                            "npc": "You have come very far. You have earned these rewards."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player doesn't have 2 inventory spaces:",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "rWhQLE"
+                              }
+                            ],
+                            "id": "63Y1J7"
+                          },
+                          {
+                            "npc": "There you go. I've provided you with our most prestigious ancient sword hilt. You'll also have increased max quantities offered when given boss Slayer tasks, including the deadly TzHaar creatures, and have to kill"
+                          },
+                          {
+                            "npc": "even fewer God Wars minions to access the generals. Plus of course, you'll get even more common ecumenical keys and access to even cheaper private God Wars rooms. And yes, I can also customize your"
+                          },
+                          {
+                            "npc": "Slayer helmet even more."
+                          },
+                          {
+                            "npc": "I do wonder what you will do now. Good luck, adventurer."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continue",
+                            "id": "zReTA1"
+                          }
+                        ],
+                        "id": "XFJr8u"
+                      },
+                      {
+                        "player": "Thank you so much!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-a-slayer-helmet-on-him": [
+      {
+        "player": "Could you customise one of my Slayer Helmets?",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "TzTok-Jad",
+                "steps": [
+                  {
+                    "npc": "There you go."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "selected Slayer helmet",
+                    "id": "pDiMJ4"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Verzik Vitur",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "OKQTY7"
+                  }
+                ]
+              },
+              {
+                "text": "TzKal-Zuk",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "6bwNTj"
+                  }
+                ]
+              },
+              {
+                "text": "I have to go.",
+                "steps": [
+                  {
+                    "player": "I have to go."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-any-other-item-on-him": [
+      {
+        "npc": "What do you expect me to do with this?"
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "condition",
+        "text": "If the player has one free inventory space:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a torn part of a clue scroll",
+            "id": "_5gET9"
+          },
+          {
+            "npc": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You are handed a torn part of a clue scroll.",
+            "id": "ixS7pT"
+          },
+          {
+            "npc": "Your gear is adequate, I'm impressed."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NgdlIZ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have free inventory space:",
+        "steps": [
+          {
+            "npc": "Hey, I have something for you but you don't have any space for it!"
+          },
+          {
+            "npc": "Your gear is adequate. I'm impressed."
+          }
+        ],
+        "id": "x33o7I"
+      }
+    ]
+  },
+  "branches": {
+    "rWhQLE": [
+      {
+        "npc": "You need at least 2 inventory spaces. Make some space and come back."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

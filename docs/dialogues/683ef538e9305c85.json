@@ -1,0 +1,299 @@
+{
+  "default": "standard-dialogue-without-a-gnomeball-equipped",
+  "variants": {
+    "standard-dialogue-first-talk": [
+      {
+        "npc": "Hi, welcome to Gnomeball. It's pretty simple really: You take the ball from me, charge at the gnome defence and try to throw the ball through the net using your ranged skill."
+      },
+      {
+        "npc": "It's a rough game but great fun. It's also great for improving agility. So do you fancy a game?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Looks too dangerous for me!",
+            "steps": [
+              {
+                "player": "Looks too dangerous for me!"
+              },
+              {
+                "npc": "You may be right, we've seen humans die on this field."
+              }
+            ]
+          },
+          {
+            "text": "Okay then, I'll have a go.",
+            "steps": [
+              {
+                "player": "Okay then, I'll have a go."
+              },
+              {
+                "npc": "Great stuff! There are few rules to Gnomeball, so it can get a bit rough."
+              },
+              {
+                "npc": "You can pass to the green winger gnomes. Then you can make a run and they'll pass back. Otherwise, if you're feeling brave, you can just charge and dodge."
+              },
+              {
+                "player": "Sounds easy enough."
+              },
+              {
+                "npc": "The main aim is to leave with no broken limbs. I think you should be fine."
+              },
+              {
+                "npc": "Peeeeeeeeep"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a gnome ball",
+                "id": "RjOQBC"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-without-a-gnomeball-equipped": [
+      {
+        "npc": "Hi, welcome back to Gnomeball. Would you like to hear the rules again?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "npc": "It's pretty simple really: You take the ball from me, charge at the gnome defence and try to throw the ball through the net using your ranged skill."
+              },
+              {
+                "npc": "It's a rough game but great fun. It's also great for improving agility."
+              },
+              {
+                "npc": "You can pass to the green winger gnomes. Then you can make a run and they'll pass back. Otherwise, if you're feeling brave, you can just charge and dodge."
+              },
+              {
+                "player": "Sounds easy enough."
+              },
+              {
+                "npc": "The main aim is to leave with no broken limbs. I think you should be fine."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a gnomeball in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Ahh I see you have your own ball. We can't play with that; I'll give it back when you leave."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "jOQ4bQ"
+                  }
+                ],
+                "id": "xkUvB7"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a gnome ball",
+                "id": "YgADG0"
+              },
+              {
+                "npc": "Peeeeeeeeep"
+              }
+            ]
+          },
+          {
+            "text": "I just want to play.",
+            "steps": [
+              {
+                "player": "I just want to play"
+              },
+              {
+                "npc": "Okay... Let's play GNOMEBALL!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a gnomeball in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Ahh I see you have your own ball. We can't play with that; I'll give it back when you leave."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "p2_m5l"
+                  }
+                ],
+                "id": "caZhdr"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a gnome ball",
+                "id": "P_vdtC"
+              },
+              {
+                "npc": "Peeeeeeeeep"
+              }
+            ]
+          },
+          {
+            "text": "No, I don't want to play.",
+            "steps": [
+              {
+                "player": "No, I don't want to play."
+              },
+              {
+                "npc": "Okay, never mind. Maybe next time..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-a-gnomeball-equipped": [
+      {
+        "npc": "You have a ball in play. Do you need to hear the rules again?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "npc": "It's pretty simple really: You take the ball from me, charge at the gnome defence and try to throw the ball through the net using your ranged skill."
+              },
+              {
+                "npc": "It's a rough game but great fun. It's also great for improving agility."
+              },
+              {
+                "npc": "You can pass to the green winger gnomes. Then you can make a run and they'll pass back. Otherwise, if you're feeling brave, you can just charge and dodge."
+              },
+              {
+                "player": "Sounds easy enough."
+              },
+              {
+                "npc": "The main aim is to leave with no broken limbs. I think you should be fine."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a gnomeball in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Ahh I see you have your own ball. We can't play with that; I'll give it back when you leave."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "spIsEH"
+                  }
+                ],
+                "id": "bCpfGz"
+              },
+              {
+                "npc": "The ball you have in your hand is fine to play with... Game on."
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Okay, good luck."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-gnomeball-is-out-of-play": [
+      {
+        "npc": "Have a new ball!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a gnomeball in their inventory:",
+        "steps": [
+          {
+            "npc": "Ahh I see you have your own ball. We can't play with that; I'll give it back when you leave."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "TvFu3q"
+          }
+        ],
+        "id": "7_fRmf"
+      },
+      {
+        "npc": "Peeeeeeeeep"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "Right, you haven't finished quite yet."
+      },
+      {
+        "player": "Ugh."
+      },
+      {
+        "npc": "Answer this for me."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "lhwXcd"
+      },
+      {
+        "type": "unavailable",
+        "id": "SB7nyp"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "Wrong answer!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VBrv3S"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Well done!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "[another clue scroll/a casket]",
+            "id": "iWn3hR"
+          },
+          {
+            "type": "unavailable",
+            "id": "3IhcbW"
+          }
+        ],
+        "id": "oAi8iq"
+      }
+    ]
+  }
+}

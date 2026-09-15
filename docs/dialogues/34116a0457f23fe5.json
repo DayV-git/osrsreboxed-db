@@ -1,0 +1,127 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-royal-trouble": [
+      {
+        "npc": "Thank you for your work in bringing peace back to these islands, [Fremennik name]."
+      },
+      {
+        "npc": "I hear that the Etceterians have also pledged to give you some of their resources, as thanks for preventing war once again."
+      },
+      {
+        "npc": "How is the kingdom faring?"
+      },
+      {
+        "player": "Everything is fine, your Majesty."
+      },
+      {
+        "npc": "Remember, speak to Ghrim if you require assistance."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I think Prince Brand would make the best heir.",
+            "condition": "When Princess Astrid is the player's consort",
+            "steps": [
+              {
+                "player": "I think Prince Brand would make the best heir."
+              },
+              {
+                "npc": "Is that your honest opinion after having spent time with my daughter? The Princess might receive the news rather coldly. A broken trust is difficult to mend."
+              },
+              {
+                "type": "choice",
+                "prompt": "Recommend Prince Brand for heir?",
+                "options": [
+                  {
+                    "text": "Yes, Your Majesty.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ZhBRtl"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, I changed my mind.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "xQ-xMs"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "s_UOyD"
+          },
+          {
+            "text": "I think Princess Astrid would make the best heir.",
+            "condition": "When Prince Brand is the player's consort",
+            "steps": [
+              {
+                "player": "I think Princess Astrid would make the best heir."
+              },
+              {
+                "npc": "Is that your honest opinion after having spent time with my son? The Prince might receive the news rather coldly. A broken trust is difficult to mend."
+              },
+              {
+                "type": "choice",
+                "prompt": "Recommend Princess Astrid for heir?",
+                "options": [
+                  {
+                    "text": "Yes, Your Majesty.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "ZhBRtl"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, I changed my mind.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "xQ-xMs"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "aX3tnC"
+          },
+          {
+            "text": "Never mind.",
+            "steps": [
+              {
+                "player": "Never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "ZhBRtl": [
+      {
+        "player": "Yes, Your Majesty."
+      },
+      {
+        "npc": "As you wish. I will pay heed to your recommendation."
+      }
+    ],
+    "xQ-xMs": [
+      {
+        "player": "No, I changed my mind."
+      },
+      {
+        "npc": "As you wish. I will keep this conversation between us."
+      }
+    ]
+  }
+}

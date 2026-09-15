@@ -1,0 +1,481 @@
+{
+  "default": null,
+  "variants": {
+    "after-killing-the-sanguidae": [
+      {
+        "type": "line",
+        "speaker": "Aranei",
+        "text": "Thank you."
+      }
+    ],
+    "talking-to-the-scout-after-killing-the-sanguidae": [
+      {
+        "player": "Are you okay?"
+      },
+      {
+        "type": "line",
+        "speaker": "Aranei",
+        "text": "I am now. Thank you, friend. Now, I must get going, but come talk with me when we next meet. I think I might be able to repay you for your help..."
+      }
+    ],
+    "talking-to-the-scout-in-sangvesti-initial-dialogue": [
+      {
+        "player": "Hi there. You're that aranei I saved before, aren't you? How are you doing?"
+      },
+      {
+        "npc": "I am doing just fine thanks to you. If you wish, I can guide you to the forest to repay my debt."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That would be great.",
+            "steps": [
+              {
+                "player": "That would be great."
+              },
+              {
+                "type": "action",
+                "text": "Player is taken to Sotfa Forest.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "NoSsq9"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              },
+              {
+                "npc": "As you wish."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-the-scout-in-sangvesti-subsequent-dialogue": [
+      {
+        "npc": "Would you like me to take you to the forest?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "That would be great.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "pXEZ07"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "_R60K5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-the-scout-in-sotfa-forest": [
+      {
+        "npc": "Would you like me to take you to Sangvesti? Or if you prefer, I could take you back to Morytania?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you take me to Sangvesti?",
+            "steps": [
+              {
+                "player": "Could you take me to Sangvesti?"
+              },
+              {
+                "type": "action",
+                "text": "Player is taken to Sangvesti.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "rU1Wmd"
+              }
+            ]
+          },
+          {
+            "text": "Could you take me to Morytania?",
+            "steps": [
+              {
+                "player": "Could you take me to Morytania?"
+              },
+              {
+                "type": "action",
+                "text": "Player is teleported to Castle Drakan.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "_SRIkO"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              },
+              {
+                "npc": "As you wish."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-the-scout-in-vampyrium-s-castle-drakan-initial-dialogue": [
+      {
+        "npc": "Greetings, my friend. It is good to have you here with us."
+      },
+      {
+        "player": "Hello there. What do you do around here?"
+      },
+      {
+        "npc": "I conduct expeditions for Father Sugadinti upon his request. When I am not busy with my duties, I help others collect or retrieve things from difficult to reach places."
+      },
+      {
+        "player": "Well, there are definitely plenty of those around here. So does that mean you'd be able to retrieve some things for me if I ever needed?"
+      },
+      {
+        "npc": "Certainly, though I am afraid my services aren't free."
+      },
+      {
+        "player": "What's the cost?"
+      },
+      {
+        "npc": "Well, Darkmeyer is always in need of more vials of blood. I am also willing to help those that show they've contributed to controlling the stymphike population here."
+      },
+      {
+        "npc": "Of course, if neither of those are adequate, Father Sugadinti can always find a use for gold."
+      },
+      {
+        "player": "Thanks, I'll keep that in mind."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you retrieve my gravestone for me?",
+            "steps": [
+              {
+                "player": "Could you retrieve my gravestone for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have an active gravestone:",
+                "steps": [
+                  {
+                    "npc": "You do not appear to have a gravestone, my friend. There is nothing for me to retrieve."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "bkwj0C"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an active gravestone inside Vampyrium, but cannot afford the payment:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you lack the required payment for me to do so, my friend. I will accept either a vial of blood, 150 stymphike feathers or 50,000 coins."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "b2nuLU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an active gravestone inside Vampyrium and can afford the payment:",
+                "steps": [
+                  {
+                    "npc": "Of course."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The scout collects your gravestone and leaves it nearby.",
+                    "id": "QZJLdu"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "3loufG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an active gravestone outside of Vampyrium:",
+                "steps": [
+                  {
+                    "npc": "Your gravestone does not seem to be in Vampyrium, my friend. Im afraid I am unable to retrieve it."
+                  }
+                ],
+                "id": "dPqoKu"
+              }
+            ]
+          },
+          {
+            "text": "What is there to do around here?",
+            "steps": [
+              {
+                "player": "What is there to do around here?"
+              },
+              {
+                "npc": "Well, you have stymphikes, bloodwood trees, leechfin, venators, and of course, the Maggot King."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me more about stymphikes.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about stymphikes."
+                      },
+                      {
+                        "npc": "They are birds that prey upon many of the other creatures here. However, their population is so great that they have been causing issues for Father Sugadinti's research."
+                      },
+                      {
+                        "npc": "As such, we'd be grateful if you could help us control their numbers."
+                      },
+                      {
+                        "player": "And how do I do that?"
+                      },
+                      {
+                        "npc": "There are some stymphike trees just east of Sangvesti. The trees are named for the birds themselves, for they like to use the spiked branches to impale their prey, giving them easy access to the blood within."
+                      },
+                      {
+                        "npc": "Go to those trees and bait them with something that will attract the stymphikes. We have found that letvek work best. They are small insects that you can catch across the river south of Sangvesti."
+                      },
+                      {
+                        "player": "And once I've baited the tree?"
+                      },
+                      {
+                        "npc": "Find somewhere to hide nearby so the stymphikes can't see you, then strike when they come for the bait."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "Pm57NL"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me more about bloodwood trees.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about bloodwood trees."
+                      },
+                      {
+                        "npc": "Well, Father Sugadinti has been using their sap in his research, but it also has other benefits that you might appreciate."
+                      },
+                      {
+                        "player": "Those being?"
+                      },
+                      {
+                        "npc": "We have found that when applied to arrows, the sap makes them more powerful."
+                      },
+                      {
+                        "player": "Interesting... And how do I get this sap?"
+                      },
+                      {
+                        "npc": "You will need to cut through the trunk of the tree until the sap begins to seep out. Be warned, the trees are tough, so it will take a bit more work than the trees you're probably used to."
+                      },
+                      {
+                        "npc": "Before you start cutting them though, make sure to put a bucket down. You'll need it to collect the sap in. Some of my fellow disciples keep buckets on hand. Seek them out if needed."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "a00o57"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me more about leechfin.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about leechfin."
+                      },
+                      {
+                        "npc": "As you've no doubt realised by now, blood is quite the commodity here in Vampyrium, and leechfin have more blood than creatures twice their size."
+                      },
+                      {
+                        "npc": "You can fish them in the river to the far east. Catch enough of them, and you'll be able to collect up their blood in a vial."
+                      },
+                      {
+                        "npc": "I believe that vials of blood are quite useful in potion making. Unsurprisingly, they are also of great use to Father Sugadinti."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "rf5NE6"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "More options...",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Tell me more about venators.",
+                            "steps": [
+                              {
+                                "player": "Tell me more about venators."
+                              },
+                              {
+                                "npc": "Father Sugadinti believes they are the closest living relative to vampyres, making them very useful indeed. However, their population has diminished significantly. We are working to address that."
+                              },
+                              {
+                                "player": "And is that something I can help with?"
+                              },
+                              {
+                                "npc": "Quite possibly. While we need to restore their numbers, it is also important we ensure only the strongest are able to breed. As such, with a Slayer Master's permission, we will allow you to slay them."
+                              },
+                              {
+                                "npc": "Alternatively, if you bring some stymphike feathers to either myself or one of my fellow disciples, we will allow you to kill some venators in return."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "IeIPhx"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Tell me more about the Maggot King.",
+                            "steps": [
+                              {
+                                "player": "Tell me more about the Maggot King."
+                              },
+                              {
+                                "npc": "Ah, yes. A Maggot King is the final form of one of Vampyrium's most disgusting creatures, the ur-maggot. They are thankfully very rare, but very destructive."
+                              },
+                              {
+                                "npc": "Dealing with it is unfortunately beyond our abilities, but if you feel you are able, it would be highly beneficial to our work here for you to do so instead."
+                              },
+                              {
+                                "player": "Where do I find it?"
+                              },
+                              {
+                                "npc": "If you take the path north east of Sangvesti, that should lead you right to it."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "6yd4xy"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Actually, let's talk about something else.",
+                            "steps": [
+                              {
+                                "player": "Actually, let's talk about something else."
+                              },
+                              {
+                                "npc": "As you wish."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "initial",
+                                "id": "wl1gMF"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Previous options...",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "zpieKq"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              },
+              {
+                "npc": "Until next time, my friend."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-the-scout-in-vampyrium-s-castle-drakan-subsequent-dialogue": [
+      {
+        "npc": "Until next time, my friend."
+      },
+      {
+        "npc": "Greetings, my friend. It is good to have you here with us."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you retrieve my gravestone for me?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "-EpobY"
+              }
+            ]
+          },
+          {
+            "text": "What is there to do around here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "YyIjh6"
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "khfgQ6"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

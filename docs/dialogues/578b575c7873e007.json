@@ -1,0 +1,201 @@
+{
+  "default": "before-completing-pandemonium",
+  "variants": {
+    "before-completing-pandemonium": [
+      {
+        "npc": "I see you."
+      },
+      {
+        "player": "You do?"
+      },
+      {
+        "npc": "Indeed! It's kind of what I do. The name's Virginia. I'm a lookout for the spirit anglers, as well as a six time eye spy world champion."
+      },
+      {
+        "player": "And what are you on the lookout for at the moment?"
+      },
+      {
+        "npc": "To be honest, a new adventure. The anglers have been good to me, but after the chaos with Tempoross, I'd like a fresh start."
+      },
+      {
+        "player": "Makes sense. Well, I hope one finds you soon."
+      },
+      {
+        "npc": "I hope so too, but not before I find it first!"
+      }
+    ],
+    "before-sailing-level-40": [
+      {
+        "npc": "I see you."
+      },
+      {
+        "player": "You do?"
+      },
+      {
+        "npc": "Indeed! It's kind of what I do. The name's Virginia. I'm a lookout for the spirit anglers, as well as a six time eye spy world champion."
+      },
+      {
+        "player": "And what are you on the lookout for at the moment?"
+      },
+      {
+        "npc": "To be honest, a new adventure. The angler's have been good to me, but after the chaos with Tempoross, I'd like a fresh start."
+      },
+      {
+        "player": "Well, at some point I plan to hire a crew of my own. I'm not ready for that sort of thing yet, but when I am, maybe you'd be interested?"
+      },
+      {
+        "npc": "I think I might be! You just let me know once you start recruiting... provided I don't spot you first, of course!"
+      },
+      {
+        "type": "message",
+        "text": "You need a Sailing level of 40 to manage a crew.",
+        "id": "vmATHs"
+      }
+    ],
+    "before-sailing-level-40-again": [
+      {
+        "npc": "Spotted again!"
+      },
+      {
+        "player": "Ah, hello again. How are things going?"
+      },
+      {
+        "npc": "Pretty well, though I'm still on the lookout for a new adventure."
+      },
+      {
+        "player": "Well, at some point I plan to hire a crew of my own. I'm not ready for that sort of thing yet, but when I am, maybe you'd be interested?"
+      },
+      {
+        "npc": "I think I might be! You just let me know once you start recruiting... provided I don't spot you first, of course!"
+      },
+      {
+        "type": "message",
+        "text": "You need a Sailing level of 40 to manage a crew.",
+        "id": "WFYo4N"
+      }
+    ],
+    "after-sailing-level-40": [
+      {
+        "npc": "I see you."
+      },
+      {
+        "player": "You do?"
+      },
+      {
+        "npc": "Indeed! It's kind of what I do. The name's Virginia. I'm a lookout for the spirit anglers, as well as a six time eye spy world champion."
+      },
+      {
+        "player": "And what are you on the lookout for at the moment?"
+      },
+      {
+        "npc": "To be honest, a new adventure. The angler's have been good to me, but after the chaos with Tempoross, I'd like a fresh start."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How about you join my crew?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player's Sailing level is under 90 or has less than 100 Tempoross subdues:",
+                "steps": [
+                  {
+                    "player": "Maybe I could help? How about you join my crew?"
+                  },
+                  {
+                    "npc": "Sorry, but I can't see that happening right now. Maybe once you're more experienced."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You require the following to recruit this crew member: Level 90 Sailing. Have subdued the Tempoross 100 times.",
+                    "id": "RAg7a3"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "unvI9Y"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's Sailing level is at least 90 and has at least 100 Tempoross subdues:",
+                "steps": [
+                  {
+                    "player": "Maybe I could help? How about you join my crew?"
+                  },
+                  {
+                    "npc": "Sure! I can watch your back!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You recruit Spotter Virginia as a crew member. She departs for the Pandemonium.",
+                    "id": "jCJ1CR"
+                  }
+                ],
+                "id": "tze63h"
+              }
+            ]
+          },
+          {
+            "text": "Well, good luck with it.",
+            "steps": [
+              {
+                "player": "Well, I hope one finds you soon."
+              },
+              {
+                "npc": "I hope so too, but not before I find it first!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-at-the-pandemonium": [
+      {
+        "npc": "Nice to see you, Captain."
+      },
+      {
+        "player": "Hello there. How are things going?"
+      },
+      {
+        "npc": "Pretty good. I'm very much enjoying seeing the sights."
+      },
+      {
+        "player": "Well, let me know if you spot anything worth looking into."
+      },
+      {
+        "npc": "Aye, Captain!"
+      }
+    ],
+    "while-at-sea": [
+      {
+        "type": "missing",
+        "id": "tw9zlh"
+      }
+    ],
+    "while-at-sea-randomly-while-at-the-helm": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "These sails are blocking my view."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "I can't focus on being the lookout with all this work to do."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

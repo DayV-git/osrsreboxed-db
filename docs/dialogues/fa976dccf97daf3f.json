@@ -1,0 +1,142 @@
+{
+  "default": "standard-dialogue-if-the-player-isn-t-carrying-a-combat-path-voucher-or-is-carrying-a-combat-path-voucher-and-has-received-all-possible-rewards-already",
+  "variants": {
+    "standard-dialogue-if-the-player-is-carrying-a-combat-path-voucher-and-hasn-t-received-all-possible-rewards-yet": [
+      {
+        "player": "I have this voucher for completing the combat Adventure Path, it says to come talk to you about claiming my Adventure Path reward."
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't claimed their rewards yet and is on a free-to-play world:",
+        "steps": [
+          {
+            "npc": "Why yes, here are some air and mind runes."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "200 air runes and 200 mind runes",
+            "id": "J1VFM_"
+          },
+          {
+            "npc": "I do have more rewards for you, but you need to be on a members world for me to give you the reward. Maybe there is something else I can help you with."
+          },
+          {
+            "type": "action",
+            "text": "Continues as if the player weren't carrying a Combat path voucher",
+            "id": "oVtYKI"
+          }
+        ],
+        "id": "-cFVGw"
+      },
+      {
+        "type": "condition",
+        "text": "If the player hasn't claimed their member rewards yet and is on a free-to-play world:",
+        "steps": [
+          {
+            "npc": "I do have more rewards for you, but you need to be on a members world for me to give you the reward. Maybe there is something else I can help you with."
+          },
+          {
+            "type": "action",
+            "text": "Continues as if the player weren't carrying a Combat path voucher",
+            "id": "XSVBHP"
+          }
+        ],
+        "id": "oycgTX"
+      }
+    ],
+    "standard-dialogue-if-the-player-isn-t-carrying-a-combat-path-voucher-or-is-carrying-a-combat-path-voucher-and-has-received-all-possible-rewards-already": [
+      {
+        "npc": "Do you want to buy some runes?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me about your cape?",
+            "steps": [
+              {
+                "npc": "Certainly! Skillcapes are a symbol of achievement. Only people who have mastered a skill and reached level 99 can get their hands on them and gain the benefits they carry."
+              },
+              {
+                "npc": "The Cape of Runecrafting has been upgraded with each talisman, allowing you to access all Runecrafting altars. Is there anything else I can help you with?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to view your store please.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Aubury's Rune Shop.",
+                        "id": "2tNk0_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thank you.",
+                    "steps": [
+                      {
+                        "player": "No thank you."
+                      },
+                      {
+                        "npc": "Well, if you find someone who does want runes, please send them my way."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yes please!",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Aubury's Rune Shop.",
+                "id": "NN4tJn"
+              }
+            ]
+          },
+          {
+            "text": "Oh, it's a rune shop. No thank you, then.",
+            "steps": [
+              {
+                "player": "Oh, it's a rune shop. No thank you, then."
+              },
+              {
+                "npc": "Well, if you find someone who does want runes, please send them my way."
+              }
+            ]
+          },
+          {
+            "text": "Can you teleport me to the Rune Essence?",
+            "condition": "If the player has completed Rune Mysteries:",
+            "steps": [
+              {
+                "player": "Can you teleport me to the Rune Essence?"
+              },
+              {
+                "npc": "Of course. By the way, if you end up making any runes from the essence you mine, I'll happily buy them from you."
+              },
+              {
+                "npc": "Senventior Disthine Molenko!"
+              },
+              {
+                "type": "action",
+                "text": "Aubury teleports the player to the rune essence mine",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "ILlRUH"
+              }
+            ],
+            "id": "8wGmNB"
+          }
+        ]
+      }
+    ]
+  }
+}

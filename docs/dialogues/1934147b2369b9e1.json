@@ -1,0 +1,604 @@
+{
+  "default": "starting-off-talking-to-the-monk",
+  "variants": {
+    "starting-off-talking-to-the-monk": [
+      {
+        "type": "condition",
+        "text": "If the player has not spoken to the monk:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Good day to you, adventurer."
+          },
+          {
+            "player": "And to you. What brings you all the way out here?"
+          },
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "I am on my return journey from the dark lands of Morytania. It would be remiss of me not to stop and take in the glory of Paterdomus before my return to Entrana."
+          },
+          {
+            "player": "Morytania? That's quite a dangerous place for a monk."
+          },
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Indeed, but as a faithful servant of Saradomin, it is my duty to confront the taint of Zamorak, wherever it may be found. Violence is to be abhorred, but at times it is an unfortunate necessity."
+          },
+          {
+            "player": "I see. Well I'd better leave you to it."
+          },
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Before you depart, adventurer, I was wondering if you might be interested in helping me with something?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "qG55eW"
+          }
+        ],
+        "id": "5p0Y1-"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has previously spoken to the monk:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Good day to you, adventurer."
+          },
+          {
+            "player": "Hello again."
+          },
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Did you reconsider my request? I'd be very grateful if you'd be able to help me with something."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "x8JXVp"
+          }
+        ],
+        "id": "a9tUp0"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have all the skill requirements for the quest:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it.",
+            "id": "a6edu1"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "SKfHsz"
+          }
+        ],
+        "id": "GK16o9"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Devious Minds quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Of course. What do you need?"
+              },
+              {
+                "type": "line",
+                "speaker": "Monk",
+                "text": "On my travels in Morytania, I encountered an individual from the lands to the far east. He spoke of a weapon from his homeland that I think would be very valuable in our fight against the darkness."
+              },
+              {
+                "type": "line",
+                "speaker": "Monk",
+                "text": "If you could help me build one of these weapons, you would be highly rewarded by the Church of Saradomin."
+              },
+              {
+                "player": "A new weapon? Interesting!"
+              },
+              {
+                "type": "line",
+                "speaker": "Monk",
+                "text": "Yes, now pay attention. I need you to take a two-handed mithril sword and grind it down to a slender blade. I know of a dwarf living north of Falador whose whetstone is unmatchable. It will be perfect for this task."
+              },
+              {
+                "type": "line",
+                "speaker": "Monk",
+                "text": "Once the blade is flexible enough, you should then be able to string it with a normal bow string. That is all you need to do."
+              },
+              {
+                "player": "Alright, I'll be back once I have this weapon."
+              }
+            ],
+            "hook": "quest:devious-minds:start",
+            "quest": "Devious Minds"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "Sorry, but I'm busy right now."
+              },
+              {
+                "type": "line",
+                "speaker": "Monk",
+                "text": "Ah, well do come and see me if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-the-monk-again": [
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Hello again, adventurer. Have you brought the weapon for me?"
+      },
+      {
+        "player": "Not yet, sorry."
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Remember, you need to take a two-handed mithril sword and grind it down to a slender blade. There is a dwarf living north of Falador whose whetstone will be perfect for this."
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Once the blade is flexible enough, you should then be able to string it with a normal bow string. That is all you need to do."
+      },
+      {
+        "player": "Alright, I'll be back soon."
+      }
+    ],
+    "starting-off-using-the-whetstone": [
+      {
+        "type": "choice",
+        "prompt": "Grind down the blade of your mithril two-handed sword?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You grind the blade until it's slender and flexible.",
+                "id": "wcQlqp"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "starting-off-stringing-the-slender-blade": [
+      {
+        "type": "message",
+        "text": "You add a string to the slender blade, turning it into a bow-sword.",
+        "id": "Yfo5KF"
+      }
+    ],
+    "starting-off-bringing-the-monk-the-bow-sword": [
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Hello again, adventurer. Have you brought the weapon for me?"
+      },
+      {
+        "player": "I have it right here for you."
+      },
+      {
+        "type": "message",
+        "text": "You give the bow-sword to the Monk.",
+        "id": "5ln-VH"
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Excellent! Your help won't be forgotten."
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Now, I think it's high time for me to make my return to Entrana. There is a special ceremony taking place soon, and to miss it would fill me with regret."
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "On that note, there might be something else you can help me with..."
+      },
+      {
+        "player": "What is it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "I have a special gift I wish to present at the ceremony. It's one that I know my fellow monks will appreciate. As such, it feels only right that a special gift is delivered in a special way."
+      },
+      {
+        "player": "Meaning?"
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "I would like my companions to enter the ceremony with no knowledge of the gift. It will then make for a joyous surprise for them. However, to do that, it must be smuggled onto the island."
+      },
+      {
+        "player": "Smuggled? Sounds a bit shifty."
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "I confess, to do so would not quite be in keeping with our rules, but for such a wonderful gift, the opportunity can't be disregarded."
+      },
+      {
+        "player": "Hmm... Fair enough. So you want me to sneak this gift onto the island? How do I do that?"
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Our island is home to the Runic Altar of Law. Recently, I have heard whispers of a way to access these altars via another realm."
+      },
+      {
+        "player": "You speak of the Abyss. I'm familiar with it."
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Excellent! In that case, please take this orb and journey through this 'Abyss' to the island of Entrana. Please do keep the orb safe though, for it is highly delicate."
+      },
+      {
+        "player": "The Abyss isn't exactly the safest of places."
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "The same voices that whispered of this 'Abyss' also spoke of pouches used to store runes. I'm sure a large one of those would be suitable."
+      },
+      {
+        "player": "Alright, I'll get that done."
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "Wonderful! Here is the orb. Once you arrive, just place it on the altar in Entrana's church."
+      },
+      {
+        "type": "message",
+        "text": "The monk gives you an orb.",
+        "id": "Iv_XNp"
+      }
+    ],
+    "starting-off-talking-the-monk-after-receiving-the-orb": [
+      {
+        "type": "condition",
+        "text": "If you still have the orb:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Hello again. You need to hurry or you'll miss the ceremony."
+          },
+          {
+            "player": "How am I meant to get there again?"
+          },
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Use this 'Abyss' you spoke of to travel to the Runic Altar of Law. When doing so, make sure to put the orb in a large rune pouch to keep it safe."
+          },
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Once you arrive, just place the orb on the altar in Entrana's church."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6ambXW"
+      },
+      {
+        "type": "condition",
+        "text": "If you lost the orb:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "Hello again. You need to hurry or you'll miss the ceremony."
+          },
+          {
+            "player": "Er... I lost the orb..."
+          },
+          {
+            "type": "line",
+            "speaker": "Monk",
+            "text": "You're very lucky that I found it. Please be more careful with it this time."
+          },
+          {
+            "type": "message",
+            "text": "The monk gives you the orb.",
+            "id": "Kb5na-"
+          }
+        ],
+        "id": "rtLNjv"
+      }
+    ],
+    "starting-off-putting-the-orb-in-a-pouch-small-pouch": [
+      {
+        "type": "message",
+        "text": "That's far too small to fit the orb in!",
+        "id": "cd7p2-"
+      }
+    ],
+    "starting-off-putting-the-orb-in-a-pouch-medium-pouch": [
+      {
+        "type": "message",
+        "text": "That's too small to fit the orb in!",
+        "id": "LpvEYt"
+      }
+    ],
+    "starting-off-putting-the-orb-in-a-pouch-large-pouch": [
+      {
+        "type": "message",
+        "text": "You hide the orb in the pouch.",
+        "id": "Foveex"
+      }
+    ],
+    "starting-off-putting-the-orb-in-a-pouch-giant-pouch": [
+      {
+        "type": "message",
+        "text": "That's too big to safely carry the orb in!",
+        "id": "3ntKwX"
+      }
+    ],
+    "starting-off-putting-the-orb-in-a-pouch-colossal-pouch": [
+      {
+        "type": "missing",
+        "id": "RAiDB4"
+      }
+    ],
+    "starting-off-putting-the-orb-in-a-pouch-checking-the-orb-filled-large-pouch": [
+      {
+        "type": "message",
+        "text": "There is a glowing orb in the pouch.",
+        "id": "zJibN4"
+      }
+    ],
+    "starting-off-putting-the-orb-in-a-pouch-emptying-the-orb-filled-large-pouch": [
+      {
+        "type": "message",
+        "text": "You remove the orb from the pouch.",
+        "id": "bUECvL"
+      }
+    ],
+    "going-to-entrana-trying-to-place-the-orb-on-the-altar": [
+      {
+        "type": "message",
+        "text": "You should probably put that in a pouch or it might get damaged!",
+        "id": "t6R6wP"
+      }
+    ],
+    "going-to-entrana-placing-the-pouch-on-the-altar": [
+      {
+        "type": "action",
+        "text": "Tthe screen fades to black as a cutscene begins. Three monks carrying a relic can be seen walking into the church.",
+        "id": "gQKdJg"
+      },
+      {
+        "type": "action",
+        "text": "As the monks approach the altar, the assassin teleports in, wielding the bow-sword, and kills one of the monks.",
+        "id": "tmHDxu"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Protect the relic!"
+      },
+      {
+        "type": "action",
+        "text": "The monk carrying the relic tries to flee, but the assassin kills him with an arrow.",
+        "id": "hArNnO"
+      },
+      {
+        "type": "line",
+        "speaker": "Monk",
+        "text": "You won't have it!"
+      },
+      {
+        "type": "action",
+        "text": "The last monk approaches the assassin and hits him with a staff, attempting to stop him from claiming it, but the assassin cuts the monk down.",
+        "id": "g4Sc4m"
+      },
+      {
+        "type": "action",
+        "text": "As the assassin picks up the relic and teleports away, the pouch containing the orb on the altar explodes, and the High Priest shields himself from the explosion.",
+        "id": "GQqLKi"
+      },
+      {
+        "type": "action",
+        "text": "The screen fades to black as the cutscene ends.",
+        "id": "169WUP"
+      }
+    ],
+    "going-to-entrana-the-surprise": [
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "The relic! This is a disaster!"
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Adventurer, did you see who put that teleport beacon on the altar?"
+      },
+      {
+        "player": "Uh... yeah, about that..."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "What is it?"
+      },
+      {
+        "player": "I put it there..."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "What? Why?"
+      },
+      {
+        "player": "There was this monk near Paterdomus. He told me it was a gift..."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "No worshipper of Saradomin would ever do something like this! Adventurer, you must return to Paterdomus and see if you can find any trace of this 'monk'."
+      },
+      {
+        "player": "I'll go right away."
+      }
+    ],
+    "going-to-entrana-talking-to-the-high-priest-again": [
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Adventurer, have you found that 'monk' yet?"
+      },
+      {
+        "player": "Not yet."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Please hurry to Paterdomus and see if you can find any trace of him."
+      }
+    ],
+    "investigating-the-surprise-finding-the-dead-monk": [
+      {
+        "type": "message",
+        "text": "The poor guy appears to have been killed by powerful magic!",
+        "id": "En9UIu"
+      },
+      {
+        "player": "This isn't good. I'd better get back and tell the High Priest."
+      }
+    ],
+    "investigating-the-surprise-returning-to-the-high-priest-in-entrana": [
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "Adventurer, have you found that 'monk' yet?"
+      },
+      {
+        "player": "I went back to Paterdomus, but all I found was a dead body."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "What?"
+      },
+      {
+        "player": "It looked like he'd been killed by magic. The thing is, I'm not convinced he was the person I spoke to before."
+      },
+      {
+        "type": "line",
+        "speaker": "High Priest",
+        "text": "This is not good. That relic wasn't just for show! It was once part of a powerful artefact. You must report this to Sir Tiffy Cashien in Falador Park."
+      },
+      {
+        "player": "I'll head there right away."
+      }
+    ],
+    "wrapping-up-reporting-to-sir-tiffy": [
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Jolly good show on getting into the White Knights, what?"
+      },
+      {
+        "type": "line",
+        "speaker": "Sir Tiffy Cashien",
+        "text": "Now how can I help you old [boy/girl/bean]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Devious Minds.",
+            "steps": [
+              {
+                "player": "I've got some bad news..."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Tiffy Cashien",
+                "text": "This wouldn't be about that old relic being stolen from Entrana, would it?"
+              },
+              {
+                "player": "Uh... yeah, how'd you know?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Tiffy Cashien",
+                "text": "Part of the business, old bean. So what do you know about what went on?"
+              },
+              {
+                "player": "Well there was this monk who needed help..."
+              },
+              {
+                "type": "message",
+                "text": "You explain everything that happened.",
+                "id": "smJEdM"
+              },
+              {
+                "player": "... and so I was told to come see you."
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Tiffy Cashien",
+                "text": "Good, that confirms our own intel. We will get to work at once."
+              },
+              {
+                "player": "Is there anything I can do to help?"
+              },
+              {
+                "type": "line",
+                "speaker": "Sir Tiffy Cashien",
+                "text": "Not yet, but we'll be in touch if we need you, old bean. For now, you should be on your way, but don't worry, we'll get to the bottom of this!"
+              },
+              {
+                "type": "action",
+                "text": "Congratulations! Quest complete!",
+                "id": "WqZYOq"
+              }
+            ]
+          },
+          {
+            "text": "Something else."
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "7ncsJT"
+      }
+    ]
+  }
+}

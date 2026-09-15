@@ -1,0 +1,1117 @@
+{
+  "default": null,
+  "variants": {
+    "before-starting-the-fremennik-trials-rellekka": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Hey there, buddy. You're an outerlander, huh? I'm not really supposed to talk to you."
+      },
+      {
+        "player": "Why not?"
+      },
+      {
+        "npc": "I dunno buddy. Some stupid tradition or other. We're always told not to talk to outerlanders unless the Chieftain has allowed it."
+      },
+      {
+        "player": "The Chieftain? Who is that?"
+      },
+      {
+        "npc": "His names Brundt, buddy. He's a real boring guy. You can find him in the longhall there."
+      },
+      {
+        "player": "Can you take me to see him?"
+      },
+      {
+        "npc": "Sorry buddy, I'm not allowed into the Longhall. Don't worry, he's easy to spot. He's the one in the fancy helmet. Oh, and he only has one eye."
+      },
+      {
+        "player": "He's a cyclops?"
+      },
+      {
+        "npc": "Nah, nah, nah... He just wears an eyepatch! Well, see ya around buddy!"
+      }
+    ],
+    "before-starting-the-fremennik-trials-waterbirth-island": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Hey there, buddy. You're an outerlander, huh?"
+      },
+      {
+        "npc": "Didn't think old Jarvald would let an outerlander come kill dagger-mouths with him!"
+      },
+      {
+        "player": "Well, obviously he did. So what are you doing up here?"
+      },
+      {
+        "npc": "Well buddy, let me tell you, killing those dagger-mouths is sure thirsty work!"
+      },
+      {
+        "npc": "If you got a keg of beer on you I'll buy it off ya for 500 gold coins, buddy!"
+      },
+      {
+        "npc": "Or if you got any animal parts, I'll trade ya something for 'em!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have any Kegs of Beer or animal parts in their inventory:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "OiMa0x"
+          }
+        ],
+        "id": "wSb0OO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has Kegs of Beer in their inventory:",
+        "steps": [
+          {
+            "npc": "Wanna sell me ya kegs of beer for 500 gold coins each outerlander?"
+          },
+          {
+            "player": "I don't know... Seems a little off to sell alcohol to a child..."
+          },
+          {
+            "npc": "Hey, don't judge our customs outerlander! Now you want the cash or you want to bug me?"
+          },
+          {
+            "type": "choice",
+            "prompt": "Would you like to sell your kegs of beer?",
+            "options": [
+              {
+                "text": "YES",
+                "steps": [
+                  {
+                    "npc": "You wanna sell me the lot buddy, or one at a time?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sell all Kegs",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "(The player sells all of their Kegs of Beer for 500 coins each.)",
+                            "id": "y9ajTT"
+                          },
+                          {
+                            "type": "message",
+                            "text": "You sell Askeladden your Kegs of Beer.",
+                            "id": "7ZNVjx"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Sell One Keg",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You sell Askeladden a Keg of Beer.",
+                            "id": "6Rgsmc"
+                          },
+                          {
+                            "type": "choice",
+                            "prompt": "Sell another Keg?",
+                            "options": [
+                              {
+                                "text": "YES",
+                                "steps": [
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has no more Kegs of beer to sell:",
+                                    "steps": [
+                                      {
+                                        "player": "But I don't have any kegs of beer to sell..."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "iVLLoX"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has more Kegs of beer to sell:",
+                                    "steps": [
+                                      {
+                                        "type": "message",
+                                        "text": "You sell Askeladden a Keg of Beer.",
+                                        "id": "mGTHhs"
+                                      },
+                                      {
+                                        "type": "jump",
+                                        "reference": "previous",
+                                        "id": "8AoFYC"
+                                      }
+                                    ],
+                                    "id": "Hhi4p5"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "NO",
+                                "steps": [
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "NO",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "01e7Ix"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ozID6S"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has animal parts in their inventory:",
+        "steps": [
+          {
+            "npc": "I'll trade ya animal parts for cooked tuna, ya interested outerlander?"
+          },
+          {
+            "type": "choice",
+            "prompt": "Would you like to trade animal parts for food?",
+            "options": [
+              {
+                "text": "YES",
+                "steps": [
+                  {
+                    "npc": "You wanna trade me the lot buddy, or just one type?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Trade all parts",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "text": "(The player trades all of their animal parts for one tuna per item.)",
+                            "id": "J21rSJ"
+                          },
+                          {
+                            "type": "message",
+                            "text": "You trade Askeladden your animal parts for food.",
+                            "id": "Ir2pdr"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Sell one type only",
+                        "steps": [
+                          {
+                            "npc": "What ya selling buddy?"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has doesn't have every type of animal part to sell:",
+                            "steps": [
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Darkened Hides",
+                                    "condition": "If the player has any regular Dagannoth hides in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "action",
+                                        "text": "(The player trades all of their Dagannoth hides for one tuna per hide.)",
+                                        "id": "L47rs3"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "You trade the parts for food.",
+                                        "id": "I2QBoY"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "swRQiO"
+                                  },
+                                  {
+                                    "text": "Rock Shells",
+                                    "condition": "If the player has any Rock-shell chunks, Rock-shell shards, or Rock-shell splinters in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "action",
+                                        "text": "(The player trades all of their eligible items for one tuna per item.)",
+                                        "id": "CS-6fy"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "You trade the parts for food.",
+                                        "id": "tTqP6y"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "M-7l8b"
+                                  },
+                                  {
+                                    "text": "Wallasalki Bones",
+                                    "condition": "If the player has any Fibula pieces, Ribcage pieces, or Skull pieces in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "action",
+                                        "text": "(The player trades all of their eligible items for one tuna per item.)",
+                                        "id": "gJ5rno"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "You trade the parts for food.",
+                                        "id": "QGcswt"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "LR9Xxv"
+                                  },
+                                  {
+                                    "text": "Lightened Hides",
+                                    "condition": "If the player has any Circular hides, Flattened hides, or Stretched hides in their inventory:",
+                                    "steps": [
+                                      {
+                                        "type": "action",
+                                        "text": "(The player trades all of their eligible items for one tuna per item.)",
+                                        "id": "Gh4Qgl"
+                                      },
+                                      {
+                                        "type": "message",
+                                        "text": "You trade the parts for food.",
+                                        "id": "ODdehn"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ],
+                                    "id": "GYCG8Q"
+                                  },
+                                  {
+                                    "text": "Nothing",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "nOjF3O"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "id": "ZEEAnr"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has every type of animal part to sell:",
+                            "steps": [
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Darkened Hides",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "lKpv7K"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Rock Shells",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "euP-wA"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Lightened Hides",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "RHFbXF"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Wallasalki Bones",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "a8_YWA"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Nothing",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "2L6si4"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "id": "JUHOWB"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "NO",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "below",
+                    "id": "DkVb9B"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "n_OFe7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has both Kegs of Beer and animal parts in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "What would you like to trade?",
+            "options": [
+              {
+                "text": "Kegs for money",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "WSm5-s"
+                  }
+                ]
+              },
+              {
+                "text": "Animal parts for food",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "7nmb7V"
+                  }
+                ]
+              },
+              {
+                "text": "Nothing",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "DVkg0I"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "TbnghA"
+      }
+    ],
+    "before-starting-the-fremennik-trials-waterbirth-island-using-animal-parts-on-him": [
+      {
+        "npc": "Hey buddy, I'll trade ya that for some food! Ya interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "YES",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(The player trades the animal part for a tuna.)",
+                "id": "rZoUnK"
+              }
+            ]
+          },
+          {
+            "text": "NO",
+            "steps": [
+              {
+                "npc": "Okay buddy, suit yerself!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-the-fremennik-trials-rellekka": [
+      {
+        "player": "Hello again Askeladden."
+      },
+      {
+        "npc": "Hey buddy! That ain't my name no more! My new Fremennik name is Larravak! What's yours?"
+      },
+      {
+        "player": "My Fremennik name is [Fremennik name]."
+      },
+      {
+        "npc": "Ha! Ain't as good as my name buddy! So what can I do ya for?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about things to do",
+            "steps": [
+              {
+                "player": "So, Askeladd- sorry, Larravak; What is there to do around here now that we are both Fremenniks?"
+              },
+              {
+                "npc": "I guess you could do a bit of shopping. We got fresh fish at the docks, and some armour and weapons at Skulgrimen's place."
+              },
+              {
+                "player": "Okay, thanks."
+              }
+            ]
+          },
+          {
+            "text": "Ask for a new pet rock",
+            "steps": [
+              {
+                "player": "Can I have another pet rock?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "npc": "Sure thing, but you'd better free up some space first."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "0Iokr7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has inventory space but doesn't have a pet rock in their inventory, bank, or player-owned house:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a pet rock",
+                    "id": "JdNEob"
+                  },
+                  {
+                    "npc": "Sure thing buddy! I'd say take better care of this one, but it's just a rock! I have hundreds of them! Go wild!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KZees5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has inventory space and has a pet rock in their inventory, bank, or player-owned house:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a pet rock",
+                    "id": "8crW88"
+                  },
+                  {
+                    "npc": "Sure, have as many as you like. I've plenty more!"
+                  }
+                ],
+                "id": "ovvt-r"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-the-fremennik-trials-rellekka-right-click-claim-pet-rock-option": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "jZoNYN"
+      }
+    ],
+    "after-completing-the-fremennik-trials-waterbirth-island": [
+      {
+        "npc": "Hi buddy! Or do ya want me to call ya [Fremennik name] now?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask what Askeladden is doing here",
+            "steps": [
+              {
+                "player": "Askeladden, what on Gielinor are you doing up here? And by the way, the name is [player name]."
+              },
+              {
+                "npc": "Sure thing, buddy!"
+              },
+              {
+                "npc": "I was down in that cave killing dagger-mouths! It was fun! But then I got thirsty, so came up here for a bit of a rest..."
+              },
+              {
+                "npc": "Hey buddy, I'll tell you what, if you got any kegs of beer on ya, I'll buy them off ya for 700 gold coins each!"
+              },
+              {
+                "npc": "If ya found any animal parts killing dagger-mouths I'll trade ya for them too!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have any Kegs of Beer or animal parts in their inventory:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "OiMa0x"
+                  }
+                ],
+                "id": "TD9ViX"
+              },
+              {
+                "type": "condition",
+                "text": "If the player only has Kegs of Beer in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Wanna sell me kegs of beer for 700 gold coins each buddy?"
+                  },
+                  {
+                    "player": "Um... Aren't you a little... ...young to be drinking so much?"
+                  },
+                  {
+                    "npc": "Hey, don't talk to me like that buddy! I've done all the trials you have and I'm just as mucha  Fremennik as you are!"
+                  },
+                  {
+                    "npc": "Now are ya gonna sell me some beer, or are you going to cry about it all day?"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Would you like to sell your kegs of beer?",
+                    "options": [
+                      {
+                        "text": "YES",
+                        "steps": [
+                          {
+                            "npc": "You wanna sell me the lot buddy, or one at a time?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Sell all Kegs",
+                                "steps": [
+                                  {
+                                    "type": "action",
+                                    "text": "(The player sells all of their Kegs of Beer for 700 coins each.)",
+                                    "id": "w-VJub"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "You sell Askeladden your Kegs of Beer.",
+                                    "id": "XBCne8"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Sell One Keg",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "You sell Askeladden a Keg of Beer.",
+                                    "id": "8XXesy"
+                                  },
+                                  {
+                                    "type": "choice",
+                                    "prompt": "Sell another Keg?",
+                                    "options": [
+                                      {
+                                        "text": "YES",
+                                        "steps": [
+                                          {
+                                            "type": "condition",
+                                            "text": "If the player has no more Kegs of beer to sell:",
+                                            "steps": [
+                                              {
+                                                "player": "But I don't have any kegs of beer to sell..."
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ],
+                                            "id": "N0OZiZ"
+                                          },
+                                          {
+                                            "type": "condition",
+                                            "text": "If the player has more Kegs of beer to sell:",
+                                            "steps": [
+                                              {
+                                                "type": "message",
+                                                "text": "You sell Askeladden a Keg of Beer.",
+                                                "id": "p60THq"
+                                              },
+                                              {
+                                                "type": "jump",
+                                                "reference": "previous",
+                                                "id": "uTCzie"
+                                              }
+                                            ],
+                                            "id": "j67w4F"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "text": "NO",
+                                        "steps": [
+                                          {
+                                            "type": "end"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "NO",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "bBPSel"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "i_hIjD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player only has animal parts in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I'll trade ya animal parts for cooked lobsters if ya interested buddy!"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Would you like to trade animal parts for food?",
+                    "options": [
+                      {
+                        "text": "YES",
+                        "steps": [
+                          {
+                            "npc": "You wanna trade me the lot buddy, or just one type?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Trade all parts",
+                                "steps": [
+                                  {
+                                    "type": "action",
+                                    "text": "(The player trades all of their animal parts for one lobster per item.)",
+                                    "id": "Y5BiSE"
+                                  },
+                                  {
+                                    "type": "message",
+                                    "text": "You trade Askeladden your animal parts for food.",
+                                    "id": "L5ven8"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Sell one type only",
+                                "steps": [
+                                  {
+                                    "npc": "What ya selling buddy?"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has doesn't have every type of animal part to sell:",
+                                    "steps": [
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Darkened Hides",
+                                            "condition": "If the player has any regular Dagannoth hides in their inventory:",
+                                            "steps": [
+                                              {
+                                                "type": "action",
+                                                "text": "(The player trades all of their Dagannoth hides for one lobster per hide.)",
+                                                "id": "Lg0hW-"
+                                              },
+                                              {
+                                                "type": "message",
+                                                "text": "You trade the parts for food.",
+                                                "id": "nws5We"
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ],
+                                            "id": "7MIOj0"
+                                          },
+                                          {
+                                            "text": "Rock Shells",
+                                            "condition": "If the player has any Rock-shell chunks, Rock-shell shards, or Rock-shell splinters in their inventory:",
+                                            "steps": [
+                                              {
+                                                "type": "action",
+                                                "text": "(The player trades all of their eligible items for one lobster per item.)",
+                                                "id": "nEmUve"
+                                              },
+                                              {
+                                                "type": "message",
+                                                "text": "You trade the parts for food.",
+                                                "id": "OFvOc_"
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ],
+                                            "id": "MoQuea"
+                                          },
+                                          {
+                                            "text": "Wallasalki Bones",
+                                            "condition": "If the player has any Fibula pieces, Ribcage pieces, or Skull pieces in their inventory:",
+                                            "steps": [
+                                              {
+                                                "type": "action",
+                                                "text": "(The player trades all of their eligible items for one lobster per item.)",
+                                                "id": "xYgTeC"
+                                              },
+                                              {
+                                                "type": "message",
+                                                "text": "You trade the parts for food.",
+                                                "id": "NYlxpI"
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ],
+                                            "id": "IF2Gk5"
+                                          },
+                                          {
+                                            "text": "Lightened Hides",
+                                            "condition": "If the player has any Circular hides, Flattened hides, or Stretched hides in their inventory:",
+                                            "steps": [
+                                              {
+                                                "type": "action",
+                                                "text": "(The player trades all of their eligible items for one lobster per item.)",
+                                                "id": "riWfdL"
+                                              },
+                                              {
+                                                "type": "message",
+                                                "text": "You trade the parts for food.",
+                                                "id": "BPlKWh"
+                                              },
+                                              {
+                                                "type": "end"
+                                              }
+                                            ],
+                                            "id": "bqu9dS"
+                                          },
+                                          {
+                                            "text": "Nothing",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "LOb6EO"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "id": "C42vpE"
+                                  },
+                                  {
+                                    "type": "condition",
+                                    "text": "If the player has every type of animal part to sell:",
+                                    "steps": [
+                                      {
+                                        "type": "choice",
+                                        "options": [
+                                          {
+                                            "text": "Darkened Hides",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "42fRMR"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Rock Shells",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "NuY2SL"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Lightened Hides",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "dFBFGj"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Wallasalki Bones",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "above",
+                                                "id": "2qWISG"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "text": "Nothing",
+                                            "steps": [
+                                              {
+                                                "type": "jump",
+                                                "reference": "below",
+                                                "id": "LUcgdj"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "id": "lxb8qy"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "NO",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "HOT1C1"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "PdfeJ-"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has both Kegs of Beer and animal parts in their inventory:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "What would you like to trade?",
+                    "options": [
+                      {
+                        "text": "Kegs for money",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "qGNHoI"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Animal parts for food",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "YhTJQd"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Nothing",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "DVkg0I"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "kBKMIB"
+              }
+            ]
+          },
+          {
+            "text": "Ask for a new pet rock",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Your inventory is too full to accept another 'pet rock'.",
+                    "id": "t5D5iw"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "cYQjzC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has space in their inventory:",
+                "steps": [
+                  {
+                    "player": "Can I have another pet rock? I lost mine..."
+                  },
+                  {
+                    "npc": "Well it's sure a weird place to ask for it buddy, but I have hundreds of them! Go wild!"
+                  }
+                ],
+                "id": "pJvKpO"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-the-fremennik-trials-waterbirth-island-using-animal-parts-on-him": [
+      {
+        "npc": "Hey buddy, I'll trade ya that for some food! Ya interested?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "YES",
+            "steps": [
+              {
+                "type": "action",
+                "text": "(The player trades the animal part for a lobster.)",
+                "id": "g1agAw"
+              }
+            ]
+          },
+          {
+            "text": "NO",
+            "steps": [
+              {
+                "npc": "Okay buddy, suit yerself!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-the-fremennik-trials-waterbirth-island-right-click-claim-pet-rock-option": [
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "I7L5Rr"
+      }
+    ]
+  },
+  "branches": {
+    "OiMa0x": [
+      {
+        "player": "No... I don't have anything like that with me..."
+      },
+      {
+        "npc": "Well, I'm not going back down there until I get a drink buddy! Come see me if you find me a keg, I pay good money!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "DVkg0I": [
+      {
+        "player": "No offence Askeladden, and it's not that I don't trust you... Er, actually it is that I don't trust you."
+      },
+      {
+        "npc": "Aw, buddy... What did I ever do to you?"
+      },
+      {
+        "npc": "Well, if ya change your mind, I'm gonna be here waiting for a drink, buddy!"
+      }
+    ]
+  }
+}

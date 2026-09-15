@@ -1,0 +1,494 @@
+{
+  "default": null,
+  "variants": {
+    "initial-dialogue-without-ghostspeak": [
+      {
+        "npc": "Woooo wooo wooooo woooo."
+      },
+      {
+        "player": "Jenkins?!"
+      },
+      {
+        "npc": "Woooo wooo wooooo woooo."
+      },
+      {
+        "player": "I'm sorry, Jenkins, but... why are you here?"
+      },
+      {
+        "npc": "Woooo wooo wooooo woooo."
+      },
+      {
+        "player": "I hope you find it, Jenkins. And you just let me know if I can help you do so."
+      },
+      {
+        "npc": "Woooo wooo wooooo woooo."
+      }
+    ],
+    "subsequent-dialogue-without-ghostspeak": [
+      {
+        "npc": "Woooo wooo wooooo woooo."
+      },
+      {
+        "player": "Hello again, Jenkins. How are you doing?"
+      },
+      {
+        "npc": "Woooo wooo wooooo woooo."
+      }
+    ],
+    "initial-dialogue-with-ghostspeak": [
+      {
+        "npc": "Oh, it's you."
+      },
+      {
+        "player": "Jenkins?!"
+      },
+      {
+        "npc": "Nice to see ye' remember me, seein' as you watched me die 'n all!"
+      },
+      {
+        "player": "I'm sorry, Jenkins, but... why are you here?"
+      },
+      {
+        "npc": "S'pose me business ain't done yet. Gotta find me a purpose or somethin'."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has not completed Pandemonium:",
+        "steps": [
+          {
+            "player": "I hope you find it, Jenkins. And you just let me know if I can help you do so."
+          },
+          {
+            "npc": "Aye, I will, but I reckon I'm all good fer now."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "uuwPZe"
+      },
+      {
+        "type": "condition",
+        "text": "Before 40 Sailing:",
+        "steps": [
+          {
+            "player": "Well, I'd love to let you sail with me again, but I don't think I'm ready to hire a crew yet."
+          },
+          {
+            "npc": "Aye, best ye' make sure ye' know what yer doin' this time, though s'pose it ain't like ye' can get me killed again!"
+          },
+          {
+            "type": "message",
+            "text": "You need a Sailing level of 40 to manage a crew.",
+            "id": "nsBtsc"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "pE_76m"
+      },
+      {
+        "type": "condition",
+        "text": "After 40 Sailing:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Maybe you could join my crew?",
+                "steps": [
+                  {
+                    "player": "Maybe you could join my crew?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "Before 60 Sailing:",
+                    "steps": [
+                      {
+                        "npc": "Reckon ye' need t' work on yer skills a bit first, considerin' what happened first time round."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You require the following to recruit this crew member: Level 60 Sailing. Completion of Dragon Slayer I. Completion of The Restless Ghost.",
+                        "id": "nQIBDK"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "EKWEIs"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "After 60 Sailing:",
+                    "steps": [
+                      {
+                        "npc": "Well, s'pose it ain't like ye' can get me killed again!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You recruit Cabin Boy Jenkins as a crew member. He heads off in search of your boat.",
+                        "id": "lLrKmf"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You have recruited Cabin Boy Jenkins as a crew member.",
+                        "id": "zoYfMB"
+                      }
+                    ],
+                    "id": "RshS6u"
+                  }
+                ]
+              },
+              {
+                "text": "I hope you find it, Jenkins.",
+                "steps": [
+                  {
+                    "player": "I hope you find it, Jenkins."
+                  },
+                  {
+                    "npc": "Aye, I reckon I will."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "6UC0R_"
+      }
+    ],
+    "speaking-to-jenkins-again-before-sailing-level-40": [
+      {
+        "npc": "Oh, you're back."
+      },
+      {
+        "player": "Hello again, Jenkins. How are you doing?"
+      },
+      {
+        "npc": "S'pose I'm alright. Still tryin' t' find me a purpose or somethin' though."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "vjC71L"
+      }
+    ],
+    "when-at-the-pandemonium": [
+      {
+        "type": "condition",
+        "text": "If the player is not wearing a ghostspeak amulet:",
+        "steps": [
+          {
+            "npc": "Woooo wooo wooooo woooo."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "QWwSg_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing a ghostspeak amulet:",
+        "steps": [
+          {
+            "npc": "Oh, 'ello... Cap'n."
+          },
+          {
+            "player": "How are you doing, Jenkins?"
+          },
+          {
+            "npc": "How d'ye think I'm doin', Cap'n? I'm dead!"
+          },
+          {
+            "player": "But at least you are still with us I suppose?"
+          },
+          {
+            "npc": "I s'pose, but I ain't sure 'ow big of an upside that is really."
+          },
+          {
+            "player": "Fair enough."
+          }
+        ],
+        "id": "JfIqF1"
+      }
+    ],
+    "at-port-as-a-crew-member-with-ghostspeak": [
+      {
+        "type": "unavailable",
+        "id": "Bu7A94"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help bank my cargo hold contents?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If cargo hold is already empty:",
+                "steps": [
+                  {
+                    "npc": "Ain't nothin' in that cargo hold to move!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "QRRYep"
+              },
+              {
+                "type": "condition",
+                "text": "If there are items in the cargo hold:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(\"Move Cargo to Bank\" interface opens.)",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "Move Cargo to Bank",
+                    "id": "pqbXWR"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Move all available items from your cargo hold to your bank?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "S'pose I should get t' work."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Your crew start moving the contents of the cargo hold...",
+                            "id": "kFSJo5"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If there is sufficient room in your bank to store the contents of your cargo hold:",
+                            "steps": [
+                              {
+                                "npc": "Well, nobody seemed t' understand a word of me, but all yer stuff is now in yer bank."
+                              }
+                            ],
+                            "id": "3fMME6"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If there is insufficient room in your bank to store the contents of your cargo hold:",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "Ytcf8m"
+                              }
+                            ],
+                            "id": "vhOPZY"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "T5BCVT"
+              }
+            ]
+          },
+          {
+            "text": "How are you getting on?",
+            "steps": [
+              {
+                "player": "How are you getting on?"
+              },
+              {
+                "npc": "Still dead."
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-port-as-a-crew-member-without-ghostspeak": [
+      {
+        "type": "unavailable",
+        "id": "w-L7IV"
+      },
+      {
+        "type": "message",
+        "text": "You get the feeling this is going to be a challenging conversation.",
+        "id": "N82Xg1"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you help bank my cargo hold contents?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If cargo hold is already empty:",
+                "steps": [
+                  {
+                    "npc": "Woooo wooo wooooo woooo."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You think Jenkins is either trying to tell you that your cargo hold is empty, or he's going to steal everything from the ledger table. You're not sure.",
+                    "id": "BfhvHX"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OKR9dK"
+              },
+              {
+                "type": "condition",
+                "text": "If there are items in the cargo hold:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(\"Move Cargo to Bank\" interface opens.)",
+                    "action": "open_interface",
+                    "action_source": "text",
+                    "target": "Move Cargo to Bank",
+                    "id": "5pJwU3"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Move all available items from your cargo hold to your bank?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "Woooo wooo wooooo woooo."
+                          },
+                          {
+                            "type": "message",
+                            "text": "With a confusing mixture of flailing and hand gestures, you manage to get Jenkins to help bank the contents of your cargo hold....",
+                            "id": "kAaQNF"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If there is sufficient room in your bank to store the contents of your cargo hold:",
+                            "steps": [
+                              {
+                                "npc": "Woooo wooo wooooo woooo."
+                              },
+                              {
+                                "type": "message",
+                                "text": "You think Jenkins is trying to tell you that all of your items from your cargo hold are now in your bank.",
+                                "id": "ZmMpXJ"
+                              }
+                            ],
+                            "id": "mlNHOS"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If there is insufficient room in your bank to store the contents of your cargo hold:",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "zp0bto"
+                              }
+                            ],
+                            "id": "xzOKVD"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "IANFK0"
+              }
+            ]
+          },
+          {
+            "text": "How are you getting on?",
+            "steps": [
+              {
+                "player": "How are you getting on?"
+              },
+              {
+                "npc": "Woooo wooo wooooo woooo."
+              },
+              {
+                "type": "message",
+                "text": "You're not sure what you expected.",
+                "id": "AQyc5p"
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "while-at-sea": [
+      {
+        "type": "random",
+        "options": []
+      },
+      {
+        "npc": "Woooo wooo."
+      },
+      {
+        "npc": "Woooo wooo wooo."
+      },
+      {
+        "npc": "Woooo wooo!"
+      },
+      {
+        "npc": "Wooo wooo wooooo."
+      },
+      {
+        "npc": "Wooo!"
+      },
+      {
+        "npc": "Woooo wooo wooooo."
+      },
+      {
+        "npc": "Woooo wooooo woooo."
+      },
+      {
+        "npc": "Wooo."
+      },
+      {
+        "npc": "Woooo wooo wooo!"
+      },
+      {
+        "npc": "Wooo! Wooo  woo!"
+      },
+      {
+        "npc": "Woooo wooo wooooo woooo."
+      },
+      {
+        "npc": "Wooo! Wooo! Wooo!"
+      }
+    ]
+  }
+}

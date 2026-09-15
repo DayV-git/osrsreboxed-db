@@ -1,0 +1,136 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome to the Ardougne Domestic Service Agency!"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Tell me about servants.",
+          "condition": "If the player does not currently have a servant:",
+          "steps": [
+            {
+              "player": "Tell me about servants."
+            },
+            {
+              "npc": "Do you need help around your house? Our trained, efficient workers are ready to serve you."
+            },
+            {
+              "npc": "They can cook meals for you and your friends, make tea, serve drinks, greet guests, and even take items to and from the bank for you."
+            },
+            {
+              "npc": "The more expensive servants will be able to make trips to the bank more quickly. Some of them can also go to the sawmill to change logs to planks for you."
+            },
+            {
+              "npc": "Remember, you'll need to keep paying your servant. You pay them once when you hire them, and then they'll periodically ask for wages. You can dismiss your servant at any time."
+            }
+          ],
+          "id": "5YeHi_"
+        },
+        {
+          "text": "I'd like to dismiss my servant, please.",
+          "condition": "If the player has a hired servant:",
+          "steps": [
+            {
+              "player": "I'd like to dismiss my servant, please."
+            },
+            {
+              "npc": "Oh dear, are you sure?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes, I want to dismiss my servant.",
+                  "steps": [
+                    {
+                      "player": "Yes, I want to dismiss my servant."
+                    },
+                    {
+                      "npc": "Very well, you no longer have a servant."
+                    }
+                  ]
+                },
+                {
+                  "text": "No, I'll keep my servant for now.",
+                  "steps": [
+                    {
+                      "player": "No, I'll keep my servant for now."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "TSsDQZ"
+        },
+        {
+          "text": "Can I hire a servant?",
+          "steps": [
+            {
+              "player": "Can I hire a servant?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not own a house:",
+              "steps": [
+                {
+                  "npc": "Do you even own a house? These are strictly domestic servants; they won't follow you around the world!"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "nn9iu-"
+            },
+            {
+              "type": "condition",
+              "text": "If the player owns a house, but doesn't a second bed built:",
+              "steps": [
+                {
+                  "npc": "First you'll need to make sure you have a servant's room. A servant will automatically take the second-best bedroom, leaving the best for yourself, of course! So you will need to build two bedrooms in your house."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "3bUnW8"
+            },
+            {
+              "type": "condition",
+              "text": "If the player already has a servant:",
+              "steps": [
+                {
+                  "npc": "According to our records, one of our people is already working for you. If you want to hire a different one you will have to dismiss them."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "OhliNO"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has the above conditions met and the player doesn't have a servant:",
+              "steps": [
+                {
+                  "npc": "Certainly! We have a number of servants here now looking for work. Why not have a chat to them and see which one you would like to hire?"
+                }
+              ],
+              "id": "81qogp"
+            }
+          ]
+        },
+        {
+          "text": "Thank you.",
+          "steps": [
+            {
+              "player": "Thank you."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

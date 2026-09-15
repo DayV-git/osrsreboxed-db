@@ -1,0 +1,280 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed any of the Kandarin achievement diaries:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "aYOVTY"
+          }
+        ],
+        "id": "Ogsz_a"
+      },
+      {
+        "type": "condition",
+        "text": "If the Flax keeper has bowstrings to exchange for flax:",
+        "steps": [
+          {
+            "npc": "Hello. Do you want to exchange some flax banknotes for bowstrings? I'll exchange [amount] for you today, and you can come back tomorrow for more."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have [amount] noted flax:",
+            "steps": [
+              {
+                "player": "I didn't actually bring [amount] flax banknotes with me."
+              },
+              {
+                "npc": "Oh. Well, if you fetch that many flax banknotes, I'll swap them for bowstrings for you."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "XeTyIF"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has [amount] noted flax:",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Swap [amount] flax notes for bowstrings?",
+                "options": [
+                  {
+                    "text": "Agree",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player has no room for the bowstrings:",
+                        "steps": [
+                          {
+                            "npc": "Um... Actually, you seem to have so much stuff that you can't hold the bowstrings."
+                          }
+                        ],
+                        "id": "wdLpmV"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has room for the bowstrings:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "[amount] bow strings",
+                            "id": "pXr1RJ"
+                          },
+                          {
+                            "type": "message",
+                            "text": "The flax keeper exchanges your flax for bowstrings.",
+                            "id": "QpXLrF"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "DZg5P8"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Decline",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "OG17KJ"
+          }
+        ],
+        "id": "j3aJpL"
+      },
+      {
+        "type": "condition",
+        "text": "If the Flax keeper has no more bowstrings to exchange for flax:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "oKwQ6k"
+          }
+        ],
+        "id": "D-gbIX"
+      }
+    ],
+    "right-click-exchange-option": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed any of the Kandarin achievement diaries:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "aYOVTY"
+          }
+        ],
+        "id": "PBfo84"
+      },
+      {
+        "type": "condition",
+        "text": "If the Flax keeper has bowstrings to exchange for flax, but the player does not have [amount] noted flax:",
+        "steps": [
+          {
+            "npc": "Today I can exchange [amount] flax banknotes for bowstrings, if you bring me enough flax banknotes."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "2zjoRa"
+      },
+      {
+        "type": "condition",
+        "text": "If the Flax keeper has bowstrings to exchange for flax, and the player has [amount] noted flax:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Swap [amount] flax notes for bowstrings?",
+            "options": [
+              {
+                "text": "Agree",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player has no room for the bowstrings:",
+                    "steps": [
+                      {
+                        "npc": "Sorry, your inventory's too full of stuff."
+                      }
+                    ],
+                    "id": "_Jop23"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has room for the bowstrings:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "[amount] bow strings",
+                        "id": "wdzt9S"
+                      },
+                      {
+                        "type": "message",
+                        "text": "The flax keeper exchanges your flax for bowstrings.",
+                        "id": "R10L_p"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "yyy5tg"
+                  }
+                ]
+              },
+              {
+                "text": "Decline",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "3Pe4Te"
+      },
+      {
+        "type": "condition",
+        "text": "If the Flax keeper has no more bowstrings to exchange for flax:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "oKwQ6k"
+          }
+        ],
+        "id": "eCIdTf"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "O5CKBD"
+      },
+      {
+        "type": "unavailable",
+        "id": "KTk2nb"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zecdK8"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "[another clue scroll/a casket]",
+            "id": "3NtkiZ"
+          },
+          {
+            "type": "unavailable",
+            "id": "JPi5ne"
+          }
+        ],
+        "id": "kXRGP9"
+      }
+    ]
+  },
+  "branches": {
+    "aYOVTY": [
+      {
+        "npc": "Hello. I'm the flax keeper. I tend to the flax fields, keeping the yield and continued flax harvest healthy."
+      },
+      {
+        "player": "Ooh! Great work!"
+      },
+      {
+        "npc": "Thank you. I must get back to work. You never know when a great flax harvest will begin!"
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "oKwQ6k": [
+      {
+        "npc": "Hello again. I'm afraid I won't be able to exchange any more flax for bowstrings today. Try me again tomorrow."
+      }
+    ]
+  }
+}

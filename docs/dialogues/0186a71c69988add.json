@@ -1,0 +1,161 @@
+{
+  "default": null,
+  "variants": {
+    "attemping-to-enter-the-tree-gnome-stronghold-for-the-first-time": [
+      {
+        "npc": "Hello there."
+      },
+      {
+        "player": "Hi!"
+      },
+      {
+        "npc": "Could you help me lift these boxes? They are really heavy!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sorry, I'm a bit busy.",
+            "steps": [
+              {
+                "player": "Sorry, I'm a bit busy."
+              },
+              {
+                "npc": "Oh, okay, I'll do it myself."
+              }
+            ]
+          },
+          {
+            "text": "Okay then.",
+            "steps": [
+              {
+                "player": "OK then."
+              },
+              {
+                "npc": "Thanks traveller!"
+              },
+              {
+                "type": "action",
+                "text": "The player walks up to the nearby boxes and picks them up.",
+                "id": "CWsctI"
+              },
+              {
+                "npc": "Thanks again friend!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attempting-to-talk-after-entering-the-tree-gnome-stronghold": [
+      {
+        "type": "message",
+        "text": "The little gnome is too busy to talk.",
+        "id": "sD6OE2"
+      }
+    ],
+    "gnome-restaurant": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "oSfGYJ"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "22bcFI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "Wpb0jx"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "f53oqv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Femi",
+            "id": "9vs1rj"
+          },
+          {
+            "npc": "Thanks. Yummy."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "0Mk2y2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "BulQ3Q"
+                  }
+                ],
+                "id": "wxKsDg"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "xyM56i"
+              }
+            ],
+            "id": "UdfzNO"
+          }
+        ],
+        "id": "NKHUXE"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "6RzqTT"
+          }
+        ],
+        "id": "EA6QWA"
+      }
+    ],
+    "clue-scroll": [
+      {
+        "npc": "Well done!"
+      },
+      {
+        "type": "message",
+        "text": "Femi has given you another clue scroll!",
+        "id": "GwUxyk"
+      }
+    ]
+  }
+}

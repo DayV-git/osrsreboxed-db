@@ -1,0 +1,228 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello. So, what is this place?"
+      },
+      {
+        "npc": "This is my home, mundane human! What do you have in your pockets? Something tasty?"
+      },
+      {
+        "player": "Stay out of my pockets! I don't have anything that you want."
+      },
+      {
+        "npc": "Ah, but do you have anything that *you* want?"
+      },
+      {
+        "player": "Of course I do!"
+      },
+      {
+        "npc": "Then you have something that implings want."
+      },
+      {
+        "player": "Eh?"
+      },
+      {
+        "npc": "We want things you people want. They are tasty to us! The more you want them, the tastier they are!"
+      },
+      {
+        "player": "So, you collect things that humans want? Interesting... So, what would happen if I caught an impling in a butterfly net?"
+      },
+      {
+        "npc": "Don't do that! That would be cruel. But chase us, yes! That is good. Implings are not easy to catch. Especially ones with really tasty food."
+      },
+      {
+        "player": "So, some of these implings have things that I will really want? Hmm, maybe it would be worth my while trying to catch some."
+      }
+    ],
+    "exiting-puro-puro": [
+      {
+        "npc": "Going so soon?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, get me out of here!",
+            "steps": [
+              {
+                "player": "Yes, get me out of here!"
+              }
+            ]
+          },
+          {
+            "text": "Ah, no I'll hang around a bit longer.",
+            "steps": [
+              {
+                "player": "Ah, no I'll hang around a bit longer."
+              }
+            ]
+          },
+          {
+            "text": "Where will I go if I leave?",
+            "steps": [
+              {
+                "npc": "Back where you came from, of course!"
+              },
+              {
+                "player": "So not back to where the crop circle is now?"
+              },
+              {
+                "npc": "The aetheric thread connecting you to your own plane leads back to the wheat field where you came from. Obviously. So you will always go back to where you came from! Don't you humans know anything?"
+              },
+              {
+                "player": "Evidently not."
+              },
+              {
+                "npc": "You wanna leave?"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "_yTAVk"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "investigating-the-portal": [
+      {
+        "npc": "You want to know about the portal? It is for leaving this place, of course!"
+      },
+      {
+        "player": "Where will I go if I leave?"
+      },
+      {
+        "npc": "Back where you came from, of course!"
+      },
+      {
+        "player": "So not back to where the crop circle is now?"
+      },
+      {
+        "npc": "The aetheric thread connecting you to your own plane leads back to the wheat field where you came from. Obviously. So you will always go back to where you came from! Don't you humans know anything?"
+      },
+      {
+        "player": "Evidently not."
+      },
+      {
+        "npc": "You wanna leave?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, get me out of here!",
+            "steps": [
+              {
+                "player": "Yes, get me out of here!"
+              }
+            ]
+          },
+          {
+            "text": "Ah, no I'll hang around a bit longer.",
+            "steps": [
+              {
+                "player": "Ah, no I'll hang around a bit longer."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "condition",
+        "text": "With a full inventory:",
+        "steps": [
+          {
+            "npc": "Please make yourself some space, I have something for you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "H1h7Lu"
+      },
+      {
+        "npc": "Here, solve this."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is given a puzzle box:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a puzzle box",
+            "id": "xpTGn-"
+          },
+          {
+            "type": "message",
+            "text": "Immenizz hands you a puzzlebox!",
+            "id": "Nwg43r"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "SlCYpA"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is given a light box:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a light box",
+            "id": "awsuXe"
+          },
+          {
+            "type": "message",
+            "text": "Immenizz hands you a light puzzle box.",
+            "id": "uc_q6Q"
+          }
+        ],
+        "id": "ntr2vb"
+      }
+    ],
+    "treasure-trails-master-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the box is not solved:",
+        "steps": [
+          {
+            "npc": "That doesn't look solved to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "LOu9Iw"
+      },
+      {
+        "type": "condition",
+        "text": "If the box is solved:",
+        "steps": [
+          {
+            "npc": "Well done [player name]. Here you go."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a [new clue/casket]",
+            "id": "dmH5Ss"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a [new clue/casket]!",
+            "id": "9Z_Woq"
+          }
+        ],
+        "id": "MWZWTv"
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Can you repair my items for me?"
+      },
+      {
+        "npc": "Of course I'll repair it, though the materials may cost you. Just hand me the item and I'll have a look."
+      }
+    ],
+    "standard-dialogue-left-click-use-item-on-the-squire": [
+      {
+        "type": "condition",
+        "text": "If the item is repairable:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "What would you like to do?",
+            "id": "5kU9M2"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Repair that item: [x] coins.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The item is repaired.",
+                    "id": "d4HyMW"
+                  },
+                  {
+                    "npc": "There you go, happy doing business with you!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "uw2tAq"
+      },
+      {
+        "type": "condition",
+        "text": "If the item is not repairable:",
+        "steps": [
+          {
+            "npc": "Sorry friend, but I can't do anything with that."
+          }
+        ],
+        "id": "aSz8bq"
+      }
+    ]
+  }
+}

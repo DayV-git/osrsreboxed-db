@@ -1,0 +1,302 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Oh no, not another human... what do you want then?"
+      },
+      {
+        "player": "Oh, do you get humans here often?"
+      },
+      {
+        "npc": "Not that often, no, but sometimes."
+      },
+      {
+        "npc": "Of course, since you people are too big for dwarven clothes, they typically don't stay very long."
+      },
+      {
+        "player": "Why don't you make bigger clothes then?"
+      },
+      {
+        "npc": "What'd be the point? Besides, I don't make these clothes myself."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who makes these clothes then?",
+            "steps": [
+              {
+                "player": "Who makes these clothes then?"
+              },
+              {
+                "npc": "Oh, my sister, she lives in Keldagrim-East. Has a little stall on the other side of the Kelda."
+              },
+              {
+                "npc": "If she only worked a little harder, like me, she wouldn't have to live in the sewers of the city. Shame really."
+              },
+              {
+                "player": "The sewers? Your sister lives in the sewers?"
+              },
+              {
+                "npc": "Keldagrim-East, such a ghastly place. Not civil, polite and clean like we are in the West."
+              },
+              {
+                "player": "Uh-huh."
+              }
+            ]
+          },
+          {
+            "text": "I still want to buy your clothes.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Agmundi Quality Clothes",
+                "id": "wxTtPw"
+              }
+            ]
+          },
+          {
+            "text": "So do you have any quests for me?",
+            "steps": [
+              {
+                "player": "So do you have any quests for me?"
+              },
+              {
+                "npc": "Quests? Why would I have any quests?"
+              },
+              {
+                "player": "Oh, just anything to do would be fine."
+              },
+              {
+                "npc": "No, not right now... maybe I'll have something for you to do later, but nothing at the moment."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-getting-a-crafting-item-request": [
+      {
+        "npc": "I ehm... find myself in some slight trouble, human. I was wondering if you were busy?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you need help with?",
+            "steps": [
+              {
+                "player": "What do you need help with, exactly?"
+              },
+              {
+                "npc": "I need some clothing equipment for my sister. But hurry up! I will need [2/3/4] [needles/thread/pieces of wool/balls of wool] before [10/15/20] minutes are up."
+              },
+              {
+                "player": "Hmm, [X] [item] in [X] minutes, that sounds about alright."
+              }
+            ]
+          },
+          {
+            "text": "I'm incredibly busy, yes.",
+            "steps": [
+              {
+                "player": "I'm incredibly busy, yes."
+              },
+              {
+                "npc": "Pfft, I'm sure you are!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-getting-a-bar-or-ore-item-request": [
+      {
+        "npc": "I ehm... find myself in some slight trouble, human. I was wondering if you were busy?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you need help with?",
+            "steps": [
+              {
+                "player": "What do you need help with, exactly?"
+              },
+              {
+                "npc": "I'm in need of some raw supplies. Get me [X] [pieces of/bars of] [item] and be quick about it! I need them within the next [X] minutes!"
+              },
+              {
+                "player": "Hmm, [X] pieces of copper ore in [X] minutes, that sounds about alright."
+              }
+            ]
+          },
+          {
+            "text": "I'm incredibly busy, yes.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uI2RO_"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-talking-to-her-before-acquiring-the-item-request": [
+      {
+        "npc": "I'm still waiting for [X] [item]! Are you getting them or are you still looking for the way out of the palace?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've had enough of this lousy job!",
+            "steps": [
+              {
+                "player": "I've had enough of this lousy job!"
+              },
+              {
+                "npc": "That just goes to show you can't trust humans!"
+              }
+            ]
+          },
+          {
+            "text": "Actually, I'm still looking for your [X] [item].",
+            "steps": [
+              {
+                "player": "Actually, I'm still just looking for your [X] [item]."
+              },
+              {
+                "npc": "Hurry up then, I haven't got all day you know!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-talking-to-her-after-failing-to-bring-the-request-in-time": [
+      {
+        "npc": "Oh, I should have known not to assign a human anything more complex than tying together [his/her/their] shoelaces. You didn't get me my [X] [item], did you? The [X] minutes have run out."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the items:",
+        "steps": [
+          {
+            "player": "Yes, ehm... sorry about that."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eL78Zu"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the items:",
+        "steps": [
+          {
+            "player": "Actually, yes, I do have your [X] [item] right here."
+          },
+          {
+            "npc": "Can't you humans tell the time! You're too late!"
+          }
+        ],
+        "id": "vnu6dv"
+      }
+    ],
+    "keldagrim-tasks-bringing-her-the-item-request": [
+      {
+        "player": "Look, I've got you your [X] [item]!"
+      },
+      {
+        "npc": "I'm amazed at your level of competence!"
+      },
+      {
+        "type": "condition",
+        "text": "Crafting item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you prefer me to tell you about some crafting secrets?"
+          }
+        ],
+        "id": "Pc6G6S"
+      },
+      {
+        "type": "condition",
+        "text": "Ore item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you prefer me to teach you a bit about how you can mine more efficiently?"
+          }
+        ],
+        "id": "-_enXg"
+      },
+      {
+        "type": "condition",
+        "text": "Bar item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you like me to show you some smithing tricks?"
+          }
+        ],
+        "id": "Zwm6Gt"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like the gold.",
+            "steps": [
+              {
+                "player": "I'd like the gold."
+              }
+            ]
+          },
+          {
+            "text": "Please teach me that.",
+            "steps": [
+              {
+                "player": "Please teach me that."
+              },
+              {
+                "type": "message",
+                "text": "You feel more experienced.",
+                "id": "t17Yl-"
+              }
+            ]
+          },
+          {
+            "text": "Show me the gold!",
+            "condition": "Alternative to the other gold option:",
+            "steps": [
+              {
+                "player": "Show me the gold!"
+              }
+            ],
+            "id": "ZNpGiX"
+          },
+          {
+            "text": "Enlighten me.",
+            "condition": "Alternative to the other xp option:",
+            "steps": [
+              {
+                "player": "Enlighten me."
+              },
+              {
+                "type": "message",
+                "text": "You feel more experienced.",
+                "id": "jCy3VA"
+              }
+            ],
+            "id": "t0LPw0"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "default": "standard-dialogue-before-completing-any-quests",
+  "variants": {
+    "standard-dialogue-before-completing-any-quests": [
+      {
+        "npc": "Why, hello there, [lad/lass]. Me friends call me Ned. I was a man of the sea, but it's past me now. Could I be making or selling you some rope?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I would like some rope.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Ned's Handmade Rope (100% Wool)",
+                "id": "kV2zlz"
+              }
+            ]
+          },
+          {
+            "text": "No thanks Ned, I don't need any.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completion-of-dragon-slayer-i": [
+      {
+        "npc": "Hello again, [lad/lass]. Something I can help you with? Want to buy some rope perhaps?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How did you get back from Crandor?",
+            "steps": [
+              {
+                "player": "How did you get back from Crandor?"
+              },
+              {
+                "npc": "I got towed back by a passing friendly whale."
+              },
+              {
+                "npc": "Anyway, would you like me to make some rope while you're here?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you take me to Crandor again?",
+                    "steps": [
+                      {
+                        "player": "Can you take me back to Crandor again?"
+                      },
+                      {
+                        "npc": "Aye, that I could. I'll meet you at the Port Sarim docks again. I'll try to steer a little better this time!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Yes, I would like some rope.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "JqCMUq"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks Ned, I don't need any.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "m4xnhn"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Yes, I would like some rope.",
+            "steps": [
+              {
+                "player": "Yes, I would like some rope."
+              },
+              {
+                "npc": "Well, I can sell you some rope for 15 coins. Or I can be making you some if you gets me 4 balls of wool. I strands them together I does, makes em strong."
+              },
+              {
+                "player": "You make rope from wool?"
+              },
+              {
+                "npc": "Of course you can!"
+              },
+              {
+                "player": "I thought you needed hemp or jute."
+              },
+              {
+                "npc": "Do you want some rope or not?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Okay, please sell me some rope.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have 15 coins:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You don't have enough coins to buy any rope!",
+                            "id": "tU8YgL"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has completed the The Fremennik Isles quest:",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "continues",
+                                "id": "s9z0lO"
+                              }
+                            ],
+                            "id": "IbK9Jf"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has not completed the The Fremennik Isles quest:",
+                            "steps": [
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "dLz-Se"
+                          }
+                        ],
+                        "id": "Vdg9ko"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 15 coins:",
+                        "steps": [
+                          {
+                            "player": "Okay, please sell me some rope."
+                          },
+                          {
+                            "npc": "There you go, finest rope in Gielinor."
+                          },
+                          {
+                            "type": "unavailable",
+                            "id": "T0Ll6J"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has completed the The Fremennik Isles quest:",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "continues",
+                                "id": "UsrLjU"
+                              }
+                            ],
+                            "id": "HRLdKq"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has not completed the The Fremennik Isles quest:",
+                            "steps": [
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "KuAGDP"
+                          }
+                        ],
+                        "id": "c-c-Yc"
+                      },
+                      {
+                        "player": "Thanks. Hmmm, do you know something? This rope has a funny smell."
+                      },
+                      {
+                        "npc": "Really?"
+                      },
+                      {
+                        "player": "Yes, It reminds me of...yaks. I was travelling in the Fremennik Isles recently and, do you know what? They made rope out of yak's hair."
+                      },
+                      {
+                        "npc": "What a coincidence?"
+                      },
+                      {
+                        "player": "There was a lady over there who sold wool, she said she traded rope for the wool."
+                      },
+                      {
+                        "npc": "Who would have thought it?"
+                      },
+                      {
+                        "player": "I don't think you make rope at all. I think you trade balls of wool for rope."
+                      },
+                      {
+                        "npc": "Oh, I confess. You have found the truth. I used to make the rope myself, but my fingers aren't as nimble as they used to be and so many people wanted my rope. Demand was so high I had to find another"
+                      },
+                      {
+                        "npc": "source. But I couldn't tell anyone since Ned's Handmade Rope (100% Wool) is a high profile brand now."
+                      },
+                      {
+                        "player": "Yes, well, the wool is still pretty good, though yak hair makes fine rope. I don't suppose any harm will come of it."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has inventory space:",
+                        "steps": [
+                          {
+                            "npc": "Thanks. Here take this, a free sample! Please, don't tell anyone."
+                          }
+                        ],
+                        "id": "XCSVv3"
+                      },
+                      {
+                        "player": "Well, it's always good to keep on the good side of a sailor. Your secret is safe with me."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has inventory space:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "rope",
+                            "id": "337_6B"
+                          }
+                        ],
+                        "id": "PNswI5"
+                      },
+                      {
+                        "npc": "Oh, if you're in the Isles again, tell Jofridr that her Neddie will be there soon."
+                      },
+                      {
+                        "player": "I will do that!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I have some balls of wool. Could you make me some rope?",
+                    "condition": "If the player has 4 balls of wool:",
+                    "steps": [
+                      {
+                        "player": "I have some balls of wool. Could you make me some rope?"
+                      },
+                      {
+                        "npc": "Sure I can."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You hand over 4 balls of wool. Ned gives you a coil of rope.",
+                        "id": "pCcGIe"
+                      }
+                    ],
+                    "id": "nTfH1T"
+                  },
+                  {
+                    "text": "That's a little more than I want to pay.",
+                    "steps": [
+                      {
+                        "player": "That's a little more than I want to pay."
+                      },
+                      {
+                        "npc": "Well, if you ever need rope that's the price. Sorry. An old sailor needs money for a little drop o' rum."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I will go and get some wool.",
+                    "condition": "If the player does not have 4 balls of wool:",
+                    "steps": [
+                      {
+                        "player": "I will go and get some wool."
+                      },
+                      {
+                        "npc": "Aye, you do that. Remember, it takes 4 balls of wool to make strong rope."
+                      }
+                    ],
+                    "id": "B-1eaJ"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks Ned, I don't need any.",
+            "steps": [
+              {
+                "player": "No thanks Ned, I don't need any."
+              },
+              {
+                "npc": "Well, old Neddy is always here if you do. Tell your friends. I can always be using the business."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Well done!"
+      },
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've been given another clue!",
+            "id": "fiJdjb"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VWsc8b"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "ahg6ej"
+          }
+        ],
+        "id": "s2IYPB"
+      }
+    ],
+    "crack-the-clue-iii": [
+      {
+        "npc": "Good work! I have new information to share with you. Listen carefully, now!"
+      },
+      {
+        "npc": "A place 65 steps forward and 17 to the right needs an inspection. The weather vane up high will guide you in the right direction."
+      },
+      {
+        "npc": "Under the ground lies the next clue you seek. Getting it out requires a little technique."
+      },
+      {
+        "type": "message",
+        "text": "You've found a new special clue! However, a magical force prevents you from putting this item in your inventory!",
+        "id": "Gdx-xb"
+      },
+      {
+        "type": "action",
+        "text": "Interface showing the next clue opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Interface showing the next clue",
+        "id": "ydszcB"
+      }
+    ]
+  }
+}

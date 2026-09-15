@@ -1,0 +1,83 @@
+{
+  "steps": [
+    {
+      "player": "Hello!"
+    },
+    {
+      "npc": "Good day [lad/lass]. What can I do for you?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Why are you here?",
+          "steps": [
+            {
+              "npc": "Well, these folks digging up the island need some of your everyday things, so I offered to come along and offer my wares."
+            },
+            {
+              "type": "jump",
+              "reference": "initial",
+              "id": "unMSbu"
+            }
+          ]
+        },
+        {
+          "text": "Show me your wares.",
+          "steps": [
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Fossil Island General Store",
+              "id": "PkDxnv"
+            }
+          ]
+        },
+        {
+          "text": "I've lost my notebook.",
+          "condition": "If the player doesn't have a Fossil island note book in their inventory or bank, or stored in their grave, Death's Office or an item retrieval service:",
+          "steps": [
+            {
+              "type": "condition",
+              "text": "If the player has no inventory space:",
+              "steps": [
+                {
+                  "npc": "You don't have space for that."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "HSK_HJ"
+            },
+            {
+              "type": "condition",
+              "text": "If there is at least one free inventory space:",
+              "steps": [
+                {
+                  "npc": "Of course, you left it here and I kept it for you."
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "a Fossil island note book",
+                  "id": "s1ZaI4"
+                }
+              ],
+              "id": "-8goby"
+            }
+          ],
+          "id": "YhR5TG"
+        },
+        {
+          "text": "Nothing for now.",
+          "steps": [
+            {
+              "player": "Nothing for now."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

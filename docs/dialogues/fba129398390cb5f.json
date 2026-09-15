@@ -1,0 +1,194 @@
+{
+  "default": "before-completing-pandemonium",
+  "variants": {
+    "before-completing-pandemonium": [
+      {
+        "npc": "Hey!"
+      },
+      {
+        "player": "Hello there. Who are you?"
+      },
+      {
+        "npc": "Jakob! A master of the surf, my friend. A true guru!"
+      },
+      {
+        "player": "A sailor, then?"
+      },
+      {
+        "npc": "A surfer at heart. That's where I got my start, but you can't take a cargo crate on a board, so being a sailor pays the bills!"
+      },
+      {
+        "player": "Well, at least sailing still lets you enjoy the sea when you're not surfing."
+      },
+      {
+        "npc": "Very true! Until next time, friend."
+      }
+    ],
+    "before-level-40-sailing": [
+      {
+        "npc": "Hey!"
+      },
+      {
+        "player": "Hello there. Who are you?"
+      },
+      {
+        "npc": "Jakob! A master of the surf, my friend. A true guru!"
+      },
+      {
+        "player": "A sailor, then?"
+      },
+      {
+        "npc": "A surfer at heart. That's where I got my start, but you can't take a cargo crate on a board, so being a sailor pays the bills!"
+      },
+      {
+        "player": "Well, at some point I hope to hire a crew to sail with myself. Maybe you'd be interested in joining me once I'm ready for that sort of thing?"
+      },
+      {
+        "npc": "Sounds swell! You just let me know once you are."
+      },
+      {
+        "type": "message",
+        "text": "You need a Sailing level of 40 to manage a crew.",
+        "id": "iQVUlV"
+      }
+    ],
+    "before-level-40-sailing-again": [
+      {
+        "npc": "Hey!"
+      },
+      {
+        "player": "Hello again. How's it going?"
+      },
+      {
+        "npc": "Very well, thank you. Still sailing, and surfing, of course!"
+      },
+      {
+        "player": "Well, at some point I hope to hire a crew to sail with myself. Maybe you'd be interested in joining me once I'm ready for that sort of thing?"
+      },
+      {
+        "npc": "Sounds swell! You just let me know once you are."
+      },
+      {
+        "type": "message",
+        "text": "You need a Sailing level of 40 to manage a crew.",
+        "id": "D5JjlY"
+      }
+    ],
+    "after-sailing-level-40": [
+      {
+        "npc": "Hey!"
+      },
+      {
+        "player": "Hello there. Who are you?"
+      },
+      {
+        "npc": "Jakob! A master of the surf, my friend. A true guru!"
+      },
+      {
+        "player": "A sailor, then?"
+      },
+      {
+        "npc": "A surfer at heart. That's where I got my start, but you can't take a cargo crate on a board, so being a sailor pays the bills!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "If you're a sailor, would you be interested in joining my crew?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player's Sailing level is under 95:",
+                "steps": [
+                  {
+                    "player": "If you're a sailor, would you be interested in joining my crew?"
+                  },
+                  {
+                    "npc": "Sorry, but I don't think you've got what it takes to surf, friend."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You require the following to recruit this crew member: Level 95 Sailing.",
+                    "id": "eWOqlK"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "-XWi9O"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's Sailing level is at least 95:",
+                "steps": [
+                  {
+                    "player": "If you're a sailor, would you be interested in joining my crew?"
+                  },
+                  {
+                    "npc": "Yeah, I think we can make a surfer out of you for sure!"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "Player has space in their crew:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You recruit Sailor Jakob as a crew member. He heads off in search of your boat.",
+                        "id": "dllDX3"
+                      }
+                    ],
+                    "id": "_RD-r_"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "Player's crew is full:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You recruit Sailor Jakob as a crew member. He departs for the Pandemonium.",
+                        "id": "YeReV0"
+                      }
+                    ],
+                    "id": "Lyr57g"
+                  }
+                ],
+                "id": "9d68lk"
+              }
+            ]
+          },
+          {
+            "text": "Well, good luck with it.",
+            "steps": [
+              {
+                "player": "Well, good luck with it all."
+              },
+              {
+                "npc": "And you! Until next time, friend."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-at-the-pandemonium": [
+      {
+        "npc": "Hey there, friend!"
+      },
+      {
+        "player": "Hello there. How are you enjoying being part of the crew?"
+      },
+      {
+        "npc": "I'm so relaxed! Would like a touch more surfing on my rota though."
+      },
+      {
+        "player": "I'll see what I can do."
+      }
+    ],
+    "while-at-sea": [
+      {
+        "type": "missing",
+        "id": "HV0_p_"
+      }
+    ]
+  }
+}

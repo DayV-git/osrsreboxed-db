@@ -1,0 +1,160 @@
+{
+  "default": "before-completion-of-shilo-village",
+  "variants": {
+    "before-completion-of-shilo-village": [
+      {
+        "npc": "Oh dear, this ship is in a terrible state. And I just can't get the items I need to repair it because Shilo village is overrun with zombies."
+      }
+    ],
+    "after-completion-of-shilo-village-if-the-player-does-not-have-a-ship-ticket": [
+      {
+        "npc": "Hello there shipmate! I sail to Khazard Port and to Port Sarim. Where are you bound?"
+      },
+      {
+        "npc": "I see you don't have a ticket for the ship, my colleague normally only sells them in Shilo village. But I could sell you one for a small additional charge. Shall we say [number] coins?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Buy a ticket for [number] coins?",
+        "options": [
+          {
+            "text": "Yes, I'll buy a ticket for the ship.",
+            "steps": [
+              {
+                "player": "Yes, I'll buy a ticket for the ship."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money:",
+                "steps": [
+                  {
+                    "npc": "Sorry me old shipmate, but you seem to be financially challenged at the moment. Come back when your coffers are full!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "z1HooR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough money:",
+                "steps": [
+                  {
+                    "npc": "It's a good deal and no mistake. Here you go, me old shipmate, here's your ticket."
+                  },
+                  {
+                    "npc": "Okay. Now you have your ticket, do you want to sail anywhere?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Khazard Port please.",
+                        "steps": [
+                          {
+                            "player": "Khazard Port please."
+                          },
+                          {
+                            "npc": "Very well then me old shipmate, I'll just take your ticket and then we'll set sail."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You arrive safely in the quiet fishing port of Khazard.",
+                            "id": "nNwFUq"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Port Sarim please.",
+                        "steps": [
+                          {
+                            "player": "Port Sarim please."
+                          },
+                          {
+                            "npc": "Very well then me old shipmate, I'll just take your ticket and then we'll set sail."
+                          },
+                          {
+                            "type": "message",
+                            "text": "The ship arrives in busy Port Sarim.",
+                            "id": "npsVUp"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Nowhere just at the moment thanks.",
+                        "steps": [
+                          {
+                            "player": "Nowhere just at the moment thanks."
+                          },
+                          {
+                            "npc": "Very well then me old shipmate, Just let me know if you change your mind."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "OuS7vY"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, not just at the moment.",
+            "steps": [
+              {
+                "player": "No thanks, not just at the moment."
+              },
+              {
+                "npc": "Very well, me old shipmate. Come back if you change your mind now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completion-of-shilo-village-if-the-player-has-a-ship-ticket": [
+      {
+        "npc": "Hello there shipmate! I sail to Khazard Port and to Port Sarim. Where are you bound?"
+      },
+      {
+        "npc": "Where would you like to go?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Khazard Port please.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uGQBEC"
+              }
+            ]
+          },
+          {
+            "text": "Port Sarim please.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "6vmt6T"
+              }
+            ]
+          },
+          {
+            "text": "Nowhere just at the moment thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "EY6f-I"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

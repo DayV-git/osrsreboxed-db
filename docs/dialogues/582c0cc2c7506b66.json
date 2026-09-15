@@ -1,0 +1,92 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "My name is Brew'ma. I'm here to assist adventurers like you with potion making."
+      },
+      {
+        "npc": "If you hand me a herb from the Bruma tree and one of the unfinished potions from the crate, I can combine the two if you lack the... talent to do so yourself."
+      },
+      {
+        "player": "Thanks!"
+      }
+    ],
+    "using-items": [
+      {
+        "type": "condition",
+        "text": "Using a Bruma herb with no Unfinished potions:",
+        "steps": [
+          {
+            "npc": "You don't have any unfinished potions on you. I can't use the herbs without them."
+          },
+          {
+            "type": "message",
+            "text": "Brew'ma quickly mixes zero Rejuvenation potions.",
+            "id": "AstsEt"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "phijnK"
+      },
+      {
+        "type": "condition",
+        "text": "Using an Unfinished Rejuvenation potion without any Bruma herbs:",
+        "steps": [
+          {
+            "npc": "You don't have any Bruma herbs on you. I need them to finish the potions."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "o-ErUP"
+      },
+      {
+        "type": "condition",
+        "text": "Using a Bruma herb with 1 Unfinished potion:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Brew'ma quickly mixes a Rejuvenation potion.",
+            "id": "lKjWTL"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "uSzp1g"
+      },
+      {
+        "type": "condition",
+        "text": "Using more than 1 Bruma herb with more than 1 Unfinished potion:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Brew'ma quickly mixes [amount] Rejuvenation potions.",
+            "id": "Wik1qk"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "PkzjhT"
+      },
+      {
+        "type": "condition",
+        "text": "Using any other item on them:",
+        "steps": [
+          {
+            "npc": "Sorry, I can't do anything with that."
+          }
+        ],
+        "id": "uotTGF"
+      }
+    ]
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": []
+      },
+      {
+        "type": "condition",
+        "text": "If Fairytale I has been started but not completed:",
+        "id": "wwPQ9K"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you a member of the Group of Advanced Gardeners?",
+            "steps": [
+              {
+                "player": "Are you a member of the Group of Advanced Gardeners?"
+              },
+              {
+                "npc": "Why, yes I am. Why do you ask?"
+              },
+              {
+                "player": "Martin has asked me to investigate why all the crops are failing."
+              },
+              {
+                "npc": "No, I'm afraid I don't know anything about that."
+              }
+            ]
+          },
+          {
+            "text": "Would you look after my crops for me?",
+            "steps": [
+              {
+                "player": "Would you look after my crops for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the patch is empty:",
+                "steps": [
+                  {
+                    "npc": "You don't have a sapling planted in that patch. Plant one and I might agree to look after it for you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "_z9QsS"
+              },
+              {
+                "type": "condition",
+                "text": "If the patch has something growing in it, unprotected:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "VKI0UQ"
+                  }
+                ],
+                "id": "SWBXVF"
+              },
+              {
+                "type": "condition",
+                "text": "If the patch has something growing in it, protected:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "gpe0Qb"
+                  }
+                ],
+                "id": "vTopmI"
+              },
+              {
+                "type": "condition",
+                "text": "If the patch is already fully grown:",
+                "steps": [
+                  {
+                    "npc": "That patch is already fully grown! I don't know what you want me to do with it!"
+                  }
+                ],
+                "id": "1pAkcL"
+              }
+            ]
+          },
+          {
+            "text": "Can you give me any farming advice?",
+            "steps": [
+              {
+                "player": "Can you give me any farming advice?"
+              },
+              {
+                "type": "reference",
+                "target": "Transcript:Lammy Langle",
+                "section": "Farming advice",
+                "text": "A random piece of advice will be selected every time this option is chosen",
+                "id": "EUaq5I",
+                "variant": "farming-advice",
+                "resolved": true,
+                "page_available": true
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "BrwvCV"
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?",
+            "steps": [
+              {
+                "player": "Can you sell me something?"
+              },
+              {
+                "npc": "That depends on whether I have it to sell. What is it that you're looking for?"
+              },
+              {
+                "type": "action",
+                "text": "Toolbuying dialogue options",
+                "id": "UDUna-"
+              }
+            ]
+          },
+          {
+            "text": "I'll come back another time.",
+            "steps": [
+              {
+                "player": "I'll come back another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "farming-advice": [
+      {
+        "type": "missing",
+        "id": "CpkzsD"
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "_MLYin"
+      },
+      {
+        "npc": "I'm too busy with my crops to work on this! Please solve it for me."
+      },
+      {
+        "type": "message",
+        "text": "Lammy Langle has given you a puzzle box!",
+        "id": "Vlv4F2"
+      }
+    ],
+    "treasure-trails-hard-while-holding-the-puzzle-box": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "Sorry but you haven't solved the puzzle yet."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "PKS3zC"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Thanks [player name]!"
+          },
+          {
+            "type": "message",
+            "text": "Lammy Langle has given you another clue scroll!",
+            "id": "8CjQ-s"
+          }
+        ],
+        "id": "juU305"
+      }
+    ]
+  }
+}

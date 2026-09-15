@@ -1,0 +1,65 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Good day, your Royal Highness."
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "npc": "Here, solve this."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [light/puzzle] box",
+        "id": "sQXr2-"
+      },
+      {
+        "type": "message",
+        "text": "Runolf hands you a puzzlebox!",
+        "id": "0vwt6B"
+      }
+    ],
+    "treasure-trails-master-talking-again": [
+      {
+        "type": "condition",
+        "text": "If the puzzle is not solved:",
+        "steps": [
+          {
+            "npc": "That doesn't look solved to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "mjmv-m"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle is solved:",
+        "steps": [
+          {
+            "npc": "Well done [player name]. Here you go."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a [new clue/casket]",
+            "id": "d463Pb"
+          },
+          {
+            "type": "message",
+            "text": "You've been given a [new clue/casket]!",
+            "id": "lWmdzk"
+          }
+        ],
+        "id": "NagI0Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "default": "standard-dialogue-without-a-cat-follower-or-in-the-inventory",
+  "variants": {
+    "standard-dialogue-without-a-cat-follower-or-in-the-inventory": [
+      {
+        "player": "Good day."
+      },
+      {
+        "npc": "I have no interest in speaking with you. You should bring your cat to me again. The two of us have much to discuss."
+      }
+    ],
+    "standard-dialogue-with-a-cat-follower-or-in-the-inventory": [
+      {
+        "type": "message",
+        "text": "The Sphinx ignores you.",
+        "id": "lIejXO"
+      },
+      {
+        "npc": "Ah, how interesting... a cat. Come here to me, kitty."
+      },
+      {
+        "type": "line",
+        "speaker": "Cat",
+        "text": "Meow."
+      },
+      {
+        "type": "message",
+        "text": "Your cat and the Sphinx converse in a yeowling language for a short time.",
+        "id": "t-oFBi"
+      },
+      {
+        "type": "condition",
+        "text": "If a catspeak amulet is worn:",
+        "steps": [
+          {
+            "npc": "Do you think that you'll be able to communicate with me at a deeper level because you're wearing that amulet of catspeak?"
+          },
+          {
+            "player": "Er, yes?"
+          },
+          {
+            "npc": "How very foolish."
+          },
+          {
+            "npc": "So, what do you need human?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "FkBya4"
+          }
+        ],
+        "id": "rRgTgu"
+      },
+      {
+        "type": "condition",
+        "text": "If a catspeak amulet is not worn:",
+        "steps": [
+          {
+            "npc": "What do you need human?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "h7yFF3"
+          }
+        ],
+        "id": "rIixdH"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you tell me about the gods of the Menaphites?",
+            "steps": [
+              {
+                "player": "Can you tell me about the gods of the Menaphites?"
+              },
+              {
+                "npc": "If you wish to know about the lesser gods, you should speak with Jex at the Temple of the Lesser Gods. I suppose I could spare a moment or two to tell you about the main four though."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me about Tumeken.",
+                    "steps": [
+                      {
+                        "player": "Tell me about Tumeken."
+                      },
+                      {
+                        "npc": "Tumeken is the god of light and husband to Elidinis. He is the leading god of the Menaphite Pantheon."
+                      },
+                      {
+                        "player": "People don't seem to talk about him much. I'd have thought being the leading god would make him more popular."
+                      },
+                      {
+                        "npc": "A common saying about Tumeken is that you see him wherever you look, but never actually notice him."
+                      },
+                      {
+                        "player": "Okay... And what kind of god is he? The desert is a harsh place, so does that make him harsh as well?"
+                      },
+                      {
+                        "npc": "In some ways. You humans sometimes say that 'you have to be cruel to be kind'. That seems a fitting way to describe Tumeken."
+                      },
+                      {
+                        "player": "So he's harsh, but for good reasons?"
+                      },
+                      {
+                        "npc": "Indeed."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "J6zl3X"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about Elidinis.",
+                    "steps": [
+                      {
+                        "player": "Tell me about Elidinis."
+                      },
+                      {
+                        "npc": "Elidinis is the goddess of fertility. The River Elid is named in her honour, for it brings life to the whole region."
+                      },
+                      {
+                        "npc": "There are some who even believe the river to be Elidinis herself."
+                      },
+                      {
+                        "player": "That's an interesting take. I guess being a bringer of life makes her quite popular?"
+                      },
+                      {
+                        "npc": "More so than many others in the pantheon, but not as much as she once was."
+                      },
+                      {
+                        "player": "Why not?"
+                      },
+                      {
+                        "npc": "Humans are fickle. Perhaps they grew bored of her?"
+                      },
+                      {
+                        "player": "That sounds unlikely."
+                      },
+                      {
+                        "npc": "Well if you're after the human take on things, you'd be better off asking a human."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "FADJcj"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about Icthlarin.",
+                    "steps": [
+                      {
+                        "player": "Tell me about Icthlarin."
+                      },
+                      {
+                        "npc": "Icthlarin is the god of the dead. He is the son of Tumeken and Elidinis, and brother to the Devourer. As this is the city of the dead, he's quite popular here."
+                      },
+                      {
+                        "player": "So are you a follower of Icthlarin?"
+                      },
+                      {
+                        "npc": "Nothing of the sort. I have no interest in the gods or their followers. Instead, Icthlarin and I have an understanding."
+                      },
+                      {
+                        "npc": "Cats play a significant role when it comes to guarding the dead from the Devourer. As such, they are great allies to Icthlarin."
+                      },
+                      {
+                        "npc": "As a thank you for looking after them, Icthlarin grants me eternal life."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "xv9rht"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me about the Devourer.",
+                    "steps": [
+                      {
+                        "player": "Tell me about the Devourer."
+                      },
+                      {
+                        "npc": "I'd have thought you'd be more than familiar with her by now."
+                      },
+                      {
+                        "player": "I'm interested in hearing your take."
+                      },
+                      {
+                        "npc": "Very well. The Devourer is the goddess of destruction. As such, she is commonly considered an evil goddess, but this is an oversimplification."
+                      },
+                      {
+                        "player": "How so?"
+                      },
+                      {
+                        "npc": "Not everything that destroys is evil. Destruction is often a necessity."
+                      },
+                      {
+                        "player": "Isn't that also an oversimplification? Amascut is doing far more than just destroying. She's a murderer!"
+                      },
+                      {
+                        "npc": "Is causing death enough to make one evil? Icthlarin is the god of the dead. By your argument, surely he is the most evil of them all."
+                      },
+                      {
+                        "player": "Icthlarin doesn't actually kill people though. He just looks after those that have died."
+                      },
+                      {
+                        "npc": "You clearly know little of Icthlarin and his past. Are you aware of the Mahjarrat? They once served Icthlarin, before they left him for Zamorak."
+                      },
+                      {
+                        "npc": "Or was it the Empty Lord they left him for... I forget."
+                      },
+                      {
+                        "npc": "Regardless, they are a race that have regularly associated themselves with gods considered evil. Interesting company for one such as Icthlarin to keep."
+                      },
+                      {
+                        "player": "How does that make Amascut good though?"
+                      },
+                      {
+                        "npc": "I never said it did. I'm just saying that things are often not as straightforward as they seem, especially when it comes to Icthlarin and the Devourer."
+                      },
+                      {
+                        "player": "If you say so..."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "PP8f61"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Let's talk about something else.",
+                    "steps": [
+                      {
+                        "player": "Let's talk about something else."
+                      },
+                      {
+                        "npc": "Very well. What do you want to dicuss?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "O7lazB"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Nothing. I should go.",
+            "steps": [
+              {
+                "player": "Nothing. I should go."
+              }
+            ]
+          },
+          {
+            "text": "Do you have a spare amulet of catspeak?",
+            "condition": "If the player lost the amulet of catspeak:",
+            "steps": [
+              {
+                "player": "Do you have a spare amulet of catspeak?"
+              },
+              {
+                "npc": "Well, I suppose I do. Seeing as you're such a good guardian of cats, I'll give you one. Be careful with it, though."
+              },
+              {
+                "type": "message",
+                "text": "The Sphinx hands you an amulet of catspeak.",
+                "id": "vA_xBM"
+              }
+            ],
+            "id": "9bzk_l"
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-wearing-the-cat-ears": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Show the Sphinx your cat ears.",
+            "steps": [
+              {
+                "player": "Paw-don me, I have something to show mew."
+              },
+              {
+                "npc": "Human, you make a mockery of my kin."
+              },
+              {
+                "player": "Come on, don't be such a sour puss."
+              },
+              {
+                "npc": "You should leave, before I deliver retribution for your actions."
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "j7uDgn"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

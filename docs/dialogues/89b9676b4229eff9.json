@@ -1,0 +1,395 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Ahoy!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "npc": "I ferry skilled sailors and fisherfolk south t' the Spirit Anglers' base in the Ruins of Unkah."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not spoken to Captain Pudi with level 35 Fishing:",
+                "steps": [
+                  {
+                    "player": "The Spirit Anglers? Who are they?"
+                  },
+                  {
+                    "npc": "Why, they're a group of sea-faring folk researchin' and fightin' against Tempoross, the crazed spirit that's terrorising the seas! I'm surprised you haven't heard!"
+                  },
+                  {
+                    "player": "That sounds important! Can I help?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is on a free-to-play world:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "veYB32"
+                      }
+                    ],
+                    "id": "sdxybk"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is not on a free-to-play world, but does not have level 35 Fishing:",
+                    "steps": [
+                      {
+                        "npc": "I can ferry ye down t' the Spirit Anglers, though they're looking for people with more fishing experience t' face Tempoross."
+                      },
+                      {
+                        "type": "message",
+                        "text": "You need a Fishing level of 35 to fight Tempoross.",
+                        "id": "jBQU64"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "eL2_qm"
+                      }
+                    ],
+                    "id": "Zz-SnN"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is not on a free-to-play world, and has level 35 Fishing:",
+                    "steps": [
+                      {
+                        "npc": "Of course! I can ferry ye down there when ye be ready. Ye'll want t' speak to Captain Pudi when ye arrive!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "xJzUJK"
+                      },
+                      {
+                        "player": "Do I have to pay for the ferry?"
+                      },
+                      {
+                        "npc": "'Course not. Don't even 'ave t' fix a price!"
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Sail to the Spirit Anglers in the Ruins of Unkah?",
+                        "options": [
+                          {
+                            "text": "Yes",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "text": "The player travels to the Ruins of Unkah.",
+                                "id": "nscGYI"
+                              },
+                              {
+                                "type": "message",
+                                "text": "You ride the little boat south to the Ruins of Unkah.",
+                                "id": "yKhkkK"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No",
+                            "steps": [
+                              {
+                                "npc": "Maybe next time, eh?"
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "5_B6Fr"
+                  }
+                ],
+                "id": "Fw721V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has spoken to Captain Pudi with level 35 Fishing:",
+                "steps": [
+                  {
+                    "npc": "Captain Pudi mentioned you'd stopped by."
+                  },
+                  {
+                    "player": "I certainly did! How is the fight against Tempoross going?"
+                  },
+                  {
+                    "npc": "Well, that crazed spirit still terrorises the seas but wit' the 'elp of people like yeself, the Spirit Anglers are puttin' up a good fight!"
+                  },
+                  {
+                    "player": "That's good! Can you ferry me to the Spirit Anglers?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is on a free-to-play world:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "KkrtI6"
+                      }
+                    ],
+                    "id": "Bxi5bh"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is not on a free-to-play world:",
+                    "steps": [
+                      {
+                        "npc": "Aye, that I can!"
+                      },
+                      {
+                        "player": "Do I have to pay for the ferry?"
+                      },
+                      {
+                        "npc": "'Course not. Don't even 'ave t' fix a price!"
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Sail to the Spirit Anglers in the Ruins of Unkah?",
+                        "options": [
+                          {
+                            "text": "Yes",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "y_-bje"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "ogr1Gg"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "nrDaux"
+                  }
+                ],
+                "id": "ncYiDN"
+              }
+            ]
+          },
+          {
+            "text": "Where does your ferry go?",
+            "condition": "If the player has not spoken to Captain Pudi with level 35 Fishing:",
+            "steps": [
+              {
+                "player": "Where does your ferry go?"
+              },
+              {
+                "npc": "South t' the Spirit Anglers' base in the Ruins of Unkah."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a free-to-play world:",
+                "steps": [
+                  {
+                    "player": "Can you take me there?"
+                  },
+                  {
+                    "npc": "It's rough out there against Tempoross. We really need fisherfolk who've experienced more of the world."
+                  },
+                  {
+                    "type": "end",
+                    "reason": "members"
+                  }
+                ],
+                "id": "T5RI4X"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not on a free-to-play world:",
+                "steps": [
+                  {
+                    "npc": "Would ye like t' board?"
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Sail to the Spirit Anglers in the Ruins of Unkah?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "steps": [
+                          {
+                            "player": "Yes please!"
+                          },
+                          {
+                            "npc": "Aye aye!"
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player travels to the Ruins of Unkah.",
+                            "id": "LPlSFi"
+                          },
+                          {
+                            "type": "message",
+                            "text": "You ride the little boat south to the Ruins of Unkah.",
+                            "id": "EJ49ec"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "player": "Maybe another time."
+                          },
+                          {
+                            "npc": "Just let me know when ye want t' be off."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "7dvefX"
+              }
+            ],
+            "id": "zTjVpk"
+          },
+          {
+            "text": "Can you ferry me to the Spirit Anglers?",
+            "condition": "If the player has spoken to Captain Pudi with level 35 Fishing:",
+            "steps": [
+              {
+                "player": "Can you ferry me to the Spirit Anglers?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a free-to-play world:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "KkrtI6"
+                  }
+                ],
+                "id": "vV7I-L"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not on a free-to-play world:",
+                "steps": [
+                  {
+                    "npc": "Aye aye!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player travels to the Ruins of Unkah.",
+                    "id": "b4QRSf"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You ride the little boat south to the Ruins of Unkah.",
+                    "id": "y2oYhZ"
+                  }
+                ],
+                "id": "T-z1Sj"
+              }
+            ],
+            "id": "-r4Hi2"
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "Take care!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-ferry-option": [
+      {
+        "type": "condition",
+        "text": "If the player is on a free-to-play world, but has not spoken to Captain Pudi with level 35 Fishing:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "veYB32"
+          }
+        ],
+        "id": "X3Szrw"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is on a free-to-play world, and has spoken to Captain Pudi with level 35 Fishing:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "KkrtI6"
+          }
+        ],
+        "id": "jOUsAP"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is not on a free-to-play world:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The player travels to the Ruins of Unkah.",
+            "id": "MmMggS"
+          },
+          {
+            "type": "message",
+            "text": "You ride the little boat south to the Ruins of Unkah.",
+            "id": "LBt-8s"
+          }
+        ],
+        "id": "z-U2JP"
+      }
+    ]
+  },
+  "branches": {
+    "veYB32": [
+      {
+        "npc": "It's rough out there against Tempoross. We really need fisherfolk who've experienced more of the world."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ],
+    "KkrtI6": [
+      {
+        "npc": "Uh, ye seem different. I'm not sure ye be in the right place t' be facing Tempoross..."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ]
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there. What are you doing here?"
+      },
+      {
+        "npc": "I'm waiting here hoping that someone can guide me to the Paterdomus, the temple on the Salve."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where is Paterdomus?",
+            "steps": [
+              {
+                "player": "Where is Paterdomus?"
+              },
+              {
+                "npc": "Oh, Paterdomus is that rather impressive looking temple on the Salve... I'm sure you must have passed it on your way into Morytania."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "fj4lYj"
+              }
+            ]
+          },
+          {
+            "text": "Why do you want to go to Paterdomus?",
+            "steps": [
+              {
+                "player": "Why do you want to go to Paterdomus?"
+              },
+              {
+                "type": "condition",
+                "text": "Before The Blood Moon Rises:",
+                "steps": [
+                  {
+                    "npc": "I'm hoping to get back to civilisation and see what the lands of Misthalin look like."
+                  }
+                ],
+                "id": "gYOx72"
+              },
+              {
+                "type": "condition",
+                "text": "After The Blood Moon Rises:",
+                "steps": [
+                  {
+                    "npc": "Well, now that the vampyres aren't a problem, I reckon there might be a hope of actually making it through the swamps and starting a new life over in Misthalin."
+                  }
+                ],
+                "id": "iCfvSI"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "FAI0hS"
+              }
+            ]
+          },
+          {
+            "text": "Could you defend yourself if we met enemies...?",
+            "steps": [
+              {
+                "player": "Could you defend yourself if we met enemies on the route to Paterdomus?"
+              },
+              {
+                "npc": "I can defend myself somewhat if we run into trouble...yes, but let's hope that we don't, eh!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "RLSzzn"
+              }
+            ]
+          },
+          {
+            "text": "I can take you to Paterdomus.",
+            "steps": [
+              {
+                "player": "I can take you to Paterdomus."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a follower:",
+                "steps": [
+                  {
+                    "npc": "Hmmm, it seems that you have a follower. I think it may get lost on this journey if it's left to wander on its own. Let's leave when your follower is safe."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "f1H1jk"
+              },
+              {
+                "npc": "Oh really? That would be great! I'll give you a small reward once we reach our destination."
+              },
+              {
+                "type": "action",
+                "text": "Temple Trekking begins",
+                "id": "U5YuWH"
+              },
+              {
+                "npc": "Ok, which route should we take?"
+              },
+              {
+                "type": "action",
+                "text": "(Temple Trekking choose a route interface opens",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "Temple Trekking choose a route",
+                "id": "WDpl-p"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-a-piece-of-acceptable-food-is-used-on-them": [
+      {
+        "npc": "Ah, so you want to give me some supplies, eh? Let me just open me backpack."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Follower inventory menu",
+        "id": "QtqxqZ"
+      }
+    ],
+    "temple-trekking-dialogue-standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Oh, I hate this trip, but it's better than staying in Burgh de Rott."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "It's scary here...let's get going!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "When are we going to get to Paterdomus?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "We don't have all day to stand around chatting; let's press on."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Do you visit Paterdomus often? You seem to know the route well."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "temple-trekking-dialogue-during-combat": [
+      {
+        "npc": "Can't you see I'm being attacked...?"
+      }
+    ],
+    "temple-trekking-dialogue-when-a-piece-of-acceptable-food-is-used-on-them-and-they-are-not-full-health": [
+      {
+        "npc": "Thanks, I'll get this down my neck."
+      }
+    ],
+    "temple-trekking-dialogue-bridge-event": [
+      {
+        "npc": "Blimey! Looks like we're going to have to go back to Burgh de Rott. We can't get over that bridge!"
+      },
+      {
+        "player": "Oh, I'm sure we can find a way!"
+      },
+      {
+        "type": "action",
+        "text": "Player completes the bridge event",
+        "id": "yeamfI"
+      }
+    ],
+    "temple-trekking-dialogue-bog-event": [
+      {
+        "npc": "Well that's torn it... Looks like we can't get over this bog. We'll have to go back to Burgh de Rott."
+      },
+      {
+        "player": "Oh, I'm sure we can find a way!"
+      },
+      {
+        "type": "action",
+        "text": "Player completes the bog event",
+        "id": "I_eBKj"
+      },
+      {
+        "npc": "Hey...that's great...you did a great job...I'll follow you."
+      },
+      {
+        "npc": "Whahay...that was great!"
+      },
+      {
+        "npc": "But we really should be heading off now."
+      }
+    ],
+    "temple-trekking-dialogue-river-event": [
+      {
+        "npc": "Well that's torn it... Looks like we can't get over this bog. We'll have to go back to Burgh de Rott."
+      },
+      {
+        "player": "Oh, I'm sure we can find a way through!"
+      },
+      {
+        "type": "action",
+        "text": "Player completes the river event",
+        "id": "zWk6m0"
+      },
+      {
+        "npc": "That's amazing! I'll have to do the same."
+      },
+      {
+        "npc": "Whahay! That was great! But we really should be heading off now."
+      }
+    ],
+    "temple-trekking-dialogue-tentacle-event": [
+      {
+        "npc": "Wh...what are those bubbles?"
+      },
+      {
+        "npc": "This is scary!"
+      },
+      {
+        "npc": "Ahhh, that would be a tentacle..."
+      },
+      {
+        "npc": "Ahhh, two tentacles!"
+      },
+      {
+        "npc": "...three tentacles!"
+      },
+      {
+        "npc": "I think I'm going to faint!"
+      },
+      {
+        "npc": "Blimey! Look at that beast! You're gonna have to sort that thing out on your own!"
+      }
+    ],
+    "temple-trekking-dialogue-finishing-a-trek": [
+      {
+        "npc": "Many thanks for getting me safely to the temple. Here's your reward."
+      },
+      {
+        "type": "message",
+        "text": "Valantay Eppel gives you a reward token!",
+        "id": "jir2Bi"
+      }
+    ]
+  }
+}

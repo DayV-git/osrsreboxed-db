@@ -1,0 +1,212 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome to Lowe's Archery Emporium. Do you want to see my wares?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is carrying a Combat path voucher and hasn't received all possible rewards yet:",
+        "steps": [
+          {
+            "player": "I have this voucher for completing the combat Adventure Path, it says to come talk to you about claiming my Adventure Path reward."
+          },
+          {
+            "type": "condition",
+            "text": "If the player hasn't claimed their rewards yet and has no inventory space:",
+            "steps": [
+              {
+                "npc": "I will be able to give you your reward when you have some space for it."
+              },
+              {
+                "type": "action",
+                "text": "End",
+                "id": "t9zKJH"
+              }
+            ],
+            "id": "3s3WYj"
+          },
+          {
+            "type": "condition",
+            "text": "If the player hasn't claimed their rewards yet and is on a free-to-play world:",
+            "steps": [
+              {
+                "npc": "Why yes, here are some high-quality iron arrows."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "100 iron arrows",
+                "id": "LxQF0C"
+              },
+              {
+                "npc": "I do have more rewards for you, but you need to be on a members world for me to give you the reward. Maybe there is something else I can help you with."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "vmrOfH"
+              }
+            ],
+            "id": "i20Pjn"
+          },
+          {
+            "type": "condition",
+            "text": "If the player hasn't claimed their member rewards yet and is on a free-to-play world:",
+            "steps": [
+              {
+                "npc": "I do have more rewards for you, but you need to be on a members world for me to give you the reward. Maybe there is something else I can help you with."
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "srOffF"
+              }
+            ],
+            "id": "sgAFPq"
+          },
+          {
+            "type": "condition",
+            "text": "If the player hasn't claimed their rewards yet and is on a members world:",
+            "steps": [
+              {
+                "npc": "Why yes, here are some high-quality iron arrows."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has another open inventory space:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "Since you are a member, I'll also give you extra arrows and one of my finest bows."
+                  },
+                  {
+                    "npc": "I sell a variety of range equipment in my shop if you wanted to take a look."
+                  },
+                  {
+                    "npc": "Is there anything else I can do for you?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "IzrHgk"
+                  }
+                ],
+                "id": "M3DKf0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any more open inventory spaces:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "I do have more rewards for you, but you need some free space for me to give you the rewards."
+                  },
+                  {
+                    "npc": "Can I help you with anything else?"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "ob7Zt1"
+                  }
+                ],
+                "id": "pgHfsy"
+              }
+            ],
+            "id": "p0DUKk"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has only claimed the free-to-play rewards and is on a members world:",
+            "steps": [
+              {
+                "npc": "Why yes, here is one of my finest bows and some high- quality iron arrows."
+              },
+              {
+                "npc": "I sell a variety of range equipment in my shop if you wanted to take a look."
+              },
+              {
+                "npc": "Is there anything else I can do for you?"
+              },
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "E3cxVx"
+              }
+            ],
+            "id": "Hlya5q"
+          }
+        ],
+        "id": "exCGd1"
+      },
+      {
+        "type": "condition",
+        "text": "If the player isn't carrying a Combat path voucher or is carrying a Combat path voucher and has received all possible rewards already:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Lowe's Archery Emporium",
+                    "id": "EEH7qc"
+                  }
+                ]
+              },
+              {
+                "text": "No, I prefer to bash things close up.",
+                "steps": [
+                  {
+                    "player": "No, I prefer to bash things close up."
+                  },
+                  {
+                    "npc": "Humph, philistine."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "OuxjIV"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "Here you go!"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "cvVYHE"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "TQpvGh"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "ww9SN2"
+          }
+        ],
+        "id": "EsKjpG"
+      }
+    ]
+  }
+}

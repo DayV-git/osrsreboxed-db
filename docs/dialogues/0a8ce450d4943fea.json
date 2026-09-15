@@ -1,0 +1,253 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-port-sarim": [
+      {
+        "npc": "Do you seek passage to holy Entrana? If so, you must leave your weaponry and armour behind. This is Saradomin's will."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, not right now.",
+            "steps": [
+              {
+                "player": "No, not right now."
+              },
+              {
+                "npc": "Very well."
+              }
+            ]
+          },
+          {
+            "text": "Yes, okay, I'm ready to go.",
+            "steps": [
+              {
+                "player": "Yes, okay, I'm ready to go."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not taken the boat to entrana during their current login session:",
+                "steps": [
+                  {
+                    "npc": "Very well. One moment please."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The monk quickly searches you.",
+                    "id": "WBEgnZ"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "suCyGY"
+                  }
+                ],
+                "id": "hmJbfY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a forbidden item dedicated to Saradomin:",
+                "steps": [
+                  {
+                    "npc": "[I'm sorry, sir,/I'm sorry, madam,/I'm sorry,] but no weapons or armour may be worn on Entrana. This rule even forbids items dedicated to Saradomin."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "pTEzrk"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a forbidden item:",
+                "steps": [
+                  {
+                    "npc": "NO WEAPONS OR ARMOUR are permitted on holy Entrana AT ALL. We will not allow you to travel there in breach of mighty Saradomin's edict."
+                  },
+                  {
+                    "npc": "Do not try and deceive us again. Come back when you have laid down your Zamorakian instruments of death."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Oio4-G"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an impling jar which may contain something dangerous:",
+                "steps": [
+                  {
+                    "npc": "What's in this strange impling jar then?"
+                  },
+                  {
+                    "player": "I don't know. It could be anything."
+                  },
+                  {
+                    "npc": "Well, I will assume that 'anything' includes weapons and armour. So come back when you've got rid of them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2YlCt1"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a supply crate:",
+                "steps": [
+                  {
+                    "npc": "What's in this strange crate then?"
+                  },
+                  {
+                    "player": "I don't know. It could be anything."
+                  },
+                  {
+                    "npc": "Well, I will assume that 'anything' includes weapons and armour. So come back when you've got rid of them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "1-jMaw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any forbidden items:",
+                "steps": [
+                  {
+                    "npc": "All is satisfactory. You may board the boat now."
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player takes the boat to Entrana",
+                    "id": "b8yDey"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The ship arrives at Entrana.",
+                    "id": "EbbIYF"
+                  }
+                ],
+                "id": "Q8WkXt"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-entrana": [
+      {
+        "npc": "Do you wish to leave holy Entrana?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, I'm ready to go.",
+            "steps": [
+              {
+                "player": "Yes, I'm ready to go."
+              },
+              {
+                "npc": "Okay, let's board..."
+              },
+              {
+                "type": "action",
+                "text": "The player takes the boat back to Port Sarim",
+                "id": "lbXVJH"
+              },
+              {
+                "type": "message",
+                "text": "The ship arrives at Port Sarim.",
+                "id": "so8W6y"
+              }
+            ]
+          },
+          {
+            "text": "Not just yet.",
+            "steps": [
+              {
+                "player": "Not just yet."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "condition",
+        "text": "With a full inventory:",
+        "steps": [
+          {
+            "npc": "Hey, I have something for you but you don't have any space for it!"
+          },
+          {
+            "type": "condition",
+            "text": "With a forbidden item dedicated to Saradomin:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "kCKt-I"
+              }
+            ],
+            "id": "-KZtjB"
+          },
+          {
+            "npc": "NO WEAPONS OR ARMOUR are permitted on holy Entrana AT ALL. We will not allow you to travel there in breach of mighty Saradomin's edict."
+          },
+          {
+            "npc": "Do not try and deceive us again. Come back when you have laid down your Zamorakian instruments of death."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "nEX9lL"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a torn part of a clue scroll",
+        "id": "Cnu6-R"
+      },
+      {
+        "npc": "Here you go."
+      },
+      {
+        "type": "message",
+        "text": "You are handed a torn part of a clue scroll.",
+        "id": "Ae1Trl"
+      },
+      {
+        "type": "condition",
+        "text": "With a forbidden item dedicated to Saradomin:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "kCKt-I"
+          }
+        ],
+        "id": "bbutsw"
+      },
+      {
+        "npc": "NO WEAPONS OR ARMOUR are permitted on holy Entrana AT ALL. We will not allow you to travel there in breach of mighty Saradomin's edict."
+      },
+      {
+        "npc": "Do not try and deceive us again. Come back when you have laid down your Zamorakian instruments of death."
+      }
+    ]
+  },
+  "branches": {
+    "kCKt-I": [
+      {
+        "npc": "I'm sorry, madam, but no weapons or armour may be worn on Entrana. This rule even forbids items dedicated to Saradomin."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

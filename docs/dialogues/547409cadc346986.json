@@ -1,0 +1,184 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "first-time-talking": [
+      {
+        "npc": "Oh, hello there newcomer. I'm Guild Scribe Verity. Do you need me to explain the work we do here?"
+      },
+      {
+        "player": "Yes please."
+      },
+      {
+        "npc": "So it's nice and simple. Just chat to any of the hunters in here to help them out. They're all following reports that I've split up amongst them."
+      },
+      {
+        "player": "Reports?"
+      },
+      {
+        "npc": "Indeed. There are all sorts of interesting creatures to hunt out there. Sometimes we get reports of a particularly unique example. When that happens, one of the hunters will set out to find it."
+      },
+      {
+        "npc": "If you do decide to take a job from any of the hunters, they'll tell you what type of creature they're looking into. Hunt that creature until you encounter the unique specimen."
+      },
+      {
+        "npc": "Once you've caught it, bring some proof back to the hunter that sent you out in the first place. I'm sure they'll reward you for your time."
+      },
+      {
+        "player": "I see. Thanks for the information."
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "npc": "Nilsal, hunter. Anything to report?"
+      },
+      {
+        "player": "Nothing abnormal today."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What does a scribe do?",
+            "steps": [
+              {
+                "player": "What does a scribe do?"
+              },
+              {
+                "npc": "I'm the primary record-keeper here. I organise all of our reports and write up anything important to be sent back to the city."
+              },
+              {
+                "player": "Do you go out on any hunts with the others?"
+              },
+              {
+                "npc": "I wouldn't know what to do with myself out there, so I like to stay back here with my scrolls."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Sv0ekR"
+              }
+            ]
+          },
+          {
+            "text": "How many rumours have I completed?",
+            "steps": [
+              {
+                "player": "How many rumours have I completed?"
+              },
+              {
+                "npc": "Our records suggest you've managed to complete [number of completed rumours] rumours for us!"
+              }
+            ]
+          },
+          {
+            "text": "I have this spare hunter gear...",
+            "steps": [
+              {
+                "player": "I have this spare hunter gear, is there anything I can do with it?"
+              },
+              {
+                "npc": "Spare, you say? Hmmm.... I'm sure one of the other hunters could benefit from it if you're sure. If you hand it over to me, I can give you some spare supplies in return."
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "player": "I have to go."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rumour-settings-option": [
+      {
+        "type": "condition",
+        "text": "If back-to-back rumours are currently on:",
+        "steps": [
+          {
+            "npc": "Would you like me to filter the rumour information a little more than I am right now?"
+          },
+          {
+            "type": "choice",
+            "prompt": "Disable back-to-back rumours?",
+            "options": [
+              {
+                "text": "Yes",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Repeat rumours will no longer be offered. End of dialogue)",
+                    "id": "Ql7kJM"
+                  }
+                ]
+              },
+              {
+                "text": "No",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "tf9Mhe"
+      },
+      {
+        "type": "condition",
+        "text": "If back-to-back rumours are currently off:",
+        "steps": [
+          {
+            "npc": "Would you like me to filter the rumour information a little less than I am right now?"
+          },
+          {
+            "type": "choice",
+            "prompt": "Enable back-to-back rumours?",
+            "options": [
+              {
+                "text": "Yes",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "(Repeat rumours will now be offered. End of dialogue)",
+                    "id": "fUA7PW"
+                  }
+                ]
+              },
+              {
+                "text": "No",
+                "steps": []
+              }
+            ]
+          }
+        ],
+        "id": "KImS5f"
+      }
+    ],
+    "handing-in-spare-hunter-gear-or-blueprints": [
+      {
+        "type": "choice",
+        "prompt": "Trade in your [item] for spare supplies?",
+        "options": [
+          {
+            "text": "Yes please!",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Guild Scribe Verity takes your [item] and hands you a sack of supplies in return.",
+                "id": "VfWAMz"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

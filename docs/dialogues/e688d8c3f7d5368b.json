@@ -1,0 +1,124 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hiya! Do you want to buy me a drink?"
+      },
+      {
+        "player": "I think I'll pass on that."
+      },
+      {
+        "npc": "Fine, I'm sure somebody else round here will know how to treat a woman..."
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "Y8sojq"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "kQ02TC"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "MMGB1k"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "efvHUG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Damwin",
+            "id": "4QGW5Q"
+          },
+          {
+            "npc": "Ooh, thanks a lot dearie."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does not have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You are not eligible to get gnome food delivered to you yet.",
+                "id": "HlnXgU"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "WhPO1z"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "1O2FmV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "i2NcJ2"
+                  }
+                ],
+                "id": "TSYL42"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ewMV9a"
+              }
+            ],
+            "id": "uo_MBz"
+          }
+        ],
+        "id": "KFcYri"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "-OjrOZ"
+          }
+        ],
+        "id": "bQcUer"
+      }
+    ]
+  }
+}

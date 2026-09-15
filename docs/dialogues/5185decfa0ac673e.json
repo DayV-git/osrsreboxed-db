@@ -1,0 +1,177 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Who treads upon my grave?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have come to seek a blessing.",
+            "steps": [
+              {
+                "player": "I have come to seek a blessing."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unholy symbol in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I see you have the unholy symbol of our Lord. It is blessed with the Lord Zamorak's power."
+                  },
+                  {
+                    "npc": "Come to me when your faith weakens."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "1hWj7Z"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unpowered symbol in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I see you have the unholy symbol of our Lord. I will bless it for you."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The ghost mutters in a strange voice.",
+                    "id": "H5RmVl"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The unholy symbol throbs with power.",
+                    "id": "yNXit1"
+                  },
+                  {
+                    "npc": "The symbol of our Lord has been blessed with power!"
+                  },
+                  {
+                    "npc": "My master calls."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "P1OOb_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has neither of the above in their inventory:",
+                "steps": [
+                  {
+                    "npc": "No blessings will be given to those who have no symbol of our Lord's love."
+                  }
+                ],
+                "id": "bTWC6f"
+              }
+            ]
+          },
+          {
+            "text": "I need another unholy symbol mould.",
+            "steps": [
+              {
+                "player": "I need another mould for the unholy symbol."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have an unholy mould:",
+                "steps": [
+                  {
+                    "npc": "To lose an object is easy to replace. To lose the affections of our Lord is impossible to forgive."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The ghost hands you another mould.",
+                    "id": "6mB7Eb"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Xy1eXw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an unholy mould:",
+                "steps": [
+                  {
+                    "npc": "One you already have, another is not needed."
+                  },
+                  {
+                    "player": "Leave me be."
+                  }
+                ],
+                "id": "rb4ydS"
+              }
+            ]
+          },
+          {
+            "text": "I have come to kill you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "wC-j6J"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-speaking-to-him-for-the-first-time": [
+      {
+        "npc": "Who treads upon my grave?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I seek your wisdom.",
+            "steps": [
+              {
+                "player": "I seek your wisdom."
+              },
+              {
+                "npc": "Indeed, I feel you have beheld the far places in the heavens."
+              },
+              {
+                "npc": "My Lord instructs me to help you."
+              },
+              {
+                "npc": "Here is a mould to make a token for our Lord; a mould for the unholy symbol of Zamorak."
+              },
+              {
+                "type": "message",
+                "text": "The ghost gives you a casting mould.",
+                "id": "Z094Db"
+              }
+            ]
+          },
+          {
+            "text": "I have come to kill you.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "wC-j6J"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "wC-j6J": [
+      {
+        "player": "I have come to kill you."
+      },
+      {
+        "npc": "The might of mortals, to me, is as the dust to the sea."
+      }
+    ]
+  }
+}

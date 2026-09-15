@@ -1,0 +1,236 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-entering-scaperune": [
+      {
+        "type": "message",
+        "text": "Welcome to ScapeRune.",
+        "id": "7te1MH"
+      },
+      {
+        "npc": "So you've been captured too?"
+      },
+      {
+        "player": "Captured?"
+      },
+      {
+        "npc": "Yes, Evil Bob captured me and stuck me in this prison."
+      },
+      {
+        "player": "How do I get out of here? I can't be held captive by a cat!"
+      },
+      {
+        "npc": "Some of these balloon animals have keys in them, and if you pull the big lever it tells you which shape animal contains the correct key, but I can never find it."
+      },
+      {
+        "npc": "You need to pull the lever to find out which shape animal contains the key, then pop that sort of animal to get the key."
+      },
+      {
+        "npc": "Bring me any keys you get and I'll try them on the doors."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay.",
+            "steps": [
+              {
+                "player": "Okay."
+              }
+            ]
+          },
+          {
+            "text": "But I want to leave now.",
+            "steps": [
+              {
+                "npc": "Oh. Well I guess you can leave but I'll still be stuck here."
+              },
+              {
+                "type": "choice",
+                "prompt": "Leave the event?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You leave the prison.",
+                        "id": "3MGLKK"
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player leaves the prison through the east hallway.",
+                        "id": "J-SmnE"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-attempting-to-pop-a-balloon-animal-before-pulling-the-lever": [
+      {
+        "npc": "You're meant to pull the lever to find out which sort of animal to pop!"
+      }
+    ],
+    "standard-dialogue-talking-to-prison-pete-again": [
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Don't you remember? This is ScapeRune's prison. Evil Bob caught you and brought you here."
+              },
+              {
+                "player": "What gives him the right to lock me up? I demand to see a lawyer! I know my rights!"
+              },
+              {
+                "npc": "Evil Bob doesn't care about people's rights. He's cruel and utterly merciless. He's a cat."
+              },
+              {
+                "player": "How do I get out of here? I can't be held captive by a cat!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "TKlTEt"
+              }
+            ]
+          },
+          {
+            "text": "How do I get out of here?",
+            "steps": [
+              {
+                "player": "How do I get out of here? I can't be held captive by a cat!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "sECEpP"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-an-item-other-than-a-prison-key-on-prison-pete": [
+      {
+        "npc": "No thanks, I don't want that just now."
+      }
+    ],
+    "standard-dialogue-pulling-the-lever-for-the-first-time": [
+      {
+        "npc": "That's right, pull it. Then remember what kind of animal shape you see. That's the animal that contains the right key."
+      }
+    ],
+    "standard-dialogue-popping-a-balloon-animal": [
+      {
+        "npc": "Great, now you've got a key! Bring it to me so I can try it on the doors."
+      },
+      {
+        "type": "action",
+        "text": "The player goes to Prison Pete and hands him the key.",
+        "id": "Q9i_M0"
+      },
+      {
+        "npc": "Ooh, thanks! I'll see if it's the right one..."
+      },
+      {
+        "type": "condition",
+        "text": "If the player popped the wrong animal:",
+        "steps": [
+          {
+            "npc": "Aww, that was the wrong key! You must have popped the wrong sort of animal. Try the big lever again - it'll tell you which animal to pop."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "33J7gu"
+      },
+      {
+        "type": "condition",
+        "text": "If the player popped the correct animal:",
+        "steps": [
+          {
+            "npc": "Hooray, you got the right one! Now pull the lever again and let's get the next portal unlocked!"
+          }
+        ],
+        "id": "78U-sw"
+      }
+    ],
+    "standard-dialogue-attempting-to-pop-a-balloon-animal-or-pull-lever-whilst-holding-a-prison-key": [
+      {
+        "npc": "Hey, bring me that key you've got! I wanna get out of here!"
+      }
+    ],
+    "standard-dialogue-after-unlocking-the-last-barrier": [
+      {
+        "npc": "You did it, you got all the keys right! Thank you! You're my friend FOREVER!"
+      },
+      {
+        "player": "Let's get out of here before that cat notices."
+      }
+    ],
+    "standard-dialogue-attempting-to-pop-a-balloon-animal-or-pull-lever-after-unlocking-last-barrier": [
+      {
+        "npc": "Come on, we should leave before Evil Bob comes back! You go first; I'll follow along."
+      }
+    ],
+    "standard-dialogue-attempting-to-leave-through-the-prison-doors": [
+      {
+        "npc": "Oi! we'll be using the exit that's over here."
+      }
+    ],
+    "standard-dialogue-attempting-to-drop-items-in-the-exit": [
+      {
+        "npc": "Oi! No dropping stuff in the exit! Chuck it somewhere else!"
+      }
+    ],
+    "standard-dialogue-leaving-through-the-exit": [
+      {
+        "type": "message",
+        "text": "You quickly escape the prison with Pete.",
+        "id": "xw88NI"
+      },
+      {
+        "type": "action",
+        "text": "The player is teleported back to where they were.",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "6GCddK"
+      },
+      {
+        "npc": "Thanks a lot for your help! Here, have a present:"
+      },
+      {
+        "type": "action",
+        "text": "The player receives a reward.",
+        "action": "receive",
+        "action_source": "text",
+        "id": "uq7dyQ"
+      },
+      {
+        "player": "Thanks! See you around!"
+      }
+    ],
+    "standard-dialogue-talking-to-prison-pete-after-getting-rewarded": [
+      {
+        "npc": "Don't mind me, I was just leaving..."
+      }
+    ]
+  }
+}

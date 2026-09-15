@@ -1,0 +1,332 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue": [
+      {
+        "player": "Hello stranger."
+      },
+      {
+        "npc": "grunts*"
+      },
+      {
+        "player": "Ah very friendly I see. What's that coffin on your back?"
+      },
+      {
+        "npc": "For carryin' the dead."
+      },
+      {
+        "player": "Woah, don't tell me you have a body in there?"
+      },
+      {
+        "npc": "No, remains."
+      },
+      {
+        "player": "Oh, you carry the remains of shades in it? Could you give me one?"
+      },
+      {
+        "npc": "grunts*"
+      },
+      {
+        "type": "message",
+        "text": "Dampe hands you a broken coffin.",
+        "id": "8TnGik"
+      },
+      {
+        "player": "It's broken? What am I suppose to do with a broken coffin?"
+      },
+      {
+        "npc": "Bring me locks, find in the catacombs... I repair coffin with locks."
+      },
+      {
+        "player": "Right... Guess I should head into the catacombs then... see if I can find any of these 'locks'."
+      },
+      {
+        "npc": "grunts*"
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "npc": "grunts*"
+      },
+      {
+        "player": "Ah, as cheerful as ever I see."
+      },
+      {
+        "npc": "What d'ya want."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask about locks.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has no locks in their inventory:",
+                "steps": [
+                  {
+                    "player": "You gave me a broken coffin, what am I suppose to do with it?"
+                  },
+                  {
+                    "npc": "Bring me locks, I fix coffin with locks..."
+                  },
+                  {
+                    "player": "Right... and where am I suppose to find such locks?"
+                  },
+                  {
+                    "npc": "In catacombs... in chests..."
+                  },
+                  {
+                    "player": "Great, thanks for the information."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qkgGW2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has locks in their inventory:",
+                "steps": [
+                  {
+                    "player": "I found one of the locks you were talking about, I think."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You show Dampe the lock you found and his cold eyes light up.",
+                    "id": "2mw0Zu"
+                  },
+                  {
+                    "npc": "That is it, give to me now and I repair the coffin."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Give Dampe a lock?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "steps": [
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have a broken coffin:",
+                            "steps": [
+                              {
+                                "npc": "You ain't got no broken coffin for me to fix. If you need one, just ask."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "pSKah7"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has a broken coffin:",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "You hand over the coffin and lock to Dampe.",
+                                "id": "al_1CE"
+                              },
+                              {
+                                "type": "message",
+                                "text": "You hear him clumsily attach the lock to the coffin.",
+                                "id": "gjiQrk"
+                              },
+                              {
+                                "npc": "Finished, take it."
+                              }
+                            ],
+                            "id": "xL47Dc"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No",
+                        "steps": [
+                          {
+                            "player": "No thanks, I'm going to hang on to it for now."
+                          },
+                          {
+                            "npc": "grunts*"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "vT-T5W"
+              }
+            ]
+          },
+          {
+            "text": "Ask for another coffin.",
+            "steps": [
+              {
+                "player": "Could I get another of those coffins?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has one:",
+                "steps": [
+                  {
+                    "npc": "Get lost, you've already got a coffin, I ain't givin' you anotha."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "jJ9v7C"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have one:",
+                "steps": [
+                  {
+                    "npc": "grunts*"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Dampe hands you a broken coffin.",
+                    "id": "Vl2NKR"
+                  },
+                  {
+                    "player": "It's broken?"
+                  },
+                  {
+                    "npc": "Bring me locks, find in the catacombs... I repair coffin with locks."
+                  }
+                ],
+                "id": "O5_jjU"
+              }
+            ]
+          },
+          {
+            "text": "Ask about his robes.",
+            "steps": [
+              {
+                "player": "Where did you get those robes?"
+              },
+              {
+                "npc": "Given to me."
+              },
+              {
+                "player": "By who?"
+              },
+              {
+                "npc": "A dead friend of mine."
+              },
+              {
+                "player": "Oh... how did they die?"
+              },
+              {
+                "npc": "In the catacombs."
+              },
+              {
+                "player": "Sorry to hear that..."
+              },
+              {
+                "npc": "grunts*"
+              }
+            ]
+          },
+          {
+            "text": "Just wanted a chat.",
+            "steps": [
+              {
+                "player": "Nothing, I just wanted to chat."
+              },
+              {
+                "npc": "grunts*"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-broken-coffin-on-dampe-without-locks": [
+      {
+        "player": "Can you fix this for me?"
+      },
+      {
+        "npc": "Depends, you got any locks for it?"
+      },
+      {
+        "player": "No..."
+      },
+      {
+        "npc": "Yeah, well clear off them a go find one."
+      }
+    ],
+    "using-broken-coffin-on-dampe-with-locks": [
+      {
+        "player": "Can you fix this for me?"
+      },
+      {
+        "npc": "Depends, you got any locks for it?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Give Dampe a lock?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "OpmTMM"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "D0vD4h"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-locks-on-dampe-without-a-broken-coffin": [
+      {
+        "player": "Hey, I found this lock in the catacombs? Can you do anything with it?"
+      },
+      {
+        "npc": "grunts* Lets 'ava look."
+      },
+      {
+        "npc": "You ain't got no broken coffin for me to fix. If you need one, just ask."
+      }
+    ],
+    "using-locks-on-dampe-with-a-broken-coffin": [
+      {
+        "player": "Hey, I found this lock in the catacombs? Can you do anything with it?"
+      },
+      {
+        "npc": "grunts* Lets 'ava look."
+      },
+      {
+        "type": "message",
+        "text": "You hand over the coffin and lock to Dampe.",
+        "id": "6LyeiX"
+      },
+      {
+        "type": "message",
+        "text": "You hear him clumsily attach the lock to the coffin.",
+        "id": "LX_evo"
+      },
+      {
+        "npc": "Finished, take it."
+      }
+    ]
+  }
+}

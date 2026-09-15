@@ -1,0 +1,258 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, human. Something you need?"
+      },
+      {
+        "player": "What are you doing up here?"
+      },
+      {
+        "npc": "Why, I'm ensuring everyone stays well fed and hydrated, of course! Fighting monsters is hard work, as I'm sure you know."
+      },
+      {
+        "npc": "Say, when was the last time you drank some water?"
+      },
+      {
+        "player": "Uh, I suppose I am a bit thirsty..."
+      },
+      {
+        "npc": "Off you go and refresh yourself! Don't want you collapsing in front of the Hueycoatl now, do we?"
+      }
+    ],
+    "using-items-on-marla-egg": [
+      {
+        "npc": "Oh, thank you! I'll make good use of this most versatile, nutritious and delicious ingredient!"
+      }
+    ],
+    "using-items-on-marla-damp-egg": [
+      {
+        "player": "Take a look at this."
+      },
+      {
+        "npc": "Is this a joke, human?"
+      },
+      {
+        "player": "What? No! I-"
+      },
+      {
+        "npc": "We were warned not to trust your kind, and I can see why."
+      },
+      {
+        "npc": "What a horrible thing to do to someone."
+      },
+      {
+        "player": "I didn't mean anyth-"
+      },
+      {
+        "npc": "And to mar the egg in the first place?! I'm shaken to my core!"
+      },
+      {
+        "player": "I found it like this!"
+      },
+      {
+        "type": "message",
+        "text": "The dwarf is too busy cooking and grumbling to hear you.",
+        "id": "oOWR4p"
+      }
+    ],
+    "using-items-on-marla-redberry-antelope": [
+      {
+        "npc": "Weird, isn't it? Definitely not what I would consider gourmet cooking, but to each their own..."
+      }
+    ],
+    "after-accepting-viero-s-request": [
+      {
+        "player": "Hello, Marla!"
+      },
+      {
+        "npc": "Hello! Something you need?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing up here?",
+            "steps": [
+              {
+                "player": "What are you doing up here?"
+              },
+              {
+                "npc": "Why, I'm ensuring everyone stays well fed and hydrated, of course! Fighting monsters is hard work, as I'm sure you know."
+              },
+              {
+                "npc": "Say, when was the last time you drank some water?"
+              },
+              {
+                "player": "Uh, I suppose I am a bit thirsty..."
+              },
+              {
+                "npc": "Off you go and refresh yourself! Don't want you collapsing in front of the Hueycoatl now, do we?"
+              }
+            ]
+          },
+          {
+            "text": "I have a request from the guard over there.",
+            "steps": [
+              {
+                "player": "I have a request from the guard over there."
+              },
+              {
+                "npc": "And you are?"
+              },
+              {
+                "player": "[player name]!"
+              },
+              {
+                "npc": "Well, [player name], what is Viero's request?"
+              },
+              {
+                "player": "He wants to try sunlight antelope cooked with redberries."
+              },
+              {
+                "npc": "He wants what?! The altitude must be sending him loopy!"
+              },
+              {
+                "npc": "Ah well, he works hard and this is a rough post so I'll indulge him."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have raw sunlight antelope and Redberries in their inventory:",
+                "steps": [
+                  {
+                    "npc": "I'll need a nice piece of raw sunlight antelope and some redberries to create the dish. Return when you have the ingredients."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "E0-IxM"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has both requested ingredients:",
+                "steps": [
+                  {
+                    "player": "I have all the ingredients here."
+                  },
+                  {
+                    "npc": "Okay, let's see..."
+                  },
+                  {
+                    "npc": "Perhaps it would work best as a berry marinade..."
+                  },
+                  {
+                    "npc": "Or maybe a delicate jus..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Marla concentrates intently as she works with the ingredients.",
+                    "id": "P59vem"
+                  },
+                  {
+                    "npc": "That should do it... I think. It smells pretty good, but I'm not convinced. See what Viero thinks."
+                  }
+                ],
+                "id": "azzlRJ"
+              }
+            ]
+          },
+          {
+            "text": "No, never mind.",
+            "steps": [
+              {
+                "player": "No, never mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-accepting-viero-s-request-after-obtaining-the-redberry-antelope": [
+      {
+        "player": "Hello, Marla!"
+      },
+      {
+        "npc": "Hello, [player name]! Looking for something to eat?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing up here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "I6yM4f"
+              }
+            ]
+          },
+          {
+            "text": "I need another redberry antelope.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "u9f4K3"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "player": "I'm fine, thanks."
+              },
+              {
+                "npc": "Suit yourself."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-accepting-viero-s-request-after-giving-viero-the-redberry-antelope": [
+      {
+        "npc": "Hello, [player name]! Looking for something to eat?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing up here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eyqH9o"
+              }
+            ]
+          },
+          {
+            "text": "Viero thought the redberry antelope was 'interesting and complex'.",
+            "steps": [
+              {
+                "player": "Viero thought the redberry antelope was 'interesting and complex'."
+              },
+              {
+                "npc": "Hah! That's certainly one way to put it!"
+              }
+            ]
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1ns8Vc"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

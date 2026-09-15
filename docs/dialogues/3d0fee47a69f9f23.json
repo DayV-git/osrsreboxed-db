@@ -1,0 +1,746 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-at-port-sarim-first-time": [
+      {
+        "player": "Hello, who are you?"
+      },
+      {
+        "npc": "I am Veos and I've just arrived in Port Sarim from the distant Kingdom of Great Kourend."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where's that?",
+            "steps": [
+              {
+                "player": "Where's that?"
+              },
+              {
+                "npc": "Across the sea, to the far west."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "That's great, can you take me there please?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "VVaIgI"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me more about Great Kourend.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about Great Kourend."
+                      },
+                      {
+                        "npc": "Great Kourend is a magnificent kingdom comprising of five cities. They are the cities of Arceuus, Lovakengj, Shayzien, Piscarilius and Hosidius. Each city is ruled by one of the five houses of Kourend."
+                      },
+                      {
+                        "npc": "At one time, the kingdom as a whole was ruled over by a king or queen that the five houses answered to."
+                      },
+                      {
+                        "npc": "However, since the last King died 20 years ago, the kingdom has instead been ruled by the Kourend Council."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "That's great, can you take me there please?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "ffmu0k"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Goodbye.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "74gnir"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "EUDpJM"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "That's great, can you take me there please?",
+            "steps": [
+              {
+                "player": "That's great, can you take me there please?"
+              },
+              {
+                "type": "condition",
+                "text": "If there are no restrictions to travelling and the player is on a members' world:",
+                "steps": [
+                  {
+                    "npc": "Certainly! I hope you don't get seasick, it is a long voyage."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player is taken to Great Kourend, and the player will remember who Veos is.",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "WXJllC"
+                  }
+                ],
+                "id": "buVj4X"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a free-to-play world:",
+                "steps": [
+                  {
+                    "npc": "Unfortunately it seems that you're not quite ready to visit Great Kourend yet. Come back when you are and I'll happily take you there."
+                  },
+                  {
+                    "type": "end",
+                    "reason": "members"
+                  }
+                ],
+                "id": "HaZALO"
+              },
+              {
+                "type": "condition",
+                "text": "If the game world is Trailblazer League world:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid access to Great Kourend is currently prohibited."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "7m-RoE"
+              },
+              {
+                "type": "condition",
+                "text": "If the game world is Trailblazer League Reloaded world:",
+                "steps": [
+                  {
+                    "npc": "You cannot pass as you haven't unlocked access to the Great Kourend and Kebos Lowlands area in this League."
+                  }
+                ],
+                "id": "4_GYUT"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-at-port-sarim-subsequent-dialogue": [
+      {
+        "player": "Hello Veos."
+      },
+      {
+        "npc": "Hello there. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you take me somewhere?",
+            "steps": [
+              {
+                "player": "Can you take me somewhere?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a free-to-play world:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid that you're not eligible to travel to Great Kourend at the moment. Come back when you are and I'll happily take you there."
+                  },
+                  {
+                    "type": "end",
+                    "reason": "members"
+                  }
+                ],
+                "id": "bFi5_C"
+              },
+              {
+                "npc": "Where would you like to go?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to travel to Port Piscarilius, please.",
+                    "steps": [
+                      {
+                        "player": "I'd like to travel to Port Piscarilius, please."
+                      },
+                      {
+                        "npc": "As you wish, I hope you don't get seasick, it is a long voyage."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd like to travel to Land's End, please.",
+                    "steps": [
+                      {
+                        "player": "I'd like to travel to Land's End, please."
+                      },
+                      {
+                        "npc": "As you wish, I hope you don't get seasick, it is a long voyage."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually I'd like to stay here.",
+                    "steps": [
+                      {
+                        "player": "Actually I'd like to stay here."
+                      },
+                      {
+                        "npc": "As you wish."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Tell me more about Great Kourend.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ZhzHqP"
+              }
+            ]
+          },
+          {
+            "text": "Nothing.",
+            "steps": [
+              {
+                "player": "Nothing."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-at-port-piscarilius": [
+      {
+        "npc": "Hello again, [player name]! What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where am I exactly?",
+            "steps": [
+              {
+                "player": "Where am I exactly?"
+              },
+              {
+                "npc": "This is the port of Piscarilius. Home to Kourend's finest fisherman, but beware of the thieves!"
+              },
+              {
+                "player": "Can you tell me about the other parts of Kourend?"
+              },
+              {
+                "npc": "Certainly. To the west is the city of Arceuus, where they study magic at Kourend's Grand Library."
+              },
+              {
+                "npc": "Further west is Lovakengj, where you'll find our best miners and smithers working to arm the Shayzien soldiers to the south west."
+              },
+              {
+                "npc": "Finally, to the south you'll find Hosidius. They focus on agriculture to provide food for all of Great Kourend."
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you take me somewhere?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "wLO-lr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could you tell me more about Kourend?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "geeKdY"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Let's talk about your client...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "O-Q3Ds"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Ahzob8"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you take me somewhere?",
+            "steps": [
+              {
+                "player": "Can you take me somewhere?"
+              },
+              {
+                "npc": "Where would you like to go?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Travel to Port Sarim.",
+                    "steps": [
+                      {
+                        "player": "I'd like to travel to Port Sarim, please."
+                      },
+                      {
+                        "npc": "As you wish, I hope you don't get seasick, it is a long voyage."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Travel to Land's End.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "WR75kE"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Stay where you are.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "jJqd2w"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me more about Kourend?",
+            "steps": [
+              {
+                "player": "Could you tell me more about Kourend?"
+              },
+              {
+                "npc": "Certainly. The Kingdom of Great Kourend is made up of five main cities. They are the cities of Arceuus, Lovakengj, Shayzien, Piscarilius and Hosidius. Each city is ruled by one of the five houses of Kourend."
+              },
+              {
+                "npc": "At one time, the kingdom as a whole was ruled over by a king or queen that the five houses answered to."
+              },
+              {
+                "npc": "However, since our last King died 20 years ago, the kingdom has instead been ruled by the Kourend Council."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Where am I exactly?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ZoK3t9"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you take me somewhere?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "Olm_MO"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Let's talk about your client...",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "POn4DW"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "player": "Goodbye."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've lost something you've given me.",
+            "steps": [
+              {
+                "player": "I've lost something you've given me."
+              },
+              {
+                "npc": "But I haven't given you anything recently."
+              },
+              {
+                "player": "Yes you did. You gave me a reward for helping your client."
+              },
+              {
+                "npc": "Client? I don't..."
+              },
+              {
+                "type": "message",
+                "text": "Veos suddenly jumps.",
+                "id": "k4VMCk"
+              },
+              {
+                "npc": "Ah I remember now. Apologies friend, my mind isn't what it once was."
+              },
+              {
+                "type": "condition",
+                "text": "If the player isn't missing Kharedst's memoirs:",
+                "steps": [
+                  {
+                    "npc": "I do remember rewarding you. I'm afraid I don't have anything else for you though."
+                  }
+                ],
+                "id": "K8j5Z5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is missing Kharedst's memoirs:",
+                "steps": [
+                  {
+                    "npc": "I do have some things for you. Enjoy!"
+                  }
+                ],
+                "id": "drsnpy"
+              }
+            ]
+          },
+          {
+            "text": "Nothing, thanks.",
+            "steps": [
+              {
+                "player": "Nothing, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-veos-using-kharedst-s-memoirs-on-veos": [
+      {
+        "player": "What's this old book you gave me?"
+      },
+      {
+        "npc": "Ah that. I bought it at an auction a while back. Apparently, it belonged to the daughter of King Kharedst IV, the final king of Great Kourend."
+      },
+      {
+        "player": "Why did you give it to me?"
+      },
+      {
+        "npc": "I'd hoped it might have some interesting information in it. Most of the pages are missing though so I have no use for it. I thought you might be able to find something to do with it."
+      },
+      {
+        "player": "Fair enough. Thanks!"
+      }
+    ],
+    "using-items-on-veos-using-wolf-bones-on-veos": [
+      {
+        "npc": "These remind me of a pet I once had. Please... put them away."
+      },
+      {
+        "player": "Sorry, Veos. I didn't know."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you feel comfortable sharing your story?",
+            "steps": [
+              {
+                "player": "Would you feel comfortable sharing your story?"
+              },
+              {
+                "npc": "I once had a wolf, [player name]. His name was Copper. He was loyal. Brave... Gentle. He'd wear this beautiful crimson red collar."
+              },
+              {
+                "npc": "One day, I was travelling on the mainland, nearby a tribe of Fremenniks. Not exactly a spring chicken at this point, my own wolf was pushing 19..."
+              },
+              {
+                "player": "19 years old? That's an incredible amount of time for a wolf to live!"
+              },
+              {
+                "npc": "Indeed. Sadly, a group of feral foxes ambushed us. I fought back, along with Copper, though he took wounds that even a young wolf would struggle dealing with."
+              },
+              {
+                "player": "What did you do?"
+              },
+              {
+                "npc": "I ran, [player name]... Like a coward."
+              },
+              {
+                "player": "Did you ever find him?"
+              },
+              {
+                "npc": "I did not... I searched for days, but I was unable to find even his collar."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I can help! I'll search for Copper's collar.",
+                    "steps": [
+                      {
+                        "player": "I can help! I'll search for Copper's collar. I'm sure I can find the fox that has it..."
+                      },
+                      {
+                        "npc": "Truly? You'd do that for me? Thank you so much, [player name]. I can't thank you enough! My heart's been filled with regret ever since it happened... and I think having a small part of Copper back, would make me complete again."
+                      },
+                      {
+                        "player": "I'll return when I have found Copper's collar. Take care!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm sorry. Thank you for sharing your story.",
+                    "steps": [
+                      {
+                        "player": "I'm sorry. Thank you for sharing your story."
+                      },
+                      {
+                        "npc": "It's nice to share these kind of things sometimes, [player name]."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll leave you be. Sorry.",
+            "steps": [
+              {
+                "player": "I'll leave you be. Sorry, Veos."
+              },
+              {
+                "npc": "It's fine, [player name]. You didn't know."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-veos-using-wolf-bones-on-veos-before-returning-the-collar": [
+      {
+        "npc": "How goes the hunt for Copper's collar, [player name]?"
+      },
+      {
+        "player": "I haven't had any luck finding it yet, Veos. Where would you recommend searching?"
+      },
+      {
+        "npc": "I'd imagine the fox which killed Copper will likely still have the collar in their possession. They were nearby a Fremennik town."
+      },
+      {
+        "player": "Thanks, Veos. I'll return when I have the collar!"
+      }
+    ],
+    "using-items-on-veos-using-copper-s-crimson-collar-on-veos": [
+      {
+        "npc": "How goes the hunt for Copper's collar, [player name]?"
+      },
+      {
+        "type": "action",
+        "text": "(Player gives copper's crimson collar to Veos)",
+        "id": "dq5rvU"
+      },
+      {
+        "npc": "[player name]... I can't thank you enough. I don't have a reward, but know that to me, this means so much. Perhaps in the future, I can repay you."
+      },
+      {
+        "player": "You're more than welcome Veos, and don't worry about a reward. Losing your best friend is always hard. Hopefully that item will bring you some comfort. Take care!"
+      }
+    ],
+    "using-items-on-veos-using-wolf-bones-on-veos-after-returning-the-collar": [
+      {
+        "npc": "[player name]... I can't thank you enough for what you've done for me. I don't have a reward, but know that to me, this means so much. Perhaps in the future I can repay you."
+      },
+      {
+        "player": "You're more than welcome Veos, and don't worry about a reward. Losing your best friend is always hard. Hopefully that item will bring you some comfort. Take care!"
+      }
+    ],
+    "historical-dialogue-docked-at-port-sarim-pre-kebos": [
+      {
+        "player": "Hello, who are you?"
+      },
+      {
+        "npc": "I am Veos and I've just arrived in Port Sarim from a distant land."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Where are you from?",
+            "steps": [
+              {
+                "player": "Where are you from?"
+              },
+              {
+                "npc": "I am from the magnificent kingdom of Great Kourend on the continent of Zeah, to the far west."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "That's great, can you take me there please?",
+                    "steps": [
+                      {
+                        "player": "That's great, can you take me there please?"
+                      },
+                      {
+                        "npc": "Certainly! I hope you don't get seasick, it is a long voyage."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me more about Great Kourend.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about Great Kourend."
+                      },
+                      {
+                        "npc": "Great Kourend is a magnificent kingdom comprising of five districts called Houses. The houses are ruled by the Lords of Arceuus, Lovakengj, Shayzien, Piscarilius and Hosidius."
+                      },
+                      {
+                        "npc": "Since our last King died 20 years ago the kingdom has been ruled by an elected council."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Tell me more about Zeah.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about Zeah."
+                      },
+                      {
+                        "npc": "Zeah is a huge continent far to the west of here full of new adventures and hidden treasures. Sadly, the kingdom of Great Kourend is besieged by lizard creatures and it is not possible to get out of the kingdom just yet."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Good bye.",
+            "steps": [
+              {
+                "player": "Good bye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue-docked-at-port-tyras": [
+      {
+        "player": "Who're you? I've never seen you around these parts before."
+      },
+      {
+        "npc": "I am Veos. Port master and scout for an elite Triumvirate."
+      },
+      {
+        "player": "Triumvirate?"
+      },
+      {
+        "player": "Who? Where? Why have you suddenly docked here?"
+      },
+      {
+        "npc": "These are questions to which you shall not find answers, adventurer."
+      },
+      {
+        "player": "Then why are you here?"
+      },
+      {
+        "npc": "There are secrets in this world for which you are not ready."
+      },
+      {
+        "type": "message",
+        "text": "Veos whispers...",
+        "id": "_2ozej"
+      },
+      {
+        "npc": "Yo.... we, are not alone."
+      }
+    ]
+  }
+}

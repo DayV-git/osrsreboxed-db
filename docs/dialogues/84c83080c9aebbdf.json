@@ -1,0 +1,250 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there. My name is Cromperty. I am a Wizard, and an inventor."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Claim free pure essence.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has not claimed their daily allowance:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "[amount] pure essence",
+                    "id": "oQuAx0"
+                  },
+                  {
+                    "npc": "There you go, [amount] free pure essence. Return tomorrow for some more."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "wnm-1i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their daily allowance:",
+                "steps": [
+                  {
+                    "npc": "I've already given you your free allowance for today. Come back to me tomorrow for some more."
+                  }
+                ],
+                "id": "Y5kbOg"
+              }
+            ]
+          },
+          {
+            "text": "Chat.",
+            "steps": [
+              {
+                "npc": "You must be [player name]. My good friend Sedridor has told me about you. As both wizard and inventor, he has aided me in my great invention!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Two jobs? That's got to be tough.",
+                    "steps": [
+                      {
+                        "player": "Two jobs? That's got to be tough."
+                      },
+                      {
+                        "npc": "Not when you combine them it isn't! I invent MAGIC things!"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So what have you invented?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "GSj9b0"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well, I shall leave you to your inventing.",
+                            "steps": [
+                              {
+                                "player": "Well, I shall leave you to your inventing."
+                              },
+                              {
+                                "npc": "Thanks for dropping by! Stop again anytime!"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "So what have you invented?",
+                    "steps": [
+                      {
+                        "player": "So what have you invented?"
+                      },
+                      {
+                        "npc": "Ah! My latest invention is my patent pending teleportation block! It emits a low level magical signal, that will allow me to locate it anywhere in the world, and teleport anything"
+                      },
+                      {
+                        "npc": "directly to it! I hope to revolutionise the entire teleportation system! Don't you think I'm great? Uh, I mean it's great?"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "So where is the other block?",
+                            "steps": [
+                              {
+                                "player": "So where is the other block?"
+                              },
+                              {
+                                "npc": "Well... Hmm. I would guess somewhere between here and the Wizards' Tower in Misthalin. All I know is that it hasn't got there yet as the wizards there would have contacted me."
+                              },
+                              {
+                                "npc": "I'm using the GPDT for delivery. They assured me it would be delivered promptly."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Can I be teleported please?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "hAJU-e"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Who are the GPDT?",
+                                    "steps": [
+                                      {
+                                        "player": "Who are the GPDT?"
+                                      },
+                                      {
+                                        "npc": "The Gielinor Parcel Delivery Team. They come very highly recommended. Their motto is: 'We aim to deliver your stuff at some point after you have paid us!'"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I be teleported please?",
+                            "steps": [
+                              {
+                                "player": "Can I be teleported please?"
+                              },
+                              {
+                                "npc": "By all means! I'm afraid I can't give you any specifics as to where you will come out however. Presumably wherever the other block is located."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Yes, that sounds good. Teleport me!",
+                                    "steps": [
+                                      {
+                                        "player": "Yes, that sounds good. Teleport me!"
+                                      },
+                                      {
+                                        "npc": "Okey dokey! Ready?"
+                                      },
+                                      {
+                                        "npc": "Hmmm.... that's odd... I can't seem to get a signal..."
+                                      },
+                                      {
+                                        "player": "Oh well, never mind."
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "That sounds dangerous. Leave me here.",
+                                    "steps": [
+                                      {
+                                        "player": "That sounds dangerous. Leave me here."
+                                      },
+                                      {
+                                        "npc": "As you wish."
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Well done, that's very clever.",
+                            "steps": [
+                              {
+                                "player": "Well done, that's very clever."
+                              },
+                              {
+                                "npc": "Yes it is isn't it? Forgive me for feeling a little smug, this is a major breakthrough in the field of teleportation!"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you teleport me to the Rune Essence?",
+                    "steps": [
+                      {
+                        "player": "Can you teleport me to the Rune Essence?"
+                      },
+                      {
+                        "npc": "Senventior disthine molenko!"
+                      },
+                      {
+                        "type": "action",
+                        "text": "Wizard Cromperty teleports the player to the rune essence mine.",
+                        "action": "teleport",
+                        "action_source": "text",
+                        "id": "EkCGKW"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a torn part of a clue scroll",
+        "id": "DxHJnG"
+      },
+      {
+        "npc": "Here you go."
+      },
+      {
+        "type": "message",
+        "text": "You are handed a torn part of a clue scroll.",
+        "id": "tHD2-O"
+      },
+      {
+        "npc": "Your magical prowess... it is most impressive."
+      }
+    ]
+  }
+}

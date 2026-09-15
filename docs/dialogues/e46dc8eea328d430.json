@@ -1,0 +1,189 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "She likes to be tickled hehehehe."
+              },
+              {
+                "player": "Okay..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "No thanks, I don't want any."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Pst, wanna hear a secret?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sure!",
+                    "steps": [
+                      {
+                        "player": "Sure!"
+                      },
+                      {
+                        "npc": "They've got six legs... SIX!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "AAAAAAAAARRRRRRGGGGGHHHHHHHH!"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What's wrong?",
+                    "steps": [
+                      {
+                        "player": "What's wrong?"
+                      },
+                      {
+                        "npc": "AAAAAAAAARRRRRRGGGGGHHHHHHHH!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "initial",
+                        "id": "vn0H00"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll leave you to it then...",
+                    "steps": [
+                      {
+                        "player": "I'll leave you to it then..."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Ah! This is for you."
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need answers."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "gMHaFv"
+      },
+      {
+        "type": "message",
+        "text": "The Weird Old Man has given you a challenge scroll!",
+        "id": "-BqtCs"
+      }
+    ],
+    "treasure-trails-hard-when-spoken-to-again": [
+      {
+        "npc": "AHHH HELP! What's the answer?"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "They like it when you scream! AHHHHHHH. That's not right!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "yF8Y3r"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Spot on!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The Weird Old Man has given you another clue scroll!",
+                "id": "DY4VER"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll (hard)",
+                "id": "alXqNc"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "j8y4Gr"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "p-Wqrf"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket (hard)",
+                "id": "1KYipO"
+              }
+            ],
+            "id": "u2sFGt"
+          }
+        ],
+        "id": "f_WERa"
+      }
+    ]
+  }
+}

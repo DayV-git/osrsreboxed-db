@@ -1,0 +1,257 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello your highness!"
+      },
+      {
+        "npc": "Well, hello again Traveller! How are you?"
+      },
+      {
+        "player": "I'm good thanks, how's the tree?"
+      },
+      {
+        "npc": "Better than ever, thanks to you!"
+      }
+    ],
+    "before-starting-monkey-madness-i": [
+      {
+        "npc": "Adventurer! It is good to see you again."
+      },
+      {
+        "player": "And you too, King. How fares the tree?"
+      },
+      {
+        "npc": "The tree? It is fine, as it has always been since we foiled Glough's plans."
+      },
+      {
+        "player": "Good. What ever did happen to Glough?"
+      },
+      {
+        "npc": "Oh, I forced him to resign. I have now appointed a new Head Tree Guardian, Daero. He is learning quickly and serves me well."
+      },
+      {
+        "player": "King, you look worried. Is anything the matter?"
+      },
+      {
+        "npc": "Nothing in particular ... Well actually, yes - there is."
+      },
+      {
+        "player": "What is it?"
+      },
+      {
+        "npc": "Well, do you remember Glough's ship building facilities in Karamja?"
+      },
+      {
+        "player": "Yes, they were on the eastern coast. What of them?"
+      },
+      {
+        "npc": "After you defeated Glough's demon I sent an envoy of my Royal Guard, the 10th squad, to oversee the decommission of the shipyard. They were ordered to use force if necessary."
+      },
+      {
+        "player": "I see ... Were they successful?"
+      },
+      {
+        "npc": "I ... I don't know. I have heard nothing from them. I do not even know if they reached the shipyard!"
+      },
+      {
+        "player": "It is a long way..."
+      },
+      {
+        "npc": "But I need to know what happened. These are elite soldiers - their disappearance cannot simply be ignored. I cannot wait any longer."
+      },
+      {
+        "npc": "And so I ask you: would you visit Glough's old shipyard in Karamja and find out if the 10th squad ever managed to reach?"
+      },
+      {
+        "type": "choice",
+        "prompt": "Start the Monkey Madness I quest?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "player": "Ok, I'll do it."
+              },
+              {
+                "type": "message",
+                "text": "Narnode hands you a copy of the Royal Seal.",
+                "id": "xpkXMM"
+              },
+              {
+                "npc": "Thank you very much. You may need this Royal Seal to identify yourself as my envoy."
+              },
+              {
+                "npc": "Please report to me as soon as you have any information."
+              }
+            ],
+            "hook": "quest:monkey-madness-i:start",
+            "quest": "Monkey Madness I"
+          },
+          {
+            "text": "No.",
+            "steps": [
+              {
+                "player": "I'm afraid I am too busy right now."
+              },
+              {
+                "npc": "As you wish. Return to me when you have the time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-monkey-madness-i": [
+      {
+        "player": "Hello there, King Narnode."
+      },
+      {
+        "npc": "Good of you to stop by, human."
+      },
+      {
+        "player": "How fares the kingdom today?"
+      },
+      {
+        "npc": "Everything seems fine, as far as I can tell... I will let you know if there is any trouble."
+      },
+      {
+        "type": "message",
+        "text": "You do not meet all of the requirements to start the Monkey Madness II quest.",
+        "id": "rkpnQX"
+      }
+    ],
+    "after-completing-monkey-madness-ii": [
+      {
+        "player": "Hello, King Narnode."
+      },
+      {
+        "npc": "Good to see you again, [player name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Have you any more Royal Seed Pods?",
+            "steps": [
+              {
+                "player": "Have you any more Royal Seed Pods?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "King Narnode's Royal Seed Pods",
+                "id": "mWDVqG"
+              }
+            ]
+          },
+          {
+            "text": "How fares the kingdom today?",
+            "steps": [
+              {
+                "player": "How fares the kingdom today?"
+              },
+              {
+                "npc": "All is well in the Stronghold thanks to you, [player name]."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "gnome-restaurant": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "6mrZK6"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "873xdI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "bt9bzy"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "UX9miz"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to King Narnode",
+            "id": "gjx4o8"
+          },
+          {
+            "npc": "Thank you my son."
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "PQ0MEc"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "AsIpF9"
+                  }
+                ],
+                "id": "_drUHo"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "0dmjJx"
+              }
+            ],
+            "id": "m-Mwam"
+          }
+        ],
+        "id": "PQzrOA"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "taX0rK"
+          }
+        ],
+        "id": "Bbg-kN"
+      }
+    ]
+  }
+}

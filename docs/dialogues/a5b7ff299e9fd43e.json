@@ -1,0 +1,150 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "What can I do for you, [m'lady/sir]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do around here?",
+            "steps": [
+              {
+                "player": "What do you do around here?"
+              },
+              {
+                "npc": "It's my job to keep track of operations on the docks."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Is there anything I can help out with?",
+                    "steps": [
+                      {
+                        "player": "Is there anything I can help out with?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 30 Crafting:",
+                        "steps": [
+                          {
+                            "npc": "Thanks for the offer, but I'm afraid you need a higher crafting level before you can help me."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You need a crafting level of 30 to assist the Piscarilius dockmaster.",
+                            "id": "UoKaqU"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "QV9pqk"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 30 Crafting:",
+                        "steps": [
+                          {
+                            "npc": "You look like you know a thing or two about crafting, perhaps you could help us maintain the fishing cranes around the docks."
+                          },
+                          {
+                            "npc": "You'll need a hammer, some nails and a few wooden planks, 3 planks per broken crane should be enough."
+                          },
+                          {
+                            "npc": "I can't offer you any payment at the moment, but hard work doesn't go unnoticed around these parts."
+                          },
+                          {
+                            "player": "Sure, I'll see what I can do."
+                          }
+                        ],
+                        "id": "v0vBYc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'll let you get back to work.",
+                    "steps": [
+                      {
+                        "player": "I'll let you get back to work."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I was just looking around.",
+            "steps": [
+              {
+                "player": "Sorry, I was just looking around."
+              },
+              {
+                "npc": "Fair enough."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I have a question for you."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "8zka_q"
+      },
+      {
+        "type": "message",
+        "text": "The Dockmaster has given you a challenge scroll!",
+        "id": "5iOPnU"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "No, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "NYeoJO"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "081oCx"
+          },
+          {
+            "type": "message",
+            "text": "The Dockmaster has given you another clue scroll!",
+            "id": "vpDIRj"
+          }
+        ],
+        "id": "-buUU1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,361 @@
+{
+  "default": "starting-off-talking-to-hetty",
+  "variants": {
+    "starting-off-talking-to-hetty": [
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "What could you want with an old woman like me?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I am in search of a quest.",
+            "steps": [
+              {
+                "player": "I am in search of a quest."
+              },
+              {
+                "type": "line",
+                "speaker": "Hetty",
+                "text": "Hmmm... Maybe I can think of something for you."
+              },
+              {
+                "type": "line",
+                "speaker": "Hetty",
+                "text": "Would you like to become more proficient in the dark arts?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Witch's Potion quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Yes, help me become one with my darker side."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Hetty",
+                        "text": "Okay, I'm going to make a potion to help bring out your darker self."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Hetty",
+                        "text": "You will need certain ingredients."
+                      },
+                      {
+                        "player": "What do I need?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Hetty",
+                        "text": "You need an eye of newt, a rat's tail, an onion... Oh and a piece of burnt meat."
+                      },
+                      {
+                        "player": "Great, I'll go and get them."
+                      }
+                    ],
+                    "hook": "quest:witch-s-potion:start",
+                    "quest": "Witch's Potion"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No, I have my principles and honour."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Hetty",
+                        "text": "Suit yourself, but you're missing out."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've heard that you are a witch.",
+            "steps": [
+              {
+                "player": "I've heard that you are a witch."
+              },
+              {
+                "type": "line",
+                "speaker": "Hetty",
+                "text": "Yes it does seem to be getting fairly common knowledge."
+              },
+              {
+                "type": "line",
+                "speaker": "Hetty",
+                "text": "I fear I may be getting a visit from the witch hunters of Falador before long."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I am in search of a quest.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "64toNM"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "player": "Goodbye."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-attempting-to-drink-from-the-cauldron": [
+      {
+        "player": "As nice as that looks, I think I'll give it a miss for now."
+      }
+    ],
+    "acquiring-the-items-talking-to-hetty-with-none-of-the-items": [
+      {
+        "player": "I've been looking for those ingredients."
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "So what have you found so far?"
+      },
+      {
+        "player": "I'm afraid I don't have any of them yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "Well I can't make the potion without them! Remember... You need an eye of newt, a rat's tail, an onion, and a piece of burnt meat. Off you go dear!"
+      }
+    ],
+    "acquiring-the-items-talking-to-hetty-with-some-of-the-items": [
+      {
+        "player": "I've been looking for those ingredients."
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "So what have you found so far?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the rat's tail:",
+        "steps": [
+          {
+            "player": "I have the rat's tail (ewww), I don't have any burnt meat, I don't have an onion, and I don't have an eye of newt."
+          }
+        ],
+        "id": "d6ej_O"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the burnt meat:",
+        "steps": [
+          {
+            "player": "I don't have a rat's tail, I have the burnt meat, I don't have an onion, and I don't have an eye of newt."
+          }
+        ],
+        "id": "xsIjpf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the onion:",
+        "steps": [
+          {
+            "player": "I don't have a rat's tail, I don't have any burnt meat, I have an onion, and I don't have an eye of newt."
+          }
+        ],
+        "id": "RFwroM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the eye of newt:",
+        "steps": [
+          {
+            "player": "I don't have a rat's tail, I don't have any burnt meat, I don't have an onion, and I have the eye of newt, yum!"
+          }
+        ],
+        "id": "VUwDzm"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the rat's tail and burnt meat:",
+        "steps": [
+          {
+            "player": "I have the rat's tail (ewww), I have the burnt meat, I don't have an onion, and I don't have an eye of newt."
+          }
+        ],
+        "id": "wtua4U"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the rat's tail and onion:",
+        "steps": [
+          {
+            "player": "I have the rat's tail (ewww), I don't have any burnt meat, I have an onion, and I don't have an eye of newt."
+          }
+        ],
+        "id": "MSOaDx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the rat's tail and eye of newt:",
+        "steps": [
+          {
+            "player": "I have the rat's tail (ewww), I don't have any burnt meat, I don't have an onion, and I have the eye of newt, yum!"
+          }
+        ],
+        "id": "uB8-c7"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the burnt meat and onion:",
+        "steps": [
+          {
+            "player": "I don't have a rat's tail, I have the burnt meat, I have an onion, and I don't have an eye of newt."
+          }
+        ],
+        "id": "zK_rMl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the burnt meat and eye of newt:",
+        "steps": [
+          {
+            "player": "I don't have a rat's tail, I have the burnt meat, I don't have an onion, and I have the eye of newt, yum!"
+          }
+        ],
+        "id": "5ujuiQ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the onion and eye of newt:",
+        "steps": [
+          {
+            "player": "I don't have a rat's tail, I don't have any burnt meat, I have an onion, and I have the eye of newt, yum!"
+          }
+        ],
+        "id": "Lp6fR6"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the rat's tail, burnt meat, and onion:",
+        "steps": [
+          {
+            "player": "I have the rat's tail (ewww), I have the burnt meat, I have an onion, and I don't have an eye of newt."
+          }
+        ],
+        "id": "xWmlGN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the rat's tail, burnt meat, and eye of newt:",
+        "steps": [
+          {
+            "player": "I have the rat's tail (ewww), I have the burnt meat, I don't have an onion, and I have the eye of newt, yum!"
+          }
+        ],
+        "id": "USaxrz"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the rat's tail, onion, and eye of newt:",
+        "steps": [
+          {
+            "player": "I have the rat's tail (ewww), I don't have any burnt meat, I have an onion, and I have the eye of newt, yum!"
+          }
+        ],
+        "id": "r0wLcQ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player only has the burnt meat, onion, and eye of newt:",
+        "steps": [
+          {
+            "player": "I don't have a rat's tail, I have the burnt meat, I have an onion, and I have the eye of newt, yum!"
+          }
+        ],
+        "id": "ZwqNbr"
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "Great, but I'll need the other ingredients as well."
+      }
+    ],
+    "acquiring-the-items-talking-to-hetty-with-all-the-items": [
+      {
+        "player": "I've been looking for those ingredients."
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "So what have you found so far?"
+      },
+      {
+        "player": "In fact I have everything!"
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "Excellent, can I have them then?"
+      },
+      {
+        "type": "message",
+        "text": "You pass the ingredients to Hetty and she puts them all into her cauldron. Hetty closes her eyes and begins to chant. The cauldron bubbles mysteriously.",
+        "id": "Q5Eb7j"
+      },
+      {
+        "player": "Well, is it ready?"
+      },
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "Ok, now drink from the cauldron."
+      }
+    ],
+    "acquiring-the-items-talking-to-hetty-again-before-drinking-from-the-cauldron": [
+      {
+        "type": "line",
+        "speaker": "Hetty",
+        "text": "Well are you going to drink the potion or not?"
+      },
+      {
+        "player": "Yes, I will."
+      }
+    ],
+    "acquiring-the-items-drinking-from-the-cauldron": [
+      {
+        "type": "message",
+        "text": "You drink from the cauldron. It tastes horrible! You feel yourself imbued with power.",
+        "id": "oLsPKg"
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "OpbvIv"
+      },
+      {
+        "type": "unavailable",
+        "id": "IE8MPR"
+      }
+    ]
+  }
+}

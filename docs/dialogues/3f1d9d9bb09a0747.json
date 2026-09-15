@@ -1,0 +1,107 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-after-completing-underground-pass": [
+      {
+        "player": "Hello Klank."
+      },
+      {
+        "npc": "Hello again adventurer, so you're still around?"
+      },
+      {
+        "player": "Still here!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Have you anymore gauntlets?",
+            "steps": [
+              {
+                "player": "Have you any more gauntlets?"
+              },
+              {
+                "npc": "Well..yes, but they're not cheap to make. I'll have to sell you a pair..."
+              },
+              {
+                "player": "How much?"
+              },
+              {
+                "npc": "5,000 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "5,000, you must be joking!",
+                    "steps": [
+                      {
+                        "player": "5,000, you must be joking!"
+                      },
+                      {
+                        "npc": "We don't joke down here friend..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay then, I'll take a pair.",
+                    "steps": [
+                      {
+                        "player": "Okay then, I'll take a pair."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 5000 coins:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Klank sells you some gauntlets.",
+                            "id": "86A90e"
+                          },
+                          {
+                            "npc": "There you go... I hope they help."
+                          },
+                          {
+                            "player": "I'll see you around Klank."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "TwL7qI"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough coins:",
+                        "steps": [
+                          {
+                            "player": "Oh dear, I haven't got enough money..."
+                          },
+                          {
+                            "npc": "Sorry, I can't sell them any cheaper than that."
+                          }
+                        ],
+                        "id": "TeF8xg"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Take care Klank.",
+            "steps": [
+              {
+                "player": "Take care Klank."
+              },
+              {
+                "npc": "You too adventurer..."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

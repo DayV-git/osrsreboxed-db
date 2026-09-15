@@ -1,0 +1,196 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could I buy a beer please?",
+            "steps": [
+              {
+                "player": "Could I buy a beer please?"
+              },
+              {
+                "npc": "Sure, that will be 2 gold coins please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 2 coins:",
+                "steps": [
+                  {
+                    "player": "I don't have enough coins."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "fpjt2q"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 2 coins:",
+                "steps": [
+                  {
+                    "player": "Ok, here you go."
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "9MxdGC"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a beer",
+                    "id": "OXJ9zt"
+                  }
+                ],
+                "id": "6DwCep"
+              }
+            ]
+          },
+          {
+            "text": "Have you heard any rumours here?",
+            "steps": [
+              {
+                "player": "Have you heard any rumours here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player hasn't completed Goblin Diplomacy",
+                "steps": [
+                  {
+                    "npc": "Well, there was a guy in here earlier saying the goblins up by the mountain are arguing again, about the colour of their armour of all things."
+                  },
+                  {
+                    "npc": "Knowing the goblins it could easily turn into a full blown war, which wouldn't be good. Goblin wars make such a mess of the countryside."
+                  },
+                  {
+                    "player": "Well if I have the time I'll go and see if I can knock some sense into them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9xFgc3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Goblin Diplomacy",
+                "steps": [
+                  {
+                    "npc": "No, it hasn't been very busy lately."
+                  }
+                ],
+                "id": "S6zI7V"
+              }
+            ]
+          },
+          {
+            "text": "I'm doing Alfred Grimhand's Barcrawl",
+            "condition": "If the player has started but not finished Alfred Grimhand's Barcrawl",
+            "steps": [
+              {
+                "player": "I'm doing Alfred Grimhand's Barcrawl."
+              },
+              {
+                "npc": "Are you sure? You look a bit skinny for that."
+              },
+              {
+                "player": "Just give me whatever I need to drink here."
+              },
+              {
+                "npc": "Ok one Black Skull Ale coming up, 8 coins please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 8 coins",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "You buy a Black Skull Ale.",
+                    "id": "f48_kz"
+                  },
+                  {
+                    "type": "action",
+                    "text": "You drink your Black Skull Ale...",
+                    "id": "L8gJPY"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Your vision blurs.",
+                    "id": "SUsyNP"
+                  },
+                  {
+                    "type": "action",
+                    "text": "The bartender signs your card.",
+                    "id": "1oHxmz"
+                  },
+                  {
+                    "player": "Hiccup!"
+                  }
+                ],
+                "id": "YrXOf2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 8 coins",
+                "steps": [
+                  {
+                    "player": "I don't have 8 coins with me."
+                  }
+                ],
+                "id": "Urwd-W"
+              }
+            ],
+            "id": "DbhOTu"
+          }
+        ]
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Congratulations! Here you go."
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy clue scroll",
+            "id": "Tx2u3n"
+          },
+          {
+            "type": "message",
+            "text": "You've been given another clue!",
+            "id": "fUVzOa"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "MOWe0G"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy reward casket",
+            "id": "TcYpoI"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "aGp7Lp"
+          }
+        ],
+        "id": "cOZbY7"
+      }
+    ]
+  }
+}

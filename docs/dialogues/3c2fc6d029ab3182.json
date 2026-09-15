@@ -1,0 +1,211 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Alright, mate. How's it going?"
+      },
+      {
+        "player": "Er... Who are you?"
+      },
+      {
+        "npc": "Sleve McDichael, mate."
+      },
+      {
+        "player": "What kind of name is Sleve McDichael?"
+      },
+      {
+        "npc": "Came up with it myself, mate. I'm a bit of a naming specialist you see."
+      },
+      {
+        "player": "You are?"
+      },
+      {
+        "npc": "Aye. Tell you what, mate, you look like a bit of a sailor. Want me to rename your boat for you? Will only cost you a single glass of cider."
+      },
+      {
+        "player": "Could I not just rename it myself?"
+      },
+      {
+        "npc": "Well, have you?"
+      },
+      {
+        "player": "No..."
+      },
+      {
+        "npc": "Well, there you go then."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to rename my boat.",
+            "steps": [
+              {
+                "player": "I'd like to rename my boat."
+              },
+              {
+                "npc": "Sure thing, mate. Which one do you want me to rename?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Rename Boat",
+                "id": "QSMmHf"
+              },
+              {
+                "npc": "Alright, the price is one glass of cider."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have cider in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have any cider."
+                  },
+                  {
+                    "npc": "Crying shame, mate. A crying shame indeed."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "VxW56k"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has cider in their inventory:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "prompt": "Pay a glass of cider to have [boat name] renamed?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "npc": "Alright, mate, I name your boat... [new boat name]!"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "I love it.",
+                                "steps": [
+                                  {
+                                    "player": "I love it."
+                                  },
+                                  {
+                                    "npc": "Glad to hear it, mate."
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "I'm not a fan.",
+                                "steps": [
+                                  {
+                                    "player": "I'm not a fan."
+                                  },
+                                  {
+                                    "npc": "Sorry, mate. No refunds."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "player": "Actually, I'd rather not."
+                          },
+                          {
+                            "npc": "Crying shame, mate. A crying shame indeed."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Fd4kxC"
+              }
+            ]
+          },
+          {
+            "text": "How did you end up here?",
+            "steps": [
+              {
+                "player": "How did you end up here?"
+              },
+              {
+                "npc": "Was crew on some fancy merchant ship, but me and Biles went and fell off. Now we live here. It's just the two of us, but it's quite the effective kingdom we've established."
+              },
+              {
+                "player": "Kingdom?"
+              },
+              {
+                "npc": "Aye. Biles is the King. He's the one that runs things. Meanwhile, I handle the naming of everything."
+              },
+              {
+                "player": "I see..."
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              },
+              {
+                "npc": "Until next time, mate."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Alright, mate. How's it going?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to rename my boat.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nHVCiw"
+              }
+            ]
+          },
+          {
+            "text": "How did you end up here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "dxj0rl"
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "a6sase"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

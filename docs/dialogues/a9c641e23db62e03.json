@@ -1,0 +1,269 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You're a long way from home, what are you doing here?",
+            "steps": [
+              {
+                "player": "You're a long way from home, what are you doing here?"
+              },
+              {
+                "npc": "I'm on an expedition to try and extend the bounds of gnome knowledge. King Narnode has sent out a number of gnome explorers to map the furthest reaches of Gielinor."
+              },
+              {
+                "player": "Seems like a hard job."
+              },
+              {
+                "npc": "Oh no, I enjoy it - I've always had itchy feet ever since I was a little gnome."
+              },
+              {
+                "player": "Still, you seem to have drawn the short straw here - there's nothing but snow..."
+              },
+              {
+                "npc": "Oh, I like it - very peaceful. Avoiding those Trolls can be tricky though."
+              },
+              {
+                "player": "Tell me about it..."
+              }
+            ]
+          },
+          {
+            "text": "What does this mint cake do?",
+            "condition": "If the player has a mint cake",
+            "steps": [
+              {
+                "player": "What does this mint cake do?"
+              },
+              {
+                "npc": "Gnomish mint cake is a great source of energy for the gnome traveller. It will give you that extra bit of zip when you are running out of steam."
+              },
+              {
+                "player": "Ooh, that might come in very handy. Do you have any spare?"
+              },
+              {
+                "npc": "I need all the mint cake I have, I'm afraid."
+              }
+            ],
+            "id": "gqBqA0"
+          },
+          {
+            "text": "What does this seed pod do?",
+            "condition": "If the player has a grand seed pod",
+            "steps": [
+              {
+                "player": "What does this seed pod do?"
+              },
+              {
+                "npc": "Ah, the seed pod of the Grand Tree is a fascinating spirit artefact. It is a very useful thing, though one must treat it with respect, since the Grand Tree has a connection with all of its parts, however distant they"
+              },
+              {
+                "npc": "may be. How do you think the Spirit Trees work?"
+              },
+              {
+                "npc": "If you launch its seeds in a far flung location, you will be helping the tree survive, so the grand tree will help a gnome glider pilot find you, using the seed burst itself (which marks the sky) and a little magic, and bring you"
+              },
+              {
+                "npc": "back home as an act of gratitude. Budding farmers will also find their link with plants to be just a little bit better than before."
+              },
+              {
+                "npc": "However, it takes time for a pilot to find you, and if you are in a real hurry, and I mean a real emergency, you can just squash the seed pod. The Grand Tree doesn't like this, but will pull you back"
+              },
+              {
+                "npc": "home straight away. Don't do this if you need to do anything with plants straight away, though - your fingers will be considerably less green for a while after using the seed pod this way, and the journey is not"
+              },
+              {
+                "npc": "very pleasant..."
+              },
+              {
+                "player": "Wow, that's very interesting. Thanks."
+              }
+            ],
+            "id": "ztuYM9"
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "Dvcbmm"
+      },
+      {
+        "npc": "I'm struggling with this, please help me solve it!"
+      },
+      {
+        "type": "unavailable",
+        "id": "T40vu7"
+      }
+    ],
+    "treasure-trails-hard-when-talked-to-without-having-solved-the-puzzle-box": [
+      {
+        "npc": "Sorry but you haven't solved the puzzle yet."
+      }
+    ],
+    "treasure-trails-hard-when-talked-to-having-solved-the-puzzle-box": [
+      {
+        "npc": "Thanks [player name]!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "another clue scroll",
+        "id": "eXzZZT"
+      },
+      {
+        "type": "message",
+        "text": "Brambrickle has given you another clue scroll!",
+        "id": "RLiHtj"
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "WDTuqM"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "W_DUbD"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "HFRN36"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "W2dZYL"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food item] to Brambickle.",
+            "id": "gENDZi"
+          },
+          {
+            "npc": "Brrrr. This will warm me up, I'm bored of snow and Troll food."
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a mint cake:",
+            "steps": [
+              {
+                "npc": "Now that I have some proper food, I won't need this any more."
+              },
+              {
+                "type": "message",
+                "text": "You are given some mintcake as a tip.",
+                "id": "spAI9A"
+              }
+            ],
+            "id": "9rFcBC"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is grand seed pods:",
+            "steps": [
+              {
+                "npc": "Here, take these Grand Seed pods. Very useful in emergencies!"
+              },
+              {
+                "type": "message",
+                "text": "You are given some seed pods as a tip.",
+                "id": "DD0sYh"
+              }
+            ],
+            "id": "3dc4B5"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is goutweed:",
+            "steps": [
+              {
+                "npc": "I found this odd herb, maybe you can do something with it."
+              },
+              {
+                "type": "message",
+                "text": "You are given some goutweed as a tip.",
+                "id": "uiVOVQ"
+              }
+            ],
+            "id": "Khw4lE"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a bird nest:",
+            "steps": [
+              {
+                "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+              },
+              {
+                "type": "message",
+                "text": "You are given nothing as a tip.",
+                "id": "-D7B5m"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "89eI9X"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is anything else:",
+            "steps": [
+              {
+                "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+              },
+              {
+                "type": "action",
+                "text": "You are given [a/some] [reward item(s)] as a tip.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "XdsWni"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "911Ftu"
+          }
+        ],
+        "id": "9oGF4q"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "kbHJkD"
+          }
+        ],
+        "id": "P9C5GN"
+      }
+    ]
+  }
+}

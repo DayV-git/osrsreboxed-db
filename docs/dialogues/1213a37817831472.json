@@ -1,0 +1,160 @@
+{
+  "default": "before-pirate-s-treasure",
+  "variants": {
+    "before-pirate-s-treasure": [
+      {
+        "npc": "Arr, Matey!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm in search of treasure.",
+            "steps": [
+              {
+                "player": "I'm in search of treasure."
+              },
+              {
+                "npc": "Arr, treasure you be after eh? Well I might be able to tell you where to find some... For a price..."
+              },
+              {
+                "player": "What sort of price?"
+              },
+              {
+                "npc": "Well for example if you can get me a bottle of rum... Not just any rum mind..."
+              },
+              {
+                "npc": "I'd like some rum made on Karamja Island. There's no rum like Karamja Rum!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Rum Deal:",
+                "steps": [
+                  {
+                    "player": "Would some Braindeath 'Rum' do?"
+                  },
+                  {
+                    "npc": "Gadzooks, that swill! Not a chance!"
+                  },
+                  {
+                    "npc": "It's Karamja Rum or no deal."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "o_hFTI"
+                  }
+                ],
+                "id": "WbtA4m"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Pirate's Treasure quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Ok, I will bring you some rum."
+                      },
+                      {
+                        "npc": "Yer a saint, although it'll take a miracle to get it off Karamja."
+                      },
+                      {
+                        "player": "What do you mean?"
+                      },
+                      {
+                        "npc": "The Customs office has been clampin' down on the export of spirits. You seem like a resourceful young [lad/lass], I'm sure ye'll be able to find a way to slip the stuff past them."
+                      },
+                      {
+                        "player": "Well I'll give it a shot."
+                      },
+                      {
+                        "npc": "Arr, that's the spirit!"
+                      }
+                    ],
+                    "hook": "quest:pirate-s-treasure:start",
+                    "quest": "Pirate's Treasure"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Not right now."
+                      },
+                      {
+                        "npc": "Fair enough. I'll still be here and thirsty whenever you feel like helpin' out."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Arr!",
+            "steps": [
+              {
+                "player": "Arr!"
+              },
+              {
+                "npc": "Arr!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "WSie6L"
+              }
+            ]
+          },
+          {
+            "text": "Do you have anything for trade?",
+            "steps": [
+              {
+                "player": "Do you have anything for trade?"
+              },
+              {
+                "npc": "Nothin' at the moment, but then again the Customs Agents are on the warpath right now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-pirate-s-treasure": [
+      {
+        "npc": "Arr, Matey!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Arr!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Qpdswu"
+              }
+            ]
+          },
+          {
+            "text": "Do you have anything for trade?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eyO111"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-pirate-s-treasure-using-a-karamjan-rum-on-him-after-pirate-s-treasure-is-completed": [
+      {
+        "npc": "Thanks fer the thought, but I still have to finish this bottle."
+      }
+    ]
+  }
+}

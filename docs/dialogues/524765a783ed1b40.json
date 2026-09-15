@@ -1,0 +1,133 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Would you like to buy a drink?"
+      },
+      {
+        "player": "What do you serve?"
+      },
+      {
+        "npc": "Beer!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'll have a beer then.",
+            "steps": [
+              {
+                "player": "I'll have a beer then."
+              },
+              {
+                "npc": "Ok, that'll be two coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have two coins in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh dear. I don't seem to have enough money."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "nqbR6X"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has two coins in their inventory:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a Beer",
+                    "id": "1D7JyV"
+                  }
+                ],
+                "id": "vVug4w"
+              }
+            ]
+          },
+          {
+            "text": "I'll not have anything then.",
+            "steps": [
+              {
+                "player": "I'll not have anything then."
+              }
+            ]
+          },
+          {
+            "text": "I'm doing Alfred Grimhand's Barcrawl.",
+            "condition": "If the player has a barcrawl card in their inventory without Flying Horse Inn completed:",
+            "steps": [
+              {
+                "player": "I'm doing Alfred Grimhand's Barcrawl."
+              },
+              {
+                "npc": "Fancy a bit of Heart Stopper then do you? It'll only be 8 coins."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does have 8 coins:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "type": "unavailable",
+                    "id": "RAd-pW"
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "ycqBbL"
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "VUkh-X"
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "LU7fDB"
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "3pv-E_"
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player takes damage.",
+                    "id": "dDcyDP"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "DnWkbN"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 8 coins:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "player": "Sorry, I don't have 8 coins."
+                  }
+                ],
+                "id": "TYsp6I"
+              }
+            ],
+            "id": "4f6mPe"
+          }
+        ]
+      }
+    ],
+    "using-the-barcrawl-card-on-the-bartender": [
+      {
+        "type": "action",
+        "text": "Same as above from \"I'm doing Alfred Grimhand's Barcrawl.\"",
+        "id": "nPZ1GT"
+      }
+    ]
+  }
+}

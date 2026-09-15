@@ -1,0 +1,136 @@
+{
+  "steps": [
+    {
+      "npc": "Nilsal. Interested in buying some weapons or armour?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes please.",
+          "steps": [
+            {
+              "player": "Yes please."
+            },
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Fortis Blacksmith",
+              "id": "OM5VqD"
+            }
+          ]
+        },
+        {
+          "text": "Do you make these yourself?",
+          "steps": [
+            {
+              "player": "Do you make these yourself?"
+            },
+            {
+              "npc": "Of course, and you won't find anything finer than what I offer. I didn't become the official blacksmith to the Royal Family of Varlamore by producing subpar goods."
+            },
+            {
+              "player": "You're the official blacksmith? Does that mean you can sell me some armour like the knights around here wear?"
+            },
+            {
+              "npc": "Are you a Knight of Varlamore?"
+            },
+            {
+              "player": "No."
+            },
+            {
+              "npc": "Than I cannot. However, I still have plenty of other items that might interest you. Would you like to take a look?"
+            },
+            {
+              "type": "jump",
+              "reference": "initial",
+              "id": "lbf5y3"
+            }
+          ]
+        },
+        {
+          "text": "Can you repair something for me?",
+          "steps": [
+            {
+              "player": "Can you repair something for me?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has no repairable equipment:",
+              "steps": [
+                {
+                  "npc": "You don't have anything I can repair."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "OVWLJG"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has repairable equipment:",
+              "steps": [
+                {
+                  "type": "condition",
+                  "text": "If the player doesn't have enough coins:",
+                  "steps": [
+                    {
+                      "npc": "I'll need [x] coins to repair that."
+                    },
+                    {
+                      "type": "end"
+                    }
+                  ],
+                  "id": "fqc81-"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player has enough coins:",
+                  "steps": [
+                    {
+                      "type": "choice",
+                      "prompt": "What would you like to do?",
+                      "options": [
+                        {
+                          "text": "Repair that item: [x] coins.",
+                          "steps": [
+                            {
+                              "type": "action",
+                              "text": "The item is repaired.",
+                              "id": "Wxo-tH"
+                            },
+                            {
+                              "npc": "There you go, happy doing business with you!"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Cancel.",
+                          "steps": []
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "UNzpaw"
+                }
+              ],
+              "id": "P5DLRV"
+            }
+          ]
+        },
+        {
+          "text": "No thanks.",
+          "steps": [
+            {
+              "player": "No thanks."
+            },
+            {
+              "npc": "As you wish. You are always welcome to return if you change your mind."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

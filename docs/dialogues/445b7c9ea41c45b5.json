@@ -1,0 +1,720 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I have some stymphike feathers here.",
+            "condition": "If the player has stymphike feathers in their inventory:",
+            "steps": [
+              {
+                "player": "I have some stymphike feathers here."
+              },
+              {
+                "type": "message",
+                "text": "How many feathers would you like to hand over? (1 - [number])",
+                "id": "QwcJTm"
+              },
+              {
+                "type": "message",
+                "text": "You give [number] feathers to the aranei. They now have [number] in total.",
+                "id": "xep8aM"
+              }
+            ],
+            "id": "jJzzDm"
+          },
+          {
+            "text": "How many stymphike feathers have I handed in?",
+            "condition": "If the player has handed in at least one stymphike feather:",
+            "steps": [
+              {
+                "player": "How many stymphike feathers have I handed in?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has one feather stored:",
+                "steps": [
+                  {
+                    "npc": "Currently, my fellow disciples and I have 1 feather that has been handed in by you."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "kk8BM_"
+                  }
+                ],
+                "id": "4BCyoY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has two or more feathers stored:",
+                "steps": [
+                  {
+                    "npc": "Currently, my fellow disciples and I have [number] feathers that have been handed in by you."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "rSwezH"
+                  }
+                ],
+                "id": "6lZYdQ"
+              }
+            ],
+            "id": "sfQWoR"
+          },
+          {
+            "text": "Could you tell me more about this place?",
+            "steps": [
+              {
+                "player": "Could you tell me more about this place?"
+              },
+              {
+                "npc": "It's a venator breeding ground. Father Sugadinti wishes for their numbers to be restored."
+              },
+              {
+                "player": "Interesting... So I can't kill any?"
+              },
+              {
+                "npc": "Not necessarily. The weak must be culled so the best specimens can thrive. As such, with a Slayer Master's permission, I will allow you to slay them."
+              },
+              {
+                "npc": "Alternatively, are you aware of stymphikes? They prey on venator pups. Bring some feathers as proof of their deaths, either to myself or one of my fellow disciples, and we will allow you to kill some venators in return."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no stymphike feathers stored:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "_qyyWZ"
+                  }
+                ],
+                "id": "846Iqe"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has one or more stymphike feathers stored:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I have some stymphike feathers here.",
+                        "condition": "If the player has feathers in their inventory:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "3wVnZp"
+                          }
+                        ],
+                        "id": "-b3kkr"
+                      },
+                      {
+                        "text": "How many stymphike feathers have I handed in?",
+                        "condition": "If the player has one or more feathers stored:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "Mm__ab"
+                          }
+                        ],
+                        "id": "q7cEFQ"
+                      },
+                      {
+                        "text": "I may take you up on the offer some time.",
+                        "steps": [
+                          {
+                            "player": "I may take you up on the offer some time."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "3YbtBz"
+              }
+            ]
+          },
+          {
+            "text": "I'd better be off.",
+            "steps": [
+              {
+                "player": "I'd better be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-standard-dialogue-at-the-hunting-grounds-if-the-player-is-carrying-venator-teeth": [
+      {
+        "npc": "Greetings. I see you are carrying venator teeth. They are of use to us, if you would like to trade?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade venator teeth for dragon arrowtips and dart tips?",
+                "options": [
+                  {
+                    "text": "Yes"
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one venator tooth:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade some venator fangs in for [number] dragon arrowtips.",
+                    "id": "ULLJt-"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "u_XUkm"
+                  }
+                ],
+                "id": "TQYJPJ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one venator fang:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade some venator teeth in for [number] dragon dart tips.",
+                    "id": "lzTcu_"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "Jy-xk6"
+                  }
+                ],
+                "id": "W1uaHf"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one venator tooth and one venator fang:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade some venator teeth in for [number] dragon arrowtips and [number] dragon dart tips.",
+                    "id": "mMkZkD"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "8GzIwU"
+                  }
+                ],
+                "id": "ZcgYHO"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "No"
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one venator tooth:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade some venator fangs in for [number] dragon arrowtips.",
+                    "id": "2rVYaP"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "f4eQRl"
+                  }
+                ],
+                "id": "njoxHd"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one venator fang:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade some venator teeth in for [number] dragon dart tips.",
+                    "id": "RK58dt"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "9LiAhs"
+                  }
+                ],
+                "id": "sfXTFR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one venator tooth and one venator fang:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You trade some venator teeth in for [number] dragon arrowtips and [number] dragon dart tips.",
+                    "id": "otw34e"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "v-U7fX"
+                  }
+                ],
+                "id": "WOCZJX"
+              }
+            ]
+          },
+          {
+            "text": "What do you use venator teeth for?",
+            "steps": [
+              {
+                "player": "What do you use venator teeth for?"
+              },
+              {
+                "npc": "We fashion our own arrowheads and dart tips out of them."
+              },
+              {
+                "player": "Interesting..."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's trade venator teeth.",
+                    "steps": [
+                      {
+                        "player": "Let's trade venator teeth."
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Trade venator teeth for dragon arrowtips and dart tips?",
+                        "options": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I have some stymphike feathers here.",
+                    "condition": "If the player has stymphike feathers in their inventory:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "9DVZgT"
+                      }
+                    ],
+                    "id": "lOY49p"
+                  },
+                  {
+                    "text": "How many stymphike feathers have I handed in?",
+                    "condition": "If the player has handed in at least one stymphike feather:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "-TbgHu"
+                      }
+                    ],
+                    "id": "xdhuLe"
+                  },
+                  {
+                    "text": "Could you tell me more about this place?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "R7IMbd"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd better be off.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "kJk_5Z"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have some stymphike feathers here.",
+            "condition": "If the player has stymphike feathers in their inventory:",
+            "steps": [
+              {
+                "player": "I have some stymphike feathers here."
+              },
+              {
+                "type": "message",
+                "text": "How many feathers would you like to hand over? (1 - [number])",
+                "id": "_KSEuJ"
+              },
+              {
+                "type": "message",
+                "text": "You give [number] feathers to the aranei. They now have [number] in total.",
+                "id": "kYLJey"
+              }
+            ],
+            "id": "V6r9-c"
+          },
+          {
+            "text": "How many stymphike feathers have I handed in?",
+            "condition": "If the player has handed in at least one stymphike feather:",
+            "steps": [
+              {
+                "player": "How many stymphike feathers have I handed in?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has one feather stored:",
+                "steps": [
+                  {
+                    "npc": "Currently, my fellow disciples and I have 1 feather that has been handed in by you."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "t0yw2D"
+                  }
+                ],
+                "id": "n5I5rL"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has two or more feathers stored:",
+                "steps": [
+                  {
+                    "npc": "Currently, my fellow disciples and I have [number] feathers that have been handed in by you."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "KzS1HB"
+                  }
+                ],
+                "id": "nZuUYt"
+              }
+            ],
+            "id": "oOGJo4"
+          },
+          {
+            "text": "Actually, could you tell me more about this place?",
+            "steps": [
+              {
+                "player": "Actually, could you tell me more about this place?"
+              },
+              {
+                "npc": "It's a venator breeding ground. Father Sugadinti wishes for their numbers to be restored."
+              },
+              {
+                "player": "Interesting... So I can't kill any?"
+              },
+              {
+                "npc": "Not necessarily. The weak must be culled so the best specimens can thrive. As such, with a Slayer Master's permission, I will allow you to slay them."
+              },
+              {
+                "npc": "Alternatively, are you aware of stymphikes? They prey on venator pups. Bring some feathers as proof of their deaths, either to myself or one of my fellow disciples, and we will allow you to kill some venators in return."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no stymphike feathers stored:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "_qyyWZ"
+                  }
+                ],
+                "id": "enn2lv"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has one or more stymphike feathers stored:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I have some stymphike feathers here.",
+                        "condition": "If the player has feathers in their inventory:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "Css4Y2"
+                          }
+                        ],
+                        "id": "CbcKZC"
+                      },
+                      {
+                        "text": "How many stymphike feathers have I handed in?",
+                        "condition": "If the player has one or more feathers stored:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "v5raec"
+                          }
+                        ],
+                        "id": "KbfxZh"
+                      },
+                      {
+                        "text": "I may take you up on the offer some time.",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "_qyyWZ"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "UeYSCb"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Let's trade venator teeth.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "AgEXR0"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What do you use venator teeth for?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "0LJCiM"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'd better be off.",
+                    "steps": [
+                      {
+                        "player": "I'd better be off."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "As you wish."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-give-feathers": [
+      {
+        "type": "condition",
+        "text": "With no feathers:",
+        "steps": [
+          {
+            "npc": "I'm afraid you don't have any feathers to give to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gpRVCm"
+      },
+      {
+        "type": "condition",
+        "text": "With feathers:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "How many feathers would you like to hand over? (1 - [number])",
+            "id": "qgaRa-"
+          },
+          {
+            "type": "message",
+            "text": "You give [number] feathers to the aranei. They now have [number] in total.",
+            "id": "nGVZtA"
+          }
+        ],
+        "id": "KLFgbt"
+      }
+    ],
+    "standard-dialogue-trade-teeth": [
+      {
+        "type": "condition",
+        "text": "With no teeth:",
+        "steps": [
+          {
+            "npc": "I'm afraid you don't have any teeth to trade."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "0474PK"
+      },
+      {
+        "type": "condition",
+        "text": "With teeth:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player has at least one venator tooth:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You trade some venator fangs in for [number] dragon arrowtips.",
+                "id": "KsqK_p"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "Kl2xOw"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has at least one venator fang:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You trade some venator teeth in for [number] dragon dart tips.",
+                "id": "U380VL"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "S6Gpzt"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has at least one venator tooth and one venator fang:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You trade some venator teeth in for [number] dragon arrowtips and [number] dragon dart tips.",
+                "id": "_PxtSX"
+              }
+            ],
+            "id": "eH5qVF"
+          }
+        ],
+        "id": "VEWhxw"
+      }
+    ],
+    "initial-dialogue": [
+      {
+        "npc": "Greetings."
+      },
+      {
+        "player": "Hello. What is this place?"
+      },
+      {
+        "npc": "It's a venator breeding ground. Father Sugadinti wishes for their numbers to be restored."
+      },
+      {
+        "player": "Interesting... So I can't kill any?"
+      },
+      {
+        "npc": "Not necessarily. The weak must be culled so the best specimens can thrive. As such, with a Slayer Master's permission, I will allow you to slay them."
+      },
+      {
+        "npc": "Alternatively, are you aware of stymphikes? They prey on venator pups. Bring some feathers as proof of their deaths, either to myself or one of my fellow disciples, and we will allow you to kill some venators in return."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have any stymphike feathers:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "_qyyWZ"
+          }
+        ],
+        "id": "nqgxVR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has stymphike feathers:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I have some stymphike feathers here.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "N2qdfl"
+                  }
+                ]
+              },
+              {
+                "text": "I may take you up on the offer some time.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "Pp4IJo"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "YkJo77"
+      }
+    ]
+  },
+  "branches": {
+    "_qyyWZ": [
+      {
+        "player": "I may take you up on the offer some time."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

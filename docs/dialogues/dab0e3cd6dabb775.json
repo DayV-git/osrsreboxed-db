@@ -1,0 +1,119 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-during-the-dwarves-visit-in-the-fremennik-isles": [
+      {
+        "player": "Hello. What's happening in town at the moment?"
+      },
+      {
+        "npc": "These dwarves have arrived from Keldagrim - the Chancellor has asked me to look after them, but they are eating all of our food and drinking all of our booze."
+      },
+      {
+        "player": "What are the dwarves doing here?"
+      },
+      {
+        "npc": "They are organising some sort of trade agreement. I don't know what they are trading."
+      },
+      {
+        "player": "Thanks."
+      }
+    ],
+    "standard-dialogue-after-completing-the-fremennik-isles": [
+      {
+        "type": "condition",
+        "text": "If the player has not yet talked to Vanligga:",
+        "steps": [
+          {
+            "player": "Hello, Vanligga!"
+          },
+          {
+            "npc": "Oh, hello [Fremennik name]. Always good to see a friend."
+          },
+          {
+            "npc": "Hmmm, I suppose I can trust you, since you have done me a favour in the past. Can you keep a secret?"
+          },
+          {
+            "player": "Of course."
+          },
+          {
+            "npc": "Well as you probably already know, all yak meat and yak products are banned on this island - orders of the King..."
+          },
+          {
+            "player": "That King has some very strange attitudes."
+          },
+          {
+            "npc": "Well, I have a contact on the other island. Are you interested in obtaining some produce?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Contraband yak produce.",
+                    "id": "m7hfeE"
+                  }
+                ]
+              },
+              {
+                "text": "No, thanks.",
+                "steps": [
+                  {
+                    "player": "No, thanks."
+                  },
+                  {
+                    "npc": "Well, any time you need black market yak produce, you know where to come."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "nwYh0H"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has already talked to Vanligga:",
+        "steps": [
+          {
+            "npc": "Wanna buy some yak?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "open_shop",
+                    "target": "Contraband yak produce.",
+                    "id": "UOjKPo"
+                  }
+                ]
+              },
+              {
+                "text": "No, thanks.",
+                "steps": [
+                  {
+                    "player": "No, thanks."
+                  },
+                  {
+                    "npc": "Well, any time you need black market yak produce, you know where to come."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "pE33O-"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1301 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Is there any chance you could help me?"
+      },
+      {
+        "player": "What's wrong?"
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "It's my husband, he works on a fishing platform. Once a month he takes our son, Kennith, out with him."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "They usually write to me regularly, but I've heard nothing all week. It's very strange."
+      },
+      {
+        "player": "Maybe the post was lost!"
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Maybe, but no-one's heard from the other fishermen on the platform. Their families are becoming quite concerned."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Is there any chance you could visit the platform and find out what's going on?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's Firemaking level is less than 30:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it.",
+            "id": "21ZY3k"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "xPoRLl"
+          }
+        ],
+        "id": "sA-STZ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player's Firemaking level is 30 or above:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Start the Sea Slug quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "I suppose so, how do I get there?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Caroline",
+                    "text": "That's very good of you [player name]. My friend Holgart will take you there."
+                  },
+                  {
+                    "player": "Ok, I'll go and see if they're ok."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Caroline",
+                    "text": "I'll reward you for your time. It'll give me peace of mind to know Kennith and my husband, Kent, are safe."
+                  }
+                ],
+                "hook": "quest:sea-slug:start",
+                "quest": "Sea Slug"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "I'm sorry, I'm too busy."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Caroline",
+                    "text": "That's a shame."
+                  },
+                  {
+                    "player": "Bye."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Caroline",
+                    "text": "Bye."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "smqMa7"
+      }
+    ],
+    "starting-off-talking-to-caroline-again": [
+      {
+        "player": "Hello Caroline."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Brave [player name], have you any news about my son and his father?"
+      },
+      {
+        "player": "I'm working on it now Caroline."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Please bring them back safe and sound."
+      },
+      {
+        "player": "I'll do my best."
+      }
+    ],
+    "talking-to-holgart": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "Hello m'hearty."
+      },
+      {
+        "player": "I would like a ride on your boat to the fishing platform."
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "I'm afraid it isn't sea worthy, it's full of holes. To fill the holes I'll need some swamp paste."
+      },
+      {
+        "player": "Swamp paste?"
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "Yes, swamp tar mixed with flour and heated over a fire."
+      },
+      {
+        "type": "condition",
+        "text": "If the player already has one swamp paste in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "In fact, unless me nose be mistaken, you've got some in yer pack."
+          },
+          {
+            "player": "Oh yes, I forgot about that stuff. Can you use it?"
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "Aye, that be perfect."
+          },
+          {
+            "type": "message",
+            "text": "You give Holgart the swamp paste.",
+            "id": "rSdV8b"
+          },
+          {
+            "type": "action",
+            "text": "Cutscene starts, focusing on Holgart fixing the boat.",
+            "id": "YlJKOo"
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "Right me hearty. Let's get this boat fixed."
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "Huzzah! We've fixed the leaky old tub."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "u-qtrY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have swamp tar:",
+        "steps": [
+          {
+            "player": "Where can I find swamp tar?"
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "Unfortunately the only supply of swamp tar is in the swamps below Lumbridge. It's too far for an old man like me to travel."
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "If you make me some swamp paste I'll give you a ride in my boat."
+          },
+          {
+            "player": "I'll see what I can do."
+          }
+        ],
+        "id": "DDshO3"
+      }
+    ],
+    "talking-to-holgart-talking-to-holgart-again": [
+      {
+        "player": "Hello Holgart."
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "Hello m'hearty. Did you manage to make some swamp paste?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have swamp tar:",
+        "steps": [
+          {
+            "player": "I'm afraid not."
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "It's simply swamp tar mixed with flour heated over a fire. Unfortunately the only supply of swamp tar is in the swamps below Lumbridge."
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "I can't fix my row boat without it."
+          },
+          {
+            "player": "Ok, I'll try to find some."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3Vzp8j"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has swamp tar:",
+        "steps": [
+          {
+            "player": "Yes, I have some here."
+          },
+          {
+            "type": "unavailable",
+            "id": "Gq26Ow"
+          },
+          {
+            "type": "action",
+            "text": "Cutscene starts, focusing on Holgart fixing the boat.",
+            "id": "9PPZhe"
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "Right me hearty. Let's get this boat fixed."
+          },
+          {
+            "type": "line",
+            "speaker": "Holgart",
+            "text": "Huzzah! We've fixed the leaky old tub."
+          }
+        ],
+        "id": "OtijM_"
+      }
+    ],
+    "talking-to-holgart-talking-to-holgart-after-fixing-the-boat": [
+      {
+        "player": "Hello Holgart."
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "Hello again land lover. There's some strange goings on, on that platform, I tell you."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Will you take me there?",
+            "steps": [
+              {
+                "player": "Will you take me there?"
+              },
+              {
+                "type": "line",
+                "speaker": "Holgart",
+                "text": "Of course m'hearty. If that's what you want."
+              },
+              {
+                "type": "message",
+                "text": "You arrive at the fishing platform.",
+                "id": "46f1OE"
+              }
+            ]
+          },
+          {
+            "text": "I'm keeping away from there.",
+            "steps": [
+              {
+                "player": "I'm keeping away from there."
+              },
+              {
+                "type": "line",
+                "speaker": "Holgart",
+                "text": "Fair enough m'hearty."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-the-fishing-platform-talking-to-holgart-at-the-fishing-platform": [
+      {
+        "player": "Hey, Holgart."
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "Have you had enough of this place yet? It's really starting to scare me."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No, I'm going to stay a while.",
+            "steps": [
+              {
+                "player": "No, I'm going to stay a while."
+              },
+              {
+                "type": "line",
+                "speaker": "Holgart",
+                "text": "Okay... you're the boss."
+              }
+            ]
+          },
+          {
+            "text": "Okay, let's go back.",
+            "steps": [
+              {
+                "player": "Okay, let's go back."
+              },
+              {
+                "type": "line",
+                "speaker": "Holgart",
+                "text": "Okay m'hearty, jump on."
+              },
+              {
+                "type": "action",
+                "text": "Holgart takes the player back to Witchaven.",
+                "id": "w8c3IN"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-the-fishing-platform-taking-a-sea-slug": [
+      {
+        "type": "message",
+        "text": "You pick up the sea slug.",
+        "id": "A-lD29"
+      },
+      {
+        "type": "message",
+        "text": "It sinks its teeth deep into your hand.",
+        "id": "z10VLm"
+      },
+      {
+        "player": "Ouch!"
+      },
+      {
+        "type": "action",
+        "text": "The player takes 3 hitpoints.",
+        "id": "xfsKBp"
+      }
+    ],
+    "at-the-fishing-platform-talking-to-bailey": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "What? Who are you? Come inside quickly!"
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "What are you doing here?"
+      },
+      {
+        "player": "I'm trying to find out what happened to a boy named Kennith."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Oh you mean Kent's son. He's around somewhere, probably hiding if he knows what's good for him."
+      },
+      {
+        "player": "Hiding from what? What's got you so frightened?"
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Haven't you seen all those things out there?"
+      },
+      {
+        "player": "The sea slugs?"
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "It all began about a week ago. We pulled up a haul of deep sea flatfish. Mixed in with them we found those slug things, but thought nothing of it."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Not long after that my friends began to change, now they spend all day pulling in hauls of fish, only to throw back the fish and keep those nasty sea slugs."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "What am I supposed to do with those? I haven't figured out how to kill one yet, if I put them near the stove they squirm and jump away."
+      },
+      {
+        "player": "I doubt they would taste too good."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "This is no time for humour."
+      },
+      {
+        "player": "I'm sorry, I didn't mean to upset you."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "That's okay. I just can't shake the feeling that this is the start of something... Terrible."
+      }
+    ],
+    "at-the-fishing-platform-talking-to-kennith": [
+      {
+        "player": "Are you okay young one?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kennith",
+        "text": "No, I want my daddy!"
+      },
+      {
+        "player": "Where is your father?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kennith",
+        "text": "He went to get help days ago."
+      },
+      {
+        "type": "line",
+        "speaker": "Kennith",
+        "text": "The nasty fishermen tried to throw me and daddy into the sea. So he told me to hide here."
+      },
+      {
+        "player": "That's good advice, you stay here and I'll go try and find your father."
+      }
+    ],
+    "at-the-fishing-platform-subsequent-dialogue-with-kennith": [
+      {
+        "player": "Are you okay?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kennith",
+        "text": "I want to see daddy!"
+      },
+      {
+        "player": "I'm working on it."
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "condition",
+        "text": "If the player kicks the loose panel near Kennith:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You kick the loose panel.",
+            "id": "NY7QmB"
+          },
+          {
+            "type": "message",
+            "text": "But nothing interesting happens.",
+            "id": "j_3y8o"
+          }
+        ],
+        "id": "tVEAUZ"
+      }
+    ],
+    "talking-to-holgart-after-talking-to-kennith": [
+      {
+        "player": "Holgart, something strange is going on here."
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "You're telling me, none of the sailors seem to remember who I am."
+      },
+      {
+        "player": "Apparently Kennith's father left for help a couple of days ago."
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "That's a worry, no-one's heard from him on shore. Come on, we'd better go look for him."
+      },
+      {
+        "type": "message",
+        "text": "You arrive on a small island.",
+        "id": "zUdSJX"
+      }
+    ],
+    "at-the-shipwreck-island-talking-to-holgart": [
+      {
+        "player": "Where are we?"
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "Someway off mainland still. You'd better see if me old matey's okay."
+      }
+    ],
+    "at-the-shipwreck-island-talking-to-kent": [
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "Oh thank Saradomin! I thought I'd be left out here forever."
+      },
+      {
+        "player": "Your wife sent me out to find you and your boy. Kennith's fine by the way, he's on the platform."
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "I knew the row boat wasn't sea worthy. I couldn't risk bringing him along but you must get him off that platform."
+      },
+      {
+        "player": "What's going on here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "Five days ago we pulled in a huge catch. As well as fish we caught small slug like creatures, hundreds of them."
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "That's when the fishermen began to act strange."
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "It was the sea slugs, they attach themselves to your body and somehow take over the mind of the carrier."
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "I told Kennith to hide until I returned but I was washed up here."
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "Please go back and get my boy, you can send help for me later."
+      },
+      {
+        "type": "action",
+        "text": "Kent notices a sea slug in your torso.",
+        "id": "EkOxin"
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "[player name] wait!"
+      },
+      {
+        "type": "message",
+        "text": "slooop*",
+        "id": "Hccp8N"
+      },
+      {
+        "type": "message",
+        "text": "He pulls a sea slug from under your top.",
+        "id": "YF5iid"
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "A few more minutes and that thing would have full control of your body."
+      },
+      {
+        "player": "Yuck! Thanks Kent."
+      }
+    ],
+    "at-the-shipwreck-island-subsequent-dialogue-with-kent": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Kent",
+        "text": "Oh my, I must get back to shore."
+      }
+    ],
+    "at-the-shipwreck-island-talking-to-holgart-again-before-returning-to-the-fishing-platform": [
+      {
+        "player": "We'd better get back to the platform so we can see what's going on."
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "You're right. It all sounds pretty creepy."
+      },
+      {
+        "type": "message",
+        "text": "You arrive at the fishing platform.",
+        "id": "Jn71UA"
+      }
+    ],
+    "rescuing-kennith-talking-to-bailey": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Oh, thank the gods it's you. They've all gone mad I tell you, one of the fishermen tried to throw me into the sea!"
+      },
+      {
+        "player": "They're all being controlled by the sea slugs."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "I figured as much."
+      },
+      {
+        "player": "I need to get Kennith off this platform, but I can't get past the fishermen."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "The sea slugs are scared of heat, I figured that out when I tried to cook them."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Here."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no space in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Bailey gives you a torch.",
+            "id": "wKrin9"
+          },
+          {
+            "type": "action",
+            "text": "The unlit torch is dropped to the ground.",
+            "id": "ab-u4V"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "rFOoIK"
+          }
+        ],
+        "id": "TMpoWn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has one free space in their in their inventory:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an unlit torch",
+            "id": "G6lOss"
+          },
+          {
+            "type": "line",
+            "speaker": "Bailey",
+            "text": "I doubt the fishermen will come near you if you can get this torch lit."
+          },
+          {
+            "type": "line",
+            "speaker": "Bailey",
+            "text": "The only problem is all the wood and flint are damp... I can't light a thing!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "E5IETN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player loses their unlit torch:",
+        "steps": [
+          {
+            "player": "I've managed to lose my torch."
+          },
+          {
+            "type": "line",
+            "speaker": "Bailey",
+            "text": "That was silly, fortunately I have another. Here, take it."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an unlit torch",
+            "id": "o9pnQL"
+          }
+        ],
+        "id": "8azT-G"
+      }
+    ],
+    "rescuing-kennith-talking-to-bailey-again-with-the-unlit-torch": [
+      {
+        "player": "I'd better find a way to light this torch, and soon."
+      }
+    ],
+    "rescuing-kennith-interacting-with-the-items": [
+      {
+        "type": "condition",
+        "text": "If the player attempts to use the tinderbox on damp sticks:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Nothing interesting happens.",
+            "id": "wQvAdn"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "xFIt8v"
+      },
+      {
+        "type": "condition",
+        "text": "If the player attempts to use the tinderbox on an unlit torch:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your tinderbox is damp from the sea crossing. It won't light here.",
+            "id": "mJ3MsA"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VW-BAf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player lights a fire upstairs and uses damp sticks on the fire:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You can't cook that.",
+            "id": "MOdTEL"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "EeZXOT"
+      },
+      {
+        "type": "condition",
+        "text": "If the player rotates the crane upstairs:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You rotate the crane around.",
+            "id": "C2azv7"
+          }
+        ],
+        "id": "na1ZP2"
+      }
+    ],
+    "rescuing-kennith-making-a-fire": [
+      {
+        "type": "condition",
+        "text": "If the player uses the broken glass on the damp sticks:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The player uses the broken glass to heat up the damp sticks.",
+            "id": "UDWW7a"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a pair of dry sticks",
+            "id": "X4trOF"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1esuFw"
+      },
+      {
+        "type": "condition",
+        "text": "If the player attempts to rub the dry sticks without level 30 Firemaking:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You rub together the dry sticks but nothing happens.",
+            "id": "Yvv-qv"
+          },
+          {
+            "type": "message",
+            "text": "You need a Firemaking level of 30 or above.",
+            "id": "Ublm8I"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KL7RsY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player attempts to rub the dry sticks with at least level 30 Firemaking:",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player gets the sticks but does not get a fire:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You rub together the dry sticks and the sticks smoke momentarily then die out.",
+                "id": "z0MsOa"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "Y0pf3g"
+          },
+          {
+            "type": "condition",
+            "text": "If the player gets the sticks to start a fire:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have an unlit torch (or has an unlit candle or lantern instead) in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You rub together the dry sticks and the sticks catch alight.",
+                    "id": "rCl9qV"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The sticks smoke momentarily then die out.",
+                    "id": "FhqiGe"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "I-rPmX"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unlit torch in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You rub together the dry sticks and the sticks catch alight.",
+                    "id": "mL0B4V"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You place the smoulding twigs to your torch.",
+                    "id": "N_nqPF"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Your torch lights.",
+                    "id": "mqmTA7"
+                  }
+                ],
+                "id": "dWbO8T"
+              }
+            ],
+            "id": "PbYsAA"
+          }
+        ],
+        "id": "etQbgC"
+      }
+    ],
+    "rescuing-kennith-talking-to-bailey-with-the-lit-torch": [
+      {
+        "player": "I've managed to light the torch."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Well done traveller, you'd better get Kennith out of here soon."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "The fishermen are becoming stranger by the minute, and they keep pulling up those blasted sea slugs."
+      },
+      {
+        "player": "Don't worry I'm working on it."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Just be sure to watch your back. The fishermen seem to have taken notice of you."
+      }
+    ],
+    "rescuing-kennith-attempting-to-go-upstairs-with-an-unlit-torch": [
+      {
+        "type": "message",
+        "text": "You attempt to climb up the ladder.",
+        "id": "fzK4Sj"
+      },
+      {
+        "type": "message",
+        "text": "The fishermen approach you...",
+        "id": "YsWY5S"
+      },
+      {
+        "type": "message",
+        "text": "and smack you on the head with a fishing rod!",
+        "id": "o7FMsM"
+      },
+      {
+        "player": "Ouch!"
+      },
+      {
+        "type": "action",
+        "text": "The player is dealt 4 Hitpoints.",
+        "id": "wgQntK"
+      }
+    ],
+    "rescuing-kennith-talking-to-kennith": [
+      {
+        "player": "Hello Kennith, are you okay?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kennith",
+        "text": "No, I want my daddy."
+      },
+      {
+        "player": "You'll be able to see him soon. First we need to get you back to land, come with me to the boat."
+      },
+      {
+        "type": "line",
+        "speaker": "Kennith",
+        "text": "No!"
+      },
+      {
+        "player": "What, why not?"
+      },
+      {
+        "type": "line",
+        "speaker": "Kennith",
+        "text": "I'm scared of those nasty sea slugs. I won't go near them."
+      },
+      {
+        "player": "Okay, you wait here and I'll go figure another way to get you out."
+      }
+    ],
+    "rescuing-kennith-using-the-lit-torch": [
+      {
+        "type": "condition",
+        "text": "If the player uses the lit torch on any sea slug:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The sea slug curls up into its shell.",
+            "id": "UrIZDa"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ya0eOn"
+      },
+      {
+        "type": "condition",
+        "text": "If the player uses the lit torch on a possessed fisherman:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The fisherman covers his face.",
+            "id": "kWqmzX"
+          },
+          {
+            "type": "message",
+            "text": "He seems afraid of your torch.",
+            "id": "4lPMau"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "wDzLPb"
+      },
+      {
+        "type": "condition",
+        "text": "If the player uses the lit torch on the ice cube:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Nothing interesting happens.",
+            "id": "rNuth_"
+          }
+        ],
+        "id": "IjvKCD"
+      }
+    ],
+    "freeing-kennith": [
+      {
+        "type": "condition",
+        "text": "If the player kicks the loose panel near Kennith after talking to Bailey:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You kick the loose panel.",
+            "id": "vJ1GjP"
+          },
+          {
+            "type": "message",
+            "text": "The wood is rotten and crumbles away...",
+            "id": "NgGUPy"
+          },
+          {
+            "type": "message",
+            "text": "leaving an opening big enough for Kennith to climb through.",
+            "id": "5u-9os"
+          }
+        ],
+        "id": "D0o-Tl"
+      }
+    ],
+    "freeing-kennith-talking-to-kennith-after-making-a-hole-in-the-wall": [
+      {
+        "type": "condition",
+        "text": "If there are sea slugs or fishermen nearby:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "He doesn't seem interested in talking.",
+            "id": "BCWjoO"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "MeZGR0"
+      },
+      {
+        "type": "condition",
+        "text": "If there are no sea slugs or fishermen nearby:",
+        "steps": [
+          {
+            "player": "Kennith, I've made an opening in the wall. You can come out through there."
+          },
+          {
+            "type": "line",
+            "speaker": "Kennith",
+            "text": "Are there any sea slugs on the other side?"
+          },
+          {
+            "player": "Not one."
+          },
+          {
+            "player": "Kennith, I've made an opening in the wall. You can come out through there."
+          },
+          {
+            "type": "line",
+            "speaker": "Kennith",
+            "text": "Are there any sea slugs on the other side?"
+          },
+          {
+            "player": "Not one."
+          },
+          {
+            "type": "line",
+            "speaker": "Kennith",
+            "text": "How will I get downstairs?"
+          },
+          {
+            "player": "I'll figure that out in a moment."
+          },
+          {
+            "type": "line",
+            "speaker": "Kennith",
+            "text": "Ok, when you have I'll come out."
+          }
+        ],
+        "id": "uDPQ-A"
+      }
+    ],
+    "freeing-kennith-subsequent-dialogue-with-kennith": [
+      {
+        "type": "message",
+        "text": "He doesn't seem interested in talking.",
+        "id": "n2QuWY"
+      }
+    ],
+    "freeing-kennith-using-the-crane": [
+      {
+        "type": "condition",
+        "text": "If the player is too far away from the crane:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "I need to get closer to that.",
+            "id": "j1zwz0"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3BpJhF"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is one tile from the crane:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Kennith scrambles through the broken wall...",
+            "id": "utnJSh"
+          },
+          {
+            "type": "message",
+            "text": "Down below, you see Holgart collect the boy from the crane and lead him away to safety.",
+            "id": "PGBTE0"
+          }
+        ],
+        "id": "-Z4xx8"
+      }
+    ],
+    "freeing-kennith-talking-to-bailey-after-freeing-kennith": [
+      {
+        "player": "Hello Bailey."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Hello again. I saw you managed to get Kennith off the platform. Well done. He wasn't safe around those slugs."
+      },
+      {
+        "player": "Are you going to come back with us?"
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "No, these fishermen are my friends, I'm sure they can be saved. I'm going to stay and try to get rid of all these slugs."
+      },
+      {
+        "player": "Do you have a way of removing the slugs once they've attached themselves to someone?"
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Not yet but I'll keep working on it."
+      },
+      {
+        "player": "I only hope they stay confined to the fishing platform."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "Yes, I dread to think what would happen if they got to Witchaven nearby."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "I guess I'll just have to keep an eye on things here until a way of removing the slugs can be found."
+      },
+      {
+        "player": "You're braver than most. Take care of yourself Bailey."
+      },
+      {
+        "type": "line",
+        "speaker": "Bailey",
+        "text": "You too [player name]."
+      }
+    ],
+    "freeing-kennith-talking-to-holgart": [
+      {
+        "player": "Did you get the kid back to shore?"
+      },
+      {
+        "type": "line",
+        "speaker": "Holgart",
+        "text": "Yes, he's safe and sound with his parents. Your turn to return to land now adventurer."
+      },
+      {
+        "player": "Looking forward to it."
+      },
+      {
+        "type": "message",
+        "text": "The boat arrives at Witchaven.",
+        "id": "i9MI4w"
+      }
+    ],
+    "freeing-kennith-talking-to-caroline": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Brave [player name], you've returned!"
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Kennith told me about the strange goings-on at the platform. I had no idea it was so serious."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "I could have lost my son and my husband if it wasn't for you."
+      },
+      {
+        "player": "We found Kent stranded on an island."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Yes, Holgart told me and sent a rescue party out. Kent's back home now, resting with Kennith. I don't think he'll be doing any fishing for a while."
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Here, take these Oyster pearls as a reward. They're worth quite a bit and can be used to make lethal crossbow bolts."
+      },
+      {
+        "player": "Thanks!"
+      },
+      {
+        "type": "line",
+        "speaker": "Caroline",
+        "text": "Thank you. Take care of yourself [player name]."
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "U0muMo"
+      },
+      {
+        "type": "unavailable",
+        "id": "rWEWub"
+      }
+    ]
+  }
+}

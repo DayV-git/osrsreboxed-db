@@ -1,0 +1,453 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Ahoy Cap'n!"
+      },
+      {
+        "npc": "Ahoy there!"
+      },
+      {
+        "type": "line",
+        "speaker": "Parrot",
+        "text": "Avast ye scurvy swabs!"
+      },
+      {
+        "player": "Huh?"
+      },
+      {
+        "npc": "Don't mind me parrot, he's Cracked Jenny's Tea Cup!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "This, me hearty, is the entrance to the Brimhaven Agility Arena!"
+              },
+              {
+                "npc": "I were diggin for buried treasure when I found it! Amazed I was! It was a sight to behold!"
+              },
+              {
+                "type": "line",
+                "speaker": "Parrot",
+                "text": "Buried treasure!"
+              },
+              {
+                "npc": "It were the biggest thing I'd ever seen! It must've been at least a league from side to side!"
+              },
+              {
+                "npc": "It made me list, I were that excited!"
+              },
+              {
+                "type": "line",
+                "speaker": "Parrot",
+                "text": "Get on with it!"
+              },
+              {
+                "npc": "I'd found a huge cave with all these platforms. I reckon it be an ancient civilisation that made it. I had to be mighty careful as there was these traps everywhere! Dangerous it was!"
+              },
+              {
+                "type": "line",
+                "speaker": "Parrot",
+                "text": "Danger! Danger!"
+              },
+              {
+                "npc": "Entrance is only 200 coins!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "G5qD6s"
+              }
+            ]
+          },
+          {
+            "text": "What do I do in the arena?",
+            "steps": [
+              {
+                "player": "What do I do in the arena?"
+              },
+              {
+                "npc": "Well, me hearty, it's simple. Ye can cross between two platforms by using the traps or obstacles strung across 'em. Try and make your way to the pillar that is indicated by the flashing arrow."
+              },
+              {
+                "npc": "Ye receive tickets for tagging more than one pillar in a row. So ye won't get a ticket from the first pillar but ye will for every platform ye tag in a row after that."
+              },
+              {
+                "npc": "If ye miss a platform ye will miss out on the next ticket so try and get every platform you can! When ye be done, take the tickets to Jackie over there and she'll exchange them for more stuff!"
+              },
+              {
+                "type": "line",
+                "speaker": "Parrot",
+                "text": "Tag when green light means tickets! Tag when red light means green light!"
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "DpZncy"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to use the Agility Arena, please.",
+            "steps": [
+              {
+                "player": "I'd like to use the Agility Arena, please."
+              },
+              {
+                "npc": "Aye, entrance be 200 coins."
+              },
+              {
+                "type": "line",
+                "speaker": "Parrot",
+                "text": "Pieces of eight!"
+              },
+              {
+                "npc": "A word of warning me hearty! There are dangerous traps down there!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough coins:",
+                "steps": [
+                  {
+                    "player": "I don't have the money on me at the moment."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Parrot",
+                    "text": "squawk*"
+                  },
+                  {
+                    "npc": "No coins, no entrance!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "lgvxYw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay, here's 200 coins.",
+                        "steps": [
+                          {
+                            "player": "Okay, here's 200 coins."
+                          },
+                          {
+                            "type": "message",
+                            "text": "You hand Cap'n Izzy 200 coins.",
+                            "id": "geqhzb"
+                          },
+                          {
+                            "npc": "May the wind be in ye sails!"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Never mind.",
+                        "steps": [
+                          {
+                            "player": "Never mind."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "gxtVBg"
+              }
+            ]
+          },
+          {
+            "text": "Can you tell me a bit about the Skillcape of Agility, please?",
+            "condition": "If the player does not have 99 Agility:",
+            "steps": [
+              {
+                "player": "Can you tell me a bit about the Skillcape of Agility, please?"
+              },
+              {
+                "npc": "Aye, to be sure! The Skillcape of Agility be the symbol of the master of dexterity! Providing weight reduction, one who wears it can climb like a cat, run like the wind and jump like...err, well, jump like a jumping thing!"
+              },
+              {
+                "npc": "Now, be there anything else ye'd like to know?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "vE_2lc"
+              }
+            ],
+            "id": "uCvPXE"
+          },
+          {
+            "text": "Is it true you sell Skillcapes of Agility?",
+            "condition": "If the player has 99 Agility:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have an Agility cape on them:",
+                "steps": [
+                  {
+                    "player": "May I buy a Skillcape of Agility, please?"
+                  },
+                  {
+                    "npc": "Most certainly, having it equipped reduces your weight and I think it will really suit you. All that remains to be done is pay me 99000 gold!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I'm afraid I can't afford that.",
+                        "steps": [
+                          {
+                            "player": "I'm afraid I can't afford that."
+                          },
+                          {
+                            "npc": "So sad, too bad. Go and pickpocket some wealthy people and come back here once you're richer."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Certainly, here you go.",
+                        "steps": [
+                          {
+                            "player": "Certainly, here you go."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have at least 99,000 coins:",
+                            "steps": [
+                              {
+                                "player": "But, unfortunately, I don't have enough money with me."
+                              },
+                              {
+                                "npc": "Well, come back and see me when you do."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "8cPPcF"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                            "steps": [
+                              {
+                                "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "jyvIdG"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has at least 99,000 coins and enough inventory space:",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "an Agility cape and hood",
+                                "id": "K11d9Z"
+                              },
+                              {
+                                "npc": "Excellent! That cape really does suit you."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "kZj5Ii"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "zjBChX"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an Agility cape on them:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Skillcape",
+                        "steps": [
+                          {
+                            "player": "May I buy a Skillcape of Agility, please?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "D475QW"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Hood",
+                        "steps": [
+                          {
+                            "player": "May I have another hood for my cape, please?"
+                          },
+                          {
+                            "npc": "Most certainly, and free of charge!"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "an Agility hood",
+                            "id": "2w0cjB"
+                          },
+                          {
+                            "type": "unavailable",
+                            "id": "bHADJ5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Svbr9-"
+              }
+            ],
+            "id": "XL8egj"
+          },
+          {
+            "text": "See you later.",
+            "steps": [
+              {
+                "player": "See you later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Can I help you with something?"
+      },
+      {
+        "player": "Well, I'm here about a treasure trail..."
+      },
+      {
+        "npc": "Ah, you'll be wanting to talk to him then."
+      },
+      {
+        "player": "Him?"
+      },
+      {
+        "type": "line",
+        "speaker": "Parrot",
+        "text": "Avast!"
+      },
+      {
+        "type": "line",
+        "speaker": "Parrot",
+        "text": "Answer this and I'll give you treasure!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "Jw0wf9"
+      },
+      {
+        "type": "message",
+        "text": "The parrot has given you a challenge scroll!",
+        "id": "uq77_U"
+      }
+    ],
+    "treasure-trails-hard-when-spoken-to-again": [
+      {
+        "type": "line",
+        "speaker": "Parrot",
+        "text": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Parrot",
+            "text": "Try again! Try again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "c6OM6V"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Parrot",
+            "text": "Squawk! Pieces of eight!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll]",
+                "id": "II117c"
+              },
+              {
+                "type": "message",
+                "text": "The parrot has given you another clue scroll!",
+                "id": "knve-h"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "GeQRvf"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "OhNrZX"
+              }
+            ],
+            "id": "97DYdG"
+          }
+        ],
+        "id": "LLjQVv"
+      }
+    ]
+  }
+}

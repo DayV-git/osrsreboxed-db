@@ -1,0 +1,280 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-port-phasmatys-before-unlocking-permanent-access": [
+      {
+        "npc": "Would you like to visit Dragontooth Island? It is a most pleasant island in the sea between Morytania and the lands of the east. It'll cost you 25 ectotokens for the return trip."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Okay, here's 25 ectotokens. Let's go.",
+            "condition": "If the player has 25 ectotokens:",
+            "steps": [
+              {
+                "player": "Okay, here's 25 ectotokens. Let's go."
+              },
+              {
+                "type": "message",
+                "text": "After a long boat trip you arrive at Dragontooth Island.",
+                "id": "wWtJmk"
+              }
+            ],
+            "id": "MRsJxL"
+          },
+          {
+            "text": "If I pay 500 ectotokens, can I get unlimited trips?",
+            "steps": [
+              {
+                "player": "If I pay 500 ectotokens, can I get unlimited trips?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 500 ectotokens:",
+                "steps": [
+                  {
+                    "npc": "Yes, that seems fair. Okay, hand them over and we can set off."
+                  },
+                  {
+                    "type": "message",
+                    "text": "After a long boat trip you arrive at Dragontooth Island.",
+                    "id": "722rN1"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "PK0HKM"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 500 ectotokens:",
+                "steps": [
+                  {
+                    "npc": "Yes, I'd accept that deal. But as you don't have enough ectotokens for that, would you like to pay 25 ectotokens for a trip now?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay, here's 25 ectotokens. Let's go.",
+                        "condition": "If the player has 25 ectotokens:",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "IuLICT"
+                          }
+                        ],
+                        "id": "y7f1d7"
+                      },
+                      {
+                        "text": "Not now, thanks.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "m502VZ"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "KRdZhk"
+              }
+            ]
+          },
+          {
+            "text": "Not now, thanks.",
+            "steps": [
+              {
+                "player": "Not now, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-port-phasmatys-after-unlocking-permanent-access": [
+      {
+        "npc": "Would you like to visit Dragontooth Island? It is a most pleasant island in the sea between Morytania and the lands of the east."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "action",
+                "text": "Player is rowed to Dragontooth Island",
+                "id": "KkehCD"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-dragontooth-island": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you take me back to Phasmatys, now?",
+            "steps": [
+              {
+                "player": "Can you take me back to Phasmatys, now?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not wearing a ghostspeak amulet:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The ghost sailor wails at you incomprehensibly, and points at the boat, nodding his ghostly head.",
+                    "id": "u78crV"
+                  },
+                  {
+                    "type": "end"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player is rowed to Port Phasmatys",
+                    "id": "HQGIIY"
+                  }
+                ],
+                "id": "QoVmpe"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing a ghostspeak amulet:",
+                "steps": [
+                  {
+                    "npc": "Yes, climb in."
+                  },
+                  {
+                    "type": "end"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Player is rowed to Port Phasmatys",
+                    "id": "NqmGRU"
+                  }
+                ],
+                "id": "qf_P8s"
+              }
+            ]
+          },
+          {
+            "text": "There isn't much on this island, is there?",
+            "steps": [
+              {
+                "player": "There isn't much on this island, is there?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not wearing a ghostspeak amulet:",
+                "steps": [
+                  {
+                    "npc": "Woooo wooo wooooo woooo"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "53U50W"
+                  }
+                ],
+                "id": "XVXr76"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is wearing a ghostspeak amulet:",
+                "steps": [
+                  {
+                    "npc": "Beautiful isn't it?"
+                  },
+                  {
+                    "player": "But it cost me a lot of ectotokens to get here!"
+                  },
+                  {
+                    "npc": "Worth every token, if you ask me."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "4YkrWF"
+                  }
+                ],
+                "id": "r1UhkH"
+              }
+            ]
+          },
+          {
+            "text": "Actually, I don't want anything.",
+            "steps": [
+              {
+                "player": "Actually, I don't want anything."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not wearing a ghostspeak amulet:",
+                "steps": [
+                  {
+                    "npc": "Woooo wooo wooooo woooo"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Hkg3hg"
+                  }
+                ],
+                "id": "V3KtgA"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-travel-option": [
+      {
+        "type": "condition",
+        "text": "If the player is not wearing a ghostspeak amulet:",
+        "steps": [
+          {
+            "npc": "Woooo wooo wooooo woooo"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Lc9S9l"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is wearing a ghostspeak amulet, has not unlocked permanent access, and does not have 25 ectotokens:",
+        "steps": [
+          {
+            "npc": "A return trip to Dragontooth Island costs 25 ectotokens."
+          }
+        ],
+        "id": "MUiW7u"
+      }
+    ]
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "Well, it's funny you should ask that actually, I run the local parcel service to the mainland."
+              },
+              {
+                "player": "Parcel service?"
+              },
+              {
+                "npc": "Yes, we sometimes get asked to send items back to the mainland. We can send items to individuals' bank accounts, for a small fee of course."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How much does it cost?",
+                    "steps": [
+                      {
+                        "player": "How much does it cost?"
+                      },
+                      {
+                        "npc": "It costs 10 trading sticks per item, unfortunately, even stackable items cost the same."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "What are trading sticks and how do I get some?",
+                            "steps": [
+                              {
+                                "player": "What are trading sticks and how do I get some?"
+                              },
+                              {
+                                "npc": "Trading sticks are our local currency, you could perhaps earn some trading sticks by doing some work around the village."
+                              },
+                              {
+                                "npc": "Have a chat with Murcaily, I think he was looking for someone to help him, he works near the hardwood grove to the east of Trufitus' hut."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "D8Whl1"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can I send a parcel please?",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "below",
+                                "id": "83np0b"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ok, thanks.",
+                            "steps": [
+                              {
+                                "player": "Ok, thanks."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I send a parcel please?",
+                    "steps": [
+                      {
+                        "player": "Can I send a parcel please?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 10 trading sticks in their inventory:",
+                        "steps": [
+                          {
+                            "npc": "It costs at least 10 trading sticks to use this service. Sorry but you don't have enough."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "What are trading sticks and how do I get some?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "U1spCG"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Ok, thanks.",
+                                "steps": [
+                                  {
+                                    "player": "Ok, thanks."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "Wveg-k"
+                      },
+                      {
+                        "npc": "Of course...which items would you like to send to your bank?"
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "Tai Bwo Wannai Parcel Service",
+                        "id": "gwyy7h"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Ok, thanks.",
+                    "steps": [
+                      {
+                        "player": "Ok, thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Is there anything interesting to do here?"
+          },
+          {
+            "text": "I've been doing some work around the village.",
+            "steps": [
+              {
+                "player": "I've been doing some work around the village."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is due to receive trading sticks:",
+                "steps": [
+                  {
+                    "npc": "Yeah, you've been doing a lot of good work around here. Let me give you something for your time and effort."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You get [some amount of] trading sticks. You are left with [some percentage]% favour.",
+                    "id": "QPip4-"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "trading sticks",
+                    "id": "WjVzua"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "wZ5Ujf"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already received trading sticks:",
+                "steps": [
+                  {
+                    "npc": "I've already given you some trading sticks and I don't have any more on me at the moment. Why not go and talk to some of the other villagers and get some contributions?"
+                  }
+                ],
+                "id": "PSZrDL"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks."
+          }
+        ]
+      }
+    ],
+    "receiving-trading-sticks": [
+      {
+        "npc": "Hey, I've seen you working around the village. You've been doing a lot of good work around here for us. Let me give you something for your trouble."
+      },
+      {
+        "type": "message",
+        "text": "You get [some amount of] trading sticks. You are left with [some percentage]% favour.",
+        "id": "PrYYEg"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "trading sticks",
+        "id": "gbLfSa"
+      }
+    ],
+    "if-the-player-is-wearing-a-tribal-mask": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh - Get away from me you beast!"
+              },
+              {
+                "player": "What's the problem....oh, I'm wearing this big scary mask! I'd better take it off before I start talking to the natives."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Waahhhhh! - It's da evil broodoo beast come ta eat my very soul!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "IOJpRl"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh - It's a monster!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "G1rHVp"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh!!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Q1J2jB"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

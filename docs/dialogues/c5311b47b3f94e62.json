@@ -1,0 +1,110 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-talking-to-the-guildmaster": [
+      {
+        "npc": "Greetings!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "npc": "This is the Champions' Guild. Only adventurers who have proved themselves worthy by gaining influence from quests are allowed in here."
+              }
+            ]
+          },
+          {
+            "text": "I've been given a challenge. What now?",
+            "condition": "If the player has a Champion's scroll in their inventory",
+            "steps": [
+              {
+                "npc": "Let me see what you've got there. Ah, yes, one of the champions. Just head downstairs and you'll find your challenge waiting in the arena. Hand that scroll to the doorman to get in."
+              }
+            ],
+            "id": "WbH8bk"
+          },
+          {
+            "text": "Can I have another key to Melzar's Maze?",
+            "condition": "If the player has received a maze key previously",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have the key:",
+                "steps": [
+                  {
+                    "npc": "Of course! Here you go."
+                  },
+                  {
+                    "type": "unavailable",
+                    "id": "smjVac"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "tRrbi-"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the key in their key ring:",
+                "steps": [
+                  {
+                    "npc": "I think you've already got a key. Maybe you should check your key ring."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "KK9y8R"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the key in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "I think you've already got a key somewhere."
+                  }
+                ],
+                "id": "6xJ53s"
+              }
+            ],
+            "id": "SgURMv"
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-entering-the-champions-guild": [
+      {
+        "type": "condition",
+        "text": "If the player does not have at least 32 quest points:",
+        "steps": [
+          {
+            "npc": "You have not proved yourself worthy to enter here yet."
+          },
+          {
+            "type": "message",
+            "text": "The door won't open - you need at least 32 Quest Points.",
+            "id": "gmRGuS"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VLqETy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least 32 quest points:",
+        "steps": [
+          {
+            "npc": "Greetings bold adventurer. Welcome to the guild of Champions."
+          }
+        ],
+        "id": "cKgSiB"
+      }
+    ]
+  }
+}

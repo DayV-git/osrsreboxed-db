@@ -1,0 +1,64 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there. Want to trade some furs?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Fortis Fur Stall",
+                "id": "GnhBvL"
+              }
+            ]
+          },
+          {
+            "text": "What furs do you have?",
+            "steps": [
+              {
+                "player": "What furs do you have?"
+              },
+              {
+                "npc": "I have a selection of both rare and common furs from all across the kingdom. Also, if you happen to have any furs you've brought from the east, I'd be pretty keen to buy some."
+              },
+              {
+                "npc": "So, want to trade?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "plbauR"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Tetamo! If you change your mind, you know where to find me."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-if-the-player-has-recently-stolen-from-their-stall": [
+      {
+        "npc": "You're the one who stole from me! Guards! Guards!"
+      }
+    ]
+  }
+}

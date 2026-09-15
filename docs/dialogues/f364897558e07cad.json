@@ -1,0 +1,254 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you hunting animals then?",
+            "steps": [
+              {
+                "player": "Are you hunting animals, then?"
+              },
+              {
+                "npc": "I'm exploring the region for the good of the gnome people."
+              },
+              {
+                "player": "You're not tracking down huge beasts to kill - you look equipped for it."
+              },
+              {
+                "npc": "Well, if I find anything interesting I'll try and bring it back to the King. That might include animals, I suppose. I'd rather not kill it, though - most animals are more useful alive."
+              },
+              {
+                "player": "How would you get it home, then?"
+              },
+              {
+                "npc": "Never underestimate the ingenuity of a gnome, friend."
+              },
+              {
+                "player": "Have you found anything else interesting around here?"
+              },
+              {
+                "npc": "I've heard strange rumours about something the locals call the Broodoo. I haven't quite worked out what they are but they seem to be some sort of undead whose ghastly fate depends on the way they were killed."
+              },
+              {
+                "npc": "I think they may be sacrifice victims - but I'm not sure why they are sacrificed. Either way the locals seem to be very scared of them."
+              },
+              {
+                "player": "That's interesting. Thanks."
+              }
+            ]
+          },
+          {
+            "text": "What does this mint cake do?",
+            "condition": "If the player has a Mint cake",
+            "steps": [
+              {
+                "player": "What does this mint cake do?"
+              },
+              {
+                "npc": "Gnomish mint cake is a great source of energy for the gnome traveller. It will give you that extra bit of zip when you are running out of steam."
+              },
+              {
+                "player": "Ooh, that might come in very handy. Do you have any spare?"
+              },
+              {
+                "npc": "I need all the mint cake I have, I'm afraid."
+              }
+            ],
+            "id": "9g5fFV"
+          },
+          {
+            "text": "What does this seed pod do?",
+            "condition": "If the player has a Grand seed pod",
+            "steps": [
+              {
+                "player": "What does this seed pod do?"
+              },
+              {
+                "npc": "Ah, the seed pod of the Grand Tree is a fascinating spirit artefact. It is a very useful thing, though one must treat it with respect, since the Grand Tree has a connection with all of its parts, however distant they"
+              },
+              {
+                "npc": "may be. How do you think the Spirit Trees work?"
+              },
+              {
+                "npc": "If you launch its seeds in a far flung location, you will be helping the tree survive, so the grand tree will help a gnome glider pilot find you, using the seed burst itself (which marks the sky) and a little magic, and bring you"
+              },
+              {
+                "npc": "back home as an act of gratitude. Budding farmers will also find their link with plants to be just a little bit better than before."
+              },
+              {
+                "npc": "However, it takes time for a pilot to find you, and if you are in a real hurry, and I mean a real emergency, you can just squash the seed pod. The Grand Tree doesn't like this, but will pull you back"
+              },
+              {
+                "npc": "home straight away. Don't do this if you need to do anything with plants straight away, though - your fingers will be considerably less green for a while after using the seed pod this way, and the journey is not"
+              },
+              {
+                "npc": "very pleasant..."
+              },
+              {
+                "player": "Wow, that's very interesting. Thanks."
+              }
+            ],
+            "id": "DQZcqJ"
+          }
+        ]
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "Y8LfGl"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WXwbiQ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "S3O0GA"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "3IbQPA"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food item] to Penwie.",
+            "id": "RW1uJV"
+          },
+          {
+            "npc": "At last a taste of home!"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a mint cake:",
+            "steps": [
+              {
+                "npc": "Now that I have some proper food, I won't need this any more."
+              },
+              {
+                "type": "message",
+                "text": "You are given some mintcake as a tip.",
+                "id": "KuWUFg"
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "dRUBIf"
+              }
+            ],
+            "id": "bg0b9G"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is grand seed pods:",
+            "steps": [
+              {
+                "npc": "Here, take these Grand Seed pods. Very useful in emergencies!"
+              },
+              {
+                "type": "message",
+                "text": "You are given some seed pods as a tip.",
+                "id": "2LhR4c"
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "v2eR2V"
+              }
+            ],
+            "id": "U0QAf8"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a raw oomlie:",
+            "steps": [
+              {
+                "npc": "I traded with some of the locals for this - maybe you'll find it useful."
+              },
+              {
+                "type": "message",
+                "text": "You are given some raw oomlie bird meat as a tip.",
+                "id": "G9nww-"
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "R89DYX"
+              }
+            ],
+            "id": "UZnEFY"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is anything else:",
+            "steps": [
+              {
+                "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+              },
+              {
+                "type": "action",
+                "text": "You are given [a/some] [reward item(s)] as a tip.",
+                "action": "receive",
+                "action_source": "text",
+                "id": "yCfPte"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does have a reward token available:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                    "id": "eIIXud"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has an unclaimed reward token:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                        "id": "quXvhm"
+                      }
+                    ],
+                    "id": "u6hvIX"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has claimed their reward token:",
+                    "steps": [],
+                    "id": "SvfgOx"
+                  }
+                ],
+                "id": "JQAmUt"
+              }
+            ],
+            "id": "LSP4QZ"
+          }
+        ],
+        "id": "mftnWn"
+      }
+    ]
+  }
+}

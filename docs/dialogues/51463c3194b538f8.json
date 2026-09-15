@@ -1,0 +1,220 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there, would you like to take part in the archery competition? It only costs 200 coins to enter."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sure, I'll give it a go.",
+            "steps": [
+              {
+                "player": "Sure, I'll give it a go."
+              },
+              {
+                "npc": "Great! That will be 200 coins then please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 200 coins:",
+                "steps": [
+                  {
+                    "player": "Oops, I don't have enough coins on me..."
+                  },
+                  {
+                    "npc": "Never mind, come back when you've got enough."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "gdNzeo"
+              },
+              {
+                "type": "message",
+                "text": "You pay the judge and he gives you 10 bronze arrows.",
+                "id": "PnCfxk"
+              }
+            ]
+          },
+          {
+            "text": "What are the rules?",
+            "steps": [
+              {
+                "player": "What are the rules?"
+              },
+              {
+                "npc": "The rules are very simple:"
+              },
+              {
+                "npc": "You're given 10 shots at the targets, for each hit you will receive points. At the end you'll be awarded 1 ticket for every 10 points."
+              },
+              {
+                "npc": "The tickets can be exchanged for goods from our stores. Do you want to give it a go? Only 200 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Sure, I'll give it a go.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "vyR-wp"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "q_nWyv"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-again": [
+      {
+        "npc": "Hello again, do you need reminding of the rules?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "npc": "The rules are very simple:"
+              },
+              {
+                "npc": "You're given 10 shots at the targets, for each hit you will receive points. At the end you'll be awarded 1 ticket for every 10 points."
+              },
+              {
+                "npc": "The tickets can be exchanged for goods from our stores. Good luck!"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I've got it.",
+            "steps": [
+              {
+                "player": "No thanks, I've got it."
+              },
+              {
+                "npc": "Glad to hear it, good luck!"
+              }
+            ]
+          },
+          {
+            "text": "How am I doing so far?",
+            "steps": [
+              {
+                "player": "How am I doing so far?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a score of 0:",
+                "steps": [
+                  {
+                    "npc": "So far your score is: 0. You haven't started yet."
+                  }
+                ],
+                "id": "bvbNUS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a score of 1-80:",
+                "steps": [
+                  {
+                    "npc": "So far your score is: [number]. Not bad, keep going."
+                  }
+                ],
+                "id": "b925I6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a score of 90+:",
+                "steps": [
+                  {
+                    "npc": "So far your score is: [number]. You're pretty good, keep it up."
+                  }
+                ],
+                "id": "EIHWsX"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-finishing-a-game": [
+      {
+        "npc": "Well done. Your score is: [number]. For that score you will receive [number] Archery tickets. Would you like to try again for another 200 coins?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sure, I'll give it a go.",
+            "steps": [
+              {
+                "player": "Sure, I'll give it a go."
+              },
+              {
+                "npc": "Great! That will be 200 coins then please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 200 coins:",
+                "steps": [
+                  {
+                    "player": "I haven't got the money."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "eRaXtc"
+              },
+              {
+                "type": "message",
+                "text": "You pay the judge and he gives you 10 bronze arrows.",
+                "id": "xoneRg"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

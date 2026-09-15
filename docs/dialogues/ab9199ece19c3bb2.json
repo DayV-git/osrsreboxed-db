@@ -1,0 +1,305 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "npc": "Hello friend. I wish to slay evil and avail them of their loot! Take me to Burgh de Rott!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Are you prepared enough to fight the evil down there?",
+            "steps": [
+              {
+                "player": "Are you prepared enough to fight the evil down there?"
+              },
+              {
+                "npc": "I think so? At least my heart knows courage and that should be sufficient for the meantime. I expect that when we get to Burgh de Rott, we'll be able to purchase suitable provisions."
+              },
+              {
+                "player": "But you do realise that the vampyres in Morytania are immune to everything except silver?"
+              },
+              {
+                "npc": "Er...well, I've not heard mention of that fact, but I have faith that Saradomin will provide the means to furnish me with suitable weapons when I reach Burgh de Rott."
+              },
+              {
+                "player": "And if we happen to run into some vampyres on the journey down there?"
+              },
+              {
+                "npc": "I trust that you will help us to avoid them. You are a guide after all, aren't you? Anyway, you look like you can handle yourself. I presume you've fought such creatures before and won? How hard can it be?"
+              },
+              {
+                "player": "It can be pretty difficult, actually. But you're right, I'll be your guide so I should be able to handle the situation."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "ofmyaN"
+              }
+            ]
+          },
+          {
+            "text": "Why do you want to go to Burgh de Rott?",
+            "steps": [
+              {
+                "player": "Why do you want to go to Burgh de Rott?"
+              },
+              {
+                "type": "condition",
+                "text": "Before The Blood Moon Rises:",
+                "steps": [
+                  {
+                    "npc": "I'm going down there to teach those vampyres a lesson or two. I've heard about the terrible conditions down there and I intend to put a stop to it."
+                  }
+                ],
+                "id": "ohWGrv"
+              },
+              {
+                "type": "condition",
+                "text": "After The Blood Moon Rises:",
+                "steps": [
+                  {
+                    "npc": "I want to have a go at this Theatre of Blood everyone keeps talking about!"
+                  }
+                ],
+                "id": "hjBUZF"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "e11RBB"
+              }
+            ]
+          },
+          {
+            "text": "Could you defend yourself if we met enemies...?",
+            "steps": [
+              {
+                "player": "Could you defend yourself if we met enemies on the route to Burgh de Rott?"
+              },
+              {
+                "npc": "Let's just say that I'm somewhat experienced and I'm happy to take on my fair share of enemies. You don't need to worry about that."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "32wpR8"
+              }
+            ]
+          },
+          {
+            "text": "I can take you to Burgh de Rott.",
+            "steps": [
+              {
+                "player": "I can take you to Burgh de Rott."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a follower:",
+                "steps": [
+                  {
+                    "npc": "Hmmm, it seems that you have a follower. I think it may get lost on this journey if it's left to wander on its own. Let's leave when your follower is safe."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "nH4KV8"
+              },
+              {
+                "npc": "Oh really? That would be great! I'll give you a small reward once we reach our destination."
+              },
+              {
+                "type": "action",
+                "text": "Burgh de Rott Ramble begins",
+                "id": "cccgxu"
+              },
+              {
+                "npc": "Ok, which route should we take?"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Temple Trekking choose a route",
+                "id": "MmO0ud"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-a-piece-of-acceptable-food-is-used-on-them": [
+      {
+        "npc": "Ah, so you want to give me some supplies, eh? Let me just open me backpack."
+      },
+      {
+        "type": "action",
+        "action": "open_interface",
+        "target": "Follower inventory menu",
+        "id": "XAWrfv"
+      }
+    ],
+    "burgh-de-rott-ramble-dialogue-standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "This place is a bit grim. How can people live here?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Do you visit Burgh de Rott often? You seem to know the route well."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "When are we going to get to Burgh de Rott?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "We don't have all day to stand around chatting; let's press on. I have loot to get."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Oh, I hate this trip, but it's better than the opulet life styles forced on us adventurer types. I'd much rather be up to my eyes in mud and having a good fight!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "burgh-de-rott-ramble-dialogue-during-combat": [
+      {
+        "npc": "Can't you see I'm being attacked..."
+      }
+    ],
+    "burgh-de-rott-ramble-dialogue-when-a-piece-of-acceptable-food-is-used-on-them-and-they-are-not-full-health": [
+      {
+        "npc": "Thanks, I'll get this down my neck."
+      }
+    ],
+    "burgh-de-rott-ramble-dialogue-bridge-event": [
+      {
+        "npc": "Blimey! Looks like we're going to have to go back to Paterdomus. We can't get over that bridge!"
+      },
+      {
+        "player": "Oh, I'm sure we can find a way!"
+      },
+      {
+        "type": "action",
+        "text": "Player completes the bridge event",
+        "id": "nj944D"
+      }
+    ],
+    "burgh-de-rott-ramble-dialogue-bog-event": [
+      {
+        "npc": "Well that's torn it... Looks like we can't get over this bog. We'll have to go back to Paterdomus."
+      },
+      {
+        "player": "Oh, I'm sure we can find a way!"
+      },
+      {
+        "type": "action",
+        "text": "Player completes the bog event",
+        "id": "VcK54m"
+      },
+      {
+        "npc": "Hey...that's great...you did a great job...I'll follow you."
+      },
+      {
+        "npc": "Whahay...that was great!"
+      },
+      {
+        "npc": "But we really should be heading off now."
+      }
+    ],
+    "burgh-de-rott-ramble-dialogue-river-event": [
+      {
+        "npc": "Well that's torn it... Looks like we can't get over this bog. We'll have to go back to Paterdomus."
+      },
+      {
+        "player": "Oh, I'm sure we can find a way through!"
+      },
+      {
+        "type": "action",
+        "text": "Player completes the river event",
+        "id": "GLxg5E"
+      },
+      {
+        "npc": "That's amazing! I'll have to do the same."
+      },
+      {
+        "npc": "Whahay! That was great! But we really should be heading off now."
+      }
+    ],
+    "burgh-de-rott-ramble-dialogue-tentacle-event": [
+      {
+        "npc": "Wh...what are those bubbles?"
+      },
+      {
+        "npc": "This is scary!"
+      },
+      {
+        "npc": "Ahhh, that would be a tentacle..."
+      },
+      {
+        "npc": "Ahhh, two tentacles!"
+      },
+      {
+        "npc": "...three tentacles!"
+      },
+      {
+        "npc": "I think I'm going to faint!"
+      },
+      {
+        "npc": "Blimey! Look at that beast! You're gonna have to sort that thing out on your own!"
+      }
+    ],
+    "burgh-de-rott-ramble-dialogue-finishing-a-trek": [
+      {
+        "npc": "Many thanks for getting me safely to the Burgh de Rott. Here's your reward."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a reward token",
+        "id": "StFzoz"
+      },
+      {
+        "type": "action",
+        "text": "The Woman-at-arms gives you a reward token!",
+        "id": "LXiW_8"
+      }
+    ]
+  }
+}

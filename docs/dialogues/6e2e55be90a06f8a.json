@@ -1,0 +1,167 @@
+{
+  "default": "standard-dialogue-without-an-m-speak-amulet-and-before-completion-of-monkey-madness-ii",
+  "variants": {
+    "standard-dialogue-without-an-m-speak-amulet-and-before-completion-of-monkey-madness-ii": [
+      {
+        "player": "Hey, monkey!"
+      },
+      {
+        "npc": "Eeek! Eeek! Ook!"
+      },
+      {
+        "player": "I have no idea what you just said, but good luck with it anyway!"
+      }
+    ],
+    "standard-dialogue-with-an-m-speak-amulet-or-after-completion-of-monkey-madness-ii": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Taunt Monkey",
+            "condition": "If the player has not taunted the monkey:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "sSL_3P"
+              }
+            ],
+            "id": "RF-tjl"
+          },
+          {
+            "text": "Calm Monkey",
+            "condition": "If the player has taunted the monkey:",
+            "steps": [
+              {
+                "player": "I'm sorry for insulting you. Is there anything I can do to make it up to you?"
+              },
+              {
+                "npc": "Hmmmm...well, you seem sincere, how about you hurry up and use me on the tree and we'll call it even."
+              },
+              {
+                "player": "Yeah, ok, sounds fair."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "x6OGAJ"
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "steps": [
+          {
+            "type": "condition",
+            "text": "If the player has taunted the monkey:",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "sSL_3P"
+              }
+            ],
+            "id": "Hon6aM"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has cautioned the monkey:",
+            "steps": [
+              {
+                "player": "Hey monkey, take your time getting the nut ok?"
+              },
+              {
+                "npc": "Sure. If I see any monkeys around the top of the tree I'll be careful and try and get you the nut whatever happens."
+              },
+              {
+                "player": "Great!"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "tG_G_X"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not taunted or cautioned the monkey:",
+            "steps": [
+              {
+                "player": "Hey, monkey!"
+              },
+              {
+                "npc": "What? Can I come out of this bag now?"
+              },
+              {
+                "player": "That depends, do you think you can reach those bitternuts for me?"
+              },
+              {
+                "npc": "Sigh...yes. Just take me to the tree and I'll grab one for you."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "nZIIhj"
+          }
+        ],
+        "id": "4NVkGS"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Caution Monkey",
+            "condition": "If the player has not cautioned the monkey:",
+            "steps": [
+              {
+                "player": "Hey monkey, take your time getting the nut ok?"
+              },
+              {
+                "npc": "Sure. If I see any monkeys around the top of the tree I'll be careful and try and get you the nut whatever happens."
+              },
+              {
+                "player": "Great!"
+              }
+            ],
+            "id": "lIObNn"
+          },
+          {
+            "text": "Reassure Monkey",
+            "condition": "If the player has cautioned the monkey:",
+            "steps": [
+              {
+                "player": "Look, never mind about taking your time, I'm sure things will be ok."
+              },
+              {
+                "npc": "Well if you are sure. Ok, I'll get up there and pass you the nut then."
+              },
+              {
+                "player": "Cheers, I'll be nearby to catch it."
+              }
+            ],
+            "id": "lRgCk4"
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "sSL_3P": [
+      {
+        "player": "Hey monkey, your mother was an inedible seaweed sandwich!"
+      },
+      {
+        "npc": "Oh man, oh, you did not just say that!"
+      },
+      {
+        "npc": "The second I get up that tree I am going to pelt you with bitternuts until you are neck deep in them!"
+      },
+      {
+        "player": "Oh noes, my worst nightmare come true..."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

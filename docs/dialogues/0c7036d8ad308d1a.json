@@ -1,0 +1,394 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "What can I do for you?"
+      },
+      {
+        "player": "I hear that I can present you with an offering and you will enchant my lyre for me."
+      },
+      {
+        "npc": "This is true. For a simple enchantment, you may place an offering on my Altar. Can I help you with anything else?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Present offering of a single fish.",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Raw shark.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a raw shark:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You do not have a raw shark to offer.",
+                            "id": "ax4Lom"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "XQDsSf"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a raw shark:",
+                        "steps": [
+                          {
+                            "npc": "I offer you this enchantment for your worthy offering."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "enchanted lyre with 2 charges (3 with easy diary bonus)",
+                            "id": "wcVeEi"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Your lyre is now enchanted. You can use it to teleport to Rellekka.",
+                            "id": "5LXXhp"
+                          },
+                          {
+                            "type": "message",
+                            "text": "When the enchantment wears off you will need to re-enchant it.",
+                            "id": "ZB99cI"
+                          }
+                        ],
+                        "id": "2cvrfE"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Raw manta ray.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a raw manta ray:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You do not have a raw manta ray to offer.",
+                            "id": "YemsfA"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "VZ9HOc"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a raw manta ray:",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "4OUBXR"
+                          }
+                        ],
+                        "id": "ehMRZB"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Raw sea turtle.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a raw sea turtle:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You do not have a raw sea turtle to offer.",
+                            "id": "jdgEVo"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "iKrVZ5"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a raw sea turtle:",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "yhOGkn"
+                          }
+                        ],
+                        "id": "RASV7G"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Raw bass.",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a raw bass:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You do not have a raw bass to offer.",
+                            "id": "bA3RqR"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "wXZjSE"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a raw bass, but is not wearing the Ring of Charos(a):",
+                        "steps": [
+                          {
+                            "npc": "A raw bass? You should know that is not a worthy offering, outerlander."
+                          },
+                          {
+                            "player": "Yes, you're right - I'll find something more worthy of you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "bjOvrz"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has a raw bass and is wearing the Ring of Charos(a):",
+                        "steps": [
+                          {
+                            "type": "missing",
+                            "id": "CXXlxh"
+                          }
+                        ],
+                        "id": "2us9h1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Ask about a permanent lyre enchantment.",
+            "steps": [
+              {
+                "player": "Can you enchant my lyre so that the enchantment will never fade?"
+              },
+              {
+                "npc": "If the offering is great enough, I would be happy to offer you such a powerful enchantment."
+              },
+              {
+                "npc": "Depending on your familiarity of the area, I will require less of an offering."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed any part of the Fremennik Diary:",
+                "steps": [
+                  {
+                    "npc": "But for you, I would have you offer me 1000 raw shark, raw manta ray, raw sea turtle and raw bass. But if you had completed the Fremennik easy diary, it would have been 800."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "1DRibw"
+                  }
+                ],
+                "id": "Cb0nEz"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Fremennik Easy Diary:",
+                "steps": [
+                  {
+                    "npc": "But for you, I would have you offer me 800 raw shark, raw manta ray, raw sea turtle and raw bass. But if you had completed the Fremennik medium diary, it would have been 600."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Cx5lxt"
+                  }
+                ],
+                "id": "a8VojS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Fremennik Medium Diary:",
+                "steps": [
+                  {
+                    "npc": "But for you, I would have you offer me 600 raw shark, raw manta ray, raw sea turtle and raw bass. But if you had completed the Fremennik hard diary, it would have been 400."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "88_zpN"
+                  }
+                ],
+                "id": "XhSH5V"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Fremennik Hard Diary:",
+                "steps": [
+                  {
+                    "npc": "But for you, I would have you offer me 400 raw shark, raw manta ray, raw sea turtle and raw bass. But if you had completed the Fremennik elite diary, it would have been 200."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Gw6I9s"
+                  }
+                ],
+                "id": "fS8CNo"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Fremennik Elite Diary:",
+                "steps": [
+                  {
+                    "npc": "But for you, I would have you offer me 200 raw shark, raw manta ray, raw sea turtle and raw bass."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "wXQASX"
+                  }
+                ],
+                "id": "jtFLja"
+              },
+              {
+                "npc": "You still need to offer me [number] raw shark, [number] raw manta ray, [number] raw sea turtle and [number] raw bass."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Present offering.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You present your offering.",
+                        "id": "3sRg1z"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player presents nothing:",
+                        "steps": [
+                          {
+                            "npc": "While I appreciate the thought of offering me fish, I am afraid I am unable to use the air you have offered me."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "beglvz"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player presents some fish but not enough for the lyre:",
+                        "steps": [
+                          {
+                            "npc": "Many thanks for your offering. You still need to offer me [number] raw shark, [number] raw manta ray, [number] raw sea turtle and [number] raw bass."
+                          }
+                        ],
+                        "id": "hVp0he"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player presents enough fish:",
+                        "steps": [
+                          {
+                            "npc": "You have given me a worthy offering, and I will bestow my enchantment whenever you bring me a suitable lyre. I regret I cannot return any of your fish in future, even if you become closer to the Fremenniks."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has an unenchanted lyre:",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "text": "(Animation plays.)",
+                                "id": "XpfXEZ"
+                              },
+                              {
+                                "npc": "I offer you this enchantment as you have earned my favour."
+                              }
+                            ],
+                            "id": "f39p62"
+                          }
+                        ],
+                        "id": "WsHsEj"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "player": "I will come back when I have an offering worthy of this power. Goodbye."
+                      },
+                      {
+                        "npc": "Farewell then."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Nothing.",
+            "steps": [
+              {
+                "player": "Nothing, sorry."
+              },
+              {
+                "npc": "Do not summon me for idle conversation! Come back when you have an offering."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "obtaining-an-imbued-lyre": [
+      {
+        "type": "condition",
+        "text": "If the player does not have an unenchanted lyre:",
+        "steps": [
+          {
+            "npc": "You do not have a lyre with you that I can enchant. It must have been strung, but it cannot bear any existing enchantment."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "F8nBwx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an unenchanted lyre:",
+        "steps": [
+          {
+            "npc": "I offer you this enchantment as you have earned my favour."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an enchanted lyre(i)",
+            "id": "4I3iaP"
+          }
+        ],
+        "id": "LuHNIe"
+      }
+    ]
+  }
+}

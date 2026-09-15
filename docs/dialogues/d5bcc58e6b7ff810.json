@@ -1,0 +1,128 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello there. Where are Islwyn and Eluned?"
+      },
+      {
+        "type": "condition",
+        "text": "After Song of the Elves:",
+        "steps": [
+          {
+            "npc": "They'll be in Prifddinas of course. With the city restored there's not much reason for them to come out here."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "gkAKfI"
+      },
+      {
+        "type": "condition",
+        "text": "During the Underground Pass battle segment of Song of the Elves:",
+        "steps": [
+          {
+            "npc": "They'll be in the Underground Pass, preparing for the fight against Lord Iorwerth."
+          }
+        ],
+        "id": "Cy_hgM"
+      }
+    ],
+    "when-carrying-an-uncharged-teleport-crystal": [
+      {
+        "player": "Hello there. Where are Islwyn and Eluned?"
+      },
+      {
+        "type": "condition",
+        "text": "After Song of the Elves:",
+        "steps": [
+          {
+            "npc": "They'll be in Prifddinas of course. With the city restored there's not much reason for them to come out here."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "Y_YQNG"
+          }
+        ],
+        "id": "i4NO5o"
+      },
+      {
+        "type": "condition",
+        "text": "During the Underground Pass battle segment of Song of the Elves:",
+        "steps": [
+          {
+            "npc": "They'll be in the Underground Pass, preparing for the fight against Lord Iorwerth."
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "u3gscF"
+          }
+        ],
+        "id": "rD_kMh"
+      },
+      {
+        "player": "But I need someone to re-enchant my teleport crystal."
+      },
+      {
+        "npc": "Well I can do that if you want."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "npc": "I ask [charge price] coins to cover my costs."
+              },
+              {
+                "type": "choice",
+                "prompt": "Enchant your teleport crystal?",
+                "options": [
+                  {
+                    "text": "Yes - [charge price] coins.",
+                    "steps": [
+                      {
+                        "npc": ""
+                      },
+                      {
+                        "type": "message",
+                        "text": "Although you can't hear anything, your crystals have been chanted.",
+                        "id": "tv_Mzk"
+                      },
+                      {
+                        "player": "Thank you."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

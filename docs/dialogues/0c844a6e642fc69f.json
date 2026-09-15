@@ -1,0 +1,453 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Oh, hello! I was just trying to discover the properties of these magical stones you call 'runes', and trying to make some devices to harness their power."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What have you discovered?",
+            "steps": [
+              {
+                "player": "What have you discovered?"
+              },
+              {
+                "npc": "Oh, it's terribly exciting! Let me explain..."
+              },
+              {
+                "type": "random",
+                "options": []
+              }
+            ]
+          },
+          {
+            "text": "What have you made?",
+            "steps": [
+              {
+                "player": "What have you made?"
+              },
+              {
+                "npc": "The only thing I've been able to make so far is this. I call it the moving-over-distance sphere."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What is it?",
+                    "steps": [
+                      {
+                        "player": "What is it?"
+                      },
+                      {
+                        "npc": "Well, I was experimenting with these blue runes, the ones you call 'law' runes. They have a strange property of being able to move instantly from one place to another."
+                      },
+                      {
+                        "npc": "I know; I couldn't believe it either!"
+                      },
+                      {
+                        "npc": "I found that whenever I prepared powdered law runes in a certain way and then threw them on the ground, I would appear somewhere else in the city."
+                      },
+                      {
+                        "type": "message",
+                        "text": "So, I made this sphere. It's a glass ball coated with powdered law runes, prepared in a special way.",
+                        "id": "tUeiiZ"
+                      },
+                      {
+                        "npc": "I asked Zanik to test it, and she said that wherever she was in the caves, even if she went to the surface, whenever she smashed the sphere on the ground she would appear back in the city!"
+                      },
+                      {
+                        "npc": "I can see how it might be useful, but I wish I knew more about how it worked..."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "BMZeec"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can I buy one?",
+                    "steps": [
+                      {
+                        "player": "Can I buy one?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "",
+                        "id": "TrDqJH"
+                      },
+                      {
+                        "npc": "Oh, I can make one for you if you like. You'll need to give me two law runes and a piece of molten glass."
+                      },
+                      {
+                        "player": "I'll have to go and get some then."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye!",
+            "steps": [
+              {
+                "player": "Goodbye!"
+              },
+              {
+                "npc": "Oh, er, goodbye. Now, where was I..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-buy-sphere": [
+      {
+        "npc": "Where do you want a sphere to?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Dorgesh-Kaan.",
+            "steps": [
+              {
+                "player": "Dorgesh-Kaan."
+              },
+              {
+                "npc": "You'll need to get me two law runes and a piece of molten glass."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I'll have to go and get some then."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "qQ7ezO"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has exactly two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I have the right materials here!"
+                  },
+                  {
+                    "npc": "Excellent! Now, just a minute..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Oldak makes you a moving-over-distance sphere.",
+                    "id": "ikRpM9"
+                  },
+                  {
+                    "npc": "You're quite welcome! Now, where was I..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "O1an1u"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has more than two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I have [X] law runes and [X] pieces of molten glass here!"
+                  },
+                  {
+                    "npc": "Excellent! I can make you [X] moving-over-distance spheres with them! How many do you want?"
+                  },
+                  {
+                    "type": "input",
+                    "text": "How many do you want? (0 – [X])",
+                    "id": "EcGKrR"
+                  },
+                  {
+                    "npc": "Excellent! Now, just a minute..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Oldak makes you [X] moving-over-distance spheres.",
+                    "id": "8h6-Lt"
+                  },
+                  {
+                    "player": "Thank you!"
+                  },
+                  {
+                    "npc": "You're quite welcome! Now, where was I..."
+                  }
+                ],
+                "id": "MKv4Uo"
+              }
+            ]
+          },
+          {
+            "text": "Goblin Village.",
+            "condition": "After he teleports the player during Another Slice of H.A.M.",
+            "steps": [
+              {
+                "player": "Goblin Village."
+              },
+              {
+                "npc": "You'll need to get me two law runes and a piece of molten glass."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I'll have to go and get some then."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "P7l2jG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has exactly two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I have the right materials here!"
+                  },
+                  {
+                    "npc": "Excellent! Now, just a minute..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Oldak makes you a moving-over-distance sphere.",
+                    "id": "noDebg"
+                  },
+                  {
+                    "npc": "You're quite welcome! Now, where was I..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZcVEZK"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has more than two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I have [X] law runes and [X] pieces of molten glass here!"
+                  },
+                  {
+                    "npc": "Excellent! I can make you [X] moving-over-distance spheres with them! How many do you want?"
+                  },
+                  {
+                    "type": "input",
+                    "text": "How many do you want? (0 – [X])",
+                    "id": "bCju7-"
+                  },
+                  {
+                    "npc": "Excellent! Now, just a minute..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Oldak makes you [X] moving-over-distance spheres.",
+                    "id": "InKp0Q"
+                  },
+                  {
+                    "player": "Thank you!"
+                  },
+                  {
+                    "npc": "You're quite welcome! Now, where was I..."
+                  }
+                ],
+                "id": "3UPGNG"
+              }
+            ],
+            "id": "WIFLgt"
+          },
+          {
+            "text": "The Plain of Mud",
+            "condition": "After completion of Land of the Goblins",
+            "steps": [
+              {
+                "player": "The Plain of Mud"
+              },
+              {
+                "npc": "You'll need to get me two law runes and a piece of molten glass."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have at two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I'll have to go and get some then."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "AwPavW"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has exactly two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I have the right materials here!"
+                  },
+                  {
+                    "npc": "Excellent! Now, just a minute..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Oldak makes you a moving-over-distance sphere.",
+                    "id": "Hu2Wou"
+                  },
+                  {
+                    "npc": "You're quite welcome! Now, where was I..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "s_YPQs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has more than two law runes and one molten glass:",
+                "steps": [
+                  {
+                    "player": "I have [X] law runes and [X] pieces of molten glass here!"
+                  },
+                  {
+                    "npc": "Excellent! I can make you [X] moving-over-distance spheres with them! How many do you want?"
+                  },
+                  {
+                    "type": "input",
+                    "text": "How many do you want? (0 – [X])",
+                    "id": "ft9M5B"
+                  },
+                  {
+                    "npc": "Excellent! Now, just a minute..."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Oldak makes you [X] moving-over-distance spheres.",
+                    "id": "r-gLmE"
+                  },
+                  {
+                    "player": "Thank you!"
+                  },
+                  {
+                    "npc": "You're quite welcome! Now, where was I..."
+                  }
+                ],
+                "id": "8sKmH8"
+              }
+            ],
+            "id": "GhM6v6"
+          },
+          {
+            "text": "Nowhere.",
+            "steps": [
+              {
+                "player": "Nowhere."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-intermittent-overheads": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Hmm..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "I wonder..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "That's funny..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "What if I..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "No, that's not right..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 6",
+            "steps": [
+              {
+                "npc": "But that means..."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 7",
+            "steps": [
+              {
+                "npc": "Aha!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 8",
+            "steps": [
+              {
+                "npc": "Ah! I was wrong about it all along!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 9",
+            "steps": [
+              {
+                "npc": "I wonder what happens if..."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

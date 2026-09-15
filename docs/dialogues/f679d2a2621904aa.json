@@ -1,0 +1,306 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "What'you want?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any pickaxes?",
+            "steps": [
+              {
+                "player": "Do you-"
+              },
+              {
+                "npc": "What? Speak up, I can't hear you!"
+              },
+              {
+                "player": "Uhm... I'm just looking for some pickaxes! Do you have any?"
+              },
+              {
+                "npc": "Do I have any pickaxes? Do I? Of course I do, this is a pickaxe shop, isn't it!"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Pickaxe-Is-Mine",
+                "id": "rLhxeE"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any quests?",
+            "steps": [
+              {
+                "player": "Do you-"
+              },
+              {
+                "npc": "What? Stop mumbling!"
+              },
+              {
+                "player": "I want a quest!"
+              },
+              {
+                "npc": "I don't have any lousy quests... I've got someone who's helping me already!"
+              },
+              {
+                "npc": "Well, I say helping... he takes his merry time to do his chores, my son does."
+              },
+              {
+                "player": "Then perhaps I can help in some way?"
+              },
+              {
+                "npc": "Pfft, I doubt it... maybe when my son fouls up again, but not now."
+              }
+            ]
+          },
+          {
+            "text": "Nothing really.",
+            "steps": [
+              {
+                "player": "Nothing really."
+              },
+              {
+                "npc": "Then clear off!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-getting-a-metal-bar-or-ore-item-request": [
+      {
+        "npc": "My no good son must be down the pub again, drinking away all our money instead of getting one simple item from the market for me."
+      },
+      {
+        "npc": "Now, I have another errand. Perhaps you will be more useful?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's it about?",
+            "steps": [
+              {
+                "player": "What's it about?"
+              },
+              {
+                "npc": "I'm in need of some raw supplies. Get me [2-3] [item] and be quick about it! I need them within the next [X] minutes!"
+              },
+              {
+                "player": "Hmm, [2-3] [item] in [X] minutes, that sounds about alright."
+              }
+            ]
+          },
+          {
+            "text": "I don't work for rude people.",
+            "steps": [
+              {
+                "player": "I don't work for rude people."
+              },
+              {
+                "npc": "You're just as bad as my son, or worse!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-talking-to-him-before-acquiring-the-item-request": [
+      {
+        "npc": "Where're my [X] [item]? My son could've gotten them faster!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've had enough of this wild goose chase.",
+            "steps": [
+              {
+                "player": "I've had enough of this wild goose chase."
+              },
+              {
+                "npc": "Why you useless little human! I should thrown you in the Kelda! With a lump of granite attached to your feet!"
+              },
+              {
+                "player": "Ha, who are you calling little here?"
+              },
+              {
+                "npc": "Get out!"
+              }
+            ]
+          },
+          {
+            "text": "I'm still trying to collect them.",
+            "steps": [
+              {
+                "player": "I'm still trying to collect them."
+              },
+              {
+                "npc": "Try a little harder! I don't have all day you know!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-getting-a-pickaxe-request": [
+      {
+        "npc": "My no good son must be down the pub again, drinking away all our money instead of getting one simple item from the market for me."
+      },
+      {
+        "npc": "Now, I have another errand. Perhaps you will be more useful?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's it about?",
+            "steps": [
+              {
+                "player": "What's it about?"
+              },
+              {
+                "npc": "I need a couple of iron pickaxes, I'm always short on the darned things. But hurry up! I will need them before [15/20/25] minutes are up."
+              },
+              {
+                "player": "Hmm, [3/4/5] iron pickaxes in [15/20/25] minutes, that sounds about alright."
+              }
+            ]
+          },
+          {
+            "text": "I don't work for rude people.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Fy-zTH"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "keldagrim-tasks-talking-to-him-after-failing-to-bring-the-request-in-time": [
+      {
+        "npc": "You're as bad as my soon! Clear off before I beat you with this stick!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the items:",
+        "steps": [
+          {
+            "player": "Oops."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "vL6eQS"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the items:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "UMygt2"
+          }
+        ],
+        "id": "nivS62"
+      }
+    ],
+    "keldagrim-tasks-bringing-him-the-item-request": [
+      {
+        "player": "I've collected all [X] [item] for you!"
+      },
+      {
+        "npc": "Give 'em to me quick before I change my mind about rewarding you!"
+      },
+      {
+        "type": "condition",
+        "text": "Pickaxe request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you for these or can I get away with teaching you how to mine properly?"
+          }
+        ],
+        "id": "twJ1yg"
+      },
+      {
+        "type": "condition",
+        "text": "Ore item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you prefer me to teach you a bit about how you can mine more efficiently?"
+          }
+        ],
+        "id": "UgXli1"
+      },
+      {
+        "type": "condition",
+        "text": "Bar item request:",
+        "steps": [
+          {
+            "npc": "Do you want me to pay you in gold or would you like me to show you some smithing tricks?"
+          }
+        ],
+        "id": "c9UDsO"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like the gold.",
+            "steps": [
+              {
+                "player": "I'd like the gold."
+              }
+            ]
+          },
+          {
+            "text": "Please teach me that.",
+            "steps": [
+              {
+                "player": "Please teach me that."
+              },
+              {
+                "type": "message",
+                "text": "You feel more experienced.",
+                "id": "_qL6gN"
+              }
+            ]
+          },
+          {
+            "text": "Show me the gold!",
+            "condition": "Alternative to the other gold option:",
+            "steps": [
+              {
+                "player": "Show me the gold!"
+              }
+            ],
+            "id": "Sr-nvd"
+          },
+          {
+            "text": "Enlighten me.",
+            "condition": "Alternative to the other xp option:",
+            "steps": [
+              {
+                "player": "Enlighten me."
+              },
+              {
+                "type": "message",
+                "text": "You feel more experienced.",
+                "id": "QXKIfu"
+              }
+            ],
+            "id": "5RWGdE"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Good day to you bwana."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you ferry me to that island?",
+            "steps": [
+              {
+                "player": "Can you ferry me to that island?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed the Easy Kourend & Kebos diary:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "Most certainly, but my services come at a price... of 10,000 coins"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have enough coins:",
+                    "steps": [
+                      {
+                        "player": "I don't have that sort of money!"
+                      },
+                      {
+                        "npc": "Then you do not belong on my island."
+                      },
+                      {
+                        "player": "Fine!"
+                      },
+                      {
+                        "npc": "Bye bye bwana."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "wVEE11"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Ok, here's the ridiculous sum of money...",
+                        "steps": [
+                          {
+                            "player": "Ok, here's the ridiculous sum of money..."
+                          },
+                          {
+                            "type": "missing",
+                            "id": "tSVBJa"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Player is brought to Crabclaw Isle.",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "7n4i28"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Never mind.",
+                        "steps": [
+                          {
+                            "player": "Never mind."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Why so much? You'd get more business if you charged less.",
+                        "steps": [
+                          {
+                            "player": "Why so much? You'd get more business if you charged less."
+                          },
+                          {
+                            "npc": "The price is to keep the island quiet, bwana. It's a great place to train, but competing with others can be a hassle and so, for a price, you train in peace!"
+                          },
+                          {
+                            "type": "missing",
+                            "id": "SarFlE"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "YgG-4_"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Easy Kourend & Kebos diary but not the Medium diary:",
+                "steps": [
+                  {
+                    "npc": "Most certainly, but my services come at a price... of 5,000 coins"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have enough coins:",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "s3xEj8"
+                      }
+                    ],
+                    "id": "gKhVNu"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Ok, here's the ridiculous sum of money...",
+                        "steps": [
+                          {
+                            "player": "Ok, here's the ridiculous sum of money..."
+                          },
+                          {
+                            "type": "unavailable",
+                            "id": "vSPxxA"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Player is brought to Crabclaw Isle.",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "MHTWnD"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Never mind.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "2IqKbV"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Why so much? You'd get more business if you charged less.",
+                        "steps": [
+                          {
+                            "player": "Why so much? You'd get more business if you charged less."
+                          },
+                          {
+                            "npc": "The price is to keep the island quiet, bwana. It's a great place to train, but competing with others can be a hassle and so, for a price, you train in peace!"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Can you ferry me to that island?",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "_LAeWk"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "That's too much for me.",
+                                "steps": [
+                                  {
+                                    "player": "That's too much for me."
+                                  },
+                                  {
+                                    "npc": "Then you do not belong on my island."
+                                  },
+                                  {
+                                    "player": "Fine!"
+                                  },
+                                  {
+                                    "npc": "Bye bye bwana."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "EPSM-q"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Medium Kourend & Kebos diary:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "npc": "Of course! I won't even charge you for the privilege."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sure.",
+                        "steps": [
+                          {
+                            "player": "Sure."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Sandicrahb transports you to Crabclaw Isle for free thanks to your completion of the Kourend & Kebos Medium diary.",
+                            "id": "2aX16I"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Player is brought to Crabclaw Isle.",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "-XYZwa"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Never mind.",
+                        "steps": [
+                          {
+                            "player": "Never mind."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Z_LcvD"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "Why bwana, I'm Sandicrahb! I travel far over the ocean from the tropical land of Karamja."
+              },
+              {
+                "player": "How come you're charging so much?"
+              },
+              {
+                "npc": "The gold is for a good cause, I promise bwana."
+              },
+              {
+                "player": "Uh huh, that's a mighty fine gold necklace you have."
+              },
+              {
+                "npc": "Well bwana, of course I take a cut, but the funds keep these beaches clean and tidy, I promise!"
+              },
+              {
+                "player": "If you say so..."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "vHQ0bz"
+              }
+            ]
+          },
+          {
+            "text": "Good day to you too.",
+            "steps": [
+              {
+                "player": "Good day to you too."
+              }
+            ]
+          },
+          {
+            "text": "That's a nice boat!",
+            "steps": [
+              {
+                "player": "That's a nice boat! Would be a shame if something were to happen to it."
+              },
+              {
+                "npc": "Made from the wood of the Fyburglars tree, strong and light weight! Perhaps if it went missing, I'd find you."
+              },
+              {
+                "player": "Perhaps."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "PipXeL"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "on-crabclaw-isle": [
+      {
+        "npc": "Shall I return you to the beach?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please, I'm done here.",
+            "steps": [
+              {
+                "player": "Yes please, I'm done here."
+              },
+              {
+                "type": "action",
+                "text": "Player is brought to the Hosidius beach.",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "2VmgXB"
+              }
+            ]
+          },
+          {
+            "text": "Actually, I've not quite finished yet, I'll stay.",
+            "steps": [
+              {
+                "player": "Actually, I've not quite finished yet, I'll stay."
+              },
+              {
+                "npc": "Very well bwana."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "default": null,
+  "variants": {
+    "after-monkey-madness-ii-when-entering-the-gates": [
+      {
+        "npc": "Open the gates! An ally wishes to pass!"
+      }
+    ],
+    "after-monkey-madness-ii-duke-s-training": [
+      {
+        "type": "condition",
+        "text": "If the player has not trained with Duke yet:",
+        "steps": [
+          {
+            "npc": "King Awowogei has ordered me to offer you some advanced combat training. You can have two training sessions with me, so please choose the kind of training you'd like for your first session."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Duke's combat training",
+            "id": "SS9okS"
+          },
+          {
+            "type": "condition",
+            "text": "If the player selects '(Cancel)':",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "As you wish. Speak to me again if you change your mind."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "0lWQJA"
+          },
+          {
+            "type": "condition",
+            "text": "If the player selects a skill:",
+            "action_source": "text",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Receive 50,000 XP in [Skill]?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Duke teaches you some advanced techniques...",
+                        "id": "-CkPJ-"
+                      },
+                      {
+                        "type": "action",
+                        "text": "The screen turns to black as combat-related sound effects play",
+                        "id": "ol_viX"
+                      },
+                      {
+                        "player": "... wow, that was tiring!"
+                      },
+                      {
+                        "npc": "Exercise is good for you."
+                      },
+                      {
+                        "npc": "I can offer you one more combat training session. What kind of training would you like?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "yg8TTB"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No",
+                    "steps": [
+                      {
+                        "npc": "Speak to me again if you change your mind."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "YS6xAB"
+          }
+        ],
+        "id": "uO46Zl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has trained with Duke once:",
+        "steps": [
+          {
+            "npc": "I can offer you one more combat training session. What kind of training would you like?"
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Duke's combat training",
+            "id": "JwtpHO"
+          },
+          {
+            "type": "condition",
+            "text": "If the player selects '(Cancel)':",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "7QOgve"
+              }
+            ],
+            "id": "AVX9OA"
+          },
+          {
+            "type": "condition",
+            "text": "If the player selects a skill:",
+            "action_source": "text",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Receive 50,000 XP in [Skill]?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Duke teaches you some advanced techniques...",
+                        "id": "Mbet52"
+                      },
+                      {
+                        "type": "action",
+                        "text": "The screen turns to black as combat-related sound effects play",
+                        "id": "2hy0bX"
+                      },
+                      {
+                        "npc": "This concludes the advanced combat training. I must return to my duties now - King Awowogei has put me in charge of the guard to replace Kruk."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "MCNYbC"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "XFoMjO"
+          }
+        ],
+        "id": "VI4HLS"
+      }
+    ],
+    "after-monkey-madness-ii-after-completing-duke-s-training": [
+      {
+        "npc": "Please excuse me; I have much to oversee now that King Awowogei has put me in charge of the guard to replace Kruk."
+      }
+    ]
+  }
+}

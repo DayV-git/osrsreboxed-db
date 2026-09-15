@@ -1,0 +1,185 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has not spoken to him before:",
+        "steps": [
+          {
+            "npc": "Ah, nilsal! Hello!"
+          }
+        ],
+        "id": "-u38Gl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has spoken to him before:",
+        "steps": [
+          {
+            "npc": "Ah, hello again!"
+          }
+        ],
+        "id": "MbSkQq"
+      },
+      {
+        "player": "Hello to you too!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "npc": "I'm a Knight of Varlamore, the Kingdom of Sun. I venture to Kourend on a mission, one I can say very little of."
+              },
+              {
+                "player": "How come?"
+              },
+              {
+                "npc": "I'm afraid you must accept my secrecy adventurer, for who knows what the future holds."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "WiQofw"
+              }
+            ]
+          },
+          {
+            "text": "I found an ancient sun temple.",
+            "condition": "If the player completed In Search of Knowledge:",
+            "steps": [
+              {
+                "player": "I found an ancient sun temple."
+              },
+              {
+                "npc": "Oh, pray tell, where is this temple?"
+              },
+              {
+                "player": "In a place called the Forthos Ruin to the south east of here. I was exploring there and I discovered symbology for an entity called Ralos."
+              },
+              {
+                "npc": "I see. I think I shall check out this ruin. Thank you for letting me know adventurer."
+              },
+              {
+                "player": "No problem... Oh, I don't know your name."
+              },
+              {
+                "npc": "Call me Astra! Now, I must see this discovery for myself. It may well help with my mission here. May the light shine upon you!"
+              },
+              {
+                "type": "action",
+                "text": "Astra leaves the castle, and moves to the Altar of the Sun.",
+                "id": "pUbodj"
+              }
+            ],
+            "id": "s4SZ8f"
+          },
+          {
+            "text": "Where's the Kingdom of Varlamore?",
+            "condition": "If the player has never been to Varlamore:",
+            "steps": [
+              {
+                "player": "Where's the Kingdom of Varlamore?"
+              },
+              {
+                "npc": "To the south, beyond Mount Quidamortem. It's a glorious land where the sun forever shines."
+              },
+              {
+                "player": "Sounds wonderful!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "dd9eIz"
+              }
+            ],
+            "id": "_rzZQW"
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "player": "I have to go."
+              },
+              {
+                "npc": "Stay vigilant, friend."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "i_38ZG"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-at-the-forthos-dungeon": [
+      {
+        "npc": "Oh... nilsal, adventurer."
+      },
+      {
+        "player": "Hello!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How are you, Astra?",
+            "steps": [
+              {
+                "player": "How are you, Astra?"
+              },
+              {
+                "npc": "Not great... Can you believe what they've done?"
+              },
+              {
+                "player": "Done what?"
+              },
+              {
+                "npc": "Are you blind? Look what they've done to the altar of Ralos!"
+              },
+              {
+                "player": "Oh... I guess it has seen better days."
+              },
+              {
+                "npc": "It was those others! Those undead druids. Blind moon worshippers..."
+              },
+              {
+                "npc": "Do you see what they've become? That's what turning your back on the light does. Even as I stand here in this desecrated temple, I feel the light fading from me."
+              },
+              {
+                "player": "I suppose it is quite spooky down here."
+              },
+              {
+                "npc": "So you feel it too? A shadow hangs over this place."
+              },
+              {
+                "player": "What will you do now?"
+              },
+              {
+                "npc": "My mission is still a secret, adventurer. Perhaps I'll share it with you one day."
+              }
+            ]
+          },
+          {
+            "text": "I have to go.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "6mrKkS"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Eh, what do you want?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's your story?",
+            "steps": [
+              {
+                "player": "What's your story?"
+              },
+              {
+                "npc": "Sea piracy just ain't what it used to be, so my crew and I have had to make do on land. We specialise in 'acquiring' valuable antiquities from around the city and shipping them to our friends overseas."
+              },
+              {
+                "player": "And people just let you get away with this?"
+              },
+              {
+                "npc": "Of course they do, for the right price. That's just how things work around here, kid."
+              },
+              {
+                "type": "action",
+                "text": "Previous",
+                "id": "hXFHwj"
+              }
+            ]
+          },
+          {
+            "text": "Looking for any help?",
+            "steps": [
+              {
+                "player": "Looking for any help?"
+              },
+              {
+                "npc": "Yeah, you look like you might be able to help me out. If you think you've got what it takes, I might have a job for you."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I have what it takes.",
+                    "steps": [
+                      {
+                        "player": "I have what it takes."
+                      },
+                      {
+                        "npc": "We'll see about that."
+                      },
+                      {
+                        "type": "missing",
+                        "id": "RK5KyB"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm not sure I have the time right now.",
+                    "steps": [
+                      {
+                        "player": "I'm not sure I have the time right now."
+                      },
+                      {
+                        "npc": "Perhaps some other time."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll be on my way.",
+            "steps": [
+              {
+                "player": "I'll be on my way."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-before-stealing-delivering-an-artefact": [
+      {
+        "npc": "What are you playing at? I've given you a job, get it done."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What am I supposed to be doing?",
+            "steps": [
+              {
+                "player": "What am I supposed to be doing?"
+              },
+              {
+                "npc": "You need to recover an artefact for me. It can be found in the [location]."
+              },
+              {
+                "npc": "Watch yourself, if the guards catch you carrying hot goods they'll throw you in the brig."
+              }
+            ]
+          },
+          {
+            "text": "I'll get to it right away, boss.",
+            "steps": [
+              {
+                "player": "I'll get to it right away, boss."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-getting-caught-or-losing-the-artefact": [
+      {
+        "player": "I've lost the artefact..."
+      },
+      {
+        "npc": "Congratulations, you're a failure. Come back to me when you think you've got what it takes to get the job done."
+      }
+    ],
+    "standard-dialogue-delivering-the-artefact": [
+      {
+        "npc": "This is exactly what our friends overseas were looking for. Here's your cut. Let me know when you're ready for more work."
+      },
+      {
+        "type": "action",
+        "text": "Captain Khaled takes the stolen item and hands the player some coins.",
+        "id": "slk6Qf"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "Ah! Here you go!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to answer this for me."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "4vRC5J"
+      },
+      {
+        "type": "message",
+        "text": "Captain Khaled has given you a challenge scroll!",
+        "id": "pPqjlW"
+      }
+    ],
+    "treasure-trails-medium-talking-again-while-holdiing-the-challenge-scroll": [
+      {
+        "npc": "Please give me your answer!"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "How can that be? Go check again!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Qjua9d"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Spot on!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a [new clue/casket]",
+            "id": "YW7JTa"
+          },
+          {
+            "type": "message",
+            "text": "Captain Khaled has given you another clue scroll!",
+            "id": "sm5w8K"
+          }
+        ],
+        "id": "D1Nhcl"
+      }
+    ],
+    "historical-without-75-reputation": [
+      {
+        "npc": "I've got nothing to say to you."
+      },
+      {
+        "type": "message",
+        "text": "You do not have enough Piscarilius favour. Current favour: [X]% - Required: 75.0%",
+        "id": "nhVj6F"
+      }
+    ],
+    "historical-overhead-when-turning-in-an-artefact": [
+      {
+        "type": "random",
+        "options": []
+      },
+      {
+        "npc": "You smart. You loyal."
+      },
+      {
+        "npc": "Another one."
+      },
+      {
+        "npc": "Ah, perfect!"
+      }
+    ]
+  }
+}

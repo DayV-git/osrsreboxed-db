@@ -1,0 +1,163 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "message",
+        "text": "Radimus looks busy...",
+        "id": "rPSemf"
+      },
+      {
+        "npc": "Excuse me a moment won't you. Do feel free to explore the rest of the building"
+      }
+    ],
+    "after-completion-of-legends-quest": [
+      {
+        "npc": "Hello there! How are you enjoying the Legends Guild?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "It's legendary.",
+            "steps": [
+              {
+                "player": "It's legendary."
+              },
+              {
+                "npc": "That's nice. Excuse me now, I have other matters to attend to. Please feel free to explore the rest of the building."
+              }
+            ]
+          },
+          {
+            "text": "It's okay.",
+            "steps": [
+              {
+                "player": "It's okay."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "niUmWY"
+              }
+            ]
+          },
+          {
+            "text": "It's lame.",
+            "steps": [
+              {
+                "player": "It's lame."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ChvOZj"
+              }
+            ]
+          },
+          {
+            "text": "Have you got anything for me?",
+            "steps": [
+              {
+                "player": "Have you got anything for me?"
+              },
+              {
+                "npc": "One of our other members visited the Kharazi Jungle, following in your illustrious footsteps, and they found some weird daggers. Would you like one?"
+              },
+              {
+                "type": "message",
+                "text": "Radimus shows you a familiar-looking dagger.",
+                "id": "H3ceQD"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Dark Dagger collection",
+                "id": "IunhoN"
+              },
+              {
+                "type": "message",
+                "text": "Radimus gives you [another/[amount]] [dagger/daggers].",
+                "id": "qutuJZ"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "the chosen amount of Dark daggers",
+                "id": "0bDn6i"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completion-of-legends-quest-claiming-additional-xp-lamps": [
+      {
+        "npc": "Hello there. I have something for you. Enjoy!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "up to four antique lamps",
+        "id": "OHW52T"
+      }
+    ],
+    "searching-the-cupboard-north-of-the-papyrus-spawn-after-the-legends-quest": [
+      {
+        "npc": "Hey, I think it's about time you started buying your own machetes. I'm sure there must be some jungle native down in Karamja who can sell you one."
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "npc": "Here, solve this."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "YgG3MP"
+      },
+      {
+        "type": "message",
+        "text": "Radimus Erkle hands you a puzzlebox!",
+        "id": "SQRDX_"
+      }
+    ],
+    "treasure-trails-master-talking-again": [
+      {
+        "type": "condition",
+        "text": "If the puzzle box is not solved:",
+        "steps": [
+          {
+            "npc": "That doesn't look solved to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "43kJoT"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle box is solved:",
+        "steps": [
+          {
+            "npc": "Well done [player name]. Here you go."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a [new clue/casket]",
+            "id": "ZrfEoZ"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a [new clue/casket]!",
+            "id": "Srq2lK"
+          }
+        ],
+        "id": "85I4nd"
+      }
+    ]
+  }
+}

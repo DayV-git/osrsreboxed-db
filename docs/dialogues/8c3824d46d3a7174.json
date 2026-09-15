@@ -1,0 +1,756 @@
+{
+  "steps": [
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Can you teach me the basics of mining please?",
+          "condition": "If the player has level 1-24 Mining",
+          "steps": [
+            {
+              "player": "Can you teach me the basics of mining please?"
+            },
+            {
+              "type": "message",
+              "text": "Look for this icon on your minimap to find mining rocks.",
+              "id": "TOBzlM"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a pickaxe equipped or in the inventory:",
+              "steps": [
+                {
+                  "npc": "As you're already here, have a pick so that you can mine the rocks around me."
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "a bronze pickaxe",
+                  "id": "yGblYo"
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "-TEZMl"
+                }
+              ],
+              "id": "LFXuEc"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a pickaxe equipped or in the inventory and has no inventory space:",
+              "steps": [
+                {
+                  "npc": "I'd give you a pick to mine the rocks around me, but you don't have room in your inventory."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "5WK-fC"
+                }
+              ],
+              "id": "rxEwoH"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a pickaxe equipped or in the inventory:",
+              "steps": [
+                {
+                  "npc": "As you already have a pick, you can mine the rocks around me."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "6KQVu7"
+                }
+              ],
+              "id": "S2yWNe"
+            },
+            {
+              "npc": "You can tell the ore you'll get from a rock by looking at it. The colour of the rock helps, too."
+            },
+            {
+              "npc": "To mine, simply click on the rock to mine it, while you've got a pickaxe with you."
+            },
+            {
+              "npc": "When you have a full inventory, take it to the bank. There's a bank on the roof of the castle in Lumbridge."
+            },
+            {
+              "type": "message",
+              "text": "Look for this symbol on your minimap after climbing the stairs of the Lumbridge Castle to the top.",
+              "id": "SpBZZA"
+            },
+            {
+              "type": "jump",
+              "reference": "initial",
+              "id": "u7YfB1"
+            }
+          ],
+          "id": "dwqFcz"
+        },
+        {
+          "text": "I already know about the basics of mining, got any tips?",
+          "condition": "If the player has level 25-38 Mining",
+          "steps": [
+            {
+              "player": "I already know about the basics of mining, got any tips?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a pickaxe equipped or in the inventory:",
+              "steps": [
+                {
+                  "npc": "As you're already here, have a pick so that you can mine the rocks around me."
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "a bronze pickaxe",
+                  "id": "3hvBXM"
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "N5il29"
+                }
+              ],
+              "id": "ffySp9"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a pickaxe equipped or in the inventory and has no inventory space:",
+              "steps": [
+                {
+                  "npc": "I'd give you a pick to mine the rocks around me, but you don't have room in your inventory."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "QDkrkM"
+                }
+              ],
+              "id": "xG7VVe"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a pickaxe equipped or in the inventory:",
+              "steps": [
+                {
+                  "npc": "As you already have a pick, you can mine the rocks around me."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "G1i4uF"
+                }
+              ],
+              "id": "Hxxtzd"
+            },
+            {
+              "npc": "You can get different rocks in different places throughout the land, explore and find them."
+            },
+            {
+              "npc": "You could start by traveling to the Al Kharid mine. Follow the path north and pay the 10 coins toll to go through the gate. Head north after passing through the gate and you will find the mine."
+            },
+            {
+              "npc": "Be careful though, the scorpions in the mine will attack you."
+            },
+            {
+              "npc": "I could show you where Al Kharid mine is on your map if you like?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes please.",
+                  "steps": [
+                    {
+                      "player": "Yes please."
+                    },
+                    {
+                      "type": "action",
+                      "text": "The world map opens and pans to the location of the Al Kharid mine.",
+                      "action": "open_interface",
+                      "action_source": "text",
+                      "target": "The world map",
+                      "id": "04JHqE"
+                    }
+                  ]
+                },
+                {
+                  "text": "No thanks.",
+                  "steps": [
+                    {
+                      "player": "No thanks."
+                    },
+                    {
+                      "type": "jump",
+                      "reference": "initial",
+                      "id": "BYwecQ"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "JpdCKL"
+        },
+        {
+          "text": "Any advice for an advanced miner?",
+          "condition": "If the player has level 39-99 Mining",
+          "steps": [
+            {
+              "player": "Any advice for an advanced miner?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a pickaxe equipped or in the inventory:",
+              "steps": [
+                {
+                  "npc": "As you're already here, have a pick so that you can mine the rocks around me."
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "a bronze pickaxe",
+                  "id": "BFAMDd"
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "WQclhc"
+                }
+              ],
+              "id": "zhKDJ9"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a pickaxe equipped or in the inventory and has no inventory space:",
+              "steps": [
+                {
+                  "npc": "I'd give you a pick to mine the rocks around me, but you don't have room in your inventory."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "IFnn3S"
+                }
+              ],
+              "id": "7Zk-hH"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a pickaxe equipped or in the inventory:",
+              "steps": [
+                {
+                  "npc": "As you already have a pick, you can mine the rocks around me."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "BdIdhH"
+                }
+              ],
+              "id": "1veLde"
+            },
+            {
+              "type": "condition",
+              "text": "If the player is logged into a members' world:",
+              "steps": [
+                {
+                  "npc": "Investigate the mining guild, the entrance to this is in the east of Falador down some steps. It could be most useful to you!"
+                },
+                {
+                  "npc": "You might also like to check out the coal mine west of Seers' village. This will enable you to use the coal trucks."
+                },
+                {
+                  "player": "Thank you, I'll remember that."
+                },
+                {
+                  "npc": "I could show you where either of the places are on your map if you like?"
+                },
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "Can you show me where the mining guild is?",
+                      "steps": [
+                        {
+                          "player": "Can you show me where the mining guild is?"
+                        },
+                        {
+                          "type": "action",
+                          "text": "The world map opens and pans to the location of the Mining Guild.",
+                          "action": "open_interface",
+                          "action_source": "text",
+                          "target": "The world map",
+                          "id": "IGzlCH"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Can you show me where the coal mine is?",
+                      "steps": [
+                        {
+                          "player": "Can you show me where the coal mine is?"
+                        },
+                        {
+                          "type": "action",
+                          "text": "The world map opens and pans to the location of the coal truck mining area.",
+                          "action": "open_interface",
+                          "action_source": "text",
+                          "target": "The world map",
+                          "id": "wyHKsl"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No thanks.",
+                      "steps": [
+                        {
+                          "player": "No thanks."
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "initial",
+                          "id": "BNSY0j"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "sU3ynR"
+            },
+            {
+              "type": "condition",
+              "text": "If the player is logged into a free-to-play world:",
+              "steps": [
+                {
+                  "npc": "Investigate the mining guild, the entrance to this is in the east of Falador down some steps. It could be most useful to you!"
+                },
+                {
+                  "player": "Thank you, I'll remember that."
+                },
+                {
+                  "npc": "I could show you where the mining guild is on your map if you like?"
+                },
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "Yes please.",
+                      "steps": [
+                        {
+                          "player": "Yes please."
+                        },
+                        {
+                          "type": "action",
+                          "text": "The world map opens and pans to the location of the Mining Guild.",
+                          "action": "open_interface",
+                          "action_source": "text",
+                          "target": "The world map",
+                          "id": "U-fI17"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No thanks.",
+                      "steps": [
+                        {
+                          "player": "No thanks."
+                        },
+                        {
+                          "type": "jump",
+                          "reference": "initial",
+                          "id": "0bU8Zt"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "78iJK3"
+            }
+          ],
+          "id": "wYJdkr"
+        },
+        {
+          "text": "Are there any mining related quests?",
+          "steps": [
+            {
+              "npc": "Oh yes, if you haven't already, speak to Doric who can be found around the anvils north of Falador. I'm sure he can help you out."
+            },
+            {
+              "type": "condition",
+              "text": "If the player is a member:",
+              "steps": [
+                {
+                  "npc": "You could investigate the Dig Site east of Varrock, I'm sure you'll find something rewarding there."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continue",
+                  "id": "31rpUv"
+                }
+              ],
+              "id": "xqcxHu"
+            },
+            {
+              "type": "jump",
+              "reference": "previous",
+              "id": "SdRrkZ"
+            }
+          ]
+        },
+        {
+          "text": "Tell me about different rocks and picks.",
+          "steps": [
+            {
+              "player": "Tell me about different rocks and picks."
+            },
+            {
+              "npc": "Ok then.. here goes...."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Rocks and Ores.",
+                  "steps": [
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "Clay and Rune Essence.",
+                          "steps": [
+                            {
+                              "type": "message",
+                              "text": "Clay can be mined in many places. Try south west of Varrock or the crafting guild. See the crafting tutor upstairs in Lumbridge Castle for more information on what you can make with clay.",
+                              "id": "agoCGr"
+                            },
+                            {
+                              "type": "message",
+                              "text": "Rune Essence can only be mined at secret places... I don't know where these are but you can speak to the Duke of Lumbridge to find out more.",
+                              "id": "kNlfU8"
+                            },
+                            {
+                              "npc": "You can make all sorts of things from clay, if you have the crafting skill. Rune Essence is used for magic to cast spells."
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Teach me about mining.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "initial",
+                                      "id": "oXCT9a"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "Teach me about different rocks.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "previous",
+                                      "id": "wL7m5E"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Copper and Tin.",
+                          "steps": [
+                            {
+                              "type": "message",
+                              "text": "Rocks which yield copper ore can be found around here, and other places such as Al Kharid, Rimmington or Varrock mines. They're quite common.",
+                              "id": "XPZNLG"
+                            },
+                            {
+                              "type": "message",
+                              "text": "Tin ore is much the same as copper. It can be found around this area as well as Varrock, Al Kharid and the Barbarian Village.",
+                              "id": "58j1-f"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Teach me about mining.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "initial",
+                                      "id": "bqKBWU"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "Teach me about different rocks.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "previous",
+                                      "id": "uLsGp_"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Iron and Coal.",
+                          "steps": [
+                            {
+                              "type": "message",
+                              "text": "Iron can be mined around Rimmington, Al Kharid and Varrock. It's tricky to smelt though - see the boy at the furnace in Lumbridge for tips.",
+                              "id": "PuU908"
+                            },
+                            {
+                              "type": "message",
+                              "text": "Look for this icon on your minimap to find the furnace.",
+                              "id": "__NVws"
+                            },
+                            {
+                              "type": "message",
+                              "text": "You'll need to be a fairly good miner before you can start mining coal. You can find it in the Dwarf mine, Al Kharid and quite a few other places.",
+                              "id": "SGhUJT"
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Teach me about mining.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "initial",
+                                      "id": "uiFwg9"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "Teach me about different rocks.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "previous",
+                                      "id": "8DrIaJ"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Teach me about mining.",
+                          "steps": [
+                            {
+                              "type": "jump",
+                              "reference": "initial",
+                              "id": "gNwdDd"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "More...",
+                          "steps": [
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "Silver and Gold.",
+                                  "steps": [
+                                    {
+                                      "type": "message",
+                                      "text": "Silver can be mined to help you with your crafting. You can find it in the Crafting guild, Al Kharid and many other mines.",
+                                      "id": "3nkR35"
+                                    },
+                                    {
+                                      "type": "message",
+                                      "text": "Gold requires quite a lot of experience in mining before you can successfully extract it from the rocks. It can be found in Al Kharid, the Crafting guild, Rimmington and other places.",
+                                      "id": "vfe-8C"
+                                    },
+                                    {
+                                      "type": "choice",
+                                      "options": [
+                                        {
+                                          "text": "Teach me about mining.",
+                                          "steps": [
+                                            {
+                                              "type": "jump",
+                                              "reference": "initial",
+                                              "id": "TQfgYd"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Teach me about different rocks.",
+                                          "steps": [
+                                            {
+                                              "type": "jump",
+                                              "reference": "previous2",
+                                              "id": "S4NWLt"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "Mithril, Adamantite and Runite.",
+                                  "steps": [
+                                    {
+                                      "type": "message",
+                                      "text": "Mithril and Adamantite rocks are fairly rare and require great skill to mine. You can find them in Al Kharid, the Dwarven mines, Lumbridge Swamps and other places.",
+                                      "id": "9YnJ7b"
+                                    },
+                                    {
+                                      "type": "message",
+                                      "text": "Runite is the most prized of ores and is very rare. I'll leave you to find where to mine it.",
+                                      "id": "hdClYi"
+                                    },
+                                    {
+                                      "type": "choice",
+                                      "options": [
+                                        {
+                                          "text": "Teach me about mining.",
+                                          "steps": [
+                                            {
+                                              "type": "jump",
+                                              "reference": "initial",
+                                              "id": "9uvyGc"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "text": "Teach me about different rocks.",
+                                          "steps": [
+                                            {
+                                              "type": "jump",
+                                              "reference": "previous2",
+                                              "id": "blrgni"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "Teach me about mining.",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "initial",
+                                      "id": "OE60Sg"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "Back...",
+                                  "steps": [
+                                    {
+                                      "type": "jump",
+                                      "reference": "previous",
+                                      "id": "2RZ8D3"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": "Pickaxes.",
+                  "steps": [
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "Bronze, Iron and Steel.",
+                          "steps": [
+                            {
+                              "type": "message",
+                              "text": "The Bronze Pick is your basic tool of the trade. You can buy one from Bob's Axe shop very cheaply, that's north of here in Lumbridge, I also heard that exploring the castle walls may yield a surprise or two.",
+                              "id": "qck5Ff"
+                            },
+                            {
+                              "type": "message",
+                              "text": "The Iron and Steel Picks are faster than the bronze pickaxe, but you will need to progress with your mining a little before you can use them. You can buy them from Nurmof in the Dwarven mines.",
+                              "id": "ulGeDh"
+                            },
+                            {
+                              "type": "jump",
+                              "reference": "previous",
+                              "id": "DG0AEG"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Mithril, Adamantite and Runite.",
+                          "steps": [
+                            {
+                              "type": "message",
+                              "text": "Mithril, Adamantite, and Rune Picks may be used as you progress with your skill of mining. They can be obtained from Nurmof in the Dwarven mines.",
+                              "id": "02D1CP"
+                            },
+                            {
+                              "type": "jump",
+                              "reference": "previous",
+                              "id": "6xqUw3"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "Teach me about mining.",
+                          "steps": [
+                            {
+                              "type": "jump",
+                              "reference": "initial",
+                              "id": "4tbtY9"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": "Teach me about mining.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "above",
+                      "id": "1RRI46"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Goodbye.",
+          "steps": [
+            {
+              "player": "Goodbye."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Well hello there traveller. If you're looking for a cocktail the barman will happily make you one."
+      },
+      {
+        "npc": "Or if you're looking for some training in cocktail making, then I'm your gnome! Aluft Gianne jnr. is looking for gnome cooks, barmen and barwomen to help in his new venture, so it's a useful skill to have. I'm"
+      },
+      {
+        "npc": "sure the human [boys/girls] will like it as well."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "No thanks, I prefer to stay this side of the bar.",
+            "steps": [
+              {
+                "player": "No thanks, I prefer to stay this side of the bar."
+              }
+            ]
+          },
+          {
+            "text": "Ok then I'll give it a go.",
+            "steps": [
+              {
+                "player": "Ok then I'll give it a go."
+              },
+              {
+                "npc": "Excellent. It's not an easy job, I'll have to try you out first. I'm sure you'll be great though."
+              },
+              {
+                "npc": "Here, take this cocktail guide. The book tells you how to make all the cocktails we serve. I'll tell you what I need and you can make them."
+              },
+              {
+                "player": "Sounds easy enough."
+              },
+              {
+                "npc": "Take a look at the book then come and talk to me."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "cocktail guide",
+                "id": "aKMNsT"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-speaking-a-2nd-time": [
+      {
+        "player": "Hello Blurberry."
+      },
+      {
+        "npc": "Hi, are you ready to make your first cocktail?"
+      },
+      {
+        "player": "Absolutely."
+      },
+      {
+        "npc": "Ok then, to start with make a Fruit Blast. Here, you'll need these ingredients, but I'm afraid I can't give you any more if you mess up."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "the below items",
+        "id": "z_7vVa"
+      },
+      {
+        "type": "message",
+        "text": "Blurberry gives you two lemons, one orange, one pineapple, a cocktail shaker, a glass and a knife.",
+        "id": "X2CZhF"
+      }
+    ],
+    "standard-dialogue-fruit-blast-task-dialogue": [
+      {
+        "npc": "So where's my Fruit Blast?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade fr' blast and no fruit blast in their inventory:",
+        "steps": [
+          {
+            "player": "I think I've got one."
+          },
+          {
+            "npc": "No, I need you to make the Fruit Blast yourself. I'm afraid it doesn't really work if you try to sell the bar its own drinks."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "dvwewI"
+      },
+      {
+        "type": "condition",
+        "text": "If the player no longer has an empty cocktail shaker in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "I'm afraid I lost the cocktail shaker you gave to me.",
+                "steps": [
+                  {
+                    "npc": "I can see how that would make it hard to mix cocktails. I'll give you another one, but please try not lose any more."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a cocktail shaker",
+                    "id": "MMn0kc"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "I've not finished yet.",
+                "steps": [
+                  {
+                    "player": "I've not finished yet."
+                  },
+                  {
+                    "npc": "Ok, well let me know when you're done."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "exB3Ce"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty cocktail shaker in their inventory:",
+        "steps": [
+          {
+            "npc": "I don't know what you have there but it's no Fruit Blast!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ZKoWGH"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a fruit blast in their inventory:",
+        "steps": [
+          {
+            "player": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You give Blurberry the Fruit Blast. He takes a sip...",
+            "id": "0S3BSj"
+          },
+          {
+            "npc": "Hmmm... not bad, not bad at all."
+          },
+          {
+            "npc": "Now can you make me a Pineapple Punch? I can give you what you need, but again I won't be able to give you any more if you make a mistake."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "the below items",
+            "id": "SXr54y"
+          },
+          {
+            "type": "message",
+            "text": "Blurberry gives you three pineapples, a pair of oranges, a lemon and a lime.",
+            "id": "zGSJK-"
+          },
+          {
+            "npc": "Let me know when it's done."
+          }
+        ],
+        "id": "BRF250"
+      }
+    ],
+    "standard-dialogue-pineapple-punch-task-dialogue": [
+      {
+        "player": "Hello Blurberry."
+      },
+      {
+        "npc": "How are you faring with the Pineapple Punch?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade p' punch and no pineapple punch in their inventory:",
+        "steps": [
+          {
+            "player": "I think I've got one."
+          },
+          {
+            "npc": "No, I need you to make the Pineapple Punch yourself. I'm afraid it doesn't really work if you try to sell the bar its own drinks."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "8EaRbM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player no longer has an empty cocktail shaker in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "suYVDu"
+          }
+        ],
+        "id": "_VODUw"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty cocktail shaker in their inventory:",
+        "steps": [
+          {
+            "type": "missing",
+            "id": "IumvgA"
+          }
+        ],
+        "id": "TgvlZK"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a pineapple punch in their inventory:",
+        "steps": [
+          {
+            "player": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You give Blurberry the Pineapple Punch. He takes a sip...",
+            "id": "PZC-Rl"
+          },
+          {
+            "npc": "Not bad, not bad at all.... I can certainly sell drinks of that quality."
+          },
+          {
+            "npc": "Okay then let's try something with some real booze in it! Make me a Wizard Blizzard."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "the below items",
+            "id": "BxpU82"
+          },
+          {
+            "type": "message",
+            "text": "Blurberry gives you some vodka, gin, a lemon, a pineapple, a pair of limes and an orange.",
+            "id": "GSKn2K"
+          }
+        ],
+        "id": "NWuCLe"
+      }
+    ],
+    "standard-dialogue-wizard-blizzard-task-dialogue": [
+      {
+        "player": "Hello Blurberry."
+      },
+      {
+        "npc": "Hello, how did it go with the Wizard Blizzard."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade wiz blz'd and no wizard blizzard in their inventory:",
+        "steps": [
+          {
+            "player": "I think I've got one."
+          },
+          {
+            "npc": "No, I need you to make the Wizard Blizzard yourself. I'm afraid it doesn't really work if you try to sell the bar its own drinks."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "zZzM84"
+      },
+      {
+        "type": "condition",
+        "text": "If the player no longer has an empty cocktail shaker in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "_u72Dy"
+          }
+        ],
+        "id": "9op5XO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty cocktail shaker in their inventory:",
+        "steps": [
+          {
+            "player": "I haven't managed to make it yet."
+          },
+          {
+            "npc": "Ok, it's one Wizard Blizzard I need.  Let me know when it's done."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "k245cv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a wizard blizzard in their inventory:",
+        "steps": [
+          {
+            "player": "Here, try some."
+          },
+          {
+            "type": "message",
+            "text": "You give Blurberry the Wizard Blizzard. He takes a sip...",
+            "id": "Y0jIHD"
+          },
+          {
+            "npc": "Well that is both Wizardy and Blizzardy. You're quite a bartender."
+          },
+          {
+            "npc": "Okay, let's test you once more. Make me a SGG, then we'll see if you have what it takes."
+          },
+          {
+            "player": "A what?"
+          },
+          {
+            "npc": "A Short Green Guy, and don't bring me a gnome. Here's all you need."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "vodka, 4 limes, equa leaves",
+            "id": "pQSldM"
+          },
+          {
+            "player": "Ok, I'll try my best."
+          },
+          {
+            "npc": "I'm sure you'll make a great barman."
+          }
+        ],
+        "id": "dFeWBd"
+      }
+    ],
+    "standard-dialogue-short-green-guy-dialogue": [
+      {
+        "player": "Hi Blurberry."
+      },
+      {
+        "npc": "So, have you got my Short Green Guy?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade sgg and no short green guy in their inventory:",
+        "steps": [
+          {
+            "player": "I think I've got one."
+          },
+          {
+            "npc": "No, I need you to make the SGG yourself. I'm afraid it doesn't really work if you try to sell the bar its own drinks."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "yjdZlU"
+      },
+      {
+        "type": "condition",
+        "text": "If the player no longer has an empty cocktail shaker in their inventory:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "EhOE6R"
+          }
+        ],
+        "id": "6vkL0y"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an empty cocktail shaker in their inventory:",
+        "steps": [
+          {
+            "npc": "I don't know what you have there but it's no Fruit Blast!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "1SE4J4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a short green guy in their inventory:",
+        "steps": [
+          {
+            "player": "Here you go."
+          },
+          {
+            "type": "message",
+            "text": "You give Blurberry the SGG. He takes a sip...",
+            "id": "EJWVqG"
+          },
+          {
+            "npc": "Ooh, that's a frisky little number. Very tart, how it should be. Excellent. Well I'm happy to recommend you to the Giannes. You truly are a gnomish bartender now.."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has not completed Aluft Gianne Snr's training:",
+            "steps": [
+              {
+                "npc": "Well your training is over [player name]. Are you interested in some work?"
+              },
+              {
+                "player": "I may be..."
+              },
+              {
+                "npc": "I think you're almost ready to do some work for Aluft Gianne Jnr. He is in charge of a new family venture: Gnome Food Delivery. There are good tips to be made if you make and deliver gnome foods - though you may"
+              },
+              {
+                "npc": "have to travel all over Gielinor to fulfil some of the other orders..."
+              },
+              {
+                "npc": "However, you'll need some basic gnome cooking training if you want to work for Lufty. Go and have a chat with his Dad, Aluft Gianne Snr. Hel'll tell you what you need to do."
+              },
+              {
+                "player": "Thanks for your help!"
+              }
+            ],
+            "id": "9vOHCQ"
+          },
+          {
+            "type": "condition",
+            "text": "If the player has completed Aluft Gianne Snr's training:",
+            "steps": [
+              {
+                "npc": "Aluft Gianne Snr. tells me that you have finished training with him, so I think you're ready to do some work for Aluft Gianne Jnr. He is in charge of the new Gnome Food Delivery service. I've heard there are"
+              },
+              {
+                "npc": "good tips to be made if you make and deliver gnome foods - though you may have to travel all over Gielinor to fulfill some of the other orders..."
+              },
+              {
+                "player": "Sounds interesting...."
+              },
+              {
+                "npc": "Go and have a chat with my young Lufty Jnr. and he'll fill you in with details."
+              }
+            ],
+            "id": "Fu59SC"
+          }
+        ],
+        "id": "Ac2xxD"
+      }
+    ],
+    "standard-dialogue-subsequent-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has not completed Aluft Gianne Snr's training:",
+        "steps": [
+          {
+            "npc": "Well your training is over [player name]. Are you interested in some work?"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "fl0qp1"
+          }
+        ],
+        "id": "9E76xR"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has completed Aluft Gianne Snr's training:",
+        "steps": [
+          {
+            "npc": "Aluft Gianne Snr. tells me that you have finished training with him, so I think you're ready to do some work for Aluft Gianne Jnr. He is in charge of the new Gnome Food Delivery service. I've heard there are"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "L9Ufb1"
+          }
+        ],
+        "id": "89F6g6"
+      }
+    ]
+  }
+}

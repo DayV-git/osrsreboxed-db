@@ -1,0 +1,353 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hey it's the hero! Thank you so much for saving us from Gadderanks. And the town is looking lovely as well. You've done a great job!"
+      },
+      {
+        "player": "You're more than welcome."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "I'm Aurel the village store owner."
+              },
+              {
+                "player": "Can you open the shop for me please?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Aurel's Supplies",
+                "id": "DhS8GF"
+              }
+            ]
+          },
+          {
+            "text": "How do you like your town?",
+            "steps": [
+              {
+                "player": "How do you like your town?"
+              },
+              {
+                "npc": "It's just perfect, thanks so much for your efforts."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "fKaFxs"
+              }
+            ]
+          },
+          {
+            "text": "What's happening around here?",
+            "steps": [
+              {
+                "player": "What's happening around here?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "npc": "Oh, not much really. We're all still hiding from the vampyres and eking out a living from this terrible place."
+      },
+      {
+        "npc": "Hopefully soon we'll be strong enough to make the journey across the Salve.",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "initial",
+            "id": "rYxzgL"
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Is there anything I can do to help out?",
+            "steps": [
+              {
+                "player": "Is there anything I can do to help out?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "npc": "Not as far as I know. We have some basic amenities now which is so very useful and we're all incredibly grateful to you."
+      },
+      {
+        "npc": "I've never really seen or known a hero before, so I have nothing to compare one to, but I suspect in most people's judgement, you would be one! I for one am very pleased to have met you.",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "initial",
+            "id": "ox8NrS"
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd best be off."
+          }
+        ]
+      },
+      {
+        "player": "I'd best be off.",
+        "steps": []
+      }
+    ],
+    "if-the-player-has-lost-the-gadderhammer": [
+      {
+        "npc": "Hey it's the hero! Thank you so much for saving us from Gadderanks. And the town is looking lovely as well. You've done a great job!"
+      },
+      {
+        "player": "You're more than welcome."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I've lost Gadderanks' Warhammer.",
+            "steps": [
+              {
+                "player": "I've lost Gadderanks' Warhammer."
+              },
+              {
+                "npc": "Hmm, how careless of you! However, you're in luck! Someone found it earlier and sold it to me."
+              },
+              {
+                "npc": "Now I can pass the hammer back to you for the remarkably cheap price of 3000 gold coins. Deal?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not carrying enough coins:",
+                "steps": [
+                  {
+                    "player": "But I don't have 3000 coins on me?"
+                  },
+                  {
+                    "npc": "So that means you can't have it then! Come back when you have 3000 coins."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "ZG3lsh"
+                  }
+                ],
+                "id": "HxmbYb"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying enough coins:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay, I'll pay 3000 coins for the hammer.",
+                        "steps": [
+                          {
+                            "player": "Oayk, I'll pay 3000 coins for the hammer."
+                          },
+                          {
+                            "npc": "A good deal and I'm sure of it!"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Player receives the Gadderhammer",
+                            "action": "receive",
+                            "action_source": "text",
+                            "id": "6qLnJV"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks, I'll leave it. 3000 coins is too much to pay.",
+                        "steps": [
+                          {
+                            "player": "No thanks, I'll leave it, 3000 coins is too much to pay."
+                          },
+                          {
+                            "npc": "Very good then! I'll have no guilty conscience in offering it to other adventurers that frequent my shop then. Many thanks for your time and good day to ya sir."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Why does the hammer cost so much?",
+                        "steps": [
+                          {
+                            "player": "Why does the hammer cost so much?"
+                          },
+                          {
+                            "npc": "So much! That's cheap! The adventurer I bought it from wanted twice as much but I managed to knock him down to a reasonable price."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Okay, I'll pay 3000 coins for the hammer.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "eMWj-6"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "No thanks, I'll leave it. 3000 coins is too much to pay.",
+                                "steps": [
+                                  {
+                                    "type": "jump",
+                                    "reference": "above",
+                                    "id": "jWVN8j"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "Z1JkRV"
+              }
+            ]
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ciOQgY"
+              }
+            ]
+          },
+          {
+            "text": "What's happening around here?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "r1pegd"
+              }
+            ]
+          },
+          {
+            "text": "Is there anything I can do to help out?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "n1DQUi"
+              }
+            ]
+          },
+          {
+            "text": "Okay, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "koT0Ro"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-the-blood-moon-rises": [
+      {
+        "npc": "Hey, it's the hero! Thank you so much for everything you've done, not just for us, but for all of Morytania!"
+      },
+      {
+        "player": "You're more than welcome."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "I'm Aurel, the village store owner."
+              },
+              {
+                "player": "Can you open the shop for me please?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Aurel's Supplies",
+                "id": "SBdCXJ"
+              }
+            ]
+          },
+          {
+            "text": "How are thing's here?",
+            "steps": [
+              {
+                "player": "How are thing's here?"
+              },
+              {
+                "npc": "Well, I'd be lying if I said life was suddenly perfect, but it's nice to no longer live in constant fear of the vampyres."
+              },
+              {
+                "player": "What will you do now that you don't have to worry about them?"
+              },
+              {
+                "npc": "Well, quite a few of us are working on making the town a bit nicer. Not that there's anything wrong with the work you did of course."
+              },
+              {
+                "npc": "Some of the others don't want to stick around. They reckon it might be safe enough to make the journey up to Paterdomus now. I think they want to start a new life across the Salve."
+              },
+              {
+                "player": "Is there anything I can do to help out?"
+              },
+              {
+                "npc": "With the town? No, I don't think so. You've done enough to help us anyway."
+              },
+              {
+                "npc": "I suppose if you did want to help in some way though, you could maybe assist those who want to get to Paterdomus. The swamps can still be pretty dangerous."
+              },
+              {
+                "player": "I'll keep that in mind."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Yc78ZM"
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

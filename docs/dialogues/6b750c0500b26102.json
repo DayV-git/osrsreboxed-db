@@ -1,0 +1,185 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Thank you for getting our herb patches to work. Now Boulder can grow goutweed for my people, and they are very happy."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I have another copy of that book?",
+            "condition": "If the player lost the Weiss fire notes:",
+            "steps": [
+              {
+                "player": "Can I have another copy of that book?"
+              },
+              {
+                "npc": "Yes, I have another copy for you."
+              },
+              {
+                "type": "message",
+                "text": "Snowflake gives you another tatty book of Odd Mushroom's writings.",
+                "id": "8DGaPQ"
+              },
+              {
+                "player": "Thanks."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "wJds1t"
+              }
+            ],
+            "id": "JkH1aG"
+          },
+          {
+            "text": "How are you two doing?",
+            "steps": [
+              {
+                "player": "How are you two doing?"
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "Snowflake an' My Arm very happy. Maybe new herbie patch not da only place where new life gonna be growin' soon!"
+              },
+              {
+                "npc": "Let's not get ahead of ourselves, dear! But the town is thriving; my people are much happier now they are no longer terrified of Father."
+              },
+              {
+                "type": "line",
+                "speaker": "My Arm",
+                "text": "Dem trolls likin' da goutweed too!"
+              },
+              {
+                "player": "That's nice."
+              }
+            ]
+          },
+          {
+            "text": "Can you note this basalt for me?",
+            "steps": [
+              {
+                "player": "Can you note my basalt for me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is carrying basalt:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Snowflake converts your [item/items] to [a banknote/banknotes].",
+                    "id": "WlHv57"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "luj4-0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not carrying basalt:",
+                "steps": [
+                  {
+                    "npc": "You aren't carrying any basalt."
+                  }
+                ],
+                "id": "sGG-yL"
+              }
+            ]
+          },
+          {
+            "text": "I'll be off.",
+            "steps": [
+              {
+                "player": "I'll be off."
+              },
+              {
+                "npc": "You will always be welcome back."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "when-using-basalt-on-her": [
+      {
+        "type": "message",
+        "text": "Snowflake converts your [item/items] to [a banknote/banknotes].",
+        "id": "CSyRHZ"
+      }
+    ],
+    "when-using-goat-dung-on-her": [
+      {
+        "type": "message",
+        "text": "No thank you, [player name], I do not need more poo in a bucket from you.",
+        "id": "zXjPHG"
+      }
+    ],
+    "treasure-trails-master": [
+      {
+        "type": "unavailable",
+        "id": "Bd2E07"
+      },
+      {
+        "type": "line",
+        "speaker": "My Arm",
+        "text": "Here, solve this."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a puzzle box",
+        "id": "SMWYQS"
+      },
+      {
+        "type": "message",
+        "text": "My Arm hands you a puzzlebox!",
+        "id": "YnkEhz"
+      }
+    ],
+    "treasure-trails-master-talking-again": [
+      {
+        "type": "condition",
+        "text": "If the puzzle is not solved:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "That doesn't look solved to me."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "T_sZtA"
+      },
+      {
+        "type": "condition",
+        "text": "If the puzzle is solved:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "My Arm",
+            "text": "Well done [player name]. Here you go."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a [new clue/casket]",
+            "id": "3CeAZl"
+          },
+          {
+            "type": "message",
+            "text": "You've been given a [new clue/casket]!",
+            "id": "Ux5RTd"
+          }
+        ],
+        "id": "n_6FXm"
+      }
+    ]
+  }
+}

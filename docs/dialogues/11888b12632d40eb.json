@@ -1,0 +1,1844 @@
+{
+  "default": null,
+  "variants": {
+    "pre-quest-at-the-temple-before-starting-the-quest": [
+      {
+        "type": "message",
+        "text": "You knock at the door...",
+        "id": "ch9R1D"
+      },
+      {
+        "type": "message",
+        "text": "Doesn't seem like anyone's home.",
+        "id": "I8itCC"
+      }
+    ],
+    "pre-quest-attempting-to-attack-the-temple-guardian": [
+      {
+        "type": "message",
+        "text": "You have no reason to do that!",
+        "id": "fqr-BJ"
+      }
+    ],
+    "pre-quest-attempting-to-open-the-gate": [
+      {
+        "type": "message",
+        "text": "The gate is securely locked.",
+        "id": "GdAlnf"
+      }
+    ],
+    "starting-the-quest": [
+      {
+        "player": "Greetings, your majesty."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'm looking for a quest!",
+            "steps": [
+              {
+                "player": "I'm looking for a quest!"
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "A quest you say? Hmm... What an odd request to make of the King. It's funny you should mention it though, as there is something you can do for me."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Are you aware of Paterdomus? It's a temple east of here. It stands on the holy River Salve and guards the only passage into the deadly vampyre-infested lands of Morytania."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, I think I've heard of it.",
+                    "steps": [
+                      {
+                        "player": "Yes, I think I've heard of it."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "Very good. Well, it has been some days since last I heard from Drezel, the priest who lives there. Be a sport and go check in on the silly old codger for me, would you?"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 15.",
+                        "id": "0cBLcT"
+                      },
+                      {
+                        "type": "choice",
+                        "prompt": "Start the Priest in Peril quest?",
+                        "options": [
+                          {
+                            "text": "Yes.",
+                            "steps": [
+                              {
+                                "player": "Sure. I don't have anything better to do right now."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "King Roald",
+                                "text": "Many thanks, adventurer! I would have sent one of the squires, but they wanted payment for it!"
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Why do you care about Drezel anyway?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "nLzJUU"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Do I get a reward for this?",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "below",
+                                        "id": "6tByoz"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "I'll get going.",
+                                    "steps": [
+                                      {
+                                        "player": "I'll get going."
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "hook": "quest:priest-in-peril:start",
+                            "quest": "Priest in Peril"
+                          },
+                          {
+                            "text": "No.",
+                            "steps": [
+                              {
+                                "player": "No. That sounds boring."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "King Roald",
+                                "text": "Yes, I dare say it does. I wouldn't even have mentioned it had you not seemed to be looking for something to do anyway."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Not really."
+          }
+        ]
+      },
+      {
+        "player": "Not really.",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "King Roald",
+            "text": "You will have to excuse me then. I am very busy as I have a kingdom to run!"
+          }
+        ]
+      }
+    ],
+    "starting-the-quest-talking-to-king-roald-again": [
+      {
+        "player": "Greetings, your majesty."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About that job I'm doing...",
+            "steps": [
+              {
+                "player": "About that job I'm doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "You have news of Drezel for me?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Where am I supposed to go again?",
+                    "steps": [
+                      {
+                        "player": "Where am I supposed to go again?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "The temple of Paterdomus where Drezel lives. It is but a short journey east from here. It lies at the source of the River Salve. Don't worry, you can't miss it."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "x1fyXK"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why do you care about Drezel anyway?",
+                    "steps": [
+                      {
+                        "player": "Why do you care about Drezel anyway?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "Well, that is a slightly impertinent question to ask of your King, but I shall overlook it this time."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "As you are no doubt aware, this kingdom worships Saradomin, the god of wisdom and order. As such, it is a peaceful place to live and prosper."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "Paterdomus, the temple where Drezel lives, stands on the eastern border of Misthalin. It guards the only passage into the evil lands of Morytania."
+                      },
+                      {
+                        "player": "Evil?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "Oh yes. Morytania is a fearful place, filled to the brim with accursed servants of the chaos god Zamorak. All of them are terrible, but none more so than the rulers of the region, the vampyres."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "Thankfully, the sacred River Salve marks a natural border between Misthalin and Morytania. The waters of the river have been blessed with Saradomin's almighty power, preventing any invasion by the vampyres."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "Drezel is descended from one of the original Saradominist priests who first blessed the river. His job is to ensure nothing happens to the river that might allow the evil of Morytania to invade this land."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "This is the reason why the lack of communication from him bothers me somewhat, although I am sure it's nothing too serious. Nobody would dare to try and attack our kingdom!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "IqMlSF"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do I get a reward for this?",
+                    "steps": [
+                      {
+                        "player": "Do I get a reward for this?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "You will be rewarded with the knowledge that you have done the right thing and assisted the King of Misthalin."
+                      },
+                      {
+                        "player": "So... that would be a 'no' then?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "King Roald",
+                        "text": "That is correct."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "P1WXW7"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I have to go.",
+                    "steps": [
+                      {
+                        "player": "I have to go."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Not really.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "5g3mzA"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "at-the-temple": [
+      {
+        "type": "message",
+        "text": "You knock at the door...",
+        "id": "VZ0aSK"
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice",
+        "text": "Who are you and what do you want?"
+      },
+      {
+        "player": "Er..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "King Roald sent me to check on Drezel.",
+            "steps": [
+              {
+                "player": "King Roald sent me to check on Drezel."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "Drezel? Right... I, er... Just give me a moment."
+              },
+              {
+                "type": "message",
+                "text": "You hear someone moving around followed by what sounds like panicked muttering.",
+                "id": "pPDIGQ"
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "Okay, he's just coming! Wait a second!"
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "Hello, my name is Drevil."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "Drezel!"
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "I mean Drezel. How can I help?"
+              },
+              {
+                "player": "Er... Is everything okay in there?"
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "Yes, totally fine. Now, what can I do for you?"
+              },
+              {
+                "player": "Well, the King hadn't heard from you for a few days. He sent me to make sure everything's okay."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "I see... And, uh, what would you do if everything wasn't okay?"
+              },
+              {
+                "player": "I'm not sure. Ask you what help you need I suppose."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "Ah, good, well, I don't think..."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "Hey... The dog!"
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "Ah, actually there is something I could use some help with. Will you do me a favour, adventurer?"
+              },
+              {
+                "player": "What kind of favour?"
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "Well, there's this horrible big... dog-like thing that's moved into the mausoleum outside. It's causing all kinds of problems. Could you get rid of it for me?"
+              },
+              {
+                "player": "I don't know... Something about all this seems a bit suspicious... I think I'd better go and check in with the King."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "No, no, there's no need for that. He's a very busy man! Besides, you said yourself that he sent you here to help me, right?"
+              },
+              {
+                "player": "Right..."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice 2",
+                "text": "Then please, deal with that dog for me."
+              },
+              {
+                "player": "Hmm..."
+              }
+            ]
+          },
+          {
+            "text": "Hi, I just moved in next door.",
+            "steps": [
+              {
+                "player": "Hi, I just moved in next door."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "What?"
+              },
+              {
+                "player": "Yeah, and I was just wondering if I could borrow a cup of coffee?"
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "Next door? Coffee? What are you on about? Who are you?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "7s-0Bn"
+              }
+            ]
+          },
+          {
+            "text": "I hear this place is of historic interest.",
+            "steps": [
+              {
+                "player": "I hear this place is of historic interest."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "Right... And?"
+              },
+              {
+                "player": "Can I come in and have a wander around? Possibly look at some antiques or buy something from your gift shop?"
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "Gift shop? What are you on about? This isn't a museum! Clear off!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "xXHhRc"
+              }
+            ]
+          },
+          {
+            "text": "The council sent me to check your pipes.",
+            "steps": [
+              {
+                "player": "The council sent me to check your pipes."
+              },
+              {
+                "type": "line",
+                "speaker": "Mysterious Voice",
+                "text": "Pipes? We don't have any pipes! Now get lost!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "mVbRGX"
+              }
+            ]
+          },
+          {
+            "text": "Nothing. Never mind.",
+            "condition": "Before selecting any of the other options:",
+            "steps": [
+              {
+                "player": "Nothing. Never mind."
+              }
+            ],
+            "id": "SW3n4g"
+          },
+          {
+            "text": "Actually, never mind.",
+            "condition": "After selecting any of the other options:",
+            "steps": [
+              {
+                "player": "Actually, never mind."
+              }
+            ],
+            "id": "c3_sXj"
+          }
+        ]
+      }
+    ],
+    "at-the-temple-knocking-on-the-door-after-accepting-to-kill-the-dog": [
+      {
+        "type": "message",
+        "text": "You knock at the door...",
+        "id": "tLDqL4"
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice 2",
+        "text": "Hello? Is that you again, adventurer? Have you dealt with that dog yet?"
+      },
+      {
+        "player": "Not yet..."
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice 2",
+        "text": "But you're going to, right? For good old Delzig?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice",
+        "text": "Drezel!"
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice 2",
+        "text": "Sorry, for good old Drezel, right?"
+      },
+      {
+        "player": "Hmm..."
+      }
+    ],
+    "at-the-temple-attacking-the-temple-guardian": [
+      {
+        "type": "condition",
+        "text": "If the player attempts to use Magic spells on the guardian:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your spells do not seem to affect it.",
+            "id": "hoAvus"
+          }
+        ],
+        "id": "1xuzfG"
+      }
+    ],
+    "at-the-temple-talking-to-king-roald-after-accepting-to-kill-the-dog": [
+      {
+        "player": "Greetings, your majesty."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About that job I'm doing...",
+            "steps": [
+              {
+                "player": "About that job I'm doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "You have news of Drezel for me?"
+              },
+              {
+                "player": "Well... I went to the temple like you asked me to... and I spoke to someone inside..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Ah, well that must have been Drezel then. What did he say?"
+              },
+              {
+                "player": "Well... he seemed to be having some kind of trouble. He asked for my help."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Well, I expect you to offer him your full assistance in whatever he needs."
+              },
+              {
+                "player": "But-"
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Now, run along. I have a lot to do and it sounds like Drezel needs you."
+              },
+              {
+                "player": "Well... okay then."
+              }
+            ]
+          },
+          {
+            "text": "Not really.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Qt6mFB"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "you-killed-a-dog": [
+      {
+        "player": "There we go, one dead dog. I should go and tell Drezel."
+      }
+    ],
+    "you-killed-a-dog-letting-the-monks-know-you-did-the-deed": [
+      {
+        "type": "message",
+        "text": "You knock at the door...",
+        "id": "dpW3H0"
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice 2",
+        "text": "Is that you, adventurer? Have you dealt with that dog?"
+      },
+      {
+        "player": "Yes, it's done."
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice 2",
+        "text": "Really? Well... thank you! That's really... quite something."
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice",
+        "text": "Ha! Brilliant! Good work, adventurer."
+      },
+      {
+        "player": "Don't mention it... Is there anything else you need?"
+      },
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice 2",
+        "text": "I think it's safe to say that you've done more than enough, adventurer."
+      },
+      {
+        "player": "Okay... I guess I'd better go and let the King know."
+      }
+    ],
+    "you-killed-a-dog-talking-to-the-monks-again": [
+      {
+        "type": "line",
+        "speaker": "Mysterious Voice 2",
+        "text": "Is that you, adventurer? Once again, thank you so much for dealing with that dog. It's really... quite something."
+      },
+      {
+        "player": "Don't mention it... Now, I guess I'd better report back to the King."
+      }
+    ],
+    "you-killed-a-dog-talking-to-king-roald-about-the-now-dead-dog": [
+      {
+        "player": "Greetings, your majesty."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About that job I'm doing...",
+            "steps": [
+              {
+                "player": "About that job I'm doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "You have news of Drezel for me?"
+              },
+              {
+                "player": "Well, I went to the temple and spoke to... Drezel. He asked me to kill a dog in the mausoleum."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "A dog? Tell me you didn't do it?!"
+              },
+              {
+                "player": "Well..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Are you a complete imbecile?"
+              },
+              {
+                "player": "I tried to tell you it was a bit suspicious, but you told me to help Drezel!"
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Do you even realise what you've done? That mausoleum contains the only passage between Morytania and Misthalin! Not only that, it's built right over the source of the River Salve!"
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "That 'dog' was responsible for guarding the entrance to the mausoleum! With it gone, there's nothing to stop someone from sabotaging the blessings on the river. Thanks to you, all of Misthalin is now at risk!"
+              },
+              {
+                "player": "But Drezel..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Do you not see what's happened here, you absolute cretin! Obviously some fiend has done something to Drezel and tricked your feeble intellect into helping them!"
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Now you get back there and get this mess sorted out. If you don't do whatever is necessary to safeguard this kingdom from attack, I will see you beheaded for high treason!"
+              },
+              {
+                "player": "Y-yes, your highness."
+              }
+            ]
+          },
+          {
+            "text": "Not really.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "_GAM8z"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "you-killed-a-dog-talking-to-him-again": [
+      {
+        "player": "Greetings, your majesty."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About that job I'm doing...",
+            "steps": [
+              {
+                "player": "About that job I'm doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Why haven't you ensured the border with Morytania is secure yet?"
+              },
+              {
+                "player": "Okay, okay... I'm going, I'm going... There's no need to shout..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "No need to shout?! Listen, and listen well, and see if your puny mind can comprehend this: if the border is not protected, then we are all at the mercy of the vampyres!"
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "I would say that me shouting at you for your incompetence is the least of your worries right now. Now get yourself back to Paterdomus! At once!"
+              }
+            ]
+          },
+          {
+            "text": "Not really.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "DXDDuZ"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "saving-drezel-and-the-world-attempting-to-open-the-coffin-on-the-top-floor": [
+      {
+        "player": "It sounds like there's something alive inside it. I don't think it would be a very good idea to open it..."
+      }
+    ],
+    "saving-drezel-and-the-world-meeting-drezel": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Oh! You do not appear to be one of those Zamorakians who imprisoned me! Who are you and why are you here?"
+      },
+      {
+        "player": "My name's [player name]. King Roald sent me to find out what was going on at the temple. I take it you're Drezel?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "That's right! Oh, praise be to Saradomin! I feared that when those Zamorakians attacked this place, Misthalin would be doomed!"
+      },
+      {
+        "player": "Why? What are they planning to do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "I believe they aim to desecrate the blessings placed upon the holy River Salve by the Seven Priestly Warriors themselves! We'd be left defenceless against the vampyres of Morytania!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Seven Priestly Warriors?",
+            "steps": [
+              {
+                "player": "Seven Priestly Warriors?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Indeed. While this isn't the... ideal time for a history lesson, this knowledge may help you with our next steps, so allow me to explain..."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "It is said that many years ago, the land that is now Morytania was a peaceful Saradominist kingdom. Alas, all that ended when the vampyres invaded, claiming the land as their own."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Morytania wasn't enough for them though. Soon, they set their sights on these lands as well. Misthalin would have quickly fallen to the vampyres, were it not for the bravery of the Seven Priestly Warriors."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "They led the armies of Misthalin against the vampyres, with the war culminating in a great battle that took place right where this temple stands."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "For ten days and nights they fought, never sleeping, never eating, fuelled only by their faith in Saradomin."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "On the eleventh day, reinforcements arrived, but when they did, they found the Seven Priestly Warriors had been slain by the vampyres, along with most of their forces."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "However, their sacrifice was not in vain. Before they were defeated, the Seven Priestly Warriors managed to bless the Salve with the holy power of Saradomin."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Those blessings remain to this day, ensuring no vampyre can cross the river. The temple here was built soon after. It guards the source of the River Salve, and acts as the only passage into Morytania."
+              },
+              {
+                "player": "And what about the mausoleum below?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "That is the most important part of the temple, for it is where the passage into Morytania is found. It is also the final resting place of the Seven Priestly Warriors."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Their tombs are built around the well that provides direct access to the source of the Salve, with a golden gift placed upon each of the tombs as a mark of respect."
+              },
+              {
+                "player": "I see. And you think those Zamorakians are going to try and remove the blessings on the river?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "I fear that is almost certainly their goal."
+              },
+              {
+                "player": "So what do we do?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "First, we need to get me out of this cell. The leader of those Zamorakians probably has the key. I believe he's the one in the hood."
+              },
+              {
+                "player": "So I need to go and find this key. Anything else I should be aware of?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "I'm afraid so. When the Salve was first blessed, a small number of vampyres were left trapped on this side of it. They were heavily weakened, but still posed a dangerous threat."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Even with them weakened, the brave Saradominists who built this temple were unable to kill them. Instead, they trapped them in coffins and buried them outside the temple."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "This coffin here contains one of those vampyres. The Zamorakians must have dug it up and brought it in here with them."
+              },
+              {
+                "player": "But why?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Well, as those fiends pointed out to me with delight, as I am the descendant of one of the Seven Priestly Warriors who blessed the river, it will likely recognise the smell of my blood."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "If I get too close, it will probably wake up and kill me, very slowly and painfully."
+              },
+              {
+                "player": "Maybe I could kill it somehow?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "I would not risk waking it. Even now, it could pose a huge threat. The priests of old would incapacitate trapped vampyres with the blessings of Saradomin. Perhaps there's a way for you do the same."
+              },
+              {
+                "player": "Right. So, I need to find the key to your cell and do something about the vampyre. Got it."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Good luck."
+              }
+            ]
+          },
+          {
+            "text": "What do we do?",
+            "steps": [
+              {
+                "type": "action",
+                "text": "Continues above from \"So what do we do?\"",
+                "id": "Vql_6_"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "saving-drezel-and-the-world-talking-to-drezel-again": [
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "How goes it, adventurer? Any luck in finding the key to the cell or a way of stopping the vampyre yet?"
+      },
+      {
+        "player": "No, not yet..."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Well, don't give up adventurer! The key must be nearby. Most likely the leader of those Zamorakians has it. I believe he's the one in the hood."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "As for the vampyre, the priests of old would incapacitate the ones they'd trapped with the blessings of Saradomin. Perhaps there's a way for you do the same."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you tell me more about this temple?",
+            "steps": [
+              {
+                "player": "Could you tell me more about this temple?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "It is said that many years ago, the land that is now Morytania was a peaceful Saradominist kingdom. Alas, all that ended when the vampyres invaded, claiming the land as their own."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Morytania wasn't enough for them though. Soon, they set their sights on these lands as well. Misthalin would have quickly fallen to the vampyres, were it not for the bravery of the Seven Priestly Warriors."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "They led the armies of Misthalin against the vampyres, with the war culminating in a great battle that took place right where this temple stands."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "For ten days and nights they fought, never sleeping, never eating, fuelled only by their faith in Saradomin."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "On the eleventh day, reinforcements arrived, but when they did, they found the Seven Priestly Warriors had been slain by the vampyres, along with most of their forces."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "However, their sacrifice was not in vain. Before they were defeated, the Seven Priestly Warriors managed to bless the Salve with the holy power of Saradomin."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Those blessings remain to this day, ensuring no vampyre can cross the river. The temple here was built soon after. It guards the source of the River Salve, and acts as the only passage into Morytania."
+              },
+              {
+                "player": "And what about the mausoleum below?"
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "That is the most important part of the temple, for it is where the passage into Morytania is found. It is also the final resting place of the Seven Priestly Warriors."
+              },
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "Their tombs are built around the well that provides direct access to the source of the Salve, with a golden gift placed upon each of the tombs as a mark of respect."
+              },
+              {
+                "player": "I see. Thanks for the information. I'll get going."
+              }
+            ]
+          },
+          {
+            "text": "I'll get going.",
+            "steps": [
+              {
+                "player": "I'll get going."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "saving-drezel-and-the-world-updating-king-roald": [
+      {
+        "player": "Greetings, your majesty."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About that job I'm doing...",
+            "steps": [
+              {
+                "player": "About that job I'm doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Is the border with Morytania secure yet?"
+              },
+              {
+                "player": "Not yet, but I'm working on it. First I need to free Drezel. He's been imprisoned by some Zamorakian monks."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "What? This is wholly unacceptable! I order you to do all that you can to free Drezel immediately!"
+              },
+              {
+                "player": "Yes, as I said, that's what I'm working on."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Good work! Always a place for quick thinkers in my kingdom!"
+              }
+            ]
+          },
+          {
+            "text": "Not really.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uSoNyG"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "saving-drezel-and-the-world-talking-to-drezel-with-the-golden-key": [
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "How goes it, adventurer? Any luck in finding the key to the cell or a way of stopping the vampyre yet?"
+      },
+      {
+        "player": "I have this key I took from the leader of the Zamorakians, but it doesn't seem to fit the lock on the gate."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Strange... The right key must be nearby. Maybe they hid it somewhere..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you tell me more about this temple?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ESIiL_"
+              }
+            ]
+          },
+          {
+            "text": "I'll get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ZVKT0D"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "saving-drezel-and-the-world-using-the-golden-key-on-the-lock": [
+      {
+        "type": "message",
+        "text": "You try to use the key to unlock the gate. The key is a similar size to the lock, but does not fit.",
+        "id": "mzretB"
+      },
+      {
+        "player": "Hmm... Why was that monk carrying this key if it's not for this cell?"
+      }
+    ],
+    "saving-drezel-and-the-world-exchanging-the-golden-key-with-the-iron-key": [
+      {
+        "type": "message",
+        "text": "You swap the Golden key for the Iron key.",
+        "id": "rHEjYw"
+      }
+    ],
+    "saving-drezel-and-the-world-interacting-with-the-other-monuments": [
+      {
+        "type": "unavailable",
+        "id": "9-wFLZ"
+      }
+    ],
+    "saving-drezel-and-the-world-talking-to-drezel-with-murky-water-before-unlocking-the-cell": [
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "How goes it, adventurer? Any luck in finding the key to the cell or a way of stopping the vampyre yet?"
+      },
+      {
+        "player": "I have some water from the Salve. Do you think we could use this to deal with the vampyre?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Hmm... Yes, that could work. However, I'll first need to see if it's already been desecrated by those Zamorakians."
+      },
+      {
+        "player": "Which means I'm going to need to get this gate open first."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Indeed."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you tell me more about this temple?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1ePIWA"
+              }
+            ]
+          },
+          {
+            "text": "I'll get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Hqxtv9"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key": [
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "How goes it, adventurer? Any luck in finding the key to the cell or a way of stopping the vampyre yet?"
+      },
+      {
+        "player": "I have this key I found down in the mausoleum."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Excellent work! Quickly, try it on the gate, and see if it will free me!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you tell me more about this temple?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "I6MLM5"
+              }
+            ]
+          },
+          {
+            "text": "I'll get going.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "cpnor_"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-unlocking-drezel-s-cell": [
+      {
+        "type": "message",
+        "text": "You use the key to unlock the cell gate.",
+        "id": "TtVTbz"
+      },
+      {
+        "player": "The key fit the lock!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has murky water:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Drezel",
+            "text": "Excellent work! Now we just need the vampyre dealing with."
+          },
+          {
+            "player": "Well, I have some water from the Salve here."
+          },
+          {
+            "type": "line",
+            "speaker": "Drezel",
+            "text": "Very good. Let me have a look at it."
+          },
+          {
+            "type": "message",
+            "text": "Drezel inspects the water. He then says some sort of prayer.",
+            "id": "feQ9cD"
+          },
+          {
+            "type": "condition",
+            "text": "First time blessing water:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Drezel",
+                "text": "It's as I feared. Those Zamorakians have already desecrated the Salve. However, I've managed to purify this water again with the blessings of Saradomin. You should be able to use it against the vampyre now."
+              },
+              {
+                "player": "I'll do that right away."
+              }
+            ],
+            "id": "VsTDVf"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KLK90U"
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have murky water:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Drezel",
+            "text": "Excellent work! Now we just need the vampyre dealing with. The priests of old would incapacitate the ones they'd trapped with the blessings of Saradomin."
+          },
+          {
+            "player": "Blessings of Saradomin? How did they do that?"
+          },
+          {
+            "type": "line",
+            "speaker": "Drezel",
+            "text": "The most common way was with holy water."
+          },
+          {
+            "player": "Like the water of the Salve perhaps?"
+          },
+          {
+            "type": "line",
+            "speaker": "Drezel",
+            "text": "Well, that may well depend on if the Zamorakians have already desecrated it. One step at a time though. First, why don't you try and get hold of some?"
+          }
+        ],
+        "id": "Vp3J22"
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-talking-to-drezel-with-blessed-water": [
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Excellent work getting the cell unlocked! Now we just need the vampyre dealing with. That water I blessed for you should do it. Pour it on the coffin, quickly!"
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-searching-the-well": [
+      {
+        "type": "message",
+        "text": "You look down the well and see the water of the River Salve moving slowly along.",
+        "id": "q27ghK"
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-filling-a-bucket-from-the-well": [
+      {
+        "type": "message",
+        "text": "You fill the bucket from the well.",
+        "id": "0VsEMK"
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-attempting-to-pour-normal-water-on-the-coffin": [
+      {
+        "player": "I don't think pouring normal water on the coffin is going to help..."
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-attempting-to-pour-murky-water-on-the-coffin": [
+      {
+        "player": "This water doesn't look particularly holy to me... I think I'd better check with Drezel first."
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-pouring-blessed-water-on-the-coffin": [
+      {
+        "type": "message",
+        "text": "You pour the blessed water over the coffin...",
+        "id": "Xf1JK6"
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-attempting-to-open-the-coffin-again": [
+      {
+        "player": "The vampyre should be dealt with. I'd still best not risk it though."
+      }
+    ],
+    "talking-to-drezel-with-the-iron-key-updating-king-roald": [
+      {
+        "player": "Greetings, your majesty."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About that job I'm doing...",
+            "steps": [
+              {
+                "player": "About that job I'm doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Is the border with Morytania secure yet?"
+              },
+              {
+                "player": "Not yet, but Drezel and I are working on it."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Well, best you get back to it then. This is a matter of national security and if I find out we are vulnerable I will hold you personally responsible!"
+              },
+              {
+                "player": "Yes, your highness."
+              }
+            ]
+          },
+          {
+            "text": "Not really.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "NxCPRd"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-drezel-is-freed-and-the-vampyre-is-sealed": [
+      {
+        "player": "I poured the blessed water over the coffin. That vampyre shouldn't cause us any trouble now."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Excellent work, adventurer! Now, meet me down in the mausoleum. We need to revert the damage those Zamorakians did as soon as possible!"
+      }
+    ],
+    "after-drezel-is-freed-and-the-vampyre-is-sealed-talking-to-drezel-again": [
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Meet me down in the mausoleum. We need to revert the damage those Zamorakians did as soon as possible!"
+      },
+      {
+        "player": "Okay."
+      }
+    ],
+    "after-drezel-is-freed-and-the-vampyre-is-sealed-talking-to-king-roald-again": [
+      {
+        "player": "Greetings, your majesty."
+      },
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About that job I'm doing...",
+            "steps": [
+              {
+                "player": "About that job I'm doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Is the border with Morytania secure yet?"
+              },
+              {
+                "player": "Not yet, but Drezel and I are working on it."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Good, good. Keep up the good work."
+              }
+            ]
+          },
+          {
+            "text": "Not really.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "r5W_7F"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-drezel-is-freed-and-the-vampyre-is-sealed-attempting-to-pass-the-holy-barrier-before-securing-the-barrier": [
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Stop!"
+      },
+      {
+        "player": "Can't I go through there?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "No, you cannot! It is taking all of my willpower to hold that barrier in place. You must restore the sanctity of the Salve as soon as possible!"
+      }
+    ],
+    "repairing-the-barrier": [
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Ah, [player name]. Glad you made it. Things are worse than I feared down here. I'm not sure if I will be able to repair the damage."
+      },
+      {
+        "player": "How bad is it?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "From what I can tell, those Zamorakians used some kind of potion to pollute the Salve. With this being the source, it has already started to spread down the river."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Before long, the blessings placed upon the river will be irreversably damaged. There will be nothing to stop the vampyres from invading Misthalin at their leisure."
+      },
+      {
+        "player": "Could you not bless the river like you did with that water earlier?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "I'm afraid not. Blessing a small bucket is one thing, but the power I have from Saradomin is nowhere near enough to cleanse an entire river."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "However, I believe there might still be a way to undo this, but I'm going to need your help. This passage is the only route between Morytania and Misthalin. The barrier here draws power from the river."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "I have managed to reinforce the barrier, but I must continue focussing on it to keep it intact. While I do that, I will need you to soak up the evil magic that potion has released into the river."
+      },
+      {
+        "player": "Soak up the magic? How?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "I'm sure you know of runes, used by mages to power their spells. The essence used to create them absorbs magical potential from runic altars to be released later."
+      },
+      {
+        "player": "Ah, I see where this is going. You think we can use some rune essence to absorb the magic that potion released into the Salve?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Exactly. If you could bring me fifty essence, I should be able to reverse the damage done. Be quick though. The longer we wait, the worse things will get."
+      }
+    ],
+    "repairing-the-barrier-talking-to-drezel-again": [
+      {
+        "player": "What am I supposed to do again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Bring me fifty rune essence so that I can undo the damage done by those Zamorakians."
+      }
+    ],
+    "repairing-the-barrier-bringing-drezel-essence": [
+      {
+        "player": "I brought you some rune essence."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Quickly, give them to me!"
+      },
+      {
+        "type": "message",
+        "text": "You give Drezel some essence.",
+        "id": "ViQ2ji"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Thank you. I need [1-50] more."
+      }
+    ],
+    "repairing-the-barrier-talking-to-drezel-again-2": [
+      {
+        "player": "How much more essence do I need to bring you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "I need [1-50] more."
+      }
+    ],
+    "repairing-the-barrier-bringing-drezel-noted-essence": [
+      {
+        "player": "I brought you some rune essence."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "You have brought me notes saying 'I promise to pay the bearer on demand the listed number of Rune Essence.' How is that supposed to help me?"
+      }
+    ],
+    "giving-drezel-the-last-of-the-essence": [
+      {
+        "player": "I brought you some more essence."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Quickly, give them to me!"
+      },
+      {
+        "type": "message",
+        "text": "You give Drezel some essence.",
+        "id": "4daSZa"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Excellent! That should do it! I will bless these stones and place them within the well so they can soak up the magic from that potion. Misthalin will be safe from the vampyres once more!"
+      },
+      {
+        "player": "What about the Zamorakians upstairs?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "They hopefully shouldn't be too much trouble now that their leader is dead, but I will write to the King and ask him to make sure they're dealt with properly."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "For now though, please take this dagger. It has been handed down within my family for generations and is filled with the power of Saradomin. Consider it a small thank you for your help here."
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "5wj46V"
+      },
+      {
+        "player": "So can I pass through that barrier now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Into Morytania? Yes, you can. The barrier will prevent the servants of Zamorak from entering Misthalin, but it is safe for those blessed by Saradomin."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "I must warn you though, Morytania is an evil land. The region is filled with creatures and monsters more terrifying than any you'll find on this side of the Salve."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Worst of all are the vampyres, the rulers of Morytania. Be very cautious of their kind. Many are completely immune to human weaponry. Those that aren't, are still very hard to kill."
+      },
+      {
+        "player": "I'll be careful. Anything else I should know?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "The first settlement you'll likely come across is Canifis, a town of werewolves. They probably won't attack you unless provoked, but you should still be cautious."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "You should keep that dagger I gave you to hand. Its magic will prevent them from taking on their wolf form."
+      },
+      {
+        "player": "I see. Thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "One last thing. While in Morytania, stay alert for any mention of the Myreque."
+      },
+      {
+        "player": "The Myreque?"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Yes. They're a band of freedom fighters. They fight to protect the humans trapped in Morytania from the tyranny of the vampyres. Their hope is to one day rid the region of all evil."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Veliaf, the leader of their Mort Myre group, is an old friend. I imagine they'd appreciate the help of someone like you, if you can find them."
+      },
+      {
+        "player": "I'll keep an eye out for them."
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Right, I think that's everything. Just the blessing itself now. Hold still a moment."
+      },
+      {
+        "type": "message",
+        "text": "Drezel blesses you, allowing you to pass through the barrier into Morytania.",
+        "id": "R9VGgf"
+      },
+      {
+        "type": "line",
+        "speaker": "Drezel",
+        "text": "Good luck out there. Stay safe."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you know of anything I can do in Morytania?",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:Drezel",
+                "section": "",
+                "text": "Continues on Transcript:Drezel",
+                "id": "oknIOj",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          },
+          {
+            "text": "And you. See you later.",
+            "steps": [
+              {
+                "player": "And you. See you later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "giving-drezel-the-last-of-the-essence-talking-to-king-roald": [
+      {
+        "type": "line",
+        "speaker": "King Roald",
+        "text": "Yes, citizen. Do you need something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "About that job you gave me...",
+            "steps": [
+              {
+                "player": "About that job you gave me..."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Ah, yes, we recieved word from Drezel. I hear the Salve is safe once more. Very good work!"
+              },
+              {
+                "player": "Thank you. Will you be sending some soldiers over to sort out those Zamorakians?"
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "Yes, yes, we'll make sure they're dealt with. Might take a little while, mind you. Lots of priorities to balance around here. I'm sure we'll have them gone before the end of the year though."
+              },
+              {
+                "player": "Right..."
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Not really.",
+            "steps": [
+              {
+                "player": "Not really."
+              },
+              {
+                "type": "line",
+                "speaker": "King Roald",
+                "text": "You will have to excuse me then. I am very busy as I have a kingdom to run!"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "VLQURQ"
+      }
+    ]
+  }
+}

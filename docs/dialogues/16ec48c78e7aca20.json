@@ -1,0 +1,84 @@
+{
+  "default": "before-witch-s-house",
+  "variants": {
+    "before-witch-s-house": [
+      {
+        "player": "Hello young man."
+      },
+      {
+        "type": "message",
+        "text": "The boy sobs.",
+        "id": "EAqae9"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's the matter?",
+            "steps": [
+              {
+                "player": "What's the matter?"
+              },
+              {
+                "npc": "I've kicked my ball over that hedge, into that garden! The old lady who lives there is scary... She's locked the ball in her wooden shed! Can you get my ball back for me please?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Witch's House quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Ok, I'll see what I can do."
+                      },
+                      {
+                        "npc": "Thanks mister!"
+                      }
+                    ],
+                    "hook": "quest:witch-s-house:start",
+                    "quest": "Witch's House"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Get it back yourself."
+                      },
+                      {
+                        "npc": "You're a meany!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "The boy starts crying again.",
+                        "id": "i9gVAJ"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Well if you're not going to answer, I'll go.",
+            "steps": [
+              {
+                "player": "Well if you're not going to answer, I'll go."
+              },
+              {
+                "type": "message",
+                "text": "The boy sniffs slightly.",
+                "id": "mnNgH-"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-witch-s-house": [
+      {
+        "npc": "Thank you for getting my ball back!"
+      }
+    ]
+  }
+}

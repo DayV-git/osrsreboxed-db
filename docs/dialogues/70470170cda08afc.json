@@ -1,0 +1,915 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Hello there."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "type": "line",
+                "speaker": "Lord Kandur Hosidius",
+                "text": "I am Lord Kandur Hosidius, ruler of this city. Who are you?"
+              },
+              {
+                "player": "I'm [player name]."
+              },
+              {
+                "type": "line",
+                "speaker": "Lord Kandur Hosidius",
+                "text": "Pleased to meet you [player name]. It is a shame we could not meet in better circumstances."
+              },
+              {
+                "player": "Anything I can help you with?"
+              },
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "M7gKJ0"
+              }
+            ]
+          },
+          {
+            "text": "Anything I can help you with?",
+            "steps": [
+              {
+                "player": "Anything I can help you with?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the requirements to start the quest:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Lord Kandur Hosidius",
+                    "text": "Our family is in dire need of assistance. Alas, I do not feel I can trust you enough to involve you in this."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Kac5Aj"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the requirements to start the quest:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Lord Kandur Hosidius",
+                    "text": "Our family is in dire need of assistance. My eldest son, Artur, has gone missing and we could desperately use some help in finding him."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Lord Kandur Hosidius",
+                    "text": "Would you be willing to assist us? You will be rewarded if you bring him home safe."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Start The Depths of Despair quest?",
+                    "options": [
+                      {
+                        "text": "Yes.",
+                        "steps": [
+                          {
+                            "player": "I can help. What do you need me to do?"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Lord Kandur Hosidius",
+                            "text": "Thank you friend. I suggest you begin your search by talking to my family and servants. One of them might know where Artur has gone."
+                          }
+                        ],
+                        "hook": "quest:the-depths-of-despair:start",
+                        "quest": "The Depths of Despair"
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "player": "No. I'm afraid I have other things to be doing."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Lord Kandur Hosidius",
+                            "text": "I'm sorry to hear that. If you change your mind please return to me as soon as you can."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "TrbpPj"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "type": "line",
+                "speaker": "Lord Kandur Hosidius",
+                "text": "Until next time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-lord-hosidius-again": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Hello there. Have you found my son yet?"
+      },
+      {
+        "player": "Not yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "I suggest you begin your search by talking to my family and servants. One of them might know where he's gone."
+      }
+    ],
+    "starting-off-talking-to-butler-jarvis": [
+      {
+        "type": "line",
+        "speaker": "Butler Jarvis",
+        "text": "Good day, [sir/madam]."
+      },
+      {
+        "player": "Hello. I'm helping Lord Hosidius find his missing son. I was wondering if you could help me."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jarvis",
+        "text": "I'm afraid I know not where Artur has gone. I do not speak to him much. He keeps himself to himself."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jarvis",
+        "text": "However, I've noticed him speaking to Olivia before. Maybe she can help."
+      },
+      {
+        "player": "Great, thanks."
+      }
+    ],
+    "starting-off-talking-to-butler-jarvis-again": [
+      {
+        "type": "line",
+        "speaker": "Butler Jarvis",
+        "text": "Good day [sir/madam]. I hope your quest is going well."
+      }
+    ],
+    "starting-off-talking-to-elena-hosidius": [
+      {
+        "player": "Hello. I..."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena Hosidius",
+        "text": "You're the one helping to find our son."
+      },
+      {
+        "player": "Yes I..."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena Hosidius",
+        "text": "It's good that you're here to help. Artur is a good lad, but he does have a habit of biting off more than he can chew."
+      },
+      {
+        "player": "I was wondering if..."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena Hosidius",
+        "text": "He's meant for greatness you know. He'll be a king one day."
+      },
+      {
+        "player": "Don't you mean..."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena Hosidius",
+        "text": "Lord. I meant to say lord. Now be on your way. Artur needs your help."
+      }
+    ],
+    "starting-off-talking-to-chef-olivia": [
+      {
+        "player": "Hello, I'm helping Lord Hosidius find his missing son. I was wondering if you had any idea where he might have gone?"
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "I'm sorry, but I don't know anything."
+      },
+      {
+        "player": "Are you sure?"
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "Well... I err..."
+      },
+      {
+        "player": "Err?"
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "Oh this is awful. Please don't tell Lord Hosidius. He'll fire me if he finds out."
+      },
+      {
+        "player": "Calm down, you have nothing to fear from me. I just want to help find Artur. Do you know where he is?"
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "Artur and I, we're..."
+      },
+      {
+        "player": "You're in love aren't you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "Yes..."
+      },
+      {
+        "player": "Well don't worry, your secret is safe with me."
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "Thank you. Before he went missing, Artur told me he was going to find the original copy of the Royal Accord of Twill. That's where he will have gone."
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "He's been spending a lot of time in the Arceuus Library recently, researching the Accord. He mentioned a librarian called Galana. Maybe she can help you."
+      },
+      {
+        "player": "Thank you."
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "Please bring Artur back."
+      }
+    ],
+    "starting-off-talking-to-chef-olivia-talking-to-chef-olivia-again": [
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "Please bring Artur back."
+      },
+      {
+        "player": "Where should I be looking again?"
+      },
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "He's been spending a lot of time in the Arceuus Library. He mentioned a librarian called Galana. Maybe she can help you."
+      },
+      {
+        "player": "Thank you."
+      }
+    ],
+    "the-envoy-to-varlamore-talking-to-galana": [
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "Do you need something?"
+      },
+      {
+        "player": "I'm looking for information on the Royal Accord of Twill."
+      },
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "The Royal Accord of Twill was signed by the heads of Kourend's five houses, known then as the Royal Lords. This was over a thousand years ago."
+      },
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "The Accord declared that they would take over rulership of Great Kourend from the Council of Elders."
+      },
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "For many years after the Accord was signed, the Royal Lords took it in turns to rule the kingdom. Each of them ruled for ten years in turn."
+      },
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "Those practices have long since been abolished though and Kourend is now ruled by the Kourend Council. The original Accord has since been lost, but copies still exist in this library."
+      },
+      {
+        "player": "What if I wanted to find the original?"
+      },
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "Many have tried and failed. You would likely have no better luck. However, if it interests you, you might wish to read The Envoy to Varlamore, by Deryk Paulson."
+      },
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "It details how the original Accord was lost."
+      },
+      {
+        "player": "Do you know where I can find the book?"
+      },
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "Try the [top/middle/bottom] floor, [north/south] [eastern/western] bay."
+      },
+      {
+        "player": "Thank you."
+      }
+    ],
+    "the-envoy-to-varlamore-talking-to-galana-talking-to-galana-again": [
+      {
+        "player": "Could you remind me where I can find that book on the Accord?"
+      },
+      {
+        "type": "line",
+        "speaker": "Galana",
+        "text": "Try the [top/middle/bottom] floor, [north/south] [eastern/western] bay."
+      },
+      {
+        "player": "Thank you."
+      }
+    ],
+    "the-envoy-to-varlamore-searching-the-appropriate-bookshelf": [
+      {
+        "type": "condition",
+        "text": "If the player already has the book:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You find: The Envoy to Varlamore, by Deryk Paulson. You already have a copy.",
+            "id": "kps0go"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WQKVh4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You find: The Envoy to Varlamore, by Deryk Paulson. You don't have room to take a copy.",
+            "id": "2kqBUP"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VGsYqW"
+      },
+      {
+        "type": "message",
+        "text": "You find: The Envoy to Varlamore, by Deryk Paulson. You take a copy.",
+        "id": "r7iI2i"
+      }
+    ],
+    "the-envoy-to-varlamore-entering-the-cave": [
+      {
+        "type": "message",
+        "text": "You climb down into the cave.",
+        "id": "GL3IJy"
+      }
+    ],
+    "the-envoy-to-varlamore-entering-the-crevice": [
+      {
+        "type": "message",
+        "text": "You squeeze through the crevice.",
+        "id": "liq8sV"
+      }
+    ],
+    "the-envoy-to-varlamore-crossing-the-stepping-stone": [
+      {
+        "type": "message",
+        "text": "You attempt to cross the stepping stones.",
+        "id": "brScur"
+      },
+      {
+        "type": "condition",
+        "text": "If the player succesfully crosses:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You successfully make it to the other side.",
+            "id": "oY3wLB"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "EUo3pD"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not succesfully cross:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You slip and fall into the water.",
+            "id": "VfJLRk"
+          },
+          {
+            "player": "Crikey!"
+          },
+          {
+            "type": "message",
+            "text": "You manage to swim back to the shore.",
+            "id": "QxHVIv"
+          }
+        ],
+        "id": "XoOOyn"
+      }
+    ],
+    "the-envoy-to-varlamore-climbing-the-rocks": [
+      {
+        "type": "condition",
+        "text": "If the player successfully crosses the rocks:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You climb over the rocks.",
+            "id": "0QAGMq"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ksSr_q"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not successfully cross the rocks:",
+        "steps": [
+          {
+            "player": "Ouch!"
+          }
+        ],
+        "id": "sn3VWw"
+      }
+    ],
+    "the-envoy-to-varlamore-climbing-down-the-tunnel-entrance": [
+      {
+        "type": "message",
+        "text": "You climb down the rope.",
+        "id": "Y4ZprR"
+      }
+    ],
+    "the-envoy-to-varlamore-talking-to-artur-hosidius": [
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "Hello. I wasn't expecting to see anyone else down here."
+      },
+      {
+        "player": "Are you Artur Hosidius?"
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "That's me. Who are you?"
+      },
+      {
+        "player": "I'm [player name]. Your father sent me to find you. He's worried about you."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "He really shouldn't worry, I'm fine. I'll head home as soon as I've finished here."
+      },
+      {
+        "player": "Well could I help speed things along in some way? I promised him I'd get you home."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "Now that you mention it, I could use some help. There's a chest in the next cave with something important in it. It's got a big snake guarding it though."
+      },
+      {
+        "player": "By something important do you mean the Royal Accord of Twill?"
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "How did you know that?"
+      },
+      {
+        "player": "How do you think I found you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "Oh. Well as you already seem to know, yes I'm here looking for the Royal Accord of Twill. I think it's in that chest, but the snake is in the way. Could you kill it for me?"
+      },
+      {
+        "player": "Can't you do it yourself?"
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "I tried, but I'm not very good at fighting."
+      },
+      {
+        "player": "Typical. Fine, I'll kill the snake. Just wait here."
+      }
+    ],
+    "the-envoy-to-varlamore-talking-to-artur-hosidius-talking-to-artur-hosidius-again": [
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "Have you killed that snake yet?"
+      },
+      {
+        "player": "Not yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "The sooner you kill it, the sooner I can head home."
+      }
+    ],
+    "the-envoy-to-varlamore-talking-to-artur-hosidius-after-killing-the-snake": [
+      {
+        "player": "It's dead."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "Great. Now we just need to empty that chest. Would you mind?"
+      },
+      {
+        "player": "..."
+      },
+      {
+        "player": "Fine. Wait here."
+      }
+    ],
+    "the-envoy-to-varlamore-looting-the-chest": [
+      {
+        "type": "condition",
+        "text": "If the player already has the royal accord:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You have already recovered the Accord.",
+            "id": "sqsVRw"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eYGFOA"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You do not have enough inventory space to loot this chest.",
+            "id": "TCqadX"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "5rX0VQ"
+      },
+      {
+        "type": "message",
+        "text": "You search the chest and find the original Royal Accord of Twill.",
+        "id": "b_bfNd"
+      }
+    ],
+    "the-envoy-to-varlamore-after-emptying-the-chest": [
+      {
+        "player": "I've emptied that chest."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "And?"
+      },
+      {
+        "player": "I found the Accord."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "Great! Hand it over then."
+      },
+      {
+        "player": "Not yet. You'll get it once you've returned home."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "Eugh. Fine, I'll go home. But you'd better not run off with the Accord."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why do you want the Accord anyway?",
+            "steps": [
+              {
+                "player": "Why do you want the Accord anyway?"
+              },
+              {
+                "type": "line",
+                "speaker": "Artur Hosidius",
+                "text": "Why wouldn't I want it? The signing of the Accord marked the start of a golden age. Once the Royal Lords replaced the Council of Elders, Kourend prospered like never before."
+              },
+              {
+                "player": "But that was a long time ago. Why does it matter now?"
+              },
+              {
+                "type": "line",
+                "speaker": "Artur Hosidius",
+                "text": "Because I think it's time for another golden age. The Kourend Council, like the Council of Elders before them, have failed to do a good job in running this kingdom."
+              },
+              {
+                "player": "And you think the five houses would do a better job?"
+              },
+              {
+                "type": "line",
+                "speaker": "Artur Hosidius",
+                "text": "Exactly."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What makes you say the Council have done a bad job?",
+                    "steps": [
+                      {
+                        "player": "What makes you say the Council have done a bad job?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artur Hosidius",
+                        "text": "More crime. Fewer homes. More illness. Loss of jobs. The list goes on."
+                      },
+                      {
+                        "player": "But aren't the five houses partially to blame as well? They rule the cities."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artur Hosidius",
+                        "text": "The Council sets the laws and the Council sets the budgets. We have to do as they say, just like everyone else."
+                      },
+                      {
+                        "player": "Hmmm, fair enough. Anyway, we'd better get off."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Fair enough. Now let's be off.",
+                    "steps": [
+                      {
+                        "player": "Fair enough. Now let's be off."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I won't. Now let's get going.",
+            "steps": [
+              {
+                "player": "I won't. Now let's get going."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "the-envoy-to-varlamore-climbing-up-the-rope": [
+      {
+        "type": "message",
+        "text": "You climb up the rope.",
+        "id": "aXacAX"
+      }
+    ],
+    "the-envoy-to-varlamore-climbing-out-of-the-caves": [
+      {
+        "type": "message",
+        "text": "You climb up the sand pile.",
+        "id": "IAW0EN"
+      }
+    ],
+    "finishing-up-talking-to-artur": [
+      {
+        "player": "Hello again Artur."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "Hello [player name]. Thanks for your help in recovering the Accord."
+      },
+      {
+        "player": "No problem."
+      },
+      {
+        "type": "line",
+        "speaker": "Artur Hosidius",
+        "text": "You should talk to my father. He will probably want to reward you."
+      }
+    ],
+    "finishing-up-talking-to-chef-olivia-after-artur-returns": [
+      {
+        "type": "line",
+        "speaker": "Chef Olivia",
+        "text": "Thank you for bringing Artur home safe."
+      }
+    ],
+    "finishing-up-talking-to-butler-jarvis-after-artur-returns": [
+      {
+        "type": "line",
+        "speaker": "Butler Jarvis",
+        "text": "Good day [sir/madam]. On behalf of the Hosidius family, I thank you for bringing Artur home."
+      }
+    ],
+    "finishing-up-talking-to-elena-hosidius-after-artur-returns": [
+      {
+        "type": "line",
+        "speaker": "Elena Hosidius",
+        "text": "Thank you for finding our son. You've done this kingdom a great service."
+      },
+      {
+        "player": "It's no..."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena Hosidius",
+        "text": "I do wonder if his father could have done more though. My brother would have had the entire army out searching."
+      },
+      {
+        "player": "Your brother..."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena Hosidius",
+        "text": "My brother is Lord Shiro Shayzien. He commands the Shayzien Army. A luxury my husband doesn't have."
+      },
+      {
+        "player": "So you..."
+      },
+      {
+        "type": "line",
+        "speaker": "Elena Hosidius",
+        "text": "Maybe it doesn't always have to be that way. Things may well soon be different. Now be on your way, I have things to do."
+      }
+    ],
+    "finishing-up-returning-to-lord-hosidius": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Hello there. Artur is safely back home again. I hear we have you to thank for that."
+      },
+      {
+        "player": "All in a days work."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "He also said that you managed to recover the original copy of the Royal Accord of Twill."
+      },
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the accord in their inventory:",
+        "steps": [
+          {
+            "player": "I did. I don't have it with me though."
+          },
+          {
+            "type": "line",
+            "speaker": "Lord Kandur Hosidius",
+            "text": "Well go fetch it and bring it here."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ke_p6B"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the accord in their inventory:",
+        "steps": [
+          {
+            "player": "I did. I assume you'll be wanting it."
+          },
+          {
+            "type": "line",
+            "speaker": "Lord Kandur Hosidius",
+            "text": "Yes. I'll make sure it's well looked after. Now as for that reward I promised."
+          },
+          {
+            "type": "action",
+            "text": "Congratulations! Quest complete!",
+            "id": "2AuI1C"
+          },
+          {
+            "type": "line",
+            "speaker": "Lord Kandur Hosidius",
+            "text": "Is there anything else I can do for you?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Tell me about yourself."
+              },
+              {
+                "text": "Tell me about Hosidius."
+              },
+              {
+                "text": "Tell me about your plans."
+              },
+              {
+                "text": "Goodbye."
+              }
+            ]
+          }
+        ],
+        "id": "AsCy-M"
+      }
+    ],
+    "finishing-up-talking-to-lord-hosidius-again-before-getting-the-full-reward": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Lord Kandur Hosidius",
+        "text": "I assume you're after that reward I promised you. Here you go."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about yourself."
+          },
+          {
+            "text": "Tell me about Hosidius."
+          },
+          {
+            "text": "Tell me about your plans."
+          },
+          {
+            "text": "Goodbye."
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "yARffe"
+      }
+    ]
+  }
+}

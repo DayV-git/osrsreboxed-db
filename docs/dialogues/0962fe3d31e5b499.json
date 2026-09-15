@@ -1,0 +1,198 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "A thousand greetings, sir."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you want to trade?",
+            "steps": [
+              {
+                "player": "Do you want to trade?"
+              },
+              {
+                "npc": "Yes, certainly. I deal in scimitars."
+              }
+            ]
+          },
+          {
+            "text": "Nice cloak.",
+            "steps": [
+              {
+                "player": "Nice cloak."
+              },
+              {
+                "npc": "Thank you."
+              }
+            ]
+          },
+          {
+            "text": "Could you sell me a dragon scimitar?",
+            "steps": [
+              {
+                "player": "Could you sell me a dragon scimitar?"
+              },
+              {
+                "npc": "A dragon scimitar? A DRAGON scimitar?"
+              },
+              {
+                "npc": "The banana-brained nitwits who make them would never dream of selling any to me."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed Monkey Madness I:",
+                "steps": [
+                  {
+                    "npc": "Seriously, you'll be a monkey's uncle before you'll ever hold a dragon scimitar."
+                  },
+                  {
+                    "player": "Oh well, thanks anyway."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Hw-pkj"
+                  }
+                ],
+                "id": "rkbRAG"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed Monkey Madness I:",
+                "steps": [
+                  {
+                    "player": "Hmmm, funny you should say that..."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "tx-Bo3"
+                  }
+                ],
+                "id": "eLuj8o"
+              },
+              {
+                "npc": "Perhaps you'd like to take a look at my stock?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please, Zeke.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Zeke's Superior Scimitars.",
+                        "id": "94-K0q"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Not today, thank you.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What do you think of Ali Morrisane?",
+            "condition": "After Rogue Trader",
+            "steps": [
+              {
+                "player": "What do you think about Ali Morrisane?"
+              },
+              {
+                "npc": "He is a dangerous man."
+              },
+              {
+                "npc": "Although he does not appear to be dangerous, he has brought several men to this town who have threatened me and several others."
+              },
+              {
+                "npc": "One man even threatened me with a hammer, saying that when he set up his smithy, my shoddy workmanship would be revealed!"
+              },
+              {
+                "player": "What will you do about these threats?"
+              },
+              {
+                "npc": "Oh, I am quite confident in the quality of my work...as will you be if you take a look at my wares."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please, Zeke.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Zeke's Superior Scimitars.",
+                        "id": "Oek1dJ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Not today, thank you.",
+                    "steps": []
+                  }
+                ]
+              }
+            ],
+            "id": "yol-Cq"
+          }
+        ]
+      }
+    ],
+    "using-an-al-kharid-flyer-on-zeke": [
+      {
+        "player": "Hi! I have this money-off voucher!"
+      },
+      {
+        "npc": "So I see! Unfortunately, it seems to have expired yesterday! Nevermind."
+      },
+      {
+        "player": "But I only just got it!"
+      },
+      {
+        "npc": "I'm sorry, there's nothing I can do."
+      },
+      {
+        "npc": "Goodbye."
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've been given another clue!",
+            "id": "Rrr7wy"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "pAEZ3X"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "rA88s-"
+          }
+        ],
+        "id": "JCO2iX"
+      }
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "default": "standard-dialogue-without-68-fishing",
+  "variants": {
+    "standard-dialogue-without-68-fishing": [
+      {
+        "npc": "Hello, I'm afraid only the top fishers are allowed to use our premier fishing facilities."
+      }
+    ],
+    "standard-dialogue-with-68-fishing-but-less-than-99-fishing": [
+      {
+        "npc": "Hello, welcome to the fishing guild.  Please feel free to make use of any of our facilities."
+      },
+      {
+        "type": "choice",
+        "prompt": "Would you like to ask about his Skillcape of Fishing?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "player": "Can you tell me about that skillcape you're wearing?"
+              },
+              {
+                "npc": "I'm happy to, my friend. This beautiful cape was presented to me in recognition of my skills and experience as a fisherman and I was asked to be the head of this guild at the same time."
+              },
+              {
+                "npc": "As the best fisherman in the guild it is my duty to control who has access to the guild and to say who can buy similar skillcapes and the cape can even teleport you right inside the guild."
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-with-99-fishing": [
+      {
+        "npc": "Hello, welcome to the fishing guild.  Please feel free to make use of any of our facilities."
+      },
+      {
+        "type": "choice",
+        "prompt": "Would you like to ask about his Skillcape of Fishing?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "player": "Can you tell me about that skillcape you're wearing?"
+              },
+              {
+                "npc": "I'm happy to say that being such a fine fisher yourself, I'm happy to offer you the opportunity to purchase a fine skillcape just like this one, it can even teleport you right inside the guild. Are you interested? It would cost"
+              },
+              {
+                "npc": "99000 coins."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Yes, please."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 99,000 coins in their inventory:",
+                        "steps": [
+                          {
+                            "player": "But, unfortunately, I don't have enough money with me."
+                          },
+                          {
+                            "npc": "Well, come back and see me when you do."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "rEkiid"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                        "steps": [
+                          {
+                            "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "ufaQ4d"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins and enough inventory space:",
+                        "steps": [
+                          {
+                            "npc": "Excellent! Wear that cape with pride my friend."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Player receives a Fishing cape and Fishing hood and pays 99,000 coins.",
+                            "action": "receive",
+                            "action_source": "text",
+                            "id": "GMR7xa"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "qILAae"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No, thanks."
+                      },
+                      {
+                        "npc": "Okay, suit yourself."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

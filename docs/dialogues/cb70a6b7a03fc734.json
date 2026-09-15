@@ -1,0 +1,251 @@
+{
+  "default": null,
+  "variants": {
+    "after-the-hand-in-the-sand": [
+      {
+        "player": "Bert! Good news!"
+      },
+      {
+        "npc": "Arrr...Good news be always handy."
+      },
+      {
+        "player": "They arrested Sandy for the murder of a wizard and the sand pit now refills itself!"
+      },
+      {
+        "npc": "ME JOB! I'VE LOSTED ME JOB! 'ow c'n yer say tha' be good news?? Me wife'll tear me limb fr'm limb!"
+      },
+      {
+        "player": "Don't worry, the Wizards are going to pay you a large pension so that you can retire..."
+      },
+      {
+        "npc": "Bu' wha'll I be doin' wit' me day now! I be lovin' tha sand."
+      },
+      {
+        "player": "What will you do with your day? Well....You could build sand castles with your own two hands!"
+      },
+      {
+        "npc": "I din't think so... bu' iffen yer ever need someone ta haul buckets o'sand 'round, ye be lettin' me know [player name], I's can help yer!"
+      },
+      {
+        "player": "Wow! That would be great, buckets of sand direct to bank everday you say? That's great!"
+      },
+      {
+        "type": "message",
+        "text": "Once per day you may ask Bert to help you by carrying 84 buckets of sand to your bank. Just talk to him!",
+        "id": "Z7jI9d"
+      }
+    ],
+    "subsequent-times-following-completion-of-the-hand-in-the-sand": [
+      {
+        "npc": "'Ello there [player name]!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you deliver my sand to my bank, please?",
+            "steps": [
+              {
+                "player": "Can you deliver my sand to my bank, please?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has space for the sand in their bank:",
+                "id": "C_Ed6h"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Aye, give me a minute cause I be rushed off me feet!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Bert delivers the sand to your bank.",
+                        "id": "El6Gyq"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "player": "Hello Bert, could I have my sand today please?"
+                      },
+                      {
+                        "npc": "Aye, give me a minute cause I be rushed off me feet!"
+                      },
+                      {
+                        "player": "Thanks for the sand Bert!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "'Ello there [player name]!"
+                      },
+                      {
+                        "player": "Hope you're having a good day!"
+                      },
+                      {
+                        "npc": "Oh arr, no' too bad, though sometoimes, I could do wi' a second pair o' hands! I'll be gettin' on movin' them there buckets o' sand to yer bank!"
+                      },
+                      {
+                        "player": "Thanks Bert, see you tomorrow!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Bert delivers the sand to your bank.",
+                        "id": "rr-DHH"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "I'll ge' on wi' movin' it. Thankee fer makin' sure Sandy go' it in t'neck fer 'is double dealin's!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "Bert delivers the sand to your bank.",
+                        "id": "m0y1pD"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no space for the sand in their bank, or is an Ultimate Ironman:",
+                "steps": [
+                  {
+                    "npc": "Eeee, ye've go' no free space in yon bank [player name]. Make some room 'tween the fishes 'n boots fore ye come back ta me."
+                  },
+                  {
+                    "player": "Ok, I'll make some more space in my bank and come back!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "1fbE-M"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Did you already give me some sand today?",
+                    "condition": "If the player has already claimed their sand for the day:",
+                    "steps": [
+                      {
+                        "player": "Did you already give me some sand today?"
+                      },
+                      {
+                        "npc": "Yep, I dropped it off a while ago. Mebbe come back tomorrow fer some more."
+                      }
+                    ],
+                    "id": "sHbEvn"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Please don't notify me when you deliver sand",
+            "condition": "If the player has completed the Elite Ardougne Diary:",
+            "steps": [
+              {
+                "player": "Please don't notify me when you deliver sand."
+              },
+              {
+                "npc": "Aye, when I take yer bucket o' sand to yer bank each day, I'll not bother ye wi' any messages 'bout it. Ye'll just find yer sand in there."
+              }
+            ],
+            "id": "_yOZjP"
+          },
+          {
+            "text": "Can you notify me when you deliver sand?",
+            "condition": "If the player has completed the Elite Ardougne Diary:",
+            "steps": [
+              {
+                "player": "Can you notify me when you deliver sand?"
+              },
+              {
+                "npc": "Aye, when I takes yer bucket o' sand to yer bank each day, I'll drop ye a message ter tell yer 'bout it, so ye knows I been workin'!"
+              }
+            ],
+            "id": "qZPiUv"
+          },
+          {
+            "text": "I no longer want daily sand deliveries.",
+            "steps": [
+              {
+                "player": "I no longer want sand deliveries."
+              },
+              {
+                "npc": "Suits me, [player name]! I be a wee bi' busy, an' I'll happily stop takin' sand to  yer bank for ye. Come an' see me if ye changes yer mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subsequent-times-following-completion-of-the-hand-in-the-sand-if-sand-deliveries-are-disabled": [
+      {
+        "npc": "'Ello there [player name]!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Did you already give me some sand today?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "P-56wL"
+              }
+            ]
+          },
+          {
+            "text": "I'd like daily sand deliveries again",
+            "steps": [
+              {
+                "player": "I'd like daily sand deliveries again."
+              },
+              {
+                "npc": "Aye, ye bin a big help to me, an I'll be 'appy to take yer sand to yer bank."
+              }
+            ]
+          },
+          {
+            "text": "I'll see you another time.",
+            "steps": [
+              {
+                "player": "I'll see you another time."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there...thanks for helping out Trufitus commune with the gods Bwana. We've been able to return to the village thanks to your help."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "You got beaten up by a troll!",
+            "condition": "If the player has completed My Arm's Big Adventure",
+            "steps": [
+              {
+                "player": "You got beaten up by a troll!"
+              },
+              {
+                "npc": "That monster? If it dares to come here again, I will be ready for it, and it shall taste my spear."
+              },
+              {
+                "player": "You didn't look so tough when the troll knocked you down."
+              },
+              {
+                "npc": "Bwana, get knotted."
+              }
+            ],
+            "id": "PfUK3l"
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "Why, it should be clear to even the most ignorant of people that I am a fearless jungle hunter...out of my way you sanitised civilian!"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "4qMIOY"
+              }
+            ]
+          },
+          {
+            "text": "Is there anything interesting to do here?",
+            "steps": [
+              {
+                "player": "Is there anything interesting to do around here?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "Bwana, if anyone else asks me that question today, I'll explode! Go and ask someone else!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "Not that I'm aware of, just sit back and enjoy the sunshine bwana!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "Sorry Bwana, I'm already busy, why not go and talk to Murcaily! He's around the village somewhere."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "Well, I think that there's some work to be done...perhaps Murcaily can help you. He usually tends to the hardwood grove to the east of Trufitus's hut."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "steps": [
+                      {
+                        "npc": "It's just village life as normal around here Bwana, always something interesting to find to occupy your time if you look hard enough."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I've been doing some work around the village.",
+            "steps": [
+              {
+                "player": "I've been doing some work around the village."
+              },
+              {
+                "type": "condition",
+                "text": "If the player is due to receive trading sticks:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "4WXcsG"
+                  }
+                ],
+                "id": "tQuwI5"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has already received trading sticks:",
+                "steps": [
+                  {
+                    "npc": "I've already given you some trading sticks and I don't have any more on me at the moment. Why not go and talk to some of the other villagers and get some contributions?"
+                  }
+                ],
+                "id": "dBR5B4"
+              }
+            ]
+          },
+          {
+            "text": "Ok, thanks.",
+            "steps": [
+              {
+                "player": "Ok, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "if-the-player-is-wearing-a-tribal-mask": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh - Get away from me you beast!"
+              },
+              {
+                "player": "What's the problem....oh, I'm wearing this big scary mask! I'd better take it off before I start talking to the natives."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Waahhhhh! - It's da evil broodoo beast come ta eat my very soul!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "onUQE5"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh - It's a monster!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "oCWidO"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Ahhhhhhhh!!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "ynmezy"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

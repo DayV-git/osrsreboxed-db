@@ -1,0 +1,106 @@
+{
+  "default": "standard-dialogue-before-shilo-village",
+  "variants": {
+    "standard-dialogue-before-shilo-village": [
+      {
+        "npc": "We used to run cart trips down to Shilo Village in south Karamja. Since the troubles we had we've had to stop them though, too many people got killed."
+      }
+    ],
+    "standard-dialogue-after-shilo-village-if-the-player-hasn-t-completed-the-elite-karamja-diary": [
+      {
+        "npc": "I am offering a cart ride to Shilo Village, if you're interested. It will cost [amount] coins. Is that okay?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please, I'd like to go to Shilo Village.",
+            "steps": [
+              {
+                "player": "Yes please, I'd like to go to Shilo Village."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enough coins:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hop into the cart and the driver urges the horses on. You take a taxing journey through the jungle to Shilo Village.",
+                    "id": "wjR0HW"
+                  },
+                  {
+                    "type": "action",
+                    "text": "The player is transported to Shilo Village",
+                    "action": "teleport",
+                    "action_source": "text",
+                    "id": "QbiF7C"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You hop into the cart and the driver urges the horses on. You take a taxing journey through the jungle to Shilo Village. You feel tired from the journey, but at least you didn't have to walk all that distance.",
+                    "id": "SHlyPY"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Va6wKO"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have enough coins:",
+                "steps": [
+                  {
+                    "npc": "Sorry, but it looks as if you don't have enough money. Come and see me when you have enough for the ride."
+                  }
+                ],
+                "id": "w0qxCw"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Okay, Bwana, let me know if you change your mind."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-shilo-village-if-the-player-has-completed-the-elite-karamja-diary": [
+      {
+        "npc": "I am offering a cart ride to Shilo Village, if you're interested. For you, it's free."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "RGK6DO"
+      }
+    ],
+    "standard-dialogue-after-shilo-village-when-using-the-right-click-pay-fare-option": [
+      {
+        "type": "action",
+        "text": "The player is transported to Shilo Village",
+        "action": "teleport",
+        "action_source": "text",
+        "id": "_1bLU2"
+      },
+      {
+        "type": "message",
+        "text": "You feel tired from the journey, but at least you didn't have to walk all that distance.",
+        "id": "Nzd3zD"
+      }
+    ],
+    "treasure-trails": [
+      {
+        "type": "missing",
+        "id": "fVkHlg"
+      }
+    ]
+  }
+}

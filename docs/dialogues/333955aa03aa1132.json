@@ -1,0 +1,210 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome to the Mining Guild. My name's Gadrin and I'm the Guildmaster. Can I help you with anything?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What have you got in the guild?",
+          "steps": [
+            {
+              "npc": "All sorts of things! There's plenty of coal rocks along with some iron, mithril and adamantite as well."
+            },
+            {
+              "npc": "Deeper in the guild you'll find even more rocks including some runite! The best bit though is our amethyst mine, the only one in the land!"
+            },
+            {
+              "npc": "There's no better mining site anywhere!"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "What do you dwarves do with the ore you mine?",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "fXxeJy"
+                    }
+                  ]
+                },
+                {
+                  "text": "No thanks, I'm fine.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "nOJ1Ev"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "What do you dwarves do with the ore you mine?",
+          "steps": [
+            {
+              "player": "What do you dwarves do with the ore you mine?"
+            },
+            {
+              "npc": "What do you think? We smelt it into bars, smith the metal to make armour and weapons, then we exchange them for goods and services."
+            },
+            {
+              "player": "I don't see many dwarves selling armour or weapons here."
+            },
+            {
+              "npc": "No, this is only a mining outpost. We dwarves don't much like to settle in human cities. Most of the ore is carted off to Keldagrim, the great dwarven city. They've got a special blast furnace up there - it makes"
+            },
+            {
+              "npc": "smelting the ore so much easier. There are plenty of dwarven traders working in Keldagrim. Anyway, can I help you with anything else?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "What have you got in the guild?",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "above",
+                      "id": "GrDz9w"
+                    }
+                  ]
+                },
+                {
+                  "text": "No thanks, I'm fine.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "6hEIi_"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Can you tell me about your skillcape?",
+          "condition": "If the player does not have 99 Mining:",
+          "steps": [
+            {
+              "player": "Can you tell me about your skillcape?"
+            },
+            {
+              "npc": "Sure, this is a Skillcape of Mining. It shows my stature as a master miner! It has all sorts of uses including a skill boost to my Mining skill and a chance of mining extra ores. When you get to level 99 come and talk to"
+            },
+            {
+              "npc": "me and I'll sell you one."
+            },
+            {
+              "npc": "Is there anything else I can help you with?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "2chr8s"
+            }
+          ],
+          "id": "-FUElL"
+        },
+        {
+          "text": "Can I buy a Skillcape of Mining from you?",
+          "condition": "If the player has 99 Mining:",
+          "steps": [
+            {
+              "player": "I believe I can buy a Skillcape of Mining from you?"
+            },
+            {
+              "npc": "You believe right, miner. You have earned the right to wear one and when you do you'll have a small chance of finding an extra ore, but I'll need 99000 coins from you first."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Sorry, that's overpriced.",
+                  "steps": [
+                    {
+                      "player": "Sorry, that's overpriced."
+                    },
+                    {
+                      "npc": "I'm sorry you feel that way; come back if you change your mind."
+                    }
+                  ]
+                },
+                {
+                  "text": "Okay then.",
+                  "steps": [
+                    {
+                      "player": "Okay then."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have at least 99,000 coins:",
+                      "steps": [
+                        {
+                          "player": "But, unfortunately, I don't have enough money with me."
+                        },
+                        {
+                          "npc": "Well, come back and see me when you do."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "NEY4oR"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                      "steps": [
+                        {
+                          "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "4YMwkr"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has at least 99,000 coins and enough inventory space:",
+                      "steps": [
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "a Mining cape and hood",
+                          "id": "y_fApf"
+                        },
+                        {
+                          "npc": "Thanks very much, master miner."
+                        }
+                      ],
+                      "id": "7LJKKR"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "WBsd3-"
+        },
+        {
+          "text": "No thanks, I'm fine.",
+          "steps": [
+            {
+              "player": "No thanks, I'm fine."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

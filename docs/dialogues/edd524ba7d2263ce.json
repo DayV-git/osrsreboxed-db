@@ -1,0 +1,1313 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "Got any work that needs doing here?",
+            "steps": [
+              {
+                "player": "Got any work that needs doing here?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Well, it just so happens that I'm looking for a rough, tough, piratical type for an adventure on the high seas!"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "And I'm happy to say..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not meet the requirements for Prying Times:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "'Squawking' Steve Beanie",
+                    "text": "... it isn't you!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You do not meet all of the requirements to start the Prying Times miniquest.",
+                    "id": "gdIbT5"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "aifq0J"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "... it is you!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's recommended combat is lower than 10:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Before starting this miniquest, be aware that your combat level is lower than the recommended level of 10.",
+                    "id": "rAW4Qk"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continues",
+                    "id": "jqTiKf"
+                  }
+                ],
+                "id": "iQa-sh"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Prying Times miniquest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Great! So what do you need?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Hoist your mast, [player name], because there's some pirate looty just begging to be uncovered in a far off land! Thanks to me, you could be one of the privileged few to get your hands on it!"
+                      },
+                      {
+                        "player": "Looty? You mean treasure?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Yarr!"
+                      },
+                      {
+                        "player": "Well, I can't say no to a bit of treasure. What do I need to do?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Shiver me timbers! There is a crate full of high value goods just sitting at the port of Sarim!"
+                      },
+                      {
+                        "player": "Port Sarim? I thought you said far off land?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Aye! The far off land of Sarim!"
+                      },
+                      {
+                        "player": "Okay... but surely if this is pirate treasure, someone would have noticed... Port Sarim is a busy place."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Luckily for us, a cunning Jolly Roger of a pirate has disguised it to look like a normal crate of cargo!"
+                      },
+                      {
+                        "player": "Hang on... is this actually just a normal cargo delivery? You know there's a notice board on the docks for that sort of thing..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Normal?! Normal?! What kind of scallywag are you? There's nothing normal about a valuable crate of precious plundered pirate looty!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Besides, you've already said you'll do it, and pirates never go back on their word."
+                      },
+                      {
+                        "player": "I'm fairly certain they do, but fine. I'll go collect this crate for you."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Me hearty goes out to you! Once you have the looty, just leave it with the port master here. Now, give me your log and I'll write out the details."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have the log:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "4KN0LY"
+                          }
+                        ],
+                        "id": "KQdAeL"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has max port tasks taken:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "You hand your log to Steve and he flicks through the pages. After a moment, he hands it back without writing anything in it.",
+                            "id": "mw3nZo"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "'Squawking' Steve Beanie",
+                            "text": "Bit of a problem, I'm afraid! It seems your log is already full! You should get some of this work done before you take on my critical pirate task!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "PSw89b"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You hand your log to Steve and he updates it with details on his request.",
+                        "id": "tTzJQN"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Now, get to it, sailor! Heave to and ballast your grog!"
+                      },
+                      {
+                        "type": "message",
+                        "text": "You have accepted the Pandemonium pirate looty delivery port task.",
+                        "id": "nbTB-L"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "Actually, I've changed my mind. Maybe another time."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "'Squawking' Steve Beanie",
+                        "text": "Shiver me timbers!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-steave-beanie-after-starting-the-quest": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "About that job you wanted doing...",
+            "steps": [
+              {
+                "player": "About that job you wanted doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aye! Hoist your mast, [player name], because there's some pirate looty just begging to be uncovered in a far off land! Thanks to me, you could be one of the privileged few to get your hands on it!"
+              },
+              {
+                "player": "Looty? You mean treasure?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Yarr!"
+              },
+              {
+                "player": "Well, I can't say no to a bit of treasure. What do I need to do?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Shiver me timbers! There is a crate full of high value goods just sitting at the port of Sarim!"
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "rtBt0O"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-steave-beanie-again-before-he-writes-in-the-log": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "About that job you wanted doing...",
+            "steps": [
+              {
+                "player": "About that job you wanted doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aye! You need to collect the pirate looty from the port of Sarim! Once you have it, just leave it with the port master here. Now, give me your log and I'll write out the details."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have the log:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "4KN0LY"
+                  }
+                ],
+                "id": "gOV6qS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has max port tasks taken:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You hand your log to Steve and he flicks through the pages. After a moment, he hands it back without writing anything in it.",
+                    "id": "VrumPj"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "'Squawking' Steve Beanie",
+                    "text": "Bit of a problem, I'm afraid! It seems your log is already full! You should get some of this work done before you take on my critical pirate task!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "RnrmQY"
+              },
+              {
+                "type": "message",
+                "text": "You hand your log to Steve and he updates it with details on his request.",
+                "id": "6GZSFd"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Now, get to it, sailor! Heave to and ballast your grog!"
+              },
+              {
+                "type": "message",
+                "text": "You have accepted the Pandemonium pirate looty delivery port task.",
+                "id": "g6tGbJ"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "starting-off-subsequent-dialogue-with-squawking-steve-beanie": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "About that job you wanted doing...",
+            "steps": [
+              {
+                "player": "About that job you wanted doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aye! You need to collect the pirate looty from the port of Sarim! Once you have it, just leave it with the port master here. Heave to, sailor!"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "retrieving-and-depositing-the-pirate-looty-take-cargo-from-ledger-table-in-port-sarim": [
+      {
+        "type": "message",
+        "text": "You pick up a crate of looty.",
+        "id": "v2HhAb"
+      }
+    ],
+    "retrieving-and-depositing-the-pirate-looty-deposit-cargo-on-the-ledger-table-in-port-sarim": [
+      {
+        "type": "message",
+        "text": "Are you sure you wish to deposit the crate of looty here? If you obtained this cargo from a different port, you will have to return to that port to re-acquire it.",
+        "id": "Cc8JBz"
+      },
+      {
+        "type": "choice",
+        "prompt": "Deposit the cargo?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You deposit the crate of looty.",
+                "id": "0CO_kG"
+              }
+            ]
+          },
+          {
+            "text": "Yes, and don't ask again.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "jl0ut4"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "retrieving-and-depositing-the-pirate-looty-deposit-cargo-on-the-ledger-table-in-port-sarim-deposit-cargo-on-the-ledger-table-in-port-sarim-after-dismissing-the-warning": [
+      {
+        "type": "message",
+        "text": "You deposit the crate of looty.",
+        "id": "_r50Od"
+      }
+    ],
+    "retrieving-and-depositing-the-pirate-looty-talking-to-steve-beanie-while-holding-the-looty": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "About that job you wanted doing...",
+            "steps": [
+              {
+                "player": "About that job you wanted doing..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aye! I see you have the pirate looty! You need to leave it with the port master. Heave to, sailor!"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "retrieving-and-depositing-the-pirate-looty-deposit-cargo-on-the-ledger-table-on-the-pandemonium": [
+      {
+        "type": "message",
+        "text": "You deliver the crate of looty and complete your courier task!",
+        "id": "kT3kNI"
+      },
+      {
+        "type": "line",
+        "speaker": "Port master",
+        "text": "Thanks, sailor. I'll get that all sorted out."
+      },
+      {
+        "type": "action",
+        "text": "(Player receives 180 Sailing experience.)",
+        "action": "receive",
+        "action_source": "text",
+        "id": "2x0SPV"
+      }
+    ],
+    "retrieving-and-depositing-the-pirate-looty-talking-to-squawking-steve-beanie": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "I delivered that cargo for you.",
+            "steps": [
+              {
+                "player": "I delivered that cargo for you."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Shiver me timbers! That was fast!"
+              },
+              {
+                "player": "So could I have some 'looty' now?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Blistering barnacles! You thought that was it? You are too funny, fellow sailor!"
+              },
+              {
+                "player": "I get the feeling you're about to ask me to do something else..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aye! This is no ordinary crate, [player name]. This is a pirate crate! Only a special key can open it for us!"
+              },
+              {
+                "player": "But it is an ordinary crate, Steve. There was even a label on it addressed to you."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "I hope you're not trying to call Squawking Steve Beanie a liar?! That crate is pirate looty, and anything suggesting otherwise is clearly a plot by my rival pirate captains!"
+              },
+              {
+                "player": "Right... So what's this special key then?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "It is something very few can forge! I suspect we will require the help of a master scallywag smith!"
+              },
+              {
+                "player": "Is it essential that they be a scallywag as well as a smith? If not, I know of a dwarf near Mudskipper Point who might be able to help us."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "A dwarf? Yarr! That's an acceptable compromise! Ready your port side and go see this dwarf!"
+              },
+              {
+                "player": "Okay, I'll grab a redberry pie and go visit Thurgo..."
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "retrieving-and-depositing-the-pirate-looty-talking-to-squawking-steve-beanie-talking-to-squawking-steve-beanie-again": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "About that crate that needs opening...",
+            "steps": [
+              {
+                "player": "About that crate that needs opening..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Do you have our special key yet?"
+              },
+              {
+                "player": "Not yet."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Then ready your port side and go see that dwarf!"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "making-a-key-talking-to-thurgo": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you make me another of Sir Vyvin's swords?"
+          },
+          {
+            "text": "What is that cape you're wearing?"
+          },
+          {
+            "text": "I need some help with a 'special key'.",
+            "steps": [
+              {
+                "player": "I need some help with a 'special key'."
+              },
+              {
+                "type": "line",
+                "speaker": "Thurgo",
+                "text": "A key? What for?"
+              },
+              {
+                "player": "Well, truth be told, I'm not sure it's really a key that I need. I just need something that can open a crate."
+              },
+              {
+                "type": "line",
+                "speaker": "Thurgo",
+                "text": "Ah, well a crowbar should do that. It's a simple tool."
+              },
+              {
+                "player": "Can you help me make one?"
+              },
+              {
+                "type": "line",
+                "speaker": "Thurgo",
+                "text": "I can indeed. We'll need a hammer, a steel bar, and of course, a redberry pie."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all of the materials:",
+                "steps": [
+                  {
+                    "player": "I don't have all of that I'm afraid..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Thurgo",
+                    "text": "Well, come back when you do."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "yj685s"
+              },
+              {
+                "type": "choice",
+                "prompt": "Make a crowbar with Thurgo?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hammer a crowbar out of your steel bar, while Thurgo directs you with a pie-filled mouth.",
+                        "id": "Yx_eAa"
+                      },
+                      {
+                        "type": "action",
+                        "action": "receive",
+                        "text": "a crowbar",
+                        "id": "e2Ow6O"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Thurgo",
+                        "text": "That should do nicely."
+                      },
+                      {
+                        "player": "Thanks! I should probably see what Steve makes of this."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "making-a-key-talking-to-thurgo-after-he-offers-to-make-a-crowbar": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you make me another of Sir Vyvin's swords?"
+          },
+          {
+            "text": "What is that cape you're wearing?"
+          },
+          {
+            "text": "So, can you help me make a crowbar?",
+            "steps": [
+              {
+                "player": "So, can you help me make a crowbar?"
+              },
+              {
+                "type": "line",
+                "speaker": "Thurgo",
+                "text": "I can indeed. We'll need a hammer, a steel bar, and of course, a redberry pie."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "03hbpY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "making-a-key-subsequent-dialogue-with-thurgo": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you make me another of Sir Vyvin's swords?"
+          },
+          {
+            "text": "What is that cape you're wearing?"
+          },
+          {
+            "text": "Can you help me make another crowbar?",
+            "steps": [
+              {
+                "player": "Can you help me make another crowbar?"
+              },
+              {
+                "type": "line",
+                "speaker": "Thurgo",
+                "text": "I can indeed. We'll need a hammer, a steel bar, and of course, a redberry pie."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "E1in-C"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "making-a-key-inspecting-the-crowbar": [
+      {
+        "type": "message",
+        "text": "Steve Beanie on the Pandemonium can tell you more about what to do with this.",
+        "id": "ENlB1p"
+      }
+    ],
+    "making-a-key-attempting-to-open-the-crate-before-talking-with-steve": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Stop! We aren't ready to open that yet!"
+      }
+    ],
+    "making-a-key-talking-to-steve-beanie-with-the-special-key": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "I made that 'special key' you needed.",
+            "steps": [
+              {
+                "player": "I made that 'special key' you needed."
+              },
+              {
+                "type": "message",
+                "text": "You show Steve the crowbar.",
+                "id": "YpkXRu"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Aha! There she crows! This is perfect!"
+              },
+              {
+                "player": "I'm glad you approve. Shall I use it to crack this crate open?"
+              },
+              {
+                "type": "message",
+                "text": "You raise the crowbar hopefully.",
+                "id": "QJfS4-"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Wait!"
+              },
+              {
+                "type": "message",
+                "text": "You lower the crowbar dejectedly.",
+                "id": "1N55ds"
+              },
+              {
+                "player": "What's wrong?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "An artifact of this power needs a test before we try it on our precious looty!"
+              },
+              {
+                "player": "..."
+              },
+              {
+                "player": "Fine. What should I test it on?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "I noticed a crate of grog floating around by the north westmost island of the Pandemonium. Cast off your keel and sail your vessel over there."
+              },
+              {
+                "player": "And then?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Well, you open it with your new key and sample the contents, of course."
+              },
+              {
+                "player": "Why would I even want to do that? How do you even know it's drinkable?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "I'm a true pirate, so I know good grog when I see it. As for why, no sailor has truly experienced the sea until they have drunk everything it has to offer."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "In fact, you should keep a log of it all. I know I do!"
+              },
+              {
+                "player": "Okay... this doesn't seem very healthy, but fine."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Yarr! That's the spirit!"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "making-a-key-talking-to-steve-beanie-again": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "About that crate...",
+            "steps": [
+              {
+                "player": "About that crate..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Have you sampled that grog yet, sailor?"
+              },
+              {
+                "player": "Not yet. Where can I find it again?"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "I saw it floating around by the north westmost island of the Pandemonium. Cast off your keel and sail your vessel over there."
+              },
+              {
+                "player": "Alright, I'll be back soon."
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "the-grog-reaching-the-sealed-crate": [
+      {
+        "type": "condition",
+        "text": "If the player does not have a crowbar:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need a crowbar to open this crate.",
+            "id": "Nm0yYW"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "jRVn_M"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The crate contains a bottle of fish bladder stout, but you don't have enough room to take it.",
+            "id": "e8ZLus"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "RUI6jN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is already holding a bottle of fish bladder stout:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The crate contains a bottle of fish bladder stout, but you don't take it as you already have one.",
+            "id": "XoCD16"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "fMx2Sg"
+      },
+      {
+        "type": "message",
+        "text": "You pry open the crate and take a bottle of fish bladder stout to sample.",
+        "id": "Gyue8X"
+      },
+      {
+        "player": "This doesn't look like grog..."
+      }
+    ],
+    "the-grog-talking-to-steve-beanie-with-the-grog": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "About that crate...",
+            "steps": [
+              {
+                "player": "About that crate..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Have you sampled that grog yet, sailor?"
+              },
+              {
+                "player": "Not yet."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Well, then get to it, you scallywag! Make sure you do it on your vessel as well. It's important to feel that sea air while trying a new drink."
+              },
+              {
+                "player": "Alright, I'll be back soon."
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "the-grog-drinking-the-bottle-of-fish-bladder-stout": [
+      {
+        "type": "condition",
+        "text": "If the player drinks the \"grog\" whilst on land:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The label on the bottle indicates the drink would be best appreciated on deck. You should return to your boat before you drink it.",
+            "id": "DZsTPY"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "iskMgS"
+      },
+      {
+        "type": "unavailable",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This drink has been sealed in a crate for an unknown amount of time. It could do anything to you, good or bad. Are you sure you want to drink it?",
+            "id": "9QnjB6"
+          },
+          {
+            "type": "choice",
+            "prompt": "Are you sure you want to drink this?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You drink a bottle of fish bladder stout.",
+                    "id": "PkEAX6"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The stout is delightful...",
+                    "id": "KCQMep"
+                  },
+                  {
+                    "type": "message",
+                    "text": "...but as you drink it, something appears to defend it!",
+                    "id": "bivi2Q"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Drink troll",
+                    "text": "Drinkies be mine! Leave dem drinkies!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "Charting complete: Find a sealed crate near the Pandemonium and sample the contents.",
+                    "id": "98CGQt"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Yes, and don't ask again.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "fyArvK"
+                  }
+                ]
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "ZfklYe"
+      }
+    ],
+    "the-grog-talking-to-steve-beanie-after-drinking-the-grog": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "About that crate...",
+            "steps": [
+              {
+                "player": "About that crate..."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Have you sampled that grog yet, sailor?"
+              },
+              {
+                "player": "I have. Did you know that troll was going to jump out and attack me? I had the fright of my life!"
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Ah, blistering barnacles! I did forget to mention that does sometimes happen."
+              },
+              {
+                "player": "Of course it does. Right, no more wasting time. I'm assuming that's the crate next to you? I'm opening it."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Of course! You are the captain after all, my first mate!"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "the-grog-subsequent-dialogue-with-steve-beanie": [
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Yarr! What will it be?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have."
+          },
+          {
+            "text": "Any word from Old Grog?"
+          },
+          {
+            "text": "Let's get this crate open.",
+            "steps": [
+              {
+                "player": "Let's get this crate open."
+              },
+              {
+                "type": "line",
+                "speaker": "'Squawking' Steve Beanie",
+                "text": "Go ahead! You are the captain after all, my first mate!"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me about the Pandemonium's one rule?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "finishing-up-opening-the-crate-next-to-steve-beanie": [
+      {
+        "type": "condition",
+        "text": "If the player is not holding the crowbar:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need a crowbar to open the crate.",
+            "id": "k41NZ-"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "SquvVf"
+      },
+      {
+        "type": "message",
+        "text": "You pry the crate open with the crowbar...",
+        "id": "X8d6mR"
+      },
+      {
+        "type": "message",
+        "text": "... and reveal a crate full of crowbars.",
+        "id": "RQPr_g"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Your looty, sailor! Take as many as you like."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Steve hands you a crowbar.",
+            "id": "eoE1Ay"
+          }
+        ],
+        "id": "quxPxY"
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete!",
+        "id": "rP9tMj"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Now, with your new looty in hand, you're ready to take on the seas like never before! Soon you'll be as great a sailor as me! Speaking of which, you're not still using that raft, are you?"
+      },
+      {
+        "player": "Why do you ask?"
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Well, I think it's about time you sort yourself out with an upgrade! You should check in with Jim. I'm sure he'll have something fitting. Now, avast!"
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "unavailable",
+        "id": "mDyloU"
+      }
+    ]
+  },
+  "branches": {
+    "4KN0LY": [
+      {
+        "player": "I'm afraid I don't have it on me."
+      },
+      {
+        "type": "line",
+        "speaker": "'Squawking' Steve Beanie",
+        "text": "Well, go get it sailor! Heave to!"
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

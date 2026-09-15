@@ -1,0 +1,145 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Good day."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I'm Commander Lydia Fullore, leader of the Kourend Royal Guard."
+              }
+            ]
+          },
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "The Kourend Royal Guard protect and serve the ruler of Kourend. As their leader, I am responsible for ensuring that the Royal Guard are well trained and well supplied."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Are the Royal Guard part of the Shayzien Army?",
+                    "steps": [
+                      {
+                        "player": "Are the Royal Guard part of the Shayzien Army?"
+                      },
+                      {
+                        "npc": "No. Unlike the Shayzien Army, the Royal Guard serve the ruler of the kingdom directly."
+                      },
+                      {
+                        "npc": "The Royal Guard was established by King Byrne I. He felt that it was dangerous for Shayzien House to control the only military in the kingdom, so he decided to establish a small one of his own."
+                      },
+                      {
+                        "npc": "Ever since then, the Royal Guard have served Kourend's ruler."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "nlluEu"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who's the current ruler of Kourend?",
+                    "steps": [
+                      {
+                        "player": "Who's the current ruler of Kourend?"
+                      },
+                      {
+                        "npc": "The current ruler, or rulers as I should say, are the Kourend Council. They've ruled the kingdom for the past twenty years, ever since the last King died."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "qqNnyC"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Goodbye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Ri8nZm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-completing-a-kingdom-divided": [
+      {
+        "type": "condition",
+        "text": "If the player does not have the book of the dead:",
+        "steps": [
+          {
+            "npc": "Hey. I have something for you."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "Book of the Dead",
+            "id": "GrPkpE"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "ZOpY4g"
+          }
+        ],
+        "id": "hyHPjh"
+      },
+      {
+        "player": "Hey Lydia. How are things here?"
+      },
+      {
+        "npc": "It's still early days for King Artur. He was raised to rule, but he lacks the experience his father had. Still, he can't be any worse than the Council."
+      },
+      {
+        "player": "Any news on Xamphur or the killer?"
+      },
+      {
+        "npc": "Nothing yet. For all we know, they could be one and the same. Lord Arceuus is doing everything he can to learn more about Xamphur, and the Lovakengj smiths are inspecting the murder weapon."
+      },
+      {
+        "npc": "I'll let you know once we have something on either of them."
+      },
+      {
+        "player": "Thank you. I'll let you get on with your work."
+      },
+      {
+        "npc": "Good luck out there. Don't be a stranger."
+      }
+    ]
+  }
+}

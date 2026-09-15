@@ -1,0 +1,177 @@
+{
+  "steps": [
+    {
+      "npc": "Hello [player name]! Thanks again for your help with the dig."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What have you learned about the artefacts we dug up?",
+          "steps": [
+            {
+              "type": "random",
+              "options": [
+                {
+                  "text": "Dialogue 1",
+                  "steps": [
+                    {
+                      "npc": "Bartak used the design of the shield you extracted to recreate a shield like it. Even though the original shield was poorly made, the design itself was a good one."
+                    },
+                    {
+                      "npc": "Perhaps there is some important knowledge that we have lost since the early, more war-like days of Dorgesh-Kaan."
+                    }
+                  ]
+                },
+                {
+                  "text": "Dialogue 2",
+                  "steps": [
+                    {
+                      "npc": "The helmet you helped to unearth has come in useful. I used it as a visual aid when I went to talk to the children in the nursery about our history."
+                    },
+                    {
+                      "npc": "It's amazing that the ancient goblins' eyes were even smaller than a child's!"
+                    }
+                  ]
+                },
+                {
+                  "text": "Dialogue 3",
+                  "steps": [
+                    {
+                      "npc": "Oldak examined the axe blade you dug up and found that it had a faint magical aura. It looks like the mace wasn't the only magical weapon our ancestors brought from the surface."
+                    },
+                    {
+                      "npc": "In fact, it could be that a lot of their equipment was magical. This means that either the ancient goblins were skilled magical craftsmen, or some other power was supplying them with magical equipment."
+                    }
+                  ]
+                },
+                {
+                  "text": "Dialogue 4",
+                  "steps": [
+                    {
+                      "npc": "We used the armour fragment you unearthed to reconstruct the shape of the original armour, and with it the shape of the goblin who wore the armour."
+                    },
+                    {
+                      "npc": "This told us a lot about how the goblin body shape changed from its surface form to that of the cave goblins."
+                    }
+                  ]
+                },
+                {
+                  "text": "Dialogue 4",
+                  "steps": [
+                    {
+                      "npc": "When we examined the sword you dug up, we found that the blade is covered in tiny symbols."
+                    },
+                    {
+                      "npc": "The scribe thinks he has enough of them to begin understanding the ancient goblin language, but it will take a while for him to decipher them."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "I lost the ancient goblin mace",
+          "steps": [
+            {
+              "player": "I lost the ancient goblin mace."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has not completed Land of the Goblins:",
+              "steps": [
+                {
+                  "npc": "I know. Zanik says she found it lying around in the caves near the city, almost as if it had made its way back here and wanted her to find it."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continues",
+                  "id": "ZnBLXc"
+                }
+              ],
+              "id": "yJeBOS"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has completed Land of the Goblins:",
+              "steps": [
+                {
+                  "npc": "I know. We found it lying around in the caves near the city, almost as if it had made its way back here and wanted to be found."
+                },
+                {
+                  "type": "jump",
+                  "reference": "continues",
+                  "id": "iO_waQ"
+                }
+              ],
+              "id": "Of7-s8"
+            },
+            {
+              "npc": "If you want it back, I will sell it to you for 1,000 coins. That should discourage you from losing it again."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Okay",
+                  "steps": [
+                    {
+                      "player": "Okay."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have enough coins:",
+                      "steps": [
+                        {
+                          "player": "But I'll have to go and get the money."
+                        }
+                      ],
+                      "id": "LSjn_H"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have any free inventory spaces:",
+                      "steps": [
+                        {
+                          "player": "But I should free up some inventory space first."
+                        }
+                      ],
+                      "id": "faMGMY"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has enough coins and 1 free inventory space:",
+                      "steps": [
+                        {
+                          "type": "message",
+                          "text": "Tegdak hands you the ancient goblin mace.",
+                          "id": "jd6am5"
+                        },
+                        {
+                          "npc": "Look after it well. All the goblins who have handled it say it made them feel uneasy. We want it kept safe, but we don't want it near the city."
+                        }
+                      ],
+                      "id": "Jww6Lf"
+                    }
+                  ]
+                },
+                {
+                  "text": "No way",
+                  "steps": [
+                    {
+                      "player": "No way!"
+                    },
+                    {
+                      "npc": "Suit yourself."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

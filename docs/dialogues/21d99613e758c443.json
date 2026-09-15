@@ -1,0 +1,374 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "before-speaking-to-captain-cain": [
+      {
+        "player": "Hello?"
+      },
+      {
+        "npc": "Sorry soldier, you don't have permission to speak with me yet. Go and talk to the Captain."
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "player": "I believe you might be able to reward me for my progress in this arena?"
+      },
+      {
+        "npc": "Well, that depends upon your skill levels for each role."
+      },
+      {
+        "npc": "What's your name, soldier?"
+      },
+      {
+        "player": "[player name], Sir!"
+      },
+      {
+        "npc": "Okay. What exactly do you want to know, [player name]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I trade some of my points?",
+            "steps": [
+              {
+                "player": "Can I trade some of my points?"
+              },
+              {
+                "npc": "Of course."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Barbarian Assault Reward Shop",
+                "id": "ho9hrP"
+              }
+            ]
+          },
+          {
+            "text": "What points do I have so far, sir?",
+            "steps": [
+              {
+                "player": "What points do I have so far, sir?"
+              },
+              {
+                "npc": "Let me check..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any points in any role:",
+                "steps": [
+                  {
+                    "npc": "You have absolutely no points, whatsoever. Best you get back into that arena!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MjW71Z"
+              },
+              {
+                "npc": "You have: [amount] Attacker Honour Points, [amount] Defender Honour Points, [amount] Collector Honour Points and [amount] Healer Honour Points."
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "X4nrkW"
+              }
+            ]
+          },
+          {
+            "text": "Could I have a 'Queen Help' book?",
+            "steps": [
+              {
+                "player": "Could I have a Queen Help book?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has a Queen help book in their inventory:",
+                "steps": [
+                  {
+                    "npc": "You already have one!"
+                  },
+                  {
+                    "player": "Oh yes, sorry."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "Nw79m0"
+                  }
+                ],
+                "id": "lEimS0"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough space in their inventory:",
+                "steps": [
+                  {
+                    "player": "Oh, no. Wait, I don't have enough space to carry one."
+                  },
+                  {
+                    "npc": "Well, you can come back and get one at any time from me."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "MkAKwf"
+                  }
+                ],
+                "id": "KsLfU9"
+              },
+              {
+                "npc": "By all means."
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "Queen help book",
+                "id": "hqvHYd"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "Kl7WBM"
+              }
+            ]
+          },
+          {
+            "text": "Could I have my current wave reset to one?",
+            "steps": [
+              {
+                "player": "Could I have my current wave reset to one?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is already on wave one:",
+                "steps": [
+                  {
+                    "npc": "You do realise that you're already on wave one?"
+                  },
+                  {
+                    "player": "Ah. Yes. Sorry about that."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "initial",
+                    "id": "PNrB4E"
+                  }
+                ],
+                "id": "Nv40G8"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a higher wave:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "Sn3WkP"
+                  }
+                ],
+                "id": "T1k3Rk"
+              }
+            ]
+          },
+          {
+            "text": "That is all, sir.",
+            "steps": [
+              {
+                "player": "That is all, sir."
+              },
+              {
+                "npc": "Very well, on your way."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-gambling-lucky-dip-dialogue": [
+      {
+        "type": "choice",
+        "prompt": "Which points would you like to spend?",
+        "options": [
+          {
+            "text": "Attacker Honour Points",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "0eTklf"
+              }
+            ]
+          },
+          {
+            "text": "Defender Honour Points",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "Wwhegw"
+              }
+            ]
+          },
+          {
+            "text": "Collector Honour Points",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "f9IDaf"
+              }
+            ]
+          },
+          {
+            "text": "Healer Honour Points",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "continues",
+                "id": "gd26kI"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If the player is playing on the desktop client:",
+        "steps": [
+          {
+            "npc": "Gamble, you say! Let me take something from my big bag of prizes!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "mptGbG"
+          }
+        ],
+        "id": "_fgCK2"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is playing on the mobile client:",
+        "steps": [
+          {
+            "npc": "Lucky dip, you say! Let me take something from my big bag of prizes!"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "BkuFFQ"
+          }
+        ],
+        "id": "vb6dhe"
+      },
+      {
+        "type": "random",
+        "options": []
+      },
+      {
+        "type": "action",
+        "text": "Dialogue 1",
+        "steps": [
+          {
+            "npc": "Let's see..."
+          },
+          {
+            "npc": "Got something!"
+          },
+          {
+            "npc": "You've won..."
+          },
+          {
+            "type": "message",
+            "text": "[Item name] (x [count]!)[Low/Medium/High] level gamble count: [X].",
+            "id": "AdCJng"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "nlmkHE"
+      },
+      {
+        "type": "action",
+        "text": "Dialogue 2",
+        "steps": [
+          {
+            "npc": "Okay, here we go..."
+          },
+          {
+            "npc": "I've got my hand on something!"
+          },
+          {
+            "npc": "Hmmm, not bad, it's..."
+          },
+          {
+            "type": "message",
+            "text": "[Item name] (x [count]!)[Low/Medium/High] level gamble count: [X].",
+            "id": "KX0TTg"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "_is7KI"
+      },
+      {
+        "type": "action",
+        "text": "Dialogue 3",
+        "steps": [
+          {
+            "npc": "What can I find?"
+          },
+          {
+            "npc": "Ah, found something!"
+          },
+          {
+            "npc": "You've got..."
+          },
+          {
+            "type": "message",
+            "text": "[Item name] (x [count]!)[Low/Medium/High] level gamble count: [X].",
+            "id": "ue5QDl"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "WwL0Zn"
+      }
+    ],
+    "standard-dialogue-selling-back-items": [
+      {
+        "npc": "Don't you want it anymore? I'll buy it back off you for [X] points in each of the four roles."
+      },
+      {
+        "type": "choice",
+        "prompt": "[Item name]: [X] points",
+        "options": [
+          {
+            "text": "Sell it back to Commander Connad.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You sell your kit back to Commander Connad for [X] points.",
+                "id": "nUA9lh"
+              }
+            ]
+          },
+          {
+            "text": "Keep it.",
+            "steps": [
+              {
+                "type": "missing",
+                "id": "5cJ9Ev"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

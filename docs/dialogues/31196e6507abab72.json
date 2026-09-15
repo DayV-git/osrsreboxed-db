@@ -1,0 +1,182 @@
+{
+  "default": "before-tree-gnome-village",
+  "variants": {
+    "before-tree-gnome-village": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Hello stranger, new to these parts?"
+      },
+      {
+        "npc": "I'm Bolkoy by the way. I'm the village shopkeeper. Would you like to buy something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What have you got?",
+            "steps": [
+              {
+                "player": "What have you got?"
+              },
+              {
+                "npc": "Take a look."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Bolkoy's Village Shop",
+                "id": "A-mLvh"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              },
+              {
+                "npc": "Ok, maybe later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-tree-gnome-village": [
+      {
+        "player": "Hello."
+      },
+      {
+        "npc": "Welcome, welcome. It's good to see you again. The village is much safer now you have returned the orbs."
+      },
+      {
+        "npc": "By the way, I'm the village shop keeper. Would you like to buy something?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What have you got?",
+            "steps": [
+              {
+                "player": "What have you got?"
+              },
+              {
+                "npc": "Take a look."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Bolkoy's Village Shop",
+                "id": "GQKlIT"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              },
+              {
+                "npc": "Ok, maybe later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Hello! I take it you're here about the trail?"
+      },
+      {
+        "player": "Yes, do you have a challenge for me?"
+      },
+      {
+        "npc": "Yes, right here!"
+      },
+      {
+        "type": "message",
+        "text": "Bolkoy has given you a challenge scroll!",
+        "id": "onFaxp"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "xHQeOL"
+      }
+    ],
+    "treasure-trails-hard-talking-to-him-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "What's the matter with you? Can't you count? Try harder!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VCJE-K"
+      },
+      {
+        "type": "condition",
+        "text": "When given the right answer:",
+        "steps": [
+          {
+            "npc": "Lucky for you, that's the right answer!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Bolkoy has given you another clue scroll!",
+                "id": "YWHrW3"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a clue scroll",
+                "id": "YxpgcM"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "e08gBd"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "rWuNPr"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "lXl_o5"
+              }
+            ],
+            "id": "leUK16"
+          }
+        ],
+        "id": "LyHJql"
+      }
+    ]
+  }
+}

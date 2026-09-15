@@ -1,0 +1,2311 @@
+{
+  "default": "starting-off",
+  "variants": {
+    "starting-off": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Blooming, thieving cultists! Why don't they leave me alone? String them all up, that's what I say!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What's wrong?",
+            "steps": [
+              {
+                "player": "What's wrong?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ceril Carnillean",
+                "text": "It's those blooming cultists from the south! They keep breaking into my house!"
+              },
+              {
+                "player": "Have they taken much?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ceril Carnillean",
+                "text": "Well... no. They stole a suit of armour when they first broke in months ago, but they've been back four more times since then and taken nothing."
+              },
+              {
+                "player": "I see. And you are?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ceril Carnillean",
+                "text": "You don't know me? Why, I am Sir Ceril Carnillean! Mine is quite a famous bloodline, you know. We've played a vital role in the politics of Ardougne for many generations."
+              },
+              {
+                "player": "Well I'm [player name]. Maybe I can help you with these cultists?"
+              },
+              {
+                "type": "line",
+                "speaker": "Ceril Carnillean",
+                "text": "Interesting... I suppose the authorities haven't been much help so far. Yes, very well. If you return the stolen armour, I will provide you with a modest cash reward!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is below level 10 combat:",
+                "action_source": "text",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Before starting this quest, be aware that your combat level is lower than the recommended level of 10.",
+                    "id": "-GaouH"
+                  }
+                ],
+                "id": "1ChyHh"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Hazeel Cult quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Yes, of course, I'd be happy to help."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ceril Carnillean",
+                        "text": "That's very noble of you! Keep that attitude up and one day you might have the honour of working full-time for someone like me."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ceril Carnillean",
+                        "text": "Now, I caught a glimpse of the thieves leaving, but due to... uh... my cold, I was unable to give chase."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ceril Carnillean",
+                        "text": "What I do know is that they belong to some sort of cult. They seem to be based in a cave just south of the city, near the Clock Tower."
+                      },
+                      {
+                        "player": "How do you know that?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ceril Carnillean",
+                        "text": "My old butler, Higson, once followed them there. Unfortunately, the next night he died in his sleep."
+                      },
+                      {
+                        "player": "That's awful!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ceril Carnillean",
+                        "text": "No, it's okay. Jones, a replacement from the Servants' Guild, arrived the next day. He's been great - makes an excellent broth!"
+                      },
+                      {
+                        "player": "Right... I'll see if I can find this cave."
+                      }
+                    ],
+                    "hook": "quest:hazeel-cult:start",
+                    "quest": "Hazeel Cult"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "No thanks. I've got other plans."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Ceril Carnillean",
+                        "text": "Well no wonder I'm the one with the big house and you're the one on the streets."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "You probably deserve it.",
+            "steps": [
+              {
+                "player": "You probably deserve it."
+              },
+              {
+                "type": "line",
+                "speaker": "Ceril Carnillean",
+                "text": "And who are you to judge me? You look like a peasant anyway. I'm wasting my time talking to you."
+              }
+            ]
+          },
+          {
+            "text": "You seem uptight, I'll leave you alone.",
+            "steps": [
+              {
+                "player": "You seem uptight. I'll leave you alone."
+              },
+              {
+                "type": "line",
+                "speaker": "Ceril Carnillean",
+                "text": "Yes, I doubt you could help anyway."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "starting-off-talking-to-ceril-again": [
+      {
+        "player": "Hello, Ceril."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "That's Sir Ceril to you, you impudent scamp. Show a bit of respect to your betters. Now, shouldn't you be recovering my armour?"
+      },
+      {
+        "player": "Yeah yeah, I'm on it."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Good. I suggest you start with that cave south of the city, near the Clock Tower. That is where the cult is based."
+      }
+    ],
+    "starting-off-talking-to-the-guard": [
+      {
+        "type": "call",
+        "branch": "C3CzKz"
+      }
+    ],
+    "starting-off-talking-to-butler-jones": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Hello. How are you today?"
+      },
+      {
+        "player": "Good thank you, and yourself?"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Very well, thank you."
+      }
+    ],
+    "starting-off-talking-to-henryeta": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "Oh, hello. I'm afraid I'm not very presentable at the moment. I've been under incredible stress of late! It's ruining my complexion!"
+      },
+      {
+        "player": "Why? What's wrong?"
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "It's those awful cultists! I just don't feel safe here anymore!"
+      }
+    ],
+    "starting-off-talking-to-philipe": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "Mommy said you're here to kill all the nasty people that keep breaking in."
+      },
+      {
+        "player": "Something like that."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "Can I watch?"
+      },
+      {
+        "player": "No!"
+      }
+    ],
+    "starting-off-talking-to-claus": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Sorry, can't stop to chat! You would be amazed at how many meals this family gets through daily!"
+      }
+    ],
+    "starting-off-talking-to-claus-inspecting-the-range": [
+      {
+        "type": "message",
+        "text": "A pot of soup is bubbling away on the range.",
+        "id": "Z1j9aS"
+      }
+    ],
+    "starting-off-talking-to-claus-using-any-item-on-claus-range": [
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Oi - I don't want people messing around with my range!"
+      }
+    ],
+    "starting-off-trying-to-use-the-raft": [
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Hey! I don't remember saying you could use that raft!"
+      }
+    ],
+    "confronting-the-hazeel-cult": [
+      {
+        "player": "Hello there. Who are you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "You can call me Clivet. What do you want, adventurer?"
+      },
+      {
+        "player": "Do you know the Carnilleans?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Carnilleans? Don't think I've ever heard of them."
+      },
+      {
+        "player": "Look, I know you're lying. I know all about your cult."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Is that so? In that case, I'd say you'd be wise to leave now."
+      },
+      {
+        "player": "Unfortunately, I have a job to do. I'm not leaving until it's done."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Ah, I see. That two-faced snob has made you fall for his propaganda, eh?"
+      },
+      {
+        "player": "What's that supposed to mean?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "The Carnillean home does not belong to them. It was built long ago by the great Lord Hazeel, who once ruled over this entire region."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Many years ago, the Carnilleans led a rebellion against Lord Hazeel and all who followed him. Under the cover of darkness, they stormed his home in an angry mob, torturing and butchering everyone they found."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "The following morning, the Carnillean forefathers moved into the empty household and claimed it as their own. They have grown fat on the hard work of Lord Hazeel ever since."
+      },
+      {
+        "player": "Right... And what happened to this Hazeel?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "The foolish Carnilleans believed him dead. Unluckily for them, being an all-powerful Mahjarrat gave him access to powers and enchantments they knew nothing of."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "As they stormed his home, Lord Hazeel made preparations for his eventual return. We, his faithful followers, have been working to bring that about ever since."
+      },
+      {
+        "player": "What makes you think I care about the politics and histories of Ardougne?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "I could kill you right now and be done with it, but I don't think you're the fool that the Carnilleans believe you to be. Instead, I offer you a chance to join us."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Help us bring about the return of Lord Hazeel, and you will be well rewarded. However, should you continue to try and prevent his return, you will suffer the wrath of Zamorak."
+      },
+      {
+        "player": "Hmm..."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Before I decide, I have some questions for you.",
+            "steps": [
+              {
+                "player": "Before I decide, I have some questions for you."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "Very well."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Tell me more about Hazeel.",
+                    "steps": [
+                      {
+                        "player": "Tell me more about Hazeel."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Lord Hazeel is one of the great Mahjarrat who once fought alongside Zamorak himself. He ruled this region for many years, until the cowardly Carnilleans rebelled against him."
+                      },
+                      {
+                        "player": "But he survived?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Of course! The Mahjarrat know magic that others can only dream of. Lord Hazeel used his abilities to ensure that one day he'd eventually return. That day will soon be upon us."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "OW5krI"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why did the Carnilleans rebel against Hazeel?",
+                    "steps": [
+                      {
+                        "player": "Why did the Carnilleans rebel against Hazeel?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "The Carnilleans served the pathetic Saradomin. They considered it their duty to overthrow Hazeel due to his loyalties to Zamorak. They were fools, blinded by Saradominist propaganda!"
+                      },
+                      {
+                        "player": "Saradominist propaganda?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Yes! Something even more prevalent today. Too many people now are fooled into believing that Saradomin is a god of good, while Zamorak is evil. Those lies couldn't be further from the truth!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "nPuOKQ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why do you keep breaking into the Carnillean Mansion?",
+                    "steps": [
+                      {
+                        "player": "Why do you keep breaking into the Carnillean Mansion?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "There is something we need inside. I will say no more unless you agree to join us."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "NkDbfr"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What can you tell me about the Mahjarrat?",
+                    "steps": [
+                      {
+                        "player": "What can you tell me about the Mahjarrat?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Surely you have heard of the Mahjarrat? Their race is the ultimate example of power! Each of them wields the strength of an entire army. To oppose any one of them, is to face your doom!"
+                      },
+                      {
+                        "player": "And Hazeel is one of them?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "More than that! Hazeel is one of the greatest Mahjarrat to have ever lived!"
+                      },
+                      {
+                        "player": "I see."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "Ix8GTf"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I have no questions.",
+                    "steps": [
+                      {
+                        "player": "I have no more questions."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Then we have nothing more to discuss until you've made your choice."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "previous",
+                        "id": "iEF5GR"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Alright, I've made my decision.",
+            "steps": [
+              {
+                "player": "Alright, I've made my decision."
+              },
+              {
+                "type": "line",
+                "speaker": "Clivet",
+                "text": "And?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'll help you.",
+                    "steps": [
+                      {
+                        "player": "I'll help you."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Good. Now, we are not the monsters that the Carnilleans would claim we are, so we were hoping to do this without violence. However, the fact they sent you here makes it clear that won't work now."
+                      },
+                      {
+                        "player": "Meaning?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "You must prove your loyalty to our cause, and Ceril Carnillean must die. Kill him for us, and we will know you are truly dedicated to Lord Hazeel."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Alright, how do I do it?",
+                            "steps": [
+                              {
+                                "player": "Alright, how do I do it?"
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Clivet",
+                                "text": "I can already tell I was right about you. I can see you are of exactly the right character to join the followers of Hazeel."
+                              },
+                              {
+                                "type": "line",
+                                "speaker": "Clivet",
+                                "text": "Here, take this poison and pour it into Ceril Carnillean's food. Once the deed is done, return here and speak to me once more."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has a full inventory:",
+                                "action_source": "text",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "Clivet tries to give you some poison, but you don't have enough room to take it.",
+                                    "id": "pCp_XI"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "hY4-Bb"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player inventory space:",
+                                "action_source": "text",
+                                "steps": [
+                                  {
+                                    "type": "message",
+                                    "text": "Clivet gives you some poison.",
+                                    "id": "dWE8Mb"
+                                  }
+                                ],
+                                "id": "sJhsrw"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "I need some time to think on this.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "x2-KnX"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I won't help you.",
+                    "steps": [
+                      {
+                        "player": "I won't help you."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Then you are a fool. Go back to your small-minded little life. You will never know the glories you could have tasted as one of us!"
+                      },
+                      {
+                        "player": "You know I'm going to stop you, right?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "You'll try, but you'll never find us."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Clivet jumps onto the nearby raft and pushes off into the sewer system.",
+                        "id": "sTL_Dc"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Actually, I need more time to think on this.",
+                    "steps": [
+                      {
+                        "player": "Actually, I need more time to think on this."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Clivet",
+                        "text": "Don't take too long."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I need some time to think on this.",
+            "steps": [
+              {
+                "type": "call",
+                "branch": "x2-KnX"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "confronting-the-hazeel-cult-talking-to-clivet-again-before-joining": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "So, you've returned. I hope you're here because you've recognised the folly in serving the Carnilleans. Think about what you could achieve if you join us instead."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Before I decide, I have some questions for you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "z34oR7"
+              }
+            ]
+          },
+          {
+            "text": "Alright, I've made my decision.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uXw66A"
+              }
+            ]
+          },
+          {
+            "text": "I need some time to think on this.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eJ4wge"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "joining-the-carnillean-side-talking-to-alomone": [
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "How did you get in here?"
+      },
+      {
+        "player": "I've come for the Carnillean family armour. Hand it over, or face the consequences."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "I thought I made it clear to Jones that you could not be allowed to interfere with our mission. The incompetent fool must be going soft."
+      },
+      {
+        "player": "So the butler's part of your little cult? Why is it always the butler? I should have known..."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Well you won't live long enough to tell anyone! Die!"
+      }
+    ],
+    "joining-the-carnillean-side-talking-to-clivet": [
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "You! Leave this place at once, before we're forced to make you!"
+      }
+    ],
+    "joining-the-carnillean-side-talking-to-hazeel-cultist": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel Cultist",
+        "text": "You have no place here! Leave now, before someone makes you!"
+      }
+    ],
+    "joining-the-carnillean-side-if-alomone-is-alive": [
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Get away from that chest!"
+      }
+    ],
+    "joining-the-carnillean-side-if-alomone-is-killed-first": [
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You find some armour in the chest, but you don't have enough room to take it.",
+            "id": "ELhSlr"
+          }
+        ],
+        "id": "3uFDt1"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enough space:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You find some armour in the chest.",
+            "id": "4Zk_8E"
+          }
+        ],
+        "id": "Gowr4X"
+      }
+    ],
+    "joining-the-carnillean-side-talking-to-butler-jones": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Hello, adventurer. How are you doing with your quest?"
+      },
+      {
+        "player": "Drop the act, Jones. I know you're in league with the cultists."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Have you hit your head? That's a preposterous accusation!"
+      },
+      {
+        "player": "Really? So you won't mind me telling Ceril then?"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Oh, you think he'll take your word over mine? He trusts me completely!"
+      },
+      {
+        "player": "We'll see about that."
+      }
+    ],
+    "joining-the-carnillean-side-returning-the-armour": [
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "You're back. Have you had any luck yet?"
+      },
+      {
+        "player": "Look! I've recovered your armour!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Well done! I must say I am very impressed! Come on, hand it over."
+      },
+      {
+        "type": "message",
+        "text": "You give the armour to Ceril.",
+        "id": "ht4uSq"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Before we send you on your way with your payment, I'll just get Jones to whip you up a batch of his special broth."
+      },
+      {
+        "player": "I'd rather not if it's all the same to you. Apparently Jones is in league with the cultists."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "What? Right! You! We're going to blooming well sort this out right now, once and for all!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Jones! This commoner says you had something to do with the cultists that stole my armour. What do you have to say for yourself?"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Nothing to do with me, sir. I am, as you know, a loyal servant."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Humph. Quite right too. I cannot fathom why this scoundrel would accuse you of such a crime without evidence to back up the accusations."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Right, I have made a decision. I have given my word as a nobleman to reward you for your efforts in retrieving my armour, but I must also compensate Jones for this terrible slander."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Now take this and leave! And don't darken my doorstep again!"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Don't worry, sir, he won't be bothering us any more."
+      },
+      {
+        "type": "message",
+        "text": "Jones smirks at you. You are going to need more than words to prove his treachery.",
+        "id": "o-fWjz"
+      }
+    ],
+    "joining-the-carnillean-side-returning-the-armour-talking-to-cecil": [
+      {
+        "player": "Hey! You owe me money."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "I owe you nothing you scoundrel! Now get out or I'll have Jones throw you out!"
+      }
+    ],
+    "joining-the-carnillean-side-returning-the-armour-talking-to-henryeta": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "You! Don't think you can go around insulting our trusted staff and then waltz up to me as though nothing has happened!"
+      },
+      {
+        "player": "Everything I said was the truth."
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "Ha! Don't be so ridiculous! Next you'll be trying to tell me that Jones murdered our old butler!"
+      }
+    ],
+    "joining-the-carnillean-side-returning-the-armour-talking-to-philipe": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "Daddy says you don't like Mr Jones. Mr Jones is nice. He brings me toys and sweets."
+      },
+      {
+        "player": "Jones is a bad man."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "Well if you think that, I don't like you!"
+      },
+      {
+        "player": "Well I'll do my best to console myself over your feelings towards me."
+      }
+    ],
+    "joining-the-carnillean-side-returning-the-armour-talking-to-butler-jones": [
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "I believe you've been asked to leave, adventurer."
+      },
+      {
+        "player": "You won't get away with this, Jones! I know who you really are!"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "That's quite enough of that. All of us here are starting to tire of your theatrics."
+      },
+      {
+        "player": "This isn't over! I will find proof!"
+      }
+    ],
+    "joining-the-carnillean-side-returning-the-armour-talking-to-claus-the-chef": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Hello. How are you today?"
+      },
+      {
+        "player": "Not bad, thanks."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Good good."
+      }
+    ],
+    "joining-the-carnillean-side-returning-the-armour-talking-to-the-guard": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Hello, adventurer. I hear you accused Jones of being part of that cult. Is that true?"
+      },
+      {
+        "player": "It is, but nobody believes me."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "You have my utter faith, adventurer. I can't openly defy Sir Ceril, but I'd like you to know that I think you're on the right track with this."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "I always found it suspicious that Jones would just show up on the doorstep the very day after the old butler died. Good luck in clearing your name"
+      },
+      {
+        "type": "unavailable",
+        "id": "Dwfnnw"
+      }
+    ],
+    "joining-the-carnillean-side-accusing-the-butler": [
+      {
+        "type": "message",
+        "text": "You search the cupboard and find a bottle of poison along with a mysterious amulet.",
+        "id": "IX61mv"
+      },
+      {
+        "player": "And what do we have here..."
+      },
+      {
+        "player": "Ceril!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "What do you want now you scoundrel?"
+      },
+      {
+        "player": "Take a look at what I've found."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "What's this... Poison?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Jones?"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Just for killing rats, sir."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Right... but this amulet... I recognise this! Those cultists wore amulets like this!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Jones! We trusted you! We took you into our home!"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "You senile old fool... it was all too easy! I should have killed you and your pathetic family weeks ago!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Guard!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "This man is one of those cultists! Take him away!"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Don't think this is over, Ceril! You will die at the hands of the Hazeel Cult! I promise you that!"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Well... It looks like I am indebted to you!"
+      },
+      {
+        "player": "No problem. We all make mistakes."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "But if it weren't for you... my whole family... we could have been..."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "I apologise for my harshness before. The very least I can do is to reward you for your noble efforts, and to offer my sincerest apologies as a gentleman."
+      },
+      {
+        "player": "Thank you."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "No, no, thank you! Feel free to stop by anytime, adventurer!"
+      },
+      {
+        "type": "action",
+        "text": "Congratulations! Quest complete",
+        "id": "LtuQhV"
+      }
+    ],
+    "after-quest-completion-talking-to-ceril": [
+      {
+        "player": "Hello, Ceril."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Hello again, adventurer! It's good to see you! If it wasn't for your quick thinking, the treacherous Jones would have probably poisoned my family and I by now! We are in your debt."
+      },
+      {
+        "player": "Don't worry about it! A good deed is its own reward. And that money didn't hurt either."
+      }
+    ],
+    "after-quest-completion-talking-to-guard": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Well look who it is! Good to see you managed to clear your name. I always had faith in you!"
+      },
+      {
+        "player": "Thanks! So is everything all quiet around here now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Indeed! For now at least, everything is back to normal."
+      }
+    ],
+    "after-quest-completion-talking-to-philipe": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "What have you brought me? I want some more toys!"
+      },
+      {
+        "player": "I'm afraid I don't have any toys."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "Toys! I want toys!"
+      }
+    ],
+    "after-quest-completion-talking-to-henryeta": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "Hello again, adventurer. Since you dealt with those horrible cultists, things have vastly improved for us around here!"
+      },
+      {
+        "player": "I'm happy to have helped."
+      }
+    ],
+    "after-quest-completion-talking-to-claus": [
+      {
+        "player": "Hey."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Well hello there, adventurer! Are we fit and well?"
+      },
+      {
+        "player": "Absolutely."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Glad to hear it."
+      }
+    ],
+    "joining-the-hazeel-side-obtaining-the-poison-after-an-initially-full-inventory": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Here's that poison you need. Take it and pour it into Ceril Carnillean's food. Once the deed is done, return here and speak to me once more."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Clivet tries to give you some poison, but you don't have enough room to take it.",
+            "id": "0gR5sX"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "aiCBQO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player inventory space:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Clivet gives you some poison.",
+            "id": "PNetGb"
+          }
+        ],
+        "id": "QIwRdZ"
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-clivet-again": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "You have a mission for us, adventurer. Go to the Carnilliean household and poison Ceril Carnillean's meal to prove your loyalty."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has poison in their inventory:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "end"
+          }
+        ],
+        "id": "drm8Jq"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no poison in their inventory:",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "I need some more poison."
+          },
+          {
+            "type": "line",
+            "speaker": "Clivet",
+            "text": "Fool! Be more careful with it this time."
+          },
+          {
+            "type": "condition",
+            "text": "If the player has a full inventory:",
+            "action_source": "text",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Clivet tries to give you some poison, but you don't have enough room to take it.",
+                "id": "AfS8zN"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "w2u7TL"
+          },
+          {
+            "type": "condition",
+            "text": "If the player inventory space:",
+            "action_source": "text",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Clivet gives you some poison.",
+                "id": "wpWRaW"
+              }
+            ],
+            "id": "lzVFUq"
+          }
+        ],
+        "id": "IORkJp"
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-the-guard": [
+      {
+        "type": "call",
+        "branch": "C3CzKz"
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-butler-jones": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Hello, adventurer. I hear your quest is going well."
+      },
+      {
+        "player": "Really?"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Oh yes. Do keep up the good work."
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-ceril": [
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "You're back. Have you had any luck yet?"
+      },
+      {
+        "player": "I'm afraid not, Ceril."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "That's Sir Ceril you blooming scoundrel! Show respect when addressing someone of my rank! I must say, I am a bit disapointed you haven't made any progress. Maybe I was wrong about you."
+      },
+      {
+        "player": "Yeah, well, just unlucky I guess."
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-henryeta": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "Oh, hello. I hope you've found those awful cultists! I simply cannot sleep at night knowing they're loose!"
+      },
+      {
+        "player": "I'm afraid I haven't found them yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "Well you really are useless, aren't you?"
+      },
+      {
+        "player": "Yup, I guess I am."
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-philipe": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "Mommy said you're here to kill all the nasty people that keep breaking in."
+      },
+      {
+        "player": "Something like that."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "Can I watch?"
+      },
+      {
+        "player": "No!"
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-claus": [
+      {
+        "player": "Hey."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "You're that adventurer the family asked to help deal with those weird cultists, right?"
+      },
+      {
+        "player": "That's me."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Good luck with that!"
+      }
+    ],
+    "joining-the-hazeel-side-inspecting-the-range": [
+      {
+        "type": "message",
+        "text": "A pot of soup is bubbling away on the range.",
+        "id": "msiKQp"
+      },
+      {
+        "type": "choice",
+        "prompt": "Pour the poison into the pot?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You pour the poison into the pot and it dissolves into the soup.",
+                "id": "KwZGwv"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "joining-the-hazeel-side-using-the-poison-on-the-range": [
+      {
+        "type": "message",
+        "text": "You pour the poison into the pot and it dissolves into the soup.",
+        "id": "nbiaFb"
+      }
+    ],
+    "joining-the-hazeel-side-using-the-poison-on-the-range-using-another-poison-the-range": [
+      {
+        "type": "message",
+        "text": "You've already done enough poisoning.",
+        "id": "HPboCW"
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-claus-after-the-poisoning": [
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Hello there. Caught any of those weird cultists yet?"
+      },
+      {
+        "player": "Afraid not."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Well, keep at it!"
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-henryeta-after-the-poisoning": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "Those hooligans! They slaughtered my precious Scruffy! I shall never recover! I am emotionally scarred for life!"
+      },
+      {
+        "player": "Yeah... Hopefully someone finds them soon."
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-butler-jones-after-the-poisoning": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Hello, adventurer. Such a terrible shame about Scruffy. I wonder if the family will ever fully recover."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Anyway, I hear your quest is going well."
+      },
+      {
+        "player": "Really?"
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Oh yes. Do keep up the good work."
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-philipe-again": [
+      {
+        "type": "call",
+        "branch": "pnFVX0"
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-ceril-after-the-poisoning": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Oh the inhumanity... the cruelty... the misery... the pain..."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "My son is a good boy, really, but how could he give his dinner to Scruffy without having the servants test it for poison first? How? How could he be so thoughtless and careless? He knows we are all under threat!"
+      },
+      {
+        "player": "Scruffy?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "He's been with our family for twenty years... that's 140 in dog years! The poor dog... What did he ever do to deserve such a fate?"
+      },
+      {
+        "player": "Your dog got poisoned? That's not right."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "I agree! I hope whichever evildoer is responsible gets the full weight of the law brought upon them!"
+      },
+      {
+        "player": "Uh... yeah... me too."
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-ceril-again-after-the-poisoning": [
+      {
+        "player": "Hello again."
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Oh the misery... How could someone do something like this?"
+      },
+      {
+        "player": "Uh... I'm sure they won't get away with it..."
+      }
+    ],
+    "joining-the-hazeel-side-talking-to-the-guard-again": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Today is a dark day. Those cultists have been back, and this time they've gone further than ever before! Murder! We can't afford to keep letting them get away with this."
+      }
+    ],
+    "the-scroll-talking-to-clivet": [
+      {
+        "player": "I poisoned the food as requested, but it didn't quite go to plan."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Yes, we heard all about it from one of our sources. It's a shame that Ceril Carnillean survived, but that is no fault of yours. You have proven your loyalty to Hazeel."
+      },
+      {
+        "player": "So what now?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "I would like you to meet with our leader, Alomone. You'll find him in our hideout, deeper in the sewers. You can use this raft to get there."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "However, be warned that reaching the hideout is impossible unless the flow of water down here is set correctly. You'll need to use the sewer valves above to do that."
+      },
+      {
+        "player": "But how will I know how to set the valves?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "For that, you'll need this."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Clivet tries to give you an amulet, but you don't have enough room to take it.",
+            "id": "Q-CkRr"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ozhjqN"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Clivet gives you an amulet.",
+            "id": "6FjnaM"
+          },
+          {
+            "type": "line",
+            "speaker": "Clivet",
+            "text": "Going from left to right, turn each of the five sewer valves above so that they follow the design of the amulet. Once you've done that, you'll be able to use the raft here to enter our hideout."
+          }
+        ],
+        "id": "0pLSnN"
+      }
+    ],
+    "the-scroll-talking-to-clivet-if-the-player-did-not-have-enough-space-for-the-amulet": [
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Here, you'll need this."
+      },
+      {
+        "type": "message",
+        "text": "Clivet gives you an amulet.",
+        "id": "OreiUm"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Going from left to right, turn each of the five sewer valves above so that they follow the design of the amulet. Once you've done that, you'll be able to use the raft here to enter our hideout."
+      }
+    ],
+    "the-scroll-reclaiming-a-lost-amulet": [
+      {
+        "player": "I lost that amulet you gave me."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Careless! Look afer this one!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a full inventory:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Clivet tries to give you an amulet, but you don't have enough room to take it.",
+            "id": "wa-_mr"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "FrbvHW"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has inventory space:",
+        "action_source": "text",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Clivet gives you an amulet.",
+            "id": "DHANak"
+          }
+        ],
+        "id": "0eRRGP"
+      }
+    ],
+    "the-scroll-talking-to-clivet-again": [
+      {
+        "player": "What am I meant to be doing?"
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Use the raft here to enter our hideout and meet with our leader, Alomone."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Be warned, you'll need to ensure the flow of water down here is set correctly for you to be able to use the raft."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Going from left to right, turn each of the five sewer valves above so that they follow the design of the amulet I gave you."
+      }
+    ],
+    "the-scroll-using-the-raft": [
+      {
+        "type": "message",
+        "text": "The current is flowing against the raft. It won't move.",
+        "id": "BFAi2W"
+      }
+    ],
+    "the-scroll-inspecting-a-sewer-valve-that-is-to-the-right": [
+      {
+        "type": "choice",
+        "prompt": "The valve is currently turned to the right.",
+        "options": [
+          {
+            "text": "Turn it to the left.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You turn the valve to the left. Beneath your feet you hear the sudden sound of rushing water.",
+                "id": "Dip-j0"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Do nothing."
+          }
+        ]
+      },
+      {
+        "type": "message",
+        "text": "You leave the valve alone.",
+        "steps": [
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6a9JE4"
+      }
+    ],
+    "the-scroll-inspecting-a-sewer-valve-that-is-to-the-left": [
+      {
+        "type": "choice",
+        "prompt": "The valve is currently turned to the left.",
+        "options": [
+          {
+            "text": "Turn it to the right.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You turn the valve to the right. Beneath your feet you hear the sudden sound of rushing water.",
+                "id": "ugL9ew"
+              },
+              {
+                "type": "end"
+              }
+            ]
+          },
+          {
+            "text": "Do nothing."
+          }
+        ]
+      },
+      {
+        "type": "message",
+        "text": "You leave the valve alone.",
+        "steps": [
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Mb45-i"
+      }
+    ],
+    "the-scroll-one-valve-set-correctly": [
+      {
+        "type": "message",
+        "text": "The raft washes up the sewer and stops at the first island. You'll need to find the right combination of the five sewer valves above if you want to go further.",
+        "id": "OV_LJW"
+      },
+      {
+        "type": "message",
+        "text": "The raft flows back to the cave entrance.",
+        "id": "URTQD9"
+      }
+    ],
+    "the-scroll-two-valves-set-correctly": [
+      {
+        "type": "message",
+        "text": "The raft washes up the sewer and stops at the second island. You'll need to find the right combination of the five sewer valves above if you want to go further.",
+        "id": "fd2l6Y"
+      },
+      {
+        "type": "message",
+        "text": "The raft flows back to the cave entrance.",
+        "id": "ZaQPD5"
+      }
+    ],
+    "the-scroll-three-valves-set-correctly": [
+      {
+        "type": "message",
+        "text": "The raft washes up the sewer and stops at the fourth island. You'll need to find the right combination of the five sewer valves above if you want to go further.",
+        "id": "Ozyyw8"
+      },
+      {
+        "type": "message",
+        "text": "The raft flows back to the cave entrance.",
+        "id": "lSCG91"
+      }
+    ],
+    "the-scroll-four-valves-set-correctly": [
+      {
+        "type": "message",
+        "text": "The raft washes up the sewer and stops at the third island. You'll need to find the right combination of the five sewer valves above if you want to go further.",
+        "id": "gzTxEX"
+      },
+      {
+        "type": "message",
+        "text": "The raft flows back to the cave entrance.",
+        "id": "Fyfqjd"
+      }
+    ],
+    "the-scroll-sucessfully-using-the-raft-with-the-correct-water-valve-settings": [
+      {
+        "type": "message",
+        "text": "The raft washes up the sewer until it reaches the end of the passage.",
+        "id": "y3NCLz"
+      }
+    ],
+    "the-scroll-talking-to-a-hazeel-cultist": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Hazeel Cultist",
+        "text": "I cannot talk right now. Lord Hazeel will soon be back with us and I have many preparations to make."
+      }
+    ],
+    "the-scroll-talking-to-alomone": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Well, well, well... we have a new recruit. Clivet told me of your desire to join us in our glorious task to resurrect the mighty Hazeel."
+      },
+      {
+        "player": "That's right."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Well if all goes well, you'll play a key role in just that. Before his defeat, Hazeel secured within his home a powerful magical scroll of restoration. It remains there still, hidden to even the foolish Carnilleans."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Up to now, our attempts to recover this scroll have been met with disappointment. However, I know you will not fail us."
+      },
+      {
+        "player": "So you want me to find this scroll?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "That is correct. You must return to the Carnillean Mansion and find where it is hidden. We already have an agent in place to support you."
+      },
+      {
+        "player": "You do?"
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Indeed. Their Butler Jones is in fact a faithful follower of Hazeel. He has been unsuccessful in locating the scroll himself, but together the two of you will find it."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Now, go with haste. Soon we will restore Hazeel to his true power and glory!"
+      }
+    ],
+    "the-scroll-talking-to-alomone-again": [
+      {
+        "player": "Hello, Alomone."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Hazeel has already waited far too long for his return. It is imperative that you find that scroll! It hides somewhere within the Carnillean Mansion."
+      },
+      {
+        "player": "Don't worry, I'm on it."
+      }
+    ],
+    "the-scroll-taking-the-raft-back": [
+      {
+        "type": "message",
+        "text": "The raft flows back to the cave entrance.",
+        "id": "CRJvdq"
+      }
+    ],
+    "the-scroll-talking-to-clivet-again-2": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "It is good to see you once more, adventurer. Glory to Hazeel!"
+      }
+    ],
+    "the-scroll-talking-to-ceril-again": [
+      {
+        "type": "call",
+        "branch": "C8J0t-"
+      }
+    ],
+    "the-scroll-talking-to-claus-again": [
+      {
+        "type": "call",
+        "branch": "zGZzwo"
+      }
+    ],
+    "the-scroll-talking-to-ceril": [
+      {
+        "player": "Ceril. How are you?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Oh cruel world! Scruffy... I knew you well... I... just... don't think I can... go on without..."
+      },
+      {
+        "type": "message",
+        "text": "Sir Ceril breaks down into tears.",
+        "id": "BMhxUs"
+      },
+      {
+        "player": "Loosen up already. It was only a DOG."
+      }
+    ],
+    "the-scroll-talking-to-butler-jones": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Hello, adventurer. I hear your quest is going well."
+      },
+      {
+        "player": "I'm making progress. On that note, I hear you might be able to help me with my next task."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Ah yes, the scroll. I'm afraid I've searched high and low, but have so far been unable to locate it. I'm sure it is somewhere within the house, hidden where even the family won't find it."
+      },
+      {
+        "player": "Hmm... So it must be somewhere they'd have never stepped foot. I'll keep on looking."
+      }
+    ],
+    "the-scroll-using-the-knock-at-wall": [
+      {
+        "type": "message",
+        "text": "You knock on the wall. It sounds like there's a hollow space on the other side.",
+        "id": "lfAXf4"
+      },
+      {
+        "type": "choice",
+        "prompt": "Push against the wall?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "action",
+                "text": "The player enters the wall.",
+                "id": "w_5wEv"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "the-scroll-chest-without-the-key": [
+      {
+        "type": "message",
+        "text": "The chest is locked. It looks like it needs a key.",
+        "id": "zzorCa"
+      }
+    ],
+    "the-scroll-searching-the-crate-in-the-kitchen": [
+      {
+        "type": "action",
+        "text": "With a full inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You search the crate and find an old key hidden at the bottom, but you don't have enough room to take it.",
+            "id": "PdR-0x"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "qUYzYa"
+      },
+      {
+        "type": "action",
+        "text": "Without a full inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You search the crate and find an old key hidden at the bottom.",
+            "id": "k4IIqS"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "24LVTK"
+      }
+    ],
+    "the-scroll-searching-the-crate-in-the-kitchen-searching-a-crate-with-the-key": [
+      {
+        "type": "message",
+        "text": "You search the crate but find nothing of interest.",
+        "id": "06BFO6"
+      }
+    ],
+    "the-scroll-opening-the-chest": [
+      {
+        "type": "action",
+        "text": "With a full inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You unlock the chest and find a scroll inside, but you don't have enough room to take it.",
+            "id": "-1m5vR"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "_R8Ved"
+      },
+      {
+        "type": "action",
+        "text": "Without a full inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You unlock the chest and find a scroll inside.",
+            "id": "4avyol"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "EFN5-Z"
+      }
+    ],
+    "the-scroll-opening-the-chest-searching-the-chest-with-a-scroll-already": [
+      {
+        "type": "message",
+        "text": "You already have the scroll from this chest.",
+        "id": "L9IVut"
+      }
+    ],
+    "the-scroll-talking-to-jones-after-obtaining-the-scroll": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Butler Jones",
+        "text": "Hello, adventurer. How is your quest going?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the scroll:",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "I'm making progress."
+          },
+          {
+            "type": "line",
+            "speaker": "Butler Jones",
+            "text": "Good. Remember, the scroll must be somewhere within the house, hidden where even the family won't find it."
+          },
+          {
+            "player": "Hmm... I'll keep on looking."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "hW9aMl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the scroll:",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "I have the scroll!"
+          },
+          {
+            "type": "line",
+            "speaker": "Butler Jones",
+            "text": "Then you should waste no time in returning to Alomone. The return of Hazeel will soon be upon us!"
+          }
+        ],
+        "id": "MRCCLU"
+      }
+    ],
+    "the-scroll-talking-to-hentryeta-after-obtaining-the-scroll": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Henryeta Carnillean",
+        "text": "I'm sorry. I am far too upset to talk to anybody right now. Oh... poor Scruffy..."
+      },
+      {
+        "player": "Yeah... poor Scruffy."
+      }
+    ],
+    "the-scroll-talking-to-ceril-after-obtaining-the-scroll": [
+      {
+        "type": "call",
+        "branch": "C8J0t-"
+      }
+    ],
+    "the-scroll-talking-to-philipe-after-obtaining-the-scroll": [
+      {
+        "type": "call",
+        "branch": "pnFVX0"
+      }
+    ],
+    "the-scroll-talking-to-claus-after-obtaining-the-scroll": [
+      {
+        "type": "call",
+        "branch": "zGZzwo"
+      }
+    ],
+    "the-scroll-talking-to-the-guard-after-obtaining-the-scroll": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Hello, adventurer. I hope you find the cult soon. We have a horrible suspicion that there's been another burglary."
+      },
+      {
+        "player": "That's worrying."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Yes, it is. The thing is, we can't even work out what they've taken! It's all very odd."
+      }
+    ],
+    "the-scroll-taking-the-raft": [
+      {
+        "type": "message",
+        "text": "The raft washes up the sewer until it reaches the end of the passage.",
+        "id": "BXH7g-"
+      }
+    ],
+    "the-scroll-talking-to-alomone-after-obtaining-the-scroll": [
+      {
+        "player": "Hello, Alomone."
+      },
+      {
+        "type": "line",
+        "speaker": "Alomone",
+        "text": "Have you brought the scroll of restoration?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the scroll in their inventory:",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "Yes, I have it right here."
+          },
+          {
+            "type": "line",
+            "speaker": "Alomone",
+            "text": "At long last! With the words contained within this scroll, our lord shall finally return to us!",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Alomone",
+                "text": "Watch adventurer, and witness the glorious rebirth of Hazeel!"
+              }
+            ]
+          },
+          {
+            "type": "action",
+            "text": "Alomone begins to revive Hazeel.",
+            "id": "S9lT8T"
+          },
+          {
+            "type": "line",
+            "speaker": "Alomone",
+            "text": "Sentente sillaberi junque dithmento! Ia! Ia! Dextrimon encanto! Termando... Imcando... Solly enty rando... Sentente! Ia! Ia! Indenti zaggarati g'thxa!"
+          },
+          {
+            "type": "line",
+            "speaker": "Alomone",
+            "text": "Dintenta! Sententa! Retenta! Q'exjta! Ia! Sottottott! Ia! Dysmenta junque fammatio svelken! Sottey! Sentey! Soloment!"
+          },
+          {
+            "type": "action",
+            "text": "Hazeel awakens from the coffin.",
+            "id": "JCSYyQ"
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "My loyal followers, I have pride in you all. You have achieved a feat many would have considered impossible and returned me to this land."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Much time has passed and I have much to attend to, but first, I believe there is one here who deserves my gratitude."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Adventurer, I know that your efforts were essential in bringing about my return. You have my thanks. Know that I consider you an ally."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Now, I must leave you, loyal subjects, for time is short. My Mahjarrat kin will soon head northwards, and I have much to prepare."
+          },
+          {
+            "type": "line",
+            "speaker": "Hazeel",
+            "text": "Rest assured, when my work is done, I will return to you. Before long, the world will know of Hazeel once more!"
+          },
+          {
+            "type": "action",
+            "text": "Quest complete",
+            "id": "O8EM1e"
+          }
+        ],
+        "id": "aVd2Rv"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have the scroll in their inventory:",
+        "action_source": "text",
+        "steps": [
+          {
+            "player": "Nope, sorry."
+          },
+          {
+            "type": "line",
+            "speaker": "Alomone",
+            "text": "You must find it and bring it to me! Hazeel has already waited far too long for his return."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "MEEBFM"
+      },
+      {
+        "type": "unavailable",
+        "id": "ZhqHcd"
+      }
+    ]
+  },
+  "branches": {
+    "C3CzKz": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Guard",
+        "text": "Hello there. I hear you're after that cult who broke in the other night. It always gladdens me when civilians assist the law like this."
+      },
+      {
+        "player": "I'm just happy to be of help."
+      }
+    ],
+    "x2-KnX": [
+      {
+        "player": "I need some time to think on this."
+      },
+      {
+        "type": "line",
+        "speaker": "Clivet",
+        "text": "Don't take too long."
+      }
+    ],
+    "pnFVX0": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "Someone killed Scruffy. I liked Scruffy. He never told me off."
+      },
+      {
+        "player": "Yeah... it's a real shame."
+      },
+      {
+        "type": "line",
+        "speaker": "Philipe Carnillean",
+        "text": "I want my mommy."
+      }
+    ],
+    "C8J0t-": [
+      {
+        "player": "Hello, Ceril. How's things?"
+      },
+      {
+        "type": "line",
+        "speaker": "Ceril Carnillean",
+        "text": "Sir Ceril! Sir! And things are terrible! Our beloved dog is dead, and I fear it's only a matter of time before those cultists strike again!"
+      },
+      {
+        "player": "Don't worry, I'm sure it will all be okay in the end."
+      }
+    ],
+    "zGZzwo": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "I just don't understand it! How? How could someone poison my delicious food without me even noticing? I... I just don't get it!"
+      },
+      {
+        "type": "line",
+        "speaker": "Claus the Chef",
+        "text": "Oh man... I hope I don't lose my job over this... but how? How did they do it? And why would they want to kill poor Scruffy anyway? He was such a good dog..."
+      },
+      {
+        "player": "Yeah... it's a real mystery."
+      }
+    ]
+  }
+}

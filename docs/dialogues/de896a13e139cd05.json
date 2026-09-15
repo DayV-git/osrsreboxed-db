@@ -1,0 +1,135 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hi!"
+      },
+      {
+        "npc": "What? Can't you see I'm busy?!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you heal me?",
+            "steps": [
+              {
+                "player": "Can you heal me?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a PvP world:",
+                "steps": [
+                  {
+                    "npc": "Sorry, I'm not on duty."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "OaLYQ7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is on a Deadman world:",
+                "steps": [
+                  {
+                    "npc": "PLEASE DON'T KILL ME!"
+                  },
+                  {
+                    "player": "I was... looking to be healed."
+                  },
+                  {
+                    "npc": "No way, I'm out of here just as soon as I've packed up my stuff!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "nlH2Kq"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has full Hitpoints:",
+                "steps": [
+                  {
+                    "npc": "You look healthy to me!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZrgMs2"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have full Hitpoints:",
+                "steps": [
+                  {
+                    "npc": "Okay, this will hurt you more than it will me."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Jaraah heals you for 21 Hitpoints.",
+                    "action": "heal",
+                    "action_source": "text",
+                    "id": "wR8i8X"
+                  }
+                ],
+                "id": "D6F1Cs"
+              }
+            ]
+          },
+          {
+            "text": "You must see some gruesome things?",
+            "steps": [
+              {
+                "player": "You must see some gruesome things?"
+              },
+              {
+                "npc": "It's a gruesome business and with the tools they give me it gets more gruesome before it gets better!"
+              }
+            ]
+          },
+          {
+            "text": "Why do they call you 'The Butcher'?",
+            "steps": [
+              {
+                "player": "Why do they call you 'The Butcher'?"
+              },
+              {
+                "npc": "'The Butcher'?"
+              },
+              {
+                "npc": "Ha!"
+              },
+              {
+                "npc": "Would you like me to demonstrate?"
+              },
+              {
+                "player": "Er...I'll give it a miss, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "Here! Now I have work to do!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a [new clue/casket]",
+        "id": "f9ucBT"
+      },
+      {
+        "type": "message",
+        "text": "Jaraah has given you another clue scroll!",
+        "id": "JdLUhj"
+      }
+    ]
+  }
+}

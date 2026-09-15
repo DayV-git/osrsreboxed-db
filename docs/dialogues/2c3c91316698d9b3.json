@@ -1,0 +1,145 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "I am proud that the helm of my ancestors will be worn in battle. I thank you on behalf of all my kinsmen, [Fremennik name]."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I thank you again for presenting me with such a helm.",
+            "steps": [
+              {
+                "player": "I thank you again for presenting me with such a helm."
+              }
+            ]
+          },
+          {
+            "text": "Have you got any more of those helms?",
+            "steps": [
+              {
+                "player": "Have you got any more of those helms?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have any helms of Neitiznot in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "What, the priceless heirloom that I gave to you as a sign of my trust and gratitude?"
+                  },
+                  {
+                    "player": "Err yes, that one. I may have mislaid it."
+                  },
+                  {
+                    "npc": "It's a good job I have alert and loyal men who notice when such a precious item is left laying around, and who pick it up."
+                  },
+                  {
+                    "npc": "I'm afraid I'm going to have to charge you a 50,000 coin handling cost."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "cnloMR"
+                  }
+                ],
+                "id": "EroQQ9"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does have a helm of Neitiznot in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "Well, yes, I do. But I'm going to have to charge you 50,000 coins - these are precious, you know!"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "N2c2RS"
+                  }
+                ],
+                "id": "HkBxpn"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Very well, I accept.",
+                    "steps": [
+                      {
+                        "player": "Very well, I accept."
+                      },
+                      {
+                        "type": "action",
+                        "text": "Reclaim interface opens",
+                        "action": "open_interface",
+                        "action_source": "text",
+                        "target": "Reclaim",
+                        "id": "sqB96Z"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If buying 1 helm:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The Burgher hands you his helm.",
+                            "id": "CBPi66"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "RRnQcZ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If buying more than 1 helm:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The Burgher hands you [number] helms.",
+                            "id": "WwL25E"
+                          }
+                        ],
+                        "id": "An-XPe"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I don't think I can afford that, sorry.",
+                    "steps": [
+                      {
+                        "player": "I don't think I can afford that, sorry."
+                      },
+                      {
+                        "npc": "Well, come back when you can."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "You have done well, [player name]!"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "[another clue scroll/a casket]",
+        "id": "lLOa47"
+      },
+      {
+        "type": "message",
+        "text": "Mawnis Burowgar has given you another clue scroll!",
+        "id": "yAItiN"
+      }
+    ]
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello. I've heard you stopped the demon, well done."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, that's right.",
+            "steps": [
+              {
+                "player": "Yes, that's right."
+              },
+              {
+                "npc": "A good job well done then."
+              },
+              {
+                "player": "Thank you."
+              }
+            ]
+          },
+          {
+            "text": "Yes, although I'm afraid I've lost Silverlight.",
+            "steps": [
+              {
+                "player": "Yes, although I'm afraid I've lost Silverlight."
+              },
+              {
+                "npc": "Yes, news of your carelessness is almost as widespread as knowledge of your victory. Fortunately for you, Silverlight has come back into my possession."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Phew, that's a relief.",
+                    "steps": [
+                      {
+                        "player": "Phew, that's a relief."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Is there any chance of me borrowing it again?",
+                    "steps": [
+                      {
+                        "player": "Is there any chance of me borrowing it again?"
+                      },
+                      {
+                        "npc": "I'm not going to give it away that easily again, it's far too important to be treated so disrespectfully. Especially now its powers have increased after your fight with Agrith-Naar!"
+                      },
+                      {
+                        "npc": "If you wish to make use of Silverlight again, it will cost you 1000 gold pieces. Maybe that will encourage you to look after it."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "No way, it's not worth that much.",
+                            "steps": [
+                              {
+                                "player": "No way, it's not worth that much."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Ok, I'll pay.",
+                            "steps": [
+                              {
+                                "player": "Ok, I'll pay."
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player has at least 500 coins.",
+                                "steps": [
+                                  {
+                                    "npc": "May you make good use of it."
+                                  },
+                                  {
+                                    "type": "action",
+                                    "action": "receive",
+                                    "text": "Silverlight",
+                                    "id": "p5BVZ5"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "kKVgcF"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player does not have at least 500 coins.",
+                                "steps": [
+                                  {
+                                    "player": "But I don't have that much money."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ],
+                                "id": "UktebL"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player lacks sufficient inventory space:",
+                                "steps": [
+                                  {
+                                    "npc": "You don't even have enough free space to carry it. Stop wasing my time!"
+                                  }
+                                ],
+                                "id": "JzUWO5"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "You've come to the right place, well done!"
+      },
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Sir Prysin has given you another clue scroll!",
+            "id": "g8Al5l"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "rMRJyy"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "6ZTNJR"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "t1npTb"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a reward casket",
+            "id": "k20n8q"
+          }
+        ],
+        "id": "YZPQ9S"
+      }
+    ]
+  }
+}

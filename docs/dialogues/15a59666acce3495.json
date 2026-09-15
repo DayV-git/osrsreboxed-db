@@ -1,0 +1,132 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello old chap."
+      },
+      {
+        "player": "What are you doing here? Shouldn't you be looking after your glider?"
+      },
+      {
+        "npc": "I'm pretty much retired these days old fellow. My test piloting days are over. I'm just relaxing here and enjoying the primal clash between man and man."
+      },
+      {
+        "player": "You're watching the duels then. Are you going to challenge someone yourself?"
+      },
+      {
+        "npc": "I do find the duels entertaining to watch, but I suspect that actually being involved would be a lot less fun for me. I'm a lover, not a fighter!"
+      },
+      {
+        "player": "Errm, I suppose you are."
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "k-varD"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "RsFHbS"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "fDtvmX"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "By-ohS"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food item] to Captain Daerkin.",
+            "id": "hIr3WV"
+          },
+          {
+            "npc": "Excellent. Just what I need whilst watching the duels."
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a gnome scarf:",
+            "steps": [
+              {
+                "npc": "Here you go, have a dashing pilot's scarf."
+              },
+              {
+                "type": "message",
+                "text": "You are given a gnome pilot's scarf as a tip.",
+                "id": "_5XAts"
+              }
+            ],
+            "id": "5qRtKc"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is a pair of gnome goggles:",
+            "steps": [
+              {
+                "npc": "I have some spare goggles, you might as well have them."
+              },
+              {
+                "type": "message",
+                "text": "You are given a pair of pilot's goggles as a tip.",
+                "id": "9I9nEL"
+              }
+            ],
+            "id": "5Wq0EM"
+          },
+          {
+            "type": "condition",
+            "text": "If the reward is anything else:",
+            "steps": [
+              {
+                "npc": "You must have had to travel a long way to get this to me. Here's a little something extra as a tip."
+              },
+              {
+                "type": "message",
+                "text": "You are given [a/some] [reward item(s)] as a tip.",
+                "id": "YJondm"
+              }
+            ],
+            "id": "c2wDaA"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "lNYBXO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "EJdun6"
+          }
+        ],
+        "id": "8BrKDu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there!"
+      },
+      {
+        "player": "Hello, what's in those boxes?"
+      },
+      {
+        "npc": "Aha, interested in my crossbows are you?"
+      },
+      {
+        "player": "Are they any good?"
+      },
+      {
+        "npc": "They're dwarven engineering at its best. If you've got enough skill in crafting, smithing and fletching, you can even make them yourself. You can buy some of the parts here and make the rest yourself."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How do I make one for myself?",
+            "steps": [
+              {
+                "player": "How do I make one for myself?"
+              },
+              {
+                "npc": "Well, firstly you'll need to chop yourself some wood, then use a knife on the wood to whittle out a nice crossbow stock like these here."
+              },
+              {
+                "player": "Wood fletched into stock... check."
+              },
+              {
+                "npc": "Then get yourself some metal and a hammer and smith yourself some limbs for the bow, mind that you use the right metals and woods though as some wood is too light to use with some metal and vice versa."
+              },
+              {
+                "player": "Which goes with which?"
+              },
+              {
+                "npc": "Wood and Bronze as they're basic materials, Oak and Blurite, Willow and Iron, Steel and Teak, Mithril and Maple, Adamantite and Mahogany and finally Runite and Yew."
+              },
+              {
+                "player": "Ok, so I have my stock and a pair of limbs... what now?"
+              },
+              {
+                "npc": "Simply take a hammer and smack the limbs firmly onto the stock. You'll then need a string, only they're not the same as normal bows. You'll need to dry some large animal's meat to get sinew, then spin that on a spinning"
+              },
+              {
+                "npc": "wheel, it's the only thing we've found to be strong enough for a crossbow."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "What about magic logs?",
+                    "steps": [
+                      {
+                        "player": "What about magic logs?"
+                      },
+                      {
+                        "npc": "Well.. I don't rightly know... us dwarves don't work with magic, we prefer gold and rock. Much more stable. I guess you could ask the humans at the rangers guild to see if they can do something but I don't want"
+                      },
+                      {
+                        "npc": "anything to do with it!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "7fc6ww"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Thanks for telling me. Bye!",
+                    "steps": [
+                      {
+                        "player": "Thanks for telling me. Bye!"
+                      },
+                      {
+                        "npc": "Take care, straight shooting."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What about ammo?",
+            "steps": [
+              {
+                "player": "What about ammo?"
+              },
+              {
+                "npc": "You can smith yourself lots of different bolts, don't forget to flight them with feathers like you do arrows though. You can poison any untipped bolt but there's also the option of tipping them with gems then"
+              },
+              {
+                "npc": "enchanting them with runes. This can have some pretty powerful effects."
+              },
+              {
+                "player": "Oh my poor bank, how will I store all those?!"
+              },
+              {
+                "npc": "Don't you worry, I have just the thing here, a bolt pouch designed specially for holding 4 different types of crossbow bolt."
+              },
+              {
+                "player": "Wow, how much?"
+              },
+              {
+                "type": "condition",
+                "text": "With bolt pouch owned:",
+                "steps": [
+                  {
+                    "npc": "Hmm... didn't I see you down here buying one the other day? You can only have one at a time I'm afraid."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "fYWMzk"
+              },
+              {
+                "type": "condition",
+                "text": "Without bolt pouch owned:",
+                "steps": [
+                  {
+                    "npc": "Well let's see now... for you? 1500 gold pieces should do the trick."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes I'll pay the 1500gp.",
+                        "steps": [
+                          {
+                            "player": "Yes I'll pay the 1500gp."
+                          },
+                          {
+                            "npc": "Hand it over then."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "With less than 1500gp:",
+                            "steps": [
+                              {
+                                "player": "Oh, I don't have that much on me."
+                              },
+                              {
+                                "npc": "Best go make some money then, shouldn't take you too long."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "v5Dtfk"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "With at least 1500gp:",
+                            "steps": [
+                              {
+                                "type": "action",
+                                "action": "receive",
+                                "text": "bolt pouch",
+                                "id": "_KmxF2"
+                              }
+                            ],
+                            "id": "xNRw4X"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Thanks for telling me. Bye!",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "A7G4tE"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "DghB15"
+              }
+            ]
+          },
+          {
+            "text": "Thanks for telling me. Bye!",
+            "steps": [
+              {
+                "player": "Thanks for telling me. Bye!"
+              },
+              {
+                "npc": "Take care, straight shooting."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue-catching-the-player-trying-to-steal-from-his-crossbow-stall": [
+      {
+        "npc": "Hey! Get your hands off there!"
+      }
+    ],
+    "overhead-dialogue-interacting-with-him-after-stealing-from-his-crossbow-stall-recently": [
+      {
+        "npc": "Halt, thief!"
+      },
+      {
+        "npc": "Guards, catch that thief!"
+      }
+    ]
+  }
+}

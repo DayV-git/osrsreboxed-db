@@ -1,0 +1,531 @@
+{
+  "default": "standard-dialogue-without-unredeemed-insurance",
+  "variants": {
+    "standard-dialogue-with-unredeemed-insurance": [
+      {
+        "npc": "I insured your Hitpoints XP up to level [level]. But now there's no more need for that, would you like a refund? It's [amount] coins."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, give me back my [amount] coins.",
+            "steps": [
+              {
+                "player": "Yes, give me back my [amount] coins"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "[amount] coins.",
+                "id": "QdSiE_"
+              },
+              {
+                "type": "message",
+                "text": "Gelin returns [amount] coins to you.",
+                "id": "m00QLV"
+              }
+            ]
+          },
+          {
+            "text": "No, you can hold onto that for me.",
+            "steps": [
+              {
+                "player": "No, you can hold onto that for me."
+              },
+              {
+                "npc": "Alright. I don't pay interest, though!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-without-unredeemed-insurance": [
+      {
+        "npc": "I used to sell life insurance, protecting people's Hitpoints XP when they died. Now there's no more need for that, so I'm just giving refunds now. But I don't think I owe you anything."
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "Death is everywhere! At any moment, a band of brigands might rush in and kill you, or your closest friend might stab you in the back. Welcome to Gelin's Life Insurance Brokerage."
+      },
+      {
+        "type": "condition",
+        "text": "If the player is uninsured:",
+        "steps": [
+          {
+            "npc": "When you die, you may lose Hitpoints XP, so your Hitpoints level may decrease. I offer an insurance service, preventing your Hitpoints level from falling below a certain level."
+          }
+        ],
+        "id": "keZvyG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is insured up to level 25 Hitpoints:",
+        "steps": [
+          {
+            "npc": "I see you're insured up to level 25 Hitpoints - if you lose Hitpoints XP on death, you will never drop below level 25."
+          }
+        ],
+        "id": "zEReFx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is insured up to level 50 Hitpoints:",
+        "steps": [
+          {
+            "npc": "I see you're insured up to level 50 Hitpoints - if you lose Hitpoints XP on death, you will never drop below level 50."
+          }
+        ],
+        "id": "MakwvG"
+      },
+      {
+        "type": "condition",
+        "text": "If the player is insured up to level 75 Hitpoints:",
+        "steps": [
+          {
+            "npc": "I see you're insured up to level 75 Hitpoints - if you lose Hitpoints XP on death, you will never drop below level 75. That's the highest level of insurance I offer."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Can I buy life insurance, please?",
+                "steps": [
+                  {
+                    "player": "Can I buy life insurance?"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has less than level 25 Hitpoints:",
+                    "steps": [
+                      {
+                        "npc": "You must have a Hitpoints level of 25 before you may insure yourself."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "XvueAO"
+                      }
+                    ],
+                    "id": "WWVWbM"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has less than level 50 Hitpoints and is insured up to level 25:",
+                    "steps": [
+                      {
+                        "npc": "You must have a Hitpoints level of 50 before you may insure yourself to that level."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "xgQokR"
+                      }
+                    ],
+                    "id": "nfZG7Y"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has less than level 75 Hitpoints and is insured up to level 50:",
+                    "steps": [
+                      {
+                        "npc": "You must have a Hitpoints level of 75 before you may insure yourself to that level."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "RgJEZO"
+                      }
+                    ],
+                    "id": "1zgOjl"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has level 75 Hitpoints and is uninsured:",
+                    "steps": [
+                      {
+                        "npc": "I can insure you up to level 75 Hitpoints, so that your Hitpoints level will never decrease below that. This service costs 1,000,000 coins."
+                      },
+                      {
+                        "npc": "Alternatively, I can insure you up to level 50 Hitpoints. That service costs only 100,000 coins."
+                      },
+                      {
+                        "npc": "Finally, I can insure you up to level 25 Hitpoints. That service costs only 25,000 coins."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have enough coins:",
+                        "steps": [
+                          {
+                            "player": "I can't afford any of those options."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "t6K-Rz"
+                          }
+                        ],
+                        "id": "tXzM6h"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Insure me to level 75 for 1,000,000 coins.",
+                            "condition": "If the player has enough coins:",
+                            "steps": [
+                              {
+                                "player": "Insure me to level 75 for 1,000,000 coins."
+                              },
+                              {
+                                "npc": "Thank you. Your Hitpoints level will never decrease below 75 when you are defeated in future."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "3M9qSd"
+                          },
+                          {
+                            "text": "Insure me to level 50 for 100,000 coins.",
+                            "condition": "If the player has enough coins:",
+                            "steps": [
+                              {
+                                "type": "missing",
+                                "id": "y8ggXz"
+                              }
+                            ],
+                            "id": "K7LfAD"
+                          },
+                          {
+                            "text": "Insure me to level 25 for 25,000 coins.",
+                            "steps": [
+                              {
+                                "type": "call",
+                                "branch": "GfAS6y"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Not now, thank you.",
+                            "steps": [
+                              {
+                                "player": "Not now, thank you."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "hJc5el"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has level 50-74 Hitpoints and is uninsured:",
+                    "steps": [
+                      {
+                        "npc": "I can insure you up to level 50 Hitpoints, so that your Hitpoints level will never decrease below that. This service costs 100,000 coins."
+                      },
+                      {
+                        "npc": "Alternatively, I can insure you up to level 25 Hitpoints. That service costs only 25,000 coins."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have enough coins:",
+                        "steps": [
+                          {
+                            "player": "I can't afford either of those options."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "r4OEo0"
+                          }
+                        ],
+                        "id": "TktNvd"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player only has sufficient funds for an insurance up to level 25:",
+                        "steps": [
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Insure me to level 25 for 25,000 coins.",
+                                "steps": [
+                                  {
+                                    "type": "missing",
+                                    "id": "EFgpe5"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Not now, thank you.",
+                                "steps": [
+                                  {
+                                    "player": "Not now, thank you."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "gUIXdO"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has sufficient funds for either insurance level:",
+                        "steps": [
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Insure me to level 50 for 100,000 coins.",
+                                "steps": [
+                                  {
+                                    "player": "Insure me to level 50 for 100,000 coins."
+                                  },
+                                  {
+                                    "npc": "Thank you. Your Hitpoints level will never decrease below 50 when you are defeated in future."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Insure me to level 25 for 25,000 coins.",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "GfAS6y"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Not now, thank you.",
+                                "steps": [
+                                  {
+                                    "player": "Not now, thank you."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "other",
+                            "id": "u4nG3s"
+                          }
+                        ],
+                        "id": "B1sk6g"
+                      }
+                    ],
+                    "id": "SKKpiI"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has level 50-74 Hitpoints and is already insured up to level 25:",
+                    "steps": [
+                      {
+                        "npc": "I can insure you up to level 50 Hitpoints, so that your Hitpoints level will never decrease below that. This service costs 100,000 coins."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, I'll pay.",
+                            "steps": [
+                              {
+                                "npc": "Thank you. Your Hitpoints level will never decrease below 50 when you are defeated in future."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, thank you.",
+                            "steps": [
+                              {
+                                "player": "No, thank you."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "98QlqH"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "7nWGxy"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has level 25-49 Hitpoints and is uninsured:",
+                    "steps": [
+                      {
+                        "npc": "I can insure you up to level 25 Hitpoints, so that your Hitpoints level will never decrease below that. This service costs 25,000 coins."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player doesn't have enough coins:",
+                        "steps": [
+                          {
+                            "type": "unavailable",
+                            "id": "C7H4i5"
+                          }
+                        ],
+                        "id": "4saXPj"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, I'll pay.",
+                            "steps": [
+                              {
+                                "npc": "Thank you. Your Hitpoints level will never decrease below 25 when you are defeated in future."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, thank you.",
+                            "steps": [
+                              {
+                                "player": "No, thank you."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "other",
+                                "id": "6G5YF1"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "eiRbml"
+                  }
+                ]
+              },
+              {
+                "text": "Tell me about yourself.",
+                "steps": [
+                  {
+                    "player": "Tell me about yourself."
+                  },
+                  {
+                    "npc": "I am Gelin, the greatest assassin ever to train in Al Kharid. If you have not heard of me, that is because my victims never live to speak of me."
+                  },
+                  {
+                    "npc": "In my years as a warrior of fortune, I have fought in many lands, meeting fighters of all calibres, and I found they all had something in common:"
+                  },
+                  {
+                    "npc": "Every single one had a soul-gripping fear that they would suffer a humiliating defeat at the hands of their foes."
+                  },
+                  {
+                    "npc": "They did not fear the pain, you understand. They feared the diminishment that comes with defeat."
+                  },
+                  {
+                    "player": "Diminishment?"
+                  },
+                  {
+                    "npc": "To see one's wealth in the hands of another. To see one's skills decrease, as the hard-earned experience is lost. That is what they all feared."
+                  },
+                  {
+                    "npc": "Thus I was inspired to create this life insurance brokerage. I can protect your Hitpoints experience, so that you will not lose so much of it when you are defeated."
+                  },
+                  {
+                    "npc": "I cannot protect other skills, and I have no intention whatsoever of protecting anyone's items - a victor deserves their spoils."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "OAWHHg"
+                  }
+                ]
+              },
+              {
+                "text": "Why do you sell life insurance in a graveyard?",
+                "steps": [
+                  {
+                    "player": "Why do you sell life insurance in a graveyard?"
+                  },
+                  {
+                    "npc": "There is no more fitting place! The graves of the dead remind the living that their lives are fragile, and that death is the inescapable fate of all mortals."
+                  },
+                  {
+                    "npc": "That is exactly the frame of mind that encourages people to buy life insurance from me."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "Aeo8lq"
+                  }
+                ]
+              },
+              {
+                "text": "Can I ever get a refund on this insurance?",
+                "steps": [
+                  {
+                    "player": "Can I ever get a refund on this insurance?"
+                  },
+                  {
+                    "npc": "No, my life insurance policies are for life. Similarly, when a customer upgrades their policy to a better one, I charge the full price of the new policy. They may take it or leave it."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "other",
+                    "id": "vd-f2P"
+                  }
+                ]
+              },
+              {
+                "text": "Goodbye.",
+                "steps": [
+                  {
+                    "player": "Goodbye."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "eZPJth"
+      }
+    ],
+    "historical-dialogue-when-on-a-deadman-reborn-or-deadman-apocalypse-world": [
+      {
+        "npc": "People don't lose experience when they die in this event, so no-one's buying life insurance from me. I may as well not be here!"
+      }
+    ]
+  },
+  "branches": {
+    "GfAS6y": [
+      {
+        "player": "Insure me to level 25 for 25,000 coins."
+      },
+      {
+        "npc": "Thank you. Your Hitpoints level will never decrease below 25 when you are defeated in future."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

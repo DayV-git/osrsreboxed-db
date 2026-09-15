@@ -1,0 +1,169 @@
+{
+  "default": null,
+  "variants": {
+    "starting-the-2005-easter-event": [
+      {
+        "npc": "Happy Easter!"
+      },
+      {
+        "player": "And to you!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player completed the event in the previous 10 minutes:",
+        "steps": [
+          {
+            "npc": "Thanks for your help!  You should have a break now.  Come back in [number] minutes if you want to hand out more eggs."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YjFuQ3"
+      },
+      {
+        "npc": "But I'm afraid I've left things a bit late this year.  I'm going to need some help to get all these eggs delivered!  Would you help me, [player name]?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, of course",
+            "steps": [
+              {
+                "player": "Yes, of course."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "npc": "Oh dear, you don't have any free inventory space.  Talk to me again when you have."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZRAVlb"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "an Easter basket",
+                "id": "rxJLBL"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a rubber chicken equipped, in their inventory or in their bank:",
+                "steps": [
+                  {
+                    "npc": "Splendid, splendid!  Here's a basket of eggs.  Hand out as many as you can before they disappear and then come back to me.  You've only got two minutes!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "gj5BVy"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a rubber chicken:",
+                "steps": [
+                  {
+                    "npc": "Splendid, splendid!  Here's a basket of eggs.  Hand out as many as you can before they disappear and then come back to me for your reward.  You've only got two minutes!"
+                  }
+                ],
+                "id": "zfVV6Z"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "player": "No."
+              },
+              {
+                "npc": "Oh dear oh dear!  I've got to hurry!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "while-holding-the-easter-basket": [
+      {
+        "npc": "Quickly, [player name]!  Hand out those eggs before they vanish!"
+      }
+    ],
+    "after-the-timer-has-run-out-if-no-eggs-were-handed-out": [
+      {
+        "npc": "Oh dear, [player name]. You didn't hand out any eggs at all! Do you want to try again?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, of course",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "SoMqti"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "RZKkFi"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-the-timer-has-run-out-if-at-least-one-egg-was-handed-out": [
+      {
+        "type": "condition",
+        "text": "If the player has a rubber chicken equipped, in their inventory or in their bank:",
+        "steps": [
+          {
+            "npc": "Thank you, [player name]!  You handed out [number] eggs!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "w8Tw6y"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have a rubber chicken:",
+        "steps": [
+          {
+            "npc": "Thank you, [player name]!  You handed out [number] eggs!  Here is your Easter reward!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a rubber chicken",
+            "id": "6wvOET"
+          },
+          {
+            "type": "message",
+            "text": "The Easter bunny gives you a rubber chicken.",
+            "id": "7isQc1"
+          },
+          {
+            "npc": "If you lose it, you can get another one from Diango in Draynor."
+          }
+        ],
+        "id": "rAIoV7"
+      }
+    ]
+  }
+}

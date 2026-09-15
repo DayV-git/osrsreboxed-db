@@ -1,0 +1,163 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, bold adventurer! Can I interest you in some swords?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please!",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Varrock Swordshop",
+                "id": "oQ0xiC"
+              }
+            ]
+          },
+          {
+            "text": "No, I'm okay for swords right now.",
+            "steps": [
+              {
+                "player": "No, I'm okay for swords right now."
+              },
+              {
+                "npc": "Come back if you need any."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "redeeming-combat-adventure-path-rewards-in-free-to-play": [
+      {
+        "npc": "Hello, bold adventurer! Can I interest you in some swords?"
+      },
+      {
+        "player": "I have this voucher for completing the combat Adventure Path, it says to come talk to you about claiming my Adventure Path reward."
+      },
+      {
+        "npc": "I do, but you need to be on a members world for me to give you the reward. Maybe there is something else I can help you with."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, please!",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "TVgC3P"
+              }
+            ]
+          },
+          {
+            "text": "No, I'm okay for swords right now.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nWHQov"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "redeeming-combat-adventure-path-rewards-in-members": [
+      {
+        "npc": "Hello, bold adventurer! Can I interest you in some swords?"
+      },
+      {
+        "player": "I have this voucher for completing the combat Adventure Path, it says to come talk to you about claiming my Adventure Path reward."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have inventory space:",
+        "steps": [
+          {
+            "npc": "I will be able to give you your reward when you have some space for it."
+          },
+          {
+            "npc": "Can I help you with anything else?"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please!",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "In1IaT"
+                  }
+                ]
+              },
+              {
+                "text": "No, I'm okay for swords right now.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "OaMDGa"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "OdrJzO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least one free inventory space:",
+        "steps": [
+          {
+            "npc": "Why yes, here is one of our finest swords."
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an adamant sword",
+            "id": "8Wd5vn"
+          },
+          {
+            "npc": "I also sell other weapons if you are interested."
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Yes, please!",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "FAx7Ss"
+                  }
+                ]
+              },
+              {
+                "text": "No, I'm okay for swords right now.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "yxjLaa"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "_XDl5P"
+      }
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Ah, 'tis a foine day to be sure! Were yez wantin' me to store yer tools, or maybe ye might be wantin' yer stuff back from me?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Why are you here in Weiss?",
+            "condition": "When talking to the Weiss Leprechaun:",
+            "steps": [
+              {
+                "player": "Why are you here in Weiss?"
+              },
+              {
+                "npc": "An' why would I not be here? Now that there be farming patches, there'll be folk needing a leprechaun to hold their stuff! So, dod ye want to be using the store?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "i4JO6R"
+              }
+            ],
+            "id": "vFHTPx"
+          },
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Tool Leprechaun{{!}}Amazing Farming Equipment Store",
+                "id": "eE5g38"
+              }
+            ]
+          },
+          {
+            "text": "What can you store?",
+            "steps": [
+              {
+                "player": "What can you store?"
+              },
+              {
+                "npc": "We'll hold onto yer rake, yer seed dibber, yer spade, yer secateurs, yer waterin' can and yer trowel - but mind it's not one of them fancy trowels only archaeologists use!"
+              },
+              {
+                "npc": "We'll take a few buckets off yer hands too, and even yer compost, supercompost an' ultracompost! Also plant cure vials."
+              },
+              {
+                "npc": "Aside from that, if ye hands me yer farming produce, I can mebbe change it into banknotes for ye."
+              },
+              {
+                "npc": "So... do ye want to be using the store?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Pzr1oi"
+              }
+            ]
+          },
+          {
+            "text": "What do you do with the tools you're storing?",
+            "steps": [
+              {
+                "player": "What do you do with the tools you're storing? They can't possibly all fit in your pockets!"
+              },
+              {
+                "npc": "We leprechauns have a shed where we keep 'em. It's a magic shed, so ye can get yer items back from any of us leprechauns whenever ye want. Saves ye havin' to carry loads of stuff around the country!"
+              },
+              {
+                "npc": "So... do ye want to be using the store?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "1dfRko"
+              }
+            ]
+          },
+          {
+            "text": "No thanks, I'll keep hold of my stuff.",
+            "steps": [
+              {
+                "player": "No thanks, I'll keep hold of my stuff."
+              },
+              {
+                "npc": "Ye must be dafter than ye look if ye likes luggin' yer tools everywhere ye goes!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-an-item-on-the-tool-leprechaun": [
+      {
+        "type": "condition",
+        "text": "If the item is notable by Leprechauns:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "bank note(s) in exchange for item(s)",
+            "id": "VVW0Hi"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "LHZe06"
+      },
+      {
+        "type": "condition",
+        "text": "If the item is not notable by Leprechauns:",
+        "steps": [
+          {
+            "npc": "Nay, I've got no banknotes to exchange for that item."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "KpKgVe"
+      },
+      {
+        "type": "condition",
+        "text": "If the item is un-notable:",
+        "steps": [
+          {
+            "npc": "Nay, there's no such thing as a banknote for that."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "JXqVp9"
+      },
+      {
+        "type": "condition",
+        "text": "If the item already is a bank note:",
+        "steps": [
+          {
+            "npc": "That IS a banknote!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "5E3D10"
+      },
+      {
+        "type": "condition",
+        "text": "If the player tries to note a cabbage on Falador farm:",
+        "steps": [
+          {
+            "npc": "A cabbage? Don't ye go showing me yer cabbage; this whole farm stinks of the things! Take it away and get it exchanged somewhere else."
+          }
+        ],
+        "id": "8cOcBt"
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Ye did foine, yer'll be wanting this!"
+      },
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "Lddr2-"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "nKPEM1"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "ukL0CM"
+          }
+        ],
+        "id": "KTFHRc"
+      }
+    ]
+  }
+}

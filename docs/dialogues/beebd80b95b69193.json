@@ -1,0 +1,709 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Greetings, I suppose you're one of those twolegs obsessed with fish?"
+      },
+      {
+        "player": "Maybe. I could just like swimming around."
+      },
+      {
+        "npc": "Well, if you are, you've come to the right plaice."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Plaice? Really?",
+            "steps": [
+              {
+                "player": "Plaice? Really?"
+              },
+              {
+                "npc": "Is there somefin wrong with that? I mean, it's not like I have anyfin better to do."
+              },
+              {
+                "player": "Please stop."
+              },
+              {
+                "npc": "Reely? And there I trout you were here to sea what you could sea and experience the opportunaty of a lifetime swimming with the fishes."
+              },
+              {
+                "player": "Really. Really stop."
+              },
+              {
+                "npc": "What's wrong, do you need a herring aid?"
+              },
+              {
+                "player": "Nooooo...."
+              },
+              {
+                "npc": "Oh don't be so crabby. You should be more up to date with current affairs. Shoaly you like puns chum?"
+              },
+              {
+                "player": "..."
+              },
+              {
+                "npc": "A blenny for your thoughts?"
+              },
+              {
+                "player": "Make it stop."
+              },
+              {
+                "npc": "Ahh, salty I sea. You provoked me into this and now you'll feel the wrasse of my tongue."
+              },
+              {
+                "player": "whimpers*"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "guEmwX"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to enter a private instance please.",
+            "steps": [
+              {
+                "player": "I'd like to enter a private instance please."
+              },
+              {
+                "type": "condition",
+                "text": "If does not have the level requirements to drift net fish:",
+                "steps": [
+                  {
+                    "npc": "Sorry, but you're really not experienced enough to use my cavern."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need level 47 Fishing and level 44 Hunter to enter the fishing cavern.",
+                    "id": "o2UlfL"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "-Iyu4T"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the level requirements to drift net fish, but has not paid for any access:",
+                "steps": [
+                  {
+                    "npc": "I'll want 200 numulites first. If you pay me that, I'll let you in there as much as you like for the rest of this day."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Okay, here's 200 numulites.",
+                        "condition": "If the player has 200 numulites:",
+                        "steps": [
+                          {
+                            "player": "Okay, here's 200 numulites."
+                          },
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "200 numulites to Ceto",
+                            "id": "duADZf"
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player enters the drift net fishing instance.",
+                            "id": "XRJAf2"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "dwVj_Z"
+                      },
+                      {
+                        "text": "Maybe another time.",
+                        "steps": [
+                          {
+                            "player": "Maybe another time."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Can I pay for permanent access?",
+                        "steps": [
+                          {
+                            "player": "Can I pay for permanent access?"
+                          },
+                          {
+                            "npc": "I suppose so. Give me 20,000 numulites and I'll stop charging you for entry forever."
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player does not have at least 20,000 numulites in their inventory:",
+                            "steps": [
+                              {
+                                "player": "Maybe another time."
+                              },
+                              {
+                                "type": "end"
+                              }
+                            ],
+                            "id": "QK9yQH"
+                          },
+                          {
+                            "type": "condition",
+                            "text": "If the player has 20,000 numulites in their inventory:",
+                            "steps": [
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Okay, here's 20,000 numulites.",
+                                    "steps": [
+                                      {
+                                        "player": "Okay, here's 20,000 numulites."
+                                      },
+                                      {
+                                        "npc": "Thanks - no more entry fees for you!"
+                                      },
+                                      {
+                                        "type": "end"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Maybe another time.",
+                                    "steps": [
+                                      {
+                                        "type": "jump",
+                                        "reference": "above",
+                                        "id": "iMqlbV"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "id": "swNNeI"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "AdChuL"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has paid to access the instance for the day:",
+                "steps": [
+                  {
+                    "npc": "You've already paid for access for the rest of today. You can come and go all day."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "I understand. Thanks.",
+                        "steps": [
+                          {
+                            "player": "I understand. Thanks."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player enters the drift net fishing instance.",
+                            "id": "_p8Tdj"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Can I pay for permanent access?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "rdpTHj"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "3k4J_i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has paid for permanent access:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player enters the drift net fishing instance.",
+                    "id": "occ6T6"
+                  }
+                ],
+                "id": "tyB1hS"
+              }
+            ]
+          },
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "My name is Ceto. I used to be a carefree soul, but now that the twolegs are interested in these little bits of bone, I just keep my little fish farm going and the twolegs pay me a few squid."
+              },
+              {
+                "player": "Shouldn't you be with your people or something?"
+              },
+              {
+                "npc": "Well, they said I was too young to swim with them, and I should be responsible and get a job. They're so old school."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to enter a private instance please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "97S0KH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do I catch fish here?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "gqn_fy"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Bye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "sKMxfv"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "How do I catch fish here?",
+            "steps": [
+              {
+                "player": "How do I catch fish here?"
+              },
+              {
+                "npc": "Ahh well, I've set up a pretty good fish trap here, the terrain really lends itself to it. But you'll need a couple of drift nets."
+              },
+              {
+                "player": "How do I get those?"
+              },
+              {
+                "npc": "Well I weave mine from my sisters' hair, but you'll have to make do with some plant fibres I guess. I think the twolegs have ways to do that, right?"
+              },
+              {
+                "player": "Yes, usually we use jute on a loom."
+              },
+              {
+                "npc": "Fintastic. You may also find something spikey helps to disturb the fish and make them panic."
+              },
+              {
+                "player": "Spikey?"
+              },
+              {
+                "npc": "Yes, something with lots of spikes, maybe like a trident."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I'd like to enter a private instance please.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "hZIiSV"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Who are you?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "8punCq"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Bye.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "below",
+                        "id": "Gf6q6w"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Bye.",
+            "steps": [
+              {
+                "player": "Bye"
+              },
+              {
+                "npc": "Sea you later."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-pay-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have the level requirements to drift net fish:",
+        "steps": [
+          {
+            "npc": "Sorry, but you're really not experienced enough to use my cavern."
+          },
+          {
+            "type": "message",
+            "text": "You need level 47 Fishing and level 44 Hunter to enter the fishing cavern.",
+            "id": "jsns6p"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "vQ5bCr"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the level requirements to drift net fish, but has not paid for a day's access:",
+        "id": "vmDqaa"
+      },
+      {
+        "npc": "I'll want 200 numulites to let you enter. If you pay me that, I'll let you in there as much as you like for the rest of this day."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Maybe another time.",
+            "steps": [
+              {
+                "player": "Maybe another time."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "rZBDhE"
+              }
+            ]
+          },
+          {
+            "text": "Can I pay for permanent access?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "D8K5i8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "condition",
+        "text": "If the player has paid to access for the day:",
+        "steps": [
+          {
+            "npc": "Those were some fintastic fossils, thank you. Don't flounder around out here, you can go in whenever you like today."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "d6lVT9"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has paid for permanent access:",
+        "steps": [
+          {
+            "npc": "Those were some fintastic fossils. You needn't flounder around out here - after what you paid me, I won't charge you to enter the cave again."
+          }
+        ],
+        "id": "nipw-h"
+      }
+    ],
+    "entering-the-tunnel": [
+      {
+        "type": "condition",
+        "text": "If the player does not have the level requirements to drift net fish:",
+        "steps": [
+          {
+            "npc": "Sorry, but you're really not experienced enough to use my cavern."
+          },
+          {
+            "type": "message",
+            "text": "You need level 47 Fishing and level 44 Hunter to enter the fishing cavern.",
+            "id": "TOLOe5"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "A5ZfqV"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the level requirements to drift net fish, but has not paid for a day's access:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Ceto charges 200 numulites for a day's access.",
+            "options": [
+              {
+                "text": "Pay 200 numulites and enter instance.",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player does not have at least 200 numulites in their inventory:",
+                    "steps": [
+                      {
+                        "npc": "You don't have enough numulites to interest me. I'll want 200."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "awguhD"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 200 numulites in their inventory:",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "give",
+                        "text": "200 numulites to Ceto",
+                        "id": "xmed6x"
+                      },
+                      {
+                        "type": "action",
+                        "text": "The player enters the drift net fishing instance.",
+                        "id": "Vrkqjx"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "2lX1Du"
+                  }
+                ]
+              },
+              {
+                "text": "Don't pay.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Ask for permanent free access.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "uqORqF"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "0-2l-H"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has paid to access the instance for the day:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "You have already paid for access today.",
+            "options": [
+              {
+                "text": "Enter instance.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "The player enters the drift net fishing instance.",
+                    "id": "pffFfv"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Don't enter.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "text": "Ask for permanent free access.",
+                "steps": [
+                  {
+                    "type": "jump",
+                    "reference": "above",
+                    "id": "espNRv"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "JbhjIV"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has paid for permanent access:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The player enters the drift net fishing instance.",
+            "id": "Bszg9A"
+          }
+        ],
+        "id": "sjgYbc"
+      }
+    ],
+    "entering-the-tunnel-right-click-pay-option": [
+      {
+        "type": "condition",
+        "text": "If the player does not have the level requirements to drift net fish:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "fuGtjm"
+          }
+        ],
+        "id": "X2XrTJ"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the level requirements to drift net fish, but doesn't have enough numulites:",
+        "steps": [
+          {
+            "npc": "You don't have enough numulites to interest me. I'll want 200."
+          }
+        ],
+        "id": "CG37k1"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the level requirements to drift net fish, and has enough numulites:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "give",
+            "text": "200 numulites to Ceto",
+            "id": "UV8gQ4"
+          },
+          {
+            "type": "action",
+            "text": "The player enters the drift net fishing instance.",
+            "id": "ZXCnhN"
+          }
+        ],
+        "id": "HiDBYM"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has already paid for any kind of access:",
+        "steps": [
+          {
+            "type": "action",
+            "text": "The player enters the drift net fishing instance.",
+            "id": "EoqAuC"
+          }
+        ],
+        "id": "sFM3XP"
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Oh the huge-manatee."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Who needs fronds when you have anenomes?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "I'm kraken me up."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 4",
+            "steps": [
+              {
+                "npc": "Why so sea-rious?"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 5",
+            "steps": [
+              {
+                "npc": "Twolegs are so shellfish."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

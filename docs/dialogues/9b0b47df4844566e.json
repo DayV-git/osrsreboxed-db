@@ -1,0 +1,245 @@
+{
+  "default": "standard-dialogue-before-delivering-the-holy-sheet",
+  "variants": {
+    "standard-dialogue-before-delivering-the-holy-sheet": [
+      {
+        "npc": "Many greetings. Welcome to our fair island."
+      },
+      {
+        "npc": "Enjoy your stay here. May it be spiritually uplifting!"
+      }
+    ],
+    "standard-dialogue-after-delivering-the-holy-sheet": [
+      {
+        "npc": "Many greetings. Welcome to our fair island."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask for more paint.",
+            "steps": [
+              {
+                "player": "Do you have any more paint?"
+              },
+              {
+                "npc": "Certainly. How much do you want?"
+              },
+              {
+                "type": "action",
+                "text": "Opens quantity selection screen.",
+                "action": "open_interface",
+                "action_source": "text",
+                "target": "quantity selection",
+                "id": "GHqb4f"
+              },
+              {
+                "type": "message",
+                "text": "The High Priest hands you over some paint.",
+                "id": "RN3co0"
+              }
+            ]
+          },
+          {
+            "text": "Make polite conversation.",
+            "steps": [
+              {
+                "npc": "Enjoy your stay here. May it be spiritually uplifting!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "delivering-the-holy-sheet-to-the-priest": [
+      {
+        "player": "Hey, I have something you might be interested in..."
+      },
+      {
+        "type": "message",
+        "text": "You show the sheet to the High Priest.",
+        "id": "RnI1AT"
+      },
+      {
+        "npc": "Ah! A blessed sheet! This is perfect, I've been feeling rather cold the last few nights! As a token of my gratitude, I'm sure we can spare some paint for you."
+      },
+      {
+        "type": "message",
+        "text": "The High Priest swaps the holy sheet for a bucket of paint.",
+        "id": "oDPiGa"
+      },
+      {
+        "npc": "If you'd like more paint, please ask for it. I'm sure we can spare you some."
+      }
+    ],
+    "delivering-the-old-man-s-message": [
+      {
+        "npc": "Many greetings. Welcome to our fair island."
+      },
+      {
+        "player": "I've got a message for you from the Wise Old Man in Draynor Village."
+      },
+      {
+        "npc": "How kind of you to bring me a message to this remote island!"
+      },
+      {
+        "type": "condition",
+        "text": "If the player receives coins:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The High Priest gives you some coins.",
+            "id": "wVaqPK"
+          },
+          {
+            "npc": "I don't have much in the way of wealth, but I can spare you a few coins for your trouble."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "PeBAcl"
+          }
+        ],
+        "id": "wh-nxq"
+      },
+      {
+        "type": "condition",
+        "text": "If the player receives Prayer experience:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "The High Priest blesses you.  You gain some Prayer xp.",
+            "id": "3AUS_q"
+          },
+          {
+            "npc": "In the name of Saradomin I shall bless you..."
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "MxLfv3"
+          }
+        ],
+        "id": "BZp7jd"
+      },
+      {
+        "type": "condition",
+        "text": "If the player receives some herbs:",
+        "steps": [
+          {
+            "npc": "Here, let me give you some herbs."
+          },
+          {
+            "type": "message",
+            "text": "The High Priest gives you some banknotes that can be exchanged for herbs.",
+            "id": "ihGegY"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an assortment of herbs",
+            "id": "iM07vK"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "MT8vHZ"
+          }
+        ],
+        "id": "5ABPyt"
+      },
+      {
+        "type": "condition",
+        "text": "If the player receives a gem:",
+        "steps": [
+          {
+            "npc": "The beasts which dwell under this island occasionally drop gems when they die - please take this one as a sign of my gratitude."
+          },
+          {
+            "type": "random",
+            "options": [
+              {
+                "text": "If the player receives an uncut emerald:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The High Priest gives you an uncut emerald!",
+                    "id": "-peCth"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an uncut emerald",
+                    "id": "nmaW9u"
+                  }
+                ]
+              },
+              {
+                "text": "If the player receives an uncut diamond:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The High Priest gives you an uncut diamond!",
+                    "id": "5FCinV"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an uncut diamond",
+                    "id": "1puYeS"
+                  }
+                ]
+              },
+              {
+                "text": "If the player receives an uncut red topaz:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The High Priest gives you an uncut red topaz!",
+                    "id": "8N4KWm"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an uncut red topaz",
+                    "id": "yEPuZl"
+                  }
+                ]
+              },
+              {
+                "text": "If the player receives an uncut sapphire:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The High Priest gives you an uncut sapphire!",
+                    "id": "JMbCZy"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "an uncut sapphire",
+                    "id": "7SKbqU"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "QaDV5h"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "Uhck3h"
+      },
+      {
+        "npc": "Enjoy your stay here. May it be spiritually uplifting!"
+      }
+    ],
+    "using-any-other-items-on-the-high-priest": [
+      {
+        "npc": "No thank you, I am not accepting donations for the church at this time."
+      }
+    ]
+  }
+}

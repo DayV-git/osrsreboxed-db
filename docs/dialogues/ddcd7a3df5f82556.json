@@ -1,0 +1,183 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Yes?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What are you doing out here?",
+            "steps": [
+              {
+                "player": "What are you doing out here?"
+              },
+              {
+                "npc": "Sometimes I like to take a walk out to these shores and look for losers to laugh at."
+              },
+              {
+                "npc": "And look, I found one!"
+              },
+              {
+                "npc": "Hahahah!"
+              },
+              {
+                "player": "Charming."
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "HCXrfr"
+              }
+            ]
+          },
+          {
+            "text": "Do you have a quest for me?",
+            "steps": [
+              {
+                "player": "Do you have a quest for me?"
+              },
+              {
+                "npc": "Why, yes! I do have a quest for you! I've hidden some goodies around Varlamore! Haha!"
+              },
+              {
+                "npc": "Bring them all to me and I'll give you a nasty little surprise!"
+              },
+              {
+                "player": "A treasure hunt? That's exciting! Any tips to get me started?"
+              },
+              {
+                "npc": "No."
+              },
+              {
+                "player": "Oh... I guess I'll be on my way then."
+              }
+            ]
+          },
+          {
+            "text": "I've found some strange tokens.",
+            "condition": "If the player has at least one nasty token:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has one token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You show Nasty Nick a token.",
+                    "id": "oxEw1S"
+                  },
+                  {
+                    "npc": "You utter fool! You have failed to acquire all the tokens I desire! Now scuttle away from here, loser!"
+                  },
+                  {
+                    "player": "You're not a very nice man..."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "vgvaq9"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has all four tokens:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You show Nasty Nick your collection of tokens.",
+                    "id": "kt7Lws"
+                  },
+                  {
+                    "npc": "Yes, yes... This does appear to be all of them!"
+                  },
+                  {
+                    "npc": "Would you like to trade them for a nasty little suprise? I bet you would, wouldn't you?!"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sure, why not?",
+                        "steps": [
+                          {
+                            "player": "Sure, why not?"
+                          },
+                          {
+                            "type": "message",
+                            "text": "Nick hands you a neatly wrapped box in exchange for your tokens.",
+                            "id": "qZxBqK"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, actually.",
+                        "steps": [
+                          {
+                            "player": "No, actually."
+                          },
+                          {
+                            "npc": "Oh..."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "hNCP3I"
+              }
+            ],
+            "id": "VAvtKh"
+          },
+          {
+            "text": "Nothing. I'll be going now.",
+            "steps": [
+              {
+                "player": "Nothing. I'll be going now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-him-nasty-token": [
+      {
+        "player": "I've found some strange tokens."
+      },
+      {
+        "npc": "Oh, really? Show me."
+      },
+      {
+        "type": "condition",
+        "text": "If the player has one token:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "YdMJi5"
+          }
+        ],
+        "id": "xipVFU"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has all four tokens:",
+        "steps": [
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "M2ivRy"
+          }
+        ],
+        "id": "rFKbrK"
+      }
+    ],
+    "using-items-on-him-any-other-item": [
+      {
+        "npc": "What? I don't want that."
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "steps": [
+    {
+      "npc": "Got anything you don't want to lose?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes actually, can you help?",
+          "steps": [
+            {
+              "player": "Yes actually, can you help?"
+            },
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Bank",
+              "id": "URvrJc"
+            }
+          ]
+        },
+        {
+          "text": "Yes, but can you show me my PIN settings?",
+          "steps": [
+            {
+              "player": "Yes, but can you show me my PIN settings?"
+            },
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Bank PIN",
+              "id": "ozb2Rk"
+            }
+          ]
+        },
+        {
+          "text": "Yes, but I'd like to collect items now.",
+          "steps": [
+            {
+              "player": "Yes, but I'd like to collect items now."
+            },
+            {
+              "type": "action",
+              "action": "open_interface",
+              "target": "Grand Exchange collection box",
+              "id": "MgzCbq"
+            }
+          ]
+        },
+        {
+          "text": "Yes, but I'd like to buy more bank slots.",
+          "steps": [
+            {
+              "player": "Yes, but I'd like to buy more bank slots."
+            },
+            {
+              "type": "condition",
+              "text": "If the player is an Ultimate Ironman:",
+              "steps": [
+                {
+                  "type": "line",
+                  "speaker": "Banker",
+                  "text": "Why? You don't use the bank."
+                },
+                {
+                  "player": "Oh yeah... Never mind then."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "t853wC"
+            },
+            {
+              "type": "line",
+              "speaker": "Banker",
+              "text": "I can sell you up to [number] additional bank slots in sets of 40. How many are you interested in buying?"
+            },
+            {
+              "type": "action",
+              "text": "(Bank space purchase interface opens.)",
+              "action": "open_interface",
+              "action_source": "text",
+              "target": "Bank space purchase",
+              "id": "rEzbLQ"
+            },
+            {
+              "player": "[number] slots please."
+            },
+            {
+              "type": "line",
+              "speaker": "Banker",
+              "text": "Buying [number] additional bank slots will cost [number] coins. Be warned, this purchase is not reversible. Are you happy to proceed?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes.",
+                  "steps": [
+                    {
+                      "type": "condition",
+                      "text": "If the player does not have enough coins in their inventory or bank:",
+                      "steps": [
+                        {
+                          "player": "Oh... I don't seem to have enough money for that. Never mind."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "FQCr_E"
+                    },
+                    {
+                      "player": "Yes, I'm happy with that."
+                    },
+                    {
+                      "type": "line",
+                      "speaker": "Banker",
+                      "text": "Your additional bank slots have been added."
+                    }
+                  ]
+                },
+                {
+                  "text": "No.",
+                  "steps": [
+                    {
+                      "player": "Actually, I've changed my mind."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Yes thanks, and I'll keep hold of it too.",
+          "steps": [
+            {
+              "player": "Yes thanks, and I'll keep hold of it too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

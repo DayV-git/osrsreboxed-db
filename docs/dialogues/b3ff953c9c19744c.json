@@ -1,0 +1,686 @@
+{
+  "default": null,
+  "variants": {
+    "getting-started-talking-to-denulth": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "type": "line",
+        "speaker": "Denulth",
+        "text": "Welcome back friend!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "How goes your fight with the trolls?",
+            "steps": [
+              {
+                "player": "How goes your fight with the trolls?"
+              },
+              {
+                "type": "line",
+                "speaker": "Denulth",
+                "text": "I'm afraid I have bad news. We made our attack as planned, but we met unexpected resistance."
+              },
+              {
+                "player": "What happened?"
+              },
+              {
+                "type": "line",
+                "speaker": "Denulth",
+                "text": "We were ambushed by trolls coming from the north. They captured Dunstan's son, Godric, who we enlisted at your request; we tried to follow but we were repelled at the foot of their stronghold."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's combat level is lower than 50 or have lower than the required skills:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Before starting this quest, be aware that one or more of your skill levels are lower than what is required to fully complete it. Your combat level is also lower than the recommended level of 50.",
+                    "id": "usObIw"
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "Gi0KaQ"
+                  }
+                ],
+                "id": "pyoWyA"
+              },
+              {
+                "type": "choice",
+                "prompt": "Start the Troll Stronghold quest?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "player": "Is there anything I can do to help?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Denulth",
+                        "text": "The way to the stronghold is treacherous, friend. Even if you manage to climb your way up, there will be many trolls defending the stronghold."
+                      },
+                      {
+                        "player": "I'll get Godric back!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Denulth",
+                        "text": "God speed friend! I would send some of my men with you, but none of them are brave enough to follow."
+                      }
+                    ],
+                    "hook": "quest:troll-stronghold:start",
+                    "quest": "Troll Stronghold"
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "player": "I'm sorry to hear that."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I thought the White Knights controlled Asgarnia?"
+          },
+          {
+            "text": "See you about Denulth!"
+          }
+        ]
+      }
+    ],
+    "getting-started-talking-to-denulth-after-starting-the-quest": [
+      {
+        "type": "line",
+        "speaker": "Denulth",
+        "text": "How are you getting on with rescuing Godric?"
+      },
+      {
+        "player": "I haven't found a way to climb up yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Denulth",
+        "text": "Hurry, friend! Who knows what they'll do with Godric?"
+      }
+    ],
+    "getting-started-talking-to-dunstan": [
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Have you managed to rescue Godric yet?"
+      },
+      {
+        "player": "Not yet."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "Please hurry! Who knows what they will do to him? Is there anything I can do in the meantime?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you put some spikes on my Climbing boots?"
+          },
+          {
+            "text": "Is it OK if I use your anvil?"
+          },
+          {
+            "text": "Nothing, thanks."
+          }
+        ]
+      }
+    ],
+    "getting-started-talking-to-tenzig": [
+      {
+        "player": "Hello Tenzing!"
+      },
+      {
+        "type": "line",
+        "speaker": "Tenzing",
+        "text": "Hello again traveller. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I buy some Climbing boots?",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Tenzing",
+                "text": "Sure, I'll sell you some in your size for 12 gold."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "OK, sounds good.",
+                    "steps": [
+                      {
+                        "player": "OK, sounds good."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 12 gp:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Tenzing has given you some Climbing boots.",
+                            "id": "7mwtJo"
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Tenzing",
+                            "text": "Was there anything else?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "t0MSd2"
+                          }
+                        ],
+                        "id": "-96pIh"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough money:",
+                        "steps": [
+                          {
+                            "player": "I don't have the money on me."
+                          },
+                          {
+                            "type": "line",
+                            "speaker": "Tenzing",
+                            "text": "Was there anything else?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "njGft-"
+                          }
+                        ],
+                        "id": "GaGZZL"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No, thanks.",
+                    "steps": [
+                      {
+                        "player": "No, thanks."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Tenzing",
+                        "text": "Was there anything else?"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "AN55Jm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What does a Sherpa do?"
+          },
+          {
+            "text": "How did you find out about the secret way?"
+          },
+          {
+            "text": "Nice place you have here."
+          },
+          {
+            "text": "Nothing, thanks!"
+          }
+        ]
+      }
+    ],
+    "getting-started-climbing-the-rocks-north-of-the-death-plateau": [
+      {
+        "type": "condition",
+        "text": "If the player does not have level 15 Agility before climbing the rocks:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need an Agility level of at least 15 to attempt this.",
+            "id": "bAPsSe"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "2t5WO5"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has level 15 agility but does not have the climbing boots equipped:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You'll need some climbing boots to go that way.",
+            "id": "HWeXWF"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "VlpV_N"
+      },
+      {
+        "type": "condition",
+        "text": "If the player succeeds in climbing up the rocks:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You climb onto the rock...",
+            "id": "j0iVkX"
+          },
+          {
+            "type": "message",
+            "text": "...and you step down the other side.",
+            "id": "Z9L0WL"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "AooV5M"
+      },
+      {
+        "type": "condition",
+        "text": "If the player slips whilst climbing up the rocks:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You climb onto the rock...",
+            "id": "3yvfff"
+          },
+          {
+            "type": "message",
+            "text": "...but you slip back down.",
+            "id": "h_YxQH"
+          },
+          {
+            "player": "Ouch"
+          }
+        ],
+        "id": "iH8IJm"
+      }
+    ],
+    "getting-started-entering-dad-s-arena": [
+      {
+        "type": "line",
+        "speaker": "Dad",
+        "text": "No human pass through arena without defeating Dad!"
+      },
+      {
+        "type": "line",
+        "speaker": "Dad",
+        "text": "What tiny human do in troll arena? Dad challenge human to fight!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Dad",
+                "text": "Troll named after first thing try to eat!"
+              }
+            ]
+          },
+          {
+            "text": "I accept your challenge!",
+            "steps": [
+              {
+                "player": "I accept your challenge!"
+              },
+              {
+                "type": "line",
+                "speaker": "Dad",
+                "text": "Tiny human brave. Dad squish!"
+              },
+              {
+                "type": "action",
+                "text": "Dad swings his giant log towards the player, knocking them back.",
+                "id": "AL-4op"
+              }
+            ]
+          },
+          {
+            "text": "Eek! No thanks.",
+            "steps": [
+              {
+                "player": "Eek! No thanks."
+              },
+              {
+                "type": "line",
+                "speaker": "Dad",
+                "text": "Coward. Dad wait for braver fighter."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "getting-started-after-dad-has-been-defeated": [
+      {
+        "type": "line",
+        "speaker": "Dad",
+        "text": "Stop! You win. Not hurt Dad."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'll be going now.",
+            "steps": [
+              {
+                "player": "I'll be going now."
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "condition",
+                "text": "If the player attempts to attack Dad again:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You don't need to fight him again.",
+                    "id": "ghJT-F"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "1oM3vw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player attempts to talk to dad:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "He doesn't seem interested in talking right now.",
+                    "id": "CpLBYg"
+                  }
+                ],
+                "id": "n_2P2F"
+              }
+            ]
+          },
+          {
+            "text": "I'm not done yet! Prepare to die!",
+            "steps": [
+              {
+                "player": "I'm not done yet! Prepare to die!"
+              },
+              {
+                "type": "action",
+                "text": "The player delivers a fatal blow to Dad, killing him.",
+                "id": "yw_WWY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "entering-the-prison-talking-to-denulth-again-before-freeing-the-prisoners": [
+      {
+        "player": "Hello!"
+      },
+      {
+        "type": "line",
+        "speaker": "Denulth",
+        "text": "Welcome back friend!"
+      },
+      {
+        "player": "I've found my way into the prison."
+      },
+      {
+        "type": "line",
+        "speaker": "Denulth",
+        "text": "...and?"
+      },
+      {
+        "player": "That's all."
+      },
+      {
+        "type": "line",
+        "speaker": "Denulth",
+        "text": "Hurry, friend. Find a way to free Godric!"
+      }
+    ],
+    "entering-the-prison-retrieving-the-keys-from-twig": [
+      {
+        "type": "condition",
+        "text": "If the player chooses to pickpocket Twig:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You attempt to pick the guard's pocket.",
+            "id": "NFT-MN"
+          },
+          {
+            "type": "condition",
+            "text": "If the player succeeds in pickpocketing Twig:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You pick the guard's pocket and find a key.",
+                "id": "UsQIS6"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "Qio_9h"
+          },
+          {
+            "type": "condition",
+            "text": "If the player fails to pickpocket Twig:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Twig",
+                "text": "What do you think you're doing?"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "2LzxsX"
+          }
+        ],
+        "id": "NX8pxU"
+      },
+      {
+        "type": "condition",
+        "text": "If the player pickpockets Twig again:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You pick the guard's pocket but find nothing.",
+            "id": "Gv70dh"
+          }
+        ],
+        "id": "6sx1ep"
+      }
+    ],
+    "entering-the-prison-retrieving-the-keys-from-berry": [
+      {
+        "type": "condition",
+        "text": "If the player chooses to pickpocket Berry:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You attempt to pick the guard's pocket.",
+            "id": "KUxLrc"
+          },
+          {
+            "type": "condition",
+            "text": "If the player succeeds in pickpocketing Berry:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You pick the guard's pocket and find a key.",
+                "id": "kUE-LP"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "XCkq4i"
+          },
+          {
+            "type": "condition",
+            "text": "If the player fails to pickpocket Berry:",
+            "steps": [
+              {
+                "type": "line",
+                "speaker": "Berry",
+                "text": "What do you think you're doing?"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "IJvVTc"
+          }
+        ],
+        "id": "XApAf_"
+      },
+      {
+        "type": "condition",
+        "text": "If the player pickpockets Berry again:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You pick the guard's pocket but find nothing.",
+            "id": "V7nWAq"
+          }
+        ],
+        "id": "bZCmWE"
+      }
+    ],
+    "entering-the-prison-freeing-eadgar-and-godric": [
+      {
+        "type": "condition",
+        "text": "If the player attempts to open the door without a key:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You need a key to unlock this door.",
+            "id": "0d32Wz"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "4HY6jy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player uses Cell key 1 or 2 on either of the doors:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "This key doesn't open this door.",
+            "id": "KkYSvp"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "eOEaUm"
+      },
+      {
+        "type": "condition",
+        "text": "If the player opens Eadgar's cell with Cell key 2 in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Eadgar",
+            "text": "Thanks! I'm off back home!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "UkVLj1"
+      },
+      {
+        "type": "condition",
+        "text": "If the player opens Godric's cell with Cell key 1 in their inventory:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Godric",
+            "text": "Thank you, my friend."
+          }
+        ],
+        "id": "gN6PfI"
+      }
+    ],
+    "after-freeing-the-prisoners-talking-to-denulth": [
+      {
+        "player": "I have freed Godric!"
+      },
+      {
+        "type": "line",
+        "speaker": "Denulth",
+        "text": "Oh, what great news! You should hurry to tell Dunstan, he will be overjoyed!"
+      }
+    ],
+    "after-freeing-the-prisoners-talking-to-dunstan": [
+      {
+        "player": "Has Godric returned home?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "He is safe and sound, thanks to you my friend!"
+      },
+      {
+        "player": "I'm glad to hear it."
+      },
+      {
+        "type": "line",
+        "speaker": "Dunstan",
+        "text": "I have very little to offer you in way of thanks, but perhaps you will accept this family heirloom. It was found by my great-great-grandfather, but we still don't have any idea what it does."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a Law talisman",
+        "id": "GT_EpY"
+      },
+      {
+        "type": "end"
+      },
+      {
+        "type": "unavailable",
+        "id": "UqqAHb"
+      }
+    ]
+  }
+}

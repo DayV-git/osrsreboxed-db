@@ -1,0 +1,205 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I'm the crew registrar. Here to cut through the red tape of crew management for anyone who needs it!"
+              },
+              {
+                "player": "A lot of paperwork in managing a crew is there?"
+              },
+              {
+                "npc": "You'd be surprised. Quality assurance guideline QA-275 states all crew must be appropriately fit and healthy after being subjected to QA form QA-275."
+              },
+              {
+                "npc": "QA-123 requires all crew to pass a mandatory cargo data protection course if the vessel can be fitted with a cargo hold."
+              },
+              {
+                "npc": "Then of course we have QA-441, which defines the background checks that any crewmate operating a sail must pass. And all that's without even considering QA- 215..."
+              },
+              {
+                "player": "I'm not sure I want to manage a crew now..."
+              },
+              {
+                "npc": "Don't worry, I'll deal with most of the technical details for you."
+              },
+              {
+                "npc": "And if I miss something, the fines are usually fairly small!"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "0KTFEh"
+              }
+            ]
+          },
+          {
+            "text": "Can I manage my crew?",
+            "steps": [
+              {
+                "player": "Can I manage my crew?"
+              },
+              {
+                "type": "condition",
+                "text": "Without 40 Sailing:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid you're not an experienced enough captain to have a crew yet. Keep working at it though and I'm sure you'll get there in no time."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You need a Sailing level of 40 to manage a crew.",
+                    "id": "H6w7qK"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "-4_BZ6"
+              },
+              {
+                "type": "condition",
+                "text": "With 40 Sailing:",
+                "steps": [
+                  {
+                    "npc": "Of course!"
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Crew Management",
+                    "id": "9KL6p3"
+                  }
+                ],
+                "id": "mb84jw"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "See ya!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "before-completing-pandemonium": [
+      {
+        "npc": "Hello there!"
+      },
+      {
+        "player": "Who are you?"
+      },
+      {
+        "npc": "I'm the crew registrar. Here to cut through the red tape of crew management for anyone who needs it!"
+      },
+      {
+        "player": "A lot of paperwork in managing a crew is there?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "6NK1kp"
+      }
+    ],
+    "sailing-alpha-historical-dialogue": [
+      {
+        "npc": "Hello there!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I'm the crew registrar. Here to cut through the red tape of crew management for anyone who needs it!"
+              },
+              {
+                "player": "A lot of paperwork in managing a crew is there?"
+              },
+              {
+                "npc": "You'd be surprised. Quality assurance guideline QA-275 states all crew must be appropriately fit and healthy after being subjected to QA form QA-275."
+              },
+              {
+                "npc": "QA-123 requires all crew to pass a mandatory cargo data protection course if the ship can be fitted with a cargo hold."
+              },
+              {
+                "npc": "Then of course we have QA-441, which defines the background checks that any crewmate operating a sail must pass. And all that's without even considering QA- 215..."
+              },
+              {
+                "player": "I'm not sure I want to manage a crew now..."
+              },
+              {
+                "npc": "Don't worry, I'll deal with most of the technical details for you."
+              },
+              {
+                "npc": "And if I miss something, the fines are usually fairly small!"
+              },
+              {
+                "player": "Can I manage my crew?"
+              },
+              {
+                "npc": "I'm afraid you have no crew to manage right now."
+              },
+              {
+                "type": "message",
+                "text": "Crew are not available in the alpha, but expect to see more of them in the future!",
+                "id": "-cR6RU"
+              }
+            ]
+          },
+          {
+            "text": "Can I manage my crew?",
+            "steps": [
+              {
+                "player": "Can I manage my crew?"
+              },
+              {
+                "npc": "Of course!"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Crew Management",
+                "id": "57mDnH"
+              }
+            ]
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "See ya!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

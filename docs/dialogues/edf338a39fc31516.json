@@ -1,0 +1,276 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Ah, greetings. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I'm Madam Sikaro."
+              },
+              {
+                "player": "..."
+              },
+              {
+                "npc": "..."
+              },
+              {
+                "player": "...Is that it?"
+              },
+              {
+                "npc": "Why shouldn't it be? You asked who I was, and I answered."
+              },
+              {
+                "player": "I was hoping to learn something about you, like what you were doing here...!"
+              },
+              {
+                "npc": "Well, perhaps next time you'll ask a more direct question."
+              }
+            ]
+          },
+          {
+            "text": "What are you doing here?",
+            "steps": [
+              {
+                "player": "What are you doing here?"
+              },
+              {
+                "npc": "Making a wizard hideout."
+              },
+              {
+                "player": "A wizard... hideout?"
+              },
+              {
+                "npc": "A wizard hideout! You know how some wizards have their own towers? Think that but underground."
+              },
+              {
+                "player": "So why not just get a tower?"
+              },
+              {
+                "npc": "Land price. Kingdoms want you to pay an extortionate amount of money to build on 'their' land, it turns out."
+              },
+              {
+                "player": "So instead you ended up in the basement of a tavern."
+              },
+              {
+                "npc": "Yep. Camarst said I could have it as long as I don't hurt any of his customers too badly."
+              },
+              {
+                "npc": "Not that I actually plan to hurt any of his customers."
+              }
+            ]
+          },
+          {
+            "text": "I have this part that looks like it's from a weapon...",
+            "condition": "If the player has a part of the Voidwaker:",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has less than three parts of the Voidwaker:",
+                "steps": [
+                  {
+                    "player": "I have this part that looks like it's from a weapon..."
+                  },
+                  {
+                    "npc": "Ah yes, that does look like a part of a particularly powerful weapon."
+                  },
+                  {
+                    "player": "Can I do anything with it?"
+                  },
+                  {
+                    "npc": "You? Perhaps not, though if you could bring me all three pieces, I suspect I could put it back together for you."
+                  },
+                  {
+                    "npc": "There should be a hilt, a blade and a conduit gemstone. Oh, and I'll want 500,000 coins as payment as well. Good hunting!"
+                  },
+                  {
+                    "player": "Do you know where I could find the other parts?"
+                  },
+                  {
+                    "npc": "I suspect the Wilderness would be a good place to start. There are monsters out there that have grown immense over time."
+                  },
+                  {
+                    "npc": "Seeking out the strongest of them is where I'd start, anyway."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "4NmDGS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has all three parts of the Voidwaker:",
+                "steps": [
+                  {
+                    "player": "I have these parts of a weapon, do you think you could assemble it for me?"
+                  },
+                  {
+                    "npc": "Hmm... yes, these are the parts of a particularly powerful weapon indeed. I can reassemble it... for a fee, of course. 500,000 coins, no less."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has less than 500,000 coins:",
+                    "steps": [
+                      {
+                        "player": "I don't have that much on me..."
+                      },
+                      {
+                        "npc": "Well, if you come across some more, come find me again."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "KPs-nI"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has at least 500,000 coins:",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "prompt": "Have Madam Sikaro assemble the Voidwaker for 500,000 coins?",
+                        "options": [
+                          {
+                            "text": "Yes",
+                            "steps": [
+                              {
+                                "type": "message",
+                                "text": "Madam Sikaro takes the components off you and, in a flash of white light, fuses them together to form the Voidwaker.",
+                                "id": "SANVF-"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No",
+                            "steps": [
+                              {
+                                "player": "Actually, I've changed my mind."
+                              },
+                              {
+                                "npc": "Curious, you come to me with all of the parts and the coin, yet you change your mind at the last second."
+                              },
+                              {
+                                "npc": "I do rather get the feeling you're toying with me. Very well, I shall do my part in playing with you."
+                              },
+                              {
+                                "type": "message",
+                                "text": "You feel the contents of your inventory shift slightly.",
+                                "id": "mcTZwC"
+                              },
+                              {
+                                "npc": "Now, do talk to me again if you'd like to proceed more sensibly."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "fh0rVO"
+                  }
+                ],
+                "id": "KlQy1h"
+              }
+            ],
+            "id": "HaswKI"
+          },
+          {
+            "text": "What are you doing with the money?",
+            "condition": "If the player has had Madam Sikaro assemble the Voidwaker:",
+            "steps": [
+              {
+                "player": "What are you doing with the money from combining the Voidwaker?"
+              },
+              {
+                "npc": "I'll spend some of it improving the hideout. The rest on general expenses."
+              },
+              {
+                "player": "What kind of expenses?"
+              },
+              {
+                "npc": "Living isn't free, you know? A woman my age has expenses. Food, clothing, protection... It all adds up."
+              }
+            ],
+            "id": "prX4yK"
+          },
+          {
+            "text": "Goodbye.",
+            "steps": [
+              {
+                "player": "Goodbye."
+              },
+              {
+                "npc": "You walked up to me just to say goodbye? Ok, sure, goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-the-voidwaker-on-her": [
+      {
+        "player": "So what exactly is this sword, anyway?"
+      },
+      {
+        "npc": "Well, that largely depends on who you ask and when you ask it. The sword is not unique, but many like it have been referenced in folktales."
+      },
+      {
+        "npc": "Some tell of great and prideful warriors roaming the lands, cutting down all who oppose them in great crashes of lightning."
+      },
+      {
+        "npc": "Others tell of lovers, one bound by oath, the other free as the wind, cruely torn apart by fate."
+      },
+      {
+        "npc": "Others still tell of three great beasts that alone were powerful, but combined could destroy Gielinor."
+      },
+      {
+        "player": "Are we still talking about the sword?"
+      },
+      {
+        "npc": "Amazingly, yes. In all of these tales, the sword is there, potential shining through the metal, thunder rolling in its wake."
+      },
+      {
+        "player": "Are any of these tales... true?"
+      },
+      {
+        "npc": "Oh, I'm sure there are elements of the truth buried in there, but folklore being what it is, I'm inclined to not believe any of it."
+      },
+      {
+        "npc": "Aside from the bit where it can summon lightning. It can absolutely do that."
+      },
+      {
+        "player": "What about the name? You called it Voidwaker?"
+      },
+      {
+        "npc": "Well, in a lot of these tales, it's only ever reffered to as someone's sword. Like, [player name]'s sword."
+      },
+      {
+        "npc": "So, I chose a name for it."
+      },
+      {
+        "player": "And you chose... Voidwaker? Why?"
+      },
+      {
+        "npc": "There are multiple reasons. I suppose you could say the sword is so powerful that it leaves a void in its wake."
+      },
+      {
+        "player": "That makes sense."
+      }
+    ],
+    "standard-dialogue-using-any-other-item-on-her": [
+      {
+        "npc": "No thank you, I'm currently on a diet."
+      }
+    ]
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "steps": [
+    {
+      "npc": "Greetings, fellow hunter. How can I be of help?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What kinds of food and drink do you serve?",
+          "steps": [
+            {
+              "player": "What kinds of food and drink do you serve?"
+            },
+            {
+              "npc": "In terms of drinks, we've got a Trapper's Tipple, and for food, a simple hearty stew."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has no inventory space:",
+              "steps": [
+                {
+                  "npc": "But you don't have room to hold either of them, so you'll have to come back later."
+                },
+                {
+                  "player": "Couldn't you just leave it on the ground for me?"
+                },
+                {
+                  "npc": "We don't tend to just... leave things like that around here."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "s6h4WM"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "I'd love a Trapper's Tipple!",
+                  "steps": [
+                    {
+                      "player": "I'd love a Trapper's Tipple!"
+                    },
+                    {
+                      "npc": "That'll be three coins then."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player can afford:",
+                      "steps": [
+                        {
+                          "type": "message",
+                          "text": "You buy a pint of Trapper's Tipple.",
+                          "id": "5e7Gkh"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "S4odLa"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player can not afford:",
+                      "steps": [
+                        {
+                          "player": "Oh, I can't afford one right now."
+                        }
+                      ],
+                      "id": "6Wzcqe"
+                    }
+                  ]
+                },
+                {
+                  "text": "Could I grab a stew?",
+                  "steps": [
+                    {
+                      "player": "Could I grab a stew?"
+                    },
+                    {
+                      "npc": "Absolutely! They're 20 coins these days."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player can afford:",
+                      "steps": [
+                        {
+                          "type": "message",
+                          "text": "You buy some stew.",
+                          "id": "8sBVE1"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "sX38bI"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player can not afford:",
+                      "steps": [
+                        {
+                          "player": "Oh, I can't afford that right now."
+                        }
+                      ],
+                      "id": "frqDnD"
+                    }
+                  ]
+                },
+                {
+                  "text": "I'll pass, thanks.",
+                  "steps": [
+                    {
+                      "player": "I'll pass, thanks."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Can we talk about rumours?",
+          "steps": [
+            {
+              "player": "Can we talk about rumours?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has not talked to Verity:",
+              "steps": [
+                {
+                  "npc": "Looks like you could do with talking to Verity first, given you're new to this whole business."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "aqLtJK"
+            },
+            {
+              "npc": "Yes, yes. How can I help you on that front?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have a rumour:",
+              "steps": [
+                {
+                  "player": "Do you have any new ones for me?"
+                },
+                {
+                  "type": "random",
+                  "options": [
+                    {
+                      "text": "Dialogue 1",
+                      "steps": [
+                        {
+                          "npc": "Could you check out the validity of this report for me? Someone thinks they've seen a [creature]. Once you find it, bring back one of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 2",
+                      "steps": [
+                        {
+                          "npc": "There's been rumours of a rare [creature] coming in. Once you find it, bring back one of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 3",
+                      "steps": [
+                        {
+                          "npc": "We've got reports of a slightly different [creature] in the local population. Once you find it, bring back one of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 4",
+                      "steps": [
+                        {
+                          "npc": "Looks like we need some information on a unique specimen amongst the local [creature] population. Once you find it, bring back some of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Dialogue 5",
+                      "steps": [
+                        {
+                          "npc": "I've heard rumours of a strange [creature] that you could check out for me. Once you find it, bring back one of its [rare parts]."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "kd3ZWa"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has completed a rumour:",
+              "steps": [
+                {
+                  "type": "condition",
+                  "text": "If the player used the Talk option:",
+                  "steps": [
+                    {
+                      "npc": "Another one done? You're really doing a lot for the guild."
+                    },
+                    {
+                      "npc": "Are you up for another?"
+                    },
+                    {
+                      "type": "jump",
+                      "reference": "continue",
+                      "id": "kBEVrY"
+                    }
+                  ],
+                  "id": "IQ1wMe"
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player used the Quick-Rumour option:",
+                  "steps": [
+                    {
+                      "npc": "Thanks for that. I'll mark off that report for you. Would you like another rumour?"
+                    },
+                    {
+                      "type": "jump",
+                      "reference": "continue",
+                      "id": "YTFanU"
+                    }
+                  ],
+                  "id": "GeycdO"
+                },
+                {
+                  "type": "choice",
+                  "prompt": "Get another rumour?",
+                  "options": [
+                    {
+                      "text": "Yes.",
+                      "steps": [
+                        {
+                          "type": "jump",
+                          "reference": "above",
+                          "id": "65Z6Ao"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No.",
+                      "steps": [
+                        {
+                          "type": "jump",
+                          "reference": "initial",
+                          "id": "75b_p-"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "BZ9BuT"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a rumour:",
+              "steps": [
+                {
+                  "player": "Can you remind me which rumour I'm chasing right now?"
+                },
+                {
+                  "npc": "You're hunting for me at the moment. This rumour was about a [creature]. You'll need to bring back some of its [rare parts]."
+                }
+              ],
+              "id": "hOgvx8"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has a rumour with a different Guild Hunter:",
+              "steps": [
+                {
+                  "npc": "I can see you're following [Guild Hunter]'s rumour looking for a [creature] at the moment. You'll need to bring back some of its [rare parts]."
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player previously had an unfinished rumour with this Guild Hunter:",
+                  "steps": [
+                    {
+                      "npc": "I seem to remember sending you off to hunt a [creature] and bring back one of its [rare parts]. Would you prefer that one, or a new one entirely?"
+                    }
+                  ],
+                  "id": "zlCG2S"
+                },
+                {
+                  "type": "choice",
+                  "prompt": "Switch to Huntmaster Gilman (Novice)'s rumour?",
+                  "options": [
+                    {
+                      "text": "Yes, go back to his old one.",
+                      "steps": [
+                        {
+                          "npc": "That was it. I asked you to hunt a [creature] and bring back one of its [rare parts]. Best of luck."
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Yes, but with a brand new one.",
+                      "steps": [
+                        {
+                          "type": "jump",
+                          "reference": "above",
+                          "id": "Ah9R1l"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No.",
+                      "steps": []
+                    }
+                  ]
+                }
+              ],
+              "id": "ZR0mif"
+            }
+          ]
+        },
+        {
+          "text": "I'm good, thanks.",
+          "steps": [
+            {
+              "player": "I'm good, thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome to Cobado's Groceries. Feeling hungry?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Let's see what you have.",
+          "steps": [
+            {
+              "player": "Let's see what you have."
+            },
+            {
+              "type": "action",
+              "action": "open_shop",
+              "target": "Cobado's Groceries",
+              "id": "vzWzv5"
+            }
+          ]
+        },
+        {
+          "text": "Why do you have an orange on your head?",
+          "steps": [
+            {
+              "player": "Why do you have an orange on your head?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have an orange on their head:",
+              "steps": [
+                {
+                  "npc": "Why don't you have an orange on your head?"
+                },
+                {
+                  "player": "Er... Because it's not an item of clothing?"
+                },
+                {
+                  "npc": "Not for you perhaps, but it is for me."
+                },
+                {
+                  "player": "Right..."
+                },
+                {
+                  "npc": "So anyway, looking to buy some food."
+                },
+                {
+                  "type": "jump",
+                  "reference": "previous",
+                  "id": "lgnhLq"
+                }
+              ],
+              "id": "3gGh48"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has an orange on their head:",
+              "steps": [
+                {
+                  "npc": "You know you've got one on your head as well, right? Why have you done it?"
+                },
+                {
+                  "player": "Er... I guess it's fun?"
+                },
+                {
+                  "npc": "Exactly! Now we've cleared that up, looking to buy some food."
+                },
+                {
+                  "type": "jump",
+                  "reference": "previous",
+                  "id": "MdphG4"
+                }
+              ],
+              "id": "rq_omH"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has an orange on their head, the purple token but not all of the other tokens, and has not received the blueberry muffin:",
+              "steps": [
+                {
+                  "npc": "Why? I think you're well on the path to working that out yourself!"
+                },
+                {
+                  "player": "I am?"
+                },
+                {
+                  "npc": "That token you have! That's what it's all about! The capybaras left them for us, to test if we were worthy!"
+                },
+                {
+                  "player": "Okay... But what do I do with it?"
+                },
+                {
+                  "npc": "You need to find the others! The nice ones and the nasty ones! That's how you pass the test!"
+                },
+                {
+                  "player": "Okay..."
+                },
+                {
+                  "type": "condition",
+                  "text": "If the player hasn't received the one coin yet:",
+                  "steps": [
+                    {
+                      "npc": "Here! I shouldn't really do this, but let me give you a little hand! Take this!"
+                    },
+                    {
+                      "type": "message",
+                      "text": "Cobado gives you a singular coin.",
+                      "id": "zgLkFR"
+                    },
+                    {
+                      "player": "Thanks..."
+                    },
+                    {
+                      "type": "end"
+                    }
+                  ],
+                  "id": "-Ao9Uq"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "YEFZiX"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has an orange on their head and all of the Varlamore tokens, and has not received the reward yet:",
+              "steps": [
+                {
+                  "npc": "Why? I think you've worked that out yourself now!"
+                },
+                {
+                  "player": "I have?"
+                },
+                {
+                  "npc": "The tokens! It's always been about the tokens! The capybaras left them for us, to test if we were worthy! Now you finally have them all!"
+                },
+                {
+                  "player": "Okay... But what do I do with them all now?"
+                },
+                {
+                  "npc": "Do with them? Well... nothing. You've already passed the test!"
+                },
+                {
+                  "player": "So there isn't some big reward?"
+                },
+                {
+                  "npc": "Reward? Of course not! That was part of the test! They wanted to see how far you'd go!"
+                },
+                {
+                  "player": "So I literally get nothing for this?"
+                },
+                {
+                  "npc": "Hmm... I'll tell you what, because you worked so hard, I'll give you a little something!"
+                },
+                {
+                  "type": "message",
+                  "text": "Cobado gives you some coins along with something extra nice.",
+                  "id": "MP00Zx"
+                },
+                {
+                  "player": "Wow, this is extra nice."
+                }
+              ],
+              "id": "mX1ZvO"
+            }
+          ]
+        },
+        {
+          "text": "I'm good.",
+          "steps": [
+            {
+              "player": "I'm good."
+            },
+            {
+              "npc": "Well come back when you're hungry."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

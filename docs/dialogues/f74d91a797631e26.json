@@ -1,0 +1,354 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello there, can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you do here?",
+            "steps": [
+              {
+                "player": "What do you do here?"
+              },
+              {
+                "npc": "I've been studying the practice of making split-bark armour."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Split-bark armour, what's that?",
+                    "steps": [
+                      {
+                        "player": "Split-bark armour, what's that?"
+                      },
+                      {
+                        "npc": "Split-bark armour is special armour for mages. It's much more resistant to physical attacks than normal robes."
+                      },
+                      {
+                        "npc": "It's actually very easy for me to make, but I've been having trouble getting hold of the pieces."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Well good luck with that.",
+                            "steps": [
+                              {
+                                "player": "Well good luck with that."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Can you make me some?",
+                            "steps": [
+                              {
+                                "player": "Can you make me some?"
+                              },
+                              {
+                                "type": "condition",
+                                "text": "If the player is on a non-members world:",
+                                "steps": [
+                                  {
+                                    "type": "call",
+                                    "branch": "OLcdCz"
+                                  }
+                                ],
+                                "id": "UGl0TJ"
+                              },
+                              {
+                                "npc": "I need bark from a hollow tree, and some fine cloth. Unfortunately both these items can only be found in Morytania, especially the cloth which is found in the tombs of shades."
+                              },
+                              {
+                                "npc": "Of course I'd happily sell you some at a discounted price if you bring me those items."
+                              },
+                              {
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "text": "Okay, guess I'll go looking then!",
+                                    "steps": [
+                                      {
+                                        "player": "Okay, guess I'll go looking then!"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "text": "Okay, how much do I need?",
+                                    "steps": [
+                                      {
+                                        "player": "Okay, how much do I need?"
+                                      },
+                                      {
+                                        "npc": "I need 1 piece of each for either gloves or boots, 2 pieces of each for a hat, 3 pieces of each for leggings, and 4 pieces of each for a top."
+                                      },
+                                      {
+                                        "npc": "I'll charge you 1,000 coins for either gloves or boots, 6,000 coins for a hat, 32,000 coins for leggings, and 37,000 for a top."
+                                      },
+                                      {
+                                        "player": "Okay, guess I'll go looking then!"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you make me some?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "PHa2rd"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "What's that you're wearing?",
+            "steps": [
+              {
+                "player": "What's that you're wearing?"
+              },
+              {
+                "npc": "This is split-bark armour, it's special armour for mages. It's much more resistant to physical attacks than normal robes."
+              },
+              {
+                "npc": "It's actually very easy for me to make, but I've been having trouble getting hold of the pieces."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Well good luck with that.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "4rYQBZ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you make me some?",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "CTTI0q"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you make me some armour please?",
+            "steps": [
+              {
+                "player": "Can you make me some armour please?"
+              },
+              {
+                "npc": "Certainly, what would you like me to make?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "If the player is on a non-members world:",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "OLcdCz"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "action",
+                "text": "Continues with shop dialogue.",
+                "id": "OIDSr9"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "shop-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player is on a non-members world:",
+        "steps": [
+          {
+            "type": "call",
+            "branch": "OLcdCz"
+          }
+        ],
+        "id": "wFPoPA"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Buy Helm",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has the supplies:",
+                "steps": [
+                  {
+                    "npc": "There you go, enjoy your new armour!"
+                  }
+                ],
+                "id": "IyWQcs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the supplies:",
+                "steps": [
+                  {
+                    "npc": "You need 2 pieces of bark, 2 pieces of fine cloth and 6,000 coins for a splitbark helm."
+                  }
+                ],
+                "id": "3FCx_m"
+              }
+            ]
+          },
+          {
+            "text": "Buy Body",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has the supplies:",
+                "steps": [
+                  {
+                    "npc": "There you go, enjoy your new armour!"
+                  }
+                ],
+                "id": "lVSJvx"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the supplies:",
+                "steps": [
+                  {
+                    "npc": "You need 4 pieces of bark, 4 pieces of fine cloth and 37,000 coins for a splitbark body."
+                  }
+                ],
+                "id": "_Oh0K0"
+              }
+            ]
+          },
+          {
+            "text": "Buy Legs",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has the supplies:",
+                "steps": [
+                  {
+                    "npc": "There you go, enjoy your new armour!"
+                  }
+                ],
+                "id": "YPi9Qf"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the supplies:",
+                "steps": [
+                  {
+                    "npc": "You need 3 pieces of bark, 3 pieces of fine cloth and 32,000 coins for splitbark legs."
+                  }
+                ],
+                "id": "gvqTbt"
+              }
+            ]
+          },
+          {
+            "text": "Buy Gauntlets",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has the supplies:",
+                "steps": [
+                  {
+                    "npc": "There you go, enjoy your new armour!"
+                  }
+                ],
+                "id": "pOKXxm"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the supplies:",
+                "steps": [
+                  {
+                    "npc": "You need 1 piece of bark, 1 piece of fine cloth and 1,000 coins for splitbark gauntlets."
+                  }
+                ],
+                "id": "9n2wDW"
+              }
+            ]
+          },
+          {
+            "text": "Buy Boots",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player has the supplies:",
+                "steps": [
+                  {
+                    "npc": "There you go, enjoy your new armour!"
+                  }
+                ],
+                "id": "feQi0X"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the supplies:",
+                "steps": [
+                  {
+                    "npc": "You need 1 piece of bark, 1 piece of fine cloth and 1,000 coins for splitbark boots."
+                  }
+                ],
+                "id": "kuhMPe"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "branches": {
+    "OLcdCz": [
+      {
+        "npc": "I'm sorry, but I can't do that right now."
+      },
+      {
+        "type": "end",
+        "reason": "members"
+      }
+    ]
+  }
+}

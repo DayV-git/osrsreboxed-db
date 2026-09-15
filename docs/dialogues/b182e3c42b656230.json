@@ -1,0 +1,86 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hi! Would you be interested in some of my fine candles?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes Please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Candle Shop",
+                "id": "yFuJmp"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails": [
+      {
+        "type": "condition",
+        "text": "When given another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "55sDpu"
+          },
+          {
+            "type": "message",
+            "text": "You've been given a new clue!",
+            "id": "c4lMRt"
+          },
+          {
+            "npc": "Here, have this."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "a8inyK"
+      },
+      {
+        "type": "condition",
+        "text": "When given a reward casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an elite reward casket",
+            "id": "4WrNbi"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "7X7IXU"
+          },
+          {
+            "type": "jump",
+            "reference": "above",
+            "id": "zFuLTZ"
+          }
+        ],
+        "id": "Jw92nE"
+      }
+    ]
+  }
+}

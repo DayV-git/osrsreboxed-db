@@ -143,6 +143,25 @@ def fetch():
 
         page_titles_count += 1
 
+    # The cache is written one page at a time and never rewritten, so a page the wiki
+    # has renamed or dropped from the category stays behind and is later exported as a
+    # second copy of the same shop. The category listing is authoritative.
+    if TEXT_FP.exists():
+        with open(TEXT_FP) as text_file:
+            cached = json.load(text_file)
+        pruned = {
+            title: text
+            for title, text in cached.items()
+            if title in wiki_page_titles.page_titles
+        }
+        if len(pruned) != len(cached):
+            logger.info(
+                "Dropping %d cached pages no longer in the shops category",
+                len(cached) - len(pruned),
+            )
+            with open(TEXT_FP, mode="w") as text_file:
+                json.dump(pruned, text_file, indent=4)
+
 
 def process():
     logger.info("Starting wiki page text processing...")
@@ -154,6 +173,13 @@ def process():
 
     with open(TEXT_FP) as f:
         raw_wiki_data = json.load(f)
+
+    # Guard the same staleness at the point of use: process() also runs standalone,
+    # against whatever the cache happens to hold.
+    current_titles = set()
+    if TITLES_FP.exists():
+        with open(TITLES_FP) as f:
+            current_titles = set(json.load(f))
 
     # Calculate total shops to process
     total_shops = len(raw_wiki_data)
@@ -187,6 +213,11 @@ def process():
         # Skip other non-shop pages
         skip_pages = ["Shop", "Unused shops", "General store"]
         if page_title in skip_pages:
+            continue
+
+        # Skip cached pages the shops category no longer lists.
+        if current_titles and page_title not in current_titles:
+            logger.info("Skipping %s: no longer in the shops category", page_title)
             continue
 
         shop_count += 1

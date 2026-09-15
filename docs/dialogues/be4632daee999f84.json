@@ -1,0 +1,157 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Nilsal, friend. How goes it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you need any help in the vineyards?",
+            "steps": [
+              {
+                "player": "Do you need any help in the vineyards?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a grape barrel:",
+                "steps": [
+                  {
+                    "npc": "Well we could always use a spare pair of hands!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The foreman gives you a grape barrel.",
+                    "id": "dH1XFF"
+                  },
+                  {
+                    "npc": "Here, fill this barrel with four sets of ripe grapes and bring it back to me."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has worked at Luthas' banana plantation in Karamja before:",
+                    "steps": [
+                      {
+                        "player": "Ah, this sounds like something I can do! I actually used to have a similar job on another island far to the east of here!"
+                      }
+                    ],
+                    "id": "WPy0Fw"
+                  },
+                  {
+                    "player": "Got it! One barrel full of grapes coming right up."
+                  },
+                  {
+                    "npc": "Just remember, I need them to be ripe. Generally, perfectly ripe grapes are full and vibrant. They'll shine in the sunlight more than others."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "RmkT70"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a grape barrel but has received one before:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The foreman gives you a grape barrel.",
+                    "id": "1VyjPI"
+                  },
+                  {
+                    "npc": "Hopefully you know what you're doing now. Just fill this barrel with four sets of ripe grapes and bring it back to me."
+                  },
+                  {
+                    "player": "Got it! One barrel full of grapes coming right up."
+                  },
+                  {
+                    "npc": "Just remember, I need them to be ripe. Generally, perfectly ripe grapes are full and vibrant. They'll shine in the sunlight more than others."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "-pHm2N"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have a grape barrel and doesn't have inventory space:",
+                "steps": [
+                  {
+                    "npc": "We could always use a spare pair of hands! I have a grape barrel here for you, but you don't have enough room for it at the moment. Come back once you can carry it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "cPUyGi"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has a grape barrel:",
+                "steps": [
+                  {
+                    "npc": "You've already got that grape barrel I gave you. Fill it with four sets of ripe grapes and bring it back to me."
+                  },
+                  {
+                    "player": "Got it! One barrel full of grapes coming right up."
+                  },
+                  {
+                    "npc": "Just remember, I need them to be ripe. Generally, perfectly ripe grapes are full and vibrant. They'll shine in the sunlight more than others."
+                  }
+                ],
+                "id": "RoegjF"
+              }
+            ]
+          },
+          {
+            "text": "Doesn't it get hot standing out here all day?",
+            "steps": [
+              {
+                "player": "Doesn't it get hot standing out here all day?"
+              },
+              {
+                "npc": "Ah, you get used to it. Besides, I have a near-infinite supply of lukewarm grape juice to keep me hydrated!"
+              },
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "UMmA9M"
+              }
+            ]
+          },
+          {
+            "text": "I'm good. I'll be going now.",
+            "steps": [
+              {
+                "player": "I'm good. I'll be going now."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-talking-with-a-full-grape-barrel-in-your-inventory": [
+      {
+        "player": "One barrel o' grapes here for you, boss!"
+      },
+      {
+        "npc": "Great work! Here, keep some grapes as payment."
+      },
+      {
+        "player": "Can I have some gold instead?"
+      },
+      {
+        "npc": "No."
+      },
+      {
+        "player": "Oh..."
+      },
+      {
+        "npc": "Now, if you're up for it, I wouldn't say no to you filling the barrel up again."
+      }
+    ]
+  }
+}

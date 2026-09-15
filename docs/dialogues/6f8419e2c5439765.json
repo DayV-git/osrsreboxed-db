@@ -1,0 +1,193 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue-in-free-to-play": [
+      {
+        "npc": "Hello there. Welcome to my magic emporium."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I see your wares?",
+            "steps": [
+              {
+                "player": "Can I see your wares?"
+              },
+              {
+                "npc": "Of course."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Betty's Magic Emporium",
+                "id": "uweQRh"
+              }
+            ]
+          },
+          {
+            "text": "Sorry, I'm not into magic.",
+            "steps": [
+              {
+                "player": "Sorry, I'm not into magic."
+              },
+              {
+                "npc": "Well, if you see anyone who is, please send them my way."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "npc": "Hello again. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I see your wares?",
+            "steps": [
+              {
+                "player": "Can I see your wares?"
+              },
+              {
+                "npc": "Of course."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Betty's Magic Emporium",
+                "id": "Fl-A47"
+              }
+            ]
+          },
+          {
+            "text": "I managed to decipher those notes.",
+            "condition": "One time after Ethically Acquired Antiquities:",
+            "steps": [
+              {
+                "player": "I managed to decipher those notes."
+              },
+              {
+                "npc": "Oh really? Please do tell. It's been driving me crazy!"
+              },
+              {
+                "player": "It seems like he was trying to find the runes for the Varrock teleport spell."
+              },
+              {
+                "npc": "Ah, of course. I'm not sure how I didn't figure that out!"
+              }
+            ],
+            "id": "G1IsnU"
+          },
+          {
+            "text": "Could I buy some more pink dye?",
+            "condition": "After The Hand in the Sand:",
+            "steps": [
+              {
+                "player": "Could I buy some more pink dye?"
+              },
+              {
+                "npc": "Of course. It's 20 coins per bottle."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 20 coins and open inventory space:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sounds good.",
+                        "steps": [
+                          {
+                            "player": "Sounds good."
+                          },
+                          {
+                            "type": "message",
+                            "text": "Betty sells you some pink dye in exchange for 20 coins.",
+                            "id": "cbITuD"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually, I'll pass.",
+                        "steps": [
+                          {
+                            "player": "Actually, I'll pass."
+                          },
+                          {
+                            "npc": "Fair enough."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "dUcE4v"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 20 coins:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough money with me."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "JiHT8c"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have free inventory space:",
+                "steps": [
+                  {
+                    "player": "Oh, I don't have enough room for any."
+                  }
+                ],
+                "id": "67DfrZ"
+              }
+            ],
+            "id": "fHnv38"
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "crack-the-clue-iii": [
+      {
+        "npc": "Good job. I have new information to share with you."
+      },
+      {
+        "type": "message",
+        "text": "You've found a new special clue! However, a magical force prevents you from putting this item in your inventory!",
+        "id": "GdFFgp"
+      },
+      {
+        "type": "action",
+        "text": "Interface showing the next clue opens.",
+        "action": "open_interface",
+        "action_source": "text",
+        "target": "Interface showing the next clue",
+        "id": "S4QuZO"
+      }
+    ]
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "default": "standard-dialogue-before-a-kingdom-divided",
+  "variants": {
+    "standard-dialogue-before-a-kingdom-divided": [
+      {
+        "player": "Hey."
+      },
+      {
+        "npc": "Hey there. If you need something, you should speak to Veos. I'm just the cabin boy."
+      },
+      {
+        "player": "Fair enough."
+      }
+    ],
+    "standard-dialogue-after-completing-x-marks-the-spot-if-the-player-has-not-yet-claimed-their-clue-scroll": [
+      {
+        "npc": "Hey. Veos left something for you. Here you go."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "Clue scroll (beginner)",
+        "id": "0JtSRv"
+      },
+      {
+        "npc": "Now, do you need something?"
+      },
+      {
+        "type": "jump",
+        "reference": "continues",
+        "id": "QMgvYZ"
+      }
+    ],
+    "standard-dialogue-first-conversation-after-completing-a-kingdom-divided": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can you take me somewhere?",
+            "steps": [
+              {
+                "player": "Can you take me somewhere?"
+              },
+              {
+                "type": "condition",
+                "text": "On non-members worlds:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid that you're not eligible to travel to Great Kourend at the moment. Come back when you are and I'll happily take you there."
+                  },
+                  {
+                    "type": "end",
+                    "reason": "members"
+                  }
+                ],
+                "id": "8t_YGm"
+              },
+              {
+                "type": "condition",
+                "text": "On members worlds:",
+                "steps": [
+                  {
+                    "npc": "Where would you like to go?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Travel to Port Sarim.",
+                        "condition": "If the player is not at Port Sarim:",
+                        "steps": [
+                          {
+                            "player": "I'd like to travel to Port Sarim, please."
+                          },
+                          {
+                            "npc": "As you wish, I hope you don't get seasick, it is a long voyage."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player is transported to Port Sarim",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "fR2FKv"
+                          }
+                        ],
+                        "id": "gq2FMz"
+                      },
+                      {
+                        "text": "Travel to Port Piscarilius.",
+                        "condition": "If the player is not at Port Piscarilius:",
+                        "steps": [
+                          {
+                            "player": "I'd like to travel to Port Piscarilius, please."
+                          },
+                          {
+                            "npc": "As you wish."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player is transported to Port Piscarilius",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "lMeKBi"
+                          }
+                        ],
+                        "id": "xEod4K"
+                      },
+                      {
+                        "text": "Travel to Land's End.",
+                        "condition": "If the player is not at Land's End:",
+                        "steps": [
+                          {
+                            "player": "I'd like to travel to Land's End, please."
+                          },
+                          {
+                            "npc": "As you wish."
+                          },
+                          {
+                            "type": "action",
+                            "text": "The player is transported to Land's End",
+                            "action": "teleport",
+                            "action_source": "text",
+                            "id": "nCPA0F"
+                          }
+                        ],
+                        "id": "vI_fQZ"
+                      },
+                      {
+                        "text": "Stay where you are.",
+                        "steps": [
+                          {
+                            "player": "Actually I'd like to stay here."
+                          },
+                          {
+                            "npc": "As you wish."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "umx2H4"
+              }
+            ]
+          },
+          {
+            "text": "I'm good.",
+            "steps": [
+              {
+                "player": "I'm good."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-subsequent-conversations-after-completing-a-kingdom-divided": [
+      {
+        "npc": "Hey there. Do you need something?"
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "iniZ9Z"
+      }
+    ]
+  }
+}

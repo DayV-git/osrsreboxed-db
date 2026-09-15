@@ -1,0 +1,642 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Hello there; I see you're qualified. Come to help us out?"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "y04naO"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "Hello! You're that student who recently finished all three Earth Sciences exams, aren't you? Come to help us out?"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "7B6KAs"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "Greetings, my dear [sir/madam]. Have you come to give us a hand?"
+              },
+              {
+                "type": "jump",
+                "reference": "continue",
+                "id": "v81Wms"
+              }
+            ]
+          },
+          {
+            "text": "Yes, how can I help out?",
+            "steps": [
+              {
+                "player": "Yes, how can I help out?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't meet of the following criteria: a trowel, a rock pick and a specimen brush in their inventory; leather boots and leather gloves equipped:",
+                "steps": [
+                  {
+                    "npc": "Well, you'll need to get your equipment first - it's all there on the tool rack. Use what you learned from your Earth Sciences exams. You'll need to be wearing your leather gloves and boots as well as have access to"
+                  },
+                  {
+                    "npc": "your trowel, rock pick and specimen brush."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "kHAPyc"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a trowel, a rock pick and a specimen brush in their inventory and also have leather boots and leather gloves equipped:",
+                "steps": [
+                  {
+                    "npc": "I see you have your equipment - well done."
+                  },
+                  {
+                    "npc": "To really give us a hand, you could clean some finds for us. They're mostly done - just some fine work to finish off. Take a find from the pile that the workmen are bringing in, then there are spare tables over there"
+                  },
+                  {
+                    "npc": "to clean them on. If you find anything interesting, let us know and we'll see if it's good enough to go on display."
+                  }
+                ],
+                "id": "nQwe_V"
+              }
+            ]
+          },
+          {
+            "text": "I found something interesting.",
+            "steps": [
+              {
+                "player": "I found something interesting."
+              },
+              {
+                "npc": "Oh? Let's take a look..."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Clean necklace in their inventory:",
+                "steps": [
+                  {
+                    "player": "I found this pretty necklace."
+                  },
+                  {
+                    "npc": "Interesting...yes...yes...hmmm.... It looks like it's enchanted."
+                  },
+                  {
+                    "player": "With what?"
+                  },
+                  {
+                    "npc": "Oh, I think it's just a benign teleportation spell. I tinker in magic when I'm not doing archaeology. I can teach you how to make more necklaces like this. Amazing that they had this kind of knowledge back then."
+                  },
+                  {
+                    "player": "That would be good. Where is the teleport to?"
+                  },
+                  {
+                    "npc": "Hmm...all the indications are that it's somewhere to the east of us, but I'm not sure how far. Perhaps it was a teleport back to Saranthium. Let me just take a closer look."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The archaeologist takes the necklace and turns it over in his hands, studying it closely.",
+                    "id": "D55cbm"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The archaeologist shows you the techniques for this particular spell, which requires five fire runes arranged around one cosmic rune - and level 49 Magic - then casting the spell on a crafted ruby necklace of your",
+                    "id": "GbIpNl"
+                  },
+                  {
+                    "type": "message",
+                    "text": "own.  You can make enchanted ruby necklaces.",
+                    "id": "CSohIC"
+                  },
+                  {
+                    "type": "end"
+                  },
+                  {
+                    "player": "So I just make a ruby necklace and use five fire runes and one cosmic rune to enchant it."
+                  },
+                  {
+                    "npc": "Yes, indeed. Well done, youngster, thanks for helping us."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "-rMz6Y"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an Old coin, and doesn't have a Clean necklace in their inventory:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Old coin for the first time:",
+                    "steps": [
+                      {
+                        "player": "I've cleaned this old coin - is it of any use?"
+                      },
+                      {
+                        "npc": "Oh my! What a wonderful find! If this is what I believe it to be, it would allow us to date the Dig Site city."
+                      },
+                      {
+                        "npc": "And look here, it has the name of the city too! Saranthium! That must be during the Saradominist occupation. This is a wonderful find. Please take it and place it in display case 45."
+                      },
+                      {
+                        "player": "Right, display case 45 it is..."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "st3LE6"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Old coin after being told to put it in a display case:",
+                    "steps": [
+                      {
+                        "npc": "Back again? Have you put the old coin in display case 45 yet?"
+                      },
+                      {
+                        "player": "No, I'll go do that now"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "dC8g6H"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Old coin after putting it in a display case:",
+                    "steps": [
+                      {
+                        "player": "I've cleaned this old coin - is it of any use?"
+                      },
+                      {
+                        "npc": "You've already shown me one of those, but it was in better condition. It's in the display case over there. You can pop this one in the finds crate over in the corner."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Fx0Q9k"
+                  }
+                ],
+                "id": "zhWz_p"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an Ancient coin, and doesn't have any of the above cleaned finds in their inventory:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Ancient coin for the first time:",
+                    "steps": [
+                      {
+                        "player": "I found this really old coin - is it of any use?"
+                      },
+                      {
+                        "npc": "What have we here?"
+                      },
+                      {
+                        "npc": "Oh! This is very interesting...and confusing at the same time. This coin means that the city that we're excavating on the Digsite - Saranthium - was actually inhabited much, much earlier by followers of Zamorak,"
+                      },
+                      {
+                        "npc": "at which time, the city was known as Senntisten."
+                      },
+                      {
+                        "npc": "This is a most remarkable discovery, as we have other evidence indicating that Zarosian followers were resident before the Saradominists took over, but it also seems that Zamorakian forces used it during a battle of some"
+                      },
+                      {
+                        "npc": "sort. Still, it allows us to roughly date when the city changed from following Zaros and Zamorak to following Saradomin. Put it in display case 44."
+                      },
+                      {
+                        "player": "Case 44 it is!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "egtnov"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Ancient coin after being told to put it in a display case:",
+                    "steps": [
+                      {
+                        "npc": "Back again? Have you put the ancient coin in display case 44 yet?"
+                      },
+                      {
+                        "player": "No, I'll go do that now."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "xKMmfX"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Ancient coin after putting it in a display case:",
+                    "steps": [
+                      {
+                        "player": "I found this really old coin - is it of any use?"
+                      },
+                      {
+                        "npc": "You've already shown me one of those, but it was in better condition. It's in the display case over there. You can pop this one in the finds crate over in the corner."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "m8LwLh"
+                  }
+                ],
+                "id": "CP_0vR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an Ancient symbol, and doesn't have any of the above cleaned finds in their inventory:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Ancient symbol for the first time:",
+                    "steps": [
+                      {
+                        "player": "I found this crumbly old decoration - is it of any use?"
+                      },
+                      {
+                        "npc": "Ahh... That looks like an altar piece. Hmm, yes...from the early Saradominist worshippers by the looks of it. Quite delicate, too. Put it in display case 37."
+                      },
+                      {
+                        "player": "Case 37 it is!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "L-uKSN"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Ancient symbol after being told to put it in a display case:",
+                    "steps": [
+                      {
+                        "npc": "Back again? Have you put the ancient symbol in display case 37 yet?"
+                      },
+                      {
+                        "player": "No, I'll go do that now."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "IEcCJt"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Ancient symbol after putting it in a display case:",
+                    "steps": [
+                      {
+                        "player": "I found this crumbly old decoration - is it of any use?"
+                      },
+                      {
+                        "npc": "You've already shown me one of those, but it was in better condition. It's in the display case over there. You can pop this one in the finds crate over in the corner."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "dYNzhP"
+                  }
+                ],
+                "id": "sHUPsY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an Old symbol, and doesn't have any of the above cleaned finds in their inventory:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Old symbol for the first time:",
+                    "steps": [
+                      {
+                        "player": "I found this really old decoration - is it of any use?"
+                      },
+                      {
+                        "npc": "Wow!"
+                      },
+                      {
+                        "npc": "That's in rather good condition, isn't it? An old altar decoration by the looks of things, from the Saradominist city no doubt. Put it in display case 36."
+                      },
+                      {
+                        "player": "Case 36 it is!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "T5xMVM"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Old symbol after being told to put it in a display case:",
+                    "steps": [
+                      {
+                        "npc": "Back again? Have you put the old symbol in display case 36 yet?"
+                      },
+                      {
+                        "player": "No, I'll go do that now."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "zR4-G8"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the Old symbol after putting it in a display case:",
+                    "steps": [
+                      {
+                        "player": "I found this really old decoration - is it of any use?"
+                      },
+                      {
+                        "npc": "You've already shown me one of those, but it was in better condition. It's in the display case over there. You can pop this one in the finds crate over in the corner."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "FXv36u"
+                  }
+                ],
+                "id": "MLeHOW"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a piece of pottery, and doesn't have any of the above cleaned finds in their inventory:",
+                "steps": [
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the pottery for the first time:",
+                    "steps": [
+                      {
+                        "player": "I found this piece of pottery - is it of any use?"
+                      },
+                      {
+                        "npc": "Ahh... Oh! Hmm...yes...made by Zaros worshippers, by the looks of it. Beautifully-shaped. It looks as if this would go nicely in display case 22. This piece reinforces our evidence that the city was occupied by"
+                      },
+                      {
+                        "npc": "Zarosians before Saradominists."
+                      },
+                      {
+                        "player": "Case 22 it is!"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Y-_b-K"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the pottery after being told to put it in a display case:",
+                    "steps": [
+                      {
+                        "npc": "Back again? Have you put the pottery in display case 22 yet?"
+                      },
+                      {
+                        "player": "No, I'll go do that now."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Eh9P8X"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player is showing the pottery after putting it in a display case:",
+                    "steps": [
+                      {
+                        "player": "I found this piece of pottery - is it of any use?"
+                      },
+                      {
+                        "npc": "You've already shown me one of those, but it was in better condition. It's in the display case over there. You can pop this one in the finds crate over in the corner."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "Ygh2zM"
+                  }
+                ],
+                "id": "f3fEQV"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Arrowheads, and doesn't have any of the above cleaned finds in their inventory:",
+                "steps": [
+                  {
+                    "player": "I found these old arrowheads."
+                  },
+                  {
+                    "npc": "Ahh, yes, we find lots of those - they're not important. We already have some in our display. Just add it to the crate of finds over near the door."
+                  },
+                  {
+                    "npc": "If there is anything already in the crate, feel free to take it as a reward for your work."
+                  },
+                  {
+                    "player": "Oh, okay."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2vKoE7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a piece of Jewellery, and doesn't have any of the above cleaned finds in their inventory:",
+                "steps": [
+                  {
+                    "player": "Take a look at this..."
+                  },
+                  {
+                    "player": "I found these old necklaces."
+                  },
+                  {
+                    "npc": "An interesting find... Here, let me offer you something in return."
+                  },
+                  {
+                    "player": "Oh! Okay."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The archaeologist gives you [5x] coins... must have been worth a lot in his day!",
+                    "id": "7FHZMG"
+                  }
+                ],
+                "id": "BrSXsw"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an Old chipped vase, and doesn't have any of the above cleaned finds in their inventory:",
+                "steps": [
+                  {
+                    "player": "I cleaned up this old vase."
+                  },
+                  {
+                    "npc": "Ah, the vases... I've lost count of how many we've found of those... The only completely intact one is in the display case already. Just add it to the crate of finds over near the door."
+                  },
+                  {
+                    "npc": "If there is anything already in the crate, feel free to take it as a reward for your work."
+                  },
+                  {
+                    "player": "Right."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ICD1qe"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have any of the above cleaned finds in their inventory:",
+                "steps": [
+                  {
+                    "player": "Err... I seem to have lost it. Sorry."
+                  },
+                  {
+                    "npc": "Sounds like you never had it, [lad/lass]!"
+                  }
+                ],
+                "id": "WYeT75"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No, just here to watch."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-thias-leacke-clean-necklace": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "Wynoz9"
+      }
+    ],
+    "using-items-on-thias-leacke-old-coin": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "lRZlnk"
+      }
+    ],
+    "using-items-on-thias-leacke-ancient-coin": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "WQ69pR"
+      }
+    ],
+    "using-items-on-thias-leacke-ancient-symbol": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "kVI95J"
+      }
+    ],
+    "using-items-on-thias-leacke-old-symbol": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "kIYJpC"
+      }
+    ],
+    "using-items-on-thias-leacke-arrowheads": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "gEWl7W"
+      }
+    ],
+    "using-items-on-thias-leacke-jewellery": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "j6iM6s"
+      }
+    ],
+    "using-items-on-thias-leacke-old-chipped-vase": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "cPsrqJ"
+      }
+    ],
+    "using-items-on-thias-leacke-any-other-item": [
+      {
+        "player": "Take a look at this..."
+      },
+      {
+        "npc": "Thank you, but I don't need that"
+      }
+    ]
+  }
+}

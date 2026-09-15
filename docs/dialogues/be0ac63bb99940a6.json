@@ -1,0 +1,83 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "I've agreed to let you use the bank. What do you want today?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "This is an odd-looking bank.",
+            "steps": [
+              {
+                "player": "This is an odd-looking bank."
+              },
+              {
+                "npc": "It's an odd-looking town. Those Corsairs are basically no better than pirates, you know, and the adventurers they bring in are worse. That's why I keep a cannon for protection."
+              },
+              {
+                "npc": "Anyway, did you want something?"
+              },
+              {
+                "type": "jump",
+                "reference": "initial",
+                "id": "nIbxcR"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to access my bank account, please.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Bank",
+                "id": "42hgth"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to check my PIN settings.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Bank PIN",
+                "id": "bIOlU2"
+              }
+            ]
+          },
+          {
+            "text": "I'd like to collect items.",
+            "steps": [
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Grand Exchange collection box",
+                "id": "B9dOLP"
+              }
+            ]
+          },
+          {
+            "text": "I want nothing.",
+            "steps": [
+              {
+                "player": "I want nothing."
+              },
+              {
+                "npc": "Then you shall get it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "before-completion-of-the-corsair-curse": [
+      {
+        "npc": "Bank's closed. Go away."
+      }
+    ]
+  }
+}

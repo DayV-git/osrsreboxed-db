@@ -1,0 +1,176 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue": [
+      {
+        "npc": "Hello there!"
+      },
+      {
+        "player": "Hello! Who are you?"
+      },
+      {
+        "npc": "The name's Arhein. I'm a local merchant. I have a variety of useful goods to sell here, and I also use my ship to deliver various items further afield."
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "npc": "Hello again!"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you have for sale?",
+            "steps": [
+              {
+                "player": "What do you have for sale?"
+              },
+              {
+                "npc": "All sorts of things! Why don't you take a look?"
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Arhein's General Goods",
+                "id": "F7ULNK"
+              }
+            ]
+          },
+          {
+            "text": "What's with the duck?",
+            "steps": [
+              {
+                "type": "reference",
+                "target": "Transcript:Current Affairs",
+                "section": "",
+                "text": "Continues in Transcript:Current Affairs",
+                "id": "XBlxwB",
+                "resolved": false,
+                "page_available": true
+              }
+            ]
+          },
+          {
+            "text": "I'm sorry, but I've lost the mayor.",
+            "condition": "If the player has lost the Mayor of Catherby:",
+            "steps": [
+              {
+                "player": "I'm sorry, but I've lost the mayor."
+              },
+              {
+                "npc": "Oh dear. Good job we have backups now. Here you go."
+              },
+              {
+                "type": "message",
+                "text": "Arhein gives you a new mayor.",
+                "id": "QgVqry"
+              },
+              {
+                "npc": "I believe that puts us at mayor [# of replaced mayors + 27] now. Long live the mayor."
+              }
+            ],
+            "id": "xUxvjw"
+          },
+          {
+            "text": "Where abouts do you make deliveries to?",
+            "steps": [
+              {
+                "npc": "Oh, various places up and down the coast. Mostly Karamja and Port Sarim."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I don't suppose I could get a lift anywhere?",
+                    "steps": [
+                      {
+                        "player": "I don't suppose I could get a lift anywhere?"
+                      },
+                      {
+                        "npc": "Sorry, but that's not the kind of service I offer. Why not try the charter ship?"
+                      },
+                      {
+                        "player": "I might do that. Thanks."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I see. Well, I'd best be off.",
+                    "steps": [
+                      {
+                        "player": "I see. Well, I'd best be off."
+                      },
+                      {
+                        "npc": "Until next time!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'd best be off.",
+            "steps": [
+              {
+                "player": "I'd best be off."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "subsequent-dialogue-when-attempting-to-board-his-ship": [
+      {
+        "npc": "Hey! Did I say you could board my ship?"
+      },
+      {
+        "player": "Oh... sorry."
+      }
+    ],
+    "treasure-trails-easy": [
+      {
+        "npc": "Well done, matey!"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is another clue scroll:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy clue scroll",
+            "id": "BT1L1C"
+          },
+          {
+            "type": "message",
+            "text": "You've found another clue!",
+            "id": "oOBZqW"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Zhj1GJ"
+      },
+      {
+        "type": "condition",
+        "text": "If the reward is a casket:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "an easy reward casket",
+            "id": "jX5ZKB"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "TvbRSS"
+          }
+        ],
+        "id": "NMNdsd"
+      }
+    ]
+  }
+}

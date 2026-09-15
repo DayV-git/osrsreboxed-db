@@ -1,0 +1,201 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "when-spoken-to-for-the-first-time": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to the Friendly Forester near the Nemus Retreat:",
+        "steps": [
+          {
+            "npc": "Greetings, or nilsal, as they say in these parts! Have you come to talk forestry?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "ZR3VeD"
+          }
+        ],
+        "id": "30B9Z6"
+      },
+      {
+        "type": "condition",
+        "text": "If speaking to any other Friendly Forester:",
+        "steps": [
+          {
+            "npc": "Greetings! Have you come to talk forestry?"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "RFKbMQ"
+          }
+        ],
+        "id": "nhRAZq"
+      },
+      {
+        "player": "Forestry?"
+      },
+      {
+        "npc": "That's right! In this day and age, we need those trained in the way of the forester now more than ever!"
+      },
+      {
+        "player": "Way of the forester? What do you mean?"
+      },
+      {
+        "npc": "You know, helping the woodland flourish with your fellow foresters! And of course, drinking plenty of tea to fuel yourself while you do so!"
+      },
+      {
+        "player": "Sounds interesting. How can I get started?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have level 15 Woodcutting:",
+        "steps": [
+          {
+            "npc": "Well, I'd recommend spending some more time in the forests before embarking on your forestry journey. Come back when you can fell a mighty oak!"
+          },
+          {
+            "player": "I'll do that. Thanks for the information."
+          },
+          {
+            "npc": "Good luck out there!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Vl2LET"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has at least level 15 Woodcutting:",
+        "steps": [
+          {
+            "npc": "First, you'll need a forestry kit. Once you have one, all you need to do is chop some trees while you have it on you. The woodland will do the rest!"
+          },
+          {
+            "npc": "Oh, and if you find any anima-infused bark while tending to the forests, I'll gladly trade with you. My shop has all sorts of useful items."
+          },
+          {
+            "player": "That's all rather vague..."
+          },
+          {
+            "npc": "It is, but I find it's better to let the forests do the talking. You'll understand once you get going. Speaking of which, would you like one of those kits now? I have them free of charge in my shop."
+          },
+          {
+            "player": "Yes please."
+          },
+          {
+            "npc": "Excellent!"
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Forestry Shop",
+            "id": "FaD2cb"
+          }
+        ],
+        "id": "EePSne"
+      }
+    ],
+    "standard-dialogue": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "npc": "Hello again! How goes your forestry journey?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I'd like to trade with you.",
+            "steps": [
+              {
+                "player": "I'd like to trade with you."
+              },
+              {
+                "npc": "Of course!"
+              },
+              {
+                "type": "action",
+                "action": "open_interface",
+                "target": "Forestry Shop",
+                "id": "GYTpX3"
+              }
+            ]
+          },
+          {
+            "text": "Could you tell me more about forestry?",
+            "steps": [
+              {
+                "player": "Could you tell me more about forestry?"
+              },
+              {
+                "npc": "It's very simple. All you need is a forestry kit. I have them free of charge in my shop. Once you have one, just chop some trees while you have it on you. The woodland will do the rest!"
+              },
+              {
+                "npc": "Oh, and if you find any anima-infused bark while tending to the forests, I'll gladly trade with you. My shop has all sorts of useful items."
+              },
+              {
+                "npc": "Speaking of which, would you like to trade now?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes please.",
+                    "steps": [
+                      {
+                        "player": "Yes please."
+                      },
+                      {
+                        "npc": "Excellent!"
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_interface",
+                        "target": "Forestry Shop",
+                        "id": "BBzPLv"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm good, thanks.",
+                    "steps": [
+                      {
+                        "player": "I'm good, thanks."
+                      },
+                      {
+                        "npc": "Very well."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Pretty good, thanks.",
+            "steps": [
+              {
+                "player": "Pretty good, thanks."
+              },
+              {
+                "npc": "I'm glad to hear it."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-pheasant-tail-feathers-fox-whistle-or-a-golden-pheasant-egg-on-the-friendly-forester": [
+      {
+        "npc": "I'll happily buy those off you in my shop."
+      }
+    ]
+  }
+}

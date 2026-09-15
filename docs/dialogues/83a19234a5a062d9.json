@@ -1,0 +1,91 @@
+{
+  "steps": [
+    {
+      "player": "Hello."
+    },
+    {
+      "npc": "Hi, what can I get you? We have a range of quality brews."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I'll have a beer please.",
+          "steps": [
+            {
+              "player": "I'll have a beer please."
+            },
+            {
+              "npc": "That'll be two coins."
+            },
+            {
+              "type": "condition",
+              "text": "If the player doesn't have 2 coins:",
+              "steps": [
+                {
+                  "player": "Oh, I don't have enough money with me."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "a4nyKV"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has 2 coins:",
+              "steps": [
+                {
+                  "type": "message",
+                  "text": "The barman gives you a beer in exchange for two coins.",
+                  "id": "rrtfiM"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "LZB3K6"
+            },
+            {
+              "type": "condition",
+              "text": "If the player's inventory is full:",
+              "steps": [
+                {
+                  "player": "Oh, I don't have enough room for one."
+                }
+              ],
+              "id": "SVPDpy"
+            }
+          ]
+        },
+        {
+          "text": "Got any news?",
+          "steps": [
+            {
+              "player": "Got any news?"
+            },
+            {
+              "npc": "Not really, but if you want to see some action, keep an eye on the arena. I've seen some grand battles in my time. Ogres, goblins and even dragons have fought there."
+            },
+            {
+              "npc": "Now, can I get you something?"
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "HvLGZR"
+            }
+          ]
+        },
+        {
+          "text": "I'm good, thanks.",
+          "steps": [
+            {
+              "player": "I'm good, thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "steps": [
+    {
+      "npc": "Do you have any gold ore that you want me to take to the bank in the city?"
+    },
+    {
+      "type": "condition",
+      "text": "If the player has no gold ore:",
+      "steps": [
+        {
+          "player": "I don't have any, I'm afraid."
+        },
+        {
+          "type": "end"
+        }
+      ],
+      "id": "yGIo4X"
+    },
+    {
+      "type": "condition",
+      "text": "If the player has 1 gold ore:",
+      "steps": [
+        {
+          "player": "Well, I have this one piece of ore..."
+        },
+        {
+          "npc": "That wouldn't do you much good, I'm afraid. My minimum fee is one piece of gold ore, there wouldn't be anything left for you."
+        },
+        {
+          "type": "end"
+        }
+      ],
+      "id": "uOjwGE"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yes, please take my gold to the city.",
+          "steps": [
+            {
+              "player": "Yes, please take my gold to the city. I've got [number] pieces of ore right here."
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have sufficient bank space or is an Ultimate Ironman:",
+              "steps": [
+                {
+                  "npc": "Are you sure you have enough space in your bank account for that?"
+                },
+                {
+                  "player": "No, you're right actually, I don't."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "-N8RE3"
+            },
+            {
+              "npc": "Let's see, if I take that to the bank for you, I'd keep [number] for myself and bring [number] to the bank for you. Does that sound fair?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes.",
+                  "steps": [
+                    {
+                      "player": "Yes, it does."
+                    },
+                    {
+                      "npc": "Excellent, it's been good doing business with you! I'll take these to the city with my next shipment."
+                    }
+                  ]
+                },
+                {
+                  "text": "No.",
+                  "steps": [
+                    {
+                      "player": "No, that's far too expensive for me."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "No, I'll hang on to these myself.",
+          "steps": [
+            {
+              "player": "No, I'll hang on to these myself, thanks."
+            }
+          ]
+        },
+        {
+          "text": "[Charm] It all seems a bit expensive, really.",
+          "condition": "If the player is wearing the Ring of Charos(a):",
+          "steps": [
+            {
+              "player": "It all seems a bit expensive, really."
+            },
+            {
+              "npc": "I don't know... it's just what Dondakan told me, if someone wanted me to ship their gold."
+            },
+            {
+              "player": "There's plenty of gold coming from that rock now, surely you can lower the price somewhat?"
+            },
+            {
+              "npc": "Alright. Tell you what, I'll only keep [number] for myself and bring [number] ores to the bank for you. Deal?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Yes.",
+                  "steps": [
+                    {
+                      "player": "Yes, much appreciated."
+                    },
+                    {
+                      "npc": "Excellent, it's been good doing business with you!"
+                    }
+                  ]
+                },
+                {
+                  "text": "No.",
+                  "steps": [
+                    {
+                      "player": "No, I'll hang on to these myself, thanks."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "v3QyPb"
+        }
+      ]
+    }
+  ]
+}

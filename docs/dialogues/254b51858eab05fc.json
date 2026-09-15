@@ -1,0 +1,345 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Human."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Tell me about the Nightmare.",
+            "steps": [
+              {
+                "player": "Tell me about the Nightmare."
+              },
+              {
+                "npc": "From the moment I was born, all I ever knew was the Nightmare. Every night she would feast upon us, filling our minds with horrors beyond comprehension."
+              },
+              {
+                "npc": "By day, our warriors would enter her lair in the caves beneath the island. We could not hope to defeat her, we knew that, but our survival was dependent on ensuring she didn't grow too strong."
+              },
+              {
+                "npc": "Here's the thing though. Even now, we know little about her. Before she claimed them, my parents would sometimes tell me a story of her origin."
+              },
+              {
+                "npc": "They told me of a group of shamans who performed an unknown ritual in the hope of gaining great power. The ritual went wrong, though, and instead, they unleashed the Nightmare on this world."
+              },
+              {
+                "player": "Do you believe the story?"
+              },
+              {
+                "npc": "I'm not sure to be honest. I suppose it doesn't matter though. We'll likely never know her true origin. But as long as we can defeat her, we don't need to."
+              },
+              {
+                "player": "Defeat her? Using the totems?"
+              },
+              {
+                "npc": "Exactly. Thanks to the Nightmare, the caves beneath our home are mostly unexplored. There's all sorts of things down there, provided you're brave enough to enter."
+              },
+              {
+                "npc": "I found the totems deep within the caves. Someone far smarter than you or I had worked out how to make them. But they perished before they could use them against her."
+              },
+              {
+                "npc": "I managed to recover them, and with them, we finally drove her off the island."
+              },
+              {
+                "player": "But she came here."
+              },
+              {
+                "npc": "Yes. And thanks to the Sleeper Plague, she's far stronger than ever before."
+              },
+              {
+                "player": "Do you know where the Sleeper Plague came from?"
+              },
+              {
+                "npc": "No. It was here long before the Nightmare apparently. It resurfaced shortly before she arrived. Probably the work of the vampyres."
+              },
+              {
+                "npc": "Is there anything else you need?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "_BPecC"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about yourself.",
+            "steps": [
+              {
+                "player": "Tell me about yourself."
+              },
+              {
+                "npc": "The name's Shura. I come from an island called Ashihama, in the Pincers."
+              },
+              {
+                "player": "The Pincers?"
+              },
+              {
+                "npc": "It's a group of islands within the Wushanko Isles, a large archipelago to the far east. Over here I think the area is more commonly known as the Eastern Lands."
+              },
+              {
+                "player": "And you're a siren, right?"
+              },
+              {
+                "npc": "That's right. We rarely come this far to the west, the climate is too cold for our tastes. Although while the Nightmare lives, the climate is the least of my worries."
+              },
+              {
+                "npc": "Back home on the other hand, our numbers equal the humans. Sirens live on pretty much every island in the archipelago."
+              },
+              {
+                "player": "So why were you the only one to come here?"
+              },
+              {
+                "npc": "We took up arms against the Nightmare because we had to, not because we wanted to. We are a peaceful race, and most were all too eager to lay down their weapons once the Nightmare was gone."
+              },
+              {
+                "player": "So why didn't you?"
+              },
+              {
+                "npc": "My kind believe in something called Mo Kal. It means that anything bad that could happen, will happen. The others may have forgotten this, but I have not."
+              },
+              {
+                "npc": "The Nightmare may have left my home, but I won't rest until I know for sure that she can never return."
+              },
+              {
+                "npc": "Is there anything else you need?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "Qso4Nl"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any of my items?",
+            "steps": [
+              {
+                "player": "Do you have any of my items?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no items in Shura's collection:",
+                "steps": [
+                  {
+                    "npc": "Doesn't look like it. If I did have any of your items, but you died before collecting them, they'll now be lost."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "A0wHm3"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has items in Shura's collection:",
+                "steps": [
+                  {
+                    "npc": "I do. Try to be more careful with them next time."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Shura's Item Retrieval Service",
+                    "id": "Rxwy2Q"
+                  }
+                ],
+                "id": "HxP-5t"
+              }
+            ]
+          },
+          {
+            "text": "I'd better get going.",
+            "steps": [
+              {
+                "player": "I'd better get going."
+              },
+              {
+                "npc": "Good luck."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-when-trying-to-interact-with-the-nightmare-before-talking-to-her": [
+      {
+        "npc": "Hey! Don't just go poking her without knowing what you're up against. Come talk to me first."
+      },
+      {
+        "type": "action",
+        "text": "The player walks to Shura.",
+        "id": "viauHh"
+      },
+      {
+        "type": "jump",
+        "reference": "continue",
+        "id": "CT8_E0"
+      }
+    ],
+    "standard-dialogue-first-time-talking-to-her": [
+      {
+        "player": "What's going on here?"
+      },
+      {
+        "npc": "Nothing good. This dungeon is tainted and has become the new home of the Nightmare."
+      },
+      {
+        "player": "The Nightmare?"
+      },
+      {
+        "npc": "A being of pure darkness. No living creature is safe from her hunger. She feasts upon her victims while they sleep, draining their energy without even needing to touch them."
+      },
+      {
+        "npc": "Those that she feeds upon experience horrifying nightmares, unlike anything you could possibly imagine. Eventually, they become too weak to even wake. Death claims them soon after."
+      },
+      {
+        "player": "Nightmares? Hence the name?"
+      },
+      {
+        "npc": "Indeed. Our kind are not always the most creative."
+      },
+      {
+        "player": "So how did she end up here?"
+      },
+      {
+        "npc": "For generations, she terrorised the island of Ashihama, my home. I lost a lot of good friends to her. Sometimes, I even thought I would lose myself. For some, the nightmares become too much to bear."
+      },
+      {
+        "npc": "Some of us refused to give in though. Everything has a weakness, including the Nightmare, and eventually we found it. We drove her off the island, but she managed to endure."
+      },
+      {
+        "npc": "The people here are ill, suffering from a deep sleep from which few wake. They call it the Sleeper Plague. The illness made these people easy prey for the Nightmare, so she made this place her new home."
+      },
+      {
+        "player": "And you followed her here?"
+      },
+      {
+        "npc": "While she still exists, my home will never be truly safe. Thanks to the Sleeper Plague, her power has grown faster than it ever did on Ashihama. If she is allowed to grow too strong, there won't be any way to stop her."
+      },
+      {
+        "npc": "I've managed to contain her within this section of the dungeon. She has no desire to leave for the moment. She has no need to, after all."
+      },
+      {
+        "npc": "But make no mistake, I won't be able to stop her if she decides to move on."
+      },
+      {
+        "player": "She doesn't look too dangerous at the moment."
+      },
+      {
+        "npc": "Looks can be deceiving. The battle with the Nightmare is a mental one, not a physical one. If you try to take her on, she will pull you into her dream - one where she makes the rules."
+      },
+      {
+        "player": "But if it's a dream, how can it be dangerous?"
+      },
+      {
+        "npc": "It's her dream, not yours. Dying in her dream will destroy your mind, killing you in this world as well."
+      },
+      {
+        "player": "Sounds lovely. So how can we stop her?"
+      },
+      {
+        "npc": "If you're willing to help, enter her dream and fight to keep her at bay. Our only hope is to prevent her from growing too strong."
+      },
+      {
+        "npc": "You can go in alone, but I wouldn't recommend it. The more support you have, the better your chances."
+      },
+      {
+        "player": "How do I keep her at bay?"
+      },
+      {
+        "npc": "There are four totems in the area that can be used to harm her. First, you'll need to take down her shield for the totems to have an effect. Once her shield is down, use your energy to charge up the totems."
+      },
+      {
+        "npc": "She won't sit about while you do this though, so you'll need to take care if you want to survive."
+      },
+      {
+        "player": "And what's in it for me if I do survive?"
+      },
+      {
+        "npc": "You mean apart from saving the world? She's claimed many victims over the years. I'm sure she's claimed many items as well. Maybe some of them will be of value to you."
+      },
+      {
+        "player": "Works for me. I'd better get started then."
+      },
+      {
+        "npc": "Good luck. Return to me if you need more information."
+      }
+    ],
+    "standard-dialogue-right-click-collect": [
+      {
+        "type": "condition",
+        "text": "If the player has no items in Shura's collection:",
+        "steps": [
+          {
+            "npc": "Sorry, but I don't have anything for you. If I did have any of your items, but you died before collecting them, they'll now be lost."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "OI955X"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has items in Shura's collection:",
+        "steps": [
+          {
+            "npc": "I do. Try to be more careful with them next time."
+          },
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Shura's Item Retrieval Service",
+            "id": "UBvwGg"
+          }
+        ],
+        "id": "udmVIq"
+      },
+      {
+        "type": "condition",
+        "text": "If Sister Senga has items in their collection and Shura doesn't:",
+        "steps": [
+          {
+            "npc": "I think Sister Senga has your possessions instead, actually."
+          }
+        ],
+        "id": "i8ULxj"
+      }
+    ],
+    "interacting-with-the-nightmare-with-items-in-shura-s-item-retrieval-service": [
+      {
+        "npc": "Hey! I have some of your things. You should come get them before fighting the Nightmare."
+      },
+      {
+        "type": "choice",
+        "prompt": "Shura has some of your items. Are you sure you wish to begin?",
+        "options": [
+          {
+            "text": "Yes.",
+            "steps": [
+              {
+                "type": "message",
+                "text": "The Nightmare pulls you into her dream as you approach her.",
+                "id": "-C9gW2"
+              },
+              {
+                "type": "action",
+                "text": "The player is pulled into the Nightmare's dream.",
+                "id": "8vrwVr"
+              }
+            ]
+          },
+          {
+            "text": "No.",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

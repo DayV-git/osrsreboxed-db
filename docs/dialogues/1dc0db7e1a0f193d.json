@@ -1,0 +1,321 @@
+{
+  "steps": [
+    {
+      "npc": "Greetings. Welcome to my castle."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I seek a shield that will protect me from dragonbreath.",
+          "condition": "If the player does not have an anti-dragon shield:",
+          "steps": [
+            {
+              "player": "I seek a shield that will protect me from dragonbreath."
+            },
+            {
+              "npc": "A knight going on a dragon quest, hmm? What dragon do you intend to slay?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Elvarg, the dragon of Crandor island!",
+                  "condition": "During Dragon Slayer I:",
+                  "steps": [
+                    {
+                      "player": "Elvarg, the dragon of Crandor island!"
+                    },
+                    {
+                      "npc": "Elvarg? Are you sure?"
+                    },
+                    {
+                      "type": "choice",
+                      "prompt": "Well, are you sure?",
+                      "options": [
+                        {
+                          "text": "Yes.",
+                          "steps": [
+                            {
+                              "player": "Yes."
+                            },
+                            {
+                              "npc": "Well, you're a braver [man/woman] than I!"
+                            },
+                            {
+                              "player": "Why is everyone so scared of this dragon?"
+                            },
+                            {
+                              "npc": "Back in my father's day, Crandor was an important city-state. Politically it was as important as Falador and Varrock and its ships traded with every port."
+                            },
+                            {
+                              "npc": "But, one day, when I was little, all contact was lost. The trading ships and the diplomatic envoys just stopped coming."
+                            },
+                            {
+                              "npc": "I remember my father being very scared. He posted lookouts on the roof to warn if the dragon was approaching. All the city rulers worried that Elvarg would devastate the whole continent."
+                            },
+                            {
+                              "type": "choice",
+                              "options": [
+                                {
+                                  "text": "I'd better leave that dragon alone.",
+                                  "steps": [
+                                    {
+                                      "player": "I'd better leave that dragon alone."
+                                    },
+                                    {
+                                      "npc": "That's a relief. I would hate to see such a promising adventurer cut down in [his/her] prime."
+                                    }
+                                  ]
+                                },
+                                {
+                                  "text": "So, are you going to give me the shield or not?",
+                                  "steps": [
+                                    {
+                                      "player": "So, are you going to give me the shield or not?"
+                                    },
+                                    {
+                                      "npc": "If you really think you're up to it then perhaps you are the one who can kill this dragon."
+                                    },
+                                    {
+                                      "type": "message",
+                                      "text": "The Duke hands you a heavy orange shield.",
+                                      "id": "LnbjYr"
+                                    },
+                                    {
+                                      "type": "action",
+                                      "action": "receive",
+                                      "text": "Anti-dragon shield",
+                                      "id": "igRDii"
+                                    },
+                                    {
+                                      "npc": "Take care out there. If you kill it..."
+                                    },
+                                    {
+                                      "npc": "If you kill it, for Saradomin's sake make sure it's really dead!"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "text": "No.",
+                          "steps": [
+                            {
+                              "npc": "Very wise. There are some monsters that are best left alone."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "id": "7GKyg9"
+                },
+                {
+                  "text": "Oh, no dragon in particular",
+                  "steps": [
+                    {
+                      "player": "Oh, no dragon in particular. I just feel like killing a dragon."
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has not finished Dragon Slayer I:",
+                      "steps": [
+                        {
+                          "npc": "I don't have an infinite supply of these shields, you know. I'll only give one for a truly worthy cause."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ],
+                      "id": "zHKrL2"
+                    },
+                    {
+                      "type": "condition",
+                      "text": "If the player has finished Dragon Slayer I:",
+                      "steps": [
+                        {
+                          "player": "Oh, no dragon in particular. I just feel like killing a dragon."
+                        },
+                        {
+                          "npc": "Of course. Now you've slain Elvarg, you've earned the right to call the shield your own!"
+                        },
+                        {
+                          "type": "message",
+                          "text": "The Duke hands you the shield.",
+                          "id": "if_uB3"
+                        },
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "Anti-dragon shield",
+                          "id": "emj6I8"
+                        }
+                      ],
+                      "id": "MzcOcB"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "agw5vr"
+        },
+        {
+          "text": "Have you any quests for me?",
+          "steps": [
+            {
+              "player": "Have you any quests for me?"
+            },
+            {
+              "type": "condition",
+              "text": "Before starting the Rune Mysteries quest.",
+              "steps": [
+                {
+                  "npc": "Well, it's not really a quest but I recently discovered this strange talisman."
+                },
+                {
+                  "npc": "It seems to be mystical and I have never seen anything like it before. Would you take it to the head wizard at"
+                },
+                {
+                  "npc": "the Wizards' Tower for me? It's just south-west of here and should not take you very long at all. I would be awfully grateful."
+                },
+                {
+                  "type": "choice",
+                  "options": [
+                    {
+                      "text": "Yes.",
+                      "steps": [
+                        {
+                          "player": "Sure, no problem."
+                        },
+                        {
+                          "npc": "Thank you very much, stranger. I am sure the head wizard will reward you for such an interesting find."
+                        },
+                        {
+                          "type": "action",
+                          "action": "receive",
+                          "text": "air talisman",
+                          "id": "mej1XH"
+                        },
+                        {
+                          "type": "message",
+                          "text": "The Duke shows you a talisman.",
+                          "id": "JjanrH"
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "No.",
+                      "steps": [
+                        {
+                          "player": "Not right now."
+                        },
+                        {
+                          "npc": "As you wish, stranger, although I have this strange feeling that it is important. Unfortunately, I cannot leave my castle unattended."
+                        },
+                        {
+                          "type": "end"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "1Xm1Mf"
+            },
+            {
+              "type": "action",
+              "text": "After starting the Rune Mysteries quest and still having the talisman.",
+              "steps": [
+                {
+                  "npc": "The only task remotely approaching a quest is the delivery of that talisman I gave you to the head wizard of the Wizards' Tower,"
+                },
+                {
+                  "npc": "south-west of here. I suggest you deliver it to him as soon as possible. I have the oddest feeling that it is important..."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "Cz-xNJ"
+            },
+            {
+              "type": "action",
+              "text": "After starting the Rune Mysteries quest and having lost the talisman.",
+              "steps": [
+                {
+                  "npc": "Did you speak to the head wizard for me yet, adventurer?"
+                },
+                {
+                  "player": "No, I lost that air talisman that you gave me."
+                },
+                {
+                  "npc": "Ah, that would explain it. One of my servants found this outside, and it seemed too much of a coincidence that more than one strange"
+                },
+                {
+                  "npc": "object would appear on my land in such a short period of time. Please take this to the head wizard at the Wizards' Tower, south-west of here, and don't lose it this time."
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "air talisman",
+                  "id": "RL8KFj"
+                },
+                {
+                  "type": "message",
+                  "text": "The Duke hands you the talisman.",
+                  "id": "_k1BJr"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "3RS_bB"
+            },
+            {
+              "type": "action",
+              "text": "After giving the talisman to Sedridor.",
+              "id": "KISUz1"
+            },
+            {
+              "type": "action",
+              "text": "After starting the Rune Mysteries quest and having the Research package.",
+              "steps": [
+                {
+                  "npc": "The only job I had was the delivery of that talisman, so I'm afraid not."
+                },
+                {
+                  "type": "end"
+                },
+                {
+                  "npc": "No, all is well for me."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "VAZRgi"
+            }
+          ]
+        },
+        {
+          "text": "Where can I find money?",
+          "steps": [
+            {
+              "player": "Where can I find money?"
+            },
+            {
+              "npc": "I've heard that the blacksmiths are prosperous amongst the peasantry. Maybe you could try your hand at that?"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

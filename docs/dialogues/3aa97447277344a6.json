@@ -1,0 +1,2727 @@
+{
+  "default": null,
+  "variants": {
+    "xerna-s-stolen-diadem-inpecting-the-empty-display": [
+      {
+        "type": "condition",
+        "text": "If the player does not meet the quest requirements:",
+        "steps": [
+          {
+            "player": "A high price? That'll be nice for whoever can figure it out..."
+          },
+          {
+            "type": "message",
+            "text": "You do not meet all of the requirements to start the Ethically Acquired Antiquities quest.",
+            "id": "jJSphm"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "CAzpP4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player meets the quest requirements:",
+        "steps": [
+          {
+            "player": "A high price? I guess I am somewhat of an expert on finding things for museums..."
+          },
+          {
+            "type": "choice",
+            "prompt": "Start the Ethically Acquired Antiquities quest?",
+            "options": [
+              {
+                "text": "Yes.",
+                "steps": [
+                  {
+                    "player": "Maybe I should talk to the curator to find out some more."
+                  }
+                ],
+                "hook": "quest:ethically-acquired-antiquities:start",
+                "quest": "Ethically Acquired Antiquities"
+              },
+              {
+                "text": "No.",
+                "steps": [
+                  {
+                    "player": "But this will have to be a job for another time."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "MBl5US"
+      }
+    ],
+    "xerna-s-stolen-diadem-talking-to-curator-herminius": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Herminius",
+        "text": "Nilsal to you, iknami. Welcome to the Grand Museum. I hope your visit is a pleasant one. If you have any questions about Varlamore, I'm happy to help."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you tell me more about the early history of Varlamore?"
+          },
+          {
+            "text": "Could you tell me more about religion in Varlamore?"
+          },
+          {
+            "text": "Could you tell me more about Varlamore's recent history?"
+          },
+          {
+            "text": "Could you tell me more about that empty display?",
+            "steps": [
+              {
+                "player": "Could you tell me more about that empty display?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "Oh yes, Xerna's Diadem... Quite a shame, isn't it? Do you know anything about it?"
+              },
+              {
+                "player": "I'm afraid not, but maybe I can help find it? I have managed to return stolen property to museums in the past."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "That would certainly be most appreciated. The local guards said they'd investigate for us, but it's not proven to be a fast process so far."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "I was starting to consider trying to find it myself, but I'm no detective. It doesn't seem to me like anything else is even out of place..."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "Perhaps you'll have better luck though. Maybe you could have a look around for any sort of clues and see if you can find anything wrong."
+              },
+              {
+                "player": "I'll do that. Hopefully I can find something!"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "Thank you, iknami."
+              }
+            ]
+          },
+          {
+            "text": "Thanks. If I have any questions, I'll be sure to ask."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-curator-herminius": [
+      {
+        "type": "line",
+        "speaker": "Curator Herminius",
+        "text": "Nilsal to you, iknami. Welcome back to the Grand Museum. If you have any questions, I'm happy to help."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you tell me more about the early history of Varlamore?"
+          },
+          {
+            "text": "Could you tell me more about religion in Varlamore?"
+          },
+          {
+            "text": "Could you tell me more about Varlamore's recent history?"
+          },
+          {
+            "text": "About that empty display...",
+            "steps": [
+              {
+                "player": "About that empty display..."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "How are you getting on with your investigation?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not finished investigating:",
+                "steps": [
+                  {
+                    "player": "Not so well. I've not made much progress yet."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Herminius",
+                    "text": "Well, you have our thanks for all your efforts in finding it. Thank you, iknami."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Qeeq6m"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has learned about the suspicious person:",
+                "steps": [
+                  {
+                    "player": "Apparently someone was acting a bit odd around here recently. They left and headed towards the quetzals."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Herminius",
+                    "text": "It sounds like you have a lead, iknami. You should follow it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "UWPNbs"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has talking to Regulus Cento:",
+                "steps": [
+                  {
+                    "player": "Well, it's looking like it could be quite the journey... I'll keep you updated!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Herminius",
+                    "text": "Well, you have our thanks for all your efforts in finding it. Thank you, iknami."
+                  }
+                ],
+                "id": "SsFS8H"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has found Xerna's Diadem:",
+                "steps": [
+                  {
+                    "player": "I just know I've almost got it! We'll have the diadem back in no time!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Herminius",
+                    "text": "Well, you have our thanks for all your efforts in finding it. Thank you, iknami."
+                  }
+                ],
+                "id": "WPK1ZO"
+              }
+            ]
+          },
+          {
+            "text": "Thanks. If I have any questions, I'll be sure to ask."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-investigating-the-tools-on-ground": [
+      {
+        "type": "message",
+        "text": "Some specialist tools have been left on the ground. Presumably they were used for no good.",
+        "id": "tNweU6"
+      }
+    ],
+    "clues-in-civitas-illa-fortis-inpecting-the-empty-display-once-more": [
+      {
+        "type": "message",
+        "text": "On closer inspection, the glass does appear to have been tampered with. It looks like the work of an expert.",
+        "id": "Qqjtag"
+      },
+      {
+        "player": "I don't think I'm going to find much more just lying around... Maybe I should try asking if anyone nearby saw anything."
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-an-academic-citizen-or-tourist-that-didn-t-see-anything": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Academic",
+        "text": "Nilsal! Can I help you?"
+      },
+      {
+        "player": "I was wondering if you'd seen anything unusual around the museum lately?"
+      },
+      {
+        "type": "random",
+        "options": []
+      },
+      {
+        "type": "unavailable",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Academic",
+            "text": "No, I don't think so..."
+          },
+          {
+            "player": "That's a shame. Well, thanks for your help."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "YULuAF"
+      },
+      {
+        "type": "unavailable",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Citizen",
+            "text": "What sort of unusual?"
+          },
+          {
+            "player": "I'm looking into the missing diadem display."
+          },
+          {
+            "type": "line",
+            "speaker": "Citizen",
+            "text": "Oh... Sorry, but I don't think I can be much help."
+          },
+          {
+            "player": "Well, thanks anyway."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "BBOzW9"
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-a-tourist": [
+      {
+        "player": "Hello there."
+      },
+      {
+        "type": "line",
+        "speaker": "Tourist",
+        "text": "Hi! Can I help you?"
+      },
+      {
+        "player": "I was wondering if you'd seen anything unusual around the museum lately?"
+      },
+      {
+        "type": "line",
+        "speaker": "Tourist",
+        "text": "Now you mention it, I did see somebody skulking around here recently... I thought they looked a little shifty at the time!"
+      },
+      {
+        "player": "You did? Do you know where they went?"
+      },
+      {
+        "type": "condition",
+        "text": "If the correct NPC was a citizen:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Citizen",
+            "text": "They left through the front door and turned right, towards the quetzal landing site."
+          },
+          {
+            "player": "Thanks!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ZSVQQP"
+      },
+      {
+        "type": "condition",
+        "text": "If the correct NPC was a tourist:",
+        "steps": [
+          {
+            "type": "line",
+            "speaker": "Tourist",
+            "text": "They left through the front door and turned right, towards where they have those big birds."
+          },
+          {
+            "player": "Ah that'll be the quetzals. Thanks!"
+          },
+          {
+            "type": "line",
+            "speaker": "Tourist",
+            "text": "Quetzals? You learn something new every day!"
+          }
+        ],
+        "id": "HBhK3a"
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-regulus-cento": [
+      {
+        "type": "line",
+        "speaker": "Regulus Cento",
+        "text": "Nilsal, adventurer. Do you wish to return to Varrock?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please."
+          },
+          {
+            "text": "Have you seen anybody suspicious around?",
+            "steps": [
+              {
+                "player": "Have you seen anybody suspicious around?"
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "What kind of suspicious?"
+              },
+              {
+                "player": "Maybe someone carrying something out of the museum, perhaps?"
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "Well let's see... Come to think of it, there was this one person carrying some sort of case..."
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "He came along and asked if he could have a go with my bird."
+              },
+              {
+                "player": "He asked if he could have a go with your bird?"
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "Yes, I thought it was quite strange. I told him no, and he made his way east, towards the Cothon."
+              },
+              {
+                "player": "To the Cothon... Okay, I guess I'll go and see if I can find some more leads there. Thanks for the help!"
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "Safe travels, iknami."
+              }
+            ]
+          },
+          {
+            "text": "I'd like to change Renu's appearance."
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-regulus-cento-again": [
+      {
+        "type": "line",
+        "speaker": "Regulus Cento",
+        "text": "Nilsal, adventurer. Do you wish to return to Varrock?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please."
+          },
+          {
+            "text": "Have you seen anybody suspicious around?",
+            "steps": [
+              {
+                "player": "Have you seen anybody suspicious around?"
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "Just that man I already told you about. He headed east, towards the Cothon."
+              },
+              {
+                "player": "Ah, yes. Thanks for the help!"
+              },
+              {
+                "type": "line",
+                "speaker": "Regulus Cento",
+                "text": "Safe travels, iknami."
+              }
+            ]
+          },
+          {
+            "text": "I'd like to change Renu's appearance."
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-a-trader-crewmember": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?"
+          },
+          {
+            "text": "Yes, I would like to charter a ship."
+          },
+          {
+            "text": "Have you seen a man with a case?",
+            "steps": [
+              {
+                "player": "Have you seen a man with a case?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Why do you want to know?"
+              },
+              {
+                "player": "Well, I'm looking for something and I think he might have it..."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "I don't think people would really like us talking all about their travels..."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Although, we could use a hand... Think you could do us a small favour?"
+              },
+              {
+                "type": "choice",
+                "options": []
+              },
+              {
+                "type": "condition",
+                "text": "If the player hasn't completed One Small Favour:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sure. What do you need?",
+                        "steps": [
+                          {
+                            "player": "Sure. What do you need?"
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "duCd6b"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "LgTVfY"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed One Small Favour:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "As long as it is just the one favour...",
+                        "steps": [
+                          {
+                            "player": "As long as it is just the one favour..."
+                          },
+                          {
+                            "type": "jump",
+                            "reference": "continues",
+                            "id": "uNFa9J"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Trader Crewmember",
+                    "text": "We've been meaning to get our old sails stitched up, but haven't had a chance to get away and have it done..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Trader Crewmember",
+                    "text": "Hard to believe that Trader Stan had these clothes enchanted to re-stitch themselves so we can't ruin them, but the sails were too much to ask for! Some people's priorities, huh?"
+                  },
+                  {
+                    "player": "I suppose I can help with that."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Trader Crewmember",
+                    "text": "Perfect! There's a crafting store just down the road. They should be able to fix them up."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's inventory is full:",
+                    "steps": [
+                      {
+                        "player": "Actually, I might need to make some space before I can take them."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "1yeeSP"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has room in their inventory:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "The trader hands you some old tattered sails.",
+                        "id": "1wx5TB"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "bnZg2R"
+                  }
+                ],
+                "id": "Vr0XnM"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Not right now.",
+                    "steps": [
+                      {
+                        "player": "Not right now."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Trader Crewmember",
+                        "text": "Then I don't know anything about a man with a case."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-a-trader-crewmember-after-declining-doing-the-favour": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?"
+          },
+          {
+            "text": "Yes, I would like to charter a ship."
+          },
+          {
+            "text": "Have you seen a man with a case?",
+            "steps": [
+              {
+                "player": "Have you seen a man with a case?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "That depends. Are you ready to take us up on that favour?"
+              },
+              {
+                "type": "choice",
+                "options": []
+              },
+              {
+                "type": "condition",
+                "text": "If the player hasn't completed One Small Favour:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Sure. What do you need?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "6qr6Mw"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "jVFeXW"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed One Small Favour:",
+                "steps": [
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "As long as it is just the one favour...",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "oGeunj"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "wQ6LNT"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "yJ-qAW"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Not right now."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-trader-crewmember-after-agreeing-to-the-favour": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?"
+          },
+          {
+            "text": "Yes, I would like to charter a ship."
+          },
+          {
+            "text": "So, about that man with the case.",
+            "steps": [
+              {
+                "player": "So, about that man with the case."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Oh, yeah. You're meant to be getting our sails fixed up, right?"
+              },
+              {
+                "type": "condition",
+                "text": "The player has the sails:",
+                "steps": [
+                  {
+                    "player": "Where was it that I should get them fixed?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Trader Crewmember",
+                    "text": "That crafting store just down the road."
+                  },
+                  {
+                    "player": "Thanks."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "t_CApx"
+              },
+              {
+                "type": "condition",
+                "text": "The player lost the sails:",
+                "steps": [
+                  {
+                    "player": "I am, but I may have misplaced them..."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Trader Crewmember",
+                    "text": "You misplaced them right here. Here you go."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The trader hands you some old tattered sails.",
+                    "id": "-1DZ27"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "QbESwT"
+              },
+              {
+                "type": "condition",
+                "text": "The player's inventory is full:",
+                "steps": [
+                  {
+                    "player": "I am, but I think I might need to make some space before I can take them."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Y9Jo6i"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory was full when they would've first been given the sails:",
+                "steps": [
+                  {
+                    "player": "I am. Could I grab them now?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Trader Crewmember",
+                    "text": "Alright, here you go."
+                  },
+                  {
+                    "type": "message",
+                    "text": "The trader hands you some old tattered sails.",
+                    "id": "123zW4"
+                  }
+                ],
+                "id": "jcDmva"
+              }
+            ]
+          },
+          {
+            "text": "Not right now."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-artima": [
+      {
+        "type": "line",
+        "speaker": "Artima",
+        "text": "Nilsal. Here to do some crafting? I've got some supplies that might help you if so."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you have?"
+          },
+          {
+            "text": "I was hoping for some help.",
+            "steps": [
+              {
+                "player": "I was hoping for some help."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "What sort of help?"
+              },
+              {
+                "player": "I've got these sails that need fixing up for the charter ship in the Cothon. The crew thought you could help."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "Oh, in that case, I'll help you out, just so long as you can do me a small favour."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Go on then.",
+                    "steps": [
+                      {
+                        "player": "Go on then."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artima",
+                        "text": "All I ask is that you tell the charter crew that Artima says thanks for the latest shipment they brought in!"
+                      },
+                      {
+                        "player": "Oh, what a relief! I will be sure to pass on the message when I get back there."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artima",
+                        "text": "Perfect. Now hand those sails over."
+                      },
+                      {
+                        "player": "Here you go."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artima",
+                        "text": "Let's see... Thread that through there..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artima",
+                        "text": "Grab some of that, then pull that through..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artima",
+                        "text": "Tie off the end there and..."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artima",
+                        "text": "There we have it! They might not look the prettiest, but they'll be sturdy enough for the job at least."
+                      },
+                      {
+                        "type": "message",
+                        "text": "Artima has repaired the sails for you.",
+                        "id": "92E3NZ"
+                      },
+                      {
+                        "player": "Thanks!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artima",
+                        "text": "Take care now iknami, and come by the shop whenever you need any crafting bits and bobs."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Maybe later.",
+                    "steps": [
+                      {
+                        "player": "Maybe later."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Artima",
+                        "text": "Suit yourself, but those sails won't fix themselves you know."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Just passing through, thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-artima-after-declining-doing-the-favour": [
+      {
+        "type": "line",
+        "speaker": "Artima",
+        "text": "Nilsal. Here to do some crafting? I've got some supplies that might help you if so."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you have?"
+          },
+          {
+            "text": "So about those sails...",
+            "steps": [
+              {
+                "player": "So about those sails..."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "Are you ready to do that small favour I mentioned?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Go on then.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "C6MSua"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Maybe later.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "jTFX46"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Just passing through, thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-artima-after-losing-the-repaired-sails": [
+      {
+        "type": "line",
+        "speaker": "Artima",
+        "text": "Nilsal. Here to do some crafting? I've got some supplies that might help you if so."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What do you have?"
+          },
+          {
+            "text": "So about those sails...",
+            "steps": [
+              {
+                "player": "So about those sails..."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "I already fixed them for you."
+              },
+              {
+                "player": "You did, but then I lost them."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "Well, I'd be able to fix more if you had more."
+              },
+              {
+                "player": "Luckily I do. Here you go."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "Let's see... Thread that through there..."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "Grab some of that, then pull that through..."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "Tie off the end there and..."
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "There we have it! They might not look the prettiest, but they'll be sturdy enough for the job at least."
+              },
+              {
+                "type": "message",
+                "text": "Artima has repaired the sails for you.",
+                "id": "6yZD0M"
+              },
+              {
+                "player": "Thanks!"
+              },
+              {
+                "type": "line",
+                "speaker": "Artima",
+                "text": "Take care now iknami, and come by the shop whenever you need any crafting bits and bobs."
+              }
+            ]
+          },
+          {
+            "text": "Just passing through, thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-a-trader-crewmember-with-the-sails": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?"
+          },
+          {
+            "text": "Yes, I would like to charter a ship."
+          },
+          {
+            "text": "So, about that man with the case.",
+            "steps": [
+              {
+                "player": "So, about that man with the case."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Oh, yeah. You're meant to be getting our sails fixed up, right?"
+              },
+              {
+                "player": "Here they are!"
+              },
+              {
+                "type": "message",
+                "text": "You hand the newly fixed sails over to the trader.",
+                "id": "7Wg9ig"
+              },
+              {
+                "player": "Oh, and Artima said thanks for the latest shipment."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "That's great! Always nice to hear from a happy customer!"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Anyway, the man with the case. Grey-haired fella, right? Yeah, he came by. Asked if he could have a go with our boat. Told him that's not really how this works."
+              },
+              {
+                "player": "And then what? Where did he go?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Well, we explained how it does work and he then asked us to take him to Port Sarim..."
+              },
+              {
+                "player": "Port Sarim? I see... Thanks."
+              }
+            ]
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-civitas-illa-fortis-talking-to-a-trader-crewmember-after-having-returned-the-sails": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?"
+          },
+          {
+            "text": "Yes, I would like to charter a ship."
+          },
+          {
+            "text": "So, about that man with the case.",
+            "steps": [
+              {
+                "player": "So, about that man with the case."
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Oh, yeah. Grey-haired fella, right? Yeah, he came by. Asked if he could have a go with our boat. Told him that's now how this works."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "n9i26i"
+              }
+            ]
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-port-sarim-talking-to-a-trader-crewmember-in-port-sarim": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?"
+          },
+          {
+            "text": "Yes, I would like to charter a ship."
+          },
+          {
+            "text": "Have you seen a grey-haired man with a case?",
+            "steps": [
+              {
+                "player": "Have you seen a grey-haired man with a case?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Yeah, I know the one. Came all the way from Fortis, right?"
+              },
+              {
+                "player": "That's right! Do you know where he went?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "Wandered up north, I think. Said something about trying to get hold of some runes."
+              },
+              {
+                "player": "I see... Thanks for the help!"
+              }
+            ]
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-port-sarim-talking-to-a-trader-crewmember-in-port-sarim-again": [
+      {
+        "type": "line",
+        "speaker": "Trader Crewmember",
+        "text": "Can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, who are you?"
+          },
+          {
+            "text": "Yes, I would like to charter a ship."
+          },
+          {
+            "text": "Have you seen a grey-haired man with a case?",
+            "steps": [
+              {
+                "player": "Have you seen a grey-haired man with a case?"
+              },
+              {
+                "type": "line",
+                "speaker": "Trader Crewmember",
+                "text": "The one from Fortis? He wandered up north, I think. Said something about trying to get hold of some runes."
+              },
+              {
+                "player": "I see... Thanks for the help!"
+              }
+            ]
+          },
+          {
+            "text": "No thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-port-sarim-talking-to-betty": [
+      {
+        "type": "line",
+        "speaker": "Betty",
+        "text": "Hello again. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I see your wares?"
+          },
+          {
+            "text": "Have you seen a grey-haired man with a case?",
+            "steps": [
+              {
+                "player": "Have you seen a grey-haired man with a case?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "Oh, the one with the monocle? Yes, he did come in."
+              },
+              {
+                "player": "Let me guess, he asked if he could have a go with your runes?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "What? What does that even mean?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "No, he came in looking to buy some runes, but he didn't really know what he was looking for."
+              },
+              {
+                "player": "Where did he go?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "I don't know. He took a look at my stock, but didn't see what he wanted. He then left."
+              },
+              {
+                "player": "Have you got any idea what runes he was looking for?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "I did take some notes. It was driving me crazy trying to make sense of it!"
+              },
+              {
+                "player": "Could I take a look?"
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "Be my guest! Good luck making sense of them."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has room in their inventory:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Betty hands you the notes that she'd taken about the strange rune order.",
+                    "id": "zLd3nC"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "94fUqn"
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "player": "Oh... I'd better free up some space first."
+                  }
+                ],
+                "id": "2mcH7X"
+              }
+            ]
+          },
+          {
+            "text": "Could I buy some more pink dye?"
+          },
+          {
+            "text": "I'm good, thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-port-sarim-talking-to-betty-again": [
+      {
+        "type": "line",
+        "speaker": "Betty",
+        "text": "Hello again. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I see your wares?"
+          },
+          {
+            "text": "About those notes...",
+            "steps": [
+              {
+                "player": "About those notes..."
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "What about them?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the notes:",
+                "steps": [
+                  {
+                    "player": "Do you have any idea what he was hoping to do with the runes?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Betty",
+                    "text": "Not a clue. Maybe you can figure out what he was trying to cast."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "zMEiLB"
+              },
+              {
+                "type": "condition",
+                "text": "If the player lost the notes:",
+                "steps": [
+                  {
+                    "player": "Could I take another look at them?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Betty",
+                    "text": "Be my guest! Good luck making sense of them."
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player has room in their inventory:",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "Betty hands you the notes that she'd taken about the strange rune order.",
+                        "id": "9CiLQ7"
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ],
+                    "id": "pVAcnS"
+                  },
+                  {
+                    "type": "condition",
+                    "text": "If the player's inventory is full:",
+                    "steps": [
+                      {
+                        "player": "Oh... I'd better free up some space first."
+                      }
+                    ],
+                    "id": "4TczKs"
+                  }
+                ],
+                "id": "HItAxB"
+              }
+            ]
+          },
+          {
+            "text": "Could I buy some more pink dye?"
+          },
+          {
+            "text": "I'm good, thanks."
+          }
+        ]
+      }
+    ],
+    "clues-in-port-sarim-inspecting-betty-s-notes-for-the-first-time": [
+      {
+        "player": "What could this mean?"
+      }
+    ],
+    "clues-in-port-sarim-talking-to-betty-again-after-visiting-curator-haig-halen": [
+      {
+        "type": "line",
+        "speaker": "Betty",
+        "text": "Hello again. What can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Can I see your wares?"
+          },
+          {
+            "text": "I managed to decipher those notes.",
+            "steps": [
+              {
+                "player": "I managed to decipher those notes."
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "Oh really? Please do tell. It's been driving me crazy!"
+              },
+              {
+                "player": "It seems like he was trying to find the runes for the Varrock teleport spell."
+              },
+              {
+                "type": "line",
+                "speaker": "Betty",
+                "text": "Ah, of course. I'm not sure how I didn't figure that out!"
+              }
+            ]
+          },
+          {
+            "text": "Could I buy some more pink dye?"
+          },
+          {
+            "text": "I'm good, thanks."
+          }
+        ]
+      }
+    ],
+    "in-varrock-museum-talking-to-curtor-haig-halen": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island."
+          },
+          {
+            "text": "I'm looking for Xerna's Diadem.",
+            "steps": [
+              {
+                "player": "I'm looking for Xerna's Diadem."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Xerna's Diadem? How did you-"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Er... How did you come to hear about that? It's not something you hear of much around these parts!"
+              },
+              {
+                "player": "Well, it's missing from the Grand Museum in Fortis. I was hoping to try and find it..."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "What awful news! I'm not sure I can help you with that, though..."
+              },
+              {
+                "player": "Okay, if you say so..."
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?"
+          },
+          {
+            "text": "Do you know where I could find any treasure?"
+          },
+          {
+            "text": "How do I get a medallion?"
+          }
+        ]
+      }
+    ],
+    "in-varrock-museum-talking-to-curtor-haig-halen-talking-to-haig-again": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island."
+          },
+          {
+            "text": "I'm looking for Xerna's Diadem.",
+            "steps": [
+              {
+                "player": "I'm looking for Xerna's Diadem."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Yes, awful news! I do hope you manage to find it!"
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?"
+          },
+          {
+            "text": "Do you know where I could find any treasure?"
+          },
+          {
+            "text": "How do I get a medallion?"
+          }
+        ]
+      }
+    ],
+    "in-varrock-museum-pickpocketing-curator-haig-halen": [
+      {
+        "type": "message",
+        "text": "You pick the curator's pocket and steal a key.",
+        "id": "azipeA"
+      }
+    ],
+    "in-varrock-museum-searching-the-crate": [
+      {
+        "type": "message",
+        "text": "You search through the crate and find Xerna's Diadem, along with various other artefacts that don't seem to belong here.",
+        "id": "XVW4Mv"
+      },
+      {
+        "player": "Well what do we have here? I wonder what our local curator has to say about this..."
+      }
+    ],
+    "in-varrock-museum-searching-the-two-crates": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You search through the crates and find some sort of a wooden shield. It has an engraving: 'Property of Tai Bwo Wannai.'",
+                "id": "1W8l53"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You search through the crates and find a book. Inside the cover is a stamp: 'Belongs to the Arceuus Library.'",
+                "id": "0C4MaW"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You search through the crates and find a discarded label: 'Property of the Outpost. Contact Jorral if lost.'",
+                "id": "JE_uG4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "in-varrock-museum-talking-to-curator-haig-halen-after-finding-the-diadem": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island."
+          },
+          {
+            "text": "I found Xerna's Diadem...",
+            "steps": [
+              {
+                "player": "I found Xerna's Diadem..."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Ah..."
+              },
+              {
+                "type": "action",
+                "text": "Cutscene starts, focusing on the curator.",
+                "id": "X-XWP3"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "So you found the diadem? That's... Er... That's wonderful news!"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "I'm sure that the Grand Museum will be thrilled to hear it."
+              },
+              {
+                "player": "Do you know where I found it?"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "I... No, why would I?"
+              },
+              {
+                "player": "Be honest with me, curator!"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "I don't know what you're talking about!"
+              },
+              {
+                "player": "You can't just steal artefacts and claim them as your own for the museum!"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "Steal?! I would never! You need to get your facts straight!"
+              },
+              {
+                "player": "The other museums will never trust you again!"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "They'd understand my actions... I'm just trying to preserve history."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "How would you feel if someone came in here and stole all your stuff?",
+                    "steps": [
+                      {
+                        "player": "How would you feel if someone came in here and stole all your stuff?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Well, I'd feel terrible! Wait..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You've ruined Varlamore's museum.",
+                    "steps": [
+                      {
+                        "player": "You've ruined Varlamore's museum."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Well, as soon as they're ready to display it again, they can have it back!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Just give it back already!",
+                    "steps": [
+                      {
+                        "player": "Just give it back already!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "No! You have no idea what you're asking me!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What if Varlamore finds out what you've done?",
+                    "steps": [
+                      {
+                        "player": "What if Varlamore finds out what you've done?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "They will find out! As soon as you stop bothering me, I plan to tell them myself."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do you sleep at night?",
+                    "steps": [
+                      {
+                        "player": "How do you sleep at night?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Much better knowing that this valuable artefact is safe and sound!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I thought archaeology was cool. I didn't realise it was just thieving!",
+                    "steps": [
+                      {
+                        "player": "I thought archaeology was cool. I didn't realise it was just thieving!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Archaeology is cool! This was just an exceptional circumstance..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You should be ashamed of yourself.",
+                    "steps": [
+                      {
+                        "player": "You should be ashamed of yourself."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "There's nothing for me to be ashamed of! I merely did the best I could in a tough situation."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "A real historian would never steal!",
+                    "steps": [
+                      {
+                        "player": "A real historian would never steal!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Believe me, 'real' historians have done far worse."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "If you're looking for stolen goods, I can get my hands on plenty.",
+                    "steps": [
+                      {
+                        "player": "If you're looking for stolen goods, I can get my hands on plenty."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "What? Is this really how people see us?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do your colleagues know what you've done? What do they think?",
+                    "steps": [
+                      {
+                        "player": "Do your colleagues know what you've done? What do they think?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I... haven't had time to inform them yet. But I will! I just have to get my story straight..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "So can anyone just go around stealing and call it archaeology?",
+                    "steps": [
+                      {
+                        "player": "So can anyone just go around stealing and call it archaeology?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "No, but this really is archaeology! I promise!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're supposed to protect history, not steal it!",
+                    "steps": [
+                      {
+                        "player": "You're supposed to protect history, not steal it!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Sometimes protecting history means taking... unconventional measures."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Nobody wants to see stolen goods on display!",
+                    "steps": [
+                      {
+                        "player": "Nobody wants to see stolen goods on display!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "That's why I put it in storage! No, wait, that's not what I meant!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You should give Varlamore a chance before stealing their stuff.",
+                    "steps": [
+                      {
+                        "player": "You should give Varlamore a chance before stealing their stuff."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Maybe, but I know what I saw, and I wasn't impressed!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you even have room to display this artefact?",
+                    "steps": [
+                      {
+                        "player": "Do you even have room to display this artefact?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "No, but our duties go well beyond putting artefacts on display for adventurers to gawk at!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Don't you have enough artefacts of your own?",
+                    "steps": [
+                      {
+                        "player": "Don't you have enough artefacts of your own?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "If everyone cared only for their own town's history, we'd have a pretty boring world."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Do you really think you did the right thing?",
+                    "steps": [
+                      {
+                        "player": "Do you really think you did the right thing?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I had no other choice. I couldn't just stand by!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Did you know Varlamore sends thieves to the Colosseum?",
+                    "steps": [
+                      {
+                        "player": "Did you know Varlamore sends thieves to the Colosseum?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "But I'm no thief! Give me a chance to explain..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What if I came into your house and stole your stuff?",
+                    "steps": [
+                      {
+                        "player": "What if I came into your house and stole your stuff?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Then you'd be a thief! This is nothing like that!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You've committed a crime.",
+                    "steps": [
+                      {
+                        "player": "You've committed a crime."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I have not! Just give me a chance to explain!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How will Varlamorians learn their history now?",
+                    "steps": [
+                      {
+                        "player": "How will Varlamorians learn their history now?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Well, they can always come visit. Or perhaps we can arrange a loan?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Varlamore might never let you and your colleagues visit again!",
+                    "steps": [
+                      {
+                        "player": "Varlamore might never let you and your colleagues visit again!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I've done Varlamore a great service! They just don't know it yet..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You should return all these artefacts. It's the only right thing to do.",
+                    "steps": [
+                      {
+                        "player": "You should return all these artefacts. It's the only right thing to do."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I'll return them as soon as I know they'll be safe. Until then, they'll stay right here!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're a disgrace to your entire profession!",
+                    "steps": [
+                      {
+                        "player": "You're a disgrace to your entire profession!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "How dare you! I've never once failed to follow the proper procedures. Well, except this one time. But this is different!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Varlamore might close their lands again after this.",
+                    "steps": [
+                      {
+                        "player": "Varlamore might close their lands again after this."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Better that than the loss of a priceless artefact! It's not my fault they didn't look after it."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "How do you explain the other stolen artefacts you have in storage?",
+                    "steps": [
+                      {
+                        "player": "How do you explain the other stolen artefacts you have in storage?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I didn't steal them! The museum simply borrowed them for further study."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You could have damaged the artefact!",
+                    "steps": [
+                      {
+                        "player": "You could have damaged the artefact!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Had I not done something, it could well have been damaged anyway!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why don't you just cooperate with Varlamore?",
+                    "steps": [
+                      {
+                        "player": "Why don't you just cooperate with Varlamore?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Believe me, I've been trying!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Why should you decide who gets to keep their artefacts?",
+                    "steps": [
+                      {
+                        "player": "Why should you get to decide who gets to keep their artefacts?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Because I'm the only one willing to protect them!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're setting a terrible example.",
+                    "steps": [
+                      {
+                        "player": "You're setting a terrible example."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Oh dear... Children! Pay no attention to this loud, dramatic argument!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Is everything here stolen from other museums?",
+                    "steps": [
+                      {
+                        "player": "Is everything here stolen from other museums?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Nothing here is stolen from other museums! Er... I mean, nothing is stolen at all!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You can't justify theft by saying it's for preservation.",
+                    "steps": [
+                      {
+                        "player": "You can't justify theft by saying it's for preservation."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Well that's the reality. Sometimes you have to make tough choices."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I'm sick of your excuses!",
+                    "steps": [
+                      {
+                        "player": "I'm sick of your excuses!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I'm sick of your shouting!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're not above the law! You stole this stuff!",
+                    "steps": [
+                      {
+                        "player": "You're not above the law! You stole this stuff!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "It's more complicated than that!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What makes you think you know better?",
+                    "steps": [
+                      {
+                        "player": "What makes you think you know better?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "The fact that I had to save this artefact at all says enough. It needs to be kept safe!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "What if it's cursed?! It could be dangerous!",
+                    "steps": [
+                      {
+                        "player": "What if it's cursed?! It could be dangerous!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Are you quite serious? Just because an artefact is from another culture doesn't mean it's cursed. Adventurers these days..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Stealing is stealing, no matter how you try to justify it.",
+                    "steps": [
+                      {
+                        "player": "Stealing is stealing, no matter how you try to justify it."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Normally I'd agree, but this one situation is a little more nuanced than that..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Is the artefact really safer here?",
+                    "steps": [
+                      {
+                        "player": "Is the artefact really safer here?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Absolutely! We're the greatest, most well-equipped museum in the world!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look me in the eye and tell me you did the right thing.",
+                    "steps": [
+                      {
+                        "player": "Look me in the eye and tell me you did the right thing."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I... I did the right... Stop staring at me like that!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're hoarding artefacts, but you should be sharing them!",
+                    "steps": [
+                      {
+                        "player": "You're hoarding artefacts, but you should be sharing them!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "We don't have enough room to show everything in our collections. If only we had the funding..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're a loose cannon.",
+                    "steps": [
+                      {
+                        "player": "You're a loose cannon."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "A loose cannon? A wild card maybe. Or a lone ranger. But a loose cannon?! Surely not..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hand that artefact back this instant!",
+                    "steps": [
+                      {
+                        "player": "Hand that artefact back this instant!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "There's no need to take that tone with me!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "I guess you were just in it for the glory, were you?",
+                    "steps": [
+                      {
+                        "player": "I guess you were just in it for the glory, were you?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "That's not true! I mean, I am better than this. I mean... oh, I'm all mixed up."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "This is stealing! Thieving! Taking what's not yours!",
+                    "steps": [
+                      {
+                        "player": "This is stealing! Thieving! Taking what's not yours!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Please stop telling everyone I'm a thief..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You've stolen from several other museums, too!",
+                    "steps": [
+                      {
+                        "player": "You've stolen from several other museums, too!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Not every museum has the resources to keep their artefacts safe. We're just taking care of them for now."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "This artefact doesn't belong to you! It belongs to Varlamore!",
+                    "steps": [
+                      {
+                        "player": "This artefact doesn't belong to you! It belongs to Varlamore!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I believe artefacts like this belong to all of us. That's why it's so important for me to preserve them."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Have you no respect for your colleagues in Varlamore?",
+                    "steps": [
+                      {
+                        "player": "Have you no respect for your colleagues in Varlamore?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "They had the choice to take better care with this artefact! That's not on me."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Aren't you embarrassed to have stolen items in your collection?",
+                    "steps": [
+                      {
+                        "player": "Aren't you embarrassed to have stolen items in your collection?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "I'm not embarrassed! I just put it in storage for... for normal reasons!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're nothing but a common thief!",
+                    "steps": [
+                      {
+                        "player": "You're nothing but a common thief!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "How dare you? I'm a well-renowned professional, not a thief!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Stealing is against the law!",
+                    "steps": [
+                      {
+                        "player": "Stealing is against the law!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Well, sometimes the law is wrong!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You ought to be ashamed.",
+                    "steps": [
+                      {
+                        "player": "You ought to be ashamed."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "For what? I'm only doing my job!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "This could destroy your reputation! Everyone will think you're a thief!",
+                    "steps": [
+                      {
+                        "player": "This could destroy your reputation! Everyone will think you're a thief!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Oh, nonsense! Any real historian would see I'm only trying to preserve vital historical knowledge."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You've betrayed the trust of Varlamore.",
+                    "steps": [
+                      {
+                        "player": "You've betrayed the trust of Varlamore."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "It's not my fault they couldn't look after their own history. Better that I took it than some thief!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Are you even a real historian, or just a petty criminal?",
+                    "steps": [
+                      {
+                        "player": "Are you even a real historian, or just a petty criminal?"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Of course I'm a real historian! This just isn't my finest moment..."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You don't even have room to display it! It's just sitting in storage!",
+                    "steps": [
+                      {
+                        "player": "You don't even have room to display it! It's just sitting in storage!"
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Artefacts aren't just for gawking at! We keep things in storage so they can be studied and taken care of."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "You're not preserving anything. You're just a thief.",
+                    "steps": [
+                      {
+                        "player": "You're not preserving anything. You're just a thief."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Pish-posh! I haven't dedicated my life to this museum for you to slander my good name!"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Think of the Varlamorian children who won't get to see this artefact.",
+                    "steps": [
+                      {
+                        "player": "Think of the Varlamorian children who won't get to see this artefact."
+                      },
+                      {
+                        "type": "line",
+                        "speaker": "Curator Haig Halen",
+                        "text": "Now that's not true! They can see it any time they visit Varrock, for free!"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continue",
+                        "id": "1LOJTN"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "player": "You can't just keep claiming these stolen goods as your own!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player fails the interrogation:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Oh, pish posh! I've had enough of this little shame game of yours! I've got better things to be doing with my time. Come back to me when you've got your facts straight!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "f07S0F"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is successful with the interrogation:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "I didn't steal anything! These are ethically acquired antiquities!"
+                  },
+                  {
+                    "player": "What do you mean? How did you come into possession of Xerna's Diadem? I've heard all about your travels back here with it."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Well..."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Cutscene goes to the Grand Museum.",
+                    "id": "xxhjn2"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Naturally, as soon as Varlamore opened, I was keen to visit their Grand Museum."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "There was a big event over at the Colosseum, so it was nice and quiet. Perfect for taking in everything the museum had to offer."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "All of a sudden, I heard a strange noise coming from behind me..."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Camera pans across the museum as Haig Halen walks and confronts a thief.",
+                    "id": "l1k3iX"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "It was a thief! He'd stolen Xerna's Diadem!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "I had to act quick. I called upon my skills from my time in the Varrock Guard and I showed him what for!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Haig Halen defeats the thief, with the thief falling on the floor.",
+                    "id": "lKjbRh"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "He went down easily, but I was left with a conundrum: What to do with the diadem."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "This was a priceless artefact, and it was at risk! I knew it had to be protected, and there was nowhere better than in Varrock..."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Cutscene ends.",
+                    "id": "MC3wD2"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Now I don't know what to do..."
+                  },
+                  {
+                    "player": "You can't just be taking these things as your own!"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "I promise, I only wanted to keep it safe. I guess I panicked..."
+                  },
+                  {
+                    "player": "I'll do you a deal. If you arrange for the safe delivery of the diadem back to the Grand Museum, I'll let them know it's taken care of without mentioning your name."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Curator Haig Halen",
+                    "text": "Okay... I'll have it sent back at once."
+                  },
+                  {
+                    "player": "Thank you. I'll head over there and let them know."
+                  }
+                ],
+                "id": "ke5P0h"
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?"
+          },
+          {
+            "text": "Do you know where I could find any treasure?"
+          },
+          {
+            "text": "How do I get a medallion?"
+          }
+        ]
+      }
+    ],
+    "in-varrock-museum-talking-to-curator-haig-halen-after-arranging-the-diadem-s-return": [
+      {
+        "type": "line",
+        "speaker": "Curator Haig Halen",
+        "text": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island."
+          },
+          {
+            "text": "About Xerna's Diadem...",
+            "steps": [
+              {
+                "player": "About Xerna's Diadem..."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Haig Halen",
+                "text": "I'm just making arrangements to have it sent back to Fortis. It will be there very soon."
+              },
+              {
+                "player": "Thank you. I'll head over there and let them know."
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?"
+          },
+          {
+            "text": "Do you know where I could find any treasure?"
+          },
+          {
+            "text": "How do I get a medallion?"
+          }
+        ]
+      }
+    ],
+    "in-varrock-museum-talking-to-curator-herminius": [
+      {
+        "player": "Hello."
+      },
+      {
+        "type": "line",
+        "speaker": "Curator Herminius",
+        "text": "Nilsal to you, iknami. Welcome back to the Grand Museum. If you have any questions, I'm happy to help."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could you tell me more about the early history of Varlamore?"
+          },
+          {
+            "text": "Could you tell me more about religion in Varlamore?"
+          },
+          {
+            "text": "Could you tell me more about Varlamore's recent history?"
+          },
+          {
+            "text": "About that empty display...",
+            "steps": [
+              {
+                "player": "About that empty display..."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "How are you getting on with your investigation?"
+              },
+              {
+                "player": "Well, it turned out to be quite the saga, but I found it! Xerna's Diadem is on its way back here, as we speak."
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "It is? That's great news! Where did you find it?"
+              },
+              {
+                "player": "It was a little far away... But we'll save that story for another day."
+              },
+              {
+                "type": "condition",
+                "text": "If the player's inventory is full:",
+                "steps": [
+                  {
+                    "type": "line",
+                    "speaker": "Curator Herminius",
+                    "text": "Well, what matters is that you found it. Now, I guess you'll be expecting that reward the display mentioned?"
+                  },
+                  {
+                    "player": "Oh yes, I better make some space for it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "krLq4g"
+              },
+              {
+                "type": "line",
+                "speaker": "Curator Herminius",
+                "text": "Well, what matters is that you found it. Now, I guess you'll be expecting that reward the display mentioned? Here you go."
+              },
+              {
+                "type": "action",
+                "text": "Congratulations! Quest complete!",
+                "id": "i2moAx"
+              }
+            ]
+          },
+          {
+            "text": "Thanks. If I have any questions, I'll be sure to ask."
+          }
+        ]
+      },
+      {
+        "type": "unavailable",
+        "id": "FdCw-Z"
+      }
+    ]
+  }
+}

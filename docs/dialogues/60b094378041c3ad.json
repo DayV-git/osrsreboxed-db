@@ -1,0 +1,221 @@
+{
+  "default": "subsequent-dialogue",
+  "variants": {
+    "initial-dialogue": [
+      {
+        "player": "I was wondering if you could repair my pouches."
+      },
+      {
+        "npc": "I need 25 abyssal pearls to unlock the contact with the mage who knows how to repair a pouch. After the contact has been unlocked, it will cost you 1 abyssal pearl each time to repair the pouches."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have enough abyssal pearls in their inventory:",
+        "steps": [
+          {
+            "player": "I don't have enough abyssal pearls for that, I'm afraid."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "ppW0Jx"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has enough abyssal pearls in their inventory:",
+        "steps": [
+          {
+            "type": "choice",
+            "prompt": "Pay 25 abyssal pearls to unlock the pouch repair?",
+            "options": [
+              {
+                "text": "Yes",
+                "steps": [
+                  {
+                    "player": "Yes, please."
+                  },
+                  {
+                    "npc": "Now bear with me whilst I contact the mage."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Apprentice Cordelia casts the Astral Contact spell.",
+                    "id": "Q4yVuM"
+                  },
+                  {
+                    "npc": "Hello, can you hear me?"
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Dark Mage",
+                    "text": "Quiet! Why do you all try to break my concentration?"
+                  },
+                  {
+                    "npc": "OK. The contact has been set up."
+                  },
+                  {
+                    "npc": "It will cost you 1 abyssal pearl to repair the pouches."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, that sounds fair.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "4ny_9D"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No thanks.",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "JnzTgM"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "Cancel",
+                "steps": []
+              }
+            ]
+          }
+        ],
+        "id": "3bGUch"
+      }
+    ],
+    "subsequent-dialogue": [
+      {
+        "player": "I was wondering if you could repair my pouches."
+      },
+      {
+        "npc": "It will cost you 1 abyssal pearl to repair the pouches."
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have an abyssal pearl in their inventory:",
+        "steps": [
+          {
+            "player": "I don't have enough abyssal pearls for that, I'm afraid."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "RgKeNl"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has an abyssal pearl in their inventory:",
+        "id": "odnfMb"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, that sounds fair.",
+            "steps": [
+              {
+                "player": "Yes, that sounds fair."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a degraded essence pouch:",
+                "steps": [
+                  {
+                    "npc": "You don't seem to have any pouches in need of repair."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "NhhTKU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a degraded essence pouch:",
+                "steps": [
+                  {
+                    "npc": "Bear with me whilst I make the contact for repairing the pouches."
+                  },
+                  {
+                    "type": "action",
+                    "text": "Apprentice Cordelia casts the Astral Contact spell.",
+                    "id": "yZnIPw"
+                  },
+                  {
+                    "npc": "Hi, it's me again."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Dark Mage",
+                    "text": "..."
+                  },
+                  {
+                    "npc": "Hello, I know you can hear me."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Dark Mage",
+                    "text": "..."
+                  },
+                  {
+                    "npc": "Ding Dong, Ding Dong. You can't keep me waiting."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Dark Mage",
+                    "text": "Fine. What do you want?"
+                  },
+                  {
+                    "npc": "I got someone here in need of a pouch repair."
+                  },
+                  {
+                    "type": "line",
+                    "speaker": "Dark Mage",
+                    "text": "OK...It's done."
+                  },
+                  {
+                    "npc": "Your pouches have been repaired."
+                  }
+                ],
+                "id": "bapb1V"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "overhead-dialogue": [
+      {
+        "npc": "We need to assemble rift guardian before those creatures arrive!"
+      },
+      {
+        "npc": "We need shield barriers up before anything comes through that rift!"
+      },
+      {
+        "npc": "We need to protect the Great Guardian!"
+      },
+      {
+        "npc": "We need to power up the Great Guardian!"
+      },
+      {
+        "npc": "We need more rift guardians!"
+      }
+    ]
+  }
+}

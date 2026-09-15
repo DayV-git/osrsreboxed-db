@@ -1,0 +1,492 @@
+{
+  "default": "standard-dialogue-before-completion-of-monkey-madness-ii",
+  "variants": {
+    "standard-dialogue-before-completion-of-monkey-madness-ii": [
+      {
+        "npc": "Welcome to my private little wyvern area."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "I'm Steve. You may have heard of my big cousin Nieve - she's one of the Slayer Masters. She's the famous one in the family. But Nieve's not here - this area's mine"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "AV7DnE"
+              }
+            ]
+          },
+          {
+            "text": "Why is this wyvern area private?",
+            "steps": [
+              {
+                "player": "Why is this wyvern area private?"
+              },
+              {
+                "npc": "Because I say so! My cousin Nieve thinks she's so great because she's got a big cave where she can boss people around. So I carved some steps out of the ice, and made myself a training area here."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "3qRxKv"
+              }
+            ]
+          },
+          {
+            "text": "So are you a Slayer Master?",
+            "steps": [
+              {
+                "player": "So are you a Slayer Master?"
+              },
+              {
+                "npc": "No, I'm not. My cousin Nieve is a Slayer Master. There's nothing special about her, you know. All she does is tell people to kill stuff. That's Slayer Masters for you."
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "7b4YZ5"
+              }
+            ]
+          },
+          {
+            "text": "Thanks, goodbye.",
+            "steps": [
+              {
+                "player": "Thanks, goodbye."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-slayer-master": [
+      {
+        "npc": "'Ello, and what are you after then?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "player": "I need another assignment."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an assignment yet:",
+                "steps": [
+                  {
+                    "npc": "Excellent, you're doing great. Your new task is to kill [amount] [task monster]."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ZzYp98"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster]; you have [amount] to go. Come back when you've finished your task."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "pn0g9W"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster], with [amount] to go."
+                  },
+                  {
+                    "npc": "I don't think that's a suitable task for you. Shall I cancel it? This will not wipe your task streaks."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, please cancel it.",
+                        "steps": [
+                          {
+                            "player": "Yes, please cancel it."
+                          },
+                          {
+                            "npc": "Alright, consider the task cancelled. You can now get a new assignment when you want one."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, thanks, I want to try doing it.",
+                        "steps": [
+                          {
+                            "player": "No, thanks, I want to try doing it."
+                          },
+                          {
+                            "npc": "Good luck with that."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "z7BTv5"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me, or anything to trade?"
+              },
+              {
+                "npc": "I have quite a few rewards you can earn, and a wide variety of Slayer equipment for sale."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Look at rewards.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Rewards",
+                        "id": "wGplXJ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look at shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Equipment (shop)",
+                        "id": "poEhnn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "player": "Let's talk about the difficulty of my assignments."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has disabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I can handle any task.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I can handle any task."
+                          },
+                          {
+                            "npc": "That's the spirit."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "In future, please don't give anything too tough.",
+                        "steps": [
+                          {
+                            "player": "In future, please don't give anything too tough."
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will now take the player's combat level into account.",
+                            "id": "c9lqEb"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "UIP1mi"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I don't want anything too tough.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I don't want anything too tough."
+                          },
+                          {
+                            "npc": "Okay, we'll keep checking your combat level."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Stop checking my combat level - I can take anything!",
+                        "steps": [
+                          {
+                            "player": "Stop checking my combat level - I can take anything!"
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will no longer take the player's combat level into account.",
+                            "id": "2UL75H"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "34HUEv"
+              }
+            ]
+          },
+          {
+            "text": "I see you're the new Slayer Master here.",
+            "steps": [
+              {
+                "player": "I see you're the new Slayer Master here."
+              },
+              {
+                "type": "condition",
+                "text": "During Monkey Madness II:",
+                "steps": [
+                  {
+                    "npc": "Yes, Nieve used to be the local Slayer Master - she's my cousin. She's gone off somewhere now, so I'm taking over."
+                  },
+                  {
+                    "player": "How sad for you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "CqUHcq"
+              },
+              {
+                "type": "condition",
+                "text": "After Monkey Madness II:",
+                "steps": [
+                  {
+                    "npc": "Yes, Nieve used to be the local Slayer Master - she was my cousin. We weren't particularly close, but I came here straight away to take over the job."
+                  },
+                  {
+                    "npc": "I'd hoped I'd receive a shield like Nieve's when I took over her job, but I've not been given one so far. I guess the perks of the job aren't what they used to be."
+                  },
+                  {
+                    "player": "How sad for you."
+                  }
+                ],
+                "id": "CCIsx9"
+              }
+            ]
+          },
+          {
+            "text": "Er... Nothing...",
+            "steps": [
+              {
+                "player": "Er... Nothing..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-via-the-astral-contact-spell": [
+      {
+        "npc": "'Ello, can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "R8ZhPZ"
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yaKPZw"
+              }
+            ]
+          },
+          {
+            "text": "Err... Nothing...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "xijG2j"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-via-the-astral-contact-spell-before-the-update-game-improvements-26-march-2020": [
+      {
+        "player": "Hello?"
+      },
+      {
+        "npc": "'Ello, who's that?"
+      },
+      {
+        "player": "I'm [player name]. I'm using my magic to communicate with you."
+      },
+      {
+        "npc": "Bizarre, go on, what do you want then?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "r_At2O"
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "QcTn-t"
+              }
+            ]
+          },
+          {
+            "text": "Err... Nothing...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "VrA6gH"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-getting-a-task-bypassing-the-combat-level-requirement-with-a-slayer-cape": [
+      {
+        "npc": "Your cape attests that you are experienced enough to be taught by me. I will overlook your lack of experience in combat."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "nCNzu8"
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I love farming, but I need some help!"
+      },
+      {
+        "type": "message",
+        "text": "Steve has given you a challenge scroll!",
+        "id": "h94EkA"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the question."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "Is there? I don't think so, try again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "Ph2Cs2"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "I believe you're right!"
+          },
+          {
+            "type": "message",
+            "text": "Steve has given you [another clue scroll/a casket]!",
+            "id": "UMZKsH"
+          }
+        ],
+        "id": "4raTKE"
+      }
+    ],
+    "using-the-elysian-spirit-shield-monkey-madness-ii-on-steve": [
+      {
+        "type": "message",
+        "text": "You're not sure they can help you with this.",
+        "id": "fnTR3K"
+      }
+    ]
+  }
+}

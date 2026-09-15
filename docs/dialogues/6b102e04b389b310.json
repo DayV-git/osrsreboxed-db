@@ -1,0 +1,502 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "'Ello, and what are you after then?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "player": "I need another assignment."
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have an assignment yet:",
+                "steps": [
+                  {
+                    "npc": "Excellent, you're doing great. Your new task is to kill [amount] [task monster]."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Got any tips for me?",
+                        "steps": [
+                          {
+                            "player": "Got any tips for me?"
+                          },
+                          {
+                            "type": "action",
+                            "text": "Duradel provides the corresponding Slayer task tip.",
+                            "id": "NRUkDP"
+                          },
+                          {
+                            "player": "Great, thanks!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Okay, great!",
+                        "steps": [
+                          {
+                            "player": "Okay, great!"
+                          },
+                          {
+                            "npc": "Good luck! Don't forget to come back when you need a new assignment."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "PQDVTI"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster]; you have [amount] to go. Come back when you've finished your task."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "E2Trnz"
+              },
+              {
+                "type": "condition",
+                "text": "If the player already has an assignment, and they have become ineligible for this assignment:",
+                "steps": [
+                  {
+                    "npc": "You're still hunting [monster], with [amount] to go."
+                  },
+                  {
+                    "npc": "I don't think that's a suitable task for you. Shall I cancel it? This will not wipe your task streaks."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, please cancel it.",
+                        "steps": [
+                          {
+                            "player": "Yes, please cancel it."
+                          },
+                          {
+                            "npc": "Alright, consider the task cancelled. You can now get a new assignment when you want one."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, thanks, I want to try doing it.",
+                        "steps": [
+                          {
+                            "player": "No, thanks, I want to try doing it."
+                          },
+                          {
+                            "npc": "Good luck with that."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "knW4Tk"
+              }
+            ]
+          },
+          {
+            "text": "Have you any rewards for me, or anything to trade?",
+            "steps": [
+              {
+                "player": "Have you any rewards for me, or anything to trade?"
+              },
+              {
+                "npc": "I have quite a few rewards you can earn, and a wide variety of Slayer equipment for sale."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Look at rewards.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Rewards",
+                        "id": "zW4C8D"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Look at shop.",
+                    "steps": [
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Slayer Equipment (shop)",
+                        "id": "yLSNYQ"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Cancel.",
+                    "steps": [
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "player": "Let's talk about the difficulty of my assignments."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has disabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters may currently assign you any task in our lists, regardless of your combat level."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I can handle any task.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I can handle any task."
+                          },
+                          {
+                            "npc": "That's the spirit."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "In future, please don't give anything too tough.",
+                        "steps": [
+                          {
+                            "player": "In future, please don't give anything too tough."
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will now take the player's combat level into account.",
+                            "id": "vOLuBp"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "AQLbkC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has enabled combat checking:",
+                "steps": [
+                  {
+                    "npc": "The Slayer Masters will take your combat level into account when choosing tasks for you, so you shouldn't get anything too hard."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "That's fine - I don't want anything too tough.",
+                        "steps": [
+                          {
+                            "player": "That's fine - I don't want anything too tough."
+                          },
+                          {
+                            "npc": "Okay, we'll keep checking your combat level."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Stop checking my combat level - I can take anything!",
+                        "steps": [
+                          {
+                            "player": "Stop checking my combat level - I can take anything!"
+                          },
+                          {
+                            "npc": "Okay, from now on, all the Slayer Masters will assign you anything from their lists, regardless of your combat level."
+                          },
+                          {
+                            "type": "action",
+                            "text": "Slayer Masters will no longer take the player's combat level into account.",
+                            "id": "sndLRB"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "OCWj44"
+              }
+            ]
+          },
+          {
+            "text": "Tell me about your skillcape, please.",
+            "condition": "If the player does not have 99 Slayer:",
+            "steps": [
+              {
+                "player": "Tell me about your skillcape, please."
+              },
+              {
+                "npc": "This is a Slayer's Skillcape. Only a true Slayer master is permitted to wear one and in recognition of such an achievement, Slayer masters may be persuaded to allow you to select the same assignment in a row."
+              },
+              {
+                "npc": "You need more training before you earn that honour, though."
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "ANdpX9"
+          },
+          {
+            "text": "Can you sell me a Slayer Skillcape?",
+            "condition": "If the player has 99 Slayer:",
+            "steps": [
+              {
+                "player": "May I buy a Slayer's Skillcape, please?"
+              },
+              {
+                "npc": "Well you have performed well as a student. I guess you have earned the right to wear such a prestigious cape now. The Slayer masters will recognize this cape and may offer you the same assignment twice in a row."
+              },
+              {
+                "npc": "That will be 99000 coins, please."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I've changed my mind, I don't want it.",
+                    "steps": [
+                      {
+                        "player": "I've changed my mind; I don't want it."
+                      },
+                      {
+                        "npc": "Okay. Well, if you change it back again, I will be waiting."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Great; I've always wanted one!",
+                    "steps": [
+                      {
+                        "player": "Great, I've always wanted one!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have at least 99,000 coins:",
+                        "steps": [
+                          {
+                            "player": "But, unfortunately, I don't have enough money with me."
+                          },
+                          {
+                            "npc": "Well, come back and see me when you do."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "GUiGbx"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                        "steps": [
+                          {
+                            "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "CXUZOC"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins and enough inventory space:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "a Slayer cape and hood",
+                            "id": "0As1p6"
+                          },
+                          {
+                            "npc": "Good hunting, [player name]."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "zKfGC-"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "id": "MP0JuA"
+          },
+          {
+            "text": "Er... Nothing...",
+            "steps": [
+              {
+                "player": "Er... Nothing..."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "via-the-astral-contact-spell": [
+      {
+        "npc": "'Ello, can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "5aRZOe"
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "o7d5xO"
+              }
+            ]
+          },
+          {
+            "text": "Err... Nothing...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "D8_c_U"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "via-the-astral-contact-spell-if-the-player-is-near-duradel": [
+      {
+        "npc": "You could just talk to me, you know - I am standing right here."
+      }
+    ],
+    "via-the-astral-contact-spell-before-the-update-game-improvements-26-march-2020": [
+      {
+        "player": "Hello?"
+      },
+      {
+        "npc": "'Ello, who's that?"
+      },
+      {
+        "player": "I'm [player name]. I'm using my magic to communicate with you."
+      },
+      {
+        "npc": "Bizarre, go on, what do you want then?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I need another assignment.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "4w_eFC"
+              }
+            ]
+          },
+          {
+            "text": "Let's talk about the difficulty of my assignments.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "8-hsb7"
+              }
+            ]
+          },
+          {
+            "text": "Err... Nothing...",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "EaZFoQ"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "getting-a-task-bypassing-the-combat-level-requirement-with-a-slayer-cape": [
+      {
+        "npc": "Your cape attests that you are experienced enough to be taught by me. I will overlook your lack of experience in combat."
+      },
+      {
+        "type": "jump",
+        "reference": "above",
+        "id": "3CdIcq"
+      }
+    ]
+  }
+}

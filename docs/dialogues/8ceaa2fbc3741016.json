@@ -1,0 +1,167 @@
+{
+  "steps": [
+    {
+      "npc": "Tread carefully in this hallowed place, traveller. The magicks of the Dark Altar are not to be treated lightly."
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "What is this place?",
+          "steps": [
+            {
+              "player": "What is this place?"
+            },
+            {
+              "npc": "The Dark Altar is the treasure of Arceuus. Our forebears spent their lives - literally, in some cases - learning to unlock its secrets and wield its power."
+            },
+            {
+              "npc": "The power of the Dark Altar, reflected in these great crystals, can twist dimensions, warp minds, and even bridge the gulf between life and death."
+            },
+            {
+              "type": "jump",
+              "reference": "other",
+              "id": "MVFxbr"
+            }
+          ]
+        },
+        {
+          "text": "Can I try the magicks myself?",
+          "condition": "If the player is not on the Arceuus spellbook:",
+          "steps": [
+            {
+              "player": "Can I try the magicks myself?"
+            },
+            {
+              "npc": "Very well. If you find an ensouled cadaver in your travels, you may attempted to reanimate it with the magicks I have placed in your mind."
+            },
+            {
+              "player": "Thanks."
+            }
+          ],
+          "id": "O63wRq"
+        },
+        {
+          "text": "I'd like to stop using your spellbook now.",
+          "condition": "If the player is on the Arceuus spellbook:",
+          "steps": [
+            {
+              "player": "I'd like to stop using your spellbook now."
+            },
+            {
+              "npc": "Very well, the magicks of the Dark Altar have been lifted from your mind."
+            }
+          ],
+          "id": "AQEl1l"
+        },
+        {
+          "text": "Do you sell souvenirs?",
+          "steps": [
+            {
+              "player": "Do you sell souvenirs?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has 100% Arceuus favour and a full inventory:",
+              "steps": [
+                {
+                  "npc": "I suppose you are a friend to us. Free up some space and I will give you something."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "V8ikAq"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has 100% Arceuus favour:",
+              "steps": [
+                {
+                  "npc": "I suppose you are a friend to us. Here, you may have this."
+                },
+                {
+                  "type": "message",
+                  "text": "Tyss gives you a signet in the shape of a crystal from the Dark Altar.",
+                  "id": "zfN1ov"
+                }
+              ],
+              "id": "b-Yux5"
+            }
+          ]
+        },
+        {
+          "text": "Can I have an ash sanctifier, please?",
+          "steps": [
+            {
+              "player": "Can I have an ash sanctifier, please?"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has not completed the Hard Kourend & Kebos Diary:",
+              "steps": [
+                {
+                  "npc": "No. You need to complete all of the hard tasks in your Kourend & Kebos Achievement Diary."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "5fxbwj"
+            },
+            {
+              "type": "condition",
+              "text": "If the player doesn't have an ash sanctifier and has a full inventory:",
+              "steps": [
+                {
+                  "npc": "Not unless you make space to carry it, traveller."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "-Gwngq"
+            },
+            {
+              "type": "condition",
+              "text": "If the player doesn't have an ash sanctifier:",
+              "steps": [
+                {
+                  "npc": "Thanks for your efforts throughout the tasks set. Here, you may have this."
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "Qq8FOu"
+            },
+            {
+              "type": "condition",
+              "text": "If the player has an ash sanctifier in their inventory or their bank:",
+              "steps": [
+                {
+                  "npc": "You already appear to own such a device, traveller."
+                }
+              ],
+              "id": "JJzaV6"
+            }
+          ]
+        },
+        {
+          "text": "Can I sacrifice trophy heads on the altar?",
+          "steps": [
+            {
+              "player": "Can I sacrifice my trophy heads on the altar?"
+            },
+            {
+              "npc": "Yes, I believe the Dark Altar may even reward you for such a sacrifice."
+            },
+            {
+              "player": "Thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

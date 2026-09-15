@@ -1,0 +1,244 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome to the Grand Exchange. Would you like to trade now, or exchange item sets?"
+    },
+    {
+      "type": "condition",
+      "text": "If the player is carrying a Combat path voucher and hasn't received their reward:",
+      "steps": [
+        {
+          "player": "I have this voucher for completing the combat Adventure Path, it says to come talk to you about claiming my Adventure Path reward."
+        },
+        {
+          "npc": "Why yes, here is your reward."
+        },
+        {
+          "type": "action",
+          "action": "receive",
+          "text": "2500 coins",
+          "id": "h9r4FH"
+        },
+        {
+          "npc": "If you wanted to, you could store the coins in the bank next to me."
+        },
+        {
+          "npc": "Is there anything else I can do for you?"
+        },
+        {
+          "type": "jump",
+          "reference": "continues",
+          "id": "sz__UV"
+        }
+      ],
+      "id": "4BriNW"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "How do I use the Grand Exchange?",
+          "steps": [
+            {
+              "player": "How do I use the Grand Exchange?"
+            },
+            {
+              "npc": "My colleague and I can let you set up trade offers. You can offer to Sell items or Buy items."
+            },
+            {
+              "npc": "When you want to sell something, you give us the items and tell us how much money you want for them."
+            },
+            {
+              "npc": "We'll look for someone who wants to buy those items at your price, and we'll perform the trade. You can then collect the cash here, or at any bank."
+            },
+            {
+              "npc": "When you want to buy something, you tell us what you want, and give us the cash you're willing to spend on it."
+            },
+            {
+              "npc": "We'll look for someone who's selling those items at your price, and we'll perform the trade. You can then collect the items here, or at any bank, along with any left-over cash."
+            },
+            {
+              "npc": "Sometimes it takes a while to find a matching trade offer. If you change your mind, we'll let you cancel your trade offer, and we'll return your unused items and cash."
+            },
+            {
+              "npc": "That's all the essential information you need to get started. Would you like to trade now, or exchange item sets?"
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "I'd like to set up trade offers please.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "ukUf3f"
+                    }
+                  ]
+                },
+                {
+                  "text": "Can you help me with item sets?",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "xqX1VW"
+                    }
+                  ]
+                },
+                {
+                  "text": "I'd like Exchange collection reminders on login, please.",
+                  "condition": "If the player has Exchange collection reminders on login off:",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "otEjbK"
+                    }
+                  ],
+                  "id": "VQV_u0"
+                },
+                {
+                  "text": "I don't want Exchange collection reminders on login.",
+                  "condition": "If the player has Exchange collection reminders on login on:",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "vcCiNJ"
+                    }
+                  ],
+                  "id": "F-1bZH"
+                },
+                {
+                  "text": "I'm fine, thanks.",
+                  "steps": [
+                    {
+                      "type": "jump",
+                      "reference": "below",
+                      "id": "Xr19a4"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "I'd like to set up trade offers please.",
+          "steps": [
+            {
+              "player": "I'd like to set up trade offers please."
+            },
+            {
+              "type": "action",
+              "text": "(Grand Exchange interface opens.)",
+              "action": "open_interface",
+              "action_source": "text",
+              "target": "Grand Exchange",
+              "id": "H4pxZL"
+            }
+          ]
+        },
+        {
+          "text": "Can you help me with item sets?",
+          "steps": [
+            {
+              "player": "Can you help me with item sets?"
+            },
+            {
+              "type": "action",
+              "text": "(Item Sets interface opens.)",
+              "action": "open_interface",
+              "action_source": "text",
+              "target": "Item Sets",
+              "id": "eI4Tb_"
+            }
+          ]
+        },
+        {
+          "text": "I'd like Exchange collection reminders on login, please.",
+          "condition": "If the player has Exchange collection reminders on login off:",
+          "steps": [
+            {
+              "player": "I'd like Exchange collection reminders on login, please."
+            },
+            {
+              "npc": "Okay, when you log in, we'll send you a message about any items that are waiting for you to collect them."
+            },
+            {
+              "type": "choice",
+              "options": [
+                {
+                  "text": "Thank you.",
+                  "steps": [
+                    {
+                      "player": "Thank you."
+                    }
+                  ]
+                },
+                {
+                  "text": "I don't want Exchange collection reminders on login.",
+                  "steps": [
+                    {
+                      "player": "I don't want Exchange collection reminders on login."
+                    },
+                    {
+                      "npc": "Okay, when you log in, you will no longer be reminded about items waiting to be collected, unless the items only arrived after you logged out."
+                    },
+                    {
+                      "type": "choice",
+                      "options": [
+                        {
+                          "text": "Thank you.",
+                          "steps": [
+                            {
+                              "type": "jump",
+                              "reference": "above",
+                              "id": "F4f1qJ"
+                            }
+                          ]
+                        },
+                        {
+                          "text": "I'd like Exchange collection reminders on login, please.",
+                          "steps": [
+                            {
+                              "type": "jump",
+                              "reference": "above",
+                              "id": "jL3Nbb"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": "V71WP9"
+        },
+        {
+          "text": "I don't want Exchange collection reminders on login.",
+          "condition": "If the player has Exchange collection reminders on login on:",
+          "steps": [
+            {
+              "type": "jump",
+              "reference": "above",
+              "id": "0ZLjkd"
+            }
+          ],
+          "id": "ZzoQwO"
+        },
+        {
+          "text": "I'm fine, thanks.",
+          "steps": [
+            {
+              "player": "I'm fine, thanks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

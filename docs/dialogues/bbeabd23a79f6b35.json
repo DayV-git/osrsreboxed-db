@@ -1,0 +1,233 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask the camel about its dung.",
+            "steps": [
+              {
+                "player": "I'm sorry to bother you, but could you spare me a little dung?"
+              },
+              {
+                "type": "unavailable",
+                "id": "UUEucu"
+              }
+            ]
+          },
+          {
+            "text": "Say something unpleasant.",
+            "steps": [
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "player": "If I go near that camel, it'll probably bite my hand off."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "player": "Mmm... looks like that camel would make a nice kebab."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "player": "I wonder if that camel has fleas..."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Neither - I'm a polite person.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "dialogue-whilst-wearing-a-camulet": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Ask the camel about its dung.",
+            "steps": [
+              {
+                "player": "I'm sorry to bother you, but could you spare me a little dung?"
+              },
+              {
+                "npc": "Are you serious?"
+              },
+              {
+                "player": "Oh yes. If you'd be so kind..."
+              },
+              {
+                "type": "condition",
+                "text": "If Cam has recently provided her dung:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "The camel ponders for a moment...",
+                    "id": "Vjlu8I"
+                  },
+                  {
+                    "npc": "I'm sorry, but I can't really help you right now. Perhaps you should ask me again later, or try a different camel."
+                  },
+                  {
+                    "player": "Fair enough."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "uhaCSR"
+              },
+              {
+                "type": "condition",
+                "text": "Otherwise:",
+                "steps": [
+                  {
+                    "npc": "Well, just you close your eyes first. I'm not doing it while you're watching me!"
+                  },
+                  {
+                    "npc": "I hope that's what you wanted!"
+                  },
+                  {
+                    "player": "Ohhh yes. Lovely."
+                  }
+                ],
+                "id": "IzYWRZ"
+              }
+            ]
+          },
+          {
+            "text": "Say something unpleasant.",
+            "steps": [
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "player": "If I go near that camel, it'll probably bite my hand off."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "zDKl5M"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "player": "Mmm... looks like that camel would make a nice kebab."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "PYNg6C"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "player": "I wonder if that camel has fleas..."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "continues",
+                        "id": "74b6ly"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "npc": "What was that?"
+              },
+              {
+                "player": "Nothing important."
+              },
+              {
+                "npc": "The weather's really hot, don't you think?"
+              },
+              {
+                "player": "Not hot for camels, surely?"
+              },
+              {
+                "npc": "Are you joking? It's burning hot out here! Sitting by the oasis is the only way to stay cool."
+              },
+              {
+                "player": "I thought camels carried their own water in their humps."
+              },
+              {
+                "npc": "It's never enough. And it's always far too hot to go anywhere in the desert."
+              },
+              {
+                "npc": "Sometimes I wish I could go travelling in cooler places, like all those adventurers I see passing through here."
+              },
+              {
+                "player": "Well, adventuring's thirsty work as well."
+              },
+              {
+                "npc": "Oh, that's a pity."
+              },
+              {
+                "npc": "In that case, I'll just stay by this nice cool oasis."
+              }
+            ]
+          },
+          {
+            "text": "Neither - I'm a polite person.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "treasure-trails-elite": [
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "dlUUyE"
+      },
+      {
+        "npc": "makes camel noises*"
+      }
+    ],
+    "treasure-trails-elite-when-talked-to-with-a-completed-challenge-scroll": [
+      {
+        "npc": "makes happier camel noises*"
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "[another clue scroll/a casket]",
+        "id": "0wHybI"
+      },
+      {
+        "type": "message",
+        "text": "You've [been given a new clue/obtained a casket]!",
+        "id": "RmhyHe"
+      }
+    ]
+  }
+}

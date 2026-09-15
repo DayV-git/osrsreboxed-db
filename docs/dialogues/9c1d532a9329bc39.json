@@ -1,0 +1,127 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "action",
+        "text": "The Cook bows",
+        "action": "emote",
+        "action_source": "text",
+        "id": "teOkoa"
+      },
+      {
+        "npc": "You're not aristocracy but I suppose you'd do. Do you want a good cook for 3000 coins?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "What can you do?",
+            "steps": [
+              {
+                "player": "What can you do?"
+              },
+              {
+                "npc": "I am the finest cook in all Gielinor! I can also make good time going to the bank or the sawmill."
+              }
+            ]
+          },
+          {
+            "text": "Tell me about your previous jobs",
+            "steps": [
+              {
+                "player": "Tell me about your previous jobs."
+              },
+              {
+                "npc": "I used to be the cook for the old Duke of Lumbridge. Visiting dignitaries praised me for my fine banquets!"
+              },
+              {
+                "npc": "But then someone found a rule that said that only one family could hold that post."
+              },
+              {
+                "npc": "Overnight I was fired and replaced by some fool who can't even bake a cake without help!"
+              }
+            ]
+          },
+          {
+            "text": "You're hired!",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player does not have at least 30 Construction:",
+                "steps": [
+                  {
+                    "npc": "Hmph! I don't work for just anyone, you know! I refuse to work for someone who's below level 30 Construction!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "2g7E5G"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a servant already:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You already have a servant.",
+                    "id": "kpBClj"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "N5YEef"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a second bedroom with a bed:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "You need a second bedroom with a bed for your servant to sleep in.",
+                    "id": "aggV2E"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "lBaNyp"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have enough money in their inventory:",
+                "steps": [
+                  {
+                    "player": "You're hired... well, I don't have the money on me, but can I owe you? I'm good for it, honest."
+                  },
+                  {
+                    "npc": "Are you having a laugh? No cash up front, no cook."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "ajFuEd"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the above conditions met and the player doesn't have a servant:",
+                "steps": [
+                  {
+                    "player": "You're hired!"
+                  },
+                  {
+                    "npc": "[Alright, sir./Alright, madam./Alright.] I can start work immediately."
+                  }
+                ],
+                "id": "NYPNMU"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

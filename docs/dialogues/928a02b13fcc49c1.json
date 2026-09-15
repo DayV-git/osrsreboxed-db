@@ -1,0 +1,353 @@
+{
+  "default": "standard-dialogue-before-having-access-to-the-rogues-den-minigame",
+  "variants": {
+    "standard-dialogue-before-having-access-to-the-rogues-den-minigame": [
+      {
+        "npc": "Hi there, looking for a challenge are you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes actually, what've you got?",
+            "steps": [
+              {
+                "player": "Yes actually, what've you got?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has under level 50 Thieving:",
+                "id": "mUIj3U"
+              },
+              {
+                "npc": "Shame, I don't think I have anything for you. Train up your Thieving skill to at least 50 and I might be able to help you out.",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "If the player has over level 50 Thieving but under level 50 Agility:",
+                "steps": [
+                  {
+                    "npc": "Shame, I don't think I have anything for you. Train up your Agility skill to at least 50 and I might be able to help you out."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "6m4ioR"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has over level 50 Thieving and Agility:",
+                "steps": [
+                  {
+                    "npc": "Aha, I have the perfect thing for you! See if you can get to the centre of my maze, the further you get the greater the rewards. There's even some special prizes if you make it right to the end."
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Ok that sounds good!",
+                        "steps": [
+                          {
+                            "player": "Ok that sounds good!"
+                          },
+                          {
+                            "npc": "Great! When you enter the maze, I'll give you a jewel - it'll allow you to get out of the maze at any time. However that's all you're allowed to take in with you, no cheating!"
+                          },
+                          {
+                            "npc": "Oh one last thing, if you happen to see my harmonica I'd really like to have it back."
+                          }
+                        ]
+                      },
+                      {
+                        "text": "What is this place?",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "below",
+                            "id": "AmxA-Q"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "Actually I think I'll pass thanks.",
+                        "steps": [
+                          {
+                            "player": "Actually I think I'll pass thanks."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "7seOgq"
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "player": "What is this place?"
+              },
+              {
+                "npc": "Ah welcome to my humble home, well actually it belongs to mummsie but she's getting on a bit so I look after the place for her."
+              },
+              {
+                "npc": "So are you interested in a challenge?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "QUNmB3"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-after-having-access-to-the-rogues-den-minigame": [
+      {
+        "npc": "Hi again, what can I do for you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I want to try the maze again!",
+            "steps": [
+              {
+                "player": "I want to try the maze again!"
+              },
+              {
+                "npc": "Certainly, when you enter the maze I'll give you another jewel. Good luck!"
+              }
+            ]
+          },
+          {
+            "text": "What is this place?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "z42kCE"
+              }
+            ]
+          },
+          {
+            "text": "Nothing thanks.",
+            "steps": [
+              {
+                "player": "Nothing thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "entering-the-maze": [
+      {
+        "type": "condition",
+        "text": "If the player has not been granted access to the maze:",
+        "steps": [
+          {
+            "npc": "And where do you think you're going? A little too eager I think. Come and talk to me before you go wandering around in there."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "HXGycf"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has been granted access to the maze, but has items in their inventory:",
+        "steps": [
+          {
+            "npc": "Tut tut tut, now you know you're not allowed to take anything except that jewel in with you."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "K7NdLO"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has been granted access to the maze, has an empty inventory, but has a follower:",
+        "steps": [
+          {
+            "npc": "Sorry but I can't allow you to take your follower in there, never know what trouble they might cause."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "nJH8ex"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has been granted access to the maze, has an empty inventory, and no follower:",
+        "steps": [
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "a Mystic jewel",
+            "id": "I6BOYH"
+          },
+          {
+            "type": "message",
+            "text": "Brian O'Richard gives you a jewel as you enter the maze.",
+            "id": "ZtTAwn"
+          }
+        ],
+        "id": "r1_81z"
+      }
+    ],
+    "while-inside-the-maze-hit-by-the-first-pendulum": [
+      {
+        "npc": "Oh dear, you really didn't get very far did you?"
+      }
+    ],
+    "while-inside-the-maze-getting-caught-by-the-rogue-guards-hit-by-the-moving-spin-blade-obstacles-or-hit-by-any-other-less-dangerous-obstacles-except-for-the-contortion-bars": [
+      {
+        "npc": "Well you didn't do too badly, but you didn't make it nearly as far as others have."
+      },
+      {
+        "type": "message",
+        "text": "You gained: [number] Thieving Experience. [number] Agility Experience.",
+        "id": "xzzhw2"
+      }
+    ],
+    "while-inside-the-maze-interacting-with-the-wall-safes": [
+      {
+        "type": "condition",
+        "text": "If the player has three or less items in their inventory:",
+        "steps": [
+          {
+            "npc": "Amazing, you made it so far!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "D0ysDc"
+          }
+        ],
+        "id": "30ehHy"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has four or more items in their inventory:",
+        "steps": [
+          {
+            "npc": "Wow you even managed to get the prize, well done!"
+          },
+          {
+            "type": "jump",
+            "reference": "continues",
+            "id": "8gOgh8"
+          }
+        ],
+        "id": "pxw8zZ"
+      },
+      {
+        "type": "message",
+        "text": "You gained: [number] Thieving Experience. [number] Agility Experience.",
+        "id": "pLZD5n"
+      }
+    ],
+    "while-inside-the-maze-activating-the-mystic-jewel": [
+      {
+        "npc": "Want to come out then? Giving up are you? You know there's no time limit here."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes I'd like to leave!",
+            "steps": [
+              {
+                "player": "Yes I'd like to leave!"
+              },
+              {
+                "npc": "Right you are then, out you come."
+              },
+              {
+                "type": "action",
+                "text": "The player exits the maze",
+                "id": "0xR5_-"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is not past the first pendulum:",
+                "steps": [
+                  {
+                    "npc": "Oh dear, you really didn't get very far did you?"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "9vvNaP"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is past the first pendulum:",
+                "steps": [
+                  {
+                    "npc": "Well you didn't do too badly, but you didn't make it nearly as far as others have."
+                  },
+                  {
+                    "type": "message",
+                    "text": "You gained: [number] Thieving Experience. [number] Agility Experience.",
+                    "id": "5Bsh7h"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "Y323zH"
+              },
+              {
+                "type": "condition",
+                "text": "If the player is in the wall safe room:",
+                "steps": [
+                  {
+                    "npc": "Amazing, you made it so far!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "You gained: [number] Thieving Experience. [number] Agility Experience.",
+                    "id": "EFSN-V"
+                  }
+                ],
+                "id": "tnQgRj"
+              }
+            ]
+          },
+          {
+            "text": "No I'm fine thanks.",
+            "steps": [
+              {
+                "player": "No I'm fine thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

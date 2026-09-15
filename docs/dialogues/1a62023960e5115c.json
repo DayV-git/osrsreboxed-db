@@ -1,0 +1,1633 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I found a strange relic while salvaging...",
+            "condition": "If the player has a salvaging relic on them:",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "below",
+                "id": "aKpJnW"
+              }
+            ],
+            "id": "36lI-v"
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "Before Bone Voyage:",
+                "steps": [
+                  {
+                    "player": "Have you any interesting news?"
+                  },
+                  {
+                    "npc": "Yes, we found a rather interesting island to the North of Morytania. We believe that it may be of archaeological significance."
+                  },
+                  {
+                    "player": "Oh? That sounds interesting."
+                  },
+                  {
+                    "npc": "Indeed. We are making the final preparations for our voyage, in fact, you may be just the person we are looking for... Assuming you've got the necessary qualifications, that is."
+                  },
+                  {
+                    "player": "Would I qualify then?"
+                  },
+                  {
+                    "type": "reference",
+                    "target": "Transcript:Bone Voyage",
+                    "section": "",
+                    "text": "Continues in Transcript:Bone Voyage",
+                    "id": "G7E9Z9",
+                    "resolved": false,
+                    "page_available": true
+                  }
+                ],
+                "id": "6GMQvw"
+              },
+              {
+                "type": "condition",
+                "text": "After Bone Voyage:",
+                "steps": [
+                  {
+                    "player": "Have you any interesting news?"
+                  },
+                  {
+                    "npc": "We've seen some incredible specimens come back from Fossil Island!"
+                  },
+                  {
+                    "npc": "Be sure to bring anything you find back for examination - we've got a brand new Palaeontology room downstairs dedicated to finds from the island."
+                  }
+                ],
+                "id": "vJxRlb"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "player": "Do you know where I could find any treasure?"
+              },
+              {
+                "npc": "Look around you! This museum is full of treasures!"
+              },
+              {
+                "player": "No, I meant treasures for ME."
+              },
+              {
+                "npc": "Any treasures this museum knows about it goes to great lengths to acquire."
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If the player hasn't discovered the digsite pendant:",
+                "steps": [
+                  {
+                    "npc": "Well, firstly you'll need to do a bit of work around the museum, then maybe we can talk."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "TCe4Ju"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have the required items:",
+                "steps": [
+                  {
+                    "npc": "Oh dear. You'll need 250 rubies, a Digsite pendant, 100 cosmic runes and 500 fire runes with you I'm afraid."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "F6LNBC"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have all the rubies required:",
+                "steps": [
+                  {
+                    "npc": "Oh dear. You'll need [X] rubies for that, I'm afraid. I can take part payment now if you wish? However there are no refunds."
+                  },
+                  {
+                    "type": "choice",
+                    "prompt": "Pay some rubies now? (No refunds!)",
+                    "options": [
+                      {
+                        "text": "Yes - I know I can't get them back.",
+                        "steps": [
+                          {
+                            "npc": "Thank you. You have [X] to go before you have enough for a medallion."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No.",
+                        "steps": [
+                          {
+                            "type": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "id": "1aURsU"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has the required items:",
+                "steps": [
+                  {
+                    "npc": "Why, I can give you one now if you wish?"
+                  },
+                  {
+                    "type": "choice",
+                    "options": [
+                      {
+                        "text": "Yes, exchange my runes, rubies and pendant for a medallion.",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "The curator hands you a medallion.",
+                            "id": "U9LNui"
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No, keep my stuff.",
+                        "steps": []
+                      }
+                    ]
+                  }
+                ],
+                "id": "UQ4-IT"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-completing-below-ice-mountain": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about the relic found in Camdozaal.",
+            "steps": [
+              {
+                "player": "I have some relics you might be interested in."
+              },
+              {
+                "npc": "Oh, wonderful! We are always eager to expand out collection!"
+              },
+              {
+                "player": "I found them in some ruins underneath Ice Mountain."
+              },
+              {
+                "npc": "Ruins? Beneath Ice Mountain? That's the first I've heard of this! What did you find down there?"
+              },
+              {
+                "player": "An entire city!"
+              },
+              {
+                "npc": "A city?! How? Which one? Was anyone living there?"
+              },
+              {
+                "player": "Just one person - an Imcando dwarf named Ramarno. He said the city was called Camdozaal."
+              },
+              {
+                "npc": "CAMDOZAAL!? You found the lost Imcando city of Camdozaal!?"
+              },
+              {
+                "player": "Not on purpose! It's a long story."
+              },
+              {
+                "npc": "I'm lost for words! You accidentally found the lost  city of Camdozaal! Please let me see these relics."
+              },
+              {
+                "type": "message",
+                "text": "You show one of the relics to the curator.",
+                "id": "85EYN5"
+              },
+              {
+                "npc": "Hmm, this is certainly not of Imcando design. Maybe it's from an older civilisation. How did you come across it?"
+              },
+              {
+                "player": "I found it encased in ore. I had to crack it open and chip off the hardened parts. This was underneath."
+              },
+              {
+                "npc": "My word, a true mystery of an item? How did it get down there?"
+              },
+              {
+                "npc": "Thank you, kind [sir/lady]! Pass them over to me and I'll identify them properly."
+              },
+              {
+                "type": "condition",
+                "text": "Handing in Ancient globe:",
+                "steps": [
+                  {
+                    "npc": "This Ancient globe seems to show new constellations. What a discovery!"
+                  }
+                ],
+                "id": "TrGczF"
+              },
+              {
+                "type": "condition",
+                "text": "Handing in Ancient ledger:",
+                "steps": [
+                  {
+                    "npc": "I wonder what secrets this Ancient ledger holds. It's a unique find!"
+                  }
+                ],
+                "id": "caHOQO"
+              },
+              {
+                "type": "condition",
+                "text": "Handing in Ancient astroscope:",
+                "steps": [
+                  {
+                    "npc": "An Ancient astroscope. I have only read of such things but to see one, incredible!"
+                  }
+                ],
+                "id": "bnGNXP"
+              },
+              {
+                "type": "condition",
+                "text": "Handing in Ancient treatise:",
+                "steps": [
+                  {
+                    "npc": "I'm not even familiar with the glyphs in this Ancient treatise. It's the first time I've seen them."
+                  }
+                ],
+                "id": "pxNXLb"
+              },
+              {
+                "type": "condition",
+                "text": "Handing in Ancient carcanet:",
+                "steps": [
+                  {
+                    "npc": "What a find, this Ancient carcanet has never been documented before, but I'm certain it had a ceremonial purpose."
+                  }
+                ],
+                "id": "DHzK8w"
+              },
+              {
+                "type": "condition",
+                "text": "Handing in additional relics:",
+                "steps": [
+                  {
+                    "npc": "We already have examples of these other relics in the museum, but they will add nicely to our collection."
+                  }
+                ],
+                "id": "uNauHi"
+              },
+              {
+                "type": "message",
+                "text": "You've been given a large heap of coins.",
+                "id": "J2xi1n"
+              }
+            ]
+          },
+          {
+            "text": "Talk about something else.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "previous",
+                "id": "Aus_HP"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "showing-digsite-certificates-level-1-certificate": [
+      {
+        "player": "Look what I have been awarded."
+      },
+      {
+        "npc": "Well that's great, well done. I'll take that for safekeeping; come and tell me when you are the next level."
+      }
+    ],
+    "showing-digsite-certificates-level-2-certificate": [
+      {
+        "npc": "Excellent work! I'll take that for safekeeping. Remember to come and see me when you have graduated."
+      }
+    ],
+    "showing-digsite-certificates-level-3-certificate": [
+      {
+        "player": "Look at this certificate, curator..."
+      },
+      {
+        "npc": "Well, well - a level 3 graduate! I'll keep your certificate safe for you. I feel I must reward you for your work..."
+      },
+      {
+        "npc": "What would you prefer: something to eat or drink?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Something to eat please.",
+            "steps": [
+              {
+                "player": "Something to eat please."
+              },
+              {
+                "npc": "Very good! Come and eat this cake I baked!"
+              }
+            ]
+          },
+          {
+            "text": "Something to drink please.",
+            "steps": [
+              {
+                "player": "Something to drink please."
+              },
+              {
+                "npc": "Certainly; have this... It's a new recipe from the gnome kingdom. You'll like it I'm sure!"
+              },
+              {
+                "player": "A cocktail? Cheers!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-rusty-locket": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "jTZgm4"
+              }
+            ]
+          },
+          {
+            "text": "I found a strange relic while salvaging...",
+            "steps": [
+              {
+                "player": "I found a strange relic while salvaging..."
+              },
+              {
+                "type": "message",
+                "text": "You show the rusty locket to Curator Haig Halen.",
+                "id": "LkQASM"
+              },
+              {
+                "type": "condition",
+                "text": "The first time:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bwF8Lk"
+                  }
+                ],
+                "id": "b_H6gI"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the rusty locket in for a lamp?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the rusty locket and he gives you the promised lamp in return.",
+                        "id": "44KBXs"
+                      },
+                      {
+                        "npc": "Oh, there's an inscription on the back... 'There is an empire of darkness where hope flickers and dies.' Well, that's certainly ominous..."
+                      },
+                      {
+                        "npc": "Anyway, thank you for bringing it to us. We'll make sure it's taken care of."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "EQRmIZ"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "Subsequent times:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tKzy5B"
+                  }
+                ],
+                "id": "oihYBw"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the rusty locket in for 5,000 coins?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the rusty locket and he gives you the promised 5,000 coins in return.",
+                        "id": "-HNb71"
+                      },
+                      {
+                        "npc": "The museum thanks you for your generosity."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "QylvE5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "DUt9x0"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "tln1Qs"
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Cr6xSL"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-mouldy-block": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uxcCKF"
+              }
+            ]
+          },
+          {
+            "text": "I found a strange relic while salvaging...",
+            "steps": [
+              {
+                "player": "I found a strange relic while salvaging..."
+              },
+              {
+                "type": "message",
+                "text": "You show the mouldy block to Curator Haig Halen.",
+                "id": "_xlh51"
+              },
+              {
+                "type": "condition",
+                "text": "The first time:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bwF8Lk"
+                  }
+                ],
+                "id": "jkORG_"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the mouldy block in for a lamp?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the mouldy block and he gives you the promised lamp in return.",
+                        "id": "o5svnf"
+                      },
+                      {
+                        "npc": "Oh, there's some words carved into the side here... 'There is an open wound that bleeds only darkness.' Rather dark for a children's toy, isn't it?"
+                      },
+                      {
+                        "npc": "Anyway, thank you for bringing it to us. We'll make sure it's taken care of."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "EQRmIZ"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "Subsequent times:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tKzy5B"
+                  }
+                ],
+                "id": "4sQ58j"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the mouldy block in for 5,000 coins?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the mouldy block and he gives you the promised 5,000 coins in return.",
+                        "id": "6ohmXs"
+                      },
+                      {
+                        "npc": "The museum thanks you for your generosity."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "tRU9NY"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "NnzPms"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "-3LiL8"
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "uTmGmU"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-dull-knife": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "TGuRUR"
+              }
+            ]
+          },
+          {
+            "text": "I found a strange relic while salvaging...",
+            "steps": [
+              {
+                "player": "I found a strange relic while salvaging..."
+              },
+              {
+                "type": "message",
+                "text": "You show the dull knife to Curator Haig Halen.",
+                "id": "KwdxB_"
+              },
+              {
+                "type": "condition",
+                "text": "The first time:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bwF8Lk"
+                  }
+                ],
+                "id": "5EJFPD"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the dull knife in for a lamp?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the dull knife and he gives you the promised lamp in return.",
+                        "id": "nxD_mC"
+                      },
+                      {
+                        "npc": "Oh, there's something etched into the blade... 'There is a stranger who wears a black mask under their skin.' That sounds... unpleasant."
+                      },
+                      {
+                        "npc": "Anyway, thank you for bringing it to us. We'll make sure it's taken care of."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "EQRmIZ"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "Subsequent times:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tKzy5B"
+                  }
+                ],
+                "id": "D2GS5R"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the dull knife in for 5,000 coins?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the dull knife and he gives you the promised 5,000 coins in return.",
+                        "id": "63h7K6"
+                      },
+                      {
+                        "npc": "The museum thanks you for your generosity."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ilKZZF"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eC8yWj"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "kyTlLM"
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "_DMCYL"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-broken-compass": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "y7haJM"
+              }
+            ]
+          },
+          {
+            "text": "I found a strange relic while salvaging...",
+            "steps": [
+              {
+                "player": "I found a strange relic while salvaging..."
+              },
+              {
+                "type": "message",
+                "text": "You show the broken compass to Curator Haig Halen.",
+                "id": "jqiNtn"
+              },
+              {
+                "type": "condition",
+                "text": "The first time:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bwF8Lk"
+                  }
+                ],
+                "id": "Lc5bxk"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the broken compass in for a lamp?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the broken compass and he gives you the promised lamp in return.",
+                        "id": "ITnLk-"
+                      },
+                      {
+                        "npc": "Oh, there's something written here... 'There is an ocean of souls where you are one day fated to swim.' Can you... swim in souls? Is that even possible?"
+                      },
+                      {
+                        "npc": "Anyway, thank you for bringing it to us. We'll make sure it's taken care of."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "EQRmIZ"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "Subsequent times:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tKzy5B"
+                  }
+                ],
+                "id": "Ff9cHF"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the broken compass in for 5,000 coins?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the broken compass and he gives you the promised 5,000 coins in return.",
+                        "id": "ZBwmsx"
+                      },
+                      {
+                        "npc": "The museum thanks you for your generosity."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "h1kje1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "_IxCD8"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "dQPq5V"
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "eP_P3o"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-rusty-coin": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "otSMkw"
+              }
+            ]
+          },
+          {
+            "text": "I found a strange relic while salvaging...",
+            "steps": [
+              {
+                "player": "I found a strange relic while salvaging..."
+              },
+              {
+                "type": "message",
+                "text": "You show the rusty coin to Curator Haig Halen.",
+                "id": "KRqZvN"
+              },
+              {
+                "type": "condition",
+                "text": "The first time:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bwF8Lk"
+                  }
+                ],
+                "id": "Rvq2_A"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the rusty coin in for a lamp?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the rusty coin and he gives you the promised lamp in return.",
+                        "id": "tzmJV6"
+                      },
+                      {
+                        "npc": "Oh, someone's etched something into the face... 'There is a choir of souls who you will one day meet.' That sounds rather macabre, doesn't it?"
+                      },
+                      {
+                        "npc": "Anyway, thank you for bringing it to us. We'll make sure it's taken care of."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "EQRmIZ"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "Subsequent times:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tKzy5B"
+                  }
+                ],
+                "id": "fKHN7e"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the rusty coin in for 5,000 coins?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the rusty coin and he gives you the promised 5,000 coins in return.",
+                        "id": "KXDPpd"
+                      },
+                      {
+                        "npc": "The museum thanks you for your generosity."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "v-226l"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "gf9aEK"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "yixSMA"
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "iW6Ejv"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-broken-sextant": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "GKlxS0"
+              }
+            ]
+          },
+          {
+            "text": "I found a strange relic while salvaging...",
+            "steps": [
+              {
+                "player": "I found a strange relic while salvaging..."
+              },
+              {
+                "type": "message",
+                "text": "You show the broken sextant to Curator Haig Halen.",
+                "id": "N_JoLY"
+              },
+              {
+                "type": "condition",
+                "text": "The first time:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bwF8Lk"
+                  }
+                ],
+                "id": "lL0S6e"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the broken sextant in for a lamp?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the broken sextant and he gives you the promised lamp in return.",
+                        "id": "BUmHg8"
+                      },
+                      {
+                        "npc": "Oh, there's something carved in here... 'There is a king who presides over a court of corpses.' Hmm... I can't think of which king that could be referring to..."
+                      },
+                      {
+                        "npc": "Anyway, thank you for bringing it to us. We'll make sure it's taken care of."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "EQRmIZ"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "Subsequent times:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tKzy5B"
+                  }
+                ],
+                "id": "7-jls1"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the broken sextant in for 5,000 coins?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the broken sextant and he gives you the promised 5,000 coins in return.",
+                        "id": "77s71Q"
+                      },
+                      {
+                        "npc": "The museum thanks you for your generosity."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "dmfBC2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "x14Qfi"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nA7g72"
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "fuzIzR"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-mouldy-doll": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "iFUZJA"
+              }
+            ]
+          },
+          {
+            "text": "I found a strange relic while salvaging...",
+            "steps": [
+              {
+                "player": "I found a strange relic while salvaging..."
+              },
+              {
+                "type": "message",
+                "text": "You show the mouldy doll to Curator Haig Halen.",
+                "id": "y6ASXo"
+              },
+              {
+                "type": "condition",
+                "text": "The first time:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bwF8Lk"
+                  }
+                ],
+                "id": "nOK-8b"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the mouldy doll in for a lamp?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the mouldy doll and he gives you the promised lamp in return.",
+                        "id": "Qo7V82"
+                      },
+                      {
+                        "npc": "Oh, there's words on the arm here... 'There is a monument built in honour of the suffering you desire.' Well, I certainly don't desire suffering, thank you very much!"
+                      },
+                      {
+                        "npc": "Anyway, thank you for bringing it to us. We'll make sure it's taken care of."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "EQRmIZ"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "Subsequent times:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tKzy5B"
+                  }
+                ],
+                "id": "NU18Np"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the mouldy doll in for 5,000 coins?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the mouldy doll and he gives you the promised 5,000 coins in return.",
+                        "id": "cCBPZn"
+                      },
+                      {
+                        "npc": "The museum thanks you for your generosity."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "jExCH4"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "APoMuw"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "1OHL2F"
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "rJfA-V"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-smashed-mirror": [
+      {
+        "npc": "Welcome to the museum of Varrock."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about Fossil Island.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "CdkZvW"
+              }
+            ]
+          },
+          {
+            "text": "I found a strange relic while salvaging...",
+            "steps": [
+              {
+                "player": "I found a strange relic while salvaging..."
+              },
+              {
+                "type": "message",
+                "text": "You show the smashed mirror to Curator Haig Halen.",
+                "id": "GRfNBA"
+              },
+              {
+                "type": "condition",
+                "text": "The first time:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "bwF8Lk"
+                  }
+                ],
+                "id": "i16sl4"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the broken compass in for a lamp?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the smashed mirror and he gives you the promised lamp in return.",
+                        "id": "bm1ySd"
+                      },
+                      {
+                        "npc": "Oh, there's an inscription on the back... 'There is a priest who prays for the oceans of dead.' Well, good for the dead, I suppose."
+                      },
+                      {
+                        "npc": "Anyway, thank you for bringing it to us. We'll make sure it's taken care of."
+                      },
+                      {
+                        "type": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "call",
+                        "branch": "EQRmIZ"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "condition",
+                "text": "Subsequent times:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "tKzy5B"
+                  }
+                ],
+                "id": "DWfYR9"
+              },
+              {
+                "type": "choice",
+                "prompt": "Trade the broken compass in for 5,000 coins?",
+                "options": [
+                  {
+                    "text": "Yes.",
+                    "steps": [
+                      {
+                        "type": "message",
+                        "text": "You hand Curator Haig Halen the smashed mirror and he gives you the promised 5,000 coins in return.",
+                        "id": "bGUSUO"
+                      },
+                      {
+                        "npc": "The museum thanks you for your generosity."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No.",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "De89sD"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Have you any interesting news?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "3VQdCk"
+              }
+            ]
+          },
+          {
+            "text": "Do you know where I could find any treasure?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "cZlSDj"
+              }
+            ]
+          },
+          {
+            "text": "How do I get a medallion?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "IPpBNq"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "turning-in-shipwreck-salvaging-relics-after-turning-in-all-8-relics": [
+      {
+        "npc": "You know, that's quite a few items you've brought us that have some sort of strange text on them..."
+      },
+      {
+        "player": "Do you think they're all connected somehow?"
+      },
+      {
+        "npc": "Well, it is rather... Rather..."
+      },
+      {
+        "player": "Rather?"
+      },
+      {
+        "npc": "[player name]..."
+      },
+      {
+        "player": "Yes?"
+      },
+      {
+        "npc": "When the darkness falls upon you, do you see the spires of the eternal city? When you look upon it, do you hear the songs from within?"
+      },
+      {
+        "player": "Are you alright?!"
+      },
+      {
+        "npc": "The choir sings in unison... but the song is one of silence. It cuts through the waves and pierces the veil, until only one question remains..."
+      },
+      {
+        "player": "What is this?!"
+      },
+      {
+        "npc": "Oh, sorry about that. I lost my train of thought for a moment there."
+      },
+      {
+        "player": "Are... you sure? You said some strange things a moment ago."
+      },
+      {
+        "npc": "Hmm? I was just talking about how you keep finding things with these rather strange phrases on them. Slightly chilling, isn't it?"
+      },
+      {
+        "player": "Slightly chilling... yeah..."
+      }
+    ]
+  },
+  "branches": {
+    "bwF8Lk": [
+      {
+        "npc": "Why yes, that does look rather interesting. The museum would gladly take that off your hands, and I think we could reward you with an item from our lamp collection in return."
+      }
+    ],
+    "EQRmIZ": [
+      {
+        "player": "Actually, I think I'll keep it."
+      },
+      {
+        "npc": "Oh... very well."
+      },
+      {
+        "type": "end"
+      }
+    ],
+    "tKzy5B": [
+      {
+        "npc": "Hmm.... while it is interesting, I'm afraid you've already brought us one just like it. We'd still be happy to take it off your hands, but I'm afraid we can only offer a monetary reward of 5,000 coins."
+      }
+    ]
+  }
+}

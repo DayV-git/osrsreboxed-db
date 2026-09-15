@@ -1,0 +1,113 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hi!"
+      },
+      {
+        "npc": "Welcome to the Ardougne Zoo! How can I help you?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any quests for me?",
+            "steps": [
+              {
+                "player": "Do you have any quests for me?"
+              },
+              {
+                "npc": "Not at the moment. The explorers that come back from far away lands tell such amazing tales. Make sure you keep eyes and ears open as you may find new places to explore!"
+              },
+              {
+                "player": "Ooh, I will!"
+              }
+            ]
+          },
+          {
+            "text": "Where did you get the animals from?",
+            "steps": [
+              {
+                "player": "Where did you get the animals from?"
+              },
+              {
+                "npc": "We get them from all over the place! The most exotic creatures have been brought back by explorers and sold to us."
+              },
+              {
+                "player": "Where on Gielinor did you get that scary looking Cyclops?!"
+              },
+              {
+                "npc": "Yes he is scary looking!"
+              },
+              {
+                "npc": "He's from a very far away land, we couldn't find out more as the explorer who brought him back died shortly afterwards!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "Before I help you, can you do something for me?"
+      },
+      {
+        "player": "Sure."
+      },
+      {
+        "npc": "I need to know how many animals we have now."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll!",
+        "id": "cqkNs4"
+      },
+      {
+        "type": "message",
+        "text": "The zoo keeper has given you a challenge scroll!",
+        "id": "8DjmR7"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please tell me how many animals there are."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "Sorry, but that doesn't sound right!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "JpsSMr"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Thanks!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "[another clue scroll/a casket]",
+            "id": "Rbubpb"
+          },
+          {
+            "type": "message",
+            "text": "You've obtained a casket!",
+            "id": "ipGlmO"
+          }
+        ],
+        "id": "y2mbbE"
+      }
+    ]
+  }
+}

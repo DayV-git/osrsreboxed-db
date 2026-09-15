@@ -1,0 +1,138 @@
+{
+  "default": "standard-dialogue-before-completion-of-in-search-of-the-myreque",
+  "variants": {
+    "standard-dialogue-before-completion-of-in-search-of-the-myreque": [
+      {
+        "npc": "Hello there friend. I'm afraid all boat rides are out of service due to the high ghast activity in Mort Myre."
+      }
+    ],
+    "standard-dialogue-attempting-to-use-his-boat": [
+      {
+        "npc": "Hey, hands off my boat!"
+      }
+    ],
+    "standard-dialogue-after-completion-of-in-search-of-the-myreque": [
+      {
+        "player": "Thanks for your help in finding the Myreque."
+      },
+      {
+        "npc": "Well, I'd like to say that you're welcome. But I heard that you led Vanstrom straight to their hideout. I feel so guilty."
+      },
+      {
+        "player": "Hmm, yeah, I know how you feel."
+      }
+    ],
+    "standard-dialogue-after-completion-of-sins-of-the-father": [
+      {
+        "player": "Thanks for your help in finding the Myreque."
+      },
+      {
+        "npc": "Well, I'd like to say that you're welcome. But what does it matter now? The Drakans killed the whole lot of them."
+      }
+    ],
+    "standard-dialogue-after-completion-of-the-blood-moon-rises": [
+      {
+        "npc": "Oh, it's you. I was actually thinking about you recently."
+      },
+      {
+        "player": "How so?"
+      },
+      {
+        "npc": "Well, if it wasn't for me, you might never have found the Myreque. On one hand, that might mean they'd not have ended up getting killed, but on the other,  the Drakans might never have been overthrown."
+      },
+      {
+        "player": "That's an interesting way of thinking about it."
+      },
+      {
+        "npc": "I suppose the important part is that the Drakans have gone, and in some ways, I'm to thank."
+      },
+      {
+        "player": "Yes... I suppose so."
+      }
+    ],
+    "when-boarding-the-swamp-boaty": [
+      {
+        "npc": "I'll have to charge you 10 gold to cover the loan of the boat. Is that okay?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes. I'll pay the ten gold.",
+            "steps": [
+              {
+                "player": "Yes. I'll pay the ten gold."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have 10 gold:",
+                "steps": [
+                  {
+                    "npc": "Sorry, but you don't have that much. No money, no boat!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "XxUW0d"
+              },
+              {
+                "type": "message",
+                "text": "You board the boat and journey to the Hollows.",
+                "id": "qiojIu"
+              },
+              {
+                "type": "message",
+                "text": "You arrive at the Hollows.",
+                "id": "R9Ztp7"
+              }
+            ]
+          },
+          {
+            "text": "No. I won't use the boat.",
+            "steps": [
+              {
+                "player": "No. I won't use the boat."
+              }
+            ]
+          },
+          {
+            "text": "[Charm] How about you let me use the boat for free?",
+            "condition": "If the player has a Ring of Charos(a):",
+            "steps": [
+              {
+                "player": "How about you let me use the boat for free?"
+              },
+              {
+                "npc": "Hmm, use the boat for free... Very well, that sounds fair enough to me."
+              }
+            ],
+            "id": "bF7j_7"
+          }
+        ]
+      }
+    ],
+    "when-quick-boarding-the-swamp-boaty": [
+      {
+        "type": "condition",
+        "text": "If the player does not have 10 gold:",
+        "steps": [
+          {
+            "npc": "Sorry my friend. You don't seem to have the funds for the trip. It will cost you 10 gold."
+          }
+        ],
+        "id": "-fjnni"
+      },
+      {
+        "type": "message",
+        "text": "You board the boat and journey to the Hollows.",
+        "id": "dp3zzP"
+      },
+      {
+        "type": "message",
+        "text": "You arrive at the Hollows.",
+        "id": "ehQ8oV"
+      }
+    ]
+  }
+}

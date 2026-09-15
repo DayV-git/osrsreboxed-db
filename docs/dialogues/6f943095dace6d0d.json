@@ -1,0 +1,172 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "What do you want, little [man/woman]?"
+      },
+      {
+        "player": "Nothing. Just though I'd try to strike up a conversation."
+      },
+      {
+        "npc": "Not now little one, I'm busy."
+      },
+      {
+        "player": "Okay then."
+      }
+    ],
+    "after-the-completion-of-below-ice-mountain-first-workout": [
+      {
+        "npc": "Well done, little one. You've proven your worth."
+      },
+      {
+        "player": "Can I do it again?"
+      },
+      {
+        "npc": "What? Why?"
+      },
+      {
+        "player": "It was fun, I'd like to do it again."
+      },
+      {
+        "npc": "You're the first person to ask me that [player name]. I suppose I could train you again, but I will have to charge you the full 25,000 coins this time."
+      },
+      {
+        "type": "action",
+        "text": "Pay Atlas 25,000 coins to train again?",
+        "id": "ljmUv4"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "player": "Let's do this, I'm ready."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has 25,000 coins on them:",
+                "steps": [
+                  {
+                    "npc": "It's not going to be any easier my friend!"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Training session begins.",
+                    "id": "U56LV2"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Same dialogue as quest cutscene.",
+                    "id": "trvFUo"
+                  },
+                  {
+                    "type": "action",
+                    "text": "Training session ends.",
+                    "id": "ZaEKB2"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "tZJWhS"
+              },
+              {
+                "type": "condition",
+                "text": "If the player doesn't have 25,000 coins on them:",
+                "steps": [
+                  {
+                    "npc": "Hold it there little one, you don't have enough money to pay for the lesson."
+                  },
+                  {
+                    "player": "Oh, sorry I was too excited..."
+                  },
+                  {
+                    "npc": "No worries friend, come back when you can afford the session."
+                  }
+                ],
+                "id": "oZ-Dub"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "after-the-completion-of-below-ice-mountain-second-workout": [
+      {
+        "npc": "Back again I see, here for another workout?"
+      },
+      {
+        "player": "Yes please."
+      },
+      {
+        "npc": "You must take your training very seriously [player name]. This is the second time you'll have done this workout and paid full price!"
+      },
+      {
+        "type": "action",
+        "text": "Pay Atlas 25,000 coins to train again?",
+        "id": "vnhTCu"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "oqEcnk"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "after-the-completion-of-below-ice-mountain-subsequent-workouts": [
+      {
+        "npc": "Back again I see, here for another workout?"
+      },
+      {
+        "player": "Yes please."
+      },
+      {
+        "npc": "You take your training very seriously [player name]. You know you've done this workout [times done] times, are you sure you want to do it again?"
+      },
+      {
+        "type": "action",
+        "text": "Pay Atlas 25,000 coins to train again?",
+        "id": "_Mpl1T"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "u5V9rY"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ]
+  }
+}

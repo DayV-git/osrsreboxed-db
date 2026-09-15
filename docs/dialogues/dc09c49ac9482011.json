@@ -1,0 +1,143 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "line",
+        "speaker": "Dalila",
+        "text": "Ooh, lovely view, dear."
+      },
+      {
+        "npc": "Yes dear."
+      },
+      {
+        "type": "line",
+        "speaker": "Dalila",
+        "text": "I hope the food's better here than it was last time."
+      },
+      {
+        "npc": "I'm sure it will be, dear."
+      },
+      {
+        "player": "Sorry to disturb you, but what are you two doing here?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dalila",
+        "text": "Perrdur and I are having a nice romantic dinner, aren't we dear?"
+      },
+      {
+        "type": "line",
+        "speaker": "Dalila",
+        "text": "We are celebrating the anniversary of our marriage, aren't we dear?"
+      },
+      {
+        "npc": "Yes dear."
+      },
+      {
+        "type": "line",
+        "speaker": "Dalila",
+        "text": "And we are having a very enjoyable time, aren't we dear?"
+      },
+      {
+        "npc": "Yes dear."
+      },
+      {
+        "player": "Clearly. I'll let you two lovebirds carry on, then."
+      }
+    ],
+    "gnome-restaurant-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player doesn't have the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Although you have found your customer you don't appear to have brought the correct food with you! You need [a/some] [ordered gnome food/drink item]!",
+            "id": "joWEzZ"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "r4uoHD"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has a premade item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Premade dishes will not do I'm afraid. Only hand made Gnome Cuisine is good enough for customers of Aluft Aloft.",
+            "id": "x_Os9N"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "XgYi-r"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has the correct item in their inventory:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "You hand over your delivery of [a/some] [ordered gnome food/drink item] to Perrdur",
+            "id": "C8l305"
+          },
+          {
+            "npc": "Thank you dear, This looks as if it might be edible for a change!"
+          },
+          {
+            "type": "condition",
+            "text": "If the player does have a reward token available:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You have [number] credits towards your free delivery token. You may get [number] pieces of gnome food delivered to you.",
+                "id": "rYjXIZ"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has an unclaimed reward token:",
+                "steps": [
+                  {
+                    "type": "message",
+                    "text": "Don't forget to pick up your free delivery token from Aluft Gianne jnr.",
+                    "id": "6lE6BH"
+                  }
+                ],
+                "id": "JFUEpW"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has claimed their reward token:",
+                "steps": [
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "fBaaR7"
+              }
+            ],
+            "id": "UXXqO8"
+          }
+        ],
+        "id": "pQ2MdA"
+      },
+      {
+        "type": "condition",
+        "text": "If the player ran out of time:",
+        "steps": [
+          {
+            "type": "message",
+            "text": "Your delivery is too late! Go back to Aluft jnr. to get another order. You discard your delivery box as you don't need it any more.",
+            "id": "HLKgAV"
+          }
+        ],
+        "id": "OlINV0"
+      }
+    ]
+  }
+}

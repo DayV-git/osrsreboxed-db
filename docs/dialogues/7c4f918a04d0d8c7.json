@@ -1,0 +1,167 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Hello, how can I help you? I'm sellin' if you have ecto- tokens."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Could I buy those chickens now, then?",
+            "steps": [
+              {
+                "player": "Could I buy those chickens now?"
+              },
+              {
+                "npc": "I can hand over a chicken if you give me 10 of them ecto-token thingies per bird."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Could I buy 1 chicken now?",
+                    "steps": [
+                      {
+                        "player": "Could I buy 1 chicken now?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 10 Ecto-tokens",
+                        "steps": [
+                          {
+                            "npc": "Ta, some day soon I'll be havin' a nice undead bed to kip in."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "1 Undead Chicken",
+                            "id": "VGKjPT"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "RHJmit"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 10 Ecto-tokens",
+                        "steps": [
+                          {
+                            "npc": "I'm not a charity here, ya know. Bad enough all you cow-killing folks are a'slaughterin' me beasts. Come back when ya have enough tokens."
+                          }
+                        ],
+                        "id": "iWmuc_"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Could I buy 2 chickens?",
+                    "steps": [
+                      {
+                        "player": "Could I buy 2 chickens?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has 20 Ecto-tokens",
+                        "steps": [
+                          {
+                            "npc": "Great! I'm laying away me tokens for some killer cows. That'll learn them bone rustlers."
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "2 Undead Chickens",
+                            "id": "4BQfJx"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "DmymIZ"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have 20 Ecto-tokens",
+                        "steps": [
+                          {
+                            "type": "jump",
+                            "reference": "above",
+                            "id": "Scb974"
+                          }
+                        ],
+                        "id": "69-EYR"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Your animals don't look too healthy; I'll buy elsewhere.",
+                    "steps": [
+                      {
+                        "npc": "Har har, how many ghost chicky farmers d'you know, den?"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Your animals don't look too healthy.",
+            "steps": [
+              {
+                "player": "Your animals don't look too healthy."
+              },
+              {
+                "npc": "It's that fountain thingy in the temple to the east. It's turned them all into zombies."
+              },
+              {
+                "player": "What use are zombie animals?"
+              },
+              {
+                "npc": "None at all, mate, except that those worshippers at that temple keep comin' and killin' 'em all for their bones. Don't ask me why."
+              },
+              {
+                "player": "But you're a ghost - surely you know something about it."
+              },
+              {
+                "npc": "I don't know nuthin' about nuthin'. Oim a simple ghost with simple needs. All I know is, years ago, that temple started glowing green and, a few months later, I woke up dead. That's all there is to it."
+              }
+            ]
+          },
+          {
+            "text": "I'm okay, thank you.",
+            "steps": [
+              {
+                "player": "I'm okay, thank you."
+              }
+            ]
+          },
+          {
+            "text": "Where can I get these ecto-tokens?",
+            "steps": [
+              {
+                "player": "Where can I get ecto-tokens?"
+              },
+              {
+                "npc": "The ghosts I talk to say that the tokens have something to do with the tower just east of here. If you need to collect some I'd try there."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-malcolm-undead-chicken": [
+      {
+        "npc": "I sells but I dunt be a-buyin'."
+      }
+    ],
+    "using-items-on-malcolm-any-other-item": [
+      {
+        "npc": "Wot use is that there stuff to a ghosty like meself?"
+      }
+    ]
+  }
+}

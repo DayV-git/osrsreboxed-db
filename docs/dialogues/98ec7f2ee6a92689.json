@@ -1,0 +1,54 @@
+{
+  "default": null,
+  "variants": {
+    "feeding-the-leech-an-item": [
+      {
+        "type": "message",
+        "text": "Are you sure you wish to feed the [current leech name] your [item name]?",
+        "id": "sLejl3"
+      },
+      {
+        "type": "choice",
+        "prompt": "Feed the [current leech name] your [item name]?",
+        "options": [
+          {
+            "text": "Yes, give it.",
+            "steps": [
+              {
+                "type": "choice",
+                "prompt": "Really feed the [current leech name] your [item name]?",
+                "options": [
+                  {
+                    "text": "No, keep it.",
+                    "steps": []
+                  },
+                  {
+                    "text": "Yes, give it.",
+                    "steps": [
+                      {
+                        "type": "line",
+                        "speaker": "[current leech name]",
+                        "text": "noms [item name]*"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No, keep it.",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "attempting-to-feed-the-leech-an-item-that-is-destroyed-on-death": [
+      {
+        "type": "message",
+        "text": "The leech isn't interested in that.",
+        "id": "UMqMTV"
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "player": "Hello"
+      },
+      {
+        "npc": "Hello Bwana. Are you interested in buying a ticket for the 'Lady of the Waves'?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes, that sounds great!",
+            "steps": [
+              {
+                "player": "Yes, that sounds great!"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has less than 25gp:",
+                "steps": [
+                  {
+                    "type": "call",
+                    "branch": "vIQVM-"
+                  }
+                ],
+                "id": "fY6dec"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least 25gp:",
+                "steps": [
+                  {
+                    "npc": "Great, nice doing business with you."
+                  }
+                ],
+                "id": "zrWjOA"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "npc": "Fair enough Bwana, let me know if you change your mind."
+              }
+            ]
+          },
+          {
+            "text": "Tell me more about the ship.",
+            "steps": [
+              {
+                "npc": "It's a ship that can take you to either Port Sarim or Port Khazard. The ship lies west of Shilo Village and south of Cairn Island. The tickets cost 25 coins. Would you like to purchase a ticket Bwana?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Yes, that sounds great!",
+                    "steps": [
+                      {
+                        "player": "Yes, that sounds great!"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has less than 25gp:",
+                        "steps": [
+                          {
+                            "type": "call",
+                            "branch": "vIQVM-"
+                          }
+                        ],
+                        "id": "5DV2Fy"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 25gp:",
+                        "steps": [
+                          {
+                            "npc": "Great, nice doing business with you."
+                          }
+                        ],
+                        "id": "WGfa75"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      },
+                      {
+                        "npc": "Fair enough Bwana, let me know if you change your mind."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "talking-to-seravel-before-completing-shilo-village": [
+      {
+        "type": "line",
+        "speaker": "Note",
+        "text": "This is not typically possible, because accessing Seravel requires completion of Shilo Village."
+      },
+      {
+        "npc": "I'm getting out of here Bwana, the place is infested with zombies."
+      }
+    ]
+  },
+  "branches": {
+    "vIQVM-": [
+      {
+        "npc": "Sorry Bwana, you don't have enough money. Come back when you have 25 coins."
+      },
+      {
+        "type": "end"
+      }
+    ]
+  }
+}

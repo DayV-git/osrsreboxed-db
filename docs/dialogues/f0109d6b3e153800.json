@@ -1,0 +1,129 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Welcome to my fishing shop. Are you looking for anything specific?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Let's see what you have.",
+            "steps": [
+              {
+                "player": "Let's see what you have."
+              },
+              {
+                "type": "action",
+                "action": "open_shop",
+                "target": "Sulisal's Superb Fishing Store",
+                "id": "LIFGv7"
+              }
+            ]
+          },
+          {
+            "text": "I'm good, thanks.",
+            "steps": [
+              {
+                "player": "I'm good, thanks."
+              },
+              {
+                "npc": "Very well."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "treasure-trails-hard": [
+      {
+        "npc": "Ah! You may be able to help!"
+      },
+      {
+        "player": "What?"
+      },
+      {
+        "npc": "I need you to answer this for me."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "1IwiWB"
+      },
+      {
+        "type": "message",
+        "text": "Sulisal has given you a challenge scroll!",
+        "id": "qI_I61"
+      }
+    ],
+    "treasure-trails-hard-when-talked-to-again": [
+      {
+        "npc": "Do you have the answer?"
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "I'm not quite sure that's correct, have another go!"
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "D4ny6w"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Perfect!"
+          },
+          {
+            "type": "condition",
+            "text": "When given another clue scroll:",
+            "steps": [
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "another clue scroll",
+                "id": "yXDyQy"
+              },
+              {
+                "type": "message",
+                "text": "Sulisal has given you another clue scroll!",
+                "id": "M8FEZM"
+              },
+              {
+                "type": "end"
+              }
+            ],
+            "id": "EtU2by"
+          },
+          {
+            "type": "condition",
+            "text": "When given a reward casket:",
+            "steps": [
+              {
+                "type": "message",
+                "text": "You've obtained a casket!",
+                "id": "t7qYr2"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "a reward casket",
+                "id": "pA-xzJ"
+              }
+            ],
+            "id": "u3WJ4D"
+          }
+        ],
+        "id": "L1k6It"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "steps": [
+    {
+      "npc": "Welcome to the Sheared Ram. What can I do for you?"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "I'll have a beer please.",
+          "steps": [
+            {
+              "player": "I'll have a beer please.?"
+            },
+            {
+              "npc": "That'll be two coins please."
+            },
+            {
+              "type": "condition",
+              "text": "If the player has at least two coins in their inventory:",
+              "steps": [
+                {
+                  "type": "action",
+                  "action": "give",
+                  "text": "2 coins",
+                  "id": "XDx7l6"
+                },
+                {
+                  "type": "action",
+                  "action": "receive",
+                  "text": "Beer",
+                  "id": "dqIAGj"
+                },
+                {
+                  "type": "end"
+                }
+              ],
+              "id": "7VfIDq"
+            },
+            {
+              "type": "condition",
+              "text": "If the player does not have at least two coins in their inventory:",
+              "steps": [
+                {
+                  "player": "Oh dear, I don't seem to have enough money."
+                }
+              ],
+              "id": "JXixjd"
+            }
+          ]
+        },
+        {
+          "text": "Heard any rumours recently?",
+          "steps": [
+            {
+              "player": "Heard any rumours recently?"
+            },
+            {
+              "npc": "One of the patrons here is looking for treasure apparently. A chap by the name of Veos."
+            }
+          ]
+        },
+        {
+          "text": "Nothing, I'm fine.",
+          "steps": []
+        }
+      ]
+    }
+  ]
+}

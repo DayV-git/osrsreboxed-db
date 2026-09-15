@@ -1,0 +1,97 @@
+{
+  "default": "standard-dialogue-without-catspeak-amulet",
+  "variants": {
+    "standard-dialogue-without-catspeak-amulet": [
+      {
+        "npc": "Meow."
+      }
+    ],
+    "standard-dialogue-with-catspeak-amulet": [
+      {
+        "player": "Hello puss."
+      },
+      {
+        "npc": "Want a mouse?"
+      },
+      {
+        "player": "No thanks."
+      },
+      {
+        "npc": "Want this half dead bird?"
+      },
+      {
+        "player": "Errrr... no."
+      },
+      {
+        "npc": "Want this crunched up spider?"
+      },
+      {
+        "player": "Um... not really."
+      },
+      {
+        "npc": "Oh well. Got any tuna?"
+      },
+      {
+        "type": "condition",
+        "text": "If the player has no tuna in their inventory:",
+        "steps": [
+          {
+            "player": "No."
+          },
+          {
+            "npc": "Hmmmph."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "bFOWm4"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does have tuna in their inventory:",
+        "steps": [
+          {
+            "player": "Why yes I do have some tuna."
+          },
+          {
+            "npc": "Give! *purr*"
+          },
+          {
+            "type": "choice",
+            "options": [
+              {
+                "text": "Give a tuna to the cat.",
+                "steps": [
+                  {
+                    "type": "action",
+                    "text": "You give some tuna to the cat. It devours it and purrs loudly.",
+                    "id": "j2RTT2"
+                  },
+                  {
+                    "npc": "Catch toad for me."
+                  },
+                  {
+                    "player": "What? I think not..."
+                  }
+                ]
+              },
+              {
+                "text": "Keep the tuna for yourself.",
+                "steps": [
+                  {
+                    "player": "Nah... my tuna."
+                  },
+                  {
+                    "npc": "Hissss..."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "64Osve"
+      }
+    ]
+  }
+}

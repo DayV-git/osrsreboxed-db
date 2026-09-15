@@ -1,0 +1,394 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Talk about the island camp.",
+            "steps": [
+              {
+                "player": "What can I do around here?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has not completed any Fossil Island task sets:",
+                "steps": [
+                  {
+                    "npc": "There's a list pinned up on the camp notice board, near the toilet. Have a look there for useful things you could do. I've got some rewards if you do them all!"
+                  },
+                  {
+                    "player": "I see. Thank you."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "XxrP2g"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Museum Camp task set:",
+                "steps": [
+                  {
+                    "npc": "I see you've finished building the camp for us."
+                  },
+                  {
+                    "player": "All in a day's work!"
+                  },
+                  {
+                    "npc": "Thank you so much for your help! Here, take these fossils. I found them while panning! They're everywhere on this island... A quick clean up by the benches you built should help identify them."
+                  },
+                  {
+                    "type": "message",
+                    "text": "Peter hands you 5 unidentified fossils.",
+                    "id": "OenmwF"
+                  },
+                  {
+                    "player": "Thanks!"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "j8lTKD"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Northern Reaches task set:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "rOIqVC"
+                  }
+                ],
+                "id": "Okf4X7"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Southern Swamps task set:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "FjZylJ"
+                  }
+                ],
+                "id": "mjVCG6"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed the Mountainous East task set:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "IO9E27"
+                  }
+                ],
+                "id": "1q9Ooa"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has completed all of the Fossil Island task sets:",
+                "steps": [
+                  {
+                    "type": "missing",
+                    "id": "UOsy_D"
+                  }
+                ],
+                "id": "4ZROMi"
+              }
+            ]
+          },
+          {
+            "text": "Talk about fossils.",
+            "steps": [
+              {
+                "player": "Can I talk to you for a moment about the fossils I find on this island?"
+              },
+              {
+                "npc": "Sure, would you like to talk about? Normal or rare fossils?"
+              },
+              {
+                "type": "choice",
+                "prompt": "Ask about rare or normal fossils?",
+                "options": [
+                  {
+                    "text": "Let's talk about rare ones.",
+                    "steps": [
+                      {
+                        "player": "Let's talk about rare fossils, if that's okay."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If rare fossils are currently toggled on:",
+                        "steps": [
+                          {
+                            "npc": "Oh definitely! Did you find a new type of fossil?!"
+                          },
+                          {
+                            "player": "Not quite... I'd like you to stop rare fossils showing up on the island."
+                          },
+                          {
+                            "npc": "Oh..., I can do that for you, if you really want me to."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes I'm sure.",
+                                "steps": [
+                                  {
+                                    "player": "Yes I'm sure."
+                                  },
+                                  {
+                                    "npc": "So be it, I'll spread the word, rare fossils won't drop for you anymore. Come back to me if you change your mind."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, I've changed my mind.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, I've changed my mind, I'll keep collecting them."
+                                  },
+                                  {
+                                    "npc": "Oh wonderful! Rare fossils are so hard to find, I'd hate for you to miss out on one."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "h7oPQC"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If rare fossils are currently toggled off:",
+                        "steps": [
+                          {
+                            "npc": "So you've changed your mind then? I knew you would, who can resists the hidden knowledge found in rare fossils?"
+                          },
+                          {
+                            "player": "Yes I know, can you just do it for me."
+                          },
+                          {
+                            "npc": "If that's what you really want."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes I'm sure.",
+                                "steps": [
+                                  {
+                                    "player": "Yes I'm sure."
+                                  },
+                                  {
+                                    "npc": "Of course you are! I'll get the word out and you'll start to see rare fossils drop again."
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Nevermind",
+                                "steps": [
+                                  {
+                                    "player": "Eh, nevermind."
+                                  },
+                                  {
+                                    "npc": "Fine, just let me know if you actually change your mind."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "PxbFTf"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Let's talk about normal ones.",
+                    "steps": [
+                      {
+                        "player": "Let's talk about normal fossils, if that's okay."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If normal fossils are currently toggled on:",
+                        "steps": [
+                          {
+                            "npc": "Of course, I'm always up for an exciting discussion about fossils."
+                          },
+                          {
+                            "player": "Is it possible that you could stop normal fossils being given to me on the island."
+                          },
+                          {
+                            "npc": "... Why would you want that?"
+                          },
+                          {
+                            "player": "I've found every fossil I want and well, I'm just not interested in them anymore."
+                          },
+                          {
+                            "npc": "Oh... I guess can see what I can do, Only if you're sure of course."
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes I'm sure.",
+                                "steps": [
+                                  {
+                                    "player": "Yes I'm sure."
+                                  },
+                                  {
+                                    "npc": "Fine... I'll spread the word, you won't see fossils dropped on the island anymore... Come back to me if you change your mind."
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Actually, I've changed my mind.",
+                                "steps": [
+                                  {
+                                    "player": "Actually, I've changed my mind, I'll keep collecting them."
+                                  },
+                                  {
+                                    "npc": "Really?! That's fantastic! Fossils are so much fun, you'd be missing out!"
+                                  },
+                                  {
+                                    "type": "end"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "vyf_MS"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If normal fossils are currently toggled off:",
+                        "steps": [
+                          {
+                            "npc": "Oh yes... I remember, you asked me to stop fossils dropping for you on the island."
+                          },
+                          {
+                            "player": "Yes, well, I need you to let them drop again."
+                          },
+                          {
+                            "npc": "Really? Are you sure?"
+                          },
+                          {
+                            "type": "choice",
+                            "options": [
+                              {
+                                "text": "Yes I'm sure.",
+                                "steps": [
+                                  {
+                                    "player": "Yes I'm sure."
+                                  },
+                                  {
+                                    "npc": "Of course you are! I'll get the word out and you'll start to see fossils drop again."
+                                  }
+                                ]
+                              },
+                              {
+                                "text": "Nevermind",
+                                "steps": [
+                                  {
+                                    "player": "Eh, nevermind."
+                                  },
+                                  {
+                                    "npc": "Okay... let me know if you actually change your mind."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "id": "ECueIP"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "context-menu-toggle-fossils-option": [
+      {
+        "type": "choice",
+        "prompt": "Toggle rare or normal fossils?",
+        "options": [
+          {
+            "text": "Rare.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If rare fossils are currently toggled on:",
+                "steps": [
+                  {
+                    "npc": "That has been done, rare fossils won't drop for you anymore. Come back to me if you change your mind."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "fOP2Dx"
+              },
+              {
+                "type": "condition",
+                "text": "If rare fossils are currently toggled off:",
+                "steps": [
+                  {
+                    "npc": "Excellent, you'll start to see rare fossils showing up on the island again."
+                  }
+                ],
+                "id": "qyfunx"
+              }
+            ]
+          },
+          {
+            "text": "Normal.",
+            "steps": [
+              {
+                "type": "condition",
+                "text": "If normal fossils are currently toggled on:",
+                "steps": [
+                  {
+                    "npc": "Fine, regular fossils won't drop for you anymore. Come back to me if you change your mind"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "vGxEpp"
+              },
+              {
+                "type": "condition",
+                "text": "If normal fossils are currently toggled off:",
+                "steps": [
+                  {
+                    "npc": "Great! You'll start to see fossils showing up on the island again."
+                  }
+                ],
+                "id": "KF02ub"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

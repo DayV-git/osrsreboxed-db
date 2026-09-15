@@ -1,0 +1,222 @@
+{
+  "default": null,
+  "variants": {
+    "standard-dialogue-speaking-to-the-city-guard-during-watchtower": [
+      {
+        "type": "line",
+        "speaker": "City Guard",
+        "text": "Grrrr, what business have you here ?"
+      },
+      {
+        "player": "I am on an errand..."
+      },
+      {
+        "type": "line",
+        "speaker": "City Guard",
+        "text": "So what do you want with me ?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I am an ogre killer come to destroy you!",
+            "steps": [
+              {
+                "player": "I am an ogre killer come to destroy you!"
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "I would like to see you try!"
+              },
+              {
+                "type": "message",
+                "text": "You are under attack!",
+                "id": "6vcX_f"
+              }
+            ]
+          },
+          {
+            "text": "I seek passage into the skavid caves",
+            "steps": [
+              {
+                "player": "I seek passage into the skavid caves"
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "Is that so..."
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "You humour me small thing, answer this riddle and I will help you... I want you to bring me an item"
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "I will give you all the letters of this item, you work out what it is..."
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "My first is in days, but not in years.  My second is in evil, and also in tears. My third is in all, but not in none"
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "My fourth is in hot, but not in sun. My fifth is in heaven, and also in hate. My sixth is in fearing, but not in fate."
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "My seventh is in plush, but not in place. My eighth is in nine, but not in eight. My last is in earth, and also in in great"
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "My whole is an object, that magic will make. It brings wrack and ruin to all in it's wake..."
+              },
+              {
+                "type": "line",
+                "speaker": "City Guard",
+                "text": "Now how long I wonder, will this riddle take?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-using-the-death-rune-on-the-guard": [
+      {
+        "player": "I worked it out!"
+      },
+      {
+        "type": "line",
+        "speaker": "City Guard",
+        "text": "Well well.. the imp has done it!"
+      },
+      {
+        "type": "line",
+        "speaker": "City Guard",
+        "text": "Thanks for the rune"
+      },
+      {
+        "type": "line",
+        "speaker": "City Guard",
+        "text": "This is what you be needing..."
+      },
+      {
+        "type": "message",
+        "text": "The guard gives you a map",
+        "id": "4x9mUt"
+      }
+    ],
+    "standard-dialogue-talking-to-him-after-the-player-has-given-him-the-rune": [
+      {
+        "npc": "What is it?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Do you have any other riddles for me?",
+            "steps": [
+              {
+                "player": "Do you have any other riddles for me?"
+              },
+              {
+                "npc": "Yes, what looks good on a plate with salad?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "I don't know...",
+                    "steps": [
+                      {
+                        "player": "I don't know..."
+                      },
+                      {
+                        "npc": "You! Now go, and bother me no more.)"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "A nice pizza?",
+                    "steps": [
+                      {
+                        "player": "A nice pizza?"
+                      },
+                      {
+                        "npc": "Grr! Think you are a comedian, eh? Get lost!"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I have lost the map you gave me.",
+            "steps": [
+              {
+                "player": "I have lost the map you gave me."
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have a Skavid map in their inventory or bank:",
+                "steps": [
+                  {
+                    "npc": "What's the point? Take this one and go away!"
+                  },
+                  {
+                    "type": "message",
+                    "text": "The guard gives you another map.",
+                    "id": "lOAM_n"
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "Skavid map",
+                    "id": "m167q_"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "15mrtt"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Skavid map in their bank:",
+                "steps": [
+                  {
+                    "npc": "You imps always store things in places and forget. Go look for it."
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "cYpTX1"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has a Skavid map in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Are you blind? What is that you are carrying?"
+                  },
+                  {
+                    "player": "Oh, that map..."
+                  }
+                ],
+                "id": "wcVXLF"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

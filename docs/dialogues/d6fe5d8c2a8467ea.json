@@ -1,0 +1,391 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "condition",
+        "text": "If the player has experience to claim:",
+        "steps": [
+          {
+            "npc": "It seems you're missing out on some valuable experience. Would you like it?"
+          },
+          {
+            "type": "message",
+            "text": "You are owed the following: [list of experience the player can claim]",
+            "id": "sEipjh"
+          },
+          {
+            "type": "choice",
+            "prompt": "Claim your owed XP?",
+            "options": [
+              {
+                "text": "Yes please.",
+                "steps": [
+                  {
+                    "player": "Yes please."
+                  },
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "owed experience",
+                    "id": "LeCmMv"
+                  },
+                  {
+                    "npc": "There you go."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "49BLKu"
+                  }
+                ]
+              },
+              {
+                "text": "No thanks.",
+                "steps": [
+                  {
+                    "player": "No thanks."
+                  },
+                  {
+                    "npc": "Fair enough."
+                  },
+                  {
+                    "type": "jump",
+                    "reference": "continue",
+                    "id": "TrbAoD"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "CNUDd3"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have experience to claim:",
+        "steps": [
+          {
+            "npc": "Hello. I've found some stuff that I think is yours. You can pay me with cash you're carrying, or I can take payments from your bank. Would you like to buy anything from me?"
+          },
+          {
+            "type": "jump",
+            "reference": "continue",
+            "id": "S4DuXe"
+          }
+        ],
+        "id": "kvok22"
+      },
+      {
+        "type": "choice",
+        "prompt": "What would you like to say?",
+        "options": [
+          {
+            "text": "Why do you charge for returning lost items?",
+            "steps": [
+              {
+                "player": "Why do you charge for returning lost items?"
+              },
+              {
+                "npc": "You could get your stuff back elsewhere, sure. Now, maybe it'd be free, or maybe you'd have to pay someone, but you'd definitely have to go on a journey to get it back."
+              },
+              {
+                "npc": "So I'm earning my fee by saving you a trip. Do you want to have a look?"
+              },
+              {
+                "type": "choice",
+                "prompt": "What would you like to say?",
+                "options": [
+                  {
+                    "text": "Show me what you've found.",
+                    "steps": [
+                      {
+                        "player": "Show me what you've found."
+                      },
+                      {
+                        "type": "action",
+                        "action": "open_shop",
+                        "target": "Lost Property shop",
+                        "id": "MTlnQd"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "No thanks.",
+                    "steps": [
+                      {
+                        "player": "No thanks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Show me what you've found.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "urPDqO"
+              }
+            ]
+          },
+          {
+            "text": "About items that break when people kill me...",
+            "steps": [
+              {
+                "player": "About items that break when people kill me..."
+              },
+              {
+                "npc": "Oh yes, some items do break specially when you're killed by your rivals. And if you die in the deep Wilderness, they vanish altogether."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Can you fix them?",
+                    "steps": [
+                      {
+                        "player": "Can you fix them?"
+                      },
+                      {
+                        "npc": "For a fee, yes. Just show me the broken item."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Can you stop them vanishing in deep Wilderness?",
+                    "steps": [
+                      {
+                        "player": "Can you stop them vanishing in deep Wilderness?"
+                      },
+                      {
+                        "npc": "I can lock them to you so they won't vanish on death in deep Wilderness, yes. I'll want some money for my services, though, and you'll need to bring me a Trouver Parchment."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have a parchment in their inventory:",
+                        "steps": [
+                          {
+                            "type": "message",
+                            "text": "Perdu tells you about a merchant in Ferox Enclave who sells special scrolls called Trouver Parchments.",
+                            "id": "tewFJ3"
+                          },
+                          {
+                            "npc": "You'll find her in Ferox Enclave, where people play a game called Last Man Standing. Bring the parchment here, then show me the item you want to lock."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "8kcW9T"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does have a parchment in their inventory:",
+                        "steps": [
+                          {
+                            "player": "I've got the parchment."
+                          },
+                          {
+                            "npc": "Not bad for a human! Okay, show me the item you want to protect, and I'll see what I can do."
+                          }
+                        ],
+                        "id": "wQ9ZME"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "using-items-on-perdu-lockable-without-parchment": [
+      {
+        "npc": "I can lock that item so that it won't vanish if you die in deep Wilderness, but I'll need a Trouver parchment."
+      },
+      {
+        "type": "message",
+        "text": "Perdu tells you about a merchant in Ferox Enclave who sells special scrolls called Trouver Parchments.",
+        "id": "o4XhZ6"
+      },
+      {
+        "npc": "You'll find her in Ferox Enclave, where people play a game called Last Man Standing. Bring the parchment here, then show me the item again."
+      }
+    ],
+    "using-items-on-perdu-lockable-with-parchment": [
+      {
+        "npc": "I can lock that item so that it won't vanish if you die in deep Wilderness. It'll cost you 500,000 coins and a Trouver parchment."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Lock item ([used item])",
+            "steps": [
+              {
+                "type": "action",
+                "action": "give",
+                "text": "Trouver parchment and 500,000 coins",
+                "id": "iqhh4j"
+              },
+              {
+                "type": "action",
+                "action": "receive",
+                "text": "locked item",
+                "id": "_Iz2QQ"
+              }
+            ]
+          },
+          {
+            "text": "Cancel",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-perdu-lockable-with-parchment-and-an-item-with-an-ornament-kit": [
+      {
+        "npc": "I can lock that item so that it won't vanish if you die in deep Wilderness. It'll cost you 500,000 coins and a Trouver parchment."
+      },
+      {
+        "npc": "However be warned that the lock will NOT cover the ornament kit on your item. That kit will be lost."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Lock item ([used item])"
+          },
+          {
+            "text": "Lock all available items"
+          },
+          {
+            "text": "Cancel"
+          }
+        ]
+      },
+      {
+        "npc": "I see that at least one of the items I locked has an ornament kit. I will remind you that the lock does NOT cover the ornament kit, only the base item. Liability and all that.",
+        "steps": []
+      }
+    ],
+    "using-items-on-perdu-locked": [
+      {
+        "npc": "I've locked that item to you so that it won't vanish if you're killed in deep Wilderness. I can unlock it again, returning your parchment and 475,000 coins."
+      },
+      {
+        "type": "choice",
+        "prompt": "[used item]: Unlock it?",
+        "options": [
+          {
+            "text": "Yes",
+            "steps": [
+              {
+                "type": "message",
+                "text": "Perdu unlocks your item and returns the parchment and some money.",
+                "id": "vjAfzH"
+              }
+            ]
+          },
+          {
+            "text": "No",
+            "steps": []
+          }
+        ]
+      }
+    ],
+    "using-items-on-perdu-parchment": [
+      {
+        "npc": "If you want me to lock an item to you so that it won't vanish if you're killed in deep Wilderness, show me the item."
+      }
+    ],
+    "using-items-on-perdu-breakable-item-that-cannot-be-locked": [
+      {
+        "npc": "You don't need me to lock that item, it won't vanish if you die in deep Wilderness."
+      }
+    ],
+    "using-items-on-perdu-coins": [
+      {
+        "npc": "I can see you have some money. Weird flex, but okay."
+      }
+    ],
+    "using-items-on-perdu-other-items": [
+      {
+        "npc": "I can't help you with that item - it's not the kind of thing I could lock or repair, if you were hoping for me to do that sort of thing."
+      }
+    ],
+    "reclaiming-destroyed-echo-boots": [
+      {
+        "type": "missing",
+        "id": "wNIaZO"
+      },
+      {
+        "npc": "I have something for you. You lost your Echo boots. Would you like it back?"
+      },
+      {
+        "type": "missing",
+        "id": "ssupUK"
+      }
+    ],
+    "pvp-bounty-hunter-world-banner-dialogue": [
+      {
+        "npc": "Ah! I have something for you. You lost your banner. Would you like it back?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "missing",
+                "id": "13ktHt"
+              }
+            ]
+          },
+          {
+            "text": "No thanks.",
+            "steps": [
+              {
+                "player": "No thanks."
+              },
+              {
+                "type": "missing",
+                "id": "ILQ9aG"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "deadman-mode-with-an-active-breach": [
+      {
+        "npc": "You seem lost, but luckily I know where to send you. A breach is occurring [location 1] (single). Another breach is occuring [location 2] (multi)."
+      },
+      {
+        "npc": "You have [time left] remaining. Otherwise..."
+      },
+      {
+        "type": "action",
+        "text": "Standard dialogue continues...",
+        "id": "uWIPEs"
+      }
+    ]
+  }
+}

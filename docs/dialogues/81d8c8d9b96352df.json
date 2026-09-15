@@ -1,0 +1,153 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Would you like to buy a nice kebab? Only one gold."
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "I think I'll give it a miss.",
+            "steps": [
+              {
+                "player": "I think I'll give it a miss."
+              }
+            ]
+          },
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "condition",
+                "text": "If the player has at least one coin:",
+                "steps": [
+                  {
+                    "type": "action",
+                    "action": "receive",
+                    "text": "a kebab and pays one coin",
+                    "id": "txBQAi"
+                  },
+                  {
+                    "type": "end"
+                  }
+                ],
+                "id": "MXzEDr"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has no coins:",
+                "steps": [
+                  {
+                    "player": "Oops, I forgot to bring any money with me."
+                  },
+                  {
+                    "npc": "Come back when you have some."
+                  }
+                ],
+                "id": "saCV1e"
+              }
+            ]
+          },
+          {
+            "text": "What do you think of Ali Morrisane?",
+            "condition": "After Rogue Trader",
+            "steps": [
+              {
+                "player": "What do you think of Ali Morrisane?"
+              },
+              {
+                "npc": "I don't like him. He makes all these claims about being the best salesman in Gielinor, and he even has some thugs that he's hired to threaten us."
+              },
+              {
+                "npc": "One of them came round here and threatened to cut my head off if I didn't cooperate with them!"
+              },
+              {
+                "npc": "I've also heard some rumours about them from my friend Ali in Pollnivneach..."
+              },
+              {
+                "player": "What sort of rumours?"
+              },
+              {
+                "npc": "Apparently he has men there as well, who have also been threatening people."
+              },
+              {
+                "npc": "And it's said that they even intend to steal from the ruler of Al Kharid himself!"
+              },
+              {
+                "player": "Really?"
+              },
+              {
+                "npc": "That's what I've heard. Anyway, are you sure you wouldn't like a kebab?"
+              },
+              {
+                "type": "jump",
+                "reference": "other",
+                "id": "B7seMi"
+              }
+            ],
+            "id": "KoaxcX"
+          }
+        ]
+      }
+    ],
+    "treasure-trails-medium": [
+      {
+        "npc": "I've got a little problem for you to solve."
+      },
+      {
+        "type": "action",
+        "action": "receive",
+        "text": "a challenge scroll",
+        "id": "YGh0Oj"
+      },
+      {
+        "type": "unavailable",
+        "id": "rWgtSh"
+      }
+    ],
+    "treasure-trails-medium-when-talked-to-again": [
+      {
+        "npc": "Please enter the answer to the riddle."
+      },
+      {
+        "type": "condition",
+        "text": "When given the wrong answer:",
+        "steps": [
+          {
+            "npc": "No that's not right, think again."
+          },
+          {
+            "type": "end"
+          }
+        ],
+        "id": "7ebgGP"
+      },
+      {
+        "type": "condition",
+        "text": "When given the correct answer:",
+        "steps": [
+          {
+            "npc": "Correct!"
+          },
+          {
+            "type": "action",
+            "action": "receive",
+            "text": "another clue scroll",
+            "id": "CcYimy"
+          },
+          {
+            "type": "message",
+            "text": "The salesman has given you another clue scroll!",
+            "id": "IiKFYl"
+          }
+        ],
+        "id": "MoNxss"
+      }
+    ]
+  }
+}

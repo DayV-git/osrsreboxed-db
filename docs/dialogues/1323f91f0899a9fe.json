@@ -1,0 +1,94 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "random",
+        "options": [
+          {
+            "text": "Dialogue 1",
+            "steps": [
+              {
+                "npc": "Patients, patients everywhere! We need to get these soldiers up and fighting again!"
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 2",
+            "steps": [
+              {
+                "npc": "I don't have time to chat, I have patients to attend to."
+              }
+            ]
+          },
+          {
+            "text": "Dialogue 3",
+            "steps": [
+              {
+                "npc": "I can't take much more of this. As soon as we help one patient, another comes in!"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "historical-dialogue": [
+      {
+        "npc": "Patients, patients everywhere! We need all the help we can get to get these soldiers up and fighting again. Can you help us?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Sure, what do you need me to do?",
+            "steps": [
+              {
+                "player": "Sure, what do you need me to do?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have Shayzien medpacks in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Firstly, you're going to need to gather some medpacks. There should be plenty of boxes around here with some in."
+                  },
+                  {
+                    "npc": "After you've got some, we have several tents full of soldiers who've been hurt in the battle against the lizardmen."
+                  }
+                ],
+                "id": "FFg8ag"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has Shayzien medpacks in their inventory:",
+                "steps": [
+                  {
+                    "npc": "Good, you have already found some medpacks. Now, we have several tents full of soldiers who've been hurt in the battle against the lizardmen."
+                  }
+                ],
+                "id": "e-IDPj"
+              },
+              {
+                "npc": "If you could help them out with those medpacks, that would be a massive help."
+              },
+              {
+                "npc": "The people of Shayzien will thank you."
+              },
+              {
+                "player": "Thank you, I will get right to it."
+              }
+            ]
+          },
+          {
+            "text": "No, I'm sorry but I've got better things to be doing.",
+            "steps": [
+              {
+                "player": "No, I'm sorry but I've got better things to be doing."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

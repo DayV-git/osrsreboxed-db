@@ -1,0 +1,261 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "npc": "Can I help you at all?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "player": "Who are you?"
+              },
+              {
+                "npc": "My name is Ignatius Vulcan. Once I was - like you - an adventurer, but that was before I realised the beauty and power of flame! Just look at this..."
+              },
+              {
+                "type": "action",
+                "text": "Ignatius makes a fire.",
+                "id": "tFOQwl"
+              },
+              {
+                "player": "Yeeouch!"
+              },
+              {
+                "npc": "Stare into the flame and witness the purity and power of fire! As my attraction to flame grew, so did my skills at firelighting. I began to neglect my combat skills, my Mining skills and my questing. Who needs such"
+              },
+              {
+                "npc": "mundane skills when one can harness the power of fire? After years of practice I am now the acknowledged Master of Flame! Everything must be purified by fire!"
+              },
+              {
+                "player": "Okaaaay! Err, I'll be going now. Umm, get better soon."
+              }
+            ]
+          },
+          {
+            "text": "What is that cape you're wearing?",
+            "steps": [
+              {
+                "player": "What is that cape you're wearing?"
+              },
+              {
+                "npc": "This is a Skillcape of Firemaking, so bright that wearing it lights up caves! I was given it in recognition of my skill as the greatest firemaker in the lands! I AM the Master of Flame!"
+              },
+              {
+                "player": "Hmm, I'll be going now. Keep a sharp look out for those men with their white jackets!"
+              }
+            ]
+          },
+          {
+            "text": "No, thanks.",
+            "steps": [
+              {
+                "player": "No, thanks."
+              },
+              {
+                "npc": "Okay, keep the fire burning."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "standard-dialogue-dialogue-with-99-firemaking": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "KXAryl"
+              }
+            ]
+          },
+          {
+            "text": "Can I buy a Skillcape of Firemaking?",
+            "steps": [
+              {
+                "player": "Can I buy a Skillcape of Firemaking?"
+              },
+              {
+                "npc": "Of course you can. You are already a master of fire, you just need the cape to prove it. The cape is so bright that wearing it will light up dark caves. That'll be 99000 coins, please."
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "No thanks, that's too much.",
+                    "steps": [
+                      {
+                        "player": "No thanks, that's too much."
+                      },
+                      {
+                        "npc": "Sorry to hear that, I'll be here if you change your mind."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Okay, that seems reasonable.",
+                    "steps": [
+                      {
+                        "player": "Okay, that seems reasonable."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have enough money:",
+                        "steps": [
+                          {
+                            "player": "But, unfortunately, I don't have enough money with me."
+                          },
+                          {
+                            "npc": "Well, come back and see me when you do."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "zH9j52"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins but not enough inventory space:",
+                        "steps": [
+                          {
+                            "npc": "Unfortunately all Skillcapes are only available with a free hood, it's part of a skill promotion deal; buy one get one free, you know. So you'll need to free up some inventory space before I can sell you one."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "_NdIS1"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 99,000 coins and enough inventory space:",
+                        "steps": [
+                          {
+                            "type": "action",
+                            "action": "give",
+                            "text": "99,000 coins",
+                            "id": "v65426"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "Firemaking cape and Firemaking hood",
+                            "id": "UQBe60"
+                          },
+                          {
+                            "npc": "I'm sure you'll look hot in that cape."
+                          }
+                        ],
+                        "id": "JEE5Pc"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "F1dtUh"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "with-a-firemaking-cape-but-no-hood": [
+      {
+        "npc": "Can I help you at all?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Who are you?"
+          },
+          {
+            "text": "Can I buy a Skillcape of Firemaking?",
+            "steps": [
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Skillcape",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "pSwVXH"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Hood",
+                    "steps": [
+                      {
+                        "player": "May I have another hood for my cape, please?"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has no free inventory spaces:",
+                        "steps": [
+                          {
+                            "npc": "You don't appear to have enough space in your inventory, come back and see me when you do."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "MrPCPs"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player has at least 1 free inventory space:",
+                        "steps": [
+                          {
+                            "npc": "Most certainly, and free of charge!"
+                          },
+                          {
+                            "type": "action",
+                            "action": "receive",
+                            "text": "firemaking hood",
+                            "id": "iSvtcW"
+                          }
+                        ],
+                        "id": "tNaZNc"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "No, thanks.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "XYGUUY"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

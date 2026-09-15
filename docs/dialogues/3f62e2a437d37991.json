@@ -1,0 +1,158 @@
+{
+  "default": "before-the-fremennik-trials",
+  "variants": {
+    "before-the-fremennik-trials": [
+      {
+        "npc": "Watch yourself, outerlander."
+      }
+    ],
+    "after-the-fremennik-trials-but-before-dragon-slayer-ii": [
+      {
+        "npc": "Good day to you, [Fremennik name]."
+      }
+    ],
+    "after-dragon-slayer-ii-rellekka": [
+      {
+        "npc": "Good day to you [Fremennik name]. Do you want to go to Ungael?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "action",
+                "text": "Player is transported to Ungael",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "-xhx3k"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any of my items?",
+            "steps": [
+              {
+                "player": "Do you have any of my items?"
+              },
+              {
+                "type": "condition",
+                "text": "If the player has items in Torfinn's collection:",
+                "steps": [
+                  {
+                    "npc": "I do have some of your items here [Fremennik name]. Try not to lose them next time."
+                  },
+                  {
+                    "type": "action",
+                    "action": "open_interface",
+                    "target": "Torfinn's Item Retrieval Service",
+                    "id": "VU92g2"
+                  }
+                ],
+                "id": "k9djVI"
+              },
+              {
+                "type": "condition",
+                "text": "If the player does not have items in Torfinn's collection:",
+                "steps": [
+                  {
+                    "npc": "I'm afraid not [Fremennik name]. If I did have any of your items, but you died before collecting them, they'll now be lost."
+                  }
+                ],
+                "id": "Tj5FP2"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "player": "No thank you."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "after-dragon-slayer-ii-ungael": [
+      {
+        "npc": "Well met [Fremennik name]. Do you want to return to Rellekka?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Yes please.",
+            "steps": [
+              {
+                "player": "Yes please."
+              },
+              {
+                "type": "end"
+              },
+              {
+                "type": "action",
+                "text": "Player is transported to Rellekka",
+                "action": "teleport",
+                "action_source": "text",
+                "id": "3t1x0a"
+              }
+            ]
+          },
+          {
+            "text": "Do you have any of my items?",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "LYCh32"
+              }
+            ]
+          },
+          {
+            "text": "No thank you.",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "Zfpuf9"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "right-click-collect": [
+      {
+        "type": "condition",
+        "text": "If the player has items in Torfinn's Item Retrieval Service",
+        "steps": [
+          {
+            "type": "action",
+            "action": "open_interface",
+            "target": "Torfinn's Item Retrieval Service",
+            "id": "3k8FuH"
+          }
+        ],
+        "id": "Zb1gpY"
+      },
+      {
+        "type": "condition",
+        "text": "If the player does not have items in Torfinn's collection:",
+        "steps": [
+          {
+            "npc": "I'm afraid I don't have anything for you [Fremennik name]. If I did have any of your items, but you died before collecting them, they'll now be lost."
+          }
+        ],
+        "id": "5biOuW"
+      }
+    ]
+  }
+}

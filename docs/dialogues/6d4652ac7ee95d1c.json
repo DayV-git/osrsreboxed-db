@@ -1,0 +1,672 @@
+{
+  "default": "standard-dialogue",
+  "variants": {
+    "standard-dialogue": [
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "Would you look after my crops for me?",
+            "steps": [
+              {
+                "player": "Would you look after my crops for me?"
+              },
+              {
+                "npc": "I might - which patch were you thinking of?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "The Cactus Patch",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If the patch is empty:",
+                        "steps": [
+                          {
+                            "npc": "You don't have any seeds planted in that patch. Plant some and I might agree to look after it for you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "IPRSrk"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the patch has a diseased plant:",
+                        "steps": [
+                          {
+                            "npc": "That patch is diseased - you should cure it before asking me to be responsible for it!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "HU4q03"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the patch has a dead plant:",
+                        "steps": [
+                          {
+                            "npc": "That patch is dead - it's too late for me to do anything about it now."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "TU-7Vj"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the patch has a fully grown plant:",
+                        "steps": [
+                          {
+                            "npc": "That patch is already fully grown! I don't know what you want me to do with it!"
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "D16uVi"
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the patch is already being looked after:",
+                        "steps": [
+                          {
+                            "npc": "I'm already looking after that patch for you."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "eH4jB2"
+                      },
+                      {
+                        "npc": "If you like, but I want [payment] for that."
+                      },
+                      {
+                        "type": "condition",
+                        "text": "If the player does not have the payment:",
+                        "steps": [
+                          {
+                            "player": "I'm afraid I don't have any of those at the moment."
+                          },
+                          {
+                            "npc": "Well, I'm not wasting my time for free."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "dhvVSE"
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Okay, it's a deal.",
+                            "steps": [
+                              {
+                                "player": "Okay, it's a deal."
+                              },
+                              {
+                                "npc": "[That'll do nicely, sir/That'll do nicely, madam/That'll do nicely]. Leave it with me - I'll make sure that patch grows for you."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No, that's too much.",
+                            "steps": [
+                              {
+                                "player": "No, that's too much."
+                              },
+                              {
+                                "npc": "Well, I'm not wasting my time for free."
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Okay, it's a deal and don't ask again.",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "lOf9aX"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The Northern Allotment Patch",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "2GJazs"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The Southern Allotment Patch",
+                    "steps": [
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "5zPu6y"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "The Bush Patch",
+                    "steps": [
+                      {
+                        "type": "condition",
+                        "text": "If a poison ivy bush is planted:",
+                        "steps": [
+                          {
+                            "npc": "Poison ivy bushes don't get diseased, so you needn't worry about having it protected."
+                          },
+                          {
+                            "type": "end"
+                          }
+                        ],
+                        "id": "EKnkJs"
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "x9EXhc"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you give me any farming advice?",
+            "steps": [
+              {
+                "player": "Can you give me any farming advice?"
+              },
+              {
+                "type": "random",
+                "options": [
+                  {
+                    "text": "Dialogue 1",
+                    "steps": [
+                      {
+                        "npc": "You can put up to ten potatoes, cabbages or onions in vegetable sacks, although you can't have a mix in the same sack."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "1McXv0"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 2",
+                    "steps": [
+                      {
+                        "npc": "You can put up to five tomatoes, strawberries, apples, bananas or oranges into a fruit basket, although you can't have a mix in the same basket."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "EXG7c4"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 3",
+                    "steps": [
+                      {
+                        "npc": "You can buy all the farming tools from farming shops, which can be found close to the allotments."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "5MbMEl"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 4",
+                    "steps": [
+                      {
+                        "npc": "You can fill plantpots with soil from any empty patch, if you have a gardening trowel."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "hQSsi-"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 5",
+                    "steps": [
+                      {
+                        "npc": "Tree seeds must be grown in a plantpot of soil into a sapling, and then transferred to a tree patch to continue growing to adulthood."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "1luEIG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 6",
+                    "steps": [
+                      {
+                        "npc": "If you want to make your own sacks and baskets you'll need to use the loom that's near the Farming shop in Falador. If you're a good enough [craftswoman/craftsman], that is."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "1v_bjY"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 7",
+                    "steps": [
+                      {
+                        "npc": "You don't have to buy all your plantpots you know, you can make them yourself on a pottery wheel. If you're a good enough [craftswoman/craftsman], that is."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "ktyg4Y"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 8",
+                    "steps": [
+                      {
+                        "npc": "Don't just throw away your weeds after you've raked a patch - put them in a compost bin and make some compost."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "zwvEJg"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 9",
+                    "steps": [
+                      {
+                        "npc": "Applying compost to a patch will not only reduce the chance that your crops will get diseased, but you will also grow more crops to harvest."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "8tHKB2"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 10",
+                    "steps": [
+                      {
+                        "npc": "Supercompost is far better than normal compost, but more expensive to make. You need to rot the right type of item; show me an item, and I'll tell you if it's super- compostable or not."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "F1-4Yo"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 11",
+                    "steps": [
+                      {
+                        "npc": "Vegetables, hops and flowers need constant watering - if you ignore my advice, you will sooner or later find yourself in possession of a dead farming patch."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "sxN14w"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 12",
+                    "steps": [
+                      {
+                        "npc": "The only way to cure a bush or tree of disease is to prune away the diseased leaves with a pair of secateurs. For all other crops I would just apply some plant-cure."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "2T--uk"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 13",
+                    "steps": [
+                      {
+                        "npc": "There are five other Farming areas like this one - Elstan's area near Falador, Dantaera's area near Catherby, Kragen's area near Ardougne, Lyra's area in Morytania, Marisi's area in Hosidius and Oswallt's area"
+                      },
+                      {
+                        "npc": "in Prifddinas."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "AvZMut"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 14",
+                    "steps": [
+                      {
+                        "npc": "If you want to grow fruit trees you could try a few places: Catherby, Brimhaven, Gnome Stronghold and the Farming Guild all have fruit tree patches."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "gWDvAn"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 15",
+                    "steps": [
+                      {
+                        "npc": "Hops are good for brewing ales. I believe there's a brewery up in Keldagrim somewhere, and I've heard rumours that a place called Phasmatys used to be good for that type of thing. 'Fore they all died, of course."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "zvs4gC"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 16",
+                    "steps": [
+                      {
+                        "npc": "Bittercap mushrooms can only be grown in a special patch in Morytania, near the Mort Myre swamp. There the ground is especially dank and suited to growing poisonous fungii."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "yiDox3"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Dialogue 17",
+                    "steps": [
+                      {
+                        "npc": "There is a special patch for growing Belladonna - I believe that it is somewhere near Draynor Manor, where the ground is a tad 'unblessed'."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "other",
+                        "id": "BtuY1m"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Can you sell me something?",
+            "steps": [
+              {
+                "player": "Can you sell me something?"
+              },
+              {
+                "npc": "That depends on whether I have it to sell. What is it that you're looking for?"
+              },
+              {
+                "type": "choice",
+                "options": [
+                  {
+                    "text": "Some plant cure.",
+                    "steps": [
+                      {
+                        "player": "Some plant cure."
+                      },
+                      {
+                        "npc": "Plant cure, eh? I might have some put aside for myself. Tell you what, I'll sell you some plant cure for 25 coins if you like."
+                      },
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "Yes, that sounds like a fair price.",
+                            "steps": [
+                              {
+                                "player": "Yes, that sounds like a fair price."
+                              },
+                              {
+                                "type": "message",
+                                "text": "Alan hands over your purchase.",
+                                "id": "TsB67R"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "No thanks, I can get that much cheaper elsewhere.",
+                            "steps": [
+                              {
+                                "player": "No thanks, I can get that much cheaper elsewhere."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "A bucket of compost.",
+                    "steps": [
+                      {
+                        "player": "A bucket of compost."
+                      },
+                      {
+                        "npc": "A bucket of compost, eh? I might have one spare... tell you what, I'll sell it to you for 35 coins if you like."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "dRzqSM"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "A rake.",
+                    "steps": [
+                      {
+                        "player": "A rake."
+                      },
+                      {
+                        "npc": "A rake, eh? I might have one spare... tell you what, I'll sell it to you for 15 coins if you like."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "ILfmyG"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "A plant pot.",
+                    "steps": [
+                      {
+                        "player": "A plant pot."
+                      },
+                      {
+                        "npc": "Eh, I suppose I can spare you a plant pot, but I'll want 40 coins for it."
+                      },
+                      {
+                        "type": "jump",
+                        "reference": "above",
+                        "id": "YK07dC"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "(See more items)",
+                    "steps": [
+                      {
+                        "type": "choice",
+                        "options": [
+                          {
+                            "text": "A watering can.",
+                            "steps": [
+                              {
+                                "player": "A watering can."
+                              },
+                              {
+                                "npc": "A watering can, eh? I might have one spare... tell you what, I'll sell it to you for 25 coins if you like."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "OTA6Aa"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "A gardening trowel.",
+                            "steps": [
+                              {
+                                "player": "A gardening trowel."
+                              },
+                              {
+                                "npc": "A gardening trowel, eh? I might have one spare... tell you what, I'll sell it to you for 15 coins if you like."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "y0XzTw"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "A seed dibber.",
+                            "steps": [
+                              {
+                                "player": "A seed dibber."
+                              },
+                              {
+                                "npc": "A seed dibber, eh? I might have one spare... tell you what, I'll sell it to you for 15 coins if you like."
+                              },
+                              {
+                                "type": "jump",
+                                "reference": "above",
+                                "id": "fFm0bA"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "(See previous items)",
+                            "steps": [
+                              {
+                                "type": "jump",
+                                "reference": "previous",
+                                "id": "Dfq6V5"
+                              }
+                            ]
+                          },
+                          {
+                            "text": "Forget it.",
+                            "steps": [
+                              {
+                                "player": "Forget it, you don't have anything I need."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "I'll come back another time.",
+            "steps": [
+              {
+                "player": "I'll come back another time."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dialogue-when-using-the-pay-option": [
+      {
+        "npc": "Which patch would you like to pay protection for?"
+      },
+      {
+        "type": "choice",
+        "options": [
+          {
+            "text": "The Cactus Patch",
+            "steps": [
+              {
+                "npc": "I want [payment] for that."
+              },
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "nGNFdG"
+              }
+            ]
+          },
+          {
+            "text": "The Northern Allotment Patch",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "QApV0Y"
+              }
+            ]
+          },
+          {
+            "text": "The Southern Allotment Patch",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "-0V3Km"
+              }
+            ]
+          },
+          {
+            "text": "The Bush Patch",
+            "steps": [
+              {
+                "type": "jump",
+                "reference": "above",
+                "id": "x5fxLj"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
